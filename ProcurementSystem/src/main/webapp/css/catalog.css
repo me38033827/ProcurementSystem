@@ -1,0 +1,178 @@
+#catalog-creation{
+	padding-left:450px;
+	padding-top: 10px;
+}
+
+#catalog-creation-title1{
+	margin:0 20px 0 20px;
+	height:70px;
+	border-bottom: 1px solid grey;
+	font-size:20px;
+	padding-left:30px;
+	padding-top:30px;
+}
+
+#catalog-creation-title-font{
+	color:black;
+}
+
+#catalog-creation td{
+	height:40px;
+}
+
+#catalog-creation .col1{
+	text-align:right;
+}
+
+#creation-title{
+	width:220px;
+	height:30px;
+}
+
+#catalog-creation-config, #catalog-creation-select, #catalog-creation-cancel{
+	width:100px;
+	height:30px;
+	border-radius:0;
+}
+
+#catalog-creation-cancel{
+	margin-top:10px;
+	margin-left:120px;	
+}
+
+
+
+
+#catalog-creation-title{
+	height:70px;
+	border-bottom: 1px solid grey;
+	font-size:20px;
+	padding-left:30px;
+	padding-top:30px;
+}
+
+#catalog-content-1{
+	padding:0;
+	margin-left:20px;
+	margin-right:20px;
+}
+
+#catalog-line-1{
+	margin-top:20px;
+	width:100%;
+}
+
+#catalog-line-1-font{
+	font-size:14px;
+	color:black;
+}
+
+#catalog-line-2{
+	width:100%;
+	height:32px;
+}
+
+#catalog-line-2-icons{
+	float:right;
+}
+
+#import-icon{
+	width:130px;
+}
+
+#catalog-line-3{
+	background-color:#ECECFF;
+	margin-top:10px;
+	padding:10px 15px;
+}
+
+#catalog-line-3-2{
+	margin-top:5px;
+}
+
+#catalog-line-3-2－scope-select{
+	border-radius:0;
+	width:100px;
+	height:30px;
+	padding-top:5px;
+	margin-right:5px;
+}
+
+#catalog-line-3-2-content-input{
+	width:200px;
+	display:inline-block;
+	height:30px;
+}
+
+#catalog-line-3-4{
+	height:36px;
+	width:100%;
+}
+
+#catalog-line-3-4-tab{
+	width:100%;
+}
+
+.catalog-tab2-row1{
+	background-color:#ECECFF;
+}
+
+.catalog-tab2-row1 td{
+	font-size:14px;
+	color:grey;
+}
+
+.catalog-tab2-row2{
+	border-bottom:1px solid #ECECFF;
+}
+
+.catalog-tab2-col2, .catalog-tab2-col3,.catalog-tab2-col4,.catalog-tab2-col6,.catalog-tab2-col7,.catalog-tab2-col8,.catalog-tab2-col9{
+	font-size:14px;
+	color:#428bca;
+}
+
+.catalog-tab2-col5, .catalog-tab2-col10{
+	font-size:14px;
+	color:black;
+}
+
+.catalog-tab2-row3{
+	background-color:#ECECFF;
+	height:44px;
+}
+
+.catalog-tab2-col1{
+	width:2%;
+}
+
+.catalog-tab2-col2{
+	width:20%;
+}
+.catalog-tab2-col3{
+	width:18%;
+}
+.catalog-tab2-col4{
+	width:8%;
+}
+.catalog-tab2-col5{
+	width:7%;
+}
+.catalog-tab2-col6{
+	width:8%;
+}
+.catalog-tab2-col7{
+	width:5%;
+}
+.catalog-tab2-col8{
+	width:8%;
+}
+.catalog-tab2-col9{
+	width:7%;
+}
+.catalog-tab2-col10{
+	width:15%;
+}
+.catalog-tab2-row3 button{
+	margin-right:8px;
+	width:135px;
+}
