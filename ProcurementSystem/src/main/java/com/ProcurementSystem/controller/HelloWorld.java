@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class HelloWorld {
 	@RequestMapping(value = "index")
 	public String toLoginPage(){
-		//return "downStream/commodity/procurementCommodityCatalog";
-		return "other/header";
+		return "downStream/commodity/procurementCommodityCatalog";
 	}
 }
