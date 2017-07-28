@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CommodityCatalogueController {
 	
-	@RequestMapping(value="showCreateCommodityCatalogue")
-	public String showCreateCommodityCatalogue(){
-		return "downStream/commodityCatalogue/showCreateCommodityCatalogue";
+	@RequestMapping(value="createCommodityCatalogue")
+	public String createCommodityCatalogue(){
+		return "downStream/commodityCatalogue/createCommodityCatalogue";
 	}
 }
