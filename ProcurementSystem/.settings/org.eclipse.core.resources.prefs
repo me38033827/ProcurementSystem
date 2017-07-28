@@ -2,5 +2,7 @@ eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/WEB-INF/other/header.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/springmvc.xml=UTF-8
+encoding//src/main/webapp/WEB-INF/user/userDetail.jsp=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8
