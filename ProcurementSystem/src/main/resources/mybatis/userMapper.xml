@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IUserDao">
+
+	<!--  <select id="getUserDetail" resultType="String">
+		select unique_name from user
+		where user_identifier = "zhixuan"
+	</select>-->
+	
+	<!-- <select id="getUserDetail" resultType="String" parameterType="String">
+		select unique_name from user
+		where user_identifier = '${userIdentifier}'
+	</select> -->
+	
+	<select id="getUserDetail" resultType="com.ProcurementSystem.entity.User" parameterType="String">
+		select * from user
+		where user_identifier = '${userIdentifier}'
+	</select>
+</mapper>
