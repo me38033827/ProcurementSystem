@@ -12,7 +12,7 @@
 	<a id="catalog-creation-title-font">目录－导入新目录</a>
 </div>
 <!-- 导入新目录具体内容 -->
-<form action="insertCommodityCatalogue" method="post">
+<form action="commodityCatalogueSelect" method="post">
 	<div id="catalog-creation">
 		<p>请输入必须的信息，然后选择相应的设置，以导入新目录或者创建新的空目录</p>
 		<table class="catalog-table">
@@ -32,17 +32,17 @@
 
 			<tr>
 				<td class="col1">*目录订阅名称：</td>
-				<td class="col2" name="name"><input id="creation-title" /></td>
+				<td class="col2" ><input id="creation-title" name="name"/></td>
 			</tr>
 
 			<tr>
 				<td class="col1">创建空目录：</td>
-				<td class="col2" >
+				<td class="col2">
 					<div class="radio">
 						<label><input type="radio" name="isCreateEmptyCatalogue"
 							id="optionsRadios1" value="是">是</label> <label><input
-							type="radio" name="isCreateEmptyCatalogue" id="optionsRadios2" value="否"
-							checked>否</label>
+							type="radio" name="isCreateEmptyCatalogue" id="optionsRadios2"
+							value="否" checked>否</label>
 					</div>
 				</td>
 			</tr>
@@ -51,9 +51,10 @@
 				<td class="col1">跳过审批：</td>
 				<td class="col2">
 					<div class="radio">
-						<label><input type="radio" name="isIgnoreApprove" id="optionsRadios1"
-							value="是">是</label> <label><input type="radio"
-							name="isIgnoreApprove" id="optionsRadios2" value="否" checked>否</label>
+						<label><input type="radio" name="isIgnoreApprove"
+							id="optionsRadios1" value="是">是</label> <label><input
+							type="radio" name="isIgnoreApprove" id="optionsRadios2" value="否"
+							checked>否</label>
 					</div>
 				</td>
 			</tr>
@@ -88,22 +89,13 @@
 					<div class="radio">
 						<label><input type="radio" name="isAllowMultiSupplierCIF"
 							id="optionsRadios1" value="是">是</label> <label><input
-							type="radio" name="isAllowMultiSupplierCIF" id="optionsRadios2" value="否"
-							checked>否</label>
+							type="radio" name="isAllowMultiSupplierCIF" id="optionsRadios2"
+							value="否" checked>否</label>
 					</div>
 				</td>
 			</tr>
 
-			<tr>
-				<td class="col1">隐藏PunchOut商品价格：</td>
-				<td class="col2">
-					<div class="radio">
-						<label><input type="radio" name="hide" id="isHiddenPunchOutPrice"
-							value="是">是</label> <label><input type="radio"
-							name="hide" id="optionsRadios2" value="否" checked>否</label>
-					</div>
-				</td>
-			</tr>
+
 
 			<tr>
 				<td class="col1">层级：</td>
@@ -114,18 +106,10 @@
 							type="radio" name="level" id="optionsRadios2" value="黄金">黄金</label>
 						<label><input type="radio" name="level"
 							id="optionsRadios3" value="白银">白银</label> <label><input
-							type="radio" name="level" id="optionsRadios4" value="无"
-							checked>无</label>
+							type="radio" name="level" id="optionsRadios4" value="无" checked>无</label>
 					</div>
 				</td>
 			</tr>
-
-			<tr>
-				<td class="col1">宽松验证：</td>
-				<td class="col2"><button type="submit" class="btn btn-default"
-						id="catalog-creation-config">配置</button></td>
-			</tr>
-
 			<tr>
 				<td class="col1">目录文件：</td>
 				<td class="col2"><button type="submit" class="btn btn-default"
@@ -133,7 +117,7 @@
 			</tr>
 		</table>
 		<button type="submit" class="btn btn-default"
-			id="catalog-creation-cancel">保存</button>
+			id="catalog-creation-cancel">取消</button>
 	</div>
 	</div>
 </form>
