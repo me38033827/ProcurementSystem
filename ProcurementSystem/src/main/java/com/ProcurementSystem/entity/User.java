@@ -8,23 +8,23 @@ public class User {
 	private	String	definer	;
 	private	String	passwordAdapter	;
 	private	String	name	;
-	private	String	AribaUserIdentifier	;
+	private	String	userIdentifier	;
 	private	String	organization	;
 	private	String	emailAddress	;
 	private	String	allowedExternalEmailDomain	;
 	private	String	defaultCurrency	;
 	private	String	locale	;
-	private	String	timeZoneID	;
+	private	String	timeZone	;
 	private	String	phone	;
 	private	String	fax	;
 	private	int	failedLoginAttemptAfterLastLogin	;
-	private	String	loginString	;
-	private	String	lastLoginString	;
+	private	String	loginDate	;
+	private	String	lastLoginDate	;
 	private	String	supervisorName	;
 	private	String	alternateEmailAddresses	;
-	private	String 	createString	;
-	private	String	lastModifyString	;
-	private	String	expireString	;
+	private	String 	createDate	;
+	private	String	lastModifyDate	;
+	private	String	expireDate	;
 	public int getUniqueName() {
 		return uniqueName;
 	}
@@ -55,11 +55,11 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAribaUserIdentifier() {
-		return AribaUserIdentifier;
+	public String getUserIdentifier() {
+		return userIdentifier;
 	}
-	public void setAribaUserIdentifier(String aribaUserIdentifier) {
-		AribaUserIdentifier = aribaUserIdentifier;
+	public void setUserIdentifier(String userIdentifier) {
+		this.userIdentifier = userIdentifier;
 	}
 	public String getOrganization() {
 		return organization;
@@ -91,11 +91,11 @@ public class User {
 	public void setLocale(String locale) {
 		this.locale = locale;
 	}
-	public String getTimeZoneID() {
-		return timeZoneID;
+	public String getTimeZone() {
+		return timeZone;
 	}
-	public void setTimeZoneID(String timeZoneID) {
-		this.timeZoneID = timeZoneID;
+	public void setTimeZone(String timeZone) {
+		this.timeZone = timeZone;
 	}
 	public String getPhone() {
 		return phone;
@@ -115,17 +115,17 @@ public class User {
 	public void setFailedLoginAttemptAfterLastLogin(int failedLoginAttemptAfterLastLogin) {
 		this.failedLoginAttemptAfterLastLogin = failedLoginAttemptAfterLastLogin;
 	}
-	public String getLoginString() {
-		return loginString;
+	public String getLoginDate() {
+		return loginDate;
 	}
-	public void setLoginString(String loginString) {
-		this.loginString = loginString;
+	public void setLoginDate(String loginDate) {
+		this.loginDate = loginDate;
 	}
-	public String getLastLoginString() {
-		return lastLoginString;
+	public String getLastLoginDate() {
+		return lastLoginDate;
 	}
-	public void setLastLoginString(String lastLoginString) {
-		this.lastLoginString = lastLoginString;
+	public void setLastLoginDate(String lastLoginDate) {
+		this.lastLoginDate = lastLoginDate;
 	}
 	public String getSupervisorName() {
 		return supervisorName;
@@ -139,23 +139,23 @@ public class User {
 	public void setAlternateEmailAddresses(String alternateEmailAddresses) {
 		this.alternateEmailAddresses = alternateEmailAddresses;
 	}
-	public String getCreateString() {
-		return createString;
+	public String getCreateDate() {
+		return createDate;
 	}
-	public void setCreateString(String createString) {
-		this.createString = createString;
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
 	}
-	public String getLastModifyString() {
-		return lastModifyString;
+	public String getLastModifyDate() {
+		return lastModifyDate;
 	}
-	public void setLastModifyString(String lastModifyString) {
-		this.lastModifyString = lastModifyString;
+	public void setLastModifyDate(String lastModifyDate) {
+		this.lastModifyDate = lastModifyDate;
 	}
-	public String getExpireString() {
-		return expireString;
+	public String getExpireDate() {
+		return expireDate;
 	}
-	public void setExpireString(String expireString) {
-		this.expireString = expireString;
+	public void setExpireDate(String expireDate) {
+		this.expireDate = expireDate;
 	}
 	
 }
