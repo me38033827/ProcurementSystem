@@ -110,6 +110,14 @@
 	border:1px solid #428bca;
 	color:#428bca;
 }
+.btn-w:hover{
+  color: #fff;
+  background-color: #428bca;
+  border-color: #285e8e;
+}
+.btn-w:active{
+	background-color: #3071a9;
+}
 
 .btn-b{
 	font-size:14px;
@@ -119,6 +127,11 @@
 	text-align:center;
 	background-color:#428bca;
 	color:white;
+}
+.btn-b:hover{
+  color: #fff;
+  background-color:  #3071a9;
+  border-color: #285e8e;
 }
 
 select{
