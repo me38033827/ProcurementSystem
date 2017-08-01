@@ -1,0 +1,45 @@
+#relevant-span{
+	font-size:11px;
+}
+
+.relevant-title{
+	height:60px;
+	font-size:20px;
+	padding-top:20px;
+}
+
+.relevant-pr-content{
+	margin-top:10px;
+}
+
+.relevant-pr-content a{
+	height:30px;
+}
+
+.relevant-tab{
+	width:100%;
+}
+
+.relevant-tab table{
+	width:100%;
+}
+
+.relevant-tab table tr{
+	height:40px;
+}
+
+.relevant-tab-row1{
+	background-color:#ECECFF;
+}
+
+.relevant-tab-row2{
+	border-bottom:2px solid #ECECFF;
+}
+
+.indent{
+	padding-left:40px;
+}
+
+.relevant-finish{
+	margin-top:20px;
+}

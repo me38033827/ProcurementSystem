@@ -17,7 +17,6 @@ public class UserService {
 	public User getUserDetail(String userIdentifier){
 		System.out.println("In user service...");
 		
-		// set parameters 
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("userIdentifier", userIdentifier);
 		
@@ -26,5 +25,26 @@ public class UserService {
 		
 		System.out.println("Taking details for user " + user.getUserIdentifier() + "Back to user service...");
 		return user;
+	}
+	
+	public String createNewUser(User newUser){
+		System.out.println("In user service...");
+		System.out.println("Creating new user: ");
+		dao.createNewUser(newUser);
+		
+		return "success";
+	}
+	
+	public boolean checkName(String userIdentifier,String passwordAdapter){
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("userIdentifier", userIdentifier);
+		params.put("passwordAdapter", passwordAdapter);
+		
+		int numOfName = dao.checkName(params);
+		System.out.println("number of zhixuan is " + numOfName);
+		if(numOfName == 0){
+			return false;
+		}
+		return true;
 	}
 }
