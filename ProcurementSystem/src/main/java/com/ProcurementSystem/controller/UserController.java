@@ -15,6 +15,50 @@ public class UserController {
 	@Resource
 	UserService service;
 	
+	@RequestMapping(value="userCreation")
+	public String userCreation(){
+		System.out.println("In user controller...");
+		
+		// check whether user exists
+		String userIdentifier = "zx";
+		String passwordAdapter = "第三方用户";
+		boolean serviceResult = service.checkName(userIdentifier, passwordAdapter);
+		if(serviceResult == true){
+			System.out.println("User " + userIdentifier + " has already exists.");
+			return "user/userCreation";
+		}
+		System.out.println("Creating a new user " + userIdentifier + "...");
+		// add new user
+		User newUser = new User();
+		newUser.setDefiner("Definer");
+		newUser.setName("name");
+		newUser.setPasswordAdapter("pass");
+		newUser.setUserIdentifier("userIdentifier");
+		newUser.setOrganization("Organization");
+		newUser.setEmailAddress("email");
+		newUser.setAllowedExternalEmailDomain("allowed");
+		newUser.setDefaultCurrency("CNY");
+		newUser.setLocale("locale");
+		newUser.setTimeZone("timeZone");
+		newUser.setPhone("phone");
+		newUser.setFax("fax");
+		newUser.setSupervisorName("supervisor");
+		newUser.setAlternateEmailAddresses("alteremail");
+		service.createNewUser(newUser);
+		return "user/userCreation";
+	}
+	
+	@RequestMapping(value="userCreation.submit")
+	public String userCreationSubmit(){
+		return "userSearching";
+	}
+	
+	
+	@RequestMapping(value="userSearching")
+	public String userSearching(){
+		return "user/userSearching";
+	}
+	
 	@RequestMapping(value="userDetail")
 	public String getUserDetail(HttpServletRequest request){
 		String userIdentifier = "zhixuan";

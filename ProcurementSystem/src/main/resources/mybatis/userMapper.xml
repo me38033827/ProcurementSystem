@@ -3,18 +3,50 @@
 
 <mapper namespace="com.ProcurementSystem.dao.IUserDao">
 
-	<!--  <select id="getUserDetail" resultType="String">
-		select unique_name from user
-		where user_identifier = "zhixuan"
-	</select>-->
-	
-	<!-- <select id="getUserDetail" resultType="String" parameterType="String">
-		select unique_name from user
-		where user_identifier = '${userIdentifier}'
-	</select> -->
-	
-	<select id="getUserDetail" resultType="com.ProcurementSystem.entity.User" parameterType="String">
+	<select id="getUserDetail" parameterType="map" resultType="com.ProcurementSystem.entity.User">
 		select * from user
 		where user_identifier = '${userIdentifier}'
 	</select>
+	
+	<insert id="createNewUser" parameterType="com.ProcurementSystem.entity.User" useGeneratedKeys="true">
+		insert into user(definer, password_adapter, name, user_identifier, organization, email_address, allowed_external_email_domain, 
+		default_currency, locale, time_zone, phone, fax, supervisor_name, alternate_email_addresses)
+		values(#{definer}, #{passwordAdapter}, #{name}, #{userIdentifier}, #{organization}, #{emailAddress}, #{allowedExternalEmailDomain},
+		#{defaultCurrency}, #{locale}, #{timeZone}, #{phone}, #{fax}, #{supervisorName}, #{alternateEmailAddresses})
+	</insert>
+	
+	<select id="checkName" parameterType="map" resultType="int">
+		select count(*) from user
+		where user_identifier = '${userIdentifier}' 
+			and password_adapter = '${passwordAdapter}'
+	</select>
+	
+	<select id="searchUsers" parameterType="map" resultType="com.ProcurementSystem.entity.User">
+		select * from user
+		where password_adapter = '${userAdapter}'
+		<if test="user_identifier != null and user_">
+	</select>
+	
+	<!--
+		返回主键id
+		keyProperty="unique_name" 
+	 -->
+	<!-- <update id="updateUser" parameterType="com.ProcurementSystem.entity.User">
+		update user
+		set definer="definer",
+			password_adapter="password_adapter", 
+			name="name",
+			user_identifier="user_identifier"
+			organization="organization",
+			email_address="email_address",
+			alowed_external_email_domain="external",
+			default_currency="CNY",
+			local="locale",
+			time_zone="time_zone",
+			phone="1",
+			fax="1",
+			supervisor_name="a",
+			alternate_email_addresses="alter"
+			
+	</update> -->
 </mapper>

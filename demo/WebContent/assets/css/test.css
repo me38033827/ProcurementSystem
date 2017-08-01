@@ -1,0 +1,10 @@
+body{
+	background-color:grey;
+	min-width:1200px;
+}
+
+#test1{
+	width:80%;
+	height:100px;
+	background-color:white;
+}

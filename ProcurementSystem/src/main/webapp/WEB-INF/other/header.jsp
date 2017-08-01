@@ -30,6 +30,8 @@
 <script src="js/bootstrap.js"></script>
 <!-- CUSTOM SCRIPTS  -->
 <script src="js/custom.js"></script>
+<!-- MyJS -->
+<script src="js/myJS.js"></script>
 
 
 
