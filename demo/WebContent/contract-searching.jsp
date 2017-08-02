@@ -22,11 +22,11 @@
 					合同&nbsp;&nbsp;&nbsp;&nbsp; <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a href="approval-searching.html">审批流</a></li>
-					<li><a href="order-searching.html">订购单</a></li>
-					<li><a href="receipt-searching.html">收货记录</a></li>
-					<li><a href="delivery-searching.html">物流跟踪</a></li>
-					<li><a href="invoice-searching.html">发票</a></li>
+					<li><a href="approval-searching.jsp">审批流</a></li>
+					<li><a href="order-searching.jsp">订购单</a></li>
+					<li><a href="receipt-searching.jsp">收货记录</a></li>
+					<li><a href="delivery-searching.jsp">物流跟踪</a></li>
+					<li><a href="invoice-searching.jsp">发票</a></li>
 					<li><a href="#">支付</a></li>
 				</ul>
 			</div>
@@ -67,7 +67,7 @@
 							onfocus="if(this.value=='使用标题、标识符或任何其他词语搜索') this.value=''"
 							onblur="if(this.value=='')this.value='使用标题、标识符或任何其他词语搜索' ">
 						<div>
-							<select id="my-select">
+							<select id="my-select" >
 								<option>是合同请求</option>
 								<option>选项1</option>
 								<option>选项2</option>

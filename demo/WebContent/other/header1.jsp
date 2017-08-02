@@ -20,6 +20,7 @@
 <link href="/demo/assets/css/mycss.css" rel="stylesheet" />
 <link href="/demo/assets/css/order.css" rel="stylesheet" />
 <link href="/demo/assets/css/approval.css" rel="stylesheet" />
+<link href="/demo/assets/css/catalog.css" rel="stylesheet" />
 
 
 
@@ -39,7 +40,7 @@
 					id="firstline-print"></span>
 			</button>
 			<button id="firstline-help" >帮助</button>
-			<button id="firstline-user" class="btn-h" >用户：ariba</button>
+			<button id="firstline-user"  >用户：ariba</button>
 		</div>
 	</div>
 </div>

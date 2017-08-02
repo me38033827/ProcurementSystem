@@ -11,9 +11,9 @@
 		<button class="secondline-left">目录</button>
 
 		<div class="btn-group secondline" role="group">
-			<button type="button" class="btn btn-default dropdown-toggle btn-n"
-				id="secondline-right-title" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
+			<button type="button"
+				class="btn btn-default dropdown-toggle" id="secondline-right-title"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				创建&nbsp;<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" id="secondline-dropright">
@@ -32,9 +32,9 @@
 
 		<!-- 第二行靠右 -->
 		<div class="btn-group secondline" role="group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				id="secondline-right-title" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
+			<button type="button"
+				class="btn btn-default dropdown-toggle" id="secondline-right-title"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				管理&nbsp;<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" id="secondline-dropright">
