@@ -19,9 +19,9 @@
 				<a class="inline-b black page-title-font">PR19723：</a>
 				<div class="inline-b right">
 					<button class="btn-w"
-						onclick="window.location.href='procurement-commodity-catalog.html'">继续购物</button>
+						onclick="window.location.href='procurement-commodity-catalog.jsp'">继续购物</button>
 					<button class="btn-b"
-						onclick="window.location.href='pr-creation1.html'">结账</button>
+						onclick="window.location.href='pr-creation1.jsp'">结账</button>
 				</div>
 			</div>
 			<!-- 购物车内商品 -->
@@ -103,15 +103,15 @@
 			<div class="settlement-line3">
 				<div class="right">
 					<button class="btn-w"
-						onclick="window.location.href='procurement-commodity-catalog.html'">继续购物</button>
+						onclick="window.location.href='procurement-commodity-catalog.jsp'">继续购物</button>
 					<button class="btn-b"
-						onclick="window.location.href='pr-creation1.html'">结账</button>
+						onclick="window.location.href='pr-creation1.jsp'">结账</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

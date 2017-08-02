@@ -146,10 +146,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="foot">
-		<div class="black f-12 foot-con">Copyright &copy; 2017.Demo. All
-			rights reserved.</div>
-	</div>
+	<%@ include file="other/footer.jsp"%>
 
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>

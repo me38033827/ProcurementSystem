@@ -135,7 +135,7 @@
 								<tr class="searching-tab-row3">
 									<td colspan="8">
 										<button class="btn-w"
-											onclick="window.location.href='user-group-creation.html'">创建组</button>
+											onclick="window.location.href='user-group-creation.jsp'">创建组</button>
 									</td>
 								</tr>
 							</table>
@@ -145,10 +145,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="foot">
-		<div class="black f-12 foot-con">Copyright &copy; 2017.Demo. All
-			rights reserved.</div>
-	</div>
+	<%@ include file="other/footer.jsp"%>
 
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>

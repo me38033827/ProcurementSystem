@@ -67,7 +67,7 @@
 						<div id="order-filter-line3">
 							<div class="right">
 								<button class="btn-b"
-									onclick="window.location.href='user-group-searching1.html'">搜索</button>
+									onclick="window.location.href='user-group-searching1.jsp'">搜索</button>
 								<button class="btn-w">全部列出</button>
 							</div>
 						</div>
@@ -110,10 +110,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="foot">
-		<div class="black f-12 foot-con">Copyright &copy; 2017.Demo. All
-			rights reserved.</div>
-	</div>
+	<%@ include file="other/footer.jsp"%>
 
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>

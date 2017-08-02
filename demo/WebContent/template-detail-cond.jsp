@@ -113,11 +113,11 @@
 
 			<div id="order-detail-line4">
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='template-detail.html'">概述</button>
+					onclick="window.location.href='template-detail.jsp'">概述</button>
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='template-detail-doc.html'">文档</button>
+					onclick="window.location.href='template-detail-doc.jsp'">文档</button>
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='template-detail-task.html'">任务</button>
+					onclick="window.location.href='template-detail-task.jsp'">任务</button>
 				<button class="order-detail-not-clicked">团队</button>
 				<button class="order-detail-clicked">条件</button>
 				<button class="order-detail-not-clicked">高级选项</button>
@@ -267,7 +267,7 @@
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
 
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

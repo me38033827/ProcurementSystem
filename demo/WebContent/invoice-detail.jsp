@@ -68,7 +68,7 @@
 
 					<tr>
 						<td id="order-detail-tab-col1">订单：</td>
-						<td id="order-detail-tab-col2"><a href="order-detail.html">10000081</a>
+						<td id="order-detail-tab-col2"><a href="order-detail.jsp">10000081</a>
 						</td>
 					</tr>
 
@@ -243,7 +243,7 @@
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
 
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

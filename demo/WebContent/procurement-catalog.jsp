@@ -244,7 +244,7 @@
 			</div>
 		</div>
 	</div>
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>

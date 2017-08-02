@@ -19,7 +19,7 @@
 				<button class="btn-w">保存</button>
 				<button class="btn-w">删除</button>
 				<button class="btn-w"
-					onclick="window.location.href='approval-searching.html'">退出</button>
+					onclick="window.location.href='approval-searching.jsp'">退出</button>
 			</div>
 		</div>
 

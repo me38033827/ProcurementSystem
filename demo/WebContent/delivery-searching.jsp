@@ -79,7 +79,7 @@
 									<td></td>
 									<td>
 										<button class="btn-w" id="delivery-search-item3"
-											onclick="window.location.href='delivery-detail.html'">跟踪</button>
+											onclick="window.location.href='delivery-detail.jsp'">跟踪</button>
 									</td>
 								</tr>
 							</table>
@@ -89,7 +89,7 @@
 			</div>
 		</div>
 	</div>
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

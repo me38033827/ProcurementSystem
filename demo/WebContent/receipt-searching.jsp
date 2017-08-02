@@ -25,12 +25,12 @@
 					收货记录&nbsp;&nbsp;&nbsp;&nbsp; <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a href="approval-searching.html">审批流</a></li>
-					<li><a href="order-searching.html">订购单</a></li>
+					<li><a href="approval-searching.jsp">审批流</a></li>
+					<li><a href="order-searching.jsp">订购单</a></li>
 					<li><a href="#">收货记录</a></li>
-					<li><a href="delivery-searching.html">物流跟踪</a></li>
-					<li><a href="invoice-searching.html">发票</a></li>
-					<li><a href="payment-searching.html">支付</a></li>
+					<li><a href="delivery-searching.jsp">物流跟踪</a></li>
+					<li><a href="invoice-searching.jsp">发票</a></li>
+					<li><a href="payment-searching.jsp">支付</a></li>
 				</ul>
 			</div>
 		</div>
@@ -585,7 +585,7 @@
 			</div>
 		</div>
 	</div>
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

@@ -15,7 +15,7 @@
 			<a class="inline-b black" id="searching-title">高级审批进程</a>
 			<div class="right">
 				<button class="btn-w"
-					onclick="window.location.href='approval-searching.html'">退出</button>
+					onclick="window.location.href='approval-searching.jsp'">退出</button>
 			</div>
 		</div>
 		<div id="order-detail-main">

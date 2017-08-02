@@ -138,7 +138,7 @@
 								</label></td>
 								<td class="approval-t-col2">预付款</td>
 								<td class="approval-t-col3">类型1</td>
-								<td class="approval-t-col4"><a href="approval-detail.html">审批项目1</a></td>
+								<td class="approval-t-col4"><a href="jsp">审批项目1</a></td>
 								<td class="approval-t-col5">已签入</td>
 								<td class="approval-t-col6">3</td>
 								<td class="approval-t-col7">＊＊＊</td>

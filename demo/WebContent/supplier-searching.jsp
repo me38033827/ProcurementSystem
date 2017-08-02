@@ -14,27 +14,6 @@
 	<div class="container" id="whole-container">
 
 
-
-		<div id="searching-title-out">
-			<a class="inline-b black" id="searching-title">搜索</a> <a
-				class="black inline-b">类型：</a>
-			<div class="btn-group">
-				<button data-toggle="dropdown"
-					class="btn btn-default dropdown-toggle inline-b"
-					id="order-filter-select1">
-					供应商和客户&nbsp;&nbsp;&nbsp;&nbsp; <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#">审批流</a></li>
-					<li><a href="order-searching.html">订购单</a></li>
-					<li><a href="receipt-searching.html">收货记录</a></li>
-					<li><a href="delivery-searching.html">物流跟踪</a></li>
-					<li><a href="invoice-searching.html">发票</a></li>
-					<li><a href="payment-searching.html">支付</a></li>
-				</ul>
-			</div>
-		</div>
-
 		<!-- 主要内容 -->
 		<div class="main-subjects">
 			<div id="filter">
@@ -166,7 +145,7 @@
 									<button class="btn-w">复制</button>
 									<button class="btn-w">删除</button>
 									<button class="btn-w"
-										onclick="window.location.href='supplier-creation.html'">新建</button>
+										onclick="window.location.href='supplier-creation.jsp'">新建</button>
 								</td>
 							</tr>
 						</table>
@@ -175,7 +154,7 @@
 			</div>
 		</div>
 	</div>
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->
