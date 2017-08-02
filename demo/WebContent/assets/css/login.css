@@ -1,0 +1,55 @@
+#login-page{
+	width:100%;
+	background-image:url(../img/login-bg.jpg);
+	background-size:cover;
+}
+
+#login-box{
+	border:1px solid white;
+	border-radius:5px;
+	margin-left:15%;
+	margin-top:14%;
+	width:280px;
+	height:230px;
+	padding-top:20px;
+	opacity:0.7;
+	padding-left:30px;
+}
+
+#login-title{
+	font-size:24px;
+	text-align:center;
+	display:block;
+	color:white;
+}
+
+#username, #psd, #psd_info{
+	display:block;
+	height:30px;
+	width:240px;
+	margin-top:10px;
+	margin-bottom:5px;
+	font-size:16px;
+	padding-left:5px;
+}
+
+#login-btn{
+	margin-top:10px;
+	margin-bottom:10px;
+	display:block;
+	height:36px;
+	width:250px;
+	font-size:18px;
+	background-color:#a8eaff;
+}
+
+#forget{
+	color:white;
+	margin-top:10px;
+	font-size:14px;
+}
+
+#forget-username,#forget-psd{
+	text-decoration:none;
+	color:yellow;
+}

@@ -47,7 +47,7 @@
 			<div id="order-detail-line4">
 				<button class="order-detail-clicked">概述</button>
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='contract-detail-doc.html'">文档</button>
+					onclick="window.location.href='contract-detail-doc.jsp'">文档</button>
 				<button class="order-detail-not-clicked">任务</button>
 				<button class="order-detail-not-clicked">团队</button>
 				<button class="order-detail-not-clicked">信息板</button>

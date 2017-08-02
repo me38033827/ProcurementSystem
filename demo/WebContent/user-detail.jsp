@@ -19,7 +19,7 @@
 			<div id="searching-title-out">
 				<a class="inline-b black" id="searching-title">查看“用户1”的详细信息</a>
 				<button class="btn-w right"
-					onclick="window.location.href='user-searching1.html'">完成</button>
+					onclick="window.location.href='user-searching1.jsp'">完成</button>
 			</div>
 			<div class="user-main">
 				<!-- 搜索显示区域 -->
@@ -112,11 +112,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="foot">
-		<div class="black f-12 foot-con">Copyright &copy; 2017.Demo. All
-			rights reserved.</div>
-	</div>
-
+	
+	<%@ include file="other/footer.jsp"%>
 
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>

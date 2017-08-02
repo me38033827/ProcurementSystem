@@ -59,14 +59,14 @@
 			<div class="invoice-detail-title"></div>
 			<div class="right">
 				<button class="btn-b"
-					onclick="window.location.href='template-creation-detail.html'">确定</button>
+					onclick="window.location.href='template-creation-detail.jsp'">确定</button>
 				<button class="btn-w">取消</button>
 			</div>
 		</div>
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
 
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

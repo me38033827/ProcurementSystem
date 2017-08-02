@@ -1,5 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +14,7 @@
 			<a class="inline-b black" id="searching-title">添加新的审批流程</a>
 			<div class="right inline-b">
 				<button class="btn-b"
-					onclick="window.location.href='approval-edit.html'">下一步</button>
+					onclick="window.location.href='approval-edit.jsp'">下一步</button>
 				<button class="btn-w">取消</button>
 			</div>
 		</div>
@@ -53,7 +52,7 @@
 			</div>
 			<div class="right inline-b" style="margin-top: 10px;">
 				<button class="btn-b"
-					onclick="window.location.href='approval-edit.html'">下一步</button>
+					onclick="window.location.href='approval-edit.jsp'">下一步</button>
 				<button class="btn-w">取消</button>
 			</div>
 		</div>

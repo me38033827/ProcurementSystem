@@ -27,7 +27,7 @@
 			</div>
 			<div id="order-detail-line3">
 				<button class="btn-w"
-					onclick="window.location.href='delivery-receipt.html'">编辑</button>
+					onclick="window.location.href='delivery-receipt.jsp'">编辑</button>
 				<button class="btn-w">强制处理</button>
 				<button class="btn-w">打印</button>
 			</div>
@@ -109,7 +109,7 @@
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
 
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

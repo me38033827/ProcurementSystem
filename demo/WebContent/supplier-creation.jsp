@@ -279,14 +279,15 @@
 							<div align="right">
 								<button class="btn-b">确定</button>
 								<button class="btn-w"
-									onclick="window.location.href='supplier-searching.html'">取消</button>
+									onclick="window.location.href='supplier-searching.jsp'">取消</button>
 							</div>
 						</td>
 					</tr>
 				</table>
 			</div>
+			
 		</div>
-
+<%@ include file="other/footer.jsp"%>
 		<!-- CONTENT-WRAPPER SECTION END-->
 
 

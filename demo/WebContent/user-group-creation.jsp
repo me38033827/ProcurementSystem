@@ -20,9 +20,9 @@
 				<a class="inline-b black" id="searching-title">组－创建组</a>
 				<div class="right">
 					<button class="btn-b"
-						onclick="window.location.href='user-group-searching.html'">保存</button>
+						onclick="window.location.href='user-group-searching.jsp'">保存</button>
 					<button class="btn-w"
-						onclick="window.location.href='user-group-searching1.html'">取消</button>
+						onclick="window.location.href='user-group-searching1.jsp'">取消</button>
 				</div>
 			</div>
 			<div class="user-main">
@@ -61,16 +61,13 @@
 					<div class="right">
 						<button class="btn-b">保存</button>
 						<button class="btn-w"
-							onclick="window.location.href='user-group-searching1.html'">取消</button>
+							onclick="window.location.href='user-group-searching1.jsp'">取消</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="foot">
-		<div class="black f-12 foot-con">Copyright &copy; 2017.Demo. All
-			rights reserved.</div>
-	</div>
+	<%@ include file="other/footer.jsp"%>
 
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
