@@ -118,7 +118,7 @@
 									<td class="user-search-col1"><label> <input
 											type="checkbox" class="checkboxes" value="" />
 									</label></td>
-									<td class="user-search-col2"><a href=user-detail.html>用户1</a></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>用户1</a></td>
 									<td class="user-search-col3">用户1</td>
 									<td class="user-search-col4">第三方企业用户</td>
 									<td class="user-search-col5">是</td>
