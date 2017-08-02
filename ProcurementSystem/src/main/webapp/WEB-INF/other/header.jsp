@@ -5,7 +5,7 @@
 <meta name="description" content="A demo for Ariba" />
 <meta name="author" content="Zhixuan Sheng" />
 
-
+<!-- 导入CSS -->
 <!-- BOOTSTRAP CORE STYLE  -->
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
 <!-- FONT AWESOME STYLE  -->
@@ -16,16 +16,26 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
 <!-- MY CSS -->
-<link href="css/mycss.css"  type="text/css" rel="stylesheet" />
-<link href="css/catalog.css"  type="text/css" rel="stylesheet" />
+<link href="css/mycss.css" type="text/css" rel="stylesheet" />
+<link href="css/catalog.css" type="text/css" rel="stylesheet" />
+<link href="css/order.css" rel="stylesheet" />
+<link href="css/settlement.css" rel="stylesheet" />
 
+
+
+<!-- 导入JS -->
 <!-- CORE JQUERY  -->
 <script src="js/jquery-1.10.2.js"></script>
 <!-- BOOTSTRAP SCRIPTS  -->
 <script src="js/bootstrap.js"></script>
 <!-- CUSTOM SCRIPTS  -->
 <script src="js/custom.js"></script>
+<!-- MyJS -->
+<script src="js/myJS.js"></script>
 
+
+
+<!-- 导航 -->
 <div class="container" id="whole-container">
 	<!-- 标题及导航栏第一行 -->
 	<div class="container" id="firstline-out">
@@ -69,9 +79,9 @@
 					<li><a class="secondline-right"
 						href="contract-workspace-creation.html">合同</a></li>
 					<li><a class="secondline-right"
-						href="procurement-catalog-creation.html">商品目录</a></li>
-					<li><a class="secondline-right" href="pr-creation.html">请购单</a></li>
-					<li><a class="secondline-right" href="invoice-creation.html">发票</a></li>
+						href="createCommodityCatalogue">商品目录</a></li>
+					<li><a class="secondline-right" href="createPrOrder">请购单</a></li>
+					<li><a class="secondline-right" href="createInvoice">发票</a></li>
 					<li><a class="secondline-right" href="template-creation.html">模版</a></li>
 					<li><a class="secondline-right" href="approval-creation.html">审批</a></li>
 				</ul>
