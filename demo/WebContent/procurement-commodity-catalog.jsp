@@ -114,7 +114,7 @@
 
 						<div class="item-whole">
 							<a class="item-content-blue"
-								href="procurement-commodity-detail.html">产品1</a><br> <a
+								href="procurement-commodity-detail.jsp">产品1</a><br> <a
 								class="item-content-grey">供应商：</a> <a class="item-content-blue">供应商1</a><br>
 							<a class="item-content-grey">供应商部件号：</a> <a
 								class="item-content-black">123</a><br> <a

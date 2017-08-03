@@ -23,11 +23,11 @@
 				<!-- 搜索显示区域 -->
 				<div class="user-left">
 					<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;用户</a>
-					<a class="f-14" href="user-searching.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a>
-					<a class="f-14 black" href="user-creation.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建用户</a>
+					<a class="f-14" href="userSearching.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a>
+					<a class="f-14 black" href="userCreation.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建用户</a>
 					<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;组</a>
-					<a class="f-14 black" href="user-group-searching.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组管理</a>
-					<a class="f-14 black" href="user-group-creation.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建组</a>
+					<a class="f-14 black" href="userGroupSearching.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组管理</a>
+					<a class="f-14 black" href="userGroupCreation.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建组</a>
 				</div>
 				<div class="user-right">
 					<a class="black f-14">搜索现有用户或创建新用户。搜索字段不区分大小写，您可以输入全部或部分名称。</a>
@@ -89,7 +89,7 @@
 						<div id="order-filter-line3">
 							<div class="right">
 								<button class="btn-b"
-									onclick="window.location.href='user-searching1.html'">搜索</button>
+									onclick="window.location.href='userSearchingR.jsp'">搜索</button>
 								<button class="btn-w">全部列出</button>
 							</div>
 						</div>

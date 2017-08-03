@@ -93,10 +93,10 @@
 					<div id="sourcing-tab">
 						<table class="fulltab">
 							<tr class="searching-tab-row2">
-								<td class="sourcing-t-col1">激光打印机</td>
+								<td class="sourcing-t-col1"><a href="sourcingDetail.jsp" >激光打印机寻源</a></td>
 								<td class="sourcing-t-col2">用户1</td>
 								<td class="sourcing-t-col3"></td>
-								<td class="sourcing-t-col4"><a href="sourcing-detail.jsp">WS13344</a></td>
+								<td class="sourcing-t-col4"><a href="#">WS13344</a></td>
 								<td class="sourcing-t-col5"></td>
 								<td class="sourcing-t-col6">0</td>
 							</tr>
@@ -261,7 +261,7 @@
 									<button class="btn-w">复制</button>
 									<button class="btn-w">删除</button>
 									<button class="btn-w"
-										onclick="window.location.href='sourcing-creation.jsp'">新建</button>
+										onclick="window.location.href='sourcingCreation.jsp'">新建</button>
 								</td>
 							</tr>
 						</table>

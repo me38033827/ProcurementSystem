@@ -42,15 +42,15 @@
 
 		<div id="order-detail-main">
 			<div id="order-detail-line4">
-				<button class="order-detail-not-clicked">概述</button>
-				<button class="order-detail-clicked">概要</button>
-				<button class="order-detail-not-clicked">报告</button>
-				<button class="order-detail-not-clicked">文档</button>
-				<button class="order-detail-not-clicked">任务</button>
-				<button class="order-detail-not-clicked">团队</button>
-				<button class="order-detail-not-clicked">信息板</button>
-				<button class="order-detail-not-clicked">事件消息</button>
-				<button class="order-detail-not-clicked">历史记录</button>
+				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailSummary.jsp'">概述</button>
+				<button class="order-detail-clicked" onclick="window.location.href='supplierDetail.jsp'">概要</button>
+				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailReport.jsp'">报告</button>
+				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailDoc.jsp'">文档</button>
+				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailTask.jsp'">任务</button>
+				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailTeam.jsp'">团队</button>
+				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailInfo.jsp'">信息板</button>
+				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailNews.jsp'">事件消息</button>
+				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailHistory.jsp'">历史记录</button>
 
 			</div>
 
