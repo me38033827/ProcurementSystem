@@ -48,16 +48,16 @@
 						创建&nbsp;<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" id="secondline-dropright">
-						<li><a class="secondline-right" href="sourcing-creation.html">寻源项目</a></li>
-						<li><a class="secondline-right" href="supplier-creation.html">供应商</a></li>
+						<li><a class="secondline-right" href="sourcing-creation.jsp">寻源项目</a></li>
+						<li><a class="secondline-right" href="supplier-creation.jsp">供应商</a></li>
 						<li><a class="secondline-right"
-							href="contract-workspace-creation.html">合同</a></li>
+							href="contract-workspace-creation.jsp">合同</a></li>
 						<li><a class="secondline-right"
-							href="procurement-catalog-creation.html">商品目录</a></li>
-						<li><a class="secondline-right" href="pr-creation.html">请购单</a></li>
-						<li><a class="secondline-right" href="invoice-creation.html">发票</a></li>
-						<li><a class="secondline-right" href="template-creation.html">模版</a></li>
-						<li><a class="secondline-right" href="approval-creation.html">审批</a></li>
+							href="procurement-catalog-creation.jsp">商品目录</a></li>
+						<li><a class="secondline-right" href="pr-creation.jsp">请购单</a></li>
+						<li><a class="secondline-right" href="invoice-creation.jsp">发票</a></li>
+						<li><a class="secondline-right" href="template-creation.jsp">模版</a></li>
+						<li><a class="secondline-right" href="approval-creation.jsp">审批</a></li>
 					</ul>
 				</div>
 
@@ -181,7 +181,7 @@
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
 
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

@@ -18,13 +18,13 @@
 		<div id="searching-title-out">
 			<a class="inline-b black" id="searching-title">查看“0001组”的详细信息</a>
 			<button class="btn-w right"
-				onclick="window.location.href='user-group-searching.html'">完成</button>
+				onclick="window.location.href='user-group-searching.jsp'">完成</button>
 		</div>
 		<div class="user-main">
 			<!-- 搜索显示区域 -->
 			<div id="order-detail-line4">
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='user-group-detail.html'">常规</button>
+					onclick="window.location.href='user-group-detail.jsp'">常规</button>
 				<button class="order-detail-clicked">用户</button>
 				<button class="order-detail-not-clicked">子组</button>
 			</div>
@@ -56,7 +56,7 @@
 			</div>
 		</div>
 	</div>
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

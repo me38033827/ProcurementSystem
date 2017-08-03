@@ -96,7 +96,7 @@
 								<td class="sourcing-t-col1">激光打印机</td>
 								<td class="sourcing-t-col2">用户1</td>
 								<td class="sourcing-t-col3"></td>
-								<td class="sourcing-t-col4"><a href="sourcing-detail.html">WS13344</a></td>
+								<td class="sourcing-t-col4"><a href="sourcing-detail.jsp">WS13344</a></td>
 								<td class="sourcing-t-col5"></td>
 								<td class="sourcing-t-col6">0</td>
 							</tr>
@@ -261,7 +261,7 @@
 									<button class="btn-w">复制</button>
 									<button class="btn-w">删除</button>
 									<button class="btn-w"
-										onclick="window.location.href='sourcing-creation.html'">新建</button>
+										onclick="window.location.href='sourcing-creation.jsp'">新建</button>
 								</td>
 							</tr>
 						</table>
@@ -270,10 +270,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="foot">
-		<div class="black f-12 foot-con">Copyright &copy; 2017.Demo. All
-			rights reserved.</div>
-	</div>
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

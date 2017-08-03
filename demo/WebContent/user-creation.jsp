@@ -20,7 +20,7 @@
 				<div class="right">
 					<button class="btn-b">保存</button>
 					<button class="btn-w"
-						onclick="window.location.href='user-searching1.html'">取消</button>
+						onclick="window.location.href='user-searching1.jsp'">取消</button>
 				</div>
 			</div>
 			<div class="user-main">
@@ -132,10 +132,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="foot">
-		<div class="black f-12 foot-con">Copyright &copy; 2017.Demo. All
-			rights reserved.</div>
-	</div>
+	<%@ include file="other/footer.jsp"%>
 
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>

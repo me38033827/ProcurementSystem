@@ -15,7 +15,7 @@
 			<a class="inline-b black" id="searching-title">建立合同工作区（采购）</a>
 			<div class="right">
 				<button class="btn-b"
-					onclick="window.location.href='contract-creation.html'">创建</button>
+					onclick="window.location.href='contract-creation.jsp'">创建</button>
 				<button class="btn-w">取消</button>
 			</div>
 		</div>

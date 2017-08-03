@@ -43,7 +43,7 @@
 
 			<!-- 第三行右侧图标 -->
 			<button class="btn-w right" style="margin-right: 20px;"
-				onclick="window.location.href='procurement-catalog.html'">目录管理</button>
+				onclick="window.location.href='procurement-catalog.jsp'">目录管理</button>
 			<div class="thirdline-icons">
 
 				<button id="shopping-cart-btn"
@@ -202,7 +202,7 @@
 	</div>
 
 
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

@@ -22,26 +22,26 @@
 			</div>
 			<div id="order-detail-line3">
 				<button class="btn-w"
-					onclick="window.location.href='order-searching.html'">关闭</button>
+					onclick="window.location.href='order-searching.jsp'">关闭</button>
 				<button class="btn-w">打印</button>
 				<button class="btn-w">创建预付款</button>
 			</div>
 			<div id="order-detail-line4">
 				<button class="order-detail-clicked">摘要</button>
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='order-detail-approval.html'">审批流程</button>
+					onclick="window.location.href='order-detail-approval.jsp'">审批流程</button>
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='order-detail-delivery.html'">物流</button>
+					onclick="window.location.href='order-detail-delivery.jsp'">物流</button>
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='order-detail-goods-receipt.html'">收货</button>
+					onclick="window.location.href='order-detail-goods-receipt.jsp'">收货</button>
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='order-detail-receipt.html'">收据</button>
+					onclick="window.location.href='order-detail-receipt.jsp'">收据</button>
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='order-detail-invoice.html'">发票</button>
+					onclick="window.location.href='order-detail-invoice.jsp'">发票</button>
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='order-detail-payment.html'">付款</button>
+					onclick="window.location.href='order-detail-payment.jsp'">付款</button>
 				<button class="order-detail-not-clicked"
-					onclick="window.location.href='order-detail-goods-receipt.html'">历史记录</button>
+					onclick="window.location.href='order-detail-goods-receipt.jsp'">历史记录</button>
 			</div>
 			<div id="order-detail-tab">
 				<table>
@@ -236,7 +236,7 @@
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
 
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->

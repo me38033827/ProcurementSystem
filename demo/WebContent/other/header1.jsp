@@ -8,18 +8,18 @@
 <meta name="description" content="A demo for Ariba" />
 <meta name="author" content="Zhixuan Sheng" />
 <!-- BOOTSTRAP CORE STYLE  -->
-<link href="assets/css/bootstrap.css" rel="stylesheet" />
+<link href="/demo/assets/css/bootstrap.css" rel="stylesheet" />
 <!-- FONT AWESOME STYLE  -->
-<link href="assets/css/font-awesome.css" rel="stylesheet" />
+<link href="/demo/assets/css/font-awesome.css" rel="stylesheet" />
 <!-- CUSTOM STYLE  -->
-<link href="assets/css/style.css" rel="stylesheet" />
+<link href="/demo/assets/css/style.css" rel="stylesheet" />
 <!-- GOOGLE FONT -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
 <!-- MY CSS -->
-<link href="assets/css/mycss.css" rel="stylesheet" />
-<link href="assets/css/order.css" rel="stylesheet" />
-<link href="assets/css/approval.css" rel="stylesheet" />
+<link href="/demo/assets/css/mycss.css" rel="stylesheet" />
+<link href="/demo/assets/css/order.css" rel="stylesheet" />
+<link href="/demo/assets/css/approval.css" rel="stylesheet" />
 
 
 
@@ -38,8 +38,8 @@
 				<span class="glyphicon glyphicon-print" aria-hidden="true"
 					id="firstline-print"></span>
 			</button>
-			<button id="firstline-help">帮助</button>
-			<button id="firstline-user">用户：ariba</button>
+			<button id="firstline-help" >帮助</button>
+			<button id="firstline-user" class="btn-h" >用户：ariba</button>
 		</div>
 	</div>
 </div>

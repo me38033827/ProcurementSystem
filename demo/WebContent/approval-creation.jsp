@@ -14,7 +14,7 @@
 			<a class="inline-b black" id="searching-title">添加新的审批流程</a>
 			<div class="right inline-b">
 				<button class="btn-b"
-					onclick="window.location.href='approval-edit.html'">下一步</button>
+					onclick="window.location.href='approval-edit.jsp'">下一步</button>
 				<button class="btn-w">取消</button>
 			</div>
 		</div>
@@ -52,7 +52,7 @@
 			</div>
 			<div class="right inline-b" style="margin-top: 10px;">
 				<button class="btn-b"
-					onclick="window.location.href='approval-edit.html'">下一步</button>
+					onclick="window.location.href='approval-edit.jsp'">下一步</button>
 				<button class="btn-w">取消</button>
 			</div>
 		</div>

@@ -129,7 +129,7 @@
 							<tr class="searching-tab-row2">
 								<td class="contract-t-col1">HP激光打印机</td>
 								<td class="contract-t-col2">用户1</td>
-								<td class="contract-t-col3"><a href="contract-detail.html">C100569</a></td>
+								<td class="contract-t-col3"><a href="contract-detail.jsp">C100569</a></td>
 								<td class="contract-t-col4">供应商</td>
 								<td class="contract-t-col5">2017年7月14日</td>
 								<td class="contract-t-col6">已发布</td>

@@ -214,7 +214,7 @@
 								<td class="invoice-t-col1"><label> <input
 										type="checkbox" class="checkboxes" value="" />
 								</label></td>
-								<td class="invoice-t-col2"><a href="invoice-detail.html">INV123</a></td>
+								<td class="invoice-t-col2"><a href="invoice-detail.jsp">INV123</a></td>
 								<td class="invoice-t-col3">2017年7月7日</td>
 								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
 								<td class="invoice-t-col5">100.00CNY</td>
@@ -409,7 +409,7 @@
 			</div>
 		</div>
 	</div>
-
+	<%@ include file="other/footer.jsp"%>
 	<!-- CORE JQUERY  -->
 	<script src="assets/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS  -->
