@@ -156,15 +156,15 @@
 	border-color: #285e8e;
 }
 
-#firstline-help:hover, #firstline-user:hover, .secondline-left:hover,
-	#secondline-right-title:hover, #firstline-search:hover,
-	#firstline-print:hover {
+#firstline-help :hover {
 	color: #428bca;
 }
 
 select {
 	border: 1px solid #428bca;
-	background-color: white; F /*很关键：将默认的select选择框样式清除*/ appearance : none;
+	background-color: white;
+	/*很关键：将默认的select选择框样式清除*/
+	appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	/*在选择框的最右侧中间显示小箭头图片*/
@@ -215,10 +215,6 @@ input {
 	border: 1px solid #428bca;
 	background-color: white;
 	padding-left: 10px;
-}
-
-#my-select:hover {
-	background-color: #e6e6e6;
 }
 
 #my-option {
@@ -470,8 +466,8 @@ input {
 }
 
 #shopping-cart-btn {
-	width: 30px;
-	height: 30px;
+	width: 60px;
+	height: 10px;
 	margin-right: 15px;
 	border: none;
 	background-color: transparent;
@@ -684,7 +680,8 @@ input {
 }
 
 .footer {
-	text-align: center;
+	color: black;
+	position:resolute;
 }
 
 .continue-shopping, .settle, .delete-items, .update-items {
@@ -1377,18 +1374,7 @@ input {
 	width: 10%;
 }
 
-<<<<<<< HEAD
-
-#usergroup-tab{
-	overflow-x:scroll; 
-	height:300px;
-}
-.userGroup1{width:30%;}
-.userGroup2{width:10%;}
-.userGroup3{width:60%;}
-=======
 #group-area {
 	width: 800px;
 	height: 400px;
 }
->>>>>>> downstream
