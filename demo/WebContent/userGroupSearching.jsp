@@ -1,18 +1,16 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>组管理界面</title>
 <%@include file="other/header1.jsp"%>
 <%@include file="other/header2.jsp"%>
+<title>组管理界面</title>
+
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
 	<div class="container" id="whole-container">
-
-
 
 		<!-- 主要内容 -->
 		<div class="con">
@@ -23,11 +21,11 @@
 				<!-- 搜索显示区域 -->
 				<div class="user-left">
 					<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;用户</a>
-					<a class="f-14 black" href="user-searching.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a>
-					<a class="f-14 black" href="user-creation.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建用户</a>
+					<a class="f-14 black" href="userSearching.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a>
+					<a class="f-14 black" href="userCreation.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建用户</a>
 					<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;组</a>
-					<a class="f-14" href="user-group-searching.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组管理</a>
-					<a class="f-14 black" href="user-group-creation.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建组</a>
+					<a class="f-14" href="userGroupSearching.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组管理</a>
+					<a class="f-14 black" href="userGroupCreation.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建组</a>
 				</div>
 				<div class="user-right">
 					<a class="black f-14">请更改搜索条件或名称，然后进行搜索</a>
@@ -68,7 +66,8 @@
 						</div>
 						<div id="order-filter-line3">
 							<div class="right">
-								<button class="btn-b">搜索</button>
+								<button class="btn-b"
+									onclick="window.location.href='userGroupSearchingR.jsp'">搜索</button>
 								<button class="btn-w">全部列出</button>
 							</div>
 						</div>
@@ -92,41 +91,7 @@
 						<div id="user-searching-tab-out">
 							<table class="fulltab">
 								<tr class="order-t-col2">
-									<td class="group-search-col1"><a
-										href="user-group-detail.html">0001组</a></td>
-									<td class="group-search-col2">管理者</td>
-									<td class="group-search-col3"></td>
-									<td class="group-search-col4">是</td>
-									<td class="group-search-col5">
-										<button class="btn-w">操作</button>
-									</td>
-								</tr>
-								<tr class="order-t-col2">
-									<td class="group-search-col1">123组</td>
-									<td class="group-search-col2">管理者</td>
-									<td class="group-search-col3"></td>
-									<td class="group-search-col4">否</td>
-									<td class="group-search-col5">
-										<button class="btn-w">操作</button>
-									</td>
-								</tr>
-								<tr class="order-t-col2">
-									<td class="group-search-col1">4123组</td>
-									<td class="group-search-col2">管理者</td>
-									<td class="group-search-col3"></td>
-									<td class="group-search-col4">是</td>
-									<td class="group-search-col5">
-										<button class="btn-w">操作</button>
-									</td>
-								</tr>
-								<tr class="order-t-col2">
-									<td class="group-search-col1">1232组</td>
-									<td class="group-search-col2">管理者</td>
-									<td class="group-search-col3"></td>
-									<td class="group-search-col4">否</td>
-									<td class="group-search-col5">
-										<button class="btn-w">操作</button>
-									</td>
+									<td colspan="5" style="text-align: center;">无项目</td>
 								</tr>
 							</table>
 						</div>
@@ -135,7 +100,7 @@
 								<tr class="searching-tab-row3">
 									<td colspan="8">
 										<button class="btn-w"
-											onclick="window.location.href='user-group-creation.jsp'">创建组</button>
+											onclick="window.location.href='user-group-creation.html'">创建组</button>
 									</td>
 								</tr>
 							</table>

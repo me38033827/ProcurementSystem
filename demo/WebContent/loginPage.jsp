@@ -50,7 +50,7 @@
 				return false;
 			}
 			else{
-				location.href="contract-creation.jsp";
+				location.href="main.jsp";
 			}
 		}
 	</script>

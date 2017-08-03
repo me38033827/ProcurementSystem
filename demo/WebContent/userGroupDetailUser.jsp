@@ -18,15 +18,14 @@
 		<div id="searching-title-out">
 			<a class="inline-b black" id="searching-title">查看“0001组”的详细信息</a>
 			<button class="btn-w right"
-				onclick="window.location.href='user-group-searching.jsp'">完成</button>
+				onclick="window.location.href='userGroupSearchingR.jsp'">完成</button>
 		</div>
 		<div class="user-main">
 			<!-- 搜索显示区域 -->
 			<div id="order-detail-line4">
-				<button class="order-detail-not-clicked"
-					onclick="window.location.href='user-group-detail.jsp'">常规</button>
-				<button class="order-detail-clicked">用户</button>
-				<button class="order-detail-not-clicked">子组</button>
+				<button class="order-detail-not-clicked" onclick="window.location.href='userGroupDetail.jsp'">常规</button>
+				<button class="order-detail-clicked" onclick="window.location.href='userGroupDetailUser.jsp'">用户</button>
+				<button class="order-detail-not-clicked" onclick="window.location.href='userGroupDetailSon.jsp'">子组</button>
 			</div>
 
 			<div class="adjust"></div>
@@ -51,6 +50,11 @@
 						<td>用户3</td>
 						<td>用户3</td>
 						<td>企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td>test</td>
+						<td>test</td>
+						<td>第三方用户</td>
 					</tr>
 				</table>
 			</div>

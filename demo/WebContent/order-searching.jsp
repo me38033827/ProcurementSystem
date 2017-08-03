@@ -246,7 +246,7 @@
 								<td class="order-t-col1"><label> <input
 										type="checkbox" class="checkboxes" value="" />
 								</label></td>
-								<td class="order-t-col2"><a href="order-detail.html">10000081</a></td>
+								<td class="order-t-col2"><a href="order-detail.jsp">10000081</a></td>
 								<td class="order-t-col3">类型1</td>
 								<td class="order-t-col4">标题1</td>
 								<td class="order-t-col5">已接收</td>
@@ -445,7 +445,7 @@
 								<td colspan="8">
 									<button class="btn-w">复制</button>
 									<button class="btn-w">删除</button>
-									<button class="btn-w">新建</button>
+									<button class="btn-w" onclick="window.location.href='pr-creation.jsp'">新建</button>
 								</td>
 							</tr>
 						</table>

@@ -18,6 +18,11 @@
 		<!-- 主要内容 -->
 		<div id="searching-title-out">
 			<a class="inline-b black" id="searching-title">创建新的供应商</a>
+			<div class="right">
+				<button class="btn-b">确定</button>
+				<button class="btn-w"
+					onclick="window.location.href='supplierSearching.jsp'">取消</button>
+			</div>
 		</div>
 		<div id="order-detail-main">
 			<div id="order-detail-line4">
@@ -279,7 +284,7 @@
 							<div align="right">
 								<button class="btn-b">确定</button>
 								<button class="btn-w"
-									onclick="window.location.href='supplier-searching.jsp'">取消</button>
+									onclick="window.location.href='supplierSearching.jsp'">取消</button>
 							</div>
 						</td>
 					</tr>

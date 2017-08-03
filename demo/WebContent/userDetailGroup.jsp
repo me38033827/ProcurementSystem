@@ -19,7 +19,7 @@
 			<div id="searching-title-out">
 				<a class="inline-b black" id="searching-title">查看“用户1”的详细信息</a>
 				<button class="btn-w right"
-					onclick="window.location.href='user-searching1.jsp'">完成</button>
+					onclick="window.location.href='userSearchingR.jsp'">完成</button>
 			</div>
 			<div class="user-main">
 				<!-- 搜索显示区域 -->

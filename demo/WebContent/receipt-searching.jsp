@@ -222,7 +222,7 @@
 										type="checkbox" class="checkboxes" value="" />
 								</label></td>
 								<td class="receipt-t-col2">类型1</td>
-								<td class="receipt-t-col3"><a href="receipt-detail.html">RC123</a></td>
+								<td class="receipt-t-col3"><a href="receipt-detail.jsp">RC123</a></td>
 								<td class="receipt-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
 								<td class="receipt-t-col5">正在撰写</td>
 								<td class="receipt-t-col6">2017年7月4日</td>

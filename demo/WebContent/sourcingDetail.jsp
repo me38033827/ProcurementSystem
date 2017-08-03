@@ -44,18 +44,18 @@
 
 				<div id="searching-title-out-3">
 					<div class="inline-b">
-						<a class="black" id="searching-title">WS13344</a> <a class="grey"
+						<a class="black" id="searching-title">激光打印机寻源</a> <a class="grey"
 							id="supplier-detail-title">寻源项目</a>
 					</div>
 				</div>
 
 				<div id="order-detail-line4">
-					<button class="order-detail-clicked">概述</button>
-					<button class="order-detail-not-clicked">文档</button>
-					<button class="order-detail-not-clicked">任务</button>
-					<button class="order-detail-not-clicked">团队</button>
-					<button class="order-detail-not-clicked">信息板</button>
-					<button class="order-detail-not-clicked">历史记录</button>
+					<button class="order-detail-clicked" onclick="window.location.href='sourcingDetail.jsp'">概述</button>
+					<button class="order-detail-not-clicked" onclick="window.location.href='sourcingDetailDoc.jsp'">文档</button>
+					<button class="order-detail-not-clicked" onclick="window.location.href='sourcingDetailTask.jsp'">任务</button>
+					<button class="order-detail-not-clicked" onclick="window.location.href='sourcingDetailTeam.jsp'">团队</button>
+					<button class="order-detail-not-clicked" onclick="window.location.href='sourcingDetailInfo.jsp'">信息板</button>
+					<button class="order-detail-not-clicked" onclick="window.location.href='sourcingDetailHistory.jsp'">历史记录</button>
 
 				</div>
 

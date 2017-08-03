@@ -21,7 +21,7 @@
 				<div class="right">
 					<button class="btn-b">创建</button>
 					<button class="btn-w"
-						onclick="window.location.href='sourcing-searching.html'">取消</button>
+						onclick="window.location.href='sourcingSearching.jsp'">取消</button>
 				</div>
 			</div>
 			<div id="order-detail-main">

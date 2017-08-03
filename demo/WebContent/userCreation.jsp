@@ -20,7 +20,7 @@
 				<div class="right">
 					<button class="btn-b">保存</button>
 					<button class="btn-w"
-						onclick="window.location.href='user-searching1.jsp'">取消</button>
+						onclick="window.location.href='userSearchingR.jsp'">取消</button>
 				</div>
 			</div>
 			<div class="user-main">
@@ -126,7 +126,7 @@
 					<div class="right">
 						<button class="btn-b">保存</button>
 						<button class="btn-w"
-							onclick="window.location.href='user-searching1.html'">取消</button>
+							onclick="window.location.href='userSearchingR.html'">取消</button>
 					</div>
 				</div>
 			</div>

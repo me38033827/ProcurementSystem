@@ -38,8 +38,8 @@
 				管理&nbsp;<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" id="secondline-dropright">
-				<li><a class="secondline-right" href="sourcing-searching.jsp">在线寻源</a></li>
-				<li><a class="secondline-right" href="supplier-searching.jsp">供应商管理</a></li>
+				<li><a class="secondline-right" href="sourcingSearching.jsp">在线寻源</a></li>
+				<li><a class="secondline-right" href="supplierSearching.jsp">供应商管理</a></li>
 				<li><a class="secondline-right" href="contract-searching.jsp">合同管理</a></li>
 				<li><a class="secondline-right"
 					href="procurement-commodity-catalog.jsp">商品目录</a></li>
@@ -48,7 +48,7 @@
 				<li><a class="secondline-right" href="delivery-searching.jsp">物流管理</a></li>
 				<li><a class="secondline-right" href="invoice-searching.jsp">发票管理</a></li>
 				<li><a class="secondline-right" href="payment-searching.jsp">支付管理</a></li>
-				<li><a class="secondline-right" href="user-searching.jsp">用户管理</a></li>
+				<li><a class="secondline-right" href="userSearching.jsp">用户管理</a></li>
 				<li><a class="secondline-right" href="template-detail-doc.jsp">模版管理</a></li>
 				<li><a class="secondline-right" href="approval-searching.jsp">审批管理</a></li>
 			</ul>
