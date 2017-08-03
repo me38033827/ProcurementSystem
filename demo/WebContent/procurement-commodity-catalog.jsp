@@ -47,7 +47,7 @@
 			<div class="thirdline-icons">
 
 				<button id="shopping-cart-btn"
-					onclick="window.location.href='procurement-shopping-cart.html'">
+					onclick="window.location.href='procurement-shopping-cart.jsp'">
 					<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"
 						id="shopping-cart"></span>
 				</button>
