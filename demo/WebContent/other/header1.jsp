@@ -21,9 +21,14 @@
 <link href="/demo/assets/css/order.css" rel="stylesheet" />
 <link href="/demo/assets/css/approval.css" rel="stylesheet" />
 <link href="/demo/assets/css/catalog.css" rel="stylesheet" />
+<<<<<<< HEAD
 <link href="/demo/assets/css/detail.css" rel="stylesheet" />
 <link href="/demo/assets/css/settlement.css" rel="stylesheet" />
 <link href="/demo/assets/css/relevant.css" rel="stylesheet" />
+=======
+
+
+>>>>>>> origin/master
 
 <!-- 标题及导航栏第一行 -->
 <div class="container" id="firstline-out">
@@ -41,7 +46,11 @@
 					id="firstline-print"></span>
 			</button>
 			<button id="firstline-help" >帮助</button>
+<<<<<<< HEAD
 			<button id="firstline-user" class="btn-h" >用户：test</button>
+=======
+			<button id="firstline-user"  >用户：ariba</button>
+>>>>>>> origin/master
 		</div>
 	</div>
 </div>
