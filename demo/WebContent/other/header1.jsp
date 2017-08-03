@@ -22,10 +22,13 @@
 <link href="/demo/assets/css/approval.css" rel="stylesheet" />
 <link href="/demo/assets/css/catalog.css" rel="stylesheet" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 <link href="/demo/assets/css/detail.css" rel="stylesheet" />
 <link href="/demo/assets/css/settlement.css" rel="stylesheet" />
 <link href="/demo/assets/css/relevant.css" rel="stylesheet" />
 =======
+=======
+>>>>>>> origin/master
 
 
 >>>>>>> origin/master
@@ -47,7 +50,11 @@
 			</button>
 			<button id="firstline-help" >帮助</button>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<button id="firstline-user" class="btn-h" >用户：test</button>
+=======
+			<button id="firstline-user"  >用户：ariba</button>
+>>>>>>> origin/master
 =======
 			<button id="firstline-user"  >用户：ariba</button>
 >>>>>>> origin/master

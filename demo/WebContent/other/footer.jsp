@@ -2,17 +2,24 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- 
 <div class="foot">
 	<div class="black f-12 foot-con">Copyright &copy; 2017.Demo. All
 		rights reserved.</div> 
 </div> -->
 =======
+=======
+>>>>>>> origin/master
 <div class="footer">
 
 	<div class="black f-12 foot-con">
 	<p>zhtest01 (zhtest01) 上次访问日期 2017年8月2日 下午 3:38 | Lenovo - TEST | C165_UI3</p>
 	<p>Copyright &copy; 2017.Demo. Allrights reserved.</p>
 	</div>
+<<<<<<< HEAD
+</div>
+>>>>>>> origin/master
+=======
 </div>
 >>>>>>> origin/master
