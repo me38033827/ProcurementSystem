@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE jsp PUBLIC "-//W3C//DTD jsp 4.01 Transitional//EN" "http://www.w3.org/TR/jsp4/loose.dtd">
 <!-- 导航栏：第二行-->
-<div class="container" id="secondline-out">
+<div class="container" id="secondline-out" style="width:100%">
 	<div class="dropdown" id="secondline-dropdown">
 		<!-- 第二行靠左 -->
-		<button class="secondline-left">首页</button>
+		<button class="secondline-left" onclick="window.location.href='main.jsp'">首页</button>
 		<button class="secondline-left">采购</button>
 		<button class="secondline-left">发票</button>
 		<button class="secondline-left">目录</button>
