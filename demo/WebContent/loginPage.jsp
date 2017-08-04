@@ -22,7 +22,7 @@
 				<form class="form">
 					<input type="text" placeholder="用户名" id="username"> <input
 						type="password" placeholder="密码" id="psd">
-					<button type="submit" id="login-button" onclick="check();">登录</button>
+					<button type="button" id="login-button" onclick="check();">登录</button>
 				</form>
 			</div>
 

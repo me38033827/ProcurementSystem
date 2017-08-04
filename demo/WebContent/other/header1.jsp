@@ -28,7 +28,7 @@
 
 
 <!-- 标题及导航栏第一行 -->
-<div class="container" id="firstline-out">
+<div class="container" id="firstline-out" style="width:100%;padding:0">
 	<div class="navbar navbar-inverse set-radius-zero" id="firstline">
 		<a id="page-name" class="left">LOGO</a>
 
@@ -46,9 +46,6 @@
 
 			<button id="firstline-user" class="btn-h" >用户：test</button>
 
-			<button id="firstline-user"  >用户：ariba</button>
-
-			<button id="firstline-user"  >用户：ariba</button>
 
 		</div>
 	</div>
