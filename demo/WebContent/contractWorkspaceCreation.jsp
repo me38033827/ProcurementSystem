@@ -102,13 +102,13 @@
 					<tr>
 						<td class="contract-tab-col1">提议的合同金额：</td>
 						<td class="contract-tab-col2"><input
-							class="form-control input" />CNY</td>
+							class="form-control input" /></td><td>CNY</td>
 					</tr>
 
 					<tr>
 						<td class="contract-tab-col1">＊合同金额：</td>
 						<td class="contract-tab-col2"><input
-							class="form-control input" />CNY</td>
+							class="form-control input" /></td><td>CNY</td>
 					</tr>
 					<tr>
 						<td class="contract-tab-col1">＊商品：</td>
