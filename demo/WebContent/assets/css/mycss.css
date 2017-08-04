@@ -681,7 +681,7 @@ input {
 
 .footer {
 	color: black;
-	position:resolute;
+	position: resolute;
 }
 
 .continue-shopping, .settle, .delete-items, .update-items {
@@ -1377,4 +1377,38 @@ input {
 #group-area {
 	width: 800px;
 	height: 400px;
+}
+
+#refresh-btn, #wrench-btn {
+	width: 60px;
+	height: 0px;
+	margin-right: 15px;
+	border: none;
+	background-color: transparent;
+	position: relative;
+}
+
+.secondline-left:hover, #secondline-right-title:hover, #firstline-icon:hover,
+	#firstline-help:hover, #firstline-user:hover {
+	color: #428bca;
+}
+
+.module {
+	background-color: white;
+	margin: 0px 10px 10px 10px;
+}
+
+body.a-dashbrd-page-bg {
+	background: url(../img/themelight-bg.jpg) no-repeat center center fixed;
+	background-size: cover;
+}
+
+.module-head {
+	/* background-color: #F3F2F0; */
+	
+	font-size: 15px;
+	margin-top: 10px;
+	padding-left:10px;
+	background-color:#30659b;
+	color:white;
 }

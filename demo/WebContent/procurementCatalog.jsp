@@ -13,8 +13,6 @@
 <body>
 	<div class="container" id="whole-container">
 
-
-
 		<!-- 目录列表 -->
 		<div id="catalog-content-1">
 			<div id="catalog-creation-title">
