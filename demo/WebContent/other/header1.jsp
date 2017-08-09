@@ -22,6 +22,7 @@
 <link href="/demo/assets/css/approval.css" rel="stylesheet" />
 <link href="/demo/assets/css/catalog.css" rel="stylesheet" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 <link href="/demo/assets/css/detail.css" rel="stylesheet" />
 <link href="/demo/assets/css/settlement.css" rel="stylesheet" />
 <link href="/demo/assets/css/relevant.css" rel="stylesheet" />
@@ -30,8 +31,13 @@
 <link href="/demo/assets/css/detail.css" rel="stylesheet" />
 <link href="/demo/assets/css/settlement.css" rel="stylesheet" />
 <link href="/demo/assets/css/relevant.css" rel="stylesheet" />
+=======
 
+<link href="/demo/assets/css/detail.css" rel="stylesheet" />
+<link href="/demo/assets/css/settlement.css" rel="stylesheet" />
+<link href="/demo/assets/css/relevant.css" rel="stylesheet" />
 >>>>>>> origin/master
+
 
 <!-- 标题及导航栏第一行 -->
 <div class="container" id="firstline-out" style="width:100%;padding:0">
@@ -50,8 +56,15 @@
 			</button>
 			<button id="firstline-help" >帮助</button>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<button id="firstline-user" class="btn-h" >用户：test</button>
 
+=======
+
+			<button id="firstline-user" class="btn-h" >用户：test</button>
+
+
+>>>>>>> origin/master
 =======
 
 			<button id="firstline-user" class="btn-h" >用户：test</button>
