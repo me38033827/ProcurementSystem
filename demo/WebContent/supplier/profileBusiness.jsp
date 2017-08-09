@@ -255,7 +255,7 @@
 								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;政府／公共机构</div>
 								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;制造商</div>
 								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;其他
-									&nbsp;<input class="form-control input inline-b"/>
+									&nbsp;<input class="form-control input inline-b" id="profile-other"/>
 								</div>
 								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;生产商</div>
 							</div>
@@ -272,42 +272,8 @@
 					</div>
 				</div>
 				
+				<%@ include file="profileR.jsp"%>
 				
-				<div class="col-md-2">
-					<div class="profile-right-title">
-						<div class="profile-right-title1">已请求的概要信息</div>
-						<div class="profile-right-title2">
-							<span class="glyphicon glyphicon-plus" id="plus"></span>
-							<a href="">1更多字段</a>
-						</div>
-					</div>
-					
-					<div class="profile-right-compl">
-						<div class="profile-right-compl1">
-							<a class="black">公共概要完整性</a>
-							<div class="progress" id="progress">
-								<div class="progress-bar" role="progressbar" aria-valuenow="60"
-									 aria-valuemin="0" aria-valuemax="100" style="width: 40%;"> 40%
-								</div>
-							</div>
-						</div>
-						<div class="profile-right-compl2">
-							<a href="">简短描述</a><br>
-							<a href="">网站</a><br>
-							<a href="">年营业额</a><br>
-							<a href="">D-U-N-S号码</a><br>
-							<a href="">企业类型</a><br>
-							<a href="">行业</a><br>
-							<a href="">公司说明</a><br>
-							<a href="">公司徽标</a><br>
-						</div>
-					</div>
-					
-					<div class="profile-right-look">
-						<a href="">查看公共概要</a><br>
-						<a href="">概要可见性设置</a>
-					</div>
-				</div>
 			</div>
 			<div class="standard-ending">
 				<div class="standard-ending-r">

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>公司概要－营销</title>
+<title>公司概要－认证</title>
 <%@include file="../other/header1.jsp"%>
 <%@include file="../other/header2.jsp"%>
 </head>
@@ -25,9 +25,9 @@
 					<div class="tag-line">
 						<button class="tag-not-clicked" onclick="window.location.href='profile.jsp'">基本</button>
 						<button class="tag-not-clicked" onclick="window.location.href='profileBusiness.jsp'">商务</button>
-						<button class="tag-clicked" onclick="window.location.href='profileMarket.jsp'">营销</button>
+						<button class="tag-not-clicked" onclick="window.location.href='profileMarket.jsp'">营销</button>
 						<button class="tag-not-clicked" onclick="window.location.href='profileContact.jsp'">联系人</button>
-						<button class="tag-not-clicked" onclick="window.location.href='profileAuth.jsp'">认证</button>
+						<button class="tag-clicked" onclick="window.location.href='profileAuth.jsp'">认证</button>
 						<button class="tag-not-clicked" onclick="window.location.href='profileCustomer.jsp'">请求的客户</button>
 						<button class="tag-not-clicked" onclick="window.location.href='profileDoc.jsp'">其他文档</button>
 					</div>
@@ -38,7 +38,11 @@
 						</div>
 						
 						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">商业信息</a>
+							<a class="standard-subtitle-main">认证</a>
+						</div>
+						
+						<div class="title-description">
+							<a class="black">采购组织可以在贵公司概要中看到这些资格条件，在寻找新供应商时也可能会搜索这些信息。</a>
 						</div>
 						
 						<div>
@@ -255,7 +259,7 @@
 								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;政府／公共机构</div>
 								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;制造商</div>
 								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;其他
-									&nbsp;<input class="form-control input inline-b"/>
+									&nbsp;<input class="form-control input inline-b" id="profile-other"/>
 								</div>
 								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;生产商</div>
 							</div>
@@ -271,6 +275,7 @@
 						</div>
 					</div>
 				</div>
+				
 				
 				<%@ include file="profileR.jsp"%>
 				

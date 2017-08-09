@@ -104,9 +104,15 @@
 
 .input {
 	height: 30px;
+	<<<<<<< HEAD
+	width: 150px;
+	border-radius: 0;
+	border: 1px solid #428bca;
+	=======
 	width: 200px;
 	border-radius:0;
 	border:1px solid #428bca;
+	>>>>>>> origin/master
 }
 
 .input-pr {
@@ -771,7 +777,7 @@ input {
 
 .searching-tab1-row2 {
 	border-bottom: 1px solid #ECECFF;
-	height:36px;
+	height: 36px;
 }
 
 .searching-tab1-row2 td {
@@ -1417,95 +1423,107 @@ input {
 	width: 10%;
 }
 
-
-
-#usergroup-tab{
-	overflow-x:scroll; 
-	height:400px;
-	border-bottom:2px solid #ECECFF;
-	border-left:2px solid #ECECFF;
-	border-right:2px solid #ECECFF;
+#usergroup-tab {
+	overflow-x: scroll;
+	height: 400px;
+	border-bottom: 2px solid #ECECFF;
+	border-left: 2px solid #ECECFF;
+	border-right: 2px solid #ECECFF;
 }
 
-#usergroup-tab td{
-	height:40px;
-	font-size:14px;
+#usergroup-tab td {
+	height: 40px;
+	font-size: 14px;
 }
-.userGroup1{width:30%;}
-.userGroup2{width:10%;}
-.userGroup3{width:60%;}
 
+.userGroup1 {
+	width: 30%;
+}
 
+.userGroup2 {
+	width: 10%;
+}
+
+.userGroup3 {
+	width: 60%;
+}
 
 #group-area {
 	width: 400px;
 	height: 200px;
 }
 
-.manu-btn{
-	width:98px;
-	text-align:center;
+.manu-btn {
+	width: 98px;
+	text-align: center;
 }
 
-.manu-btn-o{
-	width:100px;
+.manu-btn-o {
+	width: 100px;
 }
 
-.manu-word{
-	margin-top:10px;
-	padding-top:0px;
-	font-size:14px;
+.manu-word {
+	margin-top: 10px;
+	padding-top: 0px;
+	font-size: 14px;
 }
 
-#user-searching-tab-out{
-	overflow-x:scroll; 
-	max-height:170px;
-	border-left:2px solid #ECECFF;
-	border-right:2px solid #ECECFF;
+#user-searching-tab-out {
+	overflow-x: scroll;
+	max-height: 170px;
+	border-left: 2px solid #ECECFF;
+	border-right: 2px solid #ECECFF;
 }
 
-#user-searching-tab-out td{
-	height:36px;
-	border-bottom:1px solid #ECECFF;
+#user-searching-tab-out td {
+	height: 36px;
+	border-bottom: 1px solid #ECECFF;
 }
 
-
-#user-group-searching-tab-out{
-	overflow-x:scroll; 
-	max-height:240px;
-	border-left:2px solid #ECECFF;
-	border-right:2px solid #ECECFF;
+#user-group-searching-tab-out {
+	overflow-x: scroll;
+	max-height: 240px;
+	border-left: 2px solid #ECECFF;
+	border-right: 2px solid #ECECFF;
 }
 
-#user-group-searching-tab-out td{
-	height:36px;
-	border-bottom:1px solid #ECECFF;
+#user-group-searching-tab-out td {
+	height: 36px;
+	border-bottom: 1px solid #ECECFF;
 }
 
-.order-detail-tab-col1{
-	width:10%;
-	color:grey;
-	text-align:right;
+.order-detail-tab-col1 {
+	width: 10%;
+	color: grey;
+	text-align: right;
 }
 
-.order-detail-tab-col2{
-	width:90%;
-	line-height:34px;
+.order-detail-tab-col2 {
+	width: 90%;
+	line-height: 34px;
 }
 
-#description{
-	margin-top:0px;
-	padding-top:0px;
+#description {
+	margin-top: 0px;
+	padding-top: 0px;
 }
 
-#user-group-user-out{
-	overflow-x:scroll; 
-	height:380px;
+#user-group-user-out {
+	overflow-x: scroll;
+	height: 380px;
 }
 
-.user-group-user-col1{width:30%;}
-.user-group-user-col2{width:30%;}
-.user-group-user-col3{width:40%;}
+.user-group-user-col1 {
+	width: 30%;
+}
+
+.user-group-user-col2 {
+	width: 30%;
+}
+
+.user-group-user-col3 {
+	width: 40%;
+}
 
 #refresh-btn, #wrench-btn {
 	width: 60px;
@@ -1523,7 +1541,7 @@ input {
 
 .module {
 	background-color: white;
-	padding:0px;
+	padding: 0px;
 	margin: 0;
 }
 
@@ -1545,9 +1563,11 @@ body.a-dashbrd-page-bg {
 	margin-left: 20px;
 	padding: 0px;
 }
-.div-padding-left{
+
+.div-padding-left {
 	padding-left: 10px;
 }
+
 .chart {
 	width: 240px;
 	height: 210px;
@@ -1610,8 +1630,30 @@ body.a-dashbrd-page-bg {
 	margin: 10px 10px 10px 0;
 }
 
+.row-standard {
+	height: 40px;
+}
 
+.col-standard1 {
+	font-size: 14px;
+	color: grey;
+	text-align: right;
+	width: 150px;
+}
 
+.table-nest {
+	width: 100%;
+}
+.small-window-title{
+	font-size:20px;
+}
+.small-window-subtitle{
+	font-size:18px;
+}
+.small-window-button{
+	position:relative;
+	left:1050px;
+}
 
 
 
@@ -1644,4 +1686,28 @@ body.a-dashbrd-page-bg {
 .profile-adjust{
 	margin-left:20px;
 	margin-right:20px;
+
+}
+
+#phone-prov{
+	width:60px;
+	display:inline-block;
+}
+
+#phone-num{
+	width:120px;
+	display:inline-block;
+}
+
+#profile-other{
+	width:150px;
+}
+
+#profile-row{
+	border-bottom:1px solid #ddd;
+}
+
+#profile-contact-out{
+	overflow-x: scroll;
+	max-height: 240px;
 }

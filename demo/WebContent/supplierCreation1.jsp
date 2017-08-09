@@ -37,13 +37,13 @@
 						<tr>
 							<td class="supplier-crea-tab-col1">＊组织名称：</td>
 							<td class="supplier-crea-tab-col2"><input
-								class="form-control input" /></td>
+								class="form-control input" value="HP" /></td>
 						</tr>
 
 						<tr>
 							<td class="supplier-crea-tab-col1">简短描述：</td>
 							<td class="supplier-crea-tab-col2"><textarea
-									class="form-control" id="pr-textarea"></textarea></td>
+									class="form-control" id="pr-textarea">HP</textarea></td>
 						</tr>
 
 						<tr>
@@ -103,9 +103,10 @@
 						</tr>
 
 						<tr>
-							<td class="supplier-crea-tab-col1">税款标识符：</td>
+							<td class="supplier-crea-tab-col1">税款标识符：<span id="position"
+								name="position"></span></td>
 							<td class="supplier-crea-tab-col2"><input
-								class="form-control input" /></td>
+								class="form-control input" value="T12312" /></td>
 						</tr>
 
 						<tr>
@@ -132,7 +133,9 @@
 						</tr>
 						<tr>
 							<td class="supplier-crea-tab-col1">供应的商品：</td>
-							<td class="supplier-crea-tab-col2">（选择一个值）［&nbsp;<a
+
+							<td class="supplier-crea-tab-col2">Construction & Project
+								Mgt 11%-Real estate rental serivce-china only［&nbsp;<a
 								class="blue inline-b choose" href="javascript:;">选择</a>&nbsp;］
 							</td>
 						</tr>
@@ -151,7 +154,7 @@
 						<tr>
 							<td class="supplier-crea-tab-col1">公司所在州／省：</td>
 							<td class="supplier-crea-tab-col2"><input
-								class="form-control input" /></td>
+								class="form-control input" value="北京市朝阳区" /></td>
 						</tr>
 						<tr>
 							<td class="supplier-crea-tab-col1">供应商集成状态：</td>
@@ -176,7 +179,7 @@
 							<tr>
 								<td class="supplier-crea-tab-col1">＊总机：</td>
 								<td class="supplier-crea-tab-col2"><input
-									class="form-control input" /></td>
+									class="form-control input" value="66772211" /></td>
 							</tr>
 							<tr>
 								<td class="supplier-crea-tab-col1">主要传真：</td>
@@ -251,11 +254,11 @@
 					</tr>
 					<tr class="searching-tab-row2">
 						<td>1.3 您有多少长期员工</td>
-						<td></td>
+						<td>200</td>
 					</tr>
 					<tr class="searching-tab-row2">
 						<td>1.3 贵公司创办于哪一年</td>
-						<td></td>
+						<td>1998</td>
 					</tr>
 					<tr class="searching-tab-row2">
 						<td>2 所有权信息</td>
@@ -280,7 +283,8 @@
 					<tr class="searching-tab-row3">
 						<td colspan="2">
 							<div align="right">
-								<button class="btn-b">确定</button>
+								<button class="btn-b"
+									onclick="window.location.href='supplierSearching.jsp'">确定</button>
 								<button class="btn-w"
 									onclick="window.location.href='supplierSearching.jsp'">取消</button>
 							</div>
@@ -320,9 +324,8 @@
 				</div>
 				<div class="col-md-5">
 					<a href="javascript:;" title="关闭" class="close">×</a> <br /> <br />
-					<br />
+					<br /> <br /> <br />
 					<div class="small-window-subtitle">当前所选</div>
-
 				</div>
 			</div>
 			<!-- 弹窗第二行  -->
@@ -464,7 +467,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<button class="btn-b small-window-button"
-					onclick="window.location.href='supplierCreation1.jsp#position'">完成</button>
+					href="supplierCreation1.jsp">完成</button>
 			</div>
 		</div>
 	</div>
@@ -480,7 +483,6 @@
 								$('.theme-popover-mask').fadeIn(100);
 								$('.theme-popover').slideDown(200);
 							})
-
 							$('.popover-container .close').click(function() {
 								$('.theme-popover-mask').fadeOut(100);
 								$('.theme-popover').slideUp(200);

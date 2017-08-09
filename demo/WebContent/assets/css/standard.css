@@ -128,6 +128,7 @@
 
 /* profile detail */
 .profile-left{
+	min-height:500px;
 	border-left:2px solid #ebebeb;
 	border-right:2px solid #ebebeb;
 	border-bottom:2px solid #ebebeb;
@@ -203,4 +204,8 @@
 .profile-business-type{
 	height:36px;
 	margin-left:150px;
+}
+
+.adjust-10{
+	height:10px;
 }

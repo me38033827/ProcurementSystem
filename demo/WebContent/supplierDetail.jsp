@@ -42,15 +42,24 @@
 
 		<div id="order-detail-main">
 			<div id="order-detail-line4">
-				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailSummary.jsp'">概述</button>
-				<button class="order-detail-clicked" onclick="window.location.href='supplierDetail.jsp'">概要</button>
-				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailReport.jsp'">报告</button>
-				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailDoc.jsp'">文档</button>
-				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailTask.jsp'">任务</button>
-				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailTeam.jsp'">团队</button>
-				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailInfo.jsp'">信息板</button>
-				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailNews.jsp'">事件消息</button>
-				<button class="order-detail-not-clicked" onclick="window.location.href='supplierDetailHistory.jsp'">历史记录</button>
+				<button class="order-detail-not-clicked"
+					onclick="window.location.href='supplierDetailSummary.jsp'">概述</button>
+				<button class="order-detail-clicked"
+					onclick="window.location.href='supplierDetail.jsp'">概要</button>
+				<button class="order-detail-not-clicked"
+					onclick="window.location.href='supplierDetailReport.jsp'">报告</button>
+				<button class="order-detail-not-clicked"
+					onclick="window.location.href='supplierDetailDoc.jsp'">文档</button>
+				<button class="order-detail-not-clicked"
+					onclick="window.location.href='supplierDetailTask.jsp'">任务</button>
+				<button class="order-detail-not-clicked"
+					onclick="window.location.href='supplierDetailTeam.jsp'">团队</button>
+				<button class="order-detail-not-clicked"
+					onclick="window.location.href='supplierDetailInfo.jsp'">信息板</button>
+				<button class="order-detail-not-clicked"
+					onclick="window.location.href='supplierDetailNews.jsp'">事件消息</button>
+				<button class="order-detail-not-clicked"
+					onclick="window.location.href='supplierDetailHistory.jsp'">历史记录</button>
 
 			</div>
 
@@ -155,15 +164,16 @@
 						</tr>
 						<tr>
 							<td class="supplier-crea-tab-col1">供应的商品：</td>
-							<td class="supplier-crea-tab-col2">教育与培训服务 86000000</td>
+							<td class="supplier-crea-tab-col2">Construction & Project
+								Mgt 11%-Real estate rental serivce-china only</td>
 						</tr>
 						<tr>
 							<td class="supplier-crea-tab-col1">批准的商品：</td>
-							<td class="supplier-crea-tab-col2">教育与培训服务 86000000</td>
+							<td class="supplier-crea-tab-col2"></td>
 						</tr>
 						<tr>
 							<td class="supplier-crea-tab-col1">商品(UNSPSC)：</td>
-							<td class="supplier-crea-tab-col2">教育与培训服务 86000000</td>
+							<td class="supplier-crea-tab-col2"></td>
 						</tr>
 						<tr>
 							<td class="supplier-crea-tab-col1">标识符：</td>

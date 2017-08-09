@@ -45,283 +45,237 @@
 							<table>
 								<tr class="row-standard">
 									<td class="col-standard1">＊主电子邮件地址：</td>
-									<td class="col-standard2"><input class="form-control input" value="rub"/></td>
+									<td class="col-standard2"><input style="width:240px;"class="form-control input" value="charlesdempsey@lenovo.com"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">＊总机：</td>
 									<td class="col-standard2">
-										<select id="my-select">
-												<option></option>
-												<option>10,000,000CNY以上</option>
-										</select>
+										区号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号码<br>
+										<input id="phone-prov" class="form-control input" value="010"/>
+										<input id="phone-num" class="form-control input" value="57468233"/>
 									</td>
 								</tr>
 								<tr class="row-standard">
-									<td class="col-standard1 bold">年营业额：</td>
+									<td class="col-standard1">主传真：</td>
 									<td class="col-standard2">
-										<select id="my-select">
-												<option></option>
-												<option>10,000,000CNY以上</option>
-										</select>
+										区号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号码<br>
+										<input id="phone-prov" class="form-control input" value="010"/>
+										<input id="phone-num" class="form-control input" value="57468223"/>
 									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">股票交易代码：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
 								</tr>
 							</table>
 						</div>
 						
 						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">财务信息</a>
+							<a class="standard-subtitle-main">联系人</a>
 						</div>
 						
-						<div>
-							<table>
-								<tr class="row-standard">
-									<td class="col-standard1">供应商法律形式：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option></option>
-												<option>＊＊＊＊＊＊＊＊＊</option>
-										</select>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">D-U-N-S编号：</td>
-									<td class="col-standard2"></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">全球位置码：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
-								</tr>
-							</table>
+						<div class="title-description">
+							<a class="black">客户需要知道贵公司的联系方式。您可以提供公司级联系人和特定客户的联系人。请先创建个人联系人列表。然后，创建公司级联系人和特定于客户的联系人。客户看不到您的联系人列表，单击“编辑”或“姓名”劣种的任何链接一编辑联系人的详细信息。</a>
 						</div>
-						
 						
 						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">税务信息</a>
-						</div>
-						
-						<div>
-							<table>
-								<tr class="row-standard">
-									<td class="col-standard1">税款分类：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option>（无值）</option>
-												<option>＊＊＊＊＊＊＊＊＊＊＊＊＊</option>
-										</select>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">税款类型：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option>（无值）</option>
-												<option>＊＊＊＊＊＊＊</option>
-										</select>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">税务标识符：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a class="grey f-10 inline-b">不要输入短划线</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">地区税款标识符：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a class="grey f-10 inline-b">不要输入短划线</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">增值税标识符：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1"></td>
-									<td class="col-standard2">
-										<div class="checkbox inline-b">
-											<label> <input type="checkbox" class="checkboxes"
-												value="" />
-											</label>
-										</div>
-										<a class="black">已注册VAT</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">VAT注册文档：</td>
-									<td class="col-standard2">
-										<a class="black"><无文档></a><a href="">&nbsp;&nbsp;上传</a><br>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1"></td>
-									<td class="col-standard2">
-										<div class="checkbox inline-b">
-											<label> <input type="checkbox" class="checkboxes"
-												value="" />
-											</label>
-										</div>
-										<a class="black">完税清单</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">完税清单号：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">完税清单文档：</td>
-									<td class="col-standard2">
-										<a class="black"><无文档></a><a href="">&nbsp;&nbsp;上传</a><br>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">完税清单到期日期：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>
-									</td>
-								</tr>
-							</table>
-						</div>
-						
-						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">股东</a>
+							<a class="standard-subtitle-main">联系人</a>
 						</div>
 						
 						<div class="module">
 							<table class="table table-hover">
 								<tr class="standard-row1">
-									<td class="blue">
-										<label><input type="checkbox" class="checkboxes"value="" /></label>
-									</td>
-									<td>名称</td>
-									<td>股份百分比</td>
-									<td>类型</td>
+									<td class="blue">姓名&#8595;</td>
+									<td class="blue">业务职称</td>
+									<td class="blue">电子邮件</td>
+									<td>电话</td>
 								</tr>
 								<tr>
 									<td class="no-item" colspan="4">无项目</td>
 								</tr>
 								<tr class="standard-row3">
 									<td colspan="4">
-										<button class="btn-w">编辑</button>
-										<button class="btn-w">删除</button>
-										｜
 										<button class="btn-w">创建</button>
 									</td>
 								</tr>
 							</table>
 						</div>
 						
+						<div class="adjust-10"></div>
+						
 						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">董事会</a>
+							<a class="standard-subtitle-main">公司级指派</a>
+						</div>
+						
+						<div class="title-description">
+							<a class="black">指定公司级联系人。对于要与您开展业务的客户，可首先联系这些公司级联系人。要查看特定于客户的指派，请转至“特定与客户的指派”区域。</a>
+						</div>
+						
+						<div class="standard-subtitle">
+							<a class="standard-subtitle-main">公司级指派</a>
 						</div>
 						
 						<div class="module">
 							<table class="table table-hover">
 								<tr class="standard-row1">
-									<td class="blue">
-										<label><input type="checkbox" class="checkboxes"value="" /></label>
-									</td>
-									<td>成员名称</td>
-									<td>公司名称</td>
-									<td>业务职称</td>
+									<td class="blue">指派</td>
+									<td class="blue">联系人姓名</td>
+									<td>操作</td>
+								</tr>
+							</table>
+						</div>
+						<div id="profile-contact-out">
+							<table class="table table-hover">
+								<tr>
+									<td><a href="">收账文员</a></td>
+									<td></td>
+									<td></td>
 								</tr>
 								<tr>
-									<td class="no-item" colspan="4">无项目</td>
+									<td><a href="">应付账文员</a></td>
+									<td></td>
+									<td></td>
 								</tr>
+								<tr>
+									<td><a href="">客户服务经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">目录经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">电子商务经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">营销经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								
+								<tr>
+									<td><a href="">销售代表</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">销售订单／营运经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">投标／提案经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">收账文员</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">应付账文员</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">客户服务经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">目录经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">电子商务经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">营销经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								
+								<tr>
+									<td><a href="">销售代表</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">销售订单／营运经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><a href="">投标／提案经理</a></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+						<div>
+							<table class="table table-hover">
 								<tr class="standard-row3">
-									<td colspan="4">
-										<button class="btn-w">编辑</button>
-										<button class="btn-w">删除</button>
-										｜
+									<td colspan="3">
 										<button class="btn-w">创建</button>
 									</td>
 								</tr>
 							</table>
 						</div>
 						
+						<div class="adjust-10"></div>
+						
 						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">企业类型</a>
+							<a class="standard-subtitle-main">特定于客户的指派</a>
 						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;中间商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;分包商／顾问</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;分销商／批发商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;政府／公共机构</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;制造商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;其他
-									&nbsp;<input class="form-control input inline-b"/>
-								</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;生产商</div>
-							</div>
-							<div class="col-md-6">
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;零售商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;销售代理／制造代表</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;服务提供商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;系统集成商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;运输／物流</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;公用事业</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;增值经销商</div>
-							</div>
+						
+						<div class="title-description">
+							<a class="black">只有制定的客户才可以看到特定于客户的联系人。您可以仅为与您有交易关系的客户指定特定于客户的联系人。客户会将这些联系人视为首选联系人。</a>
 						</div>
+						
+						<div class="standard-subtitle">
+							<a class="standard-subtitle-main">特定于客户的指派</a>
+						</div>
+						
+						<div class="module">
+							<table class="table table-hover">
+								<tr class="standard-row1">
+									<td class="blue">客户</td>
+									<td class="blue">标识符</td>
+									<td class="blue">销售</td>
+									<td class="blue">技术</td>
+									<td class="blue">其他</td>
+								</tr>
+								<tr id="profile-row">
+									<td><a href="">联想（北京）有限公司</a></td>
+									<td>SU0000134</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+						
+						<div class="adjust-10"></div>
+						<div class="adjust-10"></div>
+						<div class="adjust-10"></div>
+						
 					</div>
 				</div>
 				
-				
-				<div class="col-md-2">
-					<div class="profile-right-title">
-						<div class="profile-right-title1">已请求的概要信息</div>
-						<div class="profile-right-title2">
-							<span class="glyphicon glyphicon-plus" id="plus"></span>
-							<a href="">1更多字段</a>
-						</div>
-					</div>
-					
-					<div class="profile-right-compl">
-						<div class="profile-right-compl1">
-							<a class="black">公共概要完整性</a>
-							<div class="progress" id="progress">
-								<div class="progress-bar" role="progressbar" aria-valuenow="60"
-									 aria-valuemin="0" aria-valuemax="100" style="width: 40%;"> 40%
-								</div>
-							</div>
-						</div>
-						<div class="profile-right-compl2">
-							<a href="">简短描述</a><br>
-							<a href="">网站</a><br>
-							<a href="">年营业额</a><br>
-							<a href="">D-U-N-S号码</a><br>
-							<a href="">企业类型</a><br>
-							<a href="">行业</a><br>
-							<a href="">公司说明</a><br>
-							<a href="">公司徽标</a><br>
-						</div>
-					</div>
-					
-					<div class="profile-right-look">
-						<a href="">查看公共概要</a><br>
-						<a href="">概要可见性设置</a>
-					</div>
-				</div>
-			</div>
-			<div class="standard-ending">
+				<%@ include file="profileR.jsp"%>
+	
+		</div>
+		<div class="standard-ending">
 				<div class="standard-ending-r">
 					<button class="btn-b">保存</button>
 					<button class="btn-w">关闭</button>
 				</div>				
 			
 			</div>
-		</div>
 	</div>
 	
 
