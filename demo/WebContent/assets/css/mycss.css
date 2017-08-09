@@ -30,6 +30,10 @@
 	color: grey;
 }
 
+.bold{
+	font-weight:bold;
+}
+
 .f-18 {
 	font-size: 18px;
 }
@@ -94,9 +98,13 @@
 	display: inline-block;
 }
 
+.block{
+	display:block;
+}
+
 .input {
 	height: 30px;
-	width: 150px;
+	width: 200px;
 	border-radius:0;
 	border:1px solid #428bca;
 }
@@ -1607,13 +1615,33 @@ body.a-dashbrd-page-bg {
 
 
 
-.row-standard{
-	height:40px;
+#profile-add{
+	margin-left:100px;	
 }
 
-.col-standard1{
-	font-size:14px;
+#profile-or{
+	margin-left:20px;
+	margin-right:20px;
 	color:grey;
-	text-align:right;
-	width:150px;
+}
+
+#profile-input{
+	width:400px;
+}
+
+.delete-tag{
+	margin-top:5px;
+	margin-bottom:10px;
+	padding-right:5px;
+	padding-left:5px;
+	border:1px solid grey;
+	background-color:#ebebeb;
+	width:120px;
+	height:30px;
+	color:black;
+}
+
+.profile-adjust{
+	margin-left:20px;
+	margin-right:20px;
 }
