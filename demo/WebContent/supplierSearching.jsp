@@ -42,7 +42,7 @@
 						<div class="right blue" id="order-filter-line1-option">搜索选项</div>
 					</div>
 					<div id="sourcing-search">
-						<input type="text" class="border-g col-md-5"
+						<input type="text" class="col-md-5 form-control input"
 							value="使用标题、标识符或任何其他词语搜索"
 							onfocus="if(this.value=='使用标题、标识符或任何其他词语搜索') this.value=''"
 							onblur="if(this.value=='')this.value='使用标题、标识符或任何其他词语搜索' ">

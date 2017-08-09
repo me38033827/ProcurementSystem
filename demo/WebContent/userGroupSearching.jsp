@@ -99,8 +99,7 @@
 							<table class="fulltab">
 								<tr class="searching-tab-row3">
 									<td colspan="8">
-										<button class="btn-w"
-											onclick="window.location.href='user-group-creation.html'">创建组</button>
+										<button class="btn-w" onclick="window.location.href='userGroupCreation.html'">创建组</button>
 									</td>
 								</tr>
 							</table>

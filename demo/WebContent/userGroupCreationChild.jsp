@@ -31,29 +31,26 @@
 					<a class="black">创建新组，包括分配角色、权限、用户和子组。</a>
 				</div>
 				<div id="order-detail-line4">
-					<button class="order-detail-clicked" onclick="window.location.href='userGroupCreation.jsp'">常规</button>
+					<button class="order-detail-not-clicked" onclick="window.location.href='userGroupCreation.jsp'">常规</button>
 					<button class="order-detail-not-clicked" onclick="window.location.href='userGroupCreationUser.jsp'">用户</button>
-					<button class="order-detail-not-clicked" onclick="window.location.href='userGroupCreationChild.jsp'">子组</button>
+					<button class="order-detail-clicked" onclick="window.location.href='userGroupCreationChild.jsp'">子组</button>
 				</div>
 
 				<div class="adjust"></div>
-				<div class="inline-b" id="user-detail-tab">
-					<table>
-
-						<tr>
-							<td id="order-detail-tab-col1">＊唯一名称：</td>
-							<td id="order-detail-tab-col2"><input
-								class="form-control input" /></td>
+				<div>
+					<table class="fulltab">
+						<tr class="searching-tab-row1">
+							<td style="width:30%;">用户标识符</td>
+							<td style="width:30%;">名称</td>
+							<td style="width:40%;">类型</td>
 						</tr>
-						<tr>
-							<td id="order-detail-tab-col1">＊组名称：</td>
-							<td id="order-detail-tab-col2"><input
-								class="form-control input" /></td>
+						<tr class="searching-tab-row2" id="none-item">
+							<td colspan="3" style="text-align:center;">无项目</td>
 						</tr>
-						<tr>
-							<td id="order-detail-tab-col1">说明：</td>
-							<td id="order-detail-tab-col2"><textarea
-									class="form-control" id="group-area"></textarea></td>
+						<tr class="searching-tab-row3">
+							<td colspan="3">
+								<button class="btn-w">添加／删除</button>
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -71,6 +68,11 @@
 	</div>
 	<%@ include file="other/footer.jsp"%>
 
-
+	<!-- CORE JQUERY  -->
+	<script src="assets/js/jquery-1.10.2.js"></script>
+	<!-- BOOTSTRAP SCRIPTS  -->
+	<script src="assets/js/bootstrap.js"></script>
+	<!-- CUSTOM SCRIPTS  -->
+	<script src="assets/js/custom.js"></script>
 </body>
 </html>

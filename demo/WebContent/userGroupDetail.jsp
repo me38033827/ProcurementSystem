@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<title>用户组详情界面</title>
+<title>组详情</title>
 
 <%@include file="other/header1.jsp"%>
 <%@include file="other/header2.jsp"%>
@@ -18,7 +18,7 @@
 		<!-- 主要内容 -->
 		<div class="con">
 			<div id="searching-title-out">
-				<a class="inline-b black" id="searching-title">查看“0001组”的详细信息</a>
+				<a class="inline-b black" id="searching-title">查看“采购用户”的详细信息</a>
 				<button class="btn-w right"
 					onclick="window.location.href='userGroupSearchingR.jsp'">完成</button>
 			</div>
@@ -35,20 +35,25 @@
 					<table>
 
 						<tr>
-							<td id="order-detail-tab-col1">定义者：</td>
-							<td id="order-detail-tab-col2">管理者</td>
+							<td class="order-detail-tab-col1" valign="top">定义者：</td>
+							<td class="order-detail-tab-col2" valign="top">系统</td>
 						</tr>
 						<tr>
-							<td id="order-detail-tab-col1">唯一名称：</td>
-							<td id="order-detail-tab-col2">0001</td>
+							<td class="order-detail-tab-col1" valign="top">唯一名称：</td>
+							<td class="order-detail-tab-col2" valign="top">采购用户</td>
 						</tr>
 						<tr>
-							<td id="order-detail-tab-col1">组名称：</td>
-							<td id="order-detail-tab-col2">0001</td>
+							<td class="order-detail-tab-col1" valign="top">组名称：</td>
+							<td class="order-detail-tab-col2" valign="top">采购用户</td>
 						</tr>
 						<tr>
-							<td id="order-detail-tab-col1">说明：</td>
-							<td id="order-detail-tab-col2"></td>
+							<td class="order-detail-tab-col1" valign="top">说明：</td>
+							<td class="order-detail-tab-col2" valign="top">该组的成员可以：<br>
+								<a class="f-13 black">&nbsp;&nbsp;&nbsp;&nbsp;＊&nbsp;创建请购单。</a><br>
+								<a class="f-13 black">&nbsp;&nbsp;&nbsp;&nbsp;＊&nbsp;查询采购流程中自己和下属的待批文档。</a><br>
+								<a class="f-13 black">&nbsp;&nbsp;&nbsp;&nbsp;＊&nbsp;查询自己和下属的协作请求。</a><br>
+								<a class="f-13 black">&nbsp;&nbsp;&nbsp;&nbsp;＊&nbsp;查看并运行自己和下属的报告（包括组合报告）。数据仅限为自己和下属创建的数据。</a><br>
+								该组的成员可以查看“订购单”、“购物卡”和“Buyer 结算”文件夹中的报告。只有来自 Procure-to-Pay 网站的用户才可以查看请购报告、出差费报告和订购单报告。来自 Ariba Invoice and Payment 网站的用户不能查看这些报告。</td>
 						</tr>
 
 					</table>

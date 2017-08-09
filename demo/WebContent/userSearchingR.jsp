@@ -5,7 +5,7 @@
 <head>
 <%@include file="other/header1.jsp"%>
 <%@include file="other/header2.jsp"%>
-<title>用户管理界面</title>
+<title>用户管理</title>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -118,14 +118,1347 @@
 									<td class="user-search-col1"><label> <input
 											type="checkbox" class="checkboxes" value="" />
 									</label></td>
-									<td class="user-search-col2"><a href=userDetail.jsp>用户1</a></td>
-									<td class="user-search-col3">用户1</td>
+									<td class="user-search-col2"><a href="userDetail.jsp">Liyi</a></td>
+									<td class="user-search-col3">Liyi</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月7日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Xiaoyue</a></td>
+									<td class="user-search-col3">Xiaoyue</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月7日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Zhangqiong</a></td>
+									<td class="user-search-col3">Zhangqiong</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月7日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Chenchao</a></td>
+									<td class="user-search-col3">Chenchao</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月7日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Guoran</a></td>
+									<td class="user-search-col3">Guoran</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月7日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Chengjia</a></td>
+									<td class="user-search-col3">Chengjia</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月7日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Jingbing</a></td>
+									<td class="user-search-col3">Jingbing</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月7日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Hanlu</a></td>
+									<td class="user-search-col3">Hanlu</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月7日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Youran</a></td>
+									<td class="user-search-col3">Youran</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月7日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Jingran</a></td>
+									<td class="user-search-col3">Jingran</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月4日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Weifan</a></td>
+									<td class="user-search-col3">Weifan</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月4日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Chunyuan</a></td>
+									<td class="user-search-col3">Chuyuan</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月4日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Libing</a></td>
+									<td class="user-search-col3">Libing</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月3日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Mumeng</a></td>
+									<td class="user-search-col3">Mumeng</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月3日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Xiaoyueru</a></td>
+									<td class="user-search-col3">Xiaoyueru</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月1日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Zhangyun</a></td>
+									<td class="user-search-col3">Zhangyun</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月1日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Chenchaoran</a></td>
+									<td class="user-search-col3">Chenchaoran</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年8月1日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Guojiawei</a></td>
+									<td class="user-search-col3">Guojiawei</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月29日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Chengjiaqi</a></td>
+									<td class="user-search-col3">Chengjiaqi</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月29日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Miaojingbing</a></td>
+									<td class="user-search-col3">Miaojingbing</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月28日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Hanluyun</a></td>
+									<td class="user-search-col3">Hanluyun</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月27日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Youhaoran</a></td>
+									<td class="user-search-col3">Youhaoran</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月27日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Guyun</a></td>
+									<td class="user-search-col3">Guyun</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月26日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Weirufan</a></td>
+									<td class="user-search-col3">Weirufan</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月26日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Zhouchuyuan</a></td>
+									<td class="user-search-col3">Zhouchuyuan</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月26日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href="">Lifeifei</a></td>
+									<td class="user-search-col3">Lifeifei</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月25日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Linzhi</a></td>
+									<td class="user-search-col3">Linzhi</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月25日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Gulina</a></td>
+									<td class="user-search-col3">Gulina</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月24日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Feifan</a></td>
+									<td class="user-search-col3">Feifan</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月24日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Jingbo</a></td>
+									<td class="user-search-col3">Jingbo</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月24日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Meiyu</a></td>
+									<td class="user-search-col3">Meiyu</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月23日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Keyu</a></td>
+									<td class="user-search-col3">Keyu</td>
 									<td class="user-search-col4">第三方企业用户</td>
 									<td class="user-search-col5">是</td>
 									<td class="user-search-col6">2017年7月20日</td>
 									<td class="user-search-col7"></td>
 									<td class="user-search-col8">
-										<button class="btn-w">操作</button>
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Keke</a></td>
+									<td class="user-search-col3">Keke</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月20日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Liuhaoran</a></td>
+									<td class="user-search-col3">Liuhaoran</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月20日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Jingzhi</a></td>
+									<td class="user-search-col3">Jingzhi</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月19日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Tuozhaoyang</a></td>
+									<td class="user-search-col3">Tuozhaoyang</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月19日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Meiyinan</a></td>
+									<td class="user-search-col3">Meiyinan</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月17日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Jingtian</a></td>
+									<td class="user-search-col3">Jingtian</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月16日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Liulu</a></td>
+									<td class="user-search-col3">Liulu</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月15日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Guli</a></td>
+									<td class="user-search-col3">Guli</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月15日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Chenguanxi</a></td>
+									<td class="user-search-col3">Chenguanxi</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月14日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Xiaojianzhen</a></td>
+									<td class="user-search-col3">Xiaojianzhen</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月14日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Zhouguodong</a></td>
+									<td class="user-search-col3">Zhouguodong</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月14日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Fanxiayang</a></td>
+									<td class="user-search-col3">Fanxiayang</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月13日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Zhaoxinnuo</a></td>
+									<td class="user-search-col3">Zhaoxinnuo</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月13日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Wangjiapeng</a></td>
+									<td class="user-search-col3">Wangjiapeng</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月12日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Gaoyuan</a></td>
+									<td class="user-search-col3">Gaoyuan</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月3日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Weizhenling</a></td>
+									<td class="user-search-col3">Weizhenling</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月2日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Fudongqin</a></td>
+									<td class="user-search-col3">Fudongqin</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年7月1日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Xuxiaojie</a></td>
+									<td class="user-search-col3">Xuxiaojie</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年6月28日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Ganxuming</a></td>
+									<td class="user-search-col3">Ganxuming</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年6月22日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Liangzhaoming</a></td>
+									<td class="user-search-col3">Liangzhaoming</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年6月20日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Huangxinlei</a></td>
+									<td class="user-search-col3">Huangxinlei</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年6月12日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Niumeng</a></td>
+									<td class="user-search-col3">Niumeng</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年6月5日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Zhangyaojie</a></td>
+									<td class="user-search-col3">Zhangyaojie</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年6月3日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Mumengdi</a></td>
+									<td class="user-search-col3">Mumengdi</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年6月1日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Fangyi</a></td>
+									<td class="user-search-col3">Fangyi</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年5月29日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Yangge</a></td>
+									<td class="user-search-col3">Yangge</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年5月29日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Liuzijia</a></td>
+									<td class="user-search-col3">Liuzijia</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年5月28日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Weichun</a></td>
+									<td class="user-search-col3">Weichun</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年5月25日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="order-t-col2">
+									<td class="user-search-col1"><label> <input
+											type="checkbox" class="checkboxes" value="" />
+									</label></td>
+									<td class="user-search-col2"><a href=userDetail.jsp>Lizhuo</a></td>
+									<td class="user-search-col3">Lizhuo</td>
+									<td class="user-search-col4">第三方企业用户</td>
+									<td class="user-search-col5">是</td>
+									<td class="user-search-col6">2017年5月13日</td>
+									<td class="user-search-col7"></td>
+									<td class="user-search-col8">
+										<div class="btn-group" >
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o" >
+												<li><a class="manu-btn" >编辑</a></li>
+												<li><a class="manu-btn" >停用</a></li>
+											</ul>
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -136,7 +1469,8 @@
 									<td colspan="8">
 										<button class="btn-w">生成密码</button>
 										<button class="btn-w"
-											onclick="window.location.href='user-creation.html'">创建用户</button>
+											onclick="window.location.href='userCreation.jsp'">创建用户</button>
+											
 									</td>
 								</tr>
 							</table>
