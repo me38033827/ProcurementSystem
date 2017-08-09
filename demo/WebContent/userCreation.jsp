@@ -17,18 +17,17 @@
 		<div class="con">
 			<div id="searching-title-out">
 				<a class="inline-b black" id="searching-title">用户－创建用户</a>
-				<div class="right">
+				<div style="float:right;">
 					<button class="btn-b">保存</button>
-					<button class="btn-w"
-						onclick="window.location.href='userSearchingR.jsp'">取消</button>
+					<button class="btn-w" onclick="window.location.href='userSearchingR.jsp'">取消</button>
 				</div>
 			</div>
 			<div class="user-main">
 				<!-- 搜索显示区域 -->
 				<div id="order-detail-line4">
-					<button class="order-detail-clicked">常规</button>
-					<button class="order-detail-not-clicked">组</button>
-					<button class="order-detail-not-clicked">所有组</button>
+					<button class="order-detail-clicked" onclick="window.location.href='userCreation.jsp'">常规</button>
+					<button class="order-detail-not-clicked" onclick="window.location.href='userCreationInvitation.jsp'">邀请</button>
+					<button class="order-detail-not-clicked" onclick="window.location.href='userCreationGroup.jsp'">组</button>
 				</div>
 
 				<div id="order-detail-line2">
@@ -65,7 +64,7 @@
 						<tr>
 							<td id="order-detail-tab-col1">＊组织：</td>
 							<td id="order-detail-tab-col2"><select id="my-select">
-									<option>测试组</option>
+									<option>财务</option>
 							</select></td>
 						</tr>
 						<tr>
@@ -89,24 +88,6 @@
 								class="form-control input" /></td>
 						</tr>
 						<tr>
-							<td id="order-detail-tab-col1">区域：</td>
-							<td id="order-detail-tab-col2"><select id="my-select">
-									<option>中文－中国大陆</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td id="order-detail-tab-col1">默认货币：</td>
-							<td id="order-detail-tab-col2"><select id="my-select">
-									<option>人民币</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td id="order-detail-tab-col1">时区：</td>
-							<td id="order-detail-tab-col2"><select id="my-select">
-									<option>中国</option>
-							</select></td>
-						</tr>
-						<tr>
 							<td id="order-detail-tab-col1">＊上级主管：</td>
 							<td id="order-detail-tab-col2"><input
 								class="form-control input" /></td>
@@ -118,7 +99,7 @@
 						</tr>
 					</table>
 				</div>
-
+				
 				<div>
 					<a class="black f-12">带星号 (*) 的字段为必填字段。输入个人数据并单击“保存”按钮。</a>
 				</div>

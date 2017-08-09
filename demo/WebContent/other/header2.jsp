@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE jsp PUBLIC "-//W3C//DTD jsp 4.01 Transitional//EN" "http://www.w3.org/TR/jsp4/loose.dtd">
 <!-- 导航栏：第二行-->
-<div class="container" id="secondline-out">
+<div class="container" id="secondline-out" style="width:100%">
 	<div class="dropdown" id="secondline-dropdown">
 		<!-- 第二行靠左 -->
-		<button class="secondline-left">首页</button>
+		<button class="secondline-left" onclick="window.location.href='main.jsp'">首页</button>
 		<button class="secondline-left">采购</button>
 		<button class="secondline-left">发票</button>
 		<button class="secondline-left">目录</button>
@@ -17,16 +17,16 @@
 				创建&nbsp;<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" id="secondline-dropright">
-				<li><a class="secondline-right" href="sourcing-creation.jsp">寻源项目</a></li>
-				<li><a class="secondline-right" href="supplier-creation.jsp">供应商</a></li>
+				<li><a class="secondline-right" href="sourcingCreation.jsp">寻源项目</a></li>
+				<li><a class="secondline-right" href="supplierCreation.jsp">供应商</a></li>
 				<li><a class="secondline-right"
-					href="contract-workspace-creation.jsp">合同</a></li>
+					href="contractWorkspaceCreation.jsp">合同</a></li>
 				<li><a class="secondline-right"
-					href="procurement-catalog-creation.jsp">商品目录</a></li>
-				<li><a class="secondline-right" href="pr-creation.jsp">请购单</a></li>
-				<li><a class="secondline-right" href="invoice-creation.jsp">发票</a></li>
-				<li><a class="secondline-right" href="template-creation.jsp">模版</a></li>
-				<li><a class="secondline-right" href="approval-creation.jsp">审批</a></li>
+					href="procurementCatalogCreation.jsp">商品目录</a></li>
+				<li><a class="secondline-right" href="prCreation.jsp">请购单</a></li>
+				<li><a class="secondline-right" href="invoiceCreation.jsp">发票</a></li>
+				<li><a class="secondline-right" href="templateCreation.jsp">模版</a></li>
+				<li><a class="secondline-right" href="approvalCreation.jsp">审批</a></li>
 			</ul>
 		</div>
 
@@ -40,17 +40,17 @@
 			<ul class="dropdown-menu" id="secondline-dropright">
 				<li><a class="secondline-right" href="sourcingSearching.jsp">在线寻源</a></li>
 				<li><a class="secondline-right" href="supplierSearching.jsp">供应商管理</a></li>
-				<li><a class="secondline-right" href="contract-searching.jsp">合同管理</a></li>
+				<li><a class="secondline-right" href="contractSearching.jsp">合同管理</a></li>
 				<li><a class="secondline-right"
-					href="procurement-commodity-catalog.jsp">商品目录</a></li>
-				<li><a class="secondline-right" href="order-searching.jsp">订单协同</a></li>
-				<li><a class="secondline-right" href="receipt-searching.jsp">收\发货协同</a></li>
-				<li><a class="secondline-right" href="delivery-searching.jsp">物流管理</a></li>
-				<li><a class="secondline-right" href="invoice-searching.jsp">发票管理</a></li>
-				<li><a class="secondline-right" href="payment-searching.jsp">支付管理</a></li>
+					href="procurementCommodityCatalog.jsp">商品目录</a></li>
+				<li><a class="secondline-right" href="orderSearching.jsp">订单协同</a></li>
+				<li><a class="secondline-right" href="receiptSearching.jsp">收\发货协同</a></li>
+				<li><a class="secondline-right" href="deliverySearching.jsp">物流管理</a></li>
+				<li><a class="secondline-right" href="invoiceSearching.jsp">发票管理</a></li>
+				<li><a class="secondline-right" href="paymentSearching.jsp">支付管理</a></li>
 				<li><a class="secondline-right" href="userSearching.jsp">用户管理</a></li>
-				<li><a class="secondline-right" href="template-detail-doc.jsp">模版管理</a></li>
-				<li><a class="secondline-right" href="approval-searching.jsp">审批管理</a></li>
+				<li><a class="secondline-right" href="templateDetailDoc.jsp">模版管理</a></li>
+				<li><a class="secondline-right" href="approvalSearching.jsp">审批管理</a></li>
 			</ul>
 		</div>
 	</div>

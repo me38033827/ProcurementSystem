@@ -121,8 +121,8 @@
 .btn-w {
 	font-size: 14px;
 	border: 0;
-	width: 7.142857em;
-	height: 2.142857em;
+	width: 100px;
+	height: 30px;
 	text-align: center;
 	padding-top: 1px;
 	background-color: white;
@@ -137,6 +137,28 @@
 }
 
 .btn-w:active {
+	background-color: #3071a9;
+}
+
+.btn-m {
+	font-size: 14px;
+	border: 0;
+	width: 70px;
+	height: 2.142857em;
+	text-align: center;
+	padding-top: 1px;
+	background-color: white;
+	border: 1px solid #428bca;
+	color: #428bca;
+}
+
+.btn-m:hover {
+	color: #fff;
+	background-color: #428bca;
+	border-color: #285e8e;
+}
+
+.btn-m:active {
 	background-color: #3071a9;
 }
 
@@ -156,15 +178,15 @@
 	border-color: #285e8e;
 }
 
-#firstline-help:hover, #firstline-user:hover, .secondline-left:hover,
-	#secondline-right-title:hover, #firstline-search:hover,
-	#firstline-print:hover {
+#firstline-help :hover {
 	color: #428bca;
 }
 
 select {
 	border: 1px solid #428bca;
-	background-color: white; F /*很关键：将默认的select选择框样式清除*/ appearance : none;
+	background-color: white;
+	/*很关键：将默认的select选择框样式清除*/
+	appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	/*在选择框的最右侧中间显示小箭头图片*/
@@ -215,10 +237,6 @@ input {
 	border: 1px solid #428bca;
 	background-color: white;
 	padding-left: 10px;
-}
-
-#my-select:hover {
-	background-color: #e6e6e6;
 }
 
 #my-option {
@@ -470,8 +488,8 @@ input {
 }
 
 #shopping-cart-btn {
-	width: 30px;
-	height: 30px;
+	width: 60px;
+	height: 10px;
 	margin-right: 15px;
 	border: none;
 	background-color: transparent;
@@ -684,7 +702,8 @@ input {
 }
 
 .footer {
-	text-align: center;
+	color: black;
+	position: resolute;
 }
 
 .continue-shopping, .settle, .delete-items, .update-items {
@@ -735,6 +754,15 @@ input {
 }
 
 .searching-tab-row2 td {
+	font-size: 13px;
+}
+
+.searching-tab1-row2 {
+	border-bottom: 1px solid #ECECFF;
+	height:36px;
+}
+
+.searching-tab1-row2 td {
 	font-size: 13px;
 }
 
@@ -865,7 +893,7 @@ input {
 }
 
 .invoice-t-col2 {
-	width: 13%
+	width: 23%
 }
 
 .invoice-t-col3 {
@@ -873,7 +901,7 @@ input {
 }
 
 .invoice-t-col4 {
-	width: 28%
+	width: 18%
 }
 
 .invoice-t-col5 {
@@ -1381,14 +1409,123 @@ input {
 
 #usergroup-tab{
 	overflow-x:scroll; 
-	height:300px;
+	height:400px;
+	border-bottom:2px solid #ECECFF;
+	border-left:2px solid #ECECFF;
+	border-right:2px solid #ECECFF;
+}
+
+#usergroup-tab td{
+	height:40px;
+	font-size:14px;
 }
 .userGroup1{width:30%;}
 .userGroup2{width:10%;}
 .userGroup3{width:60%;}
+
 =======
+>>>>>>> origin/master
 #group-area {
-	width: 800px;
-	height: 400px;
+	width: 400px;
+	height: 200px;
 }
->>>>>>> downstream
+
+.manu-btn{
+	width:98px;
+	text-align:center;
+}
+
+.manu-btn-o{
+	width:100px;
+}
+
+.manu-word{
+	margin-top:10px;
+	padding-top:0px;
+	font-size:14px;
+}
+
+#user-searching-tab-out{
+	overflow-x:scroll; 
+	max-height:170px;
+	border-left:2px solid #ECECFF;
+	border-right:2px solid #ECECFF;
+}
+
+#user-searching-tab-out td{
+	height:36px;
+	border-bottom:1px solid #ECECFF;
+}
+
+<<<<<<< HEAD
+#user-group-searching-tab-out{
+	overflow-x:scroll; 
+	max-height:240px;
+	border-left:2px solid #ECECFF;
+	border-right:2px solid #ECECFF;
+}
+
+#user-group-searching-tab-out td{
+	height:36px;
+	border-bottom:1px solid #ECECFF;
+}
+
+.order-detail-tab-col1{
+	width:10%;
+	color:grey;
+	text-align:right;
+}
+
+.order-detail-tab-col2{
+	width:90%;
+	line-height:34px;
+}
+
+#description{
+	margin-top:0px;
+	padding-top:0px;
+}
+
+#user-group-user-out{
+	overflow-x:scroll; 
+	height:380px;
+}
+
+.user-group-user-col1{width:30%;}
+.user-group-user-col2{width:30%;}
+.user-group-user-col3{width:40%;}
+=======
+#refresh-btn, #wrench-btn {
+	width: 60px;
+	height: 0px;
+	margin-right: 15px;
+	border: none;
+	background-color: transparent;
+	position: relative;
+}
+
+.secondline-left:hover, #secondline-right-title:hover, #firstline-icon:hover,
+	#firstline-help:hover, #firstline-user:hover {
+	color: #428bca;
+}
+
+.module {
+	background-color: white;
+	margin: 0px 10px 10px 10px;
+}
+
+body.a-dashbrd-page-bg {
+	background: url(../img/themelight-bg.jpg) no-repeat center center fixed;
+	background-size: cover;
+}
+
+.module-head {
+	/* background-color: #F3F2F0; */
+	
+	font-size: 15px;
+	margin-top: 10px;
+	padding-left:10px;
+	background-color:#30659b;
+	color:white;
+}
+>>>>>>> origin/master

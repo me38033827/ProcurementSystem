@@ -128,7 +128,7 @@
 									<td colspan="8">
 										<button class="btn-w">生成密码</button>
 										<button class="btn-w"
-											onclick="window.location.href='user-creation.jsp'">创建用户</button>
+											onclick="window.location.href='userCreation.jsp'">创建用户</button>
 									</td>
 								</tr>
 							</table>

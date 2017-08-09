@@ -2,14 +2,18 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <<<<<<< HEAD
-<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 <!-- 
 <div class="foot">
 	<div class="black f-12 foot-con">Copyright &copy; 2017.Demo. All
 		rights reserved.</div> 
+<<<<<<< HEAD
+</div> --> 
+=======
 </div> -->
-=======
-=======
+
 >>>>>>> origin/master
 <div class="footer">
 
@@ -19,7 +23,11 @@
 	</div>
 <<<<<<< HEAD
 </div>
->>>>>>> origin/master
+
 =======
+
 </div>
+
+</div>
+
 >>>>>>> origin/master
