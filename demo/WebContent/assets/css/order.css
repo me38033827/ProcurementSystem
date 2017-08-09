@@ -91,8 +91,8 @@
 
 #order-filter-line3{
 	border-top:1px solid grey;
-	padding-top:0.714285em;
-	height:55px;
+	height:50px;
+	padding-bottom:10px;
 }
 
 #order-filter-select1{
@@ -183,18 +183,18 @@
 #order-detail-line4{
 	margin-top:10px;
 	background-color:#ECECFF;
-	height:44px;
+	height:50px;
 	font-size:12px;
-	padding-top:10px;
 	padding-left:15px;
 }
 
 .order-detail-clicked, .order-detail-not-clicked{
 	border:0;
-	padding-left:0.714285em;
-	padding-right:0.714285em;
+	margin-top:15px;
+	margin-left:10px;
+	margin-right:10px;
 	width:80px;
-	height:2.857142em;
+	height:35px;
 }
 
 .order-detail-clicked{

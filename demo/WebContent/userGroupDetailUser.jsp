@@ -16,7 +16,7 @@
 
 		<!-- 主要内容 -->
 		<div id="searching-title-out">
-			<a class="inline-b black" id="searching-title">查看“0001组”的详细信息</a>
+			<a class="inline-b black" id="searching-title">查看“采购用户”的详细信息</a>
 			<button class="btn-w right"
 				onclick="window.location.href='userGroupSearchingR.jsp'">完成</button>
 		</div>
@@ -29,43 +29,433 @@
 			</div>
 
 			<div class="adjust"></div>
-			<div id="contract-detail-tab-doc">
+			<div>
 				<table class="fulltab">
 					<tr class="searching-tab-row1">
-						<td>用户标识符</td>
-						<td>用户名</td>
-						<td>类型</td>
+						<td class="user-group-user-col1">用户标识符</td>
+						<td class="user-group-user-col2">用户名</td>
+						<td class="user-group-user-col3">类型</td>
+					</tr>
+				</table>
+			</div>
+			<div id="user-group-user-out">
+				<table class="fulltab">
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Manager</a></td>
+						<td class="user-group-user-col2"><a href="">Manager</a></td>
+						<td class="user-group-user-col3">企业用户</td>
 					</tr>
 					<tr class="searching-tab-row2">
-						<td>用户1</td>
-						<td>用户1</td>
-						<td>企业用户</td>
+						<td class="user-group-user-col1"><a href="">Mumeng</a></td>
+						<td class="user-group-user-col2"><a href="">Mumeng</a></td>
+						<td class="user-group-user-col3">企业用户</td>
 					</tr>
 					<tr class="searching-tab-row2">
-						<td>用户2</td>
-						<td>用户2</td>
-						<td>企业用户</td>
+						<td class="user-group-user-col1"><a href="">Zhangli</a></td>
+						<td class="user-group-user-col2"><a href="">Zhangli</a></td>
+						<td class="user-group-user-col3">企业用户</td>
 					</tr>
 					<tr class="searching-tab-row2">
-						<td>用户3</td>
-						<td>用户3</td>
-						<td>企业用户</td>
+						<td class="user-group-user-col1"><a href="">Bailu</a></td>
+						<td class="user-group-user-col2"><a href="">Bailu</a></td>
+						<td class="user-group-user-col3">企业用户</td>
 					</tr>
 					<tr class="searching-tab-row2">
-						<td>test</td>
-						<td>test</td>
-						<td>第三方用户</td>
+						<td class="user-group-user-col1"><a href="">Jingbing</a></td>
+						<td class="user-group-user-col2"><a href="">Jingbing</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Hanlu</a></td>
+						<td class="user-group-user-col2"><a href="">Hanlu</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Dengwenjing</a></td>
+						<td class="user-group-user-col2"><a href="">Dengwenjing</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col2"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Guoran</a></td>
+						<td class="user-group-user-col2"><a href="">Guoran</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Henana</a></td>
+						<td class="user-group-user-col2"><a href="">Henana</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col2"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col2"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Xiaoyue</a></td>
+						<td class="user-group-user-col2"><a href="">Xiaoyue</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">System</a></td>
+						<td class="user-group-user-col2"><a href="">System</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Luling</a></td>
+						<td class="user-group-user-col2"><a href="">Luling</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col2"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<!-- copy -->
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col2"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Guoran</a></td>
+						<td class="user-group-user-col2"><a href="">Guoran</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Henana</a></td>
+						<td class="user-group-user-col2"><a href="">Henana</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col2"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col2"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Xiaoyue</a></td>
+						<td class="user-group-user-col2"><a href="">Xiaoyue</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Luhua</a></td>
+						<td class="user-group-user-col2"><a href="">Luhua</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col2"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col2"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col2"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Guoran</a></td>
+						<td class="user-group-user-col2"><a href="">Guoran</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Henana</a></td>
+						<td class="user-group-user-col2"><a href="">Henana</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col2"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col2"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Bufei</a></td>
+						<td class="user-group-user-col2"><a href="">Bufei</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Lulu</a></td>
+						<td class="user-group-user-col2"><a href="">Lulu</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col2"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col2"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Henana</a></td>
+						<td class="user-group-user-col2"><a href="">Henana</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col2"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col2"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Xiaoyue</a></td>
+						<td class="user-group-user-col2"><a href="">Xiaoyue</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Luhua</a></td>
+						<td class="user-group-user-col2"><a href="">Luhua</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col2"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col2"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col2"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Guoran</a></td>
+						<td class="user-group-user-col2"><a href="">Guoran</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Henana</a></td>
+						<td class="user-group-user-col2"><a href="">Henana</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col2"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col2"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Bufei</a></td>
+						<td class="user-group-user-col2"><a href="">Bufei</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Lulu</a></td>
+						<td class="user-group-user-col2"><a href="">Lulu</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col2"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col2"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Henana</a></td>
+						<td class="user-group-user-col2"><a href="">Henana</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col2"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col2"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Xiaoyue</a></td>
+						<td class="user-group-user-col2"><a href="">Xiaoyue</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Luhua</a></td>
+						<td class="user-group-user-col2"><a href="">Luhua</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col2"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col2"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col2"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Guoran</a></td>
+						<td class="user-group-user-col2"><a href="">Guoran</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Henana</a></td>
+						<td class="user-group-user-col2"><a href="">Henana</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col2"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col2"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Bufei</a></td>
+						<td class="user-group-user-col2"><a href="">Bufei</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Lulu</a></td>
+						<td class="user-group-user-col2"><a href="">Lulu</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col2"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col2"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Henana</a></td>
+						<td class="user-group-user-col2"><a href="">Henana</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col2"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col2"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Xiaoyue</a></td>
+						<td class="user-group-user-col2"><a href="">Xiaoyue</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Luhua</a></td>
+						<td class="user-group-user-col2"><a href="">Luhua</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col2"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col2"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col2"><a href="">Chengjia</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Guoran</a></td>
+						<td class="user-group-user-col2"><a href="">Guoran</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Henana</a></td>
+						<td class="user-group-user-col2"><a href="">Henana</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col2"><a href="">Chenchao</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col2"><a href="">Zhangqiong</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Bufei</a></td>
+						<td class="user-group-user-col2"><a href="">Bufei</a></td>
+						<td class="user-group-user-col3">第三方企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Lulu</a></td>
+						<td class="user-group-user-col2"><a href="">Lulu</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col2"><a href="">Liufeng</a></td>
+						<td class="user-group-user-col3">企业用户</td>
+					</tr>
+					<tr class="searching-tab-row2">
+						<td class="user-group-user-col1"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col2"><a href="">Gufeifei</a></td>
+						<td class="user-group-user-col3">企业用户</td>
 					</tr>
 				</table>
 			</div>
 		</div>
 	</div>
 	<%@ include file="other/footer.jsp"%>
-	<!-- CORE JQUERY  -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
-	<!-- BOOTSTRAP SCRIPTS  -->
-	<script src="assets/js/bootstrap.js"></script>
-	<!-- CUSTOM SCRIPTS  -->
-	<script src="assets/js/custom.js"></script>
+	
 </body>
 </html>

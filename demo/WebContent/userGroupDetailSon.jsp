@@ -12,13 +12,10 @@
 <!-- 页面整体宽度：1320px -->
 <body>
 	<div class="container" id="whole-container">
-
-
-
 		<!-- 主要内容 -->
 		<div class="con">
 			<div id="searching-title-out">
-				<a class="inline-b black" id="searching-title">查看“0001组”的详细信息</a>
+				<a class="inline-b black" id="searching-title">查看“采购用户”的详细信息</a>
 				<button class="btn-w right"
 					onclick="window.location.href='userGroupSearchingR.jsp'">完成</button>
 			</div>
@@ -47,11 +44,6 @@
 	</div>
 	<%@ include file="other/footer.jsp"%>
 
-	<!-- CORE JQUERY  -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
-	<!-- BOOTSTRAP SCRIPTS  -->
-	<script src="assets/js/bootstrap.js"></script>
-	<!-- CUSTOM SCRIPTS  -->
-	<script src="assets/js/custom.js"></script>
+
 </body>
 </html>

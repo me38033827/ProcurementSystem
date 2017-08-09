@@ -99,8 +99,7 @@
 							<table class="fulltab">
 								<tr class="searching-tab-row3">
 									<td colspan="8">
-										<button class="btn-w"
-											onclick="window.location.href='user-group-creation.html'">创建组</button>
+										<button class="btn-w" onclick="window.location.href='userGroupCreation.html'">创建组</button>
 									</td>
 								</tr>
 							</table>
@@ -112,11 +111,6 @@
 	</div>
 	<%@ include file="other/footer.jsp"%>
 
-	<!-- CORE JQUERY  -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
-	<!-- BOOTSTRAP SCRIPTS  -->
-	<script src="assets/js/bootstrap.js"></script>
-	<!-- CUSTOM SCRIPTS  -->
-	<script src="assets/js/custom.js"></script>
+
 </body>
 </html>

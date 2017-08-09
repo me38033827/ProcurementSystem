@@ -128,7 +128,7 @@
 									<td colspan="8">
 										<button class="btn-w">生成密码</button>
 										<button class="btn-w"
-											onclick="window.location.href='user-creation.jsp'">创建用户</button>
+											onclick="window.location.href='userCreation.jsp'">创建用户</button>
 									</td>
 								</tr>
 							</table>
@@ -140,11 +140,6 @@
 	</div>
 	<%@ include file="other/footer.jsp"%>
 
-	<!-- CORE JQUERY  -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
-	<!-- BOOTSTRAP SCRIPTS  -->
-	<script src="assets/js/bootstrap.js"></script>
-	<!-- CUSTOM SCRIPTS  -->
-	<script src="assets/js/custom.js"></script>
+
 </body>
 </html>

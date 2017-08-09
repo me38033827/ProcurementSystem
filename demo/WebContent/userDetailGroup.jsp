@@ -17,7 +17,7 @@
 		<!-- 主要内容 -->
 		<div class="con">
 			<div id="searching-title-out">
-				<a class="inline-b black" id="searching-title">查看“用户1”的详细信息</a>
+				<a class="inline-b black" id="searching-title">查看“Liyi”的详细信息</a>
 				<button class="btn-w right"
 					onclick="window.location.href='userSearchingR.jsp'">完成</button>
 			</div>
@@ -42,27 +42,107 @@
 						</tr>
 					</table>
 				</div>
-				<div>
+				<div id="usergroup-tab">
 					<table class="fulltab">
 						<tr class="searching-tab-row2">
-							<td class="userGroup1">AP管理员</td>
-							<td class="userGroup2">管理员</td>
-							<td class="userGroup3">负责IR审批</td>
+							<td class="userGroup1">财务</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">可将该组的成员添加到请购单、发票核算文档、合同请求、出差授权和开支报告的审批流程中。</td>
 						</tr>
 						<tr class="searching-tab-row2">
-							<td class="userGroup1">分析管理员</td>
+							<td class="userGroup1">采购代理</td>
 							<td class="userGroup2">系统</td>
-							<td class="userGroup3"></td>
+							<td class="userGroup3">对收据、请购单、订购单、发票核算文档、合同请求、付款请求文档和里程碑...</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">采购用户</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以：创建请购单；查询采购流程中自己和下属的待批文档...</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">电子表单模版管理员</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以创建新的电子表单模版，以及查看或编辑所有现有的电子表单模版</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">发票编辑员</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以编辑发票和发票核算文档。</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">发票录入用户</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以：创建发票，查询自己和下属的发票...</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">费用用户</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以向相应购物卡的未分配费用项目分配相应的费用，以及查看这些费用。</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">AP系统</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">负责IR审批。</td>
 						</tr>
 						<tr class="searching-tab-row2">
 							<td class="userGroup1">审计员</td>
 							<td class="userGroup2">系统</td>
-							<td class="userGroup3">该组的成员可以通过只读形式访问采购和发票模块</td>
+							<td class="userGroup3">该组的成员可以通过只读形式访问采购和发票模块。</td>
 						</tr>
 						<tr class="searching-tab-row2">
 							<td class="userGroup1">移动用户</td>
 							<td class="userGroup2">系统</td>
-							<td class="userGroup3">该组的成员可以通在移动设备上激活和使用demo应用程序</td>
+							<td class="userGroup3">该组的成员可以通在移动设备上激活和使用demo应用程序。</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">AP管理</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以访问管理工具选项卡上的订单查找...</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">采购商管理员</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以批准或拒绝其他用户的限制项目请求。</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">高级用户</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以覆盖采购系统对商品强加的购买限制。</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">AP系统</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">负责IR审批。</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">审计员</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以通过只读形式访问采购和发票模块。</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">移动用户</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以通在移动设备上激活和使用demo应用程序。</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">AP管理</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以访问管理工具选项卡上的订单查找...</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">采购商管理员</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以批准或拒绝其他用户的限制项目请求。</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">高级用户</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以覆盖采购系统对商品强加的购买限制。</td>
+						</tr>
+						<tr class="searching-tab-row2">
+							<td class="userGroup1">采购系统</td>
+							<td class="userGroup2">系统</td>
+							<td class="userGroup3">该组的成员可以设置账户、为特定产品类别创建限制并将限制应用到特定用户。</td>
 						</tr>
 					</table>
 				</div>
@@ -75,11 +155,6 @@
 	</div>
 
 
-	<!-- CORE JQUERY  -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
-	<!-- BOOTSTRAP SCRIPTS  -->
-	<script src="assets/js/bootstrap.js"></script>
-	<!-- CUSTOM SCRIPTS  -->
-	<script src="assets/js/custom.js"></script>
+
 </body>
 </html>

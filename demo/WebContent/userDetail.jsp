@@ -17,7 +17,7 @@
 		<!-- 主要内容 -->
 		<div class="con">
 			<div id="searching-title-out">
-				<a class="inline-b black" id="searching-title">查看“用户1”的详细信息</a>
+				<a class="inline-b black" id="searching-title">查看“Liyi”的详细信息</a>
 				<button class="btn-w right"
 					onclick="window.location.href='userSearchingR.jsp'">完成</button>
 			</div>
@@ -39,7 +39,7 @@
 					<table>
 						<tr>
 							<td id="order-detail-tab-col1">定义者：</td>
-							<td id="order-detail-tab-col2">管理者</td>
+							<td id="order-detail-tab-col2">Hanlu</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">类型：</td>
@@ -47,19 +47,19 @@
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">用户标识符：</td>
-							<td id="order-detail-tab-col2">用户1</td>
+							<td id="order-detail-tab-col2">Liyi</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">名称：</td>
-							<td id="order-detail-tab-col2">用户1</td>
+							<td id="order-detail-tab-col2">Liyi</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">组织：</td>
-							<td id="order-detail-tab-col2">测试组</td>
+							<td id="order-detail-tab-col2"></td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">业务电子邮件地址：</td>
-							<td id="order-detail-tab-col2">no-reply@deloitte.com.cn</td>
+							<td id="order-detail-tab-col2">lilyliyi@scraper.com.cn</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">允许外部电子邮件域：</td>
@@ -67,23 +67,11 @@
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">业务电话号码：</td>
-							<td id="order-detail-tab-col2"></td>
+							<td id="order-detail-tab-col2">010-66772534</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">业务传真号码：</td>
 							<td id="order-detail-tab-col2"></td>
-						</tr>
-						<tr>
-							<td id="order-detail-tab-col1">区域：</td>
-							<td id="order-detail-tab-col2">中文－中国大陆</td>
-						</tr>
-						<tr>
-							<td id="order-detail-tab-col1">默认货币：</td>
-							<td id="order-detail-tab-col2">人民币</td>
-						</tr>
-						<tr>
-							<td id="order-detail-tab-col1">时区：</td>
-							<td id="order-detail-tab-col2">中国</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">上级主管：</td>
@@ -96,11 +84,11 @@
 
 						<tr>
 							<td id="order-detail-tab-col1">创建日期：</td>
-							<td id="order-detail-tab-col2">2017年7月12日 18:00</td>
+							<td id="order-detail-tab-col2">2017年3月12日 18:00</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">上次修改日期：</td>
-							<td id="order-detail-tab-col2">2017年7月20日 09:32</td>
+							<td id="order-detail-tab-col2">2017年3月20日 09:32</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">停用日期：</td>
@@ -115,11 +103,6 @@
 	
 	<%@ include file="other/footer.jsp"%>
 
-	<!-- CORE JQUERY  -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
-	<!-- BOOTSTRAP SCRIPTS  -->
-	<script src="assets/js/bootstrap.js"></script>
-	<!-- CUSTOM SCRIPTS  -->
-	<script src="assets/js/custom.js"></script>
+	
 </body>
 </html>

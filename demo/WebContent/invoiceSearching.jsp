@@ -214,184 +214,146 @@
 								<td class="invoice-t-col1"><label> <input
 										type="checkbox" class="checkboxes" value="" />
 								</label></td>
-								<td class="invoice-t-col2"><a href="invoice-detail.jsp">INV123</a></td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
+								<td class="invoice-t-col2"><a href="invoice-detail.jsp">INVHP-PRINTER-023-9458</a></td>
+								<td class="invoice-t-col3">2017年8月7日</td>
+								<td class="invoice-t-col4">中国惠普有限公司</td>
+								<td class="invoice-t-col5">2099.00CNY</td>
+								<td class="invoice-t-col6">200.00CNY</td>
+								<td class="invoice-t-col7">2017年9月30日</td>
+								<td class="invoice-t-col8">已提交</td>
+								<td class="invoice-t-col9"><a href="">1000000957</a></td>
+							</tr>
+							<tr class="searching-tab-row2">
+								<td class="invoice-t-col1"><label> <input
+										type="checkbox" class="checkboxes" value="" />
+								</label></td>
+								<td class="invoice-t-col2"><a href="">INVHP-PRINTER-022-9457</a></td>
+								<td class="invoice-t-col3">2017年8月1日</td>
+								<td class="invoice-t-col4">中国惠普有限公司</td>
+								<td class="invoice-t-col5">2099.00CNY</td>
+								<td class="invoice-t-col6">200.00CNY</td>
+								<td class="invoice-t-col7">2017年9月30日</td>
+								<td class="invoice-t-col8">正在核算</td>
+								<td class="invoice-t-col9"><a href="">1000000956</a></td>
+							</tr>
+							<tr class="searching-tab-row2">
+								<td class="invoice-t-col1"><label> <input
+										type="checkbox" class="checkboxes" value="" />
+								</label></td>
+								<td class="invoice-t-col2"><a href="">INVCanon-PRINTER-006-9455</a></td>
+								<td class="invoice-t-col3">2017年7月28日</td>
+								<td class="invoice-t-col4">佳能（中国）有限公司</td>
+								<td class="invoice-t-col5">1599.00CNY</td>
 								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
+								<td class="invoice-t-col7">2017年8月30日</td>
+								<td class="invoice-t-col8">正在核算</td>
+								<td class="invoice-t-col9"><a href="">1000000955</a></td>
+							</tr>
+							<tr class="searching-tab-row2">
+								<td class="invoice-t-col1"><label> <input
+										type="checkbox" class="checkboxes" value="" />
+								</label></td>
+								<td class="invoice-t-col2"><a href="">INVCanon-PRINTER-005-9453</a></td>
+								<td class="invoice-t-col3">2017年7月28日</td>
+								<td class="invoice-t-col4">佳能（中国）有限公司</td>
+								<td class="invoice-t-col5">1599.00CNY</td>
+								<td class="invoice-t-col6">0.00CNY</td>
+								<td class="invoice-t-col7">2017年8月30日</td>
+								<td class="invoice-t-col8">正在撰写</td>
+								<td class="invoice-t-col9"><a href="">1000000953</a></td>
+							</tr>
+							<tr class="searching-tab-row2">
+								<td class="invoice-t-col1"><label> <input
+										type="checkbox" class="checkboxes" value="" />
+								</label></td>
+								<td class="invoice-t-col2"><a href="">INVLenovo-PRINTER-031-9452</a></td>
+								<td class="invoice-t-col3">2017年7月26日</td>
+								<td class="invoice-t-col4">联想（北京）有限公司</td>
+								<td class="invoice-t-col5">1599.00CNY</td>
+								<td class="invoice-t-col6">0.00CNY</td>
+								<td class="invoice-t-col7">2017年9月10日</td>
+								<td class="invoice-t-col8">已提交</td>
+								<td class="invoice-t-col9"><a href="">1000000952</a></td>
+							</tr>
+							<tr class="searching-tab-row2">
+								<td class="invoice-t-col1"><label> <input
+										type="checkbox" class="checkboxes" value="" />
+								</label></td>
+								<td class="invoice-t-col2"><a href="">INVLenovo-PRINTER-030-9451</a></td>
+								<td class="invoice-t-col3">2017年7月26日</td>
+								<td class="invoice-t-col4">联想（北京）有限公司</td>
+								<td class="invoice-t-col5">1599.00CNY</td>
+								<td class="invoice-t-col6">0.00CNY</td>
+								<td class="invoice-t-col7">2017年9月10日</td>
+								<td class="invoice-t-col8">正在撰写</td>
+								<td class="invoice-t-col9"><a href="">1000000951</a></td>
+							</tr>
+							<tr class="searching-tab-row2">
+								<td class="invoice-t-col1"><label> <input
+										type="checkbox" class="checkboxes" value="" />
+								</label></td>
+								<td class="invoice-t-col2"><a href="">INVHP-PRINTER-021-9450</a></td>
+								<td class="invoice-t-col3">2017年7月25日</td>
+								<td class="invoice-t-col4">中国惠普有限公司</td>
+								<td class="invoice-t-col5">2099.00CNY</td>
+								<td class="invoice-t-col6">200.00CNY</td>
+								<td class="invoice-t-col7">2017年9月30日</td>
 								<td class="invoice-t-col8">已核算</td>
-								<td class="invoice-t-col9">100000057</td>
+								<td class="invoice-t-col9"><a href="">1000000950</a></td>
 							</tr>
 							<tr class="searching-tab-row2">
 								<td class="invoice-t-col1"><label> <input
 										type="checkbox" class="checkboxes" value="" />
 								</label></td>
-								<td class="invoice-t-col2">INV313</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000056</td>
-							</tr>
-							<tr class="searching-tab-row2">
-								<td class="invoice-t-col1"><label> <input
-										type="checkbox" class="checkboxes" value="" />
-								</label></td>
-								<td class="invoice-t-col2">INV312</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">已拒绝</td>
-								<td class="invoice-t-col9">100000055</td>
-							</tr>
-							<tr class="searching-tab-row2">
-								<td class="invoice-t-col1"><label> <input
-										type="checkbox" class="checkboxes" value="" />
-								</label></td>
-								<td class="invoice-t-col2">INV311</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
+								<td class="invoice-t-col2"><a href="">INVCanon-PRINTER-004-9449</a></td>
+								<td class="invoice-t-col3">2017年7月21日</td>
+								<td class="invoice-t-col4">佳能（中国）有限公司</td>
+								<td class="invoice-t-col5">999.00CNY</td>
+								<td class="invoice-t-col6">0.00CNY</td>
+								<td class="invoice-t-col7">2017年8月20日</td>
 								<td class="invoice-t-col8">已核算</td>
-								<td class="invoice-t-col9">100000054</td>
+								<td class="invoice-t-col9"><a href="">1000000949</a></td>
 							</tr>
 							<tr class="searching-tab-row2">
 								<td class="invoice-t-col1"><label> <input
 										type="checkbox" class="checkboxes" value="" />
 								</label></td>
-								<td class="invoice-t-col2">INV310</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
+								<td class="invoice-t-col2"><a href="">INVHP-PRINTER-019-9448</a></td>
+								<td class="invoice-t-col3">2017年7月23日</td>
+								<td class="invoice-t-col4">中国惠普有限公司</td>
+								<td class="invoice-t-col5">1299.00CNY</td>
+								<td class="invoice-t-col6">100.00CNY</td>
+								<td class="invoice-t-col7">2017年8月12日</td>
 								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000053</td>
+								<td class="invoice-t-col9"><a href="">1000000948</a></td>
 							</tr>
 							<tr class="searching-tab-row2">
 								<td class="invoice-t-col1"><label> <input
 										type="checkbox" class="checkboxes" value="" />
 								</label></td>
-								<td class="invoice-t-col2">INV310</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000053</td>
+								<td class="invoice-t-col2"><a href="">INVHP-PRINTER-018-9447</a></td>
+								<td class="invoice-t-col3">2017年7月22日</td>
+								<td class="invoice-t-col4">中国惠普有限公司</td>
+								<td class="invoice-t-col5">1299.00CNY</td>
+								<td class="invoice-t-col6">100.00CNY</td>
+								<td class="invoice-t-col7">2017年8月12日</td>
+								<td class="invoice-t-col8">正在编辑</td>
+								<td class="invoice-t-col9"><a href="">1000000947</a></td>
 							</tr>
 							<tr class="searching-tab-row2">
 								<td class="invoice-t-col1"><label> <input
 										type="checkbox" class="checkboxes" value="" />
 								</label></td>
-								<td class="invoice-t-col2">INV310</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000053</td>
+								<td class="invoice-t-col2"><a href="">INVHP-PRINTER-017-9446</a></td>
+								<td class="invoice-t-col3">2017年7月22日</td>
+								<td class="invoice-t-col4">中国惠普有限公司</td>
+								<td class="invoice-t-col5">1299.00CNY</td>
+								<td class="invoice-t-col6">100.00CNY</td>
+								<td class="invoice-t-col7">2017年8月12日</td>
+								<td class="invoice-t-col8">已核算</td>
+								<td class="invoice-t-col9"><a href="">1000000946</a></td>
 							</tr>
-							<tr class="searching-tab-row2">
-								<td class="invoice-t-col1"><label> <input
-										type="checkbox" class="checkboxes" value="" />
-								</label></td>
-								<td class="invoice-t-col2">INV310</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000053</td>
-							</tr>
-							<tr class="searching-tab-row2">
-								<td class="invoice-t-col1"><label> <input
-										type="checkbox" class="checkboxes" value="" />
-								</label></td>
-								<td class="invoice-t-col2">INV310</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000053</td>
-							</tr>
-							<tr class="searching-tab-row2">
-								<td class="invoice-t-col1"><label> <input
-										type="checkbox" class="checkboxes" value="" />
-								</label></td>
-								<td class="invoice-t-col2">INV310</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000053</td>
-							</tr>
-							<tr class="searching-tab-row2">
-								<td class="invoice-t-col1"><label> <input
-										type="checkbox" class="checkboxes" value="" />
-								</label></td>
-								<td class="invoice-t-col2">INV310</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000053</td>
-							</tr>
-							<tr class="searching-tab-row2">
-								<td class="invoice-t-col1"><label> <input
-										type="checkbox" class="checkboxes" value="" />
-								</label></td>
-								<td class="invoice-t-col2">INV310</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000053</td>
-							</tr>
-							<tr class="searching-tab-row2">
-								<td class="invoice-t-col1"><label> <input
-										type="checkbox" class="checkboxes" value="" />
-								</label></td>
-								<td class="invoice-t-col2">INV310</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000053</td>
-							</tr>
-							<tr class="searching-tab-row2">
-								<td class="invoice-t-col1"><label> <input
-										type="checkbox" class="checkboxes" value="" />
-								</label></td>
-								<td class="invoice-t-col2">INV310</td>
-								<td class="invoice-t-col3">2017年7月7日</td>
-								<td class="invoice-t-col4">＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊</td>
-								<td class="invoice-t-col5">100.00CNY</td>
-								<td class="invoice-t-col6">00.00CNY</td>
-								<td class="invoice-t-col7">2017年7月14日</td>
-								<td class="invoice-t-col8">正在核算</td>
-								<td class="invoice-t-col9">100000053</td>
-							</tr>
+							
 						</table>
 					</div>
 					<div>
@@ -410,11 +372,6 @@
 		</div>
 	</div>
 	<%@ include file="other/footer.jsp"%>
-	<!-- CORE JQUERY  -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
-	<!-- BOOTSTRAP SCRIPTS  -->
-	<script src="assets/js/bootstrap.js"></script>
-	<!-- CUSTOM SCRIPTS  -->
-	<script src="assets/js/custom.js"></script>
+	
 </body>
 </html>
