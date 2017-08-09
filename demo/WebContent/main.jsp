@@ -28,9 +28,10 @@
 			<input type="text" class="inline-b border-g left col-md-4"
 				value="按部件号、供应商名称或关键字搜索"
 				onfocus="if(this.value=='按部件号、供应商名称或关键字搜索') this.value=''"
-				onblur="if(this.value=='')this.value='按部件号、供应商名称或关键字搜索' " style="top:0px;">
+				onblur="if(this.value=='')this.value='按部件号、供应商名称或关键字搜索' "
+				style="top: 0px;">
 			<button class="btn btn-default inline-b border-g left"
-				id="search-btn" style="top:0px;">
+				id="search-btn" style="top: 0px;">
 				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 			</button>
 		</div>
@@ -56,44 +57,51 @@
 			<div class="col-md-2">
 				<div class="module-left">
 					<div class="module-head">通用操作</div>
+
 					<div class="module">
-						<table>
-							<tr>
-								<th>创建</th>
-							</tr>
-							<tr>
-								<td><a class="secondline-right" href="sourcingCreation.jsp">寻源项目</a></td>
-							</tr>
-							<tr>
-								<td><a class="secondline-right" href="supplierCreation.jsp">供应商</a></td>
-							</tr>
+						<div class="div-padding-left">
+							<table class="table-left">
+								<tr>
+									<th>创建</th>
+								</tr>
+								<tr>
+									<td><a class="secondline-right"
+										href="sourcingCreation.jsp">寻源项目</a></td>
+								</tr>
+								<tr>
+									<td><a class="secondline-right"
+										href="supplierCreation.jsp">供应商</a></td>
+								</tr>
 
-							<tr>
-								<td><a class="secondline-right"
-									href="contractWorkspaceCreation.jsp">合同</a></td>
-							</tr>
+								<tr>
+									<td><a class="secondline-right"
+										href="contractWorkspaceCreation.jsp">合同</a></td>
+								</tr>
 
-							<tr>
-								<td><a class="secondline-right"
-									href="procurementCatalogCreation.jsp">商品目录</a></td>
-							</tr>
+								<tr>
+									<td><a class="secondline-right"
+										href="procurementCatalogCreation.jsp">商品目录</a></td>
+								</tr>
 
-							<tr>
-								<td><a class="secondline-right" href="prCreation.jsp">请购单</a></td>
-							</tr>
+								<tr>
+									<td><a class="secondline-right" href="prCreation.jsp">请购单</a></td>
+								</tr>
 
-							<tr>
-								<td><a class="secondline-right" href="invoiceCreation.jsp">发票</a></td>
-							</tr>
+								<tr>
+									<td><a class="secondline-right" href="invoiceCreation.jsp">发票</a></td>
+								</tr>
 
-							<tr>
-								<td><a class="secondline-right" href="templateCreation.jsp">模版</a></td>
-							</tr>
+								<tr>
+									<td><a class="secondline-right"
+										href="templateCreation.jsp">模版</a></td>
+								</tr>
 
-							<tr>
-								<td><a class="secondline-right" href="approvalCreation.jsp">审批</a></td>
-							</tr>
-						</table>
+								<tr>
+									<td><a class="secondline-right"
+										href="approvalCreation.jsp">审批</a></td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -109,11 +117,13 @@
 					<div style="clear: left">
 						<div class="module-head">新闻</div>
 						<div class="module">
-							<table>
-								<tr>
-									<td>系统管理员尚未配置公司新闻内容</td>
-								</tr>
-							</table>
+							<div class="div-padding-left">
+								<table>
+									<tr>
+										<td>系统管理员尚未配置公司新闻内容</td>
+									</tr>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -125,11 +135,13 @@
 				<div class="module-left">
 					<div class="module-head">最近查看的内容</div>
 					<div class="module">
-						<table>
-							<tr>
-								<td>寻源项目</td>
-							</tr>
-						</table>
+						<div class="div-padding-left">
+							<table>
+								<tr>
+									<td>寻源项目</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
