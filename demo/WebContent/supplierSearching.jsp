@@ -74,10 +74,14 @@
 										type="checkbox" class="checkboxes" value="" />
 								</label></td>
 								<td class="supplier-t-col2">组织名称</td>
-								<td class="supplier-t-col3">系统标识符</td>
-								<td class="supplier-t-col4">审批状态</td>
-								<td class="supplier-t-col5">供应商</td>
-								<td class="supplier-t-col6">客户</td>
+								<td class="supplier-t-col3"
+									style="position: relative; left: -25px;">系统标识符</td>
+								<td class="supplier-t-col4"
+									style="position: relative; left: -25px;">审批状态</td>
+								<td class="supplier-t-col5"
+									style="position: relative; left: -30px;">供应商</td>
+								<td class="supplier-t-col6"
+									style="position: relative; left: -30px;">客户</td>
 								<td class="supplier-t-col7">操作</td>
 							</tr>
 						</table>
@@ -89,7 +93,7 @@
 										type="checkbox" class="checkboxes" value="" />
 								</label></td>
 								<td class="supplier-t-col2"><a href="supplierDetail.jsp">HP</a></td>
-								<td class="supplier-t-col3">S21331</td>
+								<td class="supplier-t-col3 ">S21331</td>
 								<td class="supplier-t-col4">已批准</td>
 								<td class="supplier-t-col5">是</td>
 								<td class="supplier-t-col6">否</td>
@@ -292,7 +296,7 @@
 									<button class="btn-w">操作</button>
 								</td>
 							</tr>
-							
+
 						</table>
 					</div>
 					<div>
@@ -312,11 +316,6 @@
 		</div>
 	</div>
 	<%@ include file="other/footer.jsp"%>
-	<!-- CORE JQUERY  -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
-	<!-- BOOTSTRAP SCRIPTS  -->
-	<script src="assets/js/bootstrap.js"></script>
-	<!-- CUSTOM SCRIPTS  -->
-	<script src="assets/js/custom.js"></script>
+	
 </body>
 </html>
