@@ -12,9 +12,6 @@
 <!-- 页面整体宽度：1320px -->
 <body>
 	<div class="container" id="whole-container">
-
-
-
 		<!-- 主要内容 -->
 		<div class="con">
 			<div id="searching-title-out">

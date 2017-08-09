@@ -190,10 +190,11 @@
 
 .order-detail-clicked, .order-detail-not-clicked{
 	border:0;
+	margin-top:15px;
 	margin-left:10px;
 	margin-right:10px;
-	width:70px;
-	height:34px;
+	width:80px;
+	height:35px;
 }
 
 .order-detail-clicked{

@@ -95,8 +95,10 @@
 }
 
 .input {
-	height: 28px;
+	height: 30px;
 	width: 150px;
+	border-radius:0;
+	border:1px solid #428bca;
 }
 
 .input-pr {
@@ -1638,3 +1640,13 @@ body.a-dashbrd-page-bg {
 	color:white;
 }
 
+.row-standard{
+	height:40px;
+}
+
+.col-standard1{
+	font-size:14px;
+	color:grey;
+	text-align:right;
+	width:150px;
+}

@@ -21,12 +21,10 @@ rel='stylesheet' type='text/css' />
 <link href="/demo/assets/css/order.css" rel="stylesheet" />
 <link href="/demo/assets/css/approval.css" rel="stylesheet" />
 <link href="/demo/assets/css/catalog.css" rel="stylesheet" />
-<<<<<<< HEAD
-<<<<<<< HEAD
 <link href="/demo/assets/css/detail.css" rel="stylesheet" />
 <link href="/demo/assets/css/settlement.css" rel="stylesheet" />
 <link href="/demo/assets/css/relevant.css" rel="stylesheet" />
-=======
+
 
 
 <link href="/demo/assets/css/detail.css" rel="stylesheet" />
