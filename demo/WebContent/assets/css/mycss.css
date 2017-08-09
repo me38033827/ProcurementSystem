@@ -1688,3 +1688,26 @@ body.a-dashbrd-page-bg {
 	margin-right:20px;
 
 }
+
+#phone-prov{
+	width:60px;
+	display:inline-block;
+}
+
+#phone-num{
+	width:120px;
+	display:inline-block;
+}
+
+#profile-other{
+	width:150px;
+}
+
+#profile-row{
+	border-bottom:1px solid #ddd;
+}
+
+#profile-contact-out{
+	overflow-x: scroll;
+	max-height: 240px;
+}

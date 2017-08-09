@@ -56,7 +56,7 @@
 									<td class="col-standard2"><input class="form-control input"/></td>
 								</tr>
 								<tr class="row-standard">
-									<td class="col-standard1">供应商标识符：</td>
+									<td class="col-standard1">标识符：</td>
 									<td class="col-standard2">SU0000134</td>
 								</tr>
 								<tr class="row-standard">
@@ -133,67 +133,65 @@
 							<a class="standard-subtitle-main">产品和服务类别、送货地址或服务地点和行业</a>
 						</div>
 						
-						<div class="profile-adjust">
-							<div class="standard-subsubtitle">
-								<a class="standard-subsubtitle-main">产品和服务类别＊</a>
-							</div>
-							
-							<div class="standard-subsubtitle">
-								<a class="standard-subsubtitle-description">输入贵公司提供的产品和服务。采购商提交的天晴球奖根据您在下面输入的产品和服务与您匹配。</a>
-							</div>
-							
-							<div>
-								<input id="profile-input" class="form-control input inline-b" value="输入产品和服务类别"
-									onfocus="if(this.value=='输入产品和服务类别') this.value=''"
-									onblur="if(this.value=='')this.value='输入产品和服务类别' "/>
-								<button class="btn-w" id="profile-add">添加</button>
-								<a id="profile-or">－或－</a>
-								<a href="">浏览</a>
-							</div>
-							
-							<div>
-								<div class="delete-tag">
-									<a class="grey left">激光打印机</a> 
-									<a href="" class="grey right">X</a>
-								</div>
-							</div>
-							
-							<div class="standard-subsubtitle">
-								<a class="standard-subsubtitle-main">送货地址或服务地点＊</a>
-							</div>
-							
-							<div class="standard-subsubtitle">
-								<a class="standard-subsubtitle-description">输入贵公司送货地址或服务地点。如果贵公司只为特定的地点服务，请在下面输入地点。</a>
-							</div>
-							
-							<div>
-								<input id="profile-input" class="form-control input inline-b" value="输入送货地址或服务地点"
-									onfocus="if(this.value=='输入送货地址或服务地点') this.value=''"
-									onblur="if(this.value=='')this.value='输入送货地址或服务地点' "/>
-								<button class="btn-w" id="profile-add">添加</button>
-								<a id="profile-or">－或－</a>
-								<a href="">浏览</a>
-							</div>
-							
-							<div>
-								<div class="delete-tag">
-									<a class="grey left">北京</a> 
-									<a href="" class="grey right">X</a>
-								</div>
-							</div>
-							
-							<div class="standard-subsubtitle">
-								<a class="standard-subsubtitle-main">行业</a>
-							</div>
-							
-							<div class="standard-subsubtitle">
-								<a class="standard-subsubtitle-description">请选择贵公司所从市的行业。</a>
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-main">产品和服务类别＊</a>
+						</div>
+						
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-description">输入贵公司提供的产品和服务。采购商提交的天晴球奖根据您在下面输入的产品和服务与您匹配。</a>
+						</div>
+						
+						<div>
+							<input id="profile-input" class="form-control input inline-b" value="输入产品和服务类别"
+								onfocus="if(this.value=='输入产品和服务类别') this.value=''"
+								onblur="if(this.value=='')this.value='输入产品和服务类别' "/>
+							<button class="btn-w" id="profile-add">添加</button>
+							<a id="profile-or">－或－</a>
+							<a href="">浏览</a>
+						</div>
+						
+						<div>
+							<div class="delete-tag">
+								<a class="grey left">激光打印机</a> 
+								<a href="" class="grey right">X</a>
 							</div>
 						</div>
 						
-						<div class="profile-end">
-							<button class="btn-w right">添加</button>
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-main">送货地址或服务地点＊</a>
 						</div>
+						
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-description">输入贵公司送货地址或服务地点。如果贵公司只为特定的地点服务，请在下面输入地点。</a>
+						</div>
+						
+						<div>
+							<input id="profile-input" class="form-control input inline-b" value="输入送货地址或服务地点"
+								onfocus="if(this.value=='输入送货地址或服务地点') this.value=''"
+								onblur="if(this.value=='')this.value='输入送货地址或服务地点' "/>
+							<button class="btn-w" id="profile-add">添加</button>
+							<a id="profile-or">－或－</a>
+							<a href="">浏览</a>
+						</div>
+						
+						<div>
+							<div class="delete-tag">
+								<a class="grey left">北京</a> 
+								<a href="" class="grey right">X</a>
+							</div>
+						</div>
+						
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-main">行业</a>
+						</div>
+						
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-description">请选择贵公司所从市的行业。</a>
+						</div>
+					</div>
+					
+					<div class="profile-end">
+						<button class="btn-w right">添加</button>
 					</div>
 				</div>
 				
