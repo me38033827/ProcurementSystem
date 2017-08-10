@@ -114,6 +114,8 @@
 /* table */
 .standard-row1{
 	background-color:#ebebeb;
+	margin:0;
+	padding:0;
 	color:grey;
 }
 
@@ -257,4 +259,70 @@
 	padding-right:10px;
 	padding-top:10px;
 	height:50px;
+}
+
+.chk { 
+    display: none; 
+} 
+ 
+.chk + label { 
+    background-color: #FFF; 
+    height:26px;
+    width:26px;
+    border: 1px solid #428bca; 
+    display: inline-block; 
+    position: relative; 
+    margin:0;
+    padding:0;
+} 
+ 
+.chk:checked + label { 
+    border: 1px solid #02367e; 
+} 
+ 
+.chk:checked + label:after { 
+    content: '\2713';
+    position: absolute; 
+    height:25px;
+    width:25px;
+    top: 0px; 
+    left: 0px; 
+    color: #003366; 
+    width: 100%; 
+    font-size:1.2em;
+    text-align: center;
+} 
+
+/* auth */
+.bus-col1{width:25%; text-align:right;padding-right:5px;height:36px;}
+.bus-col2{width:25%;}
+.bus-col3{width:25%; text-align:right;padding-right:5px;}
+.bus-col4{width:25%;}
+
+#profile-other{
+	margin-left:10px;
+}
+
+/* auth page */
+.auth-1{
+	line-height:13px;
+	font-size:13px;
+	font-weight:bold;	
+	color:#515051;
+}
+
+.auth-2{
+	line-height:13px;
+	font-size:13px;
+	color:grey;
+}
+
+.auth-col1{
+	padding-right:20px;
+	height:50px;
+}
+
+.arrow-turn{
+	color:#003366;
+	font-size:20px;
 }
