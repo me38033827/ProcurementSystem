@@ -1,0 +1,43 @@
+.container-padding {
+	margin: 0px;
+	padding: 5px 30px 5px 30px;
+}
+
+.commodity-catalog-edit-left {
+	
+}
+
+.commodity-catalog-edit-left button {
+	height: 40px;
+	display: block;
+	margin-left: 30px;
+	font-size: 16px;
+	width: 140px;
+	text-align: left;
+	padding-left: 30px;
+	background-color: transparent;
+	border: 0;
+}
+
+#commodity-catalog-edit-left-not-clicked {
+	border-right: 2px solid #ebebeb;
+}
+
+#commodity-catalog-edit-left-clicked {
+	border-bottom: 2px solid #ebebeb;
+	border-top: 2px solid #ebebeb;
+	border-left: 2px solid #428bca;
+	border-right: 4px solid white;
+}
+
+.table-bottom-btn {
+	padding-top: 20px;
+}
+
+.border-bottom-grey {
+	border-bottom: 2px solid #ebebeb;
+}
+
+.border-right-grey {
+
+}

@@ -298,14 +298,7 @@
 								<td>2.1 妇女所有企业证书</td>
 								<td></td>
 							</tr>
-							<tr class="searching-tab-row2">
-								<td>1.3 您有多少长期员工</td>
-								<td><input class="form-control input" /></td>
-							</tr>
-							<tr class="searching-tab-row2">
-								<td>1.3 您有多少长期员工</td>
-								<td><input class="form-control input" /></td>
-							</tr>
+
 						</table>
 					</div>
 				</div>
