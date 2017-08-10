@@ -3,10 +3,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>公司概要－营销</title>
-<%@include file="../other/header1.jsp"%>
-<%@include file="../other/header2.jsp"%>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>公司概要－营销</title>
+	<link href="../editor/themes/simple/simple.css"/>
+	<%@include file="../other/header1.jsp"%>
+	<%@include file="../other/header2.jsp"%>
+	<script charset="utf-8" src="../editor/kindeditor-all.js"></script>
+	<script charset="utf-8" src="../editor/kindeditor-all-min.js"></script>
+	<script charset="utf-8" src="../editor/lang/zh-CN.js"></script>
+	
+	<script>
+		var editor;
+		   KindEditor.ready(function(K) {
+		           editor = K.create('#editor_id', {
+		                   themeType : 'simple'
+		           });
+		   });
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -38,236 +51,142 @@
 						</div>
 						
 						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">商业信息</a>
+							<a class="standard-subtitle-main">标准概要的特点</a>
+						</div>
+						
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-main">社交网络链接</a>
+						</div>
+						
+						<div class="standard-subsubtitle-d">
+							<a class="standard-subsubtitle-description">向社交媒体渠道添加链接，以便采购商与贵公司接洽。</a>
 						</div>
 						
 						<div>
-							<table>
-								<tr class="row-standard">
-									<td class="col-standard1">成立年份：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">员工数量：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1 bold">年营业额：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option></option>
-												<option>10,000,000CNY以上</option>
-										</select>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">股票交易代码：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
-								</tr>
-							</table>
+							<img id="linkedin" src="../assets/img/linkedin.jpg">
+							<a id="linkedin-web">linkedin.com/</a>
+							<input id="linkedin-input" class="form-control input"/>
 						</div>
 						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">财务信息</a>
+						<div class="adjust-10"></div>
+						
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-main">公司说明</a>
 						</div>
 						
-						<div>
-							<table>
-								<tr class="row-standard">
-									<td class="col-standard1">供应商法律形式：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option></option>
-												<option>＊＊＊＊＊＊＊＊＊</option>
-										</select>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">D-U-N-S编号：</td>
-									<td class="col-standard2"></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">全球位置码：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
-								</tr>
-							</table>
+						<div class="standard-subsubtitle-d">
+							<a class="standard-subsubtitle-description">在“基本概要”页面上输入完整的公司说明而不是简短的说明，使采购商能够更全面地了解贵公司。</a>
 						</div>
+						
+						<textarea id="editor_id" name="content" style="width:700px;height:300px;">
+						</textarea>
+						
+						<div class="adjust-10"></div>
+						<div class="adjust-10"></div>
+						
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-main">D&B提供的信用和风险信息</a>
+						</div>
+						
+						<div class="standard-subsubtitle-d">
+							<a class="standard-subsubtitle-description">向您的提案请求响应添加Dun&Bradstree信用评分和风险评分，以便采购商将您识别为合资格的伙伴。</a><br>
+							<a class="standard-subsubtitle-description">D&B D-U-N-S编号 ｜</a> <a href="">添加</a>
+						</div>
+						
+						<div class="adjust-10"></div>
+						<div class="adjust-10"></div>
+						<div class="adjust-10"></div>
+						<div class="adjust-10"></div>
 						
 						
 						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">税务信息</a>
+							<a class="standard-subtitle-main">高级概要功能</a>
 						</div>
 						
-						<div>
-							<table>
-								<tr class="row-standard">
-									<td class="col-standard1">税款分类：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option>（无值）</option>
-												<option>＊＊＊＊＊＊＊＊＊＊＊＊＊</option>
-										</select>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">税款类型：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option>（无值）</option>
-												<option>＊＊＊＊＊＊＊</option>
-										</select>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">税务标识符：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a class="grey f-10 inline-b">不要输入短划线</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">地区税款标识符：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a class="grey f-10 inline-b">不要输入短划线</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">增值税标识符：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1"></td>
-									<td class="col-standard2">
-										<div class="checkbox inline-b">
-											<label> <input type="checkbox" class="checkboxes"
-												value="" />
-											</label>
-										</div>
-										<a class="black">已注册VAT</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">VAT注册文档：</td>
-									<td class="col-standard2">
-										<a class="black"><无文档></a><a href="">&nbsp;&nbsp;上传</a><br>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1"></td>
-									<td class="col-standard2">
-										<div class="checkbox inline-b">
-											<label> <input type="checkbox" class="checkboxes"
-												value="" />
-											</label>
-										</div>
-										<a class="black">完税清单</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">完税清单号：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">完税清单文档：</td>
-									<td class="col-standard2">
-										<a class="black"><无文档></a><a href="">&nbsp;&nbsp;上传</a><br>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">完税清单到期日期：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>
-									</td>
-								</tr>
-							</table>
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-main">公司徽标</a>
 						</div>
+						<div class="adjust-10"></div>
 						
-						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">股东</a>
-						</div>
-						
-						<div class="module">
-							<table class="table table-hover">
-								<tr class="standard-row1">
-									<td class="blue">
-										<label><input type="checkbox" class="checkboxes"value="" /></label>
-									</td>
-									<td>名称</td>
-									<td>股份百分比</td>
-									<td>类型</td>
-								</tr>
-								<tr>
-									<td class="no-item" colspan="4">无项目</td>
-								</tr>
-								<tr class="standard-row3">
-									<td colspan="4">
-										<button class="btn-w">编辑</button>
-										<button class="btn-w">删除</button>
-										｜
-										<button class="btn-w">创建</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">董事会</a>
-						</div>
-						
-						<div class="module">
-							<table class="table table-hover">
-								<tr class="standard-row1">
-									<td class="blue">
-										<label><input type="checkbox" class="checkboxes"value="" /></label>
-									</td>
-									<td>成员名称</td>
-									<td>公司名称</td>
-									<td>业务职称</td>
-								</tr>
-								<tr>
-									<td class="no-item" colspan="4">无项目</td>
-								</tr>
-								<tr class="standard-row3">
-									<td colspan="4">
-										<button class="btn-w">编辑</button>
-										<button class="btn-w">删除</button>
-										｜
-										<button class="btn-w">创建</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">企业类型</a>
-						</div>
 						<div class="row">
-							<div class="col-md-6">
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;中间商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;分包商／顾问</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;分销商／批发商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;政府／公共机构</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;制造商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;其他
-									&nbsp;<input class="form-control input inline-b"/>
-								</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;生产商</div>
+							<div class="col-md-2">
+								<img src="../assets/img/upload-img.jpg" id="upload-img"/>
 							</div>
-							<div class="col-md-6">
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;零售商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;销售代理／制造代表</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;服务提供商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;系统集成商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;运输／物流</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;公用事业</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;增值经销商</div>
+							<div class="col-md-10">
+								<a id="upload-desc" class="standard-subsubtitle-description">上载徽标，使其与公司简介一起显示。徽标必须是.gif文件，最大宽度为250像素，最大高度为250像素，最大大小为20kB。</a><br>
+								<a class="standard-subsubtitle-description inline-b">徽标文件：</a>
+								<input type="FILE" size="30" id="upload-file"><br>
+								<button id="upload-btn" class="btn-w">上传</button>
 							</div>
+						</div>
+						
+						<div class="adjust-10"></div>
+						
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-main">附件</a>
+						</div>
+					
+						<div class="standard-subsubtitle-d">
+							<a class="standard-subsubtitle-description">添加附件来展示贵公司，包括客户业务陈述、案例研究和认证。</a>
+						</div>
+						
+						<div id="upload-border">
+							<button class="btn-w right">上传</button>
+						</div>
+						
+						<div class="adjust-10"></div>
+						
+						<div class="standard-subsubtitle">
+							<a class="standard-subsubtitle-main">外部链接</a>
+						</div>
+					
+						<div class="standard-subsubtitle-d">
+							<a class="standard-subsubtitle-description">提供到其他网站的链接，以便采购商了解有关贵公司的更多信息。</a>
+						</div>
+						
+					
+						<div class="module">
+							<table class="table table-hover">
+								<tr class="standard-row1">
+									<td class="blue">URL</td>
+									<td class="blue">名称</td>
+									<td>类型</td>
+									<td class="blue">状态</td>
+								</tr>
+								<tr>
+									<td class="no-item" colspan="4">无项目</td>
+								</tr>
+								<tr class="standard-row3">
+									<td colspan="4">
+										<button class="btn-w">添加</button>
+									</td>
+								</tr>
+							</table>
+						</div>
+						
+						<div class="adjust-10"></div>
+						<div class="adjust-10"></div>
+						
+						<div class="standard-subtitle">
+							<a class="standard-subtitle-main">展示案例</a>
+						</div>
+						
+						<div class="module">
+							<table class="table table-hover">
+								<tr class="standard-row1">
+									<td class="blue">标题&#8595;</td>
+									<td class="blue">类别</td>
+									<td class="blue">说明</td>
+								</tr>
+								<tr>
+									<td class="no-item" colspan="3">无项目</td>
+								</tr>
+								<tr class="standard-row3">
+									<td colspan="3">
+										<button class="btn-w">创建</button>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>

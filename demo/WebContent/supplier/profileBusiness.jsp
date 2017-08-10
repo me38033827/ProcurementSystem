@@ -159,8 +159,7 @@
 									<td class="col-standard1"></td>
 									<td class="col-standard2">
 										<div class="checkbox inline-b">
-											<label> <input type="checkbox" class="checkboxes"
-												value="" />
+											<label> <input type="checkbox" value="" />
 											</label>
 										</div>
 										<a class="black">完税清单</a>
