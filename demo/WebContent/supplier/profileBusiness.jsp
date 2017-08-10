@@ -141,12 +141,8 @@
 								<tr class="row-standard">
 									<td class="col-standard1"></td>
 									<td class="col-standard2">
-										<div class="checkbox inline-b">
-											<label> <input type="checkbox" class="checkboxes"
-												value="" />
-											</label>
-										</div>
-										<a class="black">已注册VAT</a>
+										<input type="checkbox" id="chk-bus17" class="chk" /><label for="chk-bus17"></label>
+										<div class="inline-b"><table><tr><td><a class="black" >已注册VAT</a></td><tr></table></div>
 									</td>
 								</tr>
 								<tr class="row-standard">
@@ -158,11 +154,8 @@
 								<tr class="row-standard">
 									<td class="col-standard1"></td>
 									<td class="col-standard2">
-										<div class="checkbox inline-b">
-											<label> <input type="checkbox" value="" />
-											</label>
-										</div>
-										<a class="black">完税清单</a>
+										<input type="checkbox" id="chk-bus16" class="chk" /><label for="chk-bus16"></label>
+										<div class="inline-b"><table><tr><td><a class="black" >完税清单</a></td><tr></table></div>
 									</td>
 								</tr>
 								<tr class="row-standard">
@@ -194,18 +187,19 @@
 						<div class="module">
 							<table class="table table-hover">
 								<tr class="standard-row1">
-									<td class="blue">
+									<td>
 										<label><input type="checkbox" class="checkboxes"value="" /></label>
 									</td>
-									<td>名称</td>
-									<td>股份百分比</td>
-									<td>类型</td>
+									<td valign="middle">名称</td>
+									<td valign="bottom">股份百分比</td>
+									<td valign="bottom">类型</td>
 								</tr>
 								<tr>
 									<td class="no-item" colspan="4">无项目</td>
 								</tr>
 								<tr class="standard-row3">
 									<td colspan="4">
+										<a class="arrow-turn">&#8627;</a>
 										<button class="btn-w">编辑</button>
 										<button class="btn-w">删除</button>
 										｜
@@ -234,6 +228,7 @@
 								</tr>
 								<tr class="standard-row3">
 									<td colspan="4">
+										<a class="arrow-turn">&#8627;</a>
 										<button class="btn-w">编辑</button>
 										<button class="btn-w">删除</button>
 										｜
@@ -246,28 +241,68 @@
 						<div class="standard-subtitle">
 							<a class="standard-subtitle-main">企业类型</a>
 						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;中间商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;分包商／顾问</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;分销商／批发商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;政府／公共机构</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;制造商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;其他
-									&nbsp;<input class="form-control input inline-b" id="profile-other"/>
-								</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;生产商</div>
-							</div>
-							<div class="col-md-6">
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;零售商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;销售代理／制造代表</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;服务提供商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;系统集成商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;运输／物流</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;公用事业</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;增值经销商</div>
-							</div>
+						
+						<div>
+							<table class="fulltab">
+								<tr>
+									<td class="bus-col1"><input type="checkbox" id="chk-bus1" class="chk" /><label for="chk-bus1"></label>
+									</td>
+									<td class="bus-col2" valign="middle">中间商</td>
+									<td class="bus-col3"><input type="checkbox" id="chk-bus2" class="chk" /><label for="chk-bus2"></label>
+									</td>
+									<td class="bus-col4" valign="middle">零售商</td>
+								</tr>
+								<tr>
+									<td class="bus-col1"><input type="checkbox" id="chk-bus3" class="chk" /><label for="chk-bus3"></label>
+									</td>
+									<td class="bus-col2" valign="middle">分包商／顾问</td>
+									<td class="bus-col3"><input type="checkbox" id="chk-bus4" class="chk" /><label for="chk-bus4"></label>
+									</td>
+									<td class="bus-col4" valign="middle">销售代理／制造代表</td>
+								</tr>
+								<tr>
+									<td class="bus-col1"><input type="checkbox" id="chk-bus5" class="chk" /><label for="chk-bus5"></label>
+									</td>
+									<td class="bus-col2" valign="middle">分销商／批发商</td>
+									<td class="bus-col3"><input type="checkbox" id="chk-bus6" class="chk" /><label for="chk-bus6"></label>
+									</td>
+									<td class="bus-col4" valign="middle">服务提供商</td>
+								</tr>
+								<tr>
+									<td class="bus-col1"><input type="checkbox" id="chk-bus7" class="chk" /><label for="chk-bus7"></label>
+									</td>
+									<td class="bus-col2" valign="middle">政府／公共机构</td>
+									<td class="bus-col3"><input type="checkbox" id="chk-bus8" class="chk" /><label for="chk-bus8"></label>
+									</td>
+									<td class="bus-col4" valign="middle">系统集成商</td>
+								</tr>
+								<tr>
+									<td class="bus-col1"><input type="checkbox" id="chk-bus9" class="chk" /><label for="chk-bus9"></label>
+									</td>
+									<td class="bus-col2" valign="middle">制造商</td>
+									<td class="bus-col3"><input type="checkbox" id="chk-bus10" class="chk" /><label for="chk-bus10"></label>
+									</td>
+									<td class="bus-col4" valign="middle">运输／物流</td>
+								</tr>
+								<tr>
+									<td class="bus-col1"><input type="checkbox" id="chk-bus11" class="chk" /><label for="chk-bus11"></label>
+									</td>
+									<td class="bus-col2" valign="middle">其他<input class="form-control input inline-b" id="profile-other"/></td>
+									<td class="bus-col3"><input type="checkbox" id="chk-bus12" class="chk" /><label for="chk-bus12"></label>
+									</td>
+									<td class="bus-col4" valign="middle">公用事业</td>
+								</tr>
+								<tr>
+									<td class="bus-col1"><input type="checkbox" id="chk-bus13" class="chk" /><label for="chk-bus13"></label>
+									</td>
+									<td class="bus-col2" valign="middle">生产商</td>
+									<td class="bus-col3"><input type="checkbox" id="chk-bus14" class="chk" /><label for="chk-bus14"></label>
+									</td>
+									<td class="bus-col4" valign="middle">增值经销商</td>
+								</tr>
+							</table>
 						</div>
+						
 					</div>
 				</div>
 				

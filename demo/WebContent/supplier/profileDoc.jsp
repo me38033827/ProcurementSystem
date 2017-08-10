@@ -57,6 +57,7 @@
 								</tr>
 								<tr class="standard-row3">
 									<td colspan="5">
+										<a class="arrow-turn">&#8627;</a>
 										<button class="btn-w">新增</button>
 									</td>
 								</tr>
