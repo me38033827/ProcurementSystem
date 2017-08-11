@@ -41,15 +41,17 @@
 <!-- ECharts -->
 <script src="/demo/assets/js/echarts.common.min.js"></script>
 <!-- 标题及导航栏第一行 -->
-<div class="container" id="firstline-out"
-	style="width: 100%; padding: 0">
+<div class="container" id="firstline-out" style="width:100%; padding:0">
 	<div class="navbar navbar-inverse set-radius-zero" id="firstline">
-		<a id="page-name" class="left">供应商</a>
+		<a id="page-name" class="left">LOGO</a>
 
 		<!-- 首行靠右导航栏 -->
 		<div class="right" id="right-div">
-			<button id="firstline-help" style="width:70px">公司设置</button>
-			<button id="firstline-user" class="btn-h">用户：test</button>
+			<button id="firstline-icon">
+				<span class="glyphicon glyphicon-th" aria-hidden="true" id="firstline-grid"></span>
+			</button>
+			<a id="firstline-company">公司设置<span class="glyphicon glyphicon-triangle-bottom" style="height:10px; width:10px;" aria-hidden="true"></span></a>
+			<a id="firstline-supplier" class="btn-h">用户：L-8899</a>
 
 		</div>
 	</div>
