@@ -7,6 +7,17 @@
 <title>公司概要－认证</title>
 <%@include file="../other/header1.jsp"%>
 <%@include file="../other/header2.jsp"%>
+<script>
+	function check(id){
+		var element = "#"+id;
+		var content = "#"+id+"-content";
+		if($(element).prop('checked')==true){
+			$(content).show();
+		}else{
+			$(content).hide();
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="container">
@@ -41,238 +52,174 @@
 							<a class="standard-subtitle-main">认证</a>
 						</div>
 						
-						<div class="title-description">
-							<a class="black">采购组织可以在贵公司概要中看到这些资格条件，在寻找新供应商时也可能会搜索这些信息。</a>
-						</div>
-						
 						<div>
 							<table>
-								<tr class="row-standard">
-									<td class="col-standard1">成立年份：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">员工数量：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1 bold">年营业额：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option></option>
-												<option>10,000,000CNY以上</option>
-										</select>
+								<tr>
+									<td class="auth-col1"><input type="checkbox" id="chk-auth1" class="chk" onclick="check('chk-auth1');"  checked/><label for="chk-auth1"></label></td>
+									<td class="auth-col2">
+										<a class="auth-1">可持续发展计划</a>
+										<br>
+										<a class="auth-2">贵公司已实施以下其中一种类别的可持续发展计划：计划、产品和服务、能源、碳、运输和其他。</a>
+										
 									</td>
 								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">股票交易代码：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
-								</tr>
-							</table>
-						</div>
-						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">财务信息</a>
-						</div>
-						
-						<div>
-							<table>
-								<tr class="row-standard">
-									<td class="col-standard1">供应商法律形式：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option></option>
-												<option>＊＊＊＊＊＊＊＊＊</option>
-										</select>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">D-U-N-S编号：</td>
-									<td class="col-standard2"></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">全球位置码：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
-								</tr>
-							</table>
-						</div>
-						
-						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">税务信息</a>
-						</div>
-						
-						<div>
-							<table>
-								<tr class="row-standard">
-									<td class="col-standard1">税款分类：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option>（无值）</option>
-												<option>＊＊＊＊＊＊＊＊＊＊＊＊＊</option>
-										</select>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">税款类型：</td>
-									<td class="col-standard2">
-										<select id="my-select">
-												<option>（无值）</option>
-												<option>＊＊＊＊＊＊＊</option>
-										</select>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">税务标识符：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a class="grey f-10 inline-b">不要输入短划线</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">地区税款标识符：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a class="grey f-10 inline-b">不要输入短划线</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">增值税标识符：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1"></td>
-									<td class="col-standard2">
-										<div class="checkbox inline-b">
-											<label> <input type="checkbox" class="checkboxes"
-												value="" />
-											</label>
+								<tr  id="chk-auth1-content" >
+									<td></td>
+									<td>
+										<div>
+											<table>
+												<tr>
+													<td class="auth-col1"><input type="checkbox" id="chk-auth1-1" class="chk" onclick="check('chk-auth1-1');"/><label for="chk-auth1-1"></label></td>
+													<td class="auth-col2">
+														<a class="auth-1">规划</a>
+														<br>
+														<a class="auth-2">贵公司已创建书面计划，记录你们如何强调并实施可持续商业活动。选择所有适用项。</a>
+													</td>
+												</tr>
+												<tr  id="chk-auth1-1-content" hidden="hidden">
+													<td></td>
+													<td>
+														<div>
+															<table>
+																<tr>
+																	<td class="auth-col1"><input type="checkbox" id="chk-auth1-1-1" class="chk"/><label for="chk-auth1-1-1"></label></td>
+																	<td class="auth-col2">环境和社会表现的正式认可</td>
+																</tr>
+																<tr>
+																	<td class="auth-col1"><input type="checkbox" id="chk-auth1-1-2" class="chk"/><label for="chk-auth1-1-2"></label></td>
+																	<td class="auth-col2">公共环境或可持续发展声明或政策</td>
+																</tr>
+																<tr>
+																	<td class="auth-col1"><input type="checkbox" id="chk-auth1-1-1" class="chk"/><label for="chk-auth1-1-1"></label></td>
+																	<td class="auth-col2">可持续发展报告</td>
+																</tr>
+																<tr>
+																	<td class="auth-col1"><input type="checkbox" id="chk-auth1-1-2" class="chk"/><label for="chk-auth1-1-2"></label></td>
+																	<td class="auth-col2">公开报告</td>
+																</tr>
+																<tr>
+																	<td class="auth-col1"><input type="checkbox" id="chk-auth1-1-1" class="chk"/><label for="chk-auth1-1-1"></label></td>
+																	<td class="auth-col2">ISO 14001环境管理系统（EMS）</td>
+																</tr>
+															</table>
+														</div>
+													</td>
+												</tr>
+												
+												<tr>
+													<td class="auth-col1"><input type="checkbox" id="chk-auth1-2" class="chk"/><label for="chk-auth1-2"></label></td>
+													<td class="auth-col2">
+														<a class="auth-1">产品和服务</a>
+														<br>
+														<a class="auth-2">贵公司是一家产品或服务提供商，倡导以可度量的方式减少对环境的负面影响。选择所有适用项。</a>
+													</td>
+												</tr>
+												<tr>
+													<td class="auth-col1"><input type="checkbox" id="chk-auth1-3" class="chk"/><label for="chk-auth1-3"></label></td>
+													<td class="auth-col2">
+														<a class="auth-1">能源</a>
+														<br>
+														<a class="auth-2">贵公司致力于实现能源效率或再生能源的计划。</a>
+													</td>
+												</tr>
+												<tr>
+													<td class="auth-col1"><input type="checkbox" id="chk-auth1-4" class="chk" onclick="check('chk-auth1-4');"  checked/><label for="chk-auth1-4"></label></td>
+													<td class="auth-col2">
+														<a class="auth-1">碳排放</a>
+														<br>
+														<a class="auth-2">贵公司致力于实现碳报告、碳减排和碳抵消的计划。</a>
+													</td>
+												</tr>
+												<tr  id="chk-auth1-4-content">
+													<td></td>
+													<td>
+														<div>
+															<table>
+																<tr>
+																	<td class="auth-col1"><input type="checkbox" id="chk-auth1-4-1" class="chk"  checked/><label for="chk-auth1-4-1"></label></td>
+																	<td class="auth-col2">减少温室气体排放所采取的有节制的措施</td>
+																</tr>
+																<tr>
+																	<td class="auth-col1"><input type="checkbox" id="chk-auth1-4-1" class="chk"/><label for="chk-auth1-4-1"></label></td>
+																	<td class="auth-col2">向碳披露项目(CDP)报告GHG和气候变化策略</td>
+																</tr>
+															</table>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td class="auth-col1"><input type="checkbox" id="chk-auth1-5" class="chk"/><label for="chk-auth1-5"></label></td>
+													<td class="auth-col2">
+														<a class="auth-1">运输</a>
+														<br>
+														<a class="auth-2">贵公司致力于实现运输和物流或车队管理效率的计划。</a>
+													</td>
+												</tr>
+												<tr>
+													<td class="auth-col1"><input type="checkbox" id="chk-auth1-6" class="chk"/><label for="chk-auth1-6"></label></td>
+													<td class="auth-col2">
+														<a class="auth-1">其他</a>
+														<br>
+														<a class="auth-2">贵公司致力于实现其他可持续发展计划，例如水资源利用和固废量减少、制造水平的社会责任与社区参与。选择所有适用项。</a>
+													</td>
+												</tr>
+											</table>
 										</div>
-										<a class="black">已注册VAT</a>
 									</td>
 								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">VAT注册文档：</td>
-									<td class="col-standard2">
-										<a class="black"><无文档></a><a href="">&nbsp;&nbsp;上传</a><br>
+								
+								<tr>
+									<td class="auth-col1"><input type="checkbox" id="chk-auth2" class="chk" /><label for="chk-auth2"></label></td>
+									<td class="auth-col2">
+										<a class="auth-1">小型劣势企业</a>
+										<br>
+										<a class="auth-2">您的企业已获得SDB认证、8（a）认证、HUBZone认证，或是被省政府部门认可为小型劣势企业。</a>
 									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1"></td>
-									<td class="col-standard2">
-										<div class="checkbox inline-b">
-											<label> <input type="checkbox" class="checkboxes"
-												value="" />
-											</label>
-										</div>
-										<a class="black">完税清单</a>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">完税清单号：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">完税清单文档：</td>
-									<td class="col-standard2">
-										<a class="black"><无文档></a><a href="">&nbsp;&nbsp;上传</a><br>
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">完税清单到期日期：</td>
-									<td class="col-standard2">
-										<input class="form-control input inline-b"/>
-									</td>
-								</tr>
-							</table>
-						</div>
-						
-						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">股东</a>
-						</div>
-						
-						<div class="module">
-							<table class="table table-hover">
-								<tr class="standard-row1">
-									<td class="blue">
-										<label><input type="checkbox" class="checkboxes"value="" /></label>
-									</td>
-									<td>名称</td>
-									<td>股份百分比</td>
-									<td>类型</td>
 								</tr>
 								<tr>
-									<td class="no-item" colspan="4">无项目</td>
-								</tr>
-								<tr class="standard-row3">
-									<td colspan="4">
-										<button class="btn-w">编辑</button>
-										<button class="btn-w">删除</button>
-										｜
-										<button class="btn-w">创建</button>
+									<td class="auth-col1"><input type="checkbox" id="chk-auth3" class="chk" /><label for="chk-auth3"></label></td>
+									<td class="auth-col2">
+										<a class="auth-1">女性所有的企业</a>
+										<br>
+										<a class="auth-2">贵公司至少有51％由一位或多位妇女所有，这些妇女行使决策权，或积极参与公司的的日常管理。</a>
 									</td>
-								</tr>
-							</table>
-						</div>
-						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">董事会</a>
-						</div>
-						
-						<div class="module">
-							<table class="table table-hover">
-								<tr class="standard-row1">
-									<td class="blue">
-										<label><input type="checkbox" class="checkboxes"value="" /></label>
-									</td>
-									<td>成员名称</td>
-									<td>公司名称</td>
-									<td>业务职称</td>
 								</tr>
 								<tr>
-									<td class="no-item" colspan="4">无项目</td>
+									<td class="auth-col1"><input type="checkbox" id="chk-auth4" class="chk" /><label for="chk-auth4"></label></td>
+									<td class="auth-col2">
+										<a class="auth-1">少数族裔所有的企业</a>
+										<br>
+										<a class="auth-2">贵公司至少有51％由一位或多位少数裔市民所有。在公有企业中，至少一位或多位这样的个人拥有51%的股份，一位或多位这样的个人控制企业的管理和日常运作。</a>
+									</td>
 								</tr>
-								<tr class="standard-row3">
-									<td colspan="4">
-										<button class="btn-w">编辑</button>
-										<button class="btn-w">删除</button>
-										｜
-										<button class="btn-w">创建</button>
+								<tr>
+									<td class="auth-col1"><input type="checkbox" id="chk-auth5" class="chk" /><label for="chk-auth5"></label></td>
+									<td class="auth-col2">
+										<a class="auth-1">退伍军人所有的企业</a>
+										<br>
+										<a class="auth-2">贵公司至少有51％由一位在无损名誉的条件下退役的军人、海军或空军拥有，或至少有51%股份由一位被政府视为伤残退伍军人拥有。</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="auth-col1"><input type="checkbox" id="chk-auth6" class="chk" /><label for="chk-auth6"></label></td>
+									<td class="auth-col2">
+										<a class="auth-1">ISO认证</a>
+										<br>
+										<a class="auth-2">国际标准化组织(ISO)系列标准与质量管理系统有关，旨在帮助组织确保符合客户和其他利益相关者的需求。ISO发布的标准可通过国家标准机构获得。</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="auth-col1"><input type="checkbox" id="chk-auth7" class="chk" /><label for="chk-auth7"></label></td>
+									<td class="auth-col2">
+										<a class="auth-1">未认证</a>
+										<br>
+										<a class="auth-2">贵公司无法提供上面列出的任何一项认证。</a>
 									</td>
 								</tr>
 							</table>
 						</div>
 						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">企业类型</a>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;中间商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;分包商／顾问</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;分销商／批发商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;政府／公共机构</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;制造商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;其他
-									&nbsp;<input class="form-control input inline-b" id="profile-other"/>
-								</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;生产商</div>
-							</div>
-							<div class="col-md-6">
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;零售商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;销售代理／制造代表</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;服务提供商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;系统集成商</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;运输／物流</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;公用事业</div>
-								<div class="profile-business-type"><label><input type="checkbox" class="checkboxes"value="" /></label>&nbsp;增值经销商</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 				
