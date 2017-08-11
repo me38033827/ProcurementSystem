@@ -426,7 +426,6 @@ input {
 	float: left;
 	height: 2.142857em;
 }
-
 .secondline {
 	float: right;
 	height: 2.142857em;
@@ -436,12 +435,12 @@ input {
 }
 
 .secondline-right {
-	width: 8.428571em;
-	font-size: 1em;
+	width: 118px;
+	font-size: 14px;
 }
 
 .dropdown-menu {
-	width: 8.571428em;
+	width: 120px;
 }
 
 #thirdline-out {
@@ -1722,4 +1721,8 @@ body.a-dashbrd-page-bg {
 #profile-contact-out{
 	overflow-x: scroll;
 	max-height: 240px;
+}
+
+.my-dropdown{
+	width:120px
 }
