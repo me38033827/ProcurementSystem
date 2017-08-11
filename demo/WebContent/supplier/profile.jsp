@@ -88,16 +88,16 @@
 									<td class="col-standard2"><input class="form-control input" value="北京"/></td>
 								</tr>
 								<tr class="row-standard">
-									<td class="col-standard1">地址1：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
+									<td class="col-standard1">＊地址1：</td>
+									<td class="col-standard2"><input style="width:300px;" class="form-control input" value="北京市海淀区上地西路6号联想研究所"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">地址2：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
+									<td class="col-standard2"><input style="width:300px;" class="form-control input"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">地址3：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
+									<td class="col-standard2"><input style="width:300px;" class="form-control input"/></td>
 								</tr>
 							</table>
 						</div>

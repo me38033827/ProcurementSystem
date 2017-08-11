@@ -186,8 +186,8 @@
 						<div class="module">
 							<table class="table table-hover">
 								<tr class="standard-row1">
-									<td>
-										<label><input type="checkbox" class="checkboxes"value="" /></label>
+									<td style="padding:5px;">
+										<input type="checkbox" id="chk-bus15" class="chk" /><label for="chk-bus15"></label>
 									</td>
 									<td valign="middle">名称</td>
 									<td valign="bottom">股份百分比</td>
@@ -215,8 +215,8 @@
 						<div class="module">
 							<table class="table table-hover">
 								<tr class="standard-row1">
-									<td class="blue">
-										<label><input type="checkbox" class="checkboxes"value="" /></label>
+									<td style="padding:5px;">
+										<input type="checkbox" id="chk-bus18" class="chk" /><label for="chk-bus18"></label>
 									</td>
 									<td>成员名称</td>
 									<td>公司名称</td>

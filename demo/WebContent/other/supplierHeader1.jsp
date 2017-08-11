@@ -47,7 +47,7 @@
 
 		<!-- 首行靠右导航栏 -->
 		<div class="right" id="right-div">
-			<button id="firstline-icon">
+			<button id="firstline-icon" disabled>
 				<span class="glyphicon glyphicon-th" aria-hidden="true" id="firstline-grid"></span>
 			</button>
 			<a id="firstline-company">公司设置<span class="glyphicon glyphicon-triangle-bottom" style="height:10px; width:10px;" aria-hidden="true"></span></a>
