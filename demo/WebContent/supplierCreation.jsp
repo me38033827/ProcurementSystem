@@ -115,7 +115,7 @@
 						</tr>
 
 						<tr>
-							<td class="supplier-crea-tab-col1" style="text-align: left;">地区税款标识符:</td>
+							<td class="supplier-crea-tab-col1">地区税款标识符：</td>
 							<td class="supplier-crea-tab-col2"><input
 								class="form-control input" /></td>
 						</tr>
@@ -243,36 +243,29 @@
 					</tr>
 					<tr class="searching-tab-row2">
 						<td>1.1 公司名称</td>
-						<td><input class="form-control input" /></td>
+						<td>HP</td>
 					</tr>
 					<tr class="searching-tab-row2">
 						<td>1.2 请简要介绍一下贵公司</td>
-						<td><textarea class="form-control" id="pr-textarea"></textarea></td>
+						<td>教育培训</td>
 					</tr>
 					<tr class="searching-tab-row2">
 						<td>1.3 您有多少长期员工</td>
-						<td><input class="form-control input" /></td>
+						<td></td>
 					</tr>
 					<tr class="searching-tab-row2">
-						<td>1.3 您有多少长期员工</td>
-						<td><input class="form-control input" /></td>
+						<td>1.3 贵公司创办于哪一年</td>
+						<td></td>
 					</tr>
 					<tr class="searching-tab-row2">
-						<td>1.3 您有多少长期员工</td>
-						<td><input class="form-control input" /></td>
+						<td>2 所有权信息</td>
+						<td></td>
 					</tr>
 					<tr class="searching-tab-row2">
-						<td>1.3 您有多少长期员工</td>
-						<td><input class="form-control input" /></td>
+						<td>2.1 妇女所有企业证书</td>
+						<td></td>
 					</tr>
-					<tr class="searching-tab-row2">
-						<td>1.3 您有多少长期员工</td>
-						<td><input class="form-control input" /></td>
-					</tr>
-					<tr class="searching-tab-row2">
-						<td>1.3 您有多少长期员工</td>
-						<td><input class="form-control input" /></td>
-					</tr>
+
 				</table>
 			</div>
 			<div>
@@ -296,8 +289,9 @@
 			<!-- 弹窗第一行  -->
 			<div class="row">
 				<div class="col-md-7">
-					<div>选择供应的商品</div>
-					<div>添加到当前所选项</div>
+					<div class="small-window-title">选择供应的商品</div>
+					<br />
+					<div class="small-window-subtitle">添加到当前所选项</div>
 					<div>
 						<div class="inline-b left" id="search-service"
 							style="postion: relative; left: 20px;">
@@ -318,7 +312,10 @@
 					</div>
 				</div>
 				<div class="col-md-5">
-					<div>当前所选</div>
+					<a href="javascript:;" title="关闭" class="close">×</a> <br /> <br />
+					<br />
+					<div class="small-window-subtitle">当前所选</div>
+
 				</div>
 			</div>
 			<!-- 弹窗第二行  -->
@@ -328,107 +325,112 @@
 						<table class="table table-hover">
 							<tr class="calendar-head">
 								<th width="5%"><input type="checkbox" value="option1"></th>
-								<th width="75%">名称&#8595;</th>
+								<th width="75%">名称&#8593;</th>
 								<th width="20%">标识符</th>
 							</tr>
 						</table>
 						<div id="sourcing-tab" style="border-bottom: 2px solid #ddd">
 							<table class="table table-hover">
+								<!-- 顶级第一行 -->
 								<tr>
 									<td width="5%"><input type="checkbox" value="option1"></td>
-									<td width="75%">Building and Facility Construction and
-										Maintenance Services</td>
-									<td width="20%">72000000</td>
+									<td width="75%">&nbsp;&nbsp;生产相关的服务测试</td>
+									<td width="20%"></td>
 								</tr>
+								<!-- 顶级第二行 -->
 								<tr>
 									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
+									<td><a href="#"><span
+											class="glyphicon glyphicon-triangle-bottom"
+											aria-hidden="true"></span></a>所有商品</td>
+									<td>ALL</td>
 								</tr>
+								<!-- 顶级第三行 -->
 								<tr>
 									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;"
+										id="72000000"><span
+											class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+										Building and Facility Construction and Maintenance Services
+									</td>
 									<td>72000000</td>
 								</tr>
-								<tr>
-									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
+								<tr id="72000000-children">
+									<td colspan="3" style="padding: 0px;"><table
+											class="table-nest table table-hover">
+											<tr>
+												<td width="10%"><input type="checkbox" value="option1"></td>
+												<td width="75%">Construction & Project Mgt 11%-Real
+													estate rental serivce-china only</td>
+												<td width="20%">72000001</td>
+											</tr>
+											<tr>
+												<td><input type="checkbox" value="option1"></td>
+												<td>Construction & Project Mgt 17%-Hardware-china only</td>
+												<td>72000002</td>
+											</tr>
+											<tr>
+												<td><input type="checkbox" value="option1"></td>
+												<td>Construction & Project Mgt 6%-Consulting fee-china
+													only</td>
+												<td>72000003</td>
+											</tr>
+										</table></td>
 								</tr>
+								<!-- 顶级第五行 -->
 								<tr>
 									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span
+											class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+										Business Services
+									</td>
+									<td>Business Services</td>
 								</tr>
+								<!-- 顶级第六行 -->
 								<tr>
 									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span
+											class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+										Editorial and Design and Graphic and Fine Art Services
+									</td>
+									<td>82000000</td>
 								</tr>
+								<!-- 顶级第七行 -->
 								<tr>
 									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span
+											class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+										Engineering and Research and Technology Based Services
+									</td>
+									<td>81000000</td>
 								</tr>
+								<!-- 顶级第八行 -->
 								<tr>
 									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span
+											class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+										Entertainment Svcs
+									</td>
+									<td>90000000</td>
 								</tr>
+								<!-- 顶级第九行 -->
 								<tr>
 									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span
+											class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+										Environmental Services
+									</td>
+									<td>77000000</td>
 								</tr>
+								<!-- 顶级第十行 -->
 								<tr>
 									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" value="option1"></td>
-									<td>Building and Facility Construction and Maintenance
-										Services</td>
-									<td>72000000</td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span
+											class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a>
+										Financial Svcs
+
+									</td>
+									<td>84000000</td>
 								</tr>
 							</table>
 						</div>
@@ -451,23 +453,54 @@
 				</div>
 			</div>
 		</div>
+		<!--第三行  -->
+		<div class="row">
+			<div class="col-md-12">
+				<button class="btn-b small-window-button"
+					onclick="window.location.href='supplierCreation1.jsp#position'">完成</button>
+			</div>
+		</div>
 	</div>
 	<div class="theme-popover-mask"></div>
 
 	<%@ include file="other/footer.jsp"%>
 	<!-- CONTENT-WRAPPER SECTION END-->
 	<script>
-		jQuery(document).ready(function($) {
-			$('.choose').click(function() {
-				$('.theme-popover-mask').fadeIn(100);
-				$('.theme-popover').slideDown(200);
-			})
-			$('.theme-poptit .close').click(function() {
-				$('.theme-popover-mask').fadeOut(100);
-				$('.theme-popover').slideUp(200);
-			})
+		jQuery(document)
+				.ready(
+						function($) {
+							$('.choose').click(function() {
+								$('.theme-popover-mask').fadeIn(100);
+								$('.theme-popover').slideDown(200);
+							})
 
-		})
+							$('.popover-container .close').click(function() {
+								$('.theme-popover-mask').fadeOut(100);
+								$('.theme-popover').slideUp(200);
+							})
+							$('#test').click(function() {
+								$(this).hide();
+							});
+							$('#72000000-children').hide();
+							$('#72000000')
+									.click(
+											function() {
+												$('#72000000-children')
+														.toggle();
+												if ($('#72000000').children()
+														.attr("class") == "glyphicon glyphicon-triangle-right")
+													$('#72000000')
+															.children()
+															.attr("class",
+																	"glyphicon glyphicon-triangle-bottom");
+												else {
+													$('#72000000')
+															.children()
+															.attr("class",
+																	"glyphicon glyphicon-triangle-right");
+												}
+											})
+						})
 	</script>
 
 </body>

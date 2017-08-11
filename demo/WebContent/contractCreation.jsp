@@ -10,9 +10,6 @@
 <!-- 页面整体宽度：1320px -->
 <body>
 	<div class="container" id="whole-container">
-
-
-
 		<!-- 主要内容 -->
 		<div id="searching-title-out">
 			<a class="inline-b black" id="searching-title">合同</a> <a

@@ -21,19 +21,10 @@ rel='stylesheet' type='text/css' />
 <link href="/demo/assets/css/order.css" rel="stylesheet" />
 <link href="/demo/assets/css/approval.css" rel="stylesheet" />
 <link href="/demo/assets/css/catalog.css" rel="stylesheet" />
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 <link href="/demo/assets/css/detail.css" rel="stylesheet" />
 <link href="/demo/assets/css/settlement.css" rel="stylesheet" />
 <link href="/demo/assets/css/relevant.css" rel="stylesheet" />
-
-
-
-<link href="/demo/assets/css/detail.css" rel="stylesheet" />
-<link href="/demo/assets/css/settlement.css" rel="stylesheet" />
-<link href="/demo/assets/css/relevant.css" rel="stylesheet" />
+<link href="/demo/assets/css/standard.css" rel="stylesheet" />
 
 <script src="/demo/assets/js/echarts.common.min.js"></script>
 <!-- CORE JQUERY  -->
@@ -63,7 +54,7 @@ style="width: 100%; padding: 0">
 			id="firstline-print"></span>
 			<button id="firstline-help">帮助</button>
 			<button id="firstline-user" class="btn-h" >用户：test</button>
-
+		</button>
 		</div>
 	</div>
 </div>
