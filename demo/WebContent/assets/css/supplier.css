@@ -34,6 +34,10 @@
 	padding-top: 20px;
 }
 
+.commodity-ending{
+	border-top: 2px solid #ebebeb;
+}
+
 .border-bottom-grey {
 	border-bottom: 2px solid #ebebeb;
 }

@@ -1,3 +1,8 @@
+/* button */
+button{
+	outline:none;
+}
+
 /* tag */
 .tag-line{
 	margin-top:10px;
@@ -331,4 +336,75 @@
 .arrow-turn{
 	color:#003366;
 	font-size:20px;
+}
+
+/* supplier test */
+.detail-info{
+	color:#428bca;
+	margin-top:20px;
+	margin-right:10px;
+}
+
+.commo-searching{
+	background-color:#ebebeb;
+	height:44px;
+	width:100%;
+	font-size:16px;
+	padding-top:8px;
+	padding-left:20px;
+}
+.commo-amount{
+	width:60px;
+	height:30px;
+	text-align:center;
+}
+
+.commo-cart-r{
+	border:1px solid #ddd;
+	height:80px;
+	width:100%;
+	margin-top:20px;
+	padding-top:10px;
+	padding-left:10px;
+}
+
+.commo-abstract{
+	padding-top:0;
+	margin-top:0;
+	font-size:15px;
+}
+
+#commo-info{
+	padding-bottom:10px;
+	margin-bottom:10px;
+}
+
+.cart-info-out{
+	border-top:2px solid #ddd;
+	padding-top:10px;
+}
+.cart-info{
+	background-color:#ebebeb;
+	height:190px;
+	width:33.33%;
+	float:left;
+	border-right:10px solid white;
+	padding:10px 20px;
+}
+
+.cart-info-title{
+	border-bottom:2px solid #ddd;
+}
+
+.commo-summary{
+	margin-top:20px;
+}
+
+#commo-summary{
+	border:1px solid #ddd;
+	background-color:#ebebeb;
+	height:50px;
+	padding:10px;
+	width:200px;
+	color:grey;
 }
