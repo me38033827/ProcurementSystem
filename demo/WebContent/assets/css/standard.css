@@ -43,6 +43,12 @@ button{
 	color:#38383a;
 	margin-top:16px;
 }
+.standard-subtitle-main{
+	display:inline-block;
+	font-size:15px;
+	color:#38383a;
+	margin-top:20px;
+}
 
 .standard-title-r{
 	float:right;
