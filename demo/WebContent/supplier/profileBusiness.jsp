@@ -5,8 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>公司概要－商务</title>
-<%@include file="../other/header1.jsp"%>
-<%@include file="../other/header2.jsp"%>
+<%@include file="../other/supplierHeader1.jsp"%>
 </head>
 <body>
 	<div class="container">
@@ -121,8 +120,8 @@
 								<tr class="row-standard">
 									<td class="col-standard1">税务标识符：</td>
 									<td class="col-standard2">
-										<input class="form-control input inline-b"/>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a class="grey f-10 inline-b">不要输入短划线</a>
+										<input class="inline-b form-control input"/>&nbsp;&nbsp;&nbsp;&nbsp;
+										<a class="inline-b grey f-10">不要输入短划线</a>
 									</td>
 								</tr>
 								<tr class="row-standard">

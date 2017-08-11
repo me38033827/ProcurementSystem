@@ -194,10 +194,6 @@
 	border-color: #285e8e;
 }
 
-#firstline-help :hover {
-	color: #428bca;
-}
-
 select {
 	border: 1px solid #428bca;
 	background-color: white;
@@ -336,7 +332,7 @@ input {
 	background-color: #003366;
 	color: white;
 	border: none;
-	height: 4.285714em;
+	height: 64px;
 }
 
 #page-name {
@@ -350,20 +346,26 @@ input {
 
 #right-div {
 	padding-right: 20px;
+	margin-top:10px;
 }
 
-#firstline-search, #firstline-print, #firstline-help, #firstline-user {
+#firstline-search, #firstline-print, #firstline-help, #firstline-user, #firstline-company, #firstline-supplier, #firstline-grid {
 	border: none;
 	background-color: #003366;
-	color: white;
 }
+
+#firstline-search, #firstline-print, #firstline-help, #firstline-user{
+	color:white;
+}
+
+
 
 #firstline-icon {
 	border: 0;
 	background-color: #003366;
 }
 
-#firstline-search {
+#firstline-search,#firstline-grid {
 	width: 70px;
 }
 
@@ -371,12 +373,22 @@ input {
 	width: 30px;
 }
 
-#firstline-help {
+#firstline-help{
 	width: 60px;
 	height: 30px;
 }
 
-#firstline-user {
+#firstline-company{
+	width:100px;
+	height:30px;
+}
+
+#firstline-supplier, #firstline-company,#firstline-grid{
+	color:#286ea6;
+	display:inline-block;
+}
+
+#firstline-user, #firstline-supplier {
 	width: 100px;
 	height: 30px;
 }
@@ -1535,7 +1547,7 @@ input {
 }
 
 .secondline-left:hover, #secondline-right-title:hover, #firstline-icon:hover,
-#firstline-help:hover, #firstline-user:hover {
+#firstline-help:hover, #firstline-user:hover{
 	color: #428bca;
 }
 

@@ -5,8 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>公司概要</title>
-<%@include file="../other/header1.jsp"%>
-<%@include file="../other/header2.jsp"%>
+<%@include file="../other/supplierHeader1.jsp"%>
 </head>
 <body>
 	<div class="container">
@@ -45,7 +44,7 @@
 							<table>
 								<tr class="row-standard">
 									<td class="col-standard1">＊公司名称：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
+									<td class="col-standard2"><input class="form-control input" value="联想（北京）有限公司"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">其他名称（如果有）：</td>
@@ -78,7 +77,7 @@
 							<table>
 								<tr class="row-standard">
 									<td class="col-standard1">＊邮政编码：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
+									<td class="col-standard2"><input class="form-control input" value="101311"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">省：</td>
@@ -86,7 +85,7 @@
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">＊城市：</td>
-									<td class="col-standard2"><input class="form-control input"/></td>
+									<td class="col-standard2"><input class="form-control input" value="北京"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">地址1：</td>

@@ -6,8 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>公司概要－营销</title>
 	<link href="../editor/themes/simple/simple.css"/>
-	<%@include file="../other/header1.jsp"%>
-	<%@include file="../other/header2.jsp"%>
+	<%@include file="../other/supplierHeader1.jsp"%>
 	<script charset="utf-8" src="../editor/kindeditor-all.js"></script>
 	<script charset="utf-8" src="../editor/kindeditor-all-min.js"></script>
 	<script charset="utf-8" src="../editor/lang/zh-CN.js"></script>

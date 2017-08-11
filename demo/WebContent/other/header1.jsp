@@ -38,23 +38,23 @@ rel='stylesheet' type='text/css' />
 <script src="/demo/assets/js/custom.js"></script>
 
 <!-- 标题及导航栏第一行 -->
-<div class="container" id="firstline-out"
-style="width: 100%; padding: 0">
-<div class="navbar navbar-inverse set-radius-zero" id="firstline">
-	<a id="page-name" class="left">LOGO</a>
-
-	<!-- 首行靠右导航栏 -->
-	<div class="right" id="right-div">
-		<button id="firstline-icon">
-			<span class="glyphicon glyphicon-search" aria-hidden="true"
-			id="firstline-search"></span>
-		</button>
-		<button id="firstline-icon">
-			<span class="glyphicon glyphicon-print" aria-hidden="true"
-			id="firstline-print"></span>
+<div class="container" id="firstline-out" style="width: 100%; padding: 0">
+	<div class="navbar navbar-inverse set-radius-zero" id="firstline">
+		<a id="page-name" class="left">LOGO</a>
+	
+		<!-- 首行靠右导航栏 -->
+		<div class="right" id="right-div">
+			<button id="firstline-icon">
+				<span class="glyphicon glyphicon-search" aria-hidden="true"
+				id="firstline-search"></span>
+			</button>
+			<button id="firstline-icon">
+				<span class="glyphicon glyphicon-print" aria-hidden="true"
+				id="firstline-print"></span>
+			</button>
 			<button id="firstline-help">帮助</button>
 			<button id="firstline-user" class="btn-h" >用户：test</button>
-		</button>
+			
 		</div>
 	</div>
 </div>
