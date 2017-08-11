@@ -23,18 +23,28 @@
 				创建&nbsp;<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" id="secondline-dropright">
-				<li><a class="secondline-right" href="sourcingCreation.jsp">寻源项目</a></li>
-				<li><a class="secondline-right" href="supplierCreation.jsp">供应商</a></li>
-				<li><a class="secondline-right"
-					href="contractWorkspaceCreation.jsp">合同</a></li>
-				<li><a class="secondline-right"
-					href="procurementCatalogCreation.jsp">商品目录</a></li>
-				<li><a class="secondline-right" href="prCreation.jsp">请购单</a></li>
-				<li><a class="secondline-right" href="invoiceCreation.jsp">发票</a></li>
-				<li><a class="secondline-right" href="templateCreation.jsp">模版</a></li>
-				<li><a class="secondline-right" href="approvalCreation.jsp">审批</a></li>
+				<li><a class="secondline-right" href="">PO发票</a></li>
+				<li class="border-bottom-grey"><a class="secondline-right"
+					href="">非PO发表</a></li>
+				<li class="border-bottom-grey"><a class="secondline-right"
+					href="">贷项凭单</a></li>
+				<li><a class="secondline-right" href="commodityCatalogList.jsp">目录</a></li>
+
 			</ul>
 		</div>
-		
+		<div class="btn-group secondline" role="group">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				id="secondline-right-title" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false">
+				CSV文档&nbsp;<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" id="secondline-dropright">
+				<li><div class="container-list comment-div">上载</div></li>
+				<li><a class="secondline-right" href="">订单确认CSV</a></li>
+				<li><a class="secondline-right" href="">发货通知CSV</a></li>
+				<li><div class="container-list comment-div">下载</div></li>
+				<li><a class="secondline-right" href="">CSV模板</a></li>
+			</ul>
+		</div>
 	</div>
 </div>

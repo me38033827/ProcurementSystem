@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>创建标准-详细信息</title>
 <%@include file="../other/supplierHeader1.jsp"%>
-<%@include file="../other/supplierHeader2.jsp"%>
 </head>
 <body>
 	<div class="container">
@@ -14,8 +13,9 @@
 			<div class="standard-title">
 				<a class="standard-title-main">创建新目录</a>
 				<div class="standard-title-r">
-					<button class="btn-b">下一步</button>
-					<button class="btn-w">退出</button>
+					<button class="btn-b"
+						onclick="window.location.href='commodityCatalogCreatePurchase.jsp'">下一步</button>
+					<button class="btn-w"  onclick="window.location.href='main.jsp'">退出</button>
 				</div>
 			</div>
 		</div>
@@ -41,6 +41,7 @@
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
 					</div>
 				</div>
 			</div>
@@ -48,7 +49,13 @@
 
 			<div class="col-md-10">
 				<div class="container-padding" style="line-height: 40px;">
-					<div>输入目录名称和说明文字。客户可以使用这些信息搜索目录。在目录中添加商品代码。</div>
+					<div>
+						<div class="right">
+							<i>*表示必填字段</i>
+						</div>
+						<div>输入目录名称和说明文字。客户可以使用这些信息搜索目录。在目录中添加商品代码。</div>
+
+					</div>
 					<div>
 						<table>
 							<tr>
@@ -85,13 +92,23 @@
 											<td width="100%" align="center">无项目</td>
 										</tr>
 										<tr class="standard-row3">
-											<td><button class="btn-w">删除</button>
+											<td><a class="arrow-turn">↳</a>
+												<button class="btn-w">删除</button> |
 												<button class="btn-w">添加</button></td>
 										</tr>
 									</table></td>
 							</tr>
 						</table>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div id="order-detail-main">
+			<div class="commodity-ending">
+				<div class="standard-title-r">
+					<button class="btn-b"
+						onclick="window.location.href='commodityCatalogCreatePurchase.jsp'">下一步</button>
+					<button class="btn-w">退出</button>
 				</div>
 			</div>
 		</div>

@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>创建标准-内容</title>
 <%@include file="../other/supplierHeader1.jsp"%>
-<%@include file="../other/supplierHeader2.jsp"%>
 </head>
 <body>
 	<div class="container">
@@ -14,8 +13,9 @@
 			<div class="standard-title">
 				<a class="standard-title-main">创建新目录</a>
 				<div class="standard-title-r">
-					<button class="btn-w">上一步</button>
-					<button class="btn-w">退出</button>
+					<button class="btn-w"
+						onclick="window.location.href='commodityCatalogCreatePurchase.jsp'">上一步</button>
+					<button class="btn-w" onclick="window.location.href='main.jsp'">退出</button>
 				</div>
 			</div>
 		</div>
@@ -40,6 +40,16 @@
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+
 					</div>
 				</div>
 			</div>
@@ -65,7 +75,7 @@
 						单击“验证并发布”之后，在目录上载完成之前，请不要使用 Web 浏览器。上载较大的目录可能要花几分钟时间。
 					</div>
 					<div class="table-bottom-btn">
-						<button class="btn-b">验证并发布</button>
+						<button class="btn-b" onclick="window.location.href='commodityCatalogList.jsp'">验证并发布</button>
 					</div>
 					<div class=" border-bottom-grey ">
 						<div class=" standard-subtitle-main">管理目录内容。下载并编辑这些目录文件</div>
@@ -110,14 +120,20 @@
 								或 MS932 编码。</p>
 						</div>
 					</div>
-					<div class="table-bottom-btn right">
-						<button class="btn-w">上一步</button>
-						<button class="btn-w">退出</button>
-						<br>
-					</div>
+
 					<div>
 						<br> <br>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div id="order-detail-main">
+			<div class="commodity-ending">
+				<div class="table-bottom-btn right">
+					<button class="btn-w"
+						onclick="window.location.href='commodityCatalogCreatePurchase.jsp'">上一步</button>
+					<button class="btn-w" onclick="window.location.href='main.jsp'">退出</button>
+					<br>
 				</div>
 			</div>
 		</div>

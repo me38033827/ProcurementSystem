@@ -38,7 +38,6 @@
 					<table class="table table-hover">
 						<tr class="standard-row1">
 							<th></th>
-							<th></th>
 							<th>客户名称</th>
 							<th>目录名称</th>
 							<th>版本</th>
@@ -54,7 +53,7 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
 							<td><a>test01</a></td>
 							<td>1</td>
@@ -70,9 +69,9 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td><a>test01</a></td>
+							<td><a>test02</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -86,9 +85,9 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td><a>test01</a></td>
+							<td><a>test03</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -102,9 +101,9 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td><a>test01</a></td>
+							<td><a>test04</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -118,9 +117,9 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td><a>test01</a></td>
+							<td><a>test05</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -134,9 +133,9 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td><a>test01</a></td>
+							<td><a>test06</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -150,9 +149,9 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td><a>test01</a></td>
+							<td><a>test07</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -166,9 +165,9 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td><a>test01</a></td>
+							<td><a>test08</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -182,9 +181,9 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td><a>test01</a></td>
+							<td><a>test09</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -198,9 +197,9 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td><a>test01</a></td>
+							<td><a>test10</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -211,19 +210,24 @@
 							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
+
 						<tr class="standard-row3">
-							<td colspan="2"><button class="btn-w">创建</button></td>
+							<td><a class="arrow-turn">↳</a></td>
+							<td>
+								<button class="btn-b">查看/编辑</button>
+							</td>
+
 							<td><button class="btn-b">测试</button></td>
 							<td><div class="dropdown">
 									<button class="btn-b dropdown-toggle" data-toggle="dropdown">
-										删除<span class="caret"></span>
+										删除&nbsp;<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu">
 										<li><a href="#">仅限最新版本</a></li>
 										<li><a href="#">所有版本</a></li>
 									</ul>
 								</div></td>
-							<td>|</td>
+							<td align="center">|</td>
 							<td><button class="btn-b">创建标准</button></td>
 							<td><button class="btn-w">刷新</button></td>
 							<td colspan="6"><div class="small-window-button"

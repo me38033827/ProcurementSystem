@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>编辑目录-详细信息</title>
 <%@include file="../other/supplierHeader1.jsp"%>
-<%@include file="../other/supplierHeader2.jsp"%>
 </head>
 <body>
 	<div class="container">
@@ -14,12 +13,14 @@
 			<div class="standard-title">
 				<a class="standard-title-main">编辑目录</a>
 				<div class="standard-title-r">
-					<button class="btn-w">上一步</button>
+					<button class="btn-w"
+						onclick="window.location.href='commodityCatalogEditDetail.jsp'">上一步</button>
 					<button class="btn-w">创建新版本</button>
-					<button class="btn-w">上载目录文件</button>
+					<button class="btn-b"
+						onclick="window.location.href='commodityCatalogEditPurchase.jsp'">上载目录文件</button>
 					<button class="btn-w">下载目录文件</button>
 					<button class="btn-w">更新标头数据</button>
-					<button class="btn-w">退出</button>
+					<button class="btn-w" onclick="window.location.href='main.jsp'">退出</button>
 				</div>
 			</div>
 		</div>
@@ -37,6 +38,8 @@
 						<button id="commodity-catalog-edit-left-not-clicked"
 							onclick="window.location.href='commodityCatalogEditPurchase.jsp'">3
 							订购</button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
@@ -161,15 +164,22 @@
 								</tr>
 							</table>
 						</div>
-						<div class="table-bottom-btn right">
-							<button class="btn-w">上一步</button>
-							<button class="btn-w">创建新版本</button>
-							<button class="btn-w">上载目录文件</button>
-							<button class="btn-w">下载目录文件</button>
-							<button class="btn-w">更新标头数据</button>
-							<button class="btn-w">退出</button>
-						</div>
+
 					</div>
+				</div>
+			</div>
+		</div>
+		<div id="order-detail-main">
+			<div class="commodity-ending">
+				<div class="standard-title-r">
+					<button class="btn-w"
+						onclick="window.location.href='commodityCatalogEditDetail.jsp'">上一步</button>
+					<button class="btn-w">创建新版本</button>
+					<button class="btn-b"
+						onclick="window.location.href='commodityCatalogEditPurchase.jsp'">上载目录文件</button>
+					<button class="btn-w">下载目录文件</button>
+					<button class="btn-w">更新标头数据</button>
+					<button class="btn-w" onclick="window.location.href='main.jsp'">退出</button>
 				</div>
 			</div>
 		</div>

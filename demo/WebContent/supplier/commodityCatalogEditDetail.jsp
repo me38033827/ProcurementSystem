@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>编辑目录-详细信息</title>
 <%@include file="../other/supplierHeader1.jsp"%>
-<%@include file="../other/supplierHeader2.jsp"%>
+
 </head>
 <body>
 	<div class="container">
@@ -14,8 +14,9 @@
 			<div class="standard-title">
 				<a class="standard-title-main">编辑目录</a>
 				<div class="standard-title-r">
-					<button class="btn-b">下一步</button>
-					<button class="btn-w">退出</button>
+					<button class="btn-b"
+						onclick="window.location.href='commodityCatalogEditContent.jsp'">下一步</button>
+					<button class="btn-w" onclick="window.location.href='main.jsp'">退出</button>
 				</div>
 			</div>
 		</div>
@@ -40,6 +41,10 @@
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
 					</div>
 				</div>
 			</div>
@@ -50,7 +55,7 @@
 					<div>输入目录名称和说明文字。客户可以使用这些信息搜索目录。在目录中添加商品代码。</div>
 					<div>
 						<table>
-							<tr >
+							<tr>
 								<td class="table-col1-right">目录名称：</td>
 								<td>Test01</td>
 							</tr>
@@ -92,7 +97,10 @@
 										<textArea rows="3" cols="100"></textArea>
 									</div>
 									<div class="right">剩余字数：1000</div>
-									<div>所允许的最大字符数为1000个（包括空格）</div></td>
+									<div>
+										所允许的最大字符数为1000个（包括空格）<br>
+										<br>
+									</div></td>
 							</tr>
 							<tr>
 								<td class="table-col1-right" valign="top">商品：</td>
@@ -112,6 +120,15 @@
 							</tr>
 						</table>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div id="order-detail-main">
+			<div class="commodity-ending">
+				<div class="standard-title-r">
+					<button class="btn-b"
+						onclick="window.location.href='commodityCatalogEditContent.jsp'">下一步</button>
+					<button class="btn-w" onclick="window.location.href='main.jsp'">退出</button>
 				</div>
 			</div>
 		</div>
