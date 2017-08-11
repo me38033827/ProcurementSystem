@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>编辑目录-详细信息</title>
+<title>创建标准-详细信息</title>
 <%@include file="../other/supplierHeader1.jsp"%>
 <%@include file="../other/supplierHeader2.jsp"%>
 </head>
@@ -12,27 +12,28 @@
 	<div class="container">
 		<div id="order-detail-main">
 			<div class="standard-title">
-				<a class="standard-title-main">编辑目录</a>
+				<a class="standard-title-main">创建新目录</a>
 				<div class="standard-title-r">
 					<button class="btn-b">下一步</button>
 					<button class="btn-w">退出</button>
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row ">
 			<div class="col-md-2">
 				<div id="order-detail-main">
 					<div class="commodity-catalog-edit-left left blue">
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-clicked"
-							onclick="window.location.href='commodityCatalogEditDetail.jsp'">1
+							onclick="window.location.href='commodityCatalogCreateDetail.jsp'">1
 							详细信息</button>
+
 						<button id="commodity-catalog-edit-left-not-clicked"
-							onclick="window.location.href='commodityCatalogEditContent.jsp'">2
-							内容</button>
-						<button id="commodity-catalog-edit-left-not-clicked"
-							onclick="window.location.href='commodityCatalogEditPurchase.jsp'">3
+							onclick="window.location.href='commodityCatalogCreatePurchase.jsp'">2
 							订购</button>
+						<button id="commodity-catalog-edit-left-not-clicked"
+							onclick="window.location.href='commodityCatalogCreateContent.jsp'">3
+							内容</button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
@@ -46,18 +47,17 @@
 
 
 			<div class="col-md-10">
-				<div class="container-padding ">
+				<div class="container-padding" style="line-height: 40px;">
 					<div>输入目录名称和说明文字。客户可以使用这些信息搜索目录。在目录中添加商品代码。</div>
 					<div>
 						<table>
-							<tr >
-								<td class="table-col1-right">目录名称：</td>
-								<td>Test01</td>
-							</tr>
 							<tr>
-								<td class="table-col1-right">文件名：</td>
-								<td>catalog_01</td>
+								<td class="table-col1-right">*目录名称：</td>
+								<td><input type="text"
+									class="form-control input input-length"></td>
+
 							</tr>
+
 							<tr>
 								<td class="table-col1-right">创建人：</td>
 								<td>Brown</td>
@@ -67,39 +67,19 @@
 								<td>2016年11月10日 星期四 下午11:20 GMT+08:00</td>
 							</tr>
 							<tr>
-								<td class="table-col1-right">版本：</td>
-								<td>10</td>
-							</tr>
-							<tr>
-								<td class="table-col1-right">大小：</td>
-								<td>1KB</td>
-							</tr>
-							<tr>
-								<td class="table-col1-right">循环计数：</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td class="table-col1-right">类型：</td>
-								<td>CIF3.0</td>
-							</tr>
-							<tr>
-								<td class="table-col1-right">状态：</td>
-								<td>已发布</td>
-							</tr>
-							<tr>
 								<td valign="top" class="table-col1-right">说明：</td>
 								<td><div>
 										<textArea rows="3" cols="100"></textArea>
 									</div>
 									<div class="right">剩余字数：1000</div>
 									<div>所允许的最大字符数为1000个（包括空格）</div></td>
+
 							</tr>
 							<tr>
-								<td class="table-col1-right" valign="top">商品：</td>
+								<td valign="top" class="table-col1-right">商品：</td>
 								<td><table class="table-nest table table-hover">
 										<tr class="standard-row1">
 											<th width="100%">说明</th>
-
 										</tr>
 										<tr>
 											<td width="100%" align="center">无项目</td>

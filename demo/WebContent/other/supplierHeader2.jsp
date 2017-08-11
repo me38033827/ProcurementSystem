@@ -9,16 +9,18 @@
 			onclick="window.location.href='main.jsp'">首页</button>
 		<button class="secondline-left">收件箱</button>
 		<button class="secondline-left">发件箱</button>
-		<button class="secondline-left">目录</button>
+		<button class="secondline-left"
+			onclick="window.location.href='commodityCatalogList.jsp'">目录</button>
 		<button class="secondline-left"
 			onclick="window.location.href='commodityCatalogList.jsp'">报告</button>
 
 
+		<!-- 第二行靠右 -->
 		<div class="btn-group secondline" role="group">
 			<button type="button" class="btn btn-default dropdown-toggle"
 				id="secondline-right-title" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false">
-				CSV文档&nbsp;<span class="caret"></span>
+				创建&nbsp;<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" id="secondline-dropright">
 				<li><a class="secondline-right" href="sourcingCreation.jsp">寻源项目</a></li>
@@ -33,29 +35,6 @@
 				<li><a class="secondline-right" href="approvalCreation.jsp">审批</a></li>
 			</ul>
 		</div>
-
-		<!-- 第二行靠右 -->
-		<div class="btn-group secondline" role="group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				id="secondline-right-title" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
-				创建&nbsp;<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" id="secondline-dropright">
-				<li><a class="secondline-right" href="sourcingSearching.jsp">在线寻源</a></li>
-				<li><a class="secondline-right" href="supplierSearching.jsp">供应商管理</a></li>
-				<li><a class="secondline-right" href="contractSearching.jsp">合同管理</a></li>
-				<li><a class="secondline-right"
-					href="procurementCommodityCatalog.jsp">商品目录</a></li>
-				<li><a class="secondline-right" href="orderSearching.jsp">订单协同</a></li>
-				<li><a class="secondline-right" href="receiptSearching.jsp">收\发货协同</a></li>
-				<li><a class="secondline-right" href="deliverySearching.jsp">物流管理</a></li>
-				<li><a class="secondline-right" href="invoiceSearching.jsp">发票管理</a></li>
-				<li><a class="secondline-right" href="paymentSearching.jsp">支付管理</a></li>
-				<li><a class="secondline-right" href="userSearching.jsp">用户管理</a></li>
-				<li><a class="secondline-right" href="templateDetailDoc.jsp">模版管理</a></li>
-				<li><a class="secondline-right" href="approvalSearching.jsp">审批管理</a></li>
-			</ul>
-		</div>
+		
 	</div>
 </div>

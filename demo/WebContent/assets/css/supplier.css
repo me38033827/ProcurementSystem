@@ -38,6 +38,38 @@
 	border-bottom: 2px solid #ebebeb;
 }
 
-.border-right-grey {
+.border-top-grey {
+	border-top: 2px solid #ebebeb;
+}
 
+.border-left-grey {
+	border-left: 2px solid #ebebeb;
+}
+
+.border-right-grey {
+	border-right: 2px solid #ebebeb;
+}
+
+.input-length {
+	width: 300px;
+}
+
+.table-col1-right {
+	text-align: right;
+}
+.container-text{
+	margin-top:20px;
+	padding:10px;
+}
+.caution-div{
+	background-color:#FCF8E2;
+}
+.caution-span{
+	color:red;
+}
+.comment-div{
+	background-color:#F5F5F5;
+}
+.container-list{
+	padding:10px;
 }

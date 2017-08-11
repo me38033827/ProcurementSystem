@@ -13,6 +13,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="WebContent/approvalSearching.jsp"/>
+	<classpathentry kind="lib" path="WebContent/editor/jsp/lib/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/editor/jsp/lib/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/editor/jsp/lib/json_simple-1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

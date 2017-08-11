@@ -28,10 +28,15 @@
 				<div id="order-detail-main">
 					<div class="commodity-catalog-edit-left left blue">
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
-						<button id="commodity-catalog-edit-left-not-clicked">1
+						<button id="commodity-catalog-edit-left-not-clicked"
+							onclick="window.location.href='commodityCatalogEditDetail.jsp'">1
 							详细信息</button>
-						<button id="commodity-catalog-edit-left-clicked">2 内容</button>
-						<button id="commodity-catalog-edit-left-not-clicked">3 订购</button>
+						<button id="commodity-catalog-edit-left-clicked"
+							onclick="window.location.href='commodityCatalogEditContent.jsp'">2
+							内容</button>
+						<button id="commodity-catalog-edit-left-not-clicked"
+							onclick="window.location.href='commodityCatalogEditPurchase.jsp'">3
+							订购</button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
