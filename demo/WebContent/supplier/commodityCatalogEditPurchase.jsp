@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>编辑目录-订购</title>
 <%@include file="../other/supplierHeader1.jsp"%>
-<%@include file="../other/supplierHeader2.jsp"%>
 </head>
 <body>
 	<div class="container">
@@ -14,9 +13,11 @@
 			<div class="standard-title">
 				<a class="standard-title-main">编辑目录</a>
 				<div class="standard-title-r">
-					<button class="btn-w">上一步</button>
-					<button class="btn-w">验证并发布</button>
-					<button class="btn-w">退出</button>
+					<button class="btn-w"
+						onclick="window.location.href='commodityCatalogEditContent.jsp'">上一步</button>
+					<button class="btn-b"
+						onclick="window.location.href='commodityCatalogList.jsp'">验证并发布</button>
+					<button class="btn-w" onclick="window.location.href='main.jsp'">退出</button>
 				</div>
 			</div>
 		</div>
@@ -38,9 +39,7 @@
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
-						<button id="commodity-catalog-edit-left-not-clicked"></button>
-						<button id="commodity-catalog-edit-left-not-clicked"></button>
-						<button id="commodity-catalog-edit-left-not-clicked"></button>
+
 					</div>
 				</div>
 			</div>
@@ -79,28 +78,36 @@
 					<br />
 					<table class="table table-hover">
 						<tr class="standard-row1">
-							<th><input type="checkbox" /></th>
+							<th width="5%" style="padding: 5px;"><input type="checkbox"
+								id="commo-t0" class="chk" /><label for="commo-t0"></label></th>
 							<th>客户&#8593;</th>
 							<th>目录验证规则</th>
 							<th>版本10的验证状态</th>
 						</tr>
 						<tr>
-							<td><input type="checkbox" /></td>
+							<td width="5%" style="padding: 5px;"><input type="checkbox"
+								id="commo-t0" class="chk" /><label for="commo-t0"></label></td>
 							<td>Lenovo</td>
 							<td><a>查看</a></td>
 							<td>已验证</td>
 						</tr>
 					</table>
 
-					<div class="table-bottom-btn right">
-						<button class="btn-w">上一步</button>
-						<button class="btn-w">验证并发布</button>
-						<button class="btn-w">退出</button>
-					</div>
+				</div>
+			</div>
+		</div>
+		<div id="order-detail-main">
+			<div class="commodity-ending">
+				<div class="standard-title-r">
+					<button class="btn-w"
+						onclick="window.location.href='commodityCatalogEditContent.jsp'">上一步</button>
+					<button class="btn-b"
+						onclick="window.location.href='commodityCatalogList.jsp'">验证并发布</button>
+					<button class="btn-w" onclick="window.location.href='main.jsp'">退出</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
+
 </body>
 </html>

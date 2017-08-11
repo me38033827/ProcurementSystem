@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@include file="../other/supplierHeader1.jsp"%>
-<%@include file="../other/supplierHeader2.jsp"%>
+<%@include file="../other/supplierHeader1.jsp"%><%@include
+	file="../other/supplierHeader2.jsp"%>
 <title>供应商-目录</title>
 </head>
 <body>
@@ -21,7 +21,6 @@
 					<div class="small-window-button">
 						页&nbsp;&nbsp;<select id="my-select"
 							style="background-color: transparent">
-							
 							<option>2</option>
 							<option>3</option>
 						</select><a> <span class="glyphicon glyphicon-chevron-right"></span></a>&nbsp;&nbsp;<a><span
@@ -37,7 +36,7 @@
 					<table class="table table-hover">
 						<tr class="standard-row1">
 							<th></th>
-							<th></th>
+
 							<th>客户名称</th>
 							<th>目录名称</th>
 							<th>版本</th>
@@ -53,9 +52,9 @@
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td>test01</td>
+							<td><a>test11</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -63,15 +62,15 @@
 							<td>保密</td>
 							<td>Brown</td>
 							<td>2016年11月7日</td>
-							<td>客户已验证</td>
+							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td>test01</td>
+							<td><a>test12</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -79,15 +78,15 @@
 							<td>保密</td>
 							<td>Brown</td>
 							<td>2016年11月7日</td>
-							<td>客户已验证</td>
+							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td>test01</td>
+							<td><a>test13</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -95,15 +94,15 @@
 							<td>保密</td>
 							<td>Brown</td>
 							<td>2016年11月7日</td>
-							<td>客户已验证</td>
+							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td>test01</td>
+							<td><a>test14</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -111,15 +110,15 @@
 							<td>保密</td>
 							<td>Brown</td>
 							<td>2016年11月7日</td>
-							<td>客户已验证</td>
+							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td>test01</td>
+							<td><a>test15</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -127,15 +126,15 @@
 							<td>保密</td>
 							<td>Brown</td>
 							<td>2016年11月7日</td>
-							<td>客户已验证</td>
+							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td>test01</td>
+							<td><a>test16</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -143,15 +142,15 @@
 							<td>保密</td>
 							<td>Brown</td>
 							<td>2016年11月7日</td>
-							<td>客户已验证</td>
+							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td>test01</td>
+							<td><a>test17</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -159,15 +158,15 @@
 							<td>保密</td>
 							<td>Brown</td>
 							<td>2016年11月7日</td>
-							<td>客户已验证</td>
+							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td>test01</td>
+							<td><a>test18</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -175,15 +174,15 @@
 							<td>保密</td>
 							<td>Brown</td>
 							<td>2016年11月7日</td>
-							<td>客户已验证</td>
+							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td>test01</td>
+							<td><a>test19</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -191,15 +190,15 @@
 							<td>保密</td>
 							<td>Brown</td>
 							<td>2016年11月7日</td>
-							<td>客户已验证</td>
+							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
 						<tr>
 							<td><input type="radio" name="optionsRadiosinline"
 								id="optionsRadios4" value="option2"></td>
-							<td></td>
+
 							<td>Lenovo</td>
-							<td>test01</td>
+							<td><a>test20</a></td>
 							<td>1</td>
 							<td>Catalog_s1.cif</td>
 							<td>CIF3.0</td>
@@ -207,24 +206,38 @@
 							<td>保密</td>
 							<td>Brown</td>
 							<td>2016年11月7日</td>
-							<td>客户已验证</td>
+							<td style="color: #26C533">客户已验证</td>
 							<td>2016年11月7日</td>
 						</tr>
 						<tr class="standard-row3">
-							<td colspan="2"><button class="btn-w">创建</button></td>
+							<td><a class="arrow-turn">↳</a></td>
+							<td>
+								<button class="btn-b"
+									onclick="window.location.href='commodityCatalogEditDetail.jsp'">查看/编辑</button>
+							</td>
 							<td><button class="btn-b">测试</button></td>
-							<td><button class="btn-b">删除</button></td>
-							<td>|</td>
-							<td><button class="btn-b">创建标准</button></td>
+							<td><div class="dropdown">
+									<button class="btn-b dropdown-toggle" data-toggle="dropdown">
+										删除&nbsp;<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">仅限最新版本</a></li>
+										<li><a href="#">所有版本</a></li>
+									</ul>
+								</div></td>
+							<td align="center">|</td>
+							<td><button class="btn-b"
+									onclick="window.location.href='commodityCatalogCreateDetail.jsp'">创建标准</button></td>
 							<td><button class="btn-w">刷新</button></td>
 							<td colspan="6"><div class="small-window-button"
 									style="left: 80%">
 									页&nbsp;&nbsp;<select id="my-select"
 										style="background-color: transparent">
-										
+
 										<option>2</option>
 										<option>3</option>
-									</select> <a><span class="glyphicon glyphicon-chevron-right"></span></a>
+									</select> <a href="commodityCatalogList1.jsp"><span
+										class="glyphicon glyphicon-chevron-right"></span></a>
 								</div></td>
 						</tr>
 					</table>
