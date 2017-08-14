@@ -108,10 +108,18 @@
 			<div class="col-md-10">
 				<div>
 					<div class="charts">
-						<div class="chart" id="chart1"></div>
-						<div class="chart" id="chart2"></div>
-						<div class="chart" id="chart3"></div>
-						<div class="chart" id="chart4"></div>
+						<div class="container-chart">
+							<div class="chart" id="chart1"></div>
+						</div>
+						<div class="container-chart">
+							<div class="chart" id="chart2"></div>
+						</div>
+						<div class="container-chart">
+							<div class="chart" id="chart3"></div>
+						</div>
+						<div class="container-chart">
+							<div class="chart" id="chart4"></div>
+						</div>
 					</div>
 
 					<div style="clear: left">
@@ -612,7 +620,8 @@
 		myChart3.setOption(option3);
 		myChart4.setOption(option4);
 	
-</script>
 
-</body>
+</script>
+	</bo
+								dy>
 </html>
