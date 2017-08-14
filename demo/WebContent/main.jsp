@@ -118,7 +118,7 @@
 							<div class="chart" id="chart3"></div>
 						</div>
 						<div class="container-chart">
-							<div class="chart" id="chart4"></div>
+							<div class="chart" id="chart4" style="margin: 0px"></div>
 						</div>
 					</div>
 
