@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@include file="../other/supplierHeader1.jsp"%>
-<%@include file="../other/supplierHeader2.jsp"%>
+<%@include file="../other/header1.jsp"%>
+<%@include file="../other/header2.jsp"%>
 
 </head>
 <body>
@@ -14,19 +14,39 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="container-padding">
-					<div class="small-window-title ">目录</div>
-					<div>
-						使用目录数据中心针对客户管理目录。目录文件必须是CIF、cXML或Excel文件（.cif、.xml、.xls或.zip）。某些客户可能定义了特殊的目录验证规则，您可在客户关系页面上查看它们。
+					<div class="small-window-title border-bottom-grey margin-bottom">目录</div>
+					<div class="margin-bottom">
+						请复查目录列表，并采取相应的操作；例如，导入新目录、处理现有目录或比较目录版本。<br>
+						<div class="margin-bottom right">
+							<button class="btn-b" onclick="window.location.href='procurementCatalogCreation.jsp'">导入新目录</button>
+							<button class="btn-w" style="width: 120px">导入供应商徽标</button>
+						</div>
+						<br>
+
 					</div>
-					<div class="small-window-button">
-						页&nbsp;&nbsp;<select id="my-select"
-							style="background-color: transparent">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-						</select><a href="commodityCatalogList1.jsp"> <span
-							class="glyphicon glyphicon-chevron-right"></span></a>&nbsp;&nbsp;<a><span
-							class="glyphicon glyphicon-th"></span></a>
+
+					<div class="bg-grey container-text contaienr margin-bottom">
+						<div>
+							<strong>搜索筛选器：</strong>
+						</div>
+						<div>
+							搜索范围： <select id="my-select">
+								<option>全部</option>
+								<option>正在验证</option>
+								<option>已验证</option>
+								<option>正在等待审批</option>
+								<option>已激活</option>
+								<option>已批准</option>
+								<option>已停用</option>
+								<option>Activating</option>
+								<option>Deactivating</option>
+							</select> &nbsp;搜索内容： <input type="text" class=" border-g ">
+
+							<div class="right">
+								<button class="btn-b">搜索</button>
+								<button class="btn-w">全部列出</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -37,211 +57,166 @@
 				<div class="container-padding">
 					<table class="table table-hover">
 						<tr class="standard-row1">
-							<th></th>
-							<th>客户名称</th>
-							<th>目录名称</th>
-							<th>版本</th>
-							<th>文件名</th>
-							<th>类型</th>
-							<th>大小</th>
-							<th>可见性</th>
-							<th>创建人</th>
-							<th>创建日期</th>
-							<th>状态</th>
-							<th>标为已接收日期</th>
-						</tr>
-						<tr>
-							<td><input type="radio" name="optionsRadiosinline"
-								id="optionsRadios4" value="option2"></td>
-
-							<td>Lenovo</td>
-							<td><a>test01</a></td>
-							<td>1</td>
-							<td>Catalog_s1.cif</td>
-							<td>CIF3.0</td>
-							<td>1kB</td>
-							<td>保密</td>
-							<td>Brown</td>
-							<td>2016年11月7日</td>
-							<td style="color: #26C533">客户已验证</td>
-							<td>2016年11月7日</td>
-						</tr>
-						<tr>
-							<td><input type="radio" name="optionsRadiosinline"
-								id="optionsRadios4" value="option2"></td>
-
-							<td>Lenovo</td>
-							<td><a>test02</a></td>
-							<td>1</td>
-							<td>Catalog_s1.cif</td>
-							<td>CIF3.0</td>
-							<td>1kB</td>
-							<td>保密</td>
-							<td>Brown</td>
-							<td>2016年11月7日</td>
-							<td style="color: #26C533">客户已验证</td>
-							<td>2016年11月7日</td>
-						</tr>
-						<tr>
-							<td><input type="radio" name="optionsRadiosinline"
-								id="optionsRadios4" value="option2"></td>
-
-							<td>Lenovo</td>
-							<td><a>test03</a></td>
-							<td>1</td>
-							<td>Catalog_s1.cif</td>
-							<td>CIF3.0</td>
-							<td>1kB</td>
-							<td>保密</td>
-							<td>Brown</td>
-							<td>2016年11月7日</td>
-							<td style="color: #26C533">客户已验证</td>
-							<td>2016年11月7日</td>
-						</tr>
-						<tr>
-							<td><input type="radio" name="optionsRadiosinline"
-								id="optionsRadios4" value="option2"></td>
-
-							<td>Lenovo</td>
-							<td><a>test04</a></td>
-							<td>1</td>
-							<td>Catalog_s1.cif</td>
-							<td>CIF3.0</td>
-							<td>1kB</td>
-							<td>保密</td>
-							<td>Brown</td>
-							<td>2016年11月7日</td>
-							<td style="color: #26C533">客户已验证</td>
-							<td>2016年11月7日</td>
-						</tr>
-						<tr>
-							<td><input type="radio" name="optionsRadiosinline"
-								id="optionsRadios4" value="option2"></td>
-
-							<td>Lenovo</td>
-							<td><a>test05</a></td>
-							<td>1</td>
-							<td>Catalog_s1.cif</td>
-							<td>CIF3.0</td>
-							<td>1kB</td>
-							<td>保密</td>
-							<td>Brown</td>
-							<td>2016年11月7日</td>
-							<td style="color: #26C533">客户已验证</td>
-							<td>2016年11月7日</td>
-						</tr>
-						<tr>
-							<td><input type="radio" name="optionsRadiosinline"
-								id="optionsRadios4" value="option2"></td>
-
-							<td>Lenovo</td>
-							<td><a>test06</a></td>
-							<td>1</td>
-							<td>Catalog_s1.cif</td>
-							<td>CIF3.0</td>
-							<td>1kB</td>
-							<td>保密</td>
-							<td>Brown</td>
-							<td>2016年11月7日</td>
-							<td style="color: #26C533">客户已验证</td>
-							<td>2016年11月7日</td>
-						</tr>
-						<tr>
-							<td><input type="radio" name="optionsRadiosinline"
-								id="optionsRadios4" value="option2"></td>
-
-							<td>Lenovo</td>
-							<td><a>test07</a></td>
-							<td>1</td>
-							<td>Catalog_s1.cif</td>
-							<td>CIF3.0</td>
-							<td>1kB</td>
-							<td>保密</td>
-							<td>Brown</td>
-							<td>2016年11月7日</td>
-							<td style="color: #26C533">客户已验证</td>
-							<td>2016年11月7日</td>
-						</tr>
-						<tr>
-							<td><input type="radio" name="optionsRadiosinline"
-								id="optionsRadios4" value="option2"></td>
-
-							<td>Lenovo</td>
-							<td><a>test08</a></td>
-							<td>1</td>
-							<td>Catalog_s1.cif</td>
-							<td>CIF3.0</td>
-							<td>1kB</td>
-							<td>保密</td>
-							<td>Brown</td>
-							<td>2016年11月7日</td>
-							<td style="color: #26C533">客户已验证</td>
-							<td>2016年11月7日</td>
-						</tr>
-						<tr>
-							<td><input type="radio" name="optionsRadiosinline"
-								id="optionsRadios4" value="option2"></td>
-
-							<td>Lenovo</td>
-							<td><a>test09</a></td>
-							<td>1</td>
-							<td>Catalog_s1.cif</td>
-							<td>CIF3.0</td>
-							<td>1kB</td>
-							<td>保密</td>
-							<td>Brown</td>
-							<td>2016年11月7日</td>
-							<td style="color: #26C533">客户已验证</td>
-							<td>2016年11月7日</td>
-						</tr>
-						<tr>
-							<td><input type="radio" name="optionsRadiosinline"
-								id="optionsRadios4" value="option2"></td>
-
-							<td>Lenovo</td>
-							<td><a>test10</a></td>
-							<td>1</td>
-							<td>Catalog_s1.cif</td>
-							<td>CIF3.0</td>
-							<td>1kB</td>
-							<td>保密</td>
-							<td>Brown</td>
-							<td>2016年11月7日</td>
-							<td style="color: #26C533">客户已验证</td>
-							<td>2016年11月7日</td>
-						</tr>
-
-						<tr class="standard-row3">
-							<td><a class="arrow-turn">↳</a></td>
-							<td>
-								<button class="btn-b">查看/编辑</button>
-							</td>
-
-							<td><button class="btn-b">测试</button></td>
-							<td><div class="dropdown">
-									<button class="btn-b dropdown-toggle" data-toggle="dropdown">
-										删除&nbsp;<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu">
-										<li><a href="#">仅限最新版本</a></li>
-										<li><a href="#">所有版本</a></li>
-									</ul>
-								</div></td>
-							<td align="center">|</td>
-							<td><button class="btn-b">创建标准</button></td>
-							<td><button class="btn-w">刷新</button></td>
-							<td colspan="6"><div class="small-window-button"
-									style="left: 80%">
-									页&nbsp;&nbsp;<select id="my-select"
-										style="background-color: transparent">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-									</select> <a href="commodityCatalogList1.jsp"><span
-										class="glyphicon glyphicon-chevron-right"></span></a>
-								</div></td>
+							<th width="5%"></th>
+							<th width="10%">源供应商</th>
+							<th width="15%">目录订阅名称</th>
+							<th width="5%">版本</th>
+							<th width="10%">加载模式</th>
+							<th width="10%">内容摘要</th>
+							<th width="5%">预览</th>
+							<th width="5%">状态</th>
+							<th width="10%">项目数量</th>
+							<th width="25%">上次修改时间</th>
 						</tr>
 					</table>
+					<div id="sourcing-tab" style="border-bottom: 2px solid #ddd">
+						<table class="table table-hover">
+							<tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr><tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr><tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr><tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr><tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr><tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr><tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr><tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr><tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr><tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr><tr>
+								<td width="5%"><input type="checkbox" id="commo-t0"
+									class="chk" /><label for="commo-t0"></label></td>
+								<td width="10%"><a> 0615SupplierA </a></td>
+								<td width="15%"><a> AN punch out catalog </a></td>
+								<td width="5%"><a>版本 1</a></td>
+								<td width="10%">完整</td>
+								<td width="10%"></td>
+								<td width="5%"></td>
+								<td width="5%"><a> 已激活 </a></td>
+								<td width="10%"><a>1</a></td>
+								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
+							</tr>
+						</table>
+					</div>
+					<div class="table-bottom-btn">
+						<button class="btn-w">比较版本</button>
+						<button class="btn-w">发送进行审批</button>
+						<button class="btn-w">激活</button>
+						<button class="btn-w">停用</button>
+						<button class="btn-w">删除版本</button>
+						<button class="btn-w">删除订阅</button>
+						<button class="btn-w">预览</button>
+						<button class="btn-w">删除预览</button>
+						<button class="btn-w">强行批准</button>
+					</div>
 
 				</div>
 			</div>

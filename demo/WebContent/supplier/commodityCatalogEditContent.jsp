@@ -71,7 +71,6 @@
 						</table>
 						<div id="sourcing-tab" style="border-bottom: 2px solid #ddd">
 							<table class="table table-hover">
-
 								<tr>
 									<td width="10%">1</td>
 									<td width="15%">AND-1037603</td>

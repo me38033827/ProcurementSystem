@@ -27,7 +27,8 @@
 <link href="/demo/assets/css/settlement.css" rel="stylesheet" />
 <link href="/demo/assets/css/relevant.css" rel="stylesheet" />
 <link href="/demo/assets/css/standard.css" rel="stylesheet" />
-
+<link href="/demo/assets/css/supplier.css" rel="stylesheet" />
+<link href="/demo/assets/css/convention.css" rel="stylesheet" />
 <script src="/demo/assets/js/echarts.common.min.js"></script>
 <!-- CORE JQUERY  -->
 <script src="/demo/assets/js/jquery.js"></script>

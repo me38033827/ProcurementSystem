@@ -103,16 +103,14 @@
 }
 
 .input {
-	height: 30px; <<<<<<<
+	height: 30px;
 	HEAD width: 150px;
 	border-radius: 0;
-	border: 1px solid #428bca; =======
+	border: 1px solid #428bca;
 	width: 200px;
 	border-radius: 0;
 	border: 1px solid #428bca;
-	>>>>>>>
 	origin
-	/master
 }
 
 .input-pr {
@@ -241,8 +239,6 @@ input {
 .border-g {
 	border: 1px solid #428bca;
 	height: 30px;
-	position: relative;
-	top: 21px;
 }
 
 #my-select {
@@ -1580,7 +1576,6 @@ body.a-dashbrd-page-bg {
 }
 
 .chart {
-	
 	height: 210px;
 	margin-bottom: 10px;
 	margin-right: 19.165px;
