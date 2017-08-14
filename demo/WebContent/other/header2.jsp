@@ -16,7 +16,7 @@
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				创建&nbsp;<span class="caret"></span>
 			</button>
-			<ul class="dropdown-menu" id="secondline-dropright">
+			<ul class="dropdown-menu my-dropdown">
 				<li><a class="secondline-right" href="sourcingCreation.jsp">寻源项目</a></li>
 				<li><a class="secondline-right" href="supplierCreation.jsp">供应商</a></li>
 				<li><a class="secondline-right"
