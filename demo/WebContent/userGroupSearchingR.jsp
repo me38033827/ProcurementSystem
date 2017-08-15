@@ -18,37 +18,36 @@
 			<div class="user-main">
 				<!-- 搜索显示区域 -->
 				<div class="user-left">
-					<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;用户</a>
-					<a class="f-14 black" href="userSearching.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a>
-					<a class="f-14 black" href="userCreation.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建用户</a>
-					<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;组</a>
-					<a class="f-14" href="userGroupSearching.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组管理</a>
-					<a class="f-14 black" href="userGroupCreation.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建组</a>
+					<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;用户</a><br>
+					<a class="f-14 black" href="userSearching.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a><br>
+					<a class="f-14 black" href="userCreation.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建用户</a><br>
+					<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;组</a><br>
+					<a class="f-14" href="userGroupSearching.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组管理</a><br>
+					<a class="f-14 black" href="userGroupCreation.jsp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建组</a><br>
 				</div>
 				<div class="user-right">
 					<a class="black f-14">请更改搜索条件或名称，然后进行搜索</a>
-					<div id="filters">
+					<div class="searching-filter">
 						<div id="order-filter-line1">
 							<div class="left black" id="order-filter-line1-title">搜索筛选器</div>
 							<div class="right blue" id="order-filter-line1-option">添加／删除搜索筛选器</div>
 						</div>
 						<div>
-							<div align="left" class="inline-b col-md-6"
-								style="padding-left: 10%;">
+							<div class="col-md-6">
 								<table>
-									<tr>
-										<td class="order-filter-left-col1">组名称：</td>
-										<td class="order-filter-left-col2"><input
+									<tr class="row-standard">
+										<td class="col-standard1">组名称：</td>
+										<td class="col-standard2"><input
 											class="form-control input" /></td>
 									</tr>
-									<tr>
-										<td class="order-filter-left-col1">说明：</td>
-										<td class="order-filter-left-col2"><input
+									<tr class="row-standard">
+										<td class="col-standard1">说明：</td>
+										<td class="col-standard2"><input
 											class="form-control input" /></td>
 									</tr>
-									<tr>
-										<td class="order-filter-left-col1">已激活：</td>
-										<td class="order-filter-left-col2">
+									<tr class="row-standard">
+										<td class="col-standard1">已激活：</td>
+										<td class="col-standard2">
 											<div class="radio">
 												<label><input type="radio" name="activiate"
 													id="optionsRadios1" value="option1">是</label> <label><input
@@ -98,8 +97,8 @@
 												操作&nbsp;<span class="caret"></span>
 											</button>
 											<ul class="dropdown-menu manu-btn-o" >
-												<li><a class="manu-btn" >编辑</a></li>
-												<li><a class="manu-btn" >停用</a></li>
+												<li><a class="manu-btn" href="">编辑</a></li>
+												<li><a class="manu-btn" href="">停用</a></li>
 											</ul>
 										</div>
 									</td>

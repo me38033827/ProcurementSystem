@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div class="container">
-		<div id="order-detail-main">
+		<div class="standard-out">
 			<div class="standard-title">
 				<a class="standard-title-main">公司概要</a>
 				<div class="standard-title-r">
@@ -43,13 +43,9 @@
 					</div>
 					
 					<div class="profile-left">
-						<div class="title-description">
-							<a class="black">＊表示必填字段</a>
-						</div>
+						<div class="title-description">＊表示必填字段</div>
 						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">认证</a>
-						</div>
+						<div class="standard-subtitle">认证</div>
 						
 						<div>
 							<table>
@@ -227,7 +223,7 @@
 				
 			</div>
 			<div class="standard-ending">
-				<div class="standard-ending-r">
+				<div align="right" class="standard-ending-r">
 					<button class="btn-b">保存</button>
 					<button class="btn-w">关闭</button>
 				</div>				

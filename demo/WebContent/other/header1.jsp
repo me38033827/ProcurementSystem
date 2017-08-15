@@ -25,6 +25,7 @@ rel='stylesheet' type='text/css' />
 <link href="/demo/assets/css/settlement.css" rel="stylesheet" />
 <link href="/demo/assets/css/relevant.css" rel="stylesheet" />
 <link href="/demo/assets/css/standard.css" rel="stylesheet" />
+<link href="/demo/assets/css/supplierP.css" rel="stylesheet" />
 
 <script src="/demo/assets/js/echarts.common.min.js"></script>
 <!-- CORE JQUERY  -->
@@ -38,22 +39,20 @@ rel='stylesheet' type='text/css' />
 <script src="/demo/assets/js/custom.js"></script>
 
 <!-- 标题及导航栏第一行 -->
-<div class="container" id="firstline-out" style="width: 100%; padding: 0">
-	<div class="navbar navbar-inverse set-radius-zero" id="firstline">
-		<a id="page-name" class="left">LOGO</a>
+<div class="container firstline-out" style="width: 100%; padding: 0">
+	<div class="navbar navbar-inverse set-radius-zero firstline">
+		<a class="left page-name">LOGO</a>
 	
 		<!-- 首行靠右导航栏 -->
 		<div class="right" id="right-div">
-			<button id="firstline-icon">
-				<span class="glyphicon glyphicon-search" aria-hidden="true"
-				id="firstline-search"></span>
+			<button class="firstline-icon">
+				<span class="glyphicon glyphicon-search firstline-search" aria-hidden="true"></span>
 			</button>
-			<button id="firstline-icon">
-				<span class="glyphicon glyphicon-print" aria-hidden="true"
-				id="firstline-print"></span>
+			<button class="firstline-icon">
+				<span class="glyphicon glyphicon-print firstline-print" aria-hidden="true"></span>
 			</button>
-			<button id="firstline-help">帮助</button>
-			<button id="firstline-user" class="btn-h" >用户：test</button>
+			<button class="firstline-help">帮助</button>
+			<button class="firstline-user btn-h" >用户：test</button>
 			
 		</div>
 	</div>

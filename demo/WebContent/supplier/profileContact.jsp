@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container">
-		<div id="order-detail-main">
+		<div class="standard-out">
 			<div class="standard-title">
 				<a class="standard-title-main">公司概要</a>
 				<div class="standard-title-r">
@@ -276,9 +276,9 @@
 					<button class="btn-w">关闭</button>
 				</div>				
 			
-			</div>
+		</div>
 	</div>
-	
+</div>
 
 </body>
 </html>

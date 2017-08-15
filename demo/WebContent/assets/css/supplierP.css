@@ -1,0 +1,70 @@
+/* p2p supplier title */
+.p2p-supplier-title{
+	margin-top:4px;
+	margin-bottom:4px;
+	height:56px;
+}
+
+.p2p-supplier-title-main{
+	color:#38383a;
+	font-size:20px;
+	margin-top:5px;
+	display:inline-block;
+}
+
+.p2p-supplier-subtitle{
+	font-size:14px;
+	color:grey;
+}
+
+#supplier-detail-top {
+	border: 1px solid #d7d7d7;
+	background-color:#FCF8E3;
+	width:260px;
+	padding-right:20px;
+	padding-left:20px;
+}
+
+#supplier-detail-top td {
+	line-height: 20px;
+	font-size:12px;
+}
+
+/* questionnaire */
+.supplier-question{
+	max-height:300px;
+	overflow-x: scroll;
+}
+
+.supplier-question tr{
+	height: 36px;
+	font-size: 14px;
+}
+
+/* supplier left info*/
+.supplier-left-info{
+	margin-top:10px;
+	height:300px;
+	width:100%;
+	border:1px solid #ddd;
+}
+
+.supplier-left-info-news{
+	background-color:#ebebeb;
+	text-align:center;
+	height:50px;
+	padding-top:10px;
+	font-size:16px;
+}
+.supplier-left-info-all{
+	background-color:#fcf8e2;
+	padding-left:10px;
+}
+
+.supplier-left-info-filter{
+	text-align:center;
+}
+
+.supplier-left-info-tab{
+	margin:10px 20px;
+}

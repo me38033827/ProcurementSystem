@@ -6,10 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>公司概要－商务</title>
 <%@include file="../other/supplierHeader1.jsp"%>
+
 </head>
 <body>
 	<div class="container">
-		<div id="order-detail-main">
+		<div  class="standard-out">
 			<div class="standard-title">
 				<a class="standard-title-main">公司概要</a>
 				<div class="standard-title-r">
@@ -189,9 +190,9 @@
 									<td style="padding:5px;">
 										<input type="checkbox" id="chk-bus15" class="chk" /><label for="chk-bus15"></label>
 									</td>
-									<td valign="middle">名称</td>
-									<td valign="bottom">股份百分比</td>
-									<td valign="bottom">类型</td>
+									<td>名称</td>
+									<td>股份百分比</td>
+									<td>类型</td>
 								</tr>
 								<tr>
 									<td class="no-item" colspan="4">无项目</td>

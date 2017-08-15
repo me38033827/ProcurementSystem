@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container">
-		<div id="order-detail-main">
+		<div class="standard-out">
 			<div class="standard-title">
 				<a class="standard-title-main">公司概要</a>
 				<div class="standard-title-r">
@@ -32,13 +32,9 @@
 					</div>
 					
 					<div class="profile-left">
-						<div class="title-description">
-							<a class="black">＊表示必填字段</a>
-						</div>
+						<div class="title-description">＊表示必填字段</div>
 						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">概述</a>
-						</div>
+						<div class="standard-subtitle">概述</div>
 						
 						<div>
 							<table>
@@ -69,9 +65,8 @@
 							</table>
 						</div>
 						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">地址</a>
-						</div>
+						<div class="adjust-10"></div>
+						<div class="standard-subtitle">地址</div>
 						
 						<div>
 							<table>
@@ -102,9 +97,8 @@
 							</table>
 						</div>
 						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">附加公司地址</a>
-						</div>
+						<div class="adjust-10"></div>
+						<div class="standard-subtitle">附加公司地址</div>
 						
 						<div class="module">
 							<table class="table table-hover">
@@ -129,16 +123,12 @@
 							</table>
 						</div>
 						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">产品和服务类别、送货地址或服务地点和行业</a>
-						</div>
+						<div class="adjust-10"></div>
+						<div class="standard-subtitle">产品和服务类别、送货地址或服务地点和行业</div>
 						
-						<div class="standard-subsubtitle">
-							<a class="standard-subsubtitle-main">产品和服务类别＊</a>
-						</div>
+						<div class="standard-subsubtitle">产品和服务类别＊</div>
 						
-						<div class="standard-subsubtitle">
-							<a class="standard-subsubtitle-description">输入贵公司提供的产品和服务。采购商提交的天晴球奖根据您在下面输入的产品和服务与您匹配。</a>
+						<div class="standard-subsubtitle-description">输入贵公司提供的产品和服务。采购商提交的天晴球奖根据您在下面输入的产品和服务与您匹配。</a>
 						</div>
 						
 						<div>
@@ -157,12 +147,9 @@
 							</div>
 						</div>
 						
-						<div class="standard-subsubtitle">
-							<a class="standard-subsubtitle-main">送货地址或服务地点＊</a>
-						</div>
+						<div class="standard-subsubtitle">送货地址或服务地点＊</div>
 						
-						<div class="standard-subsubtitle">
-							<a class="standard-subsubtitle-description">输入贵公司送货地址或服务地点。如果贵公司只为特定的地点服务，请在下面输入地点。</a>
+						<div class="standard-subsubtitle-description">输入贵公司送货地址或服务地点。如果贵公司只为特定的地点服务，请在下面输入地点。</a>
 						</div>
 						
 						<div>
@@ -181,17 +168,13 @@
 							</div>
 						</div>
 						
-						<div class="standard-subsubtitle">
-							<a class="standard-subsubtitle-main">行业</a>
-						</div>
+						<div class="standard-subsubtitle">行业</div>
 						
-						<div class="standard-subsubtitle">
-							<a class="standard-subsubtitle-description">请选择贵公司所从市的行业。</a>
+						<div class="standard-subsubtitle-description">请选择贵公司所从市的行业。</div>
+						
+						<div class="profile-end">
+							<button class="btn-w right">添加</button>
 						</div>
-					</div>
-					
-					<div class="profile-end">
-						<button class="btn-w right">添加</button>
 					</div>
 				</div>
 			
@@ -199,11 +182,10 @@
 				
 			</div>
 			<div class="standard-ending">
-				<div class="standard-ending-r">
+				<div align="right" class="standard-ending-r">
 					<button class="btn-b">保存</button>
 					<button class="btn-w">关闭</button>
-				</div>				
-			
+				</div>		
 			</div>
 		</div>
 	</div>

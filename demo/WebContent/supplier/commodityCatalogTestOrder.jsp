@@ -42,6 +42,7 @@
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
 						<button id="commodity-catalog-edit-left-not-clicked"></button>
+						<button id="commodity-catalog-edit-left-not-clicked"></button>
 					</div>
 				</div>
 			</div>

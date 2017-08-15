@@ -1,3 +1,7 @@
+body{
+	margin:0;
+	padding:0;
+}
 .con {
 	min-height: 750px;
 }
@@ -12,11 +16,7 @@
 	background-color: #ECECFF;
 }
 
-.container-all {
-	margin-left: 3%;
-	margin-right: 3%;
-	min-height: 500px;
-}
+
 
 .black {
 	color: black;
@@ -133,66 +133,7 @@
 	background-color: transparent;
 	border: none;
 }
-/*button样式*/
-.btn-w {
-	font-size: 14px;
-	border: 0;
-	width: 100px;
-	height: 30px;
-	text-align: center;
-	padding-top: 1px;
-	background-color: white;
-	border: 1px solid #428bca;
-	color: #428bca;
-}
 
-.btn-w:hover {
-	color: #fff;
-	background-color: #428bca;
-	border-color: #285e8e;
-}
-
-.btn-w:active {
-	background-color: #3071a9;
-}
-
-.btn-m {
-	font-size: 14px;
-	border: 0;
-	width: 70px;
-	height: 2.142857em;
-	text-align: center;
-	padding-top: 1px;
-	background-color: white;
-	border: 1px solid #428bca;
-	color: #428bca;
-}
-
-.btn-m:hover {
-	color: #fff;
-	background-color: #428bca;
-	border-color: #285e8e;
-}
-
-.btn-m:active {
-	background-color: #3071a9;
-}
-
-.btn-b {
-	font-size: 14px;
-	border: 0;
-	width: 7.142857em;
-	height: 2.142857em;
-	text-align: center;
-	background-color: #428bca;
-	color: white;
-}
-
-.btn-b:hover {
-	color: #fff;
-	background-color: #3071a9;
-	border-color: #285e8e;
-}
 
 select {
 	border: 1px solid #428bca;
@@ -314,84 +255,13 @@ input {
 	border-bottom: 1px solid #428bca;
 }
 
-#searching-title {
-	padding-top: 4px;
-	font-size: 20px;
-	margin-right: 200px;
-}
-
 #whole-container {
 	border: 0;
 }
 
-#firstline-out {
-	height: 4.285714em;
-}
-
-#firstline {
-	background-color: #003366;
-	color: white;
-	border: none;
-	height: 64px;
-}
-
-#page-name {
-	padding-top: 20px;
-	padding-left: 40px;
-	font-size: 2.142857em;
-	text-align: auto 0;
-	display: inline-block;
-	color: white;
-}
-
-#right-div {
-	padding-right: 20px;
-	margin-top:10px;
-}
-
-#firstline-search, #firstline-print, #firstline-help, #firstline-user, #firstline-company, #firstline-supplier, #firstline-grid {
-	border: none;
-	background-color: #003366;
-}
-
-#firstline-search, #firstline-print, #firstline-help, #firstline-user{
-	color:white;
-}
 
 
 
-#firstline-icon {
-	border: 0;
-	background-color: #003366;
-}
-
-#firstline-search,#firstline-grid {
-	width: 70px;
-}
-
-#firstline-print {
-	width: 30px;
-}
-
-#firstline-help{
-	width: 60px;
-	height: 30px;
-}
-
-#firstline-company{
-	width:100px;
-	height:30px;
-}
-
-#firstline-supplier, #firstline-company,#firstline-grid{
-	color:#286ea6;
-	display:inline-block;
-}
-
-#firstline-user, #firstline-supplier {
-	width: 100px;
-	height: 30px;
-}
 
 #secondline-out {
 	height: 30px;
@@ -1140,18 +1010,6 @@ input {
 	margin-right: 10px;
 }
 
-#supplier-tab-bot tr {
-	height: 36px;
-	font-size: 14px;
-}
-
-#supplier-detail-top {
-	margin-top: 6px;
-	margin-right: 40px;
-	padding-left: 5px;
-	padding-right: 5px;
-	border: 1px solid #428bca;
-}
 
 #contract-detail-top {
 	margin-top: 10px;
@@ -1159,10 +1017,7 @@ input {
 	border: 1px solid #428bca;
 }
 
-#supplier-detail-top td {
-	height: 10px;
-	font-size: 14px;
-}
+
 
 #contract-detail-label {
 	width: 240px;
@@ -1464,14 +1319,9 @@ input {
 	height: 200px;
 }
 
-.manu-btn {
-	width: 98px;
-	text-align: center;
-}
 
-.manu-btn-o {
-	width: 100px;
-}
+
+
 
 .manu-word {
 	margin-top: 10px;
@@ -1545,20 +1395,13 @@ input {
 	position: relative;
 }
 
-.secondline-left:hover, #secondline-right-title:hover, #firstline-icon:hover,
-#firstline-help:hover, #firstline-user:hover{
+.secondline-left:hover, #secondline-right-title:hover{
 	color: #428bca;
 }
 
-.module {
-	background-color: white;
-	padding: 0px;
-	margin: 0;
-}
 
 body.a-dashbrd-page-bg {
 	background: url(../img/themelight-bg.jpg) no-repeat center center fixed;
-	background-size: cover;
 }
 
 .module-head {
