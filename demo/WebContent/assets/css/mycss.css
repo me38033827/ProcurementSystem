@@ -30,8 +30,8 @@ body{
 	color: grey;
 }
 
-.bold{
-	font-weight:bold;
+.bold {
+	font-weight: bold;
 }
 
 .f-18 {
@@ -98,21 +98,21 @@ body{
 	display: inline-block;
 }
 
-.block{
-	display:block;
+.block {
+	display: block;
 }
 
 .input {
-	height: 30px;
-	<<<<<<< HEAD
-	width: 150px;
+	height: 30px; <<<<<<<
+	HEAD width: 150px;
+	border-radius: 0;
+	border: 1px solid #428bca; =======
+	width: 200px;
 	border-radius: 0;
 	border: 1px solid #428bca;
-	=======
-	width: 200px;
-	border-radius:0;
-	border:1px solid #428bca;
-	>>>>>>> origin/master
+	>>>>>>>
+	origin
+	/master
 }
 
 .input-pr {
@@ -144,7 +144,7 @@ select {
 	-webkit-appearance: none;
 	/*在选择框的最右侧中间显示小箭头图片*/
 	background: url("http://ourjs.github.io/static/2015/arrow.png")
-	no-repeat scroll right center white;
+		no-repeat scroll right center white;
 	/*为下拉小箭头留出一点位置，避免被文字覆盖*/
 	padding-left: 5px;
 	padding-right: 30px;
@@ -259,8 +259,73 @@ input {
 	border: 0;
 }
 
+<<<<<<< HEAD
 
 
+=======
+#firstline-out {
+	height: 4.285714em;
+}
+
+#firstline {
+	background-color: #003366;
+	color: white;
+	border: none;
+	height: 64px;
+}
+
+#page-name {
+	padding-top: 20px;
+	padding-left: 40px;
+	font-size: 2.142857em;
+	text-align: auto 0;
+	display: inline-block;
+	color: white;
+}
+
+#right-div {
+	padding-right: 20px;
+	margin-top: 10px;
+}
+
+#firstline-search, #firstline-print, #firstline-help, #firstline-user,
+	#firstline-company, #firstline-supplier, #firstline-grid {
+	border: none;
+	background-color: #003366;
+}
+
+#firstline-search, #firstline-print, #firstline-help, #firstline-user {
+	color: white;
+}
+
+#firstline-icon {
+	border: 0;
+	background-color: #003366;
+}
+
+#firstline-search, #firstline-grid {
+	width: 70px;
+}
+
+#firstline-print {
+	width: 30px;
+}
+
+#firstline-help {
+	width: 60px;
+	height: 30px;
+}
+
+#firstline-company {
+	width: 100px;
+	height: 30px;
+}
+
+#firstline-supplier, #firstline-company, #firstline-grid {
+	color: #286ea6;
+	display: inline-block;
+}
+>>>>>>> origin/master
 
 
 #secondline-out {
@@ -296,6 +361,7 @@ input {
 	float: left;
 	height: 2.142857em;
 }
+
 .secondline {
 	float: right;
 	height: 2.142857em;
@@ -591,7 +657,7 @@ input {
 }
 
 .item-price-green, .item-price-grey, .item-price-blue, .item-price-black
-{
+	{
 	display: inline-block;
 	line-height: 28px;
 }
@@ -1395,7 +1461,12 @@ input {
 	position: relative;
 }
 
+<<<<<<< HEAD
 .secondline-left:hover, #secondline-right-title:hover{
+=======
+.secondline-left:hover, #secondline-right-title:hover, #firstline-icon:hover,
+	#firstline-help:hover, #firstline-user:hover {
+>>>>>>> origin/master
 	color: #428bca;
 }
 
@@ -1423,11 +1494,15 @@ body.a-dashbrd-page-bg {
 }
 
 .chart {
-	width: 240px;
+	
 	height: 210px;
-	float: left;
 	margin-bottom: 10px;
 	margin-right: 19.165px;
+}
+
+.container-chart {
+	float: left;
+	width: 25%;
 }
 
 .charts {
@@ -1498,74 +1573,74 @@ body.a-dashbrd-page-bg {
 .table-nest {
 	width: 100%;
 }
-.small-window-title{
-	font-size:20px;
-}
-.small-window-subtitle{
-	font-size:18px;
-}
-.small-window-button{
-	position:relative;
-	left:90%;
+
+.small-window-title {
+	font-size: 20px;
 }
 
-
-
-#profile-add{
-	margin-left:100px;	
+.small-window-subtitle {
+	font-size: 18px;
 }
 
-#profile-or{
-	margin-left:20px;
-	margin-right:20px;
-	color:grey;
+.small-window-button {
+	position: relative;
+	left: 90%;
 }
 
-#profile-input{
-	width:400px;
+#profile-add {
+	margin-left: 100px;
 }
 
-.delete-tag{
-	margin-top:5px;
-	margin-bottom:10px;
-	padding-right:5px;
-	padding-left:5px;
-	border:1px solid grey;
-	background-color:#ebebeb;
-	width:120px;
-	height:30px;
-	color:black;
+#profile-or {
+	margin-left: 20px;
+	margin-right: 20px;
+	color: grey;
 }
 
-.profile-adjust{
-	margin-left:20px;
-	margin-right:20px;
-
+#profile-input {
+	width: 400px;
 }
 
-#phone-prov{
-	width:60px;
-	display:inline-block;
+.delete-tag {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	border: 1px solid grey;
+	background-color: #ebebeb;
+	width: 120px;
+	height: 30px;
+	color: black;
 }
 
-#phone-num{
-	width:120px;
-	display:inline-block;
+.profile-adjust {
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
-#profile-other{
-	width:150px;
+#phone-prov {
+	width: 60px;
+	display: inline-block;
 }
 
-#profile-row{
-	border-bottom:1px solid #ddd;
+#phone-num {
+	width: 120px;
+	display: inline-block;
 }
 
-#profile-contact-out{
+#profile-other {
+	width: 150px;
+}
+
+#profile-row {
+	border-bottom: 1px solid #ddd;
+}
+
+#profile-contact-out {
 	overflow-x: scroll;
 	max-height: 240px;
 }
 
-.my-dropdown{
-	width:120px
+.my-dropdown {
+	width: 120px
 }

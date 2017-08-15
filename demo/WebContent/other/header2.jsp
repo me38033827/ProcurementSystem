@@ -8,7 +8,7 @@
 		<button class="secondline-left" onclick="window.location.href='main.jsp'">首页</button>
 		<button class="secondline-left">采购</button>
 		<button class="secondline-left">发票</button>
-		<button class="secondline-left">目录</button>
+		<button class="secondline-left" onclick="window.location.href='procurementCommodityCatalog.jsp'">目录</button>
 
 		<div class="btn-group secondline" role="group">
 			<button type="button"
