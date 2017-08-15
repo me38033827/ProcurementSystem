@@ -43,7 +43,7 @@ body{
 }
 
 .f-14 {
-	font-size: 1em;
+	font-size: 14px;
 }
 
 .f-13 {
@@ -122,15 +122,7 @@ body{
 	color: #428bca;
 }
 
-.icon-btn {
-	width: 30px;
-	height: 30px;
-	margin-top: 10px;
-	margin-right: 10px;
-	margin-left: 10px;
-	background-color: transparent;
-	border: none;
-}
+
 
 
 select {
@@ -1454,12 +1446,8 @@ option {
 	position: relative;
 }
 
-<<<<<<< HEAD
+
 .secondline-left:hover, #secondline-right-title:hover{
-=======
-.secondline-left:hover, #secondline-right-title:hover, #firstline-icon:hover,
-	#firstline-help:hover, #firstline-user:hover {
->>>>>>> origin/master
 	color: #428bca;
 }
 

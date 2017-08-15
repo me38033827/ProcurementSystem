@@ -16,7 +16,7 @@
 <!-- 页面整体宽度：1320px -->
 <body>
 	<div class="content">
-		<%@include file="other/header1.jsp"%>
+		<%@include file="../other/header1.jsp"%>
 		<div class="container">
 			<div class="standard-out">
 			<!-- 主要内容 -->
@@ -69,11 +69,12 @@
 					<button class="tag-not-clicked"
 						onclick="window.location.href='supplierDetailHistory.jsp'">历史记录</button>
 				</div>
+				
+				<div class="adjust-10"></div>
 	
-				<div class="subtitle">
-					<a class="subtitle-main">惠普（北京）</a>
+				<div class="standard-subtitle">惠普（北京）
 					<div class="right">
-						<a href="">显示详细信息</a>&nbsp;&nbsp;&nbsp;
+						<a href="" class="f-14">显示详细信息</a>&nbsp;&nbsp;&nbsp;
 						<div class="btn-group" >
 							<button class="btn-m" data-toggle="dropdown">
 								操作&nbsp;<span class="caret"></span>
@@ -114,7 +115,7 @@
 		</div>
 		<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
-	<%@ include file="other/footer.jsp"%>
+	<%@ include file="../other/footer.jsp"%>
 
 </body>
 </html>

@@ -8,66 +8,69 @@
 <%@include file="../other/supplierHeader1.jsp"%>
 </head>
 <body>
-	<div class="container">
-		<div class="standard-out">
-			<div class="standard-title">
-				<a class="standard-title-main">公司概要</a>
-				<div class="standard-title-r">
-					<button class="btn-b">保存</button>
-					<button class="btn-w">关闭</button>
-				</div>
-			</div>
-			<div class="row">
-				<!-- 左侧主要内容 -->
-				<div class="col-md-10">
-					
-					<div class="tag-line">
-						<button class="tag-not-clicked" onclick="window.location.href='profile.jsp'">基本</button>
-						<button class="tag-not-clicked" onclick="window.location.href='profileBusiness.jsp'">商务</button>
-						<button class="tag-not-clicked" onclick="window.location.href='profileMarket.jsp'">营销</button>
-						<button class="tag-not-clicked" onclick="window.location.href='profileContact.jsp'">联系人</button>
-						<button class="tag-not-clicked" onclick="window.location.href='profileAuth.jsp'">认证</button>
-						<button class="tag-clicked" onclick="window.location.href='profileCustomer.jsp'">请求的客户</button>
-						<button class="tag-not-clicked" onclick="window.location.href='profileDoc.jsp'">其他文档</button>
-					</div>
-					
-					<div class="profile-left">
-						<div class="title-description">
-							<a class="black">＊表示必填字段</a>
-						</div>
-						
-						<div class="standard-subtitle">
-							<a class="standard-subtitle-main">寻源客户列表</a>
-						</div>
-						
-						<div class="module">
-							<table class="table table-hover">
-								<tr class="standard-row1">
-									<td>客户</td>
-									<td>客户请求的概要信息</td>
-								</tr>
-								<tr id="profile-row">
-									<td href="">Lenovo</td>
-									<td style="color:red;">未完成</td>
-								</tr>
-							</table>
-						</div>
+	<div class="content">
+		<div class="container">
+			<div class="standard-out">
+				<div class="standard-title">
+					<a class="standard-title-main">公司概要</a>
+					<div class="standard-title-r">
+						<button class="btn-b">保存</button>
+						<button class="btn-w">关闭</button>
 					</div>
 				</div>
+				<div class="row">
+					<!-- 左侧主要内容 -->
+					<div class="col-md-10">
+						
+						<div class="tag-line">
+							<button class="tag-not-clicked" onclick="window.location.href='profile.jsp'">基本</button>
+							<button class="tag-not-clicked" onclick="window.location.href='profileBusiness.jsp'">商务</button>
+							<button class="tag-not-clicked" onclick="window.location.href='profileMarket.jsp'">营销</button>
+							<button class="tag-not-clicked" onclick="window.location.href='profileContact.jsp'">联系人</button>
+							<button class="tag-not-clicked" onclick="window.location.href='profileAuth.jsp'">认证</button>
+							<button class="tag-clicked" onclick="window.location.href='profileCustomer.jsp'">请求的客户</button>
+							<button class="tag-not-clicked" onclick="window.location.href='profileDoc.jsp'">其他文档</button>
+						</div>
+						
+						<div class="profile-left">
+							<div class="title-description">＊表示必填字段
+							</div>
+							
+							<div class="standard-subtitle">寻源客户列表
+							</div>
+							
+							<div>
+								<table class="table table-hover">
+									<tr class="standard-row1">
+										<td>客户</td>
+										<td>客户请求的概要信息</td>
+									</tr>
+									<tr id="profile-row">
+										<td href="">Lenovo</td>
+										<td style="color:red;">未完成</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					
+					
+					<%@ include file="profileR.jsp"%>
+					
+				</div>
+				<div class="standard-ending">
+					<div align="right" class="standard-ending-r">
+						<button class="btn-b">保存</button>
+						<button class="btn-w">关闭</button>
+					</div>				
 				
-				
-				<%@ include file="profileR.jsp"%>
-				
-			</div>
-			<div class="standard-ending">
-				<div class="standard-ending-r">
-					<button class="btn-b">保存</button>
-					<button class="btn-w">关闭</button>
-				</div>				
-			
+				</div>
 			</div>
 		</div>
 	</div>
+	<!-- CONTENT-WRAPPER SECTION END-->
+	<%@ include file="../other/supplierFooter.jsp"%>
+	
 	
 
 </body>
