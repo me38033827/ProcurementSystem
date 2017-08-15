@@ -25,3 +25,14 @@
 text-center {
 	text-align: center;
 }
+/* 页面内容首行,包括首行标题和旁边的按钮 */
+.page-main-title{
+	padding:15px 0 15px 0;
+	margin-bottom:15px;
+	font-size:20px;
+	border-bottom:2px solid #ebebeb;
+}
+.page-main-title-btn{
+	padding:15px 0 15px 0;
+	float:right;
+}

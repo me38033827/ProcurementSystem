@@ -14,11 +14,15 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="container-padding">
-					<div class="small-window-title border-bottom-grey margin-bottom">目录</div>
+					<div class="page-main-title">
+						目录
+					</div>
+
 					<div class="margin-bottom">
 						请复查目录列表，并采取相应的操作；例如，导入新目录、处理现有目录或比较目录版本。<br>
 						<div class="margin-bottom right">
-							<button class="btn-b" onclick="window.location.href='procurementCatalogCreation.jsp'">导入新目录</button>
+							<button class="btn-b"
+								onclick="window.location.href='procurementCatalogCreation.jsp'">导入新目录</button>
 							<button class="btn-w" style="width: 120px">导入供应商徽标</button>
 						</div>
 						<br>
@@ -83,7 +87,8 @@
 								<td width="5%"><a> 已激活 </a></td>
 								<td width="10%"><a>1</a></td>
 								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
-							</tr><tr>
+							</tr>
+							<tr>
 								<td width="5%"><input type="checkbox" id="commo-t0"
 									class="chk" /><label for="commo-t0"></label></td>
 								<td width="10%"><a> 0615SupplierA </a></td>
@@ -95,7 +100,8 @@
 								<td width="5%"><a> 已激活 </a></td>
 								<td width="10%"><a>1</a></td>
 								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
-							</tr><tr>
+							</tr>
+							<tr>
 								<td width="5%"><input type="checkbox" id="commo-t0"
 									class="chk" /><label for="commo-t0"></label></td>
 								<td width="10%"><a> 0615SupplierA </a></td>
@@ -107,7 +113,8 @@
 								<td width="5%"><a> 已激活 </a></td>
 								<td width="10%"><a>1</a></td>
 								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
-							</tr><tr>
+							</tr>
+							<tr>
 								<td width="5%"><input type="checkbox" id="commo-t0"
 									class="chk" /><label for="commo-t0"></label></td>
 								<td width="10%"><a> 0615SupplierA </a></td>
@@ -119,7 +126,8 @@
 								<td width="5%"><a> 已激活 </a></td>
 								<td width="10%"><a>1</a></td>
 								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
-							</tr><tr>
+							</tr>
+							<tr>
 								<td width="5%"><input type="checkbox" id="commo-t0"
 									class="chk" /><label for="commo-t0"></label></td>
 								<td width="10%"><a> 0615SupplierA </a></td>
@@ -131,7 +139,8 @@
 								<td width="5%"><a> 已激活 </a></td>
 								<td width="10%"><a>1</a></td>
 								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
-							</tr><tr>
+							</tr>
+							<tr>
 								<td width="5%"><input type="checkbox" id="commo-t0"
 									class="chk" /><label for="commo-t0"></label></td>
 								<td width="10%"><a> 0615SupplierA </a></td>
@@ -143,7 +152,8 @@
 								<td width="5%"><a> 已激活 </a></td>
 								<td width="10%"><a>1</a></td>
 								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
-							</tr><tr>
+							</tr>
+							<tr>
 								<td width="5%"><input type="checkbox" id="commo-t0"
 									class="chk" /><label for="commo-t0"></label></td>
 								<td width="10%"><a> 0615SupplierA </a></td>
@@ -155,7 +165,8 @@
 								<td width="5%"><a> 已激活 </a></td>
 								<td width="10%"><a>1</a></td>
 								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
-							</tr><tr>
+							</tr>
+							<tr>
 								<td width="5%"><input type="checkbox" id="commo-t0"
 									class="chk" /><label for="commo-t0"></label></td>
 								<td width="10%"><a> 0615SupplierA </a></td>
@@ -167,7 +178,8 @@
 								<td width="5%"><a> 已激活 </a></td>
 								<td width="10%"><a>1</a></td>
 								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
-							</tr><tr>
+							</tr>
+							<tr>
 								<td width="5%"><input type="checkbox" id="commo-t0"
 									class="chk" /><label for="commo-t0"></label></td>
 								<td width="10%"><a> 0615SupplierA </a></td>
@@ -179,7 +191,8 @@
 								<td width="5%"><a> 已激活 </a></td>
 								<td width="10%"><a>1</a></td>
 								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
-							</tr><tr>
+							</tr>
+							<tr>
 								<td width="5%"><input type="checkbox" id="commo-t0"
 									class="chk" /><label for="commo-t0"></label></td>
 								<td width="10%"><a> 0615SupplierA </a></td>
@@ -191,7 +204,8 @@
 								<td width="5%"><a> 已激活 </a></td>
 								<td width="10%"><a>1</a></td>
 								<td width="25%"><a>2016年11月7日上午 11:10 </a></td>
-							</tr><tr>
+							</tr>
+							<tr>
 								<td width="5%"><input type="checkbox" id="commo-t0"
 									class="chk" /><label for="commo-t0"></label></td>
 								<td width="10%"><a> 0615SupplierA </a></td>

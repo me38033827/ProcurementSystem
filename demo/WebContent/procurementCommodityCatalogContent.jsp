@@ -16,22 +16,34 @@
 				<div class="container-padding">
 					<div class="border-bottom-grey margin-bottom">
 						<div class="right">
-							<button class="btn-w">目录 主页</button>
+							<button class="btn-w"
+								onclick="window.location.href='procurementCommodityCatalogList.jsp'">目录
+								主页</button>
 						</div>
-						<div class="small-window-title margin-bottom m">目录 - 查看内容 -
+						<div class="small-window-title margin-bottom ">目录 - 查看内容 -
 							catalog for test，版本 1, 完整</div>
 
 					</div>
 					<div class="margin-bottom">
-						<span class="caution-div container-text border-blue"> <a>步骤1.清理数据</a>
-						</span> > <span> <a>步骤2.分析数据</a>
-						</span> > <span> <a>步骤3.生效</a>
+						<span class="caution-div container-text border-blue"> <a  href="procurementCommodityCatalogContent.jsp">步骤1.清理数据</a>
+						</span>&nbsp;&nbsp; > &nbsp;&nbsp;<span> <a href="procurementCommodityCatalogCompare.jsp">步骤2.分析数据</a>
+						</span>&nbsp;&nbsp; >&nbsp;&nbsp; <span> <a href="procurementCommodityCatalogActivate.jsp">步骤3.生效</a>
 						</span>
 					</div>
 
 					<div class="margin-bottom">
 						<div>
-							<strong>工具：</strong>
+							<strong>工具：</strong> <a><img
+								src="/demo/assets/img/icon-correct.png" class="img-icon"
+								title="纠错工具" /></a> <a><img
+								src="/demo/assets/img/icon-edit.png"
+								class="img-icon icon-choose" title="内容编辑工具" /></a> <a><img
+								src="/demo/assets/img/icon-download.png" class="img-icon"
+								title="导入" /></a> <a><img
+								src="/demo/assets/img/icon-upload.png" class="img-icon"
+								title="导出" /></a> <a><img src="/demo/assets/img/icon-sync.png"
+								class="img-icon" title="同步" /></a>
+
 						</div>
 					</div>
 					<div class="margin-bottom">
@@ -59,7 +71,8 @@
 						</tr>
 						<tr>
 							<td><input type="checkbox" id="commo-t0" class="chk" /><label
-								for="commo-t0"></label>&nbsp;编辑！！！</td>
+								for="commo-t0"></label>&nbsp;<a
+								href="procurementCommodityCatalogEdit.jsp">编辑！！！</a></td>
 							<td>13</td>
 							<td>200</td>
 							<td>0615SupplierA</td>
@@ -76,7 +89,8 @@
 							<td>Catalog for test_8101</td>
 							<td></td>
 							<td>Description for 8101</td>
-						</tr><tr>
+						</tr>
+						<tr>
 							<td><input type="checkbox" id="commo-t2" class="chk" /><label
 								for="commo-t2"></label>&nbsp;编辑！！！</td>
 							<td>13</td>
@@ -85,7 +99,8 @@
 							<td>Catalog for test_8101</td>
 							<td></td>
 							<td>Description for 8101</td>
-						</tr><tr>
+						</tr>
+						<tr>
 							<td><input type="checkbox" id="commo-t3" class="chk" /><label
 								for="commo-t3"></label>&nbsp;编辑！！！</td>
 							<td>13</td>
@@ -94,7 +109,8 @@
 							<td>Catalog for test_8101</td>
 							<td></td>
 							<td>Description for 8101</td>
-						</tr><tr>
+						</tr>
+						<tr>
 							<td><input type="checkbox" id="commo-t4" class="chk" /><label
 								for="commo-t4"></label>&nbsp;编辑！！！</td>
 							<td>13</td>
@@ -111,13 +127,12 @@
 							<a class="arrow-turn">↳</a>
 							<button class="btn-w">删除</button>
 							<button class="btn-w">添加新目录</button>
-							<br>
-							<br>
+							<br> <br>
 						</div>
 					</div>
 					<div class="right">
 						<button class="btn-w">目录 主页</button>
-						<br><br>
+						<br> <br>
 					</div>
 				</div>
 			</div>
