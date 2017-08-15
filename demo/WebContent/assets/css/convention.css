@@ -1,0 +1,38 @@
+/* 包含边距、表框、背景色等的一些标准 */
+.border-blue {
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(153, 153, 204);
+}
+
+.margin-bottom {
+	margin-bottom: 15px;
+}
+
+.clear-both {
+	clear: both;
+}
+
+.bg-grey {
+	background-color: #F5F5F5;
+}
+
+.table-bottom-btn {
+	padding: 10px 0 10px 10px;
+	background-color: #ebebeb;
+}
+
+text-center {
+	text-align: center;
+}
+/* 页面内容首行,包括首行标题和旁边的按钮 */
+.page-main-title{
+	padding:15px 0 15px 0;
+	margin-bottom:15px;
+	font-size:20px;
+	border-bottom:2px solid #ebebeb;
+}
+.page-main-title-btn{
+	padding:15px 0 15px 0;
+	float:right;
+}

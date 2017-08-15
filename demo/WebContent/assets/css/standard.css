@@ -367,6 +367,7 @@ button{
 
 .manu-deactive{
 	background-color:#ebebeb;
+<<<<<<< HEAD
 }
 
 
@@ -403,11 +404,21 @@ button{
 }
 
 .btn-b {
+=======
+	height:50px;
+	padding:10px;
+	width:200px;
+	color:grey;
+}
+
+.btn-g {
+>>>>>>> downstream
 	font-size: 14px;
 	border: 0;
 	width: 7.142857em;
 	height: 2.142857em;
 	text-align: center;
+<<<<<<< HEAD
 	background-color: #428bca;
 	color: white;
 }
@@ -416,4 +427,9 @@ button{
 	color: #fff;
 	background-color: #3071a9;
 	border-color: #285e8e;
+=======
+	background-color: white;
+	color: #969696;
+	border:1px solid #ddd;
+>>>>>>> downstream
 }

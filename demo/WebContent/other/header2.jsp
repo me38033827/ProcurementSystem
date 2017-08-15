@@ -42,7 +42,7 @@
 				<li><a class="secondline-right" href="supplierSearching.jsp">供应商管理</a></li>
 				<li><a class="secondline-right" href="contractSearching.jsp">合同管理</a></li>
 				<li><a class="secondline-right"
-					href="procurementCommodityCatalog.jsp">商品目录</a></li>
+					href="procurementCommodityCatalogList.jsp">商品目录</a></li>
 				<li><a class="secondline-right" href="orderSearching.jsp">订单协同</a></li>
 				<li><a class="secondline-right" href="receiptSearching.jsp">收\发货协同</a></li>
 				<li><a class="secondline-right" href="deliverySearching.jsp">物流管理</a></li>

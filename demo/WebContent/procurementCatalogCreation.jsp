@@ -13,7 +13,7 @@
 <body>
 	<div class="container" id="whole-container">
 
-		
+
 
 		<!-- 导入新目录标题 -->
 		<div id="catalog-creation-title1">
@@ -21,7 +21,7 @@
 		</div>
 		<!-- 导入新目录具体内容 -->
 		<div id="catalog-creation">
-			<p>请输入必须的信息，然后选择相应的设置，以导入新目录或者创建新的空目录</p>
+			<p>请浏览到包含此目录新版本的文件。您也可以随目录文件一起导入图像文件。</p>
 			<table class="catalog-table">
 				<tr>
 					<td class="col1">选择：</td>
@@ -128,17 +128,16 @@
 						</div>
 					</td>
 				</tr>
-
 				<tr>
-					<td class="col1">宽松验证：</td>
-					<td class="col2"><button type="submit" class="btn btn-default"
-							id="catalog-creation-config">配置</button></td>
+					<td>跳过的验证错误:</td>
 				</tr>
+
 
 				<tr>
 					<td class="col1">目录文件：</td>
 					<td class="col2"><button type="submit" class="btn btn-default"
-							id="catalog-creation-select">选择文件</button></td>
+							id="catalog-creation-select"
+							onclick="window.location.href='procurementCommodityCatalogueUpload.jsp'">选择文件</button></td>
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-default"
