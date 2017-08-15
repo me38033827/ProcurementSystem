@@ -3,12 +3,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<%@include file="../other/header1.jsp"%>
 <title>供应商详情－概述</title>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
 	<div class="content">
-	<%@include file="other/header1.jsp"%>
 		<div class="container">
 			<div class="standard-out">
 			<!-- 主要内容 -->
@@ -61,11 +61,12 @@
 					<button class="tag-not-clicked"
 						onclick="window.location.href='supplierDetailHistory.jsp'">历史记录</button>
 				</div>
-	
+				
+				<div class="adjust-10"></div>
+				
 				<div class="inline-b filters full">
 					<div class="half inline-b">
-						<div class="subtitle">
-							<a class="subtitle-main">概述</a>
+						<div class="standard-subtitle">概述
 							<div class="btn-group right">
 								<button class="btn-ma" data-toggle="dropdown">
 									操作&nbsp;<span class="caret"></span>
@@ -119,10 +120,9 @@
 					<div class="half inline-b right">
 						<div class="inline-b tab-height full">
 							<div class="inline-b filters full">
-								<div class="subtitle">
-									<a class="subtitle-main">流程</a>
+								<div class="standard-subtitle">流程
 									<div class="btn-group right">
-										<a href="">所有任务</a>
+										<a class="f-14"href="">所有任务</a>
 									</div>
 								</div>
 								<div class="adjust-10"></div>
@@ -161,10 +161,9 @@
 						
 						<div class="inline-b tab-height full">
 							<div class="inline-b filters full">
-								<div class="subtitle">
-									<a class="subtitle-main">快速链接</a>
+								<div class="standard-subtitle">快速链接
 									<div class="btn-group right">
-										<a href="">所有文档</a>
+										<a class="f-14" href="">所有文档</a>
 									</div>
 								</div>
 								<div class="adjust-10"></div>
@@ -178,11 +177,10 @@
 						
 						<div class="inline-b tab-height full">
 							<div class="inline-b filters full">
-								<div class="subtitle">
-									<a class="subtitle-main">声明</a>
+								<div class="standard-subtitle">声明
 									<div class="btn-group right">
-										<a href="">新</a>&nbsp;&nbsp;
-										<a href="">详细信息</a>
+										<a href="" class="f-14">新</a>&nbsp;&nbsp;
+										<a href="" class="f-14">详细信息</a>
 									</div>
 								</div>
 								<div class="adjust-10"></div>
@@ -204,7 +202,7 @@
 		</div>
 		<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
-	<%@ include file="other/footer.jsp"%>
+	<%@ include file="../other/footer.jsp"%>
 
 </body>
 </html>

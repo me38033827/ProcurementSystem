@@ -4,11 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>供应商详情－事件消息</title>
+<%@include file="../other/header1.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
 	<div class="content">
-		<%@include file="other/header1.jsp"%>
 		<div class="container">
 			<div class="standard-out">
 			<!-- 主要内容 -->
@@ -121,7 +121,7 @@
 						</div>
 						
 						<div>
-							<table class="fulltab">
+							<table class="table table-hover">
 								<tr class="standard-row1">
 									<td>事件</td>
 									<td>从</td>
@@ -143,7 +143,7 @@
 		</div>
 		<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
-	<%@ include file="other/footer.jsp"%>
+	<%@ include file="../other/footer.jsp"%>
 
 </body>
 </html>

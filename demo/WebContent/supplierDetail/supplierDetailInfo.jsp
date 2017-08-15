@@ -4,11 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>供应商详情－信息板</title>
+<%@include file="../other/header1.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
 	<div class="content">
-		<%@include file="other/header1.jsp"%>
 		<div class="container">
 			<div class="standard-out">
 			<!-- 主要内容 -->
@@ -21,10 +21,19 @@
 							<div class="supplier-left-info-tab">
 								<table class="fulltab">
 									<tr>
-										<td><a href="">声明</a></td>
+										<td><a href="" class="f-13">声明</a></td>
 									</tr>
+									<tr>
+										<td><a href="" class="f-13">高优先级</a></td>
+									</tr>
+									<tr>
+										<td><a href="" class="f-13">发送电子邮件到项目</a></td>
+									</tr>
+									
 								</table>
+								<div class="supplier-left-info-manage"><a href="">管理标签</a></div>
 							</div>
+							
 						</div>
 					</div>
 					
@@ -81,7 +90,6 @@
 				
 				
 						<div class="adjust-10"></div>
-						<div class="adjust-10"></div>
 						
 						<div class="searching-filter">
 							<div class="filter-title">
@@ -91,17 +99,17 @@
 							<div class="row searching-content">
 								<div class="col-md-6">
 									<table class="tab-left-space">
-										<tr class="standard-row">
-											<td class="standard-col1">标题：</td>
-											<td class="standard-col2"><input class="form-control input" style="width:300px;"/></td>
+										<tr class="row-standard">
+											<td class="col-standard1">标题：</td>
+											<td class="col-standard2"><input class="form-control input" style="width:300px;"/></td>
 										</tr>
 									</table>
 								</div>
 								<div class="col-md-6">
 									<table class="tab-left-space">
-										<tr class="standard-row">
-											<td class="standard-col1">关键字：</td>
-											<td class="standard-col2"><input class="form-control input" style="width:240px;"/></td>
+										<tr class="row-standard">
+											<td class="col-standard1">关键字：</td>
+											<td class="col-standard2"><input class="form-control input" style="width:240px;"/></td>
 										</tr>
 									</table>
 								</div>
@@ -115,11 +123,11 @@
 						</div>
 			
 						<div class="adjust-10"></div>
+						<div class="adjust-10"></div>
 						
-						<div class="subtitle">
-							<a class="subtitle-main">主题</a>
+						<div class="standard-subtitle">主题
 							<div class="right">
-								<a href="">通过电子邮件发布</a>
+								<a href="" class="f-14">通过电子邮件发布</a>
 							</div>
 						</div>
 			
@@ -187,7 +195,7 @@
 		</div>
 		<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
-	<%@ include file="other/footer.jsp"%>
+	<%@ include file="../other/footer.jsp"%>
 
 </body>
 </html>
