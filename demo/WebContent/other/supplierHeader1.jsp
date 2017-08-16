@@ -22,10 +22,17 @@
 	rel='stylesheet' type='text/css' />
 <!-- MY CSS -->
 <link href="/demo/assets/css/mycss.css" rel="stylesheet" />
+<link href="/demo/assets/css/order.css" rel="stylesheet" />
+<link href="/demo/assets/css/approval.css" rel="stylesheet" />
+<link href="/demo/assets/css/catalog.css" rel="stylesheet" />
+<link href="/demo/assets/css/detail.css" rel="stylesheet" />
+<link href="/demo/assets/css/settlement.css" rel="stylesheet" />
+<link href="/demo/assets/css/relevant.css" rel="stylesheet" />
 <link href="/demo/assets/css/standard.css" rel="stylesheet" />
+<link href="/demo/assets/css/supplierP.css" rel="stylesheet" />
 <link href="/demo/assets/css/supplier.css" rel="stylesheet" />
-<link href="/demo/assets/css/supplierProfile.css" rel="stylesheet">
-
+<link href="/demo/assets/css/convention.css" rel="stylesheet" />
+<link href="/demo/assets/css/commodityCatalog.css" rel="stylesheet" />
 <!-- CORE JQUERY  -->
 <script src="/demo/assets/js/jquery.js"></script>
 
@@ -36,17 +43,20 @@
 <!-- ECharts -->
 <script src="/demo/assets/js/echarts.common.min.js"></script>
 <!-- 标题及导航栏第一行 -->
-<div class="container firstline-out" style="width:100%; padding:0">
+<div class="container firstline-out" style="width: 100%; padding: 0">
 	<div class="navbar navbar-inverse set-radius-zero firstline">
 		<a class="left page-name">LOGO</a>
 
 		<!-- 首行靠右导航栏 -->
 		<div class="right" id="right-div">
 			<button class="firstline-icon" disabled>
-				<span class="glyphicon glyphicon-th firstline-grid" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-th firstline-grid"
+					aria-hidden="true"></span>
 			</button>
-			<a class="firstline-company">公司设置<span class="glyphicon glyphicon-triangle-bottom" style="height:10px; width:10px;" aria-hidden="true"></span></a>
-			<a class="firstline-supplier btn-h">用户：L-8899</a>
+			<a class="firstline-company">公司设置<span
+				class="glyphicon glyphicon-triangle-bottom"
+				style="height: 10px; width: 10px;" aria-hidden="true"></span></a> <a
+				class="firstline-supplier btn-h">用户：L-8899</a>
 
 		</div>
 	</div>
