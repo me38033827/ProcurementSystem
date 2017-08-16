@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@include file="../other/header1.jsp"%>
-<title>供应商详情－概要</title>
+<title>供应商详情－报告</title>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -37,7 +37,10 @@
 						</table>
 					</div>
 				</div>
-			
+				
+				
+	
+	
 				<div class="tag-line">
 					<button class="tag-not-clicked"
 						onclick="window.location.href='supplierDetailSummary.jsp'">概述</button>
@@ -59,281 +62,126 @@
 						onclick="window.location.href='supplierDetailHistory.jsp'">历史记录</button>
 				</div>
 				
-				<div class="adjust-10"></div>
-	
-				<div class="inline-b filters full">
-					<div class="half inline-b">
-						<div class="standard-subtitle">组织概要
-							<div class="btn-group right">
-								<button class="btn-ma" data-toggle="dropdown">
-									操作&nbsp;<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" style="width:120px;">
-									<li><a class="manu-deactive">编辑</a></li>
-									<li><a class="manu-active" href="">&nbsp;&nbsp;概要</a></li>
-									<li><a class="manu-deactive" >查看</a></li>
-									<li><a class="manu-active" href="">&nbsp;&nbsp;组织标识符</a></li>
-									<li><a class="manu-active" href="">&nbsp;&nbsp;厂商密钥</a></li>
-									<li><a class="manu-deactive" >供应商集成</a></li>
-									<li><a class="manu-active" href="">&nbsp;&nbsp;启用</a></li>
-									<li><a class="manu-deactive" >更改审批状态</a></li>
-									<li><a class="manu-active" href="">&nbsp;&nbsp;拒绝</a></li>
-								</ul>
-							</div>
-						</div>
-						<table class="tab-height" id="supplier-crea-tab1">
-							<tr>
-								<td class="col-standard1">组织名称：</td>
-								<td class="col-standard2">惠普（北京）有限公司</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">供应商：</td>
-								<td class="col-standard2">是</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">简短描述：</td>
-								<td class="col-standard2">HP-BJ</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">创建人：</td>
-								<td class="col-standard2">Chen Dingxuan</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">客户：</td>
-								<td class="col-standard2">否</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">受管理：</td>
-								<td class="col-standard2">是</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">审批状态：</td>
-								<td class="col-standard2">已批准</td>
-							</tr>
-	
-							<tr>
-								<td class="col-standard1">其他名称1：</td>
-								<td class="col-standard2"></td>
-							</tr>
-	
-							<tr>
-								<td class="col-standard1">其他名称2：</td>
-								<td class="col-standard2"></td>
-							</tr>
-							<tr>
-								<td class="col-standard1">公司地址：</td>
-								<td class="col-standard2">北京市朝阳区东三环南路2号中国惠普大厦</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">法定全称：</td>
-								<td class="col-standard2"></td>
-							</tr>
-							<tr>
-								<td class="col-standard1">股票交易代码：</td>
-								<td class="col-standard2"></td>
-							</tr>
-	
-							<tr>
-								<td class="col-standard1">全球位置码：</td>
-								<td class="col-standard2"></td>
-							</tr>
-	
-							<tr>
-								<td class="col-standard1">税款标识符：</td>
-								<td class="col-standard2"></td>
-							</tr>
-	
-							<tr>
-								<td class="col-standard1">州税款标识符：</td>
-								<td class="col-standard2"></td>
-							</tr>
-	
-							<tr>
-								<td class="col-standard1">地区税款标识符：</td>
-								<td class="col-standard2"></td>
-							</tr>
-							<tr>
-								<td class="col-standard1">VAT标识符：</td>
-								<td class="col-standard2"></td>
-							</tr>
-	
-							<tr>
-								<td class="col-standard1">免缴预扣税：</td>
-								<td class="col-standard2"></td>
-							</tr>
-							<tr>
-								<td class="col-standard1">总机：</td>
-								<td class="col-standard2">57468233</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">主要电子邮件地址：</td>
-								<td class="col-standard2">chendx@hp.com.cn</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">其他地址：</td>
-								<td class="col-standard2">（无值）</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">供应的商品：</td>
-								<td class="col-standard2"></td>
-							</tr>
-							<tr>
-								<td class="col-standard1">批准的商品：</td>
-								<td class="col-standard2"></td>
-							</tr>
-							<tr>
-								<td class="col-standard1">商品(UNSPSC)：</td>
-								<td class="col-standard2">（无值）</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">标识符：</td>
-								<td class="col-standard2">SU0000134</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">DUNS：</td>
-								<td class="col-standard2"></td>
-							</tr>
-							<tr>
-								<td class="col-standard1">供应商集成状态：</td>
-								<td class="col-standard2"></td>
-							</tr>
-							<tr>
-								<td class="col-standard1">供应商系统名称：</td>
-								<td class="col-standard2"></td>
-							</tr>
-							<tr>
-								<td class="col-standard1">已阻止：</td>
-								<td class="col-standard2"></td>
-							</tr>
-						</table>
+				<div class="standard-title" style="border:0;">
+					<div class="standard-title-main">供应商360</div>
+					<div class="standard-title-r">
+						<a href=""><span class="glyphicon glyphicon-share" aria-hidden="true"></span>&nbsp;发送至设备</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href=""><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;发送至电子邮件</a>&nbsp;&nbsp;&nbsp;
+						<button class="btn-w">保存</button>
+						<button class="btn-w">设置为建议值</button>
+						<button class="btn-w">选择报告</button>
 					</div>
-					<div class="half inline-b right">
-						<div class="inline-b tab-height full">
-							<div class="inline-b filters full">
-								<div class="standard-subtitle">用户
-									<div class="btn-group right">
-									</div>
-								</div>
-								<div class="adjust-10"></div>
-								<div>
-									<table class="table table-hover">
-										<tr class="standard-row1">
-											<td style="padding:5px;">
-												<input type="checkbox" id="chk-sup-de1" class="chk" /><label for="chk-sup-de1"></label>
-											</td>
-											<td>标识符</td>
-											<td>名称</td>
-											<td>电子邮件地址</td>
-											<td>业务电话</td>
-											<td>状态</td>
-										</tr>
-										<tr>
-											<td style="padding:5px;">
-												<input type="checkbox" id="chk-sup-de2" class="chk" /><label for="chk-sup-de2"></label>
-											</td>
-											<td>12036403</td>
-											<td>Chen dingxuan</td>
-											<td>chendx@hp.com.cn</td>
-											<td></td>
-											<td>已批准</td>
-										</tr>
-										<tr class="standard-row3">
-											<td colspan="6">
-												<a class="arrow-turn">&#8627;</a>
-												<button class="btn-w">批准</button>
-												<button class="btn-w">拒绝</button>
-												｜
-												<button class="btn-w">管理用户</button>
-												<button class="btn-w">创建用户</button>
-											</td>
-										</tr>
-									</table>
-								</div>
-							</div>
+				</div>
+				
+				<div class="title-description" style="padding-bottom:0;padding-top:0;"><span class="glyphicon glyphicon-warning-sign" style="color:orange;" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+					目前正在加载数据，因此报告运行会比较慢。
+				</div>
+				
+	
+				<div id="supplier-detail-report-box">
+					<a class="black"><span class="glyphicon glyphicon-triangle-bottom black f-12" aria-hidden="true"></span>&nbsp;
+								&nbsp;应用的筛选器</a><br>
+					<a>&nbsp;&nbsp;&nbsp;供应商（普通组织）<span class="caret"></span></a>：&nbsp;惠普（北京）
+				</div>
+				
+				<div class="adjust-10"></div>
+				<div class="adjust-10"></div>
+				<div class="adjust-10"></div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<div class="standard-subtitle">强化型供应商父公司商品分析
+						</div>
+						<div class="report-center-description">您未获得访问此报告的授权。
+						</div>
+						<div class="adjust-10"></div>
+						
+						<div class="standard-subtitle">图表/表
+						</div>
+						<div class="report-center-description">未选择报告。应删除该项目。
+						</div>
+						<div class="adjust-10"></div>
+						
+						<div class="standard-subtitle">参与事件列表
+						</div>
+						<div class="report-center-description">没有可用数据。
+						</div>
+						<div class="report-center-link"><a href="">单击此区域可查看完整分析。</a>
+						</div>
+						<div class="adjust-10"></div>
+						
+						<div class="standard-subtitle">采购项目供应商报告
+						</div>
+						<div class="report-center-description">没有可用数据。
+						</div>
+						<div class="report-center-link"><a href="">单击此区域可查看完整分析。</a>
+						</div>
+						<div class="adjust-10"></div>
+					</div>
+					<div class="col-md-6">
+						
+						<div class="standard-subtitle">供应商绩效趋势报告
+						</div>
+						<div class="report-center-description">没有符合您所选条件的记录。 
+						</div>
+						<div class="report-center-link"><a href="">单击此区域可查看完整分析。</a>
 						</div>
 						
 						<div class="adjust-10"></div>
 						
-						<div class="inline-b tab-height full">
-							<div class="inline-b filters full">
-								<div class="standard-subtitle">业务联系人
-								</div>
-								<div class="adjust-10"></div>
-								<div>
-									<table class="table table-hover">
-										<tr class="standard-row1">
-											<td style="padding:5px;">
-												<input type="checkbox" id="chk-sup-de3" class="chk" /><label for="chk-sup-de3"></label>
-											</td>
-											<td>名称</td>
-											<td>电子邮件地址</td>
-											<td>电话号码</td>
-											<td>状态</td>
-										</tr>
-										<tr>
-											<td colspan="5" class="no-item">无项目</td>
-										</tr>
-										<tr class="standard-row3">
-											<td colspan="6">
-												<a class="arrow-turn">&#8627;</a>
-												<button class="btn-w">添加／删除</button>
-											</td>
-										</tr>
-									</table>
-								</div>
+						<div class="standard-subtitle">供应绩效管理项目列表
+						</div>
+						<div class="adjust-10"></div>
+						<table class="table table-hover">
+							<tr class="standard-row1">
+								<td>项目名称</td>
+								<td>所有者（用户）</td>
+								<td>开始日期</td>
+								<td>状态</td>
+								<td>项目计数</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><b>2</b></td>
+							</tr>
+							<tr>
+								<td>YH供应商绩效管理项目</td>
+								<td>Chen dingxuan</td>
+								<td>2017年5月23日</td>
+								<td>灰色</td>
+								<td>1</td>
+							</tr>
+							<tr class="bottom-border">
+								<td>无标题供应商绩效管理项目</td>
+								<td>Chen dingxuan</td>
+								<td>2017年5月27日</td>
+								<td>灰色</td>
+								<td>1</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="adjust-10"></div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="standard-subtitle">供应商近期评分卡
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
 							</div>
 						</div>
-					</div>
-	
-	
-					<div class="standard-subtitle">概要问卷
-					</div>
-						<div>
-							<table class="fulltab">
-								<tr class="standard-row1">
-									<td>名称</td>
-								</tr>
-							</table>
-						</div>
-						<div class="supplier-question">
-							<table class="fulltab" id="supplier-tab-bot">
-								<tr class="searching-tab-row2">
-									<td>1 公司信息</td>
-									<td></td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.1 公司名称</td>
-									<td>HP</td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.2 请简要介绍一下贵公司</td>
-									<td>教育培训</td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.3 您有多少长期员工</td>
-									<td>200</td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.3 贵公司创办于哪一年</td>
-									<td>1998</td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>2 所有权信息</td>
-									<td></td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>2.1 妇女所有企业证书</td>
-									<td></td>
-								</tr>
-	
-							</table>
-						</div>
+					
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- CONTENT-WRAPPER SECTION END-->
-		<%@ include file="../other/footer.jsp"%>
+	</div>
+	<%@ include file="../other/footer.jsp"%>
 
 </body>
 </html>

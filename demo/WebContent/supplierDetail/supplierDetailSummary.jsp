@@ -64,8 +64,8 @@
 				
 				<div class="adjust-10"></div>
 				
-				<div class="inline-b filters full">
-					<div class="half inline-b">
+				<div class="row">
+					<div class="col-md-6">
 						<div class="standard-subtitle">概述
 							<div class="btn-group right">
 								<button class="btn-ma" data-toggle="dropdown">
@@ -117,7 +117,7 @@
 							</tr>
 						</table>
 					</div>
-					<div class="half inline-b right">
+					<div class="col-md-6">
 						<div class="inline-b tab-height full">
 							<div class="inline-b filters full">
 								<div class="standard-subtitle">流程

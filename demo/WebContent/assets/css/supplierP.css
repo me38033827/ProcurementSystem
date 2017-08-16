@@ -73,3 +73,23 @@
 	margin-top:5px;
 	padding-top:5px;
 }
+
+/* supplier detail report*/
+#supplier-detail-report-box{
+	border:1px solid #ddd;
+	font-size:13px;
+	padding:0 10px;
+}
+
+.report-center-description{
+	font-size:13px;
+	color:grey;
+	text-align:center;
+}
+.report-center-link{
+	font-size:13px;
+	color:#428bca;
+	text-align:center;
+	padding-top:20px;
+	padding-bottom:20px;
+}

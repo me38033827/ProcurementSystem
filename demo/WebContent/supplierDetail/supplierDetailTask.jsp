@@ -84,9 +84,8 @@
 				<div class="adjust-10"></div>
 				<div class="standard-subtitle">惠普（北京）
 					<div class="right">
-						<a href="" class="f-14">显示详细信息</a>&nbsp;&nbsp;&nbsp;
 						<div class="btn-group" >
-							<button class="btn-m" data-toggle="dropdown">
+							<button class="btn-m" data-toggle="dropdown" style="width:80px;">
 								操作&nbsp;<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu manu-btn-o" >
@@ -98,7 +97,7 @@
 				</div>
 				
 				<div>
-					<table class="fulltab">
+					<table class="table table-hover">
 						<tr class="standard-row1">
 							<td style="width:60%;">名称</td>
 							<td style="width:10%;">文档</td>
@@ -106,21 +105,60 @@
 							<td style="width:10%;">状态</td>
 							<td style="width:10%;">截止日期</td>
 						</tr>
-						<tr class="bottom-border">
+						<tr>
 							<td>
-								<button class="trans-btn" onclick="folder();">
-								<span class="glyphicon glyphicon-triangle-right" aria-hidden="true" id="triangle-right"></span>
-								<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true" id="triangle-bottom" style="display:none;"></span>
-								&nbsp;&nbsp;
-								<span class="glyphicon glyphicon-folder-close" aria-hidden="true" id="folder-close"></span>
-								<span class="glyphicon glyphicon-folder-open" aria-hidden="true" id="folder-open" style="display:none;"></span>
-								&nbsp;&nbsp;供应商工作区文档
-								</button>
+								<span class="glyphicon glyphicon-triangle-bottom blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+								<span class="glyphicon glyphicon-arrow-right blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="">PSC运行<span class="caret"></span></a>
 							</td>
-							<td><a href="">所有者</a></td>
+							<td></td>
+							<td>项目所有者</td>
+							<td>进行中</td>
+							<td>2017年8月16日</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span class="glyphicon glyphicon-time blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="">PSC检查CPL和DPL列表＊<span class="caret"></span></a>
+							</td>
+							<td><a href="">惠普（北京）<span class="caret"></span></a></td>
+							<td>PSC组</td>
+							<td>未开始</td>
+							<td>2017年8月16日</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span class="glyphicon glyphicon-warning-sign" style="color:orange;" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="">通知供应商完成问卷调查<span class="caret"></span></a>
+							</td>
+							<td></td>
+							<td>项目所有者</td>
+							<td>未开始</td>
+							<td>2017年8月14日</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span class="glyphicon glyphicon-time blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="">完成供应商信息问卷调查（GCM问题）＊<span class="caret"></span></a>
+							</td>
+							<td><a href="">惠普（北京）<span class="caret"></span></a></td>
+							<td>项目所有者</td>
+							<td>未开始</td>
 							<td></td>
 						</tr>
-						
+						<tr class="bottom-border">
+							<td><span class="glyphicon glyphicon-triangle-right blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+								<span class="glyphicon glyphicon-arrow-right blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="">审批<span class="caret"></span></a>
+							</td>
+							<td></td>
+							<td>项目所有者</td>
+							<td>进行中</td>
+							<td>2017年6月9日</td>
+						</tr>
 					</table>
 				</div>
 			</div>

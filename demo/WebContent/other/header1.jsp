@@ -34,9 +34,6 @@
 <script src="/demo/assets/js/echarts.common.min.js"></script>
 <!-- CORE JQUERY  -->
 <script src="/demo/assets/js/jquery.js"></script>
-
-
-
 <!-- BOOTSTRAP SCRIPTS  -->
 <script src="/demo/assets/js/bootstrap.js"></script>
 <!-- CUSTOM SCRIPTS  -->

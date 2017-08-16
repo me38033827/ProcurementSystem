@@ -157,8 +157,7 @@
 						</button>
 						<a class="grey inline-b">|</a>
 						<button class="icon-btn">
-							<span class="glyphicon glyphicon-chevron-down icon"
-								aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-chevron-down icon" aria-hidden="true"></span>
 						</button>
 					</div>
 				</div>

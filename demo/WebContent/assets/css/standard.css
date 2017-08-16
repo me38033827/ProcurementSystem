@@ -118,6 +118,7 @@ button{
 .tag-clicked{
 	background-color:white;
 	font-weight:bold;
+	color:black;
 }
 .tag-not-clicked{
 	background-color:transparent;

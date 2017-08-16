@@ -61,8 +61,8 @@
 				
 				<div class="adjust-10"></div>
 	
-				<div class="inline-b filters full">
-					<div class="half inline-b">
+				<div class="row">
+					<div class="col-md-6">
 						<div class="standard-subtitle">组织概要
 							<div class="btn-group right">
 								<button class="btn-ma" data-toggle="dropdown">
@@ -207,7 +207,7 @@
 							</tr>
 						</table>
 					</div>
-					<div class="half inline-b right">
+					<div class="col-md-6">
 						<div class="inline-b tab-height full">
 							<div class="inline-b filters full">
 								<div class="standard-subtitle">用户
@@ -284,49 +284,52 @@
 							</div>
 						</div>
 					</div>
+				</div>
 	
-	
-					<div class="standard-subtitle">概要问卷
-					</div>
-						<div>
-							<table class="fulltab">
-								<tr class="standard-row1">
-									<td>名称</td>
-								</tr>
-							</table>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="standard-subtitle">概要问卷
 						</div>
-						<div class="supplier-question">
-							<table class="fulltab" id="supplier-tab-bot">
-								<tr class="searching-tab-row2">
-									<td>1 公司信息</td>
-									<td></td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.1 公司名称</td>
-									<td>HP</td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.2 请简要介绍一下贵公司</td>
-									<td>教育培训</td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.3 您有多少长期员工</td>
-									<td>200</td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.3 贵公司创办于哪一年</td>
-									<td>1998</td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>2 所有权信息</td>
-									<td></td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>2.1 妇女所有企业证书</td>
-									<td></td>
-								</tr>
-	
-							</table>
+							<div>
+								<table class="fulltab">
+									<tr class="standard-row1">
+										<td>名称</td>
+									</tr>
+								</table>
+							</div>
+							<div class="supplier-question">
+								<table class="fulltab" id="supplier-tab-bot">
+									<tr class="searching-tab-row2">
+										<td>1 公司信息</td>
+										<td></td>
+									</tr>
+									<tr class="searching-tab-row2">
+										<td>1.1 公司名称</td>
+										<td>HP</td>
+									</tr>
+									<tr class="searching-tab-row2">
+										<td>1.2 请简要介绍一下贵公司</td>
+										<td>教育培训</td>
+									</tr>
+									<tr class="searching-tab-row2">
+										<td>1.3 您有多少长期员工</td>
+										<td>200</td>
+									</tr>
+									<tr class="searching-tab-row2">
+										<td>1.3 贵公司创办于哪一年</td>
+										<td>1998</td>
+									</tr>
+									<tr class="searching-tab-row2">
+										<td>2 所有权信息</td>
+										<td></td>
+									</tr>
+									<tr class="searching-tab-row2">
+										<td>2.1 妇女所有企业证书</td>
+										<td></td>
+									</tr>
+		
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
