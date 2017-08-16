@@ -37,7 +37,7 @@
 							
 							<div class="standard-subtitle">概述</div>
 							
-							<div>
+							<div class="adjust-left-80">
 								<table>
 									<tr class="row-standard">
 										<td class="col-standard1">＊公司名称：</td>
@@ -69,7 +69,7 @@
 							<div class="adjust-10"></div>
 							<div class="standard-subtitle">地址</div>
 							
-							<div>
+							<div class="adjust-left-80">
 								<table>
 									<tr class="row-standard">
 										<td class="col-standard1">＊邮政编码：</td>

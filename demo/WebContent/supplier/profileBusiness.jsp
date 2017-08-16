@@ -38,7 +38,7 @@
 							
 							<div class="standard-subtitle">商业信息</div>
 							
-							<div>
+							<div class="adjust-left-80">
 								<table>
 									<tr class="row-standard">
 										<td class="col-standard1">成立年份：</td>
@@ -67,7 +67,7 @@
 							<div class="adjust-10"></div>
 							<div class="standard-subtitle">财务信息</div>
 							
-							<div>
+							<div class="adjust-left-80">
 								<table>
 									<tr class="row-standard">
 										<td class="col-standard1">供应商法律形式：</td>
@@ -92,7 +92,7 @@
 							<div class="adjust-10"></div>
 							<div class="standard-subtitle">税务信息</div>
 							
-							<div>
+							<div class="adjust-left-80">
 								<table>
 									<tr class="row-standard">
 										<td class="col-standard1">税款分类：</td>

@@ -103,8 +103,8 @@ button{
 	background-color:#ebebeb;
 	height:50px;
 	font-size:13px;
-	padding-left:15px;
-}
+	padding-left:30px;
+} 
 
 .tag-clicked, .tag-not-clicked{
 	border:0;
@@ -246,6 +246,10 @@ button{
 /* adjust */
 .adjust-10{
 	height:10px;
+}
+
+.adjust-left-80{
+	padding-left:80px;
 }
 
 
@@ -462,3 +466,43 @@ button{
  border: 1px solid #ddd;
 }
 
+/* font size and color */
+.black {
+	color: black;
+}
+
+.blue {
+	color: #428bca;
+}
+
+.grey {
+	color: grey;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.f-18 {
+	font-size: 18px;
+}
+
+.f-16 {
+	font-size: 16px;
+}
+
+.f-14 {
+	font-size: 14px;
+}
+
+.f-13 {
+	font-size: 13px;
+}
+
+.f-12 {
+	font-size: 12px;
+}
+
+.f-10 {
+	font-size: 10px;
+}

@@ -81,7 +81,7 @@
 								</ul>
 							</div>
 						</div>
-						<table class="tab-height" id="supplier-crea-tab1">
+						<table class="tab-height" id="supplier-crea-tab1"  style="margin-left:80px;">
 							<tr>
 								<td class="col-standard1">组织名称：</td>
 								<td class="col-standard2">惠普（北京）有限公司</td>
@@ -293,41 +293,107 @@
 							<div>
 								<table class="fulltab">
 									<tr class="standard-row1">
-										<td>名称</td>
+										<td style="width:75%;">名称</td>
+										<td style="width:25%;">答案</td>
 									</tr>
 								</table>
 							</div>
-							<div class="supplier-question">
-								<table class="fulltab" id="supplier-tab-bot">
-									<tr class="searching-tab-row2">
-										<td>1 公司信息</td>
+							<div class="roll-tab" style="max-height:240px;" id="question">
+								<table class="table table-hover">
+									<tr>
+										<td class="question-1" style="width:75%;"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+											&nbsp;1&nbsp;&nbsp;&nbsp;公司信息</b></td>
+										<td style="width:25%;"></td>
+									</tr>
+									<tr>
+										<td class="question-1-1">1.1&nbsp;&nbsp;&nbsp;&nbsp;公司名称</td>
 										<td></td>
 									</tr>
-									<tr class="searching-tab-row2">
-										<td>1.1 公司名称</td>
-										<td>HP</td>
-									</tr>
-									<tr class="searching-tab-row2">
-										<td>1.2 请简要介绍一下贵公司</td>
-										<td>教育培训</td>
-									</tr>
-									<tr class="searching-tab-row2">
-										<td>1.3 您有多少长期员工</td>
-										<td>200</td>
-									</tr>
-									<tr class="searching-tab-row2">
-										<td>1.3 贵公司创办于哪一年</td>
-										<td>1998</td>
-									</tr>
-									<tr class="searching-tab-row2">
-										<td>2 所有权信息</td>
+									<tr>
+										<td class="question-1-1">1.2&nbsp;&nbsp;&nbsp;&nbsp;请简要介绍一下贵公司</td>
 										<td></td>
 									</tr>
-									<tr class="searching-tab-row2">
-										<td>2.1 妇女所有企业证书</td>
+									<tr>
+										<td class="question-1-1">1.3&nbsp;&nbsp;&nbsp;&nbsp;贵公司创办于哪一年</td>
 										<td></td>
 									</tr>
-		
+									<tr>
+										<td class="question-1"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+											&nbsp;2&nbsp;&nbsp;&nbsp;所有权信息</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+											&nbsp;2.1&nbsp;&nbsp;&nbsp;妇女所有企业证书</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="question-3">2.1.1&nbsp;&nbsp;&nbsp;妇女所有企业证书</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+											&nbsp;2.2&nbsp;&nbsp;&nbsp;少数族裔所有企业证书</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="question-3">2.2.1&nbsp;&nbsp;&nbsp;您是否通过少数族裔所有企业认证？</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-3">2.2.2&nbsp;&nbsp;&nbsp;您是否通过 NMSDC（全国少数族裔供应商发展理事会）认证？</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-3">2.2.3&nbsp;&nbsp;&nbsp;您是否通过小型企业管理认证？</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-3">2.2.4&nbsp;&nbsp;&nbsp;您是否通过州政府认证？</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-3">2.2.5&nbsp;&nbsp;&nbsp;您是否通过所在地/机构认证？</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-3">2.2.6&nbsp;&nbsp;&nbsp;您是否为自我认证？</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-3">2.2.7&nbsp;&nbsp;&nbsp;其他认证</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-3">2.2.8&nbsp;&nbsp;&nbsp;您是否通过环球国际认证？</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+											&nbsp;2.3&nbsp;&nbsp;&nbsp;小型企业证书</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="question-3">2.3.1&nbsp;&nbsp;&nbsp;您是否通过小型企业认证？</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+											&nbsp;2.4&nbsp;&nbsp;&nbsp;退伍军人所有企业证书</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="question-3">2.4.1&nbsp;&nbsp;&nbsp;您是否通过退伍军人所有企业认证?</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-3">2.4.2&nbsp;&nbsp;&nbsp;您是否通过残疾退伍军人所有企业认证?</td>
+										<td>否</td>
+									</tr>
+									<tr>
+										<td class="question-3">2.4.3&nbsp;&nbsp;&nbsp;您是否通过越战退伍军人所有企业认证?</td>
+										<td>否</td>
+									</tr>
 								</table>
 							</div>
 						</div>

@@ -172,9 +172,97 @@
 						
 						<div class="row">
 							<div class="col-md-12">
+								<a class="f-13" href="">单击此处可查看完整分析。</a>
+								<div id="report-border">
+									<button class="btn-b" style="width:190px;">聚合视图：平均分数&nbsp;<span class="caret"></span></button>
+									<button class="btn-w right">评分卡&nbsp;<span class="caret"></span></button>
+								</div>
+								
+								<table class="table table-hover">
+									<tr class="standard-row1">
+										<td style="width:40%;">KPI区段&#8593;</td>
+										<td style="width:40%;">KPI</td>
+										<td style="width:10%;">最佳实践计分卡</td>
+										<td style="width:10%;">总计平均分数</td>
+									</tr>
+									<tr>
+										<td colspan="4">总计</td>
+									</tr>
+									<tr>
+										<td><b>账户管理和客户服务</b></td>
+										<td><b>小计</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>账户管理和客户服务（自身）</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><b>履行合同</b></td>
+										<td><b>小计</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>履行合同（自身）</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><b>财务和定价管理</b></td>
+										<td><b>小计</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>财务和定价管理（自身）</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><b>创新和技术</b></td>
+										<td><b>小计</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>创新和技术（自身）</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><b>质量</b></td>
+										<td><b>小计</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>质量（自身）</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><b>社会责任和可持续性发展</b></td>
+										<td><b>小计</b></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>社会责任和可持续性发展（自身）</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><b>供应商部分</b></td>
+										<td><b>小计</b></td>
+										<td></td>
+									</tr>
+									<tr class="bottom-border">
+										<td></td>
+										<td>供应商部分（自身）</td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
 							</div>
 						</div>
-					
+						<div class="adjust-10"></div>
 					</div>
 				</div>
 			</div>

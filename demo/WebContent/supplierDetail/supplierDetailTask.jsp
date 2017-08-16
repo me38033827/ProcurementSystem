@@ -4,11 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>供应商详情－任务</title>
+<%@include file="../other/header1.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
 	<div class="content">
-		<%@include file="../other/header1.jsp"%>
 		<div class="container">
 			<div class="standard-out">
 			<!-- 主要内容 -->

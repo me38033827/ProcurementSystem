@@ -86,7 +86,7 @@
 								</ul>
 							</div>
 						</div>
-						<table class="tab-height" id="supplier-crea-tab1">
+						<table class="tab-height" id="supplier-crea-tab1" style="margin-left:80px;">
 							<tr>
 								<td class="col-standard1">工作区标识符：</td>
 								<td class="col-standard2">WS1030204199</td>

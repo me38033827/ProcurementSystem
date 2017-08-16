@@ -37,6 +37,22 @@
 	overflow-x: scroll;
 }
 
+#question .question-1{
+	padding-left:20px;
+}
+
+#question .question-2{
+	padding-left:40px;
+}
+
+#question .question-3{
+	padding-left:70px;
+}
+
+#question .question-1-1{
+	padding-left:60px;
+}
+
 .supplier-question tr{
 	height: 36px;
 	font-size: 14px;
@@ -92,4 +108,9 @@
 	text-align:center;
 	padding-top:20px;
 	padding-bottom:20px;
+}
+
+#report-border{
+	border:1px solid #ddd;
+	padding:10px 20px;
 }

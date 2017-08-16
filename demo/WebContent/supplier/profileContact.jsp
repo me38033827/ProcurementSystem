@@ -38,7 +38,7 @@
 							<div class="standard-subtitle">公司联系信息
 							</div>
 							
-							<div>
+							<div class="adjust-left-80">
 								<table>
 									<tr class="row-standard">
 										<td class="col-standard1">＊主电子邮件地址：</td>
