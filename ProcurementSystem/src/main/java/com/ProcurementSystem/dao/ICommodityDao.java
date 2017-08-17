@@ -1,5 +1,7 @@
 package com.ProcurementSystem.dao;
 
-public interface ICommodityDao {
+import com.ProcurementSystem.entity.Commodity;
 
+public interface ICommodityDao {
+	public boolean createCommodity(Commodity Commodity);
 }
