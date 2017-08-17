@@ -1,0 +1,616 @@
+#order-filter-right-title {
+	color: black;
+	font-size: 1.142857em;
+	padding-top: 0px;
+	display: block;
+	height: 2.57142em;
+}
+
+#order-filter-right-title2 {
+	color: black;
+	border-top: 1px solid #428bca;
+	border-bottom: 1px solid #428bca;
+	border-left: 2px solid #428bca;
+	border-right: 1px solid white;
+	padding-left: 1.428571em;
+	padding-top: 2px;
+	width: 101%;
+	display: block;
+	height: 34px;
+}
+
+#order-filter-right-subcontent {
+	color: black;
+	font-size: 12px;
+	display: block;
+	padding-left: 1.428571em;
+	font-style: oblique;
+}
+
+#order-filter-right-sub {
+	color: black;
+	font-size: 13px;
+}
+
+#order-filter-right-sub span {
+	font-size: 0.714285em;
+	color: black;
+}
+
+#order-filter {
+	background-color: #ECECFF;
+	height: 42.857142em;
+	padding: 0.714285em 1.428571em;
+}
+
+#order-filter-line1 {
+	width: 100%;
+	height: 35px;
+}
+
+#order-filter-line2 {
+	height: 32.857142em;
+}
+
+#order-filter-left {
+	padding-left: 10%;
+	width: 45%;
+}
+
+#order-filter-left table {
+	
+}
+
+#order-filter-left td, #order-filter-right td {
+	height: 2.57142em;
+}
+
+.order-filter-left-col1 {
+	text-align: right;
+	width: 30%;
+}
+
+.order-filter-right-col1 {
+	text-align: right;
+	width: 50%;
+}
+
+.order-filter-left-col2 {
+	width: 70%;
+}
+
+#order-filter-right {
+	margin-right: 10%;
+	width: 40%;
+}
+
+#order-filter-line1-title {
+	font-size: 18px;
+}
+
+#order-filter-line3 {
+	border-top: 1px solid grey;
+	height: 50px;
+	padding-bottom: 10px;
+}
+
+#order-filter-select1 {
+	padding-top: 4px;
+	border-radius: 0;
+	height: 28px;
+}
+
+#order-filter-fromto {
+	color: grey;
+	width: 14.285714em;
+	margin-right: 0;
+	padding-right: 0;
+}
+
+#order-total {
+	height: 50px;
+}
+
+#order-total-title {
+	margin-top: 0.714285em;
+}
+
+#order-total-title a {
+	font-size: 18px;
+}
+
+#order-total-quantity {
+	margin-top: 0.714285em;
+	margin-left: 30%;
+}
+
+#order-result-out, #order-tab {
+	width: 100%;
+}
+
+.order-tab-row1 {
+	background-color: #ECECFF;
+	color: grey
+}
+
+.order-tab-row2 {
+	border-bottom: 1px solid #ECECFF;
+}
+
+.order-tab-col2, .order-tab-col4 {
+	color: #428bca;
+}
+
+#order-detail-main {
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 100%;
+	clear: both;
+}
+
+#order-detail-main-1 {
+	padding-left: 300px;
+	padding-right: 40px;
+	width: 100%;
+}
+
+#order-detail-line1 {
+	padding: 0.714285em 0 0.714285em 0;
+	height: 48px;
+	border-bottom: 2px solid #ECECFF;
+}
+
+#order-detail-line2 {
+	font-size: 12px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+#order-detail-line3 {
+	background-color: #ECECFF;
+	height: 2.857142em;
+	padding-left: 0.714285em;
+	padding-top: 5px;
+}
+
+#order-detail-line3 button {
+	margin-right: 0.714285em;
+}
+
+#order-detail-line4 {
+	margin-top: 10px;
+	background-color: #ECECFF;
+	height: 50px;
+	font-size: 12px;
+	padding-left: 15px;
+}
+
+.order-detail-clicked, .order-detail-not-clicked {
+	border: 0;
+	margin-top: 15px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 80px;
+	height: 35px;
+}
+
+.order-detail-clicked {
+	background-color: white;
+	font-weight: bold;
+}
+
+.order-detail-not-clicked {
+	background-color: transparent;
+	color: #428bca;
+}
+
+#order-detail-tab {
+	margin-left: 10.7142857em;
+	margin-top: 0.714285em;
+	margin-bottom: 0.714285em;
+}
+
+#order-detail-tab-col1 {
+	text-align: right;
+}
+
+#order-detail-line {
+	padding-left: 5px;
+	border-bottom: 2px solid #ECECFF;
+}
+
+.order-detail-subtitle {
+	color: black;
+	font-size: 1.142857em;
+}
+
+#order-detail-content {
+	padding-top: 0.714285em;
+	padding-left: 1.428571em;
+	padding-bottom: 45px;
+}
+
+#order-tab-1, #order-tab-1 table {
+	width: 100%;
+}
+
+#order-tab-1 table {
+	border-bottom: 1px solid #ECECFF;
+	margin-bottom: 1.428571em;
+}
+
+#order-tab-1 table td {
+	text-align: center;
+}
+
+#order-tab-1-row1 {
+	background-color: #ECECFF;
+	color: grey;
+}
+
+#order-tab-1-row2 button {
+	margin-top: 1px;
+	height: 28px;
+}
+
+#order-tab2-out {
+	height: 100px;
+}
+
+#order-tab2-out table {
+	background-color: #ECECFF;
+	font-size: 13px;
+}
+
+#order-tab2-out td {
+	width: 11.428571em;
+}
+
+.order-tab2-col1 {
+	padding-left: 1.428571em;
+}
+
+.order-tab2-col2 {
+	padding-left: 0.714285em;
+}
+
+#order-tab3-out {
+	padding-left: 100px;
+	margin-top: 0.714285em;
+}
+
+.order-tab3-bg {
+	background-color: #ECECFF;
+	width: 80px;
+}
+
+#order-tab4-out, #order-tab4-out table {
+	width: 100%;
+}
+
+#order-tab4-out table td {
+	padding-left: 0.714285em;
+}
+
+#order-tab4-row1 {
+	background-color: #ECECFF;
+	color: grey;
+}
+
+#order-tab4-row2 {
+	border-bottom: 1px solid #ECECFF;
+}
+
+#order-receipt-title-out {
+	margin-top: 1.428571em;
+	margin-bottom: 0.714285em;
+}
+
+#order-receipt-title {
+	color: black;
+	font-size: 18px;
+}
+
+#order-tab4-excep {
+	text-align: center;
+	color: grey;
+	border-bottom: 1px solid #ECECFF;
+}
+
+#pr-creation-main {
+	padding-left: 2.857142em;
+	padding-right: 2.857142em;
+}
+
+#pr-line1 {
+	padding: 0.714285em 0 0.714285em 0;
+	height: 51px;
+	border-bottom: 2px solid #ECECFF;
+	font-size: 1.142857em;
+}
+
+#pr-line1-print {
+	margin-left: 280px;
+	margin-right: 0.714285em;
+}
+
+#pr-line1-print-font {
+	margin-right: 25px;
+}
+
+#pr-line1 button {
+	margin-left: 0.714285em;
+}
+
+#pr-line1-submit {
+	margin-right: 2.857142em;
+}
+
+#pr-line2 {
+	margin-top: 1.428571em;
+	padding-bottom: 15px;
+	border-bottom: 2px solid #ECECFF;
+}
+
+#pr-line2-font {
+	color: black;
+	font-size: 18px;
+}
+
+#pr-line3-left-out {
+	width: 60%;
+	height: 630px;
+	padding-left: 13%;
+	margin-top: 0.714285em;
+}
+
+#pr-line3-right-out {
+	width: 38%;
+	height: 630px;
+	margin-top: 0.714285em;
+}
+
+#pr-line3-right-out table {
+	width: 100%;
+}
+
+.pr-left-col1 {
+	text-align: right;
+	height: 2.57142em;
+}
+
+.pr-left-col2 {
+	padding-left: 0.714285em;
+}
+
+#pr-select {
+	padding-top: 4px;
+	border-radius: 0;
+	height: 28px;
+	width: 14.285714em;
+}
+
+#pr-textarea {
+	width: 21.428571em;
+	height: 11.428571em;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+#pr-textarea-font {
+	padding-top: 0.714285em;
+	text-align: top;
+}
+
+#pr-title-out {
+	margin-top: 1.428571em;
+	padding-bottom: 0.714285em;
+	margin-bottom: 0.714285em;
+	border-bottom: 2px solid #ECECFF;
+}
+
+#pr-title-font {
+	color: black;
+	font-size: 18px;
+}
+
+#pr-span {
+	font-size: 14px;
+}
+
+#pr-approve-content {
+	padding-left: 50px;
+	margin-bottom: 1.428571em;
+}
+
+#pr-tab3-out table {
+	width: 100%;
+	border-bottom: 2px solid #ECECFF;
+}
+
+#pr-tab3-out table tr {
+	border-bottom: 1px solid #ECECFF;
+}
+
+#pr-amount {
+	width: 50px;
+	margin-top: 4px;
+	height: 26px;
+	text-align: center;
+}
+
+#pr-tab3-supple {
+	padding-left: 1.428571em;
+	margin-top: 1.428571em;
+	padding-bottom: 2.857142em;
+}
+
+#pr-adjust {
+	width: 30%;
+	height: 30px;
+}
+
+#pr-line4 {
+	padding-top: 5px;
+	height: 100px;
+	border-bottom: 2px solid #ECECFF;
+	font-size: 1.142857em;
+}
+
+#receipt-filter {
+	background-color: #ECECFF;
+	height: 400px;
+	padding: 0.714285em 1.428571em;
+}
+
+#receipt-detail-adjust {
+	width: 100%;
+	height: 1.428571em;
+}
+
+#order-close {
+	padding-left: 100px;
+	font-size: 12px;
+}
+
+#receipt-detail-tab1 {
+	margin-top: 1.428571em;
+	margin-bottom: 1.428571em;
+	width: 60%;
+	padding-left: 10%;
+	height: 90px;
+}
+
+#receipt-detail-tab2 {
+	margin-top: 1.428571em;
+	margin-bottom: 1.428571em;
+	width: 36%;
+	height: 90px;
+	padding-left: 5%;
+}
+
+#invoice-fromto {
+	width: 50px;
+}
+
+#invoice-detail-tab1, #invoice-detail-tab3 {
+	width: 60%;
+	padding-left: 18%;
+}
+
+#invoice-detail-tab2, #invoice-detail-tab4 {
+	width: 38%;
+	padding-left: 5%;
+}
+
+#invoice-detail-tab1, #invoice-detail-tab2 {
+	height: 22.857142em;
+}
+
+#invoice-detail-tab3, #invoice-detail-tab4 {
+	height: 330px;
+}
+
+.invoice-detail-title {
+	height: 50px;
+	width: 100%;
+	border-bottom: 2px solid #ECECFF;
+	font-size: 18px;
+	padding-top: 0.714285em;
+	margin-bottom: 0.714285em;
+}
+
+#invoice-detail-tab1 #order-detail-tab-col1, #invoice-detail-tab2 #order-detail-tab-col1,
+	#invoice-detail-tab3 #order-detail-tab-col1, #invoice-detail-tab4 #order-detail-tab-col1
+	{
+	color: grey;
+	height: 30px;
+}
+
+#delivery-filter {
+	background-color: #ECECFF;
+	height: 90%;
+	padding: 0.714285em 1.428571em;
+}
+
+#delivery-filter-line2 {
+	height: 21.428571em;
+	padding-left: 20%;
+}
+
+#delivery-search-item1 {
+	width: 14.285714em;
+	border-radius: 0;
+	height: 28px;
+}
+
+#delivery-search-item2 {
+	width: 14.285714em;
+	border-radius: 0;
+	height: 28px;
+	padding-top: 4px;
+}
+
+#delivery-search-item3 {
+	width: 14.285714em;
+	border-radius: 0;
+	height: 28px;
+}
+
+#delivery-filter-line2 table {
+	margin-top: 15%;
+}
+
+#delivery-filter-line2 tr {
+	height: 50px;
+}
+
+#invoice-detail2-tab1 {
+	width: 50%;
+	padding-left: 18%;
+}
+
+#invoice-detail2-tab2 {
+	float: right;
+	width: 48%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#invoice-detail-info {
+	margin-left: 0.714285em;
+}
+
+#delivery-out {
+	margin-left: 2.857142em;
+	margin-right: 2.857142em;
+}
+
+.delivery-adjust {
+	width: 100%;
+	height: 0.714285em;
+}
+
+.delivery-tab1 {
+	margin-left: 10%;
+}
+
+.delivery-tab1 tr {
+	height: 2.57142em;
+}
+
+#delivery-receipt-tab1 {
+	width: 50%;
+	padding-left: 18%;
+}
+
+#delivery-receipt-tab1 tr {
+	height: 2.57142em;
+}
+
+#delivery-receipt-tab2 {
+	float: right;
+	width: 48%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
