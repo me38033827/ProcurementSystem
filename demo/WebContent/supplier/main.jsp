@@ -86,23 +86,24 @@
 					<div class="col-md-9">
 						<div class="main-bottom-container">
 							<div>
-								<div class="right">
+								<div class="right dropdown">
 									<button class="btn-ma" data-toggle="dropdown">
 										前14天&nbsp;<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" style="width: 120px;">
-										<li><a class="manu-deactive">编辑</a></li>
-										<li><a class="manu-active" href="">&nbsp;&nbsp;概要</a></li>
+										<li><a class="manu-active" href="">&nbsp;&nbsp;前24小时</a></li>
+										<li><a class="manu-active" href="">&nbsp;&nbsp;前7天</a></li>
+										<li><a class="manu-active" href="">&nbsp;&nbsp;前14天</a></li>
+										<li><a class="manu-active" href="">&nbsp;&nbsp;前31天</a></li>
 									</ul>
 								</div>
-								<div class="right">
+								<div class="right dropdown">
 									<button class="btn-ma" data-toggle="dropdown"
 										style="width: 100px">
 										所有客户&nbsp;<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" style="width: 120px;">
-										<li><a class="manu-deactive">编辑</a></li>
-										<li><a class="manu-active" href="">&nbsp;&nbsp;概要</a></li>
+										<li><a class="manu-active" href="">&nbsp;&nbsp;所有客户</a></li>
 									</ul>
 								</div>
 							</div>
@@ -157,7 +158,7 @@
 						<div class="main-bottom-container">
 							<div class="standard-subtitle">任务</div>
 							<div>
-								<div class="left"  style="padding-right:20px">
+								<div class="left" style="padding-right: 20px">
 									<a>更新概要信息</a>
 								</div>
 								<div class="progress" id="progress">

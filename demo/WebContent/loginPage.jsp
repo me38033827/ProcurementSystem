@@ -9,21 +9,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>登录</title>
 <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
 
 </head>
 <body>
 	<div class="htmleaf-container">
 		<div class="wrapper">
 			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<h1>欢迎</h1>
 
-				<h1>欢迎</h1>
 
+						<form class="form">
+							<input type="text" placeholder="用户名" id="username"
+								class="inputLogin"> <input type="password"
+								placeholder="密码" id="psd" class="inputLogin">
+							<div class="radio">
+								<label> <input type="radio" name="userType" id="buyer"
+									checked> 采购方
+								</label> <label> <input type="radio" name="userType"
+									id="supplier" value="option1"> 供应商
+								</label>
+							</div>
+							<button type="button" id="login-button" onclick="check();">登录</button>
 
-				<form class="form">
-					<input type="text" placeholder="用户名" id="username"> <input
-						type="password" placeholder="密码" id="psd">
-					<button type="button" id="login-button" onclick="check();">登录</button>
-				</form>
+						</form>
+					</div>
+				</div>
 			</div>
 
 			<ul class="bg-bubbles">
@@ -40,7 +53,7 @@
 			</ul>
 			<%@ include file="other/footerLogin.jsp"%>
 		</div>
-		
+
 	</div>
 
 	<script>
@@ -63,11 +76,13 @@
 				alert("密码错误！");
 				return false;
 			} else {
-				location.href = "main.jsp";
+				if (document.getElementById('buyer').checked == true)
+					location.href = "main.jsp";
+				else {
+					location.href = 'supplier/main.jsp'
+				}
 			}
 		}
 	</script>
-
-
 </body>
 </html>

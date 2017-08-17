@@ -24,7 +24,7 @@
 	<select id="searchUsers" parameterType="map" resultType="com.ProcurementSystem.entity.User">
 		select * from user
 		where password_adapter = '${userAdapter}'
-		<if test="user_identifier != null and user_">
+		<if test="user_identifier != null and user_"></if>
 	</select>
 	
 	<!--
