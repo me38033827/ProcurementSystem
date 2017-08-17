@@ -114,3 +114,10 @@
 	border:1px solid #ddd;
 	padding:10px 20px;
 }
+
+/* supplier searching */
+#supplier-searching-box{
+	padding:10px;
+	border:1px solid #ddd;
+	font-size:13px;
+}

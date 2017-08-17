@@ -5,9 +5,12 @@
 <div class="container" id="secondline-out" style="width:100%">
 	<div class="dropdown" id="secondline-dropdown">
 		<!-- 第二行靠左 -->
-		<button class="secondline-left" onclick="window.location.href='main.jsp'">首页</button>
+		<button class="secondline-left" onclick="window.location.href='main.jsp'">主页</button>
+		<button class="secondline-left">寻源</button>
+		<button class="secondline-left">合同</button>
 		<button class="secondline-left">采购</button>
-		<button class="secondline-left">发票</button>
+		<button class="secondline-left">开发票</button>
+		<button class="secondline-left" onclick="window.location.href='mainSupplier.jsp'">供应商</button>
 		<button class="secondline-left" onclick="window.location.href='procurementCommodityCatalog.jsp'">目录</button>
 
 		<div class="btn-group secondline" role="group">

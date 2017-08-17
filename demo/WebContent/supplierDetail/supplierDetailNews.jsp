@@ -113,11 +113,7 @@
 			
 						<div class="adjust-10"></div>
 						
-						<div class="subtitle">
-							<a class="subtitle-main">惠普（北京）</a>
-							<div class="right">
-								
-							</div>
+						<div class="standard-subtitle">惠普（北京）
 						</div>
 						
 						<div>

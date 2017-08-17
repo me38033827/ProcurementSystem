@@ -5,340 +5,353 @@
 <head>
 <title>主页</title>
 <%@include file="other/header1.jsp"%>
-<%@include file="other/header2.jsp"%>
 
 </head>
 <!-- 页面整体宽度：1320px -->
 <body class="a-dashbrd-page-bg">
-
-	<!-- 导航栏 第三行 -->
-	<div id="thirdline-out" style="background-color: transparent;">
-
-		<div class="col-md-2 inline-b left" id="search-service"
-			style="postion: relative; left: 20px;">
-			<select class="col-md-12" id="my-select">
-				<option>服务</option>
-				<option>服务</option>
-				<option>服务</option>
-			</select>
-
-		</div>
-		<!-- 第三行搜索框 -->
-		<div style="position: relative; left: 20px;">
-			<input type="text" class="inline-b border-g left col-md-4"
-				value="按部件号、供应商名称或关键字搜索"
-				onfocus="if(this.value=='按部件号、供应商名称或关键字搜索') this.value=''"
-				onblur="if(this.value=='')this.value='按部件号、供应商名称或关键字搜索' "
-				style="top: 0px;">
-			<button class="btn btn-default inline-b border-g left"
-				id="search-btn" style="top: 0px;">
-				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-			</button>
-		</div>
-		<!-- 第三行右侧图标 -->
-
-		<div class="thirdline-icons">
-			<button id="wrench-btn" onclick="">
-				<span class="glyphicon glyphicon-wrench" aria-hidden="true" id=""></span>
-			</button>
-			<button id="refresh-btn" onclick="">
-				<span class="glyphicon glyphicon-refresh" aria-hidden="true" id=""></span>
-			</button>
-		</div>
-
-		<!-- 第三行右侧标记 -->
-	</div>
-
-
-	<!--主要内容  -->
-	<div class="container">
-		<!-- 第一行内容 -->
-		<div class="row">
-			<div class="col-md-2">
-				<div class="module-left">
-					<div class="module-head">通用操作</div>
-
-					<div class="module">
-						<div class="div-padding-left">
-							<table class="table-left">
-								<tr>
-									<th>创建</th>
-								</tr>
-								<tr>
-									<td><a class="secondline-right"
-										href="sourcingCreation.jsp">寻源项目</a></td>
-								</tr>
-								<tr>
-									<td><a class="secondline-right"
-										href="supplierCreation.jsp">供应商</a></td>
-								</tr>
-
-								<tr>
-									<td><a class="secondline-right"
-										href="contractWorkspaceCreation.jsp">合同</a></td>
-								</tr>
-
-								<tr>
-									<td><a class="secondline-right"
-										href="procurementCatalogCreation.jsp">商品目录</a></td>
-								</tr>
-
-								<tr>
-									<td><a class="secondline-right" href="prCreation.jsp">请购单</a></td>
-								</tr>
-
-								<tr>
-									<td><a class="secondline-right" href="invoiceCreation.jsp">发票</a></td>
-								</tr>
-
-								<tr>
-									<td><a class="secondline-right"
-										href="templateCreation.jsp">模版</a></td>
-								</tr>
-
-								<tr>
-									<td><a class="secondline-right"
-										href="approvalCreation.jsp">审批</a></td>
-								</tr>
-							</table>
-						</div>
+	<div class="content">
+			<div class="container" id="secondline-out" style="width:100%">
+				<div class="dropdown" id="secondline-dropdown">
+					<!-- 第二行靠左 -->
+					<button class="secondline-left header-clicked" onclick="window.location.href='main.jsp'">主页</button>
+					<button class="secondline-left">寻源</button>
+					<button class="secondline-left">合同</button>
+					<button class="secondline-left">采购</button>
+					<button class="secondline-left">开发票</button>
+					<button class="secondline-left" onclick="window.location.href='mainSupplier.jsp'">供应商</button>
+					<button class="secondline-left" onclick="window.location.href='procurementCommodityCatalog.jsp'">目录</button>
 					</div>
-				</div>
+				<%@include file="other/header2r.jsp"%>
 			</div>
-			<div class="col-md-10">
-				<div>
-					<div class="charts">
-						<div class="container-chart">
-							<div class="chart" id="chart1"></div>
-						</div>
-						<div class="container-chart">
-							<div class="chart" id="chart2"></div>
-						</div>
-						<div class="container-chart">
-							<div class="chart" id="chart3"></div>
-						</div>
-						<div class="container-chart">
-							<div class="chart" id="chart4" style="margin: 0px"></div>
-						</div>
-					</div>
-
-					<div style="clear: left">
-						<div class="module-head">新闻</div>
+		<!-- 导航栏 第三行 -->
+		<div id="thirdline-out" style="background-color: transparent;">
+	
+			<div class="col-md-2 inline-b left" id="search-service"
+				style="postion: relative; left: 20px;">
+				<select class="col-md-12" id="my-select">
+					<option>服务</option>
+					<option>服务</option>
+					<option>服务</option>
+				</select>
+	
+			</div>
+			<!-- 第三行搜索框 -->
+			<div style="position: relative; left: 20px;">
+				<input type="text" class="inline-b border-g left col-md-4"
+					value="按部件号、供应商名称或关键字搜索"
+					onfocus="if(this.value=='按部件号、供应商名称或关键字搜索') this.value=''"
+					onblur="if(this.value=='')this.value='按部件号、供应商名称或关键字搜索' "
+					style="top: 0px;">
+				<button class="btn btn-default inline-b border-g left"
+					id="search-btn" style="top: 0px;">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>
+			</div>
+			<!-- 第三行右侧图标 -->
+	
+			<div class="thirdline-icons">
+				<button id="wrench-btn" onclick="">
+					<span class="glyphicon glyphicon-wrench" aria-hidden="true" id=""></span>
+				</button>
+				<button id="refresh-btn" onclick="">
+					<span class="glyphicon glyphicon-refresh" aria-hidden="true" id=""></span>
+				</button>
+			</div>
+	
+			<!-- 第三行右侧标记 -->
+		</div>
+	
+	
+		<!--主要内容  -->
+		<div class="container">
+			<!-- 第一行内容 -->
+			<div class="row">
+				<div class="col-md-2">
+					<div class="module-left">
+						<div class="module-head">通用操作</div>
+	
 						<div class="module">
 							<div class="div-padding-left">
-								<table>
+								<table class="table-left">
 									<tr>
-										<td>系统管理员尚未配置公司新闻内容</td>
+										<th>创建</th>
+									</tr>
+									<tr>
+										<td><a class="secondline-right"
+											href="sourcingCreation.jsp">寻源项目</a></td>
+									</tr>
+									<tr>
+										<td><a class="secondline-right"
+											href="supplierCreation.jsp">供应商</a></td>
+									</tr>
+	
+									<tr>
+										<td><a class="secondline-right"
+											href="contractWorkspaceCreation.jsp">合同</a></td>
+									</tr>
+	
+									<tr>
+										<td><a class="secondline-right"
+											href="procurementCatalogCreation.jsp">商品目录</a></td>
+									</tr>
+	
+									<tr>
+										<td><a class="secondline-right" href="prCreation.jsp">请购单</a></td>
+									</tr>
+	
+									<tr>
+										<td><a class="secondline-right" href="invoiceCreation.jsp">发票</a></td>
+									</tr>
+	
+									<tr>
+										<td><a class="secondline-right"
+											href="templateCreation.jsp">模版</a></td>
+									</tr>
+	
+									<tr>
+										<td><a class="secondline-right"
+											href="approvalCreation.jsp">审批</a></td>
 									</tr>
 								</table>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<!-- 第二行内容 -->
-		<div class="row">
-			<div class="col-md-2">
-				<div class="module-left">
-					<div class="module-head">最近查看的内容</div>
-					<div class="module">
-						<div class="div-padding-left">
-							<table>
-								<tr>
-									<td>寻源项目</td>
-								</tr>
-							</table>
+				<div class="col-md-10">
+					<div>
+						<div class="charts">
+							<div class="container-chart">
+								<div class="chart" id="chart1"></div>
+							</div>
+							<div class="container-chart">
+								<div class="chart" id="chart2"></div>
+							</div>
+							<div class="container-chart">
+								<div class="chart" id="chart3"></div>
+							</div>
+							<div class="container-chart">
+								<div class="chart" id="chart4" style="margin: 0px"></div>
+							</div>
+						</div>
+	
+						<div style="clear: left">
+							<div class="module-head">新闻</div>
+							<div class="module">
+								<div class="div-padding-left">
+									<table>
+										<tr>
+											<td>系统管理员尚未配置公司新闻内容</td>
+										</tr>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-5">
-				<div class="module-head">我的文档</div>
-				<div class="module">
-					<table class="table table-hover">
-						<tr>
-							<th>标题</th>
-							<th>日期&#8595;</th>
-							<th>状态</th>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
+			<!-- 第二行内容 -->
+			<div class="row">
+				<div class="col-md-2">
+					<div class="module-left">
+						<div class="module-head">最近查看的内容</div>
+						<div class="module">
+							<div class="div-padding-left">
+								<table>
+									<tr>
+										<td>惠普（北京）</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-5">
-				<div class="module-head">待办任务</div>
-				<div class="module">
-					<table class="table table-hover">
-						<tr>
-							<th>日期&#8595;</th>
-							<th>标题</th>
-							<th>状态</th>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
-		<!-- 第三行内容 -->
-		<div class="row">
-			<div class="col-md-2">
-				<div class="module-left">
-					<div class="module-head">受监视的项目</div>
+				<div class="col-md-5">
+					<div class="module-head">我的文档</div>
 					<div class="module">
 						<table class="table table-hover">
 							<tr>
-								<th>名称</th>
+								<th>标题</th>
+								<th>日期&#8595;</th>
+								<th>状态</th>
 							</tr>
 							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="module-head">待办任务</div>
+					<div class="module">
+						<table class="table table-hover">
+							<tr>
+								<th>日期&#8595;</th>
+								<th>标题</th>
+								<th>状态</th>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
 								<td></td>
 							</tr>
 						</table>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-5">
-				<div class="module-head">通知</div>
-				<div class="module">
-					<table class="table table-hover">
-						<tr>
-							<th>发件人</th>
-							<th>主题</th>
-							<th>接收时间</th>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<div class="col-md-5">
-				<div class="module-head">事件状态（前12个月）</div>
-				<div class="module">
-					<table class="table table-hover">
-						<tr>
-							<th></th>
-							<th>信息请求</th>
-							<th>提案请求</th>
-							<th>竞标</th>
-							<th>调查</th>
-						</tr>
-						<tr>
-							<td>草稿</td>
-							<td><a href="#">5</a></td>
-							<td><a href="#">23</a></td>
-							<td><a href="#">203</a></td>
-							<td><a href="#">32</a></td>
-						</tr>
-						<tr>
-							<td>预览</td>
-							<td><a href="#">34</a></td>
-							<td><a href="#">53</a></td>
-							<td><a href="#">112</a></td>
-							<td><a href="#">321</a></td>
-						</tr>
-						<tr>
-							<td>开放</td>
-							<td><a href="#">12</a></td>
-							<td><a href="#">678</a></td>
-							<td><a href="#">54</a></td>
-							<td><a href="#">78</a></td>
-
-						</tr>
-						<tr>
-							<td>未决选择</td>
-							<td><a href="#">42</a></td>
-							<td><a href="#">87</a></td>
-							<td><a href="#">34</a></td>
-							<td><a href="#">97</a></td>
-						</tr>
-						<tr>
-							<td>已完成</td>
-							<td><a href="#">83</a></td>
-							<td><a href="#">432</a></td>
-							<td><a href="#">221</a></td>
-							<td><a href="#">113</a></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
-		<!-- 第四行内容 -->
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-5">
-				<div class="module-head">2017年8月</div>
-				<div class="module" style="padding: 0px 1px 1px 1px;">
-					<table class="table calendar">
-						<tr>
-							<th>一</th>
-							<th>二</th>
-							<th>三</th>
-							<th>四</th>
-							<th>五</th>
-							<th>六/日</th>
-						</tr>
-						<tr>
-							<td></td>
-							<td>1</td>
-							<td>2</td>
-							<td>3</td>
-							<td>4</td>
-							<td>5/6</td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>8</td>
-							<td>9</td>
-							<td>10</td>
-							<td>11</td>
-							<td>12/13</td>
-						</tr>
-						<tr>
-							<td>14</td>
-							<td>15</td>
-							<td>16</td>
-							<td>17</td>
-							<td>18</td>
-							<td>19/20</td>
-						</tr>
-						<tr>
-							<td>21</td>
-							<td>22</td>
-							<td>23</td>
-							<td>24</td>
-							<td>25</td>
-							<td>26/27</td>
-						</tr>
-						<tr>
-							<td>28</td>
-							<td>29</td>
-							<td>30</td>
-							<td>31</td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-					<div>
-						<div class="calendar-head">
-							<a href="#">过期 (24)</a>
+			<!-- 第三行内容 -->
+			<div class="row">
+				<div class="col-md-2">
+					<div class="module-left">
+						<div class="module-head">受监视的项目</div>
+						<div class="module">
+							<table class="table table-hover">
+								<tr>
+									<th>名称</th>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
 						</div>
-						<table>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="module-head">通知</div>
+					<div class="module">
+						<table class="table table-hover">
 							<tr>
-								<td>准备采购请求 (tank buy )
-								<td>
+								<th>发件人</th>
+								<th>主题</th>
+								<th>接收时间</th>
+							</tr>
 							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
 						</table>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="module-head">事件状态（前12个月）</div>
+					<div class="module">
+						<table class="table table-hover">
+							<tr>
+								<th></th>
+								<th>信息请求</th>
+								<th>提案请求</th>
+								<th>竞标</th>
+								<th>调查</th>
+							</tr>
+							<tr>
+								<td>草稿</td>
+								<td><a href="#">5</a></td>
+								<td><a href="#">23</a></td>
+								<td><a href="#">203</a></td>
+								<td><a href="#">32</a></td>
+							</tr>
+							<tr>
+								<td>预览</td>
+								<td><a href="#">34</a></td>
+								<td><a href="#">53</a></td>
+								<td><a href="#">112</a></td>
+								<td><a href="#">321</a></td>
+							</tr>
+							<tr>
+								<td>开放</td>
+								<td><a href="#">12</a></td>
+								<td><a href="#">678</a></td>
+								<td><a href="#">54</a></td>
+								<td><a href="#">78</a></td>
+	
+							</tr>
+							<tr>
+								<td>未决选择</td>
+								<td><a href="#">42</a></td>
+								<td><a href="#">87</a></td>
+								<td><a href="#">34</a></td>
+								<td><a href="#">97</a></td>
+							</tr>
+							<tr>
+								<td>已完成</td>
+								<td><a href="#">83</a></td>
+								<td><a href="#">432</a></td>
+								<td><a href="#">221</a></td>
+								<td><a href="#">113</a></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- 第四行内容 -->
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-5">
+					<div class="module-head">2017年8月</div>
+					<div class="module" style="padding: 0px 1px 1px 1px;">
+						<table class="table calendar">
+							<tr>
+								<th>一</th>
+								<th>二</th>
+								<th>三</th>
+								<th>四</th>
+								<th>五</th>
+								<th>六/日</th>
+							</tr>
+							<tr>
+								<td></td>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+								<td>5/6</td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td>8</td>
+								<td>9</td>
+								<td>10</td>
+								<td>11</td>
+								<td>12/13</td>
+							</tr>
+							<tr>
+								<td>14</td>
+								<td>15</td>
+								<td>16</td>
+								<td>17</td>
+								<td>18</td>
+								<td>19/20</td>
+							</tr>
+							<tr>
+								<td>21</td>
+								<td>22</td>
+								<td>23</td>
+								<td>24</td>
+								<td>25</td>
+								<td>26/27</td>
+							</tr>
+							<tr>
+								<td>28</td>
+								<td>29</td>
+								<td>30</td>
+								<td>31</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+						<div>
+							<div class="calendar-head">
+								<a href="#">过期 (24)</a>
+							</div>
+							<table>
+								<tr>
+									<td>准备采购请求 (tank buy )
+									<td>
+								<tr>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<title>搜索供应商和客户</title>
+<title>搜索供应商和客户结果</title>
 
 <%@include file="other/header1.jsp"%>
 </head>
@@ -37,9 +37,7 @@
 							<table>
 								<tr class="row-standard">
 									<td class="col-standard1" style="width:350px;padding-left:30px;"><input type="text" class="col-md-5 form-control input" style="width:300px;"
-											value="使用名称、标识符或任何其他词语搜索"
-											onfocus="if(this.value=='使用名称、标识符或任何其他词语搜索') this.value=''"
-											onblur="if(this.value=='')this.value='使用名称、标识符或任何其他词语搜索' ">
+											value="惠普">
 									</td>
 									<td class="col-standard2">
 										<a href=""><span class="glyphicon glyphicon-plus-sign blue" style="font-size:20px;margin-top:3px;margin-left:40px;" aria-hidden="true"></span></a>
@@ -50,8 +48,8 @@
 					</div>
 					<div class="searching-ending">
 						<div align="right">
-							<button class="btn-w">重置</button>
-							<button class="btn-b" onclick="window.location.href='supplierSearchingR.jsp'">搜索</button>
+							<button class="btn-w" onclick="window.location.href='supplierSearching.jsp'">重置</button>
+							<button class="btn-b">搜索</button>
 						</div>
 					</div>
 				</div>
@@ -80,12 +78,40 @@
 							<td style="width:15%;">客户</td>
 							<td style="width:10%;"></td>
 						</tr>
+					</table>
+				</div>
+				<div class="roll-tab" style="max-height:150px;">
+					<table class="table table-hover">
 						<tr>
-							<td colspan="7" class="no-item f-13 grey">请在上面输入搜索条件，然后单击<b>搜索</b></td>
+							<td style="padding:5px;">
+								<input type="checkbox" id="chk-searching-s1" class="chk" /><label for="chk-searching-s1"></label>
+							</td>
+							<td style="width:20%;"><a href="supplierDetail/supplierDetail.jsp">惠普（北京）</a></td>
+							<td style="width:20%;">SU0000134</td>
+							<td style="width:15%;">已批准</td>
+							<td style="width:15%;">是</td>
+							<td style="width:15%;">否</td>
+							<td style="width:10%; padding:3px;">
+								<div class="btn-group" align="right">
+									<button class="btn-m" data-toggle="dropdown">
+										操作&nbsp;<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu manu-btn-o" >
+										<li><a class="manu-btn"">停用</a></li>
+									</ul>
+								</div>
+							</td>
 						</tr>
+					</table>
+				</div>
+				 <div>
+					<table class="table table-hover">
 						<tr class="standard-row3">
 							<td colspan="7">
-								<div class="btn-group" >
+								<a class="arrow-turn">&#8627;</a>
+								<button class="btn-w">管理</button>
+								｜
+								<div class="btn-group">
 									<button class="btn-w" data-toggle="dropdown">
 										新建&nbsp;<span class="caret"></span>
 									</button>

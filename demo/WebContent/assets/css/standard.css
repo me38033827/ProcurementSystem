@@ -124,10 +124,16 @@ button{
 	background-color:transparent;
 }
 
+/* header clicked*/
+.header-clicked{
+	border-bottom:3px solid #3a7ded;
+	color:#3a7ded;
+}
+
 /* supplier profile title */
 .standard-title{
 	height:60px;
-	border-bottom:2px solid #ebebeb;
+	border-bottom:2px solid #ddd;
 }
 
 .standard-title-main{
@@ -159,7 +165,7 @@ button{
 .standard-subtitle{
 	margin-bottom:10px;
 	padding-bottom:5px;
-	border-bottom:2px solid #ebebeb;
+	border-bottom:2px solid #ddd;
 	font-size:18px;
 	color:black;
 	width:100%;
@@ -185,7 +191,7 @@ button{
 .standard-ending{
 	margin-top:20px;
 	margin-bottom:15px;
-	border-top:2px solid #ebebeb;
+	border-top:2px solid #ddd;
 }
 
 .standard-ending-r{
@@ -432,6 +438,7 @@ button{
 
 .manu-btn-o {
 	width: 100px;
+	overflow-x:visible;
 }
 
 .manu-btn {
