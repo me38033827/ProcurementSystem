@@ -103,8 +103,6 @@
 		</div>
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
-
 	<%@ include file="other/footer.jsp" %>
-	
 </body>
 </html>

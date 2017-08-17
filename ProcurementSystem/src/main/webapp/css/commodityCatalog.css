@@ -1,0 +1,20 @@
+.margin-input {
+	margin: 5px 0 5px 0;
+}
+
+.img-icon {
+	width: 20px;
+	height: 20px;
+	box-sizing: content-box;
+	padding: 10px 10px 10px 10px;
+	margin: 0 10px 0 10px;
+}
+
+.icon-choose {
+	background-color: #199DE0;
+}
+
+.commodity-catalog-compare-table {
+	border-collapse: separate;
+	border-spacing: 10px 20px;
+}

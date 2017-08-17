@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>请购单创建界面</title>
-<%@ include file="../../other/header.jsp" %>
+<%@ include file="../../other/header1.jsp"%>
+<%@ include file="../../other/header2.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>

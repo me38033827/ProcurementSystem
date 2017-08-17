@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>创建供应商界面</title>
-<%@ include file="../../other/header.jsp"%>
+<%@ include file="../../other/header1.jsp"%>
+<%@ include file="../../other/header2.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>

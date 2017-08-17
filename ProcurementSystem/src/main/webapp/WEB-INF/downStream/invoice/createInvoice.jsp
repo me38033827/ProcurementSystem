@@ -4,13 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>发票创建界面</title>
-<%@include file="../../other/header.jsp"%>
+<%@ include file="../../other/header1.jsp"%>
+<%@ include file="../../other/header2.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
 	<div class="container" id="whole-container">
 
-		
+
 		<!-- 主要内容 -->
 		<div id="searching-title-out">
 			<a class="inline-b black" id="searching-title">INV423413562</a>
