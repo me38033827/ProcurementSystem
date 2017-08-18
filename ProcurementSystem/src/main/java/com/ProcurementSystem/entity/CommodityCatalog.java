@@ -1,9 +1,11 @@
 package com.ProcurementSystem.entity;
 
+import java.util.ArrayList;
+
 public class CommodityCatalog {
 	private int uniqueName;
-	private int supplierUniqueName;
-	private int commodityUniqueName;
+	private Supplier supplier;
+	private ArrayList<Commodity> commodities=new ArrayList<>();
 	private String name;
 	private String isCreateEmptyContent;
 	private String isIgnoreApprove;
@@ -17,17 +19,17 @@ public class CommodityCatalog {
 	public void setUniqueName(int uniqueName) {
 		this.uniqueName = uniqueName;
 	}
-	public int getSupplierUniqueName() {
-		return supplierUniqueName;
+	public Supplier getSupplier() {
+		return supplier;
 	}
-	public void setSupplierUniqueName(int supplierUniqueName) {
-		this.supplierUniqueName = supplierUniqueName;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
-	public int getCommodityUniqueName() {
-		return commodityUniqueName;
+	public ArrayList<Commodity> getCommodities() {
+		return commodities;
 	}
-	public void setCommodityUniqueName(int commodityUniqueName) {
-		this.commodityUniqueName = commodityUniqueName;
+	public void setCommodities(ArrayList<Commodity> commodities) {
+		this.commodities = commodities;
 	}
 	public String getName() {
 		return name;

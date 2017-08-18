@@ -1,9 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ProcurementSystem.dao.IUserDao">
+<mapper namespace="com.ProcurementSystem.dao.ICommodityDao">
 
-	<insert id="insertCommodity">
+	<insert id="insertCommodity" parameterType="com.ProcurementSystem.entity.Commodity">
+		insert into
+		commodity(
+		supplier_id,
+		contract_unique_name ,
+		unit_price ,
+		supplier_part_id ,
+		manufacturer_name,
+		manufacturer_part_id ,
+		manufacturer_url ,
+		time_left ,
+		company_code ,
+		gcm_email_adress ,
+		item_description ,
+		material_group ,
+		commodity_type ,
+		spsc_code ,
+		unit_of_measure ,
+		lead_time ,
+		market_price ,
+		supplier_part_auxiliary_id,
+		effective_date ,
+		expiration_date ,
+		short_name ,
+		image,
+		thumbnail,
+		is_hazardous_materials,
+		is_green,
+		is_approved,
+		commodity_catalog_unique_name)
+		values(
+		#{
+		supplier.uniqueName },
+		#{ contract.uniqueName },
+		#{ unitPrice },
+		#{
+		supplierPartId },
+		#{ manufacturerName },
+		#{ manufacturerPartId },
+		#{
+		manufacturerUrl },
+		#{ timeLeft },
+		#{ companyCode },
+		#{ gcmEmailAdress },
+		#{ itemDescription },
+		#{ materialGroup },
+		#{ commodityType },
+		#{ spsCode
+		},
+		#{ unitOfMeasure },
+		#{ leadTime },
+		#{ marketPrice },
+		#{
+		supplierPartAuxiliaryId },
+		#{ effectiveDate },
+		#{ expirationDate },
+		#{
+		shortName },
+		#{ image },
+		#{ thumbnail },
+		#{ isHazardousMaterials },
+		#{isGreen },
+		#{isApproved},
+		#{commodityCatalog.uniqueName}
+		)
 	</insert>
-
+	
 </mapper>

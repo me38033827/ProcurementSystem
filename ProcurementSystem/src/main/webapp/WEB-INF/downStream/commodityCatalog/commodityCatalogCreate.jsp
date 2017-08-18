@@ -13,7 +13,7 @@
 	<a id="catalog-creation-title-font">目录－导入新目录</a>
 </div>
 <!-- 导入新目录具体内容 -->
-<form action="commodityCatalogAnalyze" method="post">
+<form action="commodityCatalogUpload" method="post">
 	<div id="catalog-creation">
 		<p>请输入必须的信息，然后选择相应的设置，以导入新目录或者创建新的空目录</p>
 		<table class="catalog-table">

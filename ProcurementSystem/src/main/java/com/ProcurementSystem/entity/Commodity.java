@@ -4,6 +4,7 @@ public class Commodity {
 	private int uniqueName;
 	private Supplier supplier;
 	private Contract contract;
+	private CommodityCatalog commodityCatalog;
 	private double unitPrice;
 	private String supplierPartId;
 	private String manufacturerName;
@@ -11,7 +12,6 @@ public class Commodity {
 	private String manufacturerUrl;
 	private String timeLeft;
 	private String companyCode;
-	private String contractNumber;
 	private String gcmEmailAdress;
 	private String itemDescription;
 	private String materialGroup;
@@ -115,14 +115,6 @@ public class Commodity {
 
 	public void setCompanyCode(String companyCode) {
 		this.companyCode = companyCode;
-	}
-
-	public String getContractNumber() {
-		return contractNumber;
-	}
-
-	public void setContractNumber(String contractNumber) {
-		this.contractNumber = contractNumber;
 	}
 
 	public String getGcmEmailAdress() {
@@ -251,6 +243,12 @@ public class Commodity {
 
 	public void setIsGreen(String isGreen) {
 		this.isGreen = isGreen;
+	}
+	public CommodityCatalog getCommodityCatalog() {
+		return commodityCatalog;
+	}
+	public void setCommodityCatalog(CommodityCatalog commodityCatalog) {
+		this.commodityCatalog = commodityCatalog;
 	}
 
 }

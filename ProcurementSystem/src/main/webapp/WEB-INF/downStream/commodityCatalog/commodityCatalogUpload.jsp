@@ -45,8 +45,7 @@
 
 			<tr>
 				<td class="col1">允许多供应商CIF：</td>
-				<td class="col2">${commodityCatalog.isAllowMultiSupplierCIF }
-				</td>
+				<td class="col2">${commodityCatalog.isAllowMultiSupplierCIF }</td>
 			</tr>
 
 
@@ -64,14 +63,13 @@
 
 			<tr>
 				<td class="col1">
-					<button type="button" class="btn btn-default"
-						id="catalog-creation-cancel" style="margin-top:0px">取消</button>&nbsp&nbsp
+					<button type="submit" class="btn-b"
+						>导入</button>&nbsp&nbsp
 				</td>
 
-				<td class="col2"><button type="submit" class="btn btn-default"
-						id="catalog-creation-select">选择文件</button></td>
+				<td class="col2"><button type="" class="btn-w"
+						onclick="window.location.href='procurementCatalogCreation.jsp'">取消</button></td>
 			</tr>
-
 
 		</table>
 	</div>
