@@ -21,7 +21,7 @@
 								主页</button>
 						</div>
 						<div class="small-window-title margin-bottom ">目录 - 查看内容 -
-							${requestScope.commodityCatalog.name }，版本 1, 完整</div>
+							${requestScope.commodityCatalog.name }，${requestScope.commodityCatalog.version}, 完整</div>
 
 					</div>
 					<div class="margin-bottom">

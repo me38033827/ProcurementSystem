@@ -41,3 +41,13 @@ text-center {
 td {
 	white-space: nowrap;
 }
+/* 搜索结果提示框 */
+.search-result-container {
+	border: 1px solid #56c0e0;
+	background-color: #d8edf8;
+	padding: 10px;
+}
+/* 验证错误信息 */
+.error-message {
+	color: #FF0000;
+}

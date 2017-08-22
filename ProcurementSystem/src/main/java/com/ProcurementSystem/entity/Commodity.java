@@ -28,13 +28,15 @@ public class Commodity {
 	private String thumbnail;
 	private String isHazardousMaterials;
 	private String isGreen;
-	private int supplierPartAuxiliaryId;
+	private String supplierPartAuxiliaryId;
 
-	public int getSupplierPartAuxiliaryId() {
+	
+	public String getSupplierPartAuxiliaryId() {
 		return supplierPartAuxiliaryId;
 	}
-	public void setSupplierPartAuxiliaryId(int i) {
-		this.supplierPartAuxiliaryId = i;
+
+	public void setSupplierPartAuxiliaryId(String supplierPartAuxiliaryId) {
+		this.supplierPartAuxiliaryId = supplierPartAuxiliaryId;
 	}
 
 	public int getUniqueName() {

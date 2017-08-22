@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -27,6 +28,10 @@ public class CommodityCatalogService {
 	@Resource ICommodityCatalogDao commodityCatalogDao;
 	@Resource ICommodityDao commodityDao;
 	
+	//获得商品目录数量
+	public int getRowCount(){
+		return commodityCatalogDao.getRowCount();
+	}
 	//保存所要上传的文件
 	public void commodityCatalogUpload(MultipartFile file, String uploadUrl) {
 		String filename = file.getOriginalFilename();
@@ -117,8 +122,7 @@ public class CommodityCatalogService {
 						commodity.setMarketPrice(Double.parseDouble(cell.getContents()));
 						cell = firstSheet.getCell(12, i);//Supplier Part Auxiliary ID
 						System.out.println("A ID:"+cell.getContents());
-						if(cell.getContents().matches("^[0-9]+$"))//匹配整数
-						commodity.setSupplierPartAuxiliaryId(Integer.parseInt(cell.getContents()));
+						commodity.setSupplierPartAuxiliaryId(cell.getContents());
 						cell = firstSheet.getCell(13, i);// Effective Date
 						commodity.setEffectiveDate(cell.getContents());
 						cell = firstSheet.getCell(14, i);// Expiration Date
@@ -148,6 +152,7 @@ public class CommodityCatalogService {
 						i++;
 						cell = firstSheet.getCell(0, i);
 					}
+					commodityCatalog.setItemCount(commodityCatalog.getCommodities().size());
 				}
 			}
 		} catch (IOException | BiffException e) {
@@ -155,5 +160,12 @@ public class CommodityCatalogService {
 			e.printStackTrace();
 		}
 
+	}
+	public List<CommodityCatalog> getAllCommodityCatalogs() {
+		// TODO Auto-generated method stub
+		return commodityCatalogDao.getAllCommodityCatalogs();
+	}
+	public List<CommodityCatalog> searchCommodityCatalog(CommodityCatalog commodityCatalog) {
+		return commodityCatalogDao.searchCommodityCatalog(commodityCatalog);
 	}
 }

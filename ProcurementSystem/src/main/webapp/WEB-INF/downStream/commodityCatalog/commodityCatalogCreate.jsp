@@ -13,27 +13,28 @@
 	<a id="catalog-creation-title-font">目录－导入新目录</a>
 </div>
 <!-- 导入新目录具体内容 -->
-<form action="commodityCatalogUpload" method="post">
-	<div id="catalog-creation">
-		<p>请输入必须的信息，然后选择相应的设置，以导入新目录或者创建新的空目录</p>
+
+<div id="catalog-creation">
+	<p>请输入必须的信息，然后选择相应的设置，以导入新目录或者创建新的空目录</p>
+	<form action="commodityCatalogUpload" method="post">
 		<table class="catalog-table">
 			<tr>
 				<td class="col1">选择：</td>
 				<td class="col2"><select id="my-select" name="mySelect">
-						<option>创建新的目录订阅</option>
-						<option>选项1</option>
-						<option>选项2</option>
+						<option value="1">创建新的目录订阅</option>
+						<option value="2">使用现有的目录订阅</option>
 				</select></td>
 			</tr>
 
 			<tr>
 				<td class="col1">*供应商：</td>
-				<td class="col2">（选择一个值）选择</td>
+				<td class="col2">（选择一个值）<a
+					href="commodityCatalogCreateChooseSupplier">【 选择 】 </a><span class="error-message">${ERR_supplier}</span></td>
 			</tr>
 
 			<tr>
 				<td class="col1">*目录订阅名称：</td>
-				<td class="col2"><input id="creation-title" name="name" /></td>
+				<td class="col2"><input id="creation-title" name="name" /><span class="error-message">${ERR_name}</span></td>
 			</tr>
 
 			<tr>
@@ -117,11 +118,11 @@
 						id="catalog-creation-select">选择文件</button></td>
 			</tr>
 		</table>
-		<button type="submit" class="btn btn-default"
-			id="catalog-creation-cancel">取消</button>
-	</div>
-	</div>
-</form>
+	</form>
+	<button class="btn btn-default" id="catalog-creation-cancel" onclick="window.location.href='commodityCatalogList'">取消</button>
+</div>
+
+
 
 </body>
 </html>
