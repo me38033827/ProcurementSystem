@@ -17,7 +17,7 @@
 					<div class="border-bottom-grey margin-bottom">
 						<div class="right">
 							<button class="btn-w"
-								onclick="window.location.href='procurementCommodityCatalogList.jsp'">目录
+								onclick="window.location.href='commodityCatalogList'">目录
 								主页</button>
 						</div>
 						<div class="small-window-title margin-bottom ">目录 - 查看内容 -
@@ -26,11 +26,11 @@
 					</div>
 					<div class="margin-bottom">
 						<span class="caution-div container-text border-blue"> <a
-							href="procurementCommodityCatalogContent.jsp">步骤1.清理数据</a>
+							href="#">步骤1.清理数据</a>
 						</span>&nbsp;&nbsp; > &nbsp;&nbsp;<span> <a
-							href="procurementCommodityCatalogCompare.jsp">步骤2.分析数据</a>
+							href="commodityCatalogCompare">步骤2.分析数据</a>
 						</span>&nbsp;&nbsp; >&nbsp;&nbsp; <span> <a
-							href="procurementCommodityCatalogActivate.jsp">步骤3.生效</a>
+							href="commodityCatalogActivate">步骤3.生效</a>
 						</span>
 					</div>
 
@@ -55,7 +55,7 @@
 
 					<div class="margin-bottom">
 						<div class="left">该版本中的项目数量:
-							5。&nbsp;&nbsp;</div>
+							${commodityCatalog.itemCount }。&nbsp;&nbsp;</div>
 						<div>
 							<button class="btn-w" style="width: 120px;">隐藏/显示字段</button>
 							<button class="btn-w">刷新图像</button>
@@ -77,9 +77,9 @@
 							items="${requestScope.commodityCatalog.commodities }" varStatus="status">
 							<tr>
 								<td><input type="checkbox"
-									id="commodity-${commodity.uniqueName }" class="chk" /><label
-									for="commodity-${commodity.uniqueName }"></label>&nbsp;<a
-									href="procurementCommodityCatalogEdit.jsp">编辑</a></td>
+									id="${commodity.uniqueName }" class="chk" /><label
+									for="${commodity.uniqueName }"></label>&nbsp;<a
+									href="commodityCatalogContentEdit?uniqueName=${commodity.uniqueName }">编辑</a></td>
 								<td>${status.count}</td>
 								<td>${commodity.unitPrice }</td>
 								<td>${commodity.supplier.name }</td>
@@ -107,5 +107,5 @@
 		</div>
 	</div>
 
-</body>
+</body>·
 </html>

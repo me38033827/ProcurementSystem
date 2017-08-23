@@ -1,5 +1,7 @@
 package com.ProcurementSystem.entity;
 
+import java.util.List;
+
 public class Commodity {
 	private int uniqueName;
 	private Supplier supplier;
@@ -12,12 +14,12 @@ public class Commodity {
 	private String manufacturerUrl;
 	private String timeLeft;
 	private String companyCode;
-	private String gcmEmailAdress;
+	private String gcmEmailAddress;
 	private String itemDescription;
 	private String materialGroup;
 	private String commodityType;
 	private String isApproved;
-	private String spsCode;
+	private String spscCode;
 	private String unitOfMeasure;
 	private int leadTime;
 	private double marketPrice;
@@ -119,12 +121,20 @@ public class Commodity {
 		this.companyCode = companyCode;
 	}
 
-	public String getGcmEmailAdress() {
-		return gcmEmailAdress;
+	public String getGcmEmailAddress() {
+		return gcmEmailAddress;
 	}
 
-	public void setGcmEmailAdress(String gcmEmailAdress) {
-		this.gcmEmailAdress = gcmEmailAdress;
+	public void setGcmEmailAddress(String gcmEmailAddress) {
+		this.gcmEmailAddress = gcmEmailAddress;
+	}
+
+	public String getSpscCode() {
+		return spscCode;
+	}
+
+	public void setSpscCode(String spscCode) {
+		this.spscCode = spscCode;
 	}
 
 	public String getItemDescription() {
@@ -160,11 +170,11 @@ public class Commodity {
 	}
 
 	public String getSpsCode() {
-		return spsCode;
+		return spscCode;
 	}
 
 	public void setSpsCode(String spsCode) {
-		this.spsCode = spsCode;
+		this.spscCode = spsCode;
 	}
 
 	public String getUnitOfMeasure() {

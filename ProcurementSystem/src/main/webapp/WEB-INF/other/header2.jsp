@@ -11,7 +11,7 @@
 		<button class="secondline-left">采购</button>
 		<button class="secondline-left">开发票</button>
 		<button class="secondline-left" onclick="window.location.href='mainSupplier.jsp'">供应商</button>
-		<button class="secondline-left" onclick="window.location.href='procurementCommodityCatalog.jsp'">目录</button>
+		<button class="secondline-left" onclick="window.location.href='/ProcurementSystem/commodityCatalog/commodityCatalog'">目录</button>
 
 		<div class="btn-group secondline" role="group">
 			<button type="button"

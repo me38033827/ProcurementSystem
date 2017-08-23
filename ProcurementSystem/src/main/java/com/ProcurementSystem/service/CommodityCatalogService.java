@@ -135,13 +135,12 @@ public class CommodityCatalogService {
 						commodity.setThumbnail(cell.getContents());
 						cell = firstSheet.getCell(18, i);// ContractNumber
 						Contract contract = new Contract();
-						if(cell.getContents().matches("^[0-9]+$"))//匹配整数
-						contract.setUniqueName(Integer.parseInt(cell.getContents()));
+						contract.setUniqueName(cell.getContents());
 						commodity.setContract(contract);
 						cell = firstSheet.getCell(19, i);// CompanyCode
 						commodity.setCompanyCode(cell.getContents());
 						cell = firstSheet.getCell(20, i);// gcmemail
-						commodity.setGcmEmailAdress(cell.getContents());
+						commodity.setGcmEmailAddress(cell.getContents());
 						cell = firstSheet.getCell(21, i);// hazardousmaterials
 						commodity.setIsHazardousMaterials(cell.getContents());
 						cell = firstSheet.getCell(22, i);//green

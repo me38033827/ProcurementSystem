@@ -2,7 +2,6 @@ package com.ProcurementSystem.controller;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,16 +16,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
+import com.ProcurementSystem.entity.Contract;
 import com.ProcurementSystem.entity.Supplier;
 import com.ProcurementSystem.service.CommodityCatalogService;
+import com.ProcurementSystem.service.CommodityService;
 
 @Controller
 @RequestMapping(value = "commodityCatalog")
 public class CommodityCatalogController {
 	@Resource
 	CommodityCatalogService commodityCatalogService;
-
+	@Resource
+	CommodityService commodityService;
 	// 测试
 	@RequestMapping(value = "index")
 	public String test(HttpServletRequest request) {
@@ -112,12 +115,45 @@ public class CommodityCatalogController {
 	@RequestMapping(value = "showCommodityCatalogContent")
 	public String showCommodityCatalogContent(ModelMap map, @RequestParam(value = "uniqueName") String uniqueName) {
 		CommodityCatalog commodityCatalog = new CommodityCatalog();
-		commodityCatalog.setUniqueName(Integer.parseInt(uniqueName));
+		commodityCatalog.setUniqueName(uniqueName);
 		List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
 		Iterator<CommodityCatalog> iterator = commodityCatalogs.listIterator();
 		commodityCatalog = iterator.next();
 		map.put("commodityCatalog", commodityCatalog);
 		return "downStream/commodityCatalog/commodityCatalogContent";
 	}
-
+	//在线编辑商品目录
+	@RequestMapping(value="commodityCatalogContentEdit")
+	public String commodityCatalogContentEdit(@RequestParam(value="uniqueName")String uniqueName,ModelMap map){
+		Commodity commodity = new Commodity();
+		commodity.setUniqueName(Integer.parseInt(uniqueName));
+		List<Commodity> commodities = commodityService.searchCommodity(commodity);
+		Iterator<Commodity> iterator = commodities.iterator();
+		commodity = iterator.next();
+		map.put("commodity", commodity);
+		return "downStream/commodityCatalog/commodityCatalogContentEdit";
+	}
+	//在线修改商品目录内容
+	@RequestMapping(value="commodityCatalogContentModify")
+	public String commodityCatalogModify(Commodity commodity,ModelMap map){
+		
+		commodity.getContract().setUniqueName(commodity.getContract().getUniqueName().substring(1));
+		commodityService.updateCommodity(commodity);
+		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName="+commodity.getCommodityCatalog().getUniqueName();//控制器中的跳转
+	}
+	//转向商品目录版本比较野
+	@RequestMapping(value="commodityCatalogCompare")
+	public String commodityCatalogCompare(){
+		return "downStream/commodityCatalog/commodityCatalogCompare";
+	}
+	//转向商品目录激活页
+	@RequestMapping(value="commodityCatalogActivate")
+	public String commodityCatalogActivate(){
+		return "downStream/commodityCatalog/commodityCatalogActivate";
+	}
+	//转向商品目录主页
+	@RequestMapping(value="commodityCatalog")
+	public String commodityCatalog(){
+		return "downStream/commodityCatalog/commodityCatalog";
+	}
 }

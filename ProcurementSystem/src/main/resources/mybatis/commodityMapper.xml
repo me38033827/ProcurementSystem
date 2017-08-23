@@ -36,15 +36,18 @@
 		values(
 		#{
 		supplier.uniqueName },
-		#{ contract.uniqueName },
+		#{
+		contract.uniqueName },
 		#{ unitPrice },
 		#{
 		supplierPartId },
-		#{ manufacturerName },
+		#{
+		manufacturerName },
 		#{ manufacturerPartId },
 		#{
 		manufacturerUrl },
-		#{ timeLeft },
+		#{
+		timeLeft },
 		#{ companyCode },
 		#{ gcmEmailAdress },
 		#{ itemDescription },
@@ -57,17 +60,107 @@
 		#{ marketPrice },
 		#{
 		supplierPartAuxiliaryId },
-		#{ effectiveDate },
+		#{
+		effectiveDate },
 		#{ expirationDate },
 		#{
 		shortName },
 		#{ image },
-		#{ thumbnail },
+		#{
+		thumbnail },
 		#{ isHazardousMaterials },
 		#{isGreen },
 		#{isApproved},
 		#{commodityCatalog.uniqueName}
 		)
 	</insert>
+
+
+	<select id="searchCommodity" parameterType="com.ProcurementSystem.entity.Commodity"
+		resultMap="commodityMap">
+		select 
+		c.unique_name as uniqueName,
+		c.company_code as companyCode,
+		c.gcm_email_address as gcmEmailAddress,
+		c.supplier_part_id as supplierPartId,
+		c.supplier_part_auxiliary_id as supplierPartAuxiliaryId,
+		c.spsc_code as spscCode,
+		c.manufacturer_name as manufacturerName,
+		c.manufacturer_part_id as manufacturerPartId,
+		c.manufacturer_url as manufacturerUrl,
+		c.is_hazardous_materials as isHazardousMaterials,
+		c.is_green as isGreen,
+		c.expiration_date as expirationDate,
+		c.effective_date as effectiveDate,
+		c.item_description as itemDescription,
+		c.short_name as shortName,
+		cc.unique_name as commodityCatalogUniqueName,
+		cc.name as commodityCatalogName,
+		con.unique_name as contractUniqueName,
+		con.name as contractName,
+		sup.unique_name as supplieruniqueName,
+		sup.name as supplierName
+		from ((commodity c left join contract con on c.contract_unique_name = con.unique_name) 
+		left join supplier sup on c.supplier_unique_name = sup.unique_name)
+		left join commodity_catalog cc on  c.commodity_catalog_unique_name = cc.unique_name
+		where 1 = 1
+		<if test="uniqueName != '' and uniqueName != null">
+		  and c.unique_name = #{uniqueName}
+		</if>
+	</select>
+
+	<resultMap id="commodityMap" type="com.ProcurementSystem.entity.Commodity">
+		<id property="uniqueName" column="uniqueName" />
+		<result property="companyCode" column="companyCode" />
+		<result property="gcmEmailAddress" column="gcmEmailAddress" />
+		<result property="supplierPartId" column="supplierPartId" />
+		<result property="supplierPartAuxiliaryId" column="supplierPartAuxiliaryId" />
+		<result property="spscCode" column="spscCode" />
+		<result property="manufacturerUrl" column="manufacturerUrl" />
+		<result property="manufacturerName" column="manufacturerName" />
+		<result property="manufacturerPartId" column="manufacturerPartId" />
+		<result property="isHazardousMaterials" column="isHazardousMaterials" />
+		<result property="isGreen" column="isGreen" />
+		<result property="expirationDate" column="expirationDate" />
+		<result property="effectiveDate" column="effectiveDate" />
+		<result property="itemDescription" column="itemDescription" />
+		<result property="shortName" column="shortName" />
+		<association property="contract" javaType="com.ProcurementSystem.entity.Contract">
+			<id property="uniqueName" column="contractUniqueName" />
+			<result property="name" column="contractName" />
+		</association>
+		<association property="supplier" javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierUniqueName" />
+			<result property="name" column="supplierName" />
+		</association>
+		<association property="commodityCatalog" javaType="com.ProcurementSystem.entity.CommodityCatalog">
+			<id property="uniqueName" column="commodityCatalogUniqueName" />
+			<result property="name" column="commodityCatalogName" />
+		</association>
+	</resultMap>
 	
+	
+	
+	<update id="updateCommodity" parameterType="com.ProcurementSystem.entity.Commodity" >
+		update commodity 
+		set 
+			company_code = #{companyCode},
+			contract_unique_name = #{contract.uniqueName},
+			gcm_email_address = #{gcmEmailAddress},
+			supplier_part_id = #{supplierPartId},
+			supplier_part_auxiliary_id = #{supplierPartAuxiliaryId},
+			manufacturer_url = #{manufacturerUrl},
+			manufacturer_name = #{manufacturerName},
+			manufacturer_part_id = #{manufacturerPartId},
+			is_hazardous_materials = #{isHazardousMaterials},
+			is_green = #{isGreen},
+			expiration_date = #{expirationDate},
+			effective_date = #{effectiveDate},
+			item_description = #{itemDescription},
+			short_name = #{shortName}
+		where 1=1
+		<if test="uniqueName!='' and uniqueName!=null">
+			and unique_name = #{uniqueName}
+		</if>
+	</update>
 </mapper>

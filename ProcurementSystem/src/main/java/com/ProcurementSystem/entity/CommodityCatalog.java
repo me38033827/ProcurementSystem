@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class CommodityCatalog {
-	private int uniqueName;
+	private String uniqueName;
 	@NotEmpty(message="错误：无效的供应商")
 	private Supplier supplier;
 	
@@ -92,11 +92,13 @@ public class CommodityCatalog {
 		this.lastModifyDate = lastModityDate;
 	}
 
-	public int getUniqueName() {
+	
+
+	public String getUniqueName() {
 		return uniqueName;
 	}
 
-	public void setUniqueName(int uniqueName) {
+	public void setUniqueName(String uniqueName) {
 		this.uniqueName = uniqueName;
 	}
 
