@@ -76,7 +76,7 @@
 	</insert>
 
 
-	<select id="searchCommodity" parameterType="com.ProcurementSystem.entity.Commodity"
+	<select id="searchCommodity" parameterType="map"
 		resultMap="commodityMap">
 		select 
 		c.unique_name as uniqueName,
@@ -94,6 +94,7 @@
 		c.effective_date as effectiveDate,
 		c.item_description as itemDescription,
 		c.short_name as shortName,
+		c.unit_price as unitPrice,
 		cc.unique_name as commodityCatalogUniqueName,
 		cc.name as commodityCatalogName,
 		con.unique_name as contractUniqueName,
@@ -104,8 +105,11 @@
 		left join supplier sup on c.supplier_unique_name = sup.unique_name)
 		left join commodity_catalog cc on  c.commodity_catalog_unique_name = cc.unique_name
 		where 1 = 1
-		<if test="uniqueName != '' and uniqueName != null">
-		  and c.unique_name = #{uniqueName}
+		<if test="commodity.uniqueName != '' and commodity.uniqueName != null">
+		  and c.unique_name = #{commodity.uniqueName}
+		</if>
+		<if test="offset != null and size != null" >
+			limit #{offset},#{size}
 		</if>
 	</select>
 
@@ -125,6 +129,7 @@
 		<result property="effectiveDate" column="effectiveDate" />
 		<result property="itemDescription" column="itemDescription" />
 		<result property="shortName" column="shortName" />
+		<result property="unitPrice" column="unitPrice" />
 		<association property="contract" javaType="com.ProcurementSystem.entity.Contract">
 			<id property="uniqueName" column="contractUniqueName" />
 			<result property="name" column="contractName" />
@@ -163,4 +168,9 @@
 			and unique_name = #{uniqueName}
 		</if>
 	</update>
+	
+	
+	<select id = "getRowCount" resultType="int">
+		select count(*) from commodity;
+	</select>
 </mapper>

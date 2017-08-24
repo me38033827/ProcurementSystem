@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ProcurementSystem.common.PageParams;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
-import com.ProcurementSystem.entity.Contract;
+import com.ProcurementSystem.entity.ShoppingCart;
 import com.ProcurementSystem.entity.Supplier;
 import com.ProcurementSystem.service.CommodityCatalogService;
 import com.ProcurementSystem.service.CommodityService;
@@ -30,6 +31,7 @@ public class CommodityCatalogController {
 	CommodityCatalogService commodityCatalogService;
 	@Resource
 	CommodityService commodityService;
+
 	// 测试
 	@RequestMapping(value = "index")
 	public String test(HttpServletRequest request) {
@@ -122,38 +124,84 @@ public class CommodityCatalogController {
 		map.put("commodityCatalog", commodityCatalog);
 		return "downStream/commodityCatalog/commodityCatalogContent";
 	}
-	//在线编辑商品目录
-	@RequestMapping(value="commodityCatalogContentEdit")
-	public String commodityCatalogContentEdit(@RequestParam(value="uniqueName")String uniqueName,ModelMap map){
+
+	// 在线编辑商品目录
+	@RequestMapping(value = "commodityCatalogContentEdit")
+	public String commodityCatalogContentEdit(@RequestParam(value = "uniqueName") String uniqueName, ModelMap map) {
 		Commodity commodity = new Commodity();
 		commodity.setUniqueName(Integer.parseInt(uniqueName));
-		List<Commodity> commodities = commodityService.searchCommodity(commodity);
-		Iterator<Commodity> iterator = commodities.iterator();
+		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, 1);
+		Iterator<Commodity> iterator = pageParams.getData().iterator();
 		commodity = iterator.next();
 		map.put("commodity", commodity);
 		return "downStream/commodityCatalog/commodityCatalogContentEdit";
 	}
-	//在线修改商品目录内容
-	@RequestMapping(value="commodityCatalogContentModify")
-	public String commodityCatalogModify(Commodity commodity,ModelMap map){
-		
+
+	// 在线修改商品目录内容
+	@RequestMapping(value = "commodityCatalogContentModify")
+	public String commodityCatalogModify(Commodity commodity, ModelMap map) {
 		commodity.getContract().setUniqueName(commodity.getContract().getUniqueName().substring(1));
 		commodityService.updateCommodity(commodity);
-		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName="+commodity.getCommodityCatalog().getUniqueName();//控制器中的跳转
+		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName="
+				+ commodity.getCommodityCatalog().getUniqueName();// 控制器中的跳转
 	}
-	//转向商品目录版本比较野
-	@RequestMapping(value="commodityCatalogCompare")
-	public String commodityCatalogCompare(){
+
+	// 转向商品目录版本比较野
+	@RequestMapping(value = "commodityCatalogCompare")
+	public String commodityCatalogCompare() {
 		return "downStream/commodityCatalog/commodityCatalogCompare";
 	}
-	//转向商品目录激活页
-	@RequestMapping(value="commodityCatalogActivate")
-	public String commodityCatalogActivate(){
+
+	// 转向商品目录激活页
+	@RequestMapping(value = "commodityCatalogActivate")
+	public String commodityCatalogActivate() {
 		return "downStream/commodityCatalog/commodityCatalogActivate";
 	}
-	//转向商品目录主页
-	@RequestMapping(value="commodityCatalog")
-	public String commodityCatalog(){
+
+	// 转向商品目录主页
+	@RequestMapping(value = "commodityCatalog")
+	public String commodityCatalog(ModelMap map, @RequestParam(value = "currPage", required = false) String currPage) {
+		if (currPage == null || currPage.equals(""))
+			currPage = 1 + ""; // 如果未指定请求页，则默认设置为第一页
+		int temp = 0;
+		try {
+			temp = Integer.parseInt(currPage);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "other/error";
+		}
+		Commodity commodity = new Commodity();
+		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp);
+		map.put("pageParams", pageParams);
 		return "downStream/commodityCatalog/commodityCatalog";
+	}
+
+	// 添加购物车
+	@RequestMapping(value="commodityCatalogAddShoppingCart")
+	public String commodityCatalogAddShoppingCart(HttpServletRequest request,@RequestParam(value="uniqueName")String uniqueName,@RequestParam(value="quantity") String quantity){
+		HttpSession session = request.getSession();
+		ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("shoppingCart");
+		if(shoppingCart == null) shoppingCart = new ShoppingCart();
+		Commodity commodity = new Commodity();
+		try{
+			commodity.setUniqueName(Integer.parseInt(uniqueName));
+			commodity.setBuyQuantity(Integer.parseInt(quantity));
+		}catch(Exception e){
+			
+		}
+		//当商品重复时，只修改原商品数量
+		boolean flag = false;
+		for(Commodity c : shoppingCart.getCommodities()){
+			if(c.getUniqueName() == commodity.getUniqueName()){
+				commodity.setBuyQuantity(commodity.getBuyQuantity()+c.getBuyQuantity());
+				flag = true;
+				break;
+			}
+		}
+		if(flag == false) shoppingCart.getCommodities().add(commodity);
+		session.setAttribute("shoppingCart",shoppingCart);
+		session.setAttribute("shoppingCartSize", shoppingCart.getCommodities().size());
+		System.out.println(shoppingCart.getCommodities().size());
+		return "redirect:/commodityCatalog/commodityCatalog ";
 	}
 }

@@ -31,8 +31,18 @@ public class Commodity {
 	private String isHazardousMaterials;
 	private String isGreen;
 	private String supplierPartAuxiliaryId;
-
+	private int buyQuantity;
 	
+	
+	
+	public int getBuyQuantity() {
+		return buyQuantity;
+	}
+
+	public void setBuyQuantity(int buyQuantity) {
+		this.buyQuantity = buyQuantity;
+	}
+
 	public String getSupplierPartAuxiliaryId() {
 		return supplierPartAuxiliaryId;
 	}

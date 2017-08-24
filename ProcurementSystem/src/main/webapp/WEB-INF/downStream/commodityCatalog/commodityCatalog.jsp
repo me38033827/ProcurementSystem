@@ -1,5 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.ProcurementSystem.common.*" %>
+<%@ page import="com.ProcurementSystem.entity.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,13 +9,16 @@
 
 <%@include file="../../other/header1.jsp"%>
 <%@include file="../../other/header2.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
+<%
+	PageParams<Commodity> pageParams = (PageParams<Commodity>)request.getAttribute("pageParams");
+%>
 	<div class="container" id="whole-container">
-
 		<!-- 导航栏 第三行 -->
-		<div id="thirdline-out" >
+		<div id="thirdline-out">
 			<div class="col-md-2 inline-b left">
 				<select class="col-md-12" id="my-select"
 					style="background-color: transparent">
@@ -24,7 +29,7 @@
 			</div>
 			<div class="col-md-2 inline-b left" id="search-service">
 				<select class="col-md-12" id="my-select">
-					<option>服务</option>
+					<option>所有类别</option>
 					<option>服务</option>
 					<option>服务</option>
 				</select>
@@ -48,8 +53,10 @@
 
 				<button id="shopping-cart-btn"
 					onclick="window.location.href='procurementShoppingCart.jsp'">
-					<span class="glyphicon glyphicon-shopping-cart"
-						aria-hidden="true" id="shopping-cart"></span> 
+					<div>
+						<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"
+							id="shopping-cart" ><span style="color:red">${sessionScope.shoppingCartSize }</span ></span>
+					</div>
 				</button>
 			</div>
 
@@ -102,107 +109,92 @@
 
 				<!-- 所有搜索结果 -->
 				<div class="result-items">
-					<!-- 每条搜索结果 -->
-					<div class="result-item">
-						<div class="item-checkbox">
-							<div class="checkbox">
-								<label> <input type="checkbox" class="checkboxes"
-									value="" />
-								</label>
+					<c:forEach var="commodity" items="${requestScope.pageParams.data}">
+						<!-- 每条搜索结果 -->
+						<div class="result-item">
+							<div class="item-checkbox">
+								<div class="checkbox">
+									<label> <input type="checkbox" class="checkboxes"
+										value="" />
+									</label>
+								</div>
+							</div>
+
+							<div class="item-whole">
+								<a class="item-content-blue" href=""></a><br> <a
+									class="item-content-grey">供应商：</a> <a class="item-content-blue">${commodity.supplier.name}</a><br>
+								<a class="item-content-grey">供应商部件号：</a> <a
+									class="item-content-black">${commodity.supplierPartId}</a><br>
+								<a class="item-content-grey">剩余时间：</a> <a
+									class="item-content-black"></a><br> <a
+									class="item-content-grey">合同：</a> <a class="item-content-black">${commodity.contract.name }</a><br>
+								<a class="item-content-grey">描述:</a> <a class="item-content-black">${commodity.itemDescription }</a>
+								<input type="hidden" id="uniqueName_${commodity.uniqueName }" value="${commodity.uniqueName }"/>
+							</div>
+
+							<div class="item-price">
+								<a class="item-price-green">${commodtiy.unitPrice } CNY</a> <a
+									class="item-price-grey">&nbsp;／件</a><br> <a
+									class="item-price-black">数量： <input class="item-quantity" id="quantity_${commodity.uniqueName }"
+									value="1" />
+									<button class="item-add" onclick="addShoppingCart(${commodity.uniqueName });">添加到购物车</button></a> <a
+									class="item-price-blue">添加到收藏夹</a>
 							</div>
 						</div>
-
-						<div class="item-whole">
-							<a class="item-content-blue"
-								href="procurement-commodity-detail.jsp">产品1</a><br> <a
-								class="item-content-grey">供应商：</a> <a class="item-content-blue">供应商1</a><br>
-							<a class="item-content-grey">供应商部件号：</a> <a
-								class="item-content-black">123</a><br> <a
-								class="item-content-grey">剩余时间：</a> <a
-								class="item-content-black">0天</a><br> <a
-								class="item-content-grey">合同：</a> <a class="item-content-black">c123</a><br>
-							<a class="item-content-black">描述</a>
-						</div>
-
-						<div class="item-price">
-							<a class="item-price-green">656.66 CNY</a> <a
-								class="item-price-grey">&nbsp;／件</a><br> <a
-								class="item-price-black">数量： <input class="item-quantity"
-								value="1" />
-								<button class="item-add">添加到购物车</button></a> <a
-								class="item-price-blue">添加到收藏夹</a>
-						</div>
-					</div>
-
-					<div class="result-item">
-						<div class="item-checkbox">
-							<div class="checkbox">
-								<label> <input type="checkbox" class="checkboxes"
-									value="" />
-								</label>
-							</div>
-						</div>
-
-						<div class="item-whole">
-							<a class="item-content-blue">产品2</a><br> <a
-								class="item-content-grey">供应商：</a> <a class="item-content-blue">供应商2</a><br>
-							<a class="item-content-grey">供应商部件号：</a> <a
-								class="item-content-black">124</a><br> <a
-								class="item-content-grey">剩余时间：</a> <a
-								class="item-content-black">0天</a><br> <a
-								class="item-content-grey">合同：</a> <a class="item-content-black">c124</a><br>
-							<a class="item-content-black">描述</a>
-						</div>
-
-						<div class="item-price">
-							<a class="item-price-green">329.00 CNY</a> <a
-								class="item-price-grey">&nbsp;／件</a><br> <a
-								class="item-price-black">数量： <input class="item-quantity"
-								value="1" />
-								<button class="item-add">添加到购物车</button></a> <a
-								class="item-price-blue">添加到收藏夹</a>
-						</div>
-					</div>
-
-					<div class="result-item">
-						<div class="item-checkbox">
-							<div class="checkbox">
-								<label> <input type="checkbox" class="checkboxes"
-									value="" />
-								</label>
-							</div>
-						</div>
-
-						<div class="item-whole">
-							<a class="item-content-blue">产品3</a><br> <a
-								class="item-content-grey">供应商：</a> <a class="item-content-blue">供应商3</a><br>
-							<a class="item-content-grey">供应商部件号：</a> <a
-								class="item-content-black">125</a><br> <a
-								class="item-content-grey">剩余时间：</a> <a
-								class="item-content-black">0天</a><br> <a
-								class="item-content-grey">合同：</a> <a class="item-content-black">c125</a><br>
-							<a class="item-content-black">描述</a>
-						</div>
-
-						<div class="item-price">
-							<a class="item-price-green">432.00 CNY</a> <a
-								class="item-price-grey">&nbsp;／件</a><br> <a
-								class="item-price-black">数量： <input class="item-quantity"
-								value="1" />
-								<button class="item-add">添加到购物车</button></a> <a
-								class="item-price-blue">添加到收藏夹</a>
-						</div>
+					</c:forEach>
+					<div class="right">
+						<button class="btn-page" id="forward" onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage()-1 %>'">上一页</button>
+						<span id="pageList"></span>
+						<button class="btn-page" id="afterward" onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}'">下一页</button>
 					</div>
 				</div>
-
-				<!-- pager -->
-
 			</div>
+
+			<!-- pager -->
+
 		</div>
 	</div>
-
-
-	<%@ include file="../../other/footer.jsp"%>
 	
+<script type="text/javascript">
+
+var pageList = document.getElementById("pageList");
+var currPage = ${pageParams.currPage};
+var totalPages = ${pageParams.totalPages};
+if(totalPages >= 4){
+	if(currPage < 3 ){
+		for(var i=1; i<=3 ;i++ ){
+			createButtonPage(i);
+		}
+	}else{
+		createButtonPage(1);
+		for(var i=currPage-1; i<=currPage+1 ;i++ ){
+			createButtonPage(i);
+		}
+	}
+}else{//总页数不足4页
+	for(var i=1; i<=totalPages ; i++){
+		createButtonPage(i);
+	}
+}
+if(currPage == 1) $("#forward").hide();//善后处理
+if(currPage  == totalPages) {
+	$("#afterward").hide();
+	$("#page"+(currPage+1)).hide();
+}
+$("#page"+currPage).attr("class","btn-page-choose");
+
+function createButtonPage(i){//i表示页号
+	var button = document.createElement("button")//创建button结点
+	var text = document.createTextNode(""+i);
+	button.appendChild(text);
+	button.id="page"+i;//设置button属性
+	button.setAttribute("class","btn-page");
+	button.setAttribute("onclick","window.location.href='commodityCatalog?currPage="+i+"'");
+	pageList.appendChild(button);//添加到pageList后面
+}
+function addShoppingCart(uniqueName){
+  	window.location.href="commodityCatalogAddShoppingCart?uniqueName="+$("#uniqueName_"+uniqueName).val()+ "&" + "quantity="+$("#quantity_"+uniqueName).val();
+}
+</script>
 </body>
 </html>

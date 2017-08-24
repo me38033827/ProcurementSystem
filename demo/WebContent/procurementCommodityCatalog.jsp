@@ -13,7 +13,7 @@
 	<div class="container" id="whole-container">
 
 		<!-- 导航栏 第三行 -->
-		<div id="thirdline-out" >
+		<div id="thirdline-out">
 			<div class="col-md-2 inline-b left">
 				<select class="col-md-12" id="my-select"
 					style="background-color: transparent">
@@ -48,8 +48,8 @@
 
 				<button id="shopping-cart-btn"
 					onclick="window.location.href='procurementShoppingCart.jsp'">
-					<span class="glyphicon glyphicon-shopping-cart"
-						aria-hidden="true" id="shopping-cart"></span> 
+					<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"
+						id="shopping-cart"></span>
 				</button>
 			</div>
 
@@ -192,6 +192,17 @@
 								<button class="item-add">添加到购物车</button></a> <a
 								class="item-price-blue">添加到收藏夹</a>
 						</div>
+
+					</div>
+
+					<div>
+						<div>
+						<button class="btn-page">上一页</button>
+							<button class="btn-page-choose">1</button>
+							<button class="btn-page">2</button>
+							<button class="btn-page">3</button>
+							<button class="btn-page">下一页</button>
+						</div>
 					</div>
 				</div>
 
@@ -200,9 +211,5 @@
 			</div>
 		</div>
 	</div>
-
-
-	<%@ include file="other/footer.jsp"%>
-	
 </body>
 </html>
