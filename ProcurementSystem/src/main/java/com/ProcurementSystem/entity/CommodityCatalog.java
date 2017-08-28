@@ -6,8 +6,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class CommodityCatalog {
 	private String uniqueName;
-	@NotEmpty(message="错误：无效的供应商")
-	private Supplier supplier;
+	
+	
+	private Supplier supplier;//暂时不验证
 	
 	private ArrayList<Commodity> commodities = new ArrayList<>();
 	
