@@ -1,10 +1,8 @@
 package com.ProcurementSystem.controller;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +25,7 @@ import com.ProcurementSystem.entity.ShoppingCart;
 import com.ProcurementSystem.entity.Supplier;
 import com.ProcurementSystem.service.CommodityCatalogService;
 import com.ProcurementSystem.service.CommodityService;
+import com.ProcurementSystem.service.ShoppingCartService;
 
 @Controller
 @RequestMapping(value = "commodityCatalog")
@@ -35,6 +34,8 @@ public class CommodityCatalogController {
 	CommodityCatalogService commodityCatalogService;
 	@Resource
 	CommodityService commodityService;
+	@Resource
+	ShoppingCartService shoppingCartService;
 
 	// 测试
 	@RequestMapping(value = "index")
@@ -180,70 +181,64 @@ public class CommodityCatalogController {
 		return "downStream/commodityCatalog/commodityCatalog";
 	}
 
-	// 添加购物车
-	@RequestMapping(value="commodityCatalogAddShoppingCart")
-	public @ResponseBody String commodityCatalogAddShoppingCart(HttpServletRequest request,@RequestParam(value="uniqueName")String uniqueName,@RequestParam(value="quantity") String quantity){
+	// 显示购物车内容
+	@RequestMapping(value = "commodityCatalogShoppingCart")
+	public String commodityCatalogShoppingCart(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("shoppingCart");
-		if(shoppingCart == null) shoppingCart = new ShoppingCart();
-		Commodity commodity = new Commodity();
-		try{
-			commodity.setUniqueName(uniqueName);
-			commodity.setBuyQuantity(Integer.parseInt(quantity));
-		}catch(Exception e){
-			
-		}
-		//当商品重复时，只修改原商品数量
-		boolean flag = false;
-		ListIterator<Commodity> iterator = shoppingCart.getCommodities().listIterator();
-		while(iterator.hasNext()){
-			Commodity commodityTemp = iterator.next();
-			if(commodityTemp.getUniqueName().equals(commodity.getUniqueName()) ){
-				commodityTemp.setBuyQuantity(commodity.getBuyQuantity()+commodityTemp.getBuyQuantity());
-				flag = true;
-				break;
-			}
-		}
-		if(flag == false) shoppingCart.getCommodities().add(commodity);
-		session.setAttribute("shoppingCart",shoppingCart);
-		//session.setAttribute("shoppingCartSize", shoppingCart.getCommodities().size());
-		//return "redirect:/commodityCatalog/commodityCatalog ";
-		//Map<String,Object> map = new HashMap<>();
-		//map.put("size", shoppingCart.getCommodities().size());
-		return shoppingCart.getCommodities().size()+"";
-	}
-	
-	//购物车页面
-	@RequestMapping(value="commodityCatalogShoppingCart")
-	public String commodityCatalogShoppingCart(HttpServletRequest request){
-		//需要更新购物车，将商品类填充完整
-		HttpSession session = request.getSession();
-		ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("shoppingCart");
-		if(shoppingCart !=null && shoppingCart != null){
-			shoppingCart = commodityCatalogService.updateShoppingCart(shoppingCart);
-		}
+		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
+		if (shoppingCart != null) {
+			shoppingCart = shoppingCartService.updateShoppingCart(shoppingCart);// 更新购物车，将商品类填充完整
+		} 
 		session.setAttribute("shoppingCart", shoppingCart);
 		return "downStream/commodityCatalog/commodityCatalogShoppingCart";
 	}
-	//购物车删除
-	@RequestMapping(value="commodityCatalogDeleteShoppingCart")
-	public String commodityCatalogDeleteShoppingCart(@RequestParam("commodityUniqueNames")String[] uniqueNames,HttpServletRequest request){
+
+	// 添加购物车，添加的商品只包含uniqueName和buyQuantity属性
+	@RequestMapping(value = "commodityCatalogAddShoppingCart")
+	public @ResponseBody String commodityCatalogAddShoppingCart(HttpServletRequest request,
+			@RequestParam(value = "uniqueName") String uniqueName, @RequestParam(value = "quantity") String quantity) {
 		HttpSession session = request.getSession();
-		ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("shoppingCart");
-		if(shoppingCart != null){
-			for(String str : uniqueNames){
-				ListIterator<Commodity> iterator = shoppingCart.getCommodities().listIterator();
-				while(iterator.hasNext()){
-					Commodity commodity = iterator.next();
-					if(commodity.getUniqueName().equals(str)){
-						iterator.remove();
-						break;
-					}
-				}
+		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");// 获得购物车
+		if (shoppingCart == null)
+			shoppingCart = new ShoppingCart();
+		Commodity commodity = new Commodity();
+		try {
+			commodity.setUniqueName(uniqueName);
+			commodity.setBuyQuantity(Integer.parseInt(quantity));
+		} catch (Exception e) {
+
+		} // 获得要添加的商品对象
+		shoppingCart = shoppingCartService.commodityCatalogAddShoppingCart(commodity, shoppingCart);// 添加商品
+		session.setAttribute("shoppingCart", shoppingCart);
+		return shoppingCart.getCommodities().size() + "";
+	}
+
+	// 购物车删除
+	@RequestMapping(value = "commodityCatalogDeleteShoppingCart")
+	public String commodityCatalogDeleteShoppingCart(@RequestParam("commodityUniqueNames") String[] uniqueNames,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");//获得购物车
+		if (shoppingCart != null) {
+			shoppingCartService.commodityCatalogDeleteShoppingCart(uniqueNames, shoppingCart);//删除商品
+		}
+		return "redirect:/commodityCatalog/commodityCatalogShoppingCart";
+	}
+
+	// 购物车更新总计
+	@RequestMapping("updateShoppingCartBuyQuantity")
+	public String updateShoppingCartBuyQuantity(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
+		if (shoppingCart != null) {
+			ListIterator<Commodity> iterator = shoppingCart.getCommodities().listIterator();
+			while (iterator.hasNext()) {
+				Commodity commodity = (Commodity) iterator.next();
+				String uniqueName = commodity.getUniqueName();
+				String buyQuantity = request.getParameter("buyQuantity_" + uniqueName);
+				commodity.setBuyQuantity(Integer.parseInt(buyQuantity));// 维护商品数量
 			}
 		}
-		return "downStream/commodityCatalog/commodityCatalogShoppingCart";
+		return "redirect:/commodityCatalog/commodityCatalogShoppingCart";
 	}
-	//购物车更新总计
-	
 }

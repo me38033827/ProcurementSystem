@@ -11,7 +11,7 @@
 <!-- 页面整体宽度：1320px -->
 <body>
 	<%
-		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingShort");
+		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
 		int size = 0;
 		if (shoppingCart != null)
 			size = shoppingCart.getCommodities().size();
@@ -75,13 +75,13 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td></td>
+												<td>${commodity.unitPrice * commodity.buyQuantity}</td>
 											</tr>
 										</c:forEach>
 										<tr>
 											<td colspan="2"><button class="btn-w" type="submit">删除</button></td>
 											<td colspan="8"></td>
-											<td colspan="2"><button class="btn-w right" type="submit" formaction="updateShoppingCartAmount">更新总计</button></td>
+											<td colspan="2"><button class="btn-w right" type="submit" formaction="updateShoppingCartBuyQuantity">更新总计</button></td>
 										</tr>
 									</table>
 								</form>
@@ -107,7 +107,7 @@
 									<td class="settlement-tab2-col2">¥0.00</td>
 								</tr>
 								<tr id="abstract-line4">
-									<td class="settlement-tab2-col1">小计（ <%=size%>个项目）
+									<td class="settlement-tab2-col1">小计 ${shoppingCart.totalAmount }（ <%=size%>个项目）
 									</td>
 									<td class="settlement-tab2-col2"></td>
 								</tr>
@@ -129,13 +129,13 @@
 		</div>
 	</div>
 	<script>
-	function delete(){
+	/* function delete(){
 		var url="commodityCatalogDeleteShoppingCart?";
 		var commodities = document.getElementByName("commodity");
 		for(var i=0;i<commodities.length;i++){
 			if(commodities[i].checked) url+=""
 		}
-	}	
+	}	 */
 	</script>
 </body>
 </html>

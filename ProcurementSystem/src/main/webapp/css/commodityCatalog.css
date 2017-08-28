@@ -18,3 +18,27 @@
 	border-collapse: separate;
 	border-spacing: 10px 20px;
 }
+
+.shopping-cart-size {
+	display: inline-block;
+	padding: 1px;
+	font-size: 12px;
+	line-height: 12px;
+	color: #fff;
+	background-color: #f10215;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	min-width: 12px;
+	text-align: center;
+}
+
+.shopping-cart-icon {
+	color: black;
+	font-size: 20px;
+}
+
+.shopping-cart-btn {
+	background-color: transparent;
+	margin-right: 50px;
+	border: 0px;
+}

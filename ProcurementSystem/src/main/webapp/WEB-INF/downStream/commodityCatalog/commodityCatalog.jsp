@@ -1,7 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.ProcurementSystem.common.*" %>
-<%@ page import="com.ProcurementSystem.entity.*" %>
+<%@ page import="com.ProcurementSystem.common.*"%>
+<%@ page import="com.ProcurementSystem.entity.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,13 +13,14 @@
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
-<%
-	PageParams<Commodity> pageParams = (PageParams<Commodity>)request.getAttribute("pageParams");
-	//获得购物车大小
-	ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("shoppingCart");
-	String size ="";
-	if(shoppingCart != null) size = shoppingCart.getCommodities().size()+"";
-%>
+	<%
+		PageParams<Commodity> pageParams = (PageParams<Commodity>) request.getAttribute("pageParams");
+		//获得购物车大小
+		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
+		String size = "0";
+		if (shoppingCart != null)
+			size = shoppingCart.getCommodities().size() + "";
+	%>
 	<div class="container" id="whole-container">
 		<!-- 导航栏 第三行 -->
 		<div id="thirdline-out">
@@ -51,17 +52,18 @@
 
 
 			<!-- 第三行右侧图标 -->
-			<button class="btn-w right" style="margin-right: 20px;"
-				onclick="window.location.href='procurementCatalog.jsp'">目录管理</button>
-			<div class="thirdline-icons">
-
-				<button id="shopping-cart-btn"
+			<div class="right">
+				<button class="shopping-cart-btn"
 					onclick="window.location.href='commodityCatalogShoppingCart'">
-					<div>
-						<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"
-							id="shopping-cart" ><span style="color:red" id="shoppingCartSize"><%=size %></span ></span>
-					</div>
+					<span class="glyphicon glyphicon-shopping-cart shopping-cart-icon"
+						aria-hidden="true"></span>
+
+					<div class="shopping-cart-size right" id="shoppingCartSize"><%=size%></div>
 				</button>
+				<button class="btn-w " style="margin-right: 20px;"
+					onclick="window.location.href='procurementCatalog.jsp'">目录管理</button>
+
+
 			</div>
 
 			<!-- 第三行右侧标记 -->
@@ -116,14 +118,15 @@
 					<c:forEach var="commodity" items="${requestScope.pageParams.data}">
 						<!-- 每条搜索结果 -->
 						<div class="result-item">
-							<div class="item-checkbox">
-								<div class="checkbox">
-									<label> <input type="checkbox" class="checkboxes"
-										value="" />
-									</label>
-								</div>
+							<div class="left">
+								<input type="checkbox" id="${commodity.uniqueName }" class="chk"
+									name="commodityUniqueNames" value="${commodity.uniqueName }" /><label
+									for="${commodity.uniqueName }"></label>
 							</div>
-
+							<div class="left container-thumbnail">
+								<img alt=""
+									src="/ProcurementSystem/images/default-thumbnail.png">
+							</div>
 							<div class="item-whole">
 								<a class="item-content-blue" href=""></a><br> <a
 									class="item-content-grey">供应商：</a> <a class="item-content-blue">${commodity.supplier.name}</a><br>
@@ -132,24 +135,29 @@
 								<a class="item-content-grey">剩余时间：</a> <a
 									class="item-content-black"></a><br> <a
 									class="item-content-grey">合同：</a> <a class="item-content-black">${commodity.contract.name }</a><br>
-								<a class="item-content-grey">描述:</a> <a class="item-content-black">${commodity.itemDescription }</a>
-								<input type="hidden" id="uniqueName_${commodity.uniqueName }" value="${commodity.uniqueName }"/>
+								<a class="item-content-grey">描述:</a> <a
+									class="item-content-black">${commodity.itemDescription }</a> <input
+									type="hidden" id="uniqueName_${commodity.uniqueName }"
+									value="${commodity.uniqueName }" />
 							</div>
 
 							<div class="item-price">
 								<a class="item-price-green">${commodity.unitPrice} CNY</a> <a
 									class="item-price-grey">&nbsp;／件</a><br> <a
-									class="item-price-black">数量： <input class="item-quantity" id="quantity_${commodity.uniqueName }"
-									value="1" />
-									<button class="item-add" onclick="addShoppingCart(${commodity.uniqueName });">添加到购物车</button></a> <a
-									class="item-price-blue">添加到收藏夹</a>
+									class="item-price-black">数量： <input class="item-quantity"
+									id="quantity_${commodity.uniqueName }" value="1" />
+									<button class="item-add"
+										onclick="addShoppingCart(${commodity.uniqueName });">添加到购物车</button></a>
+								<a class="item-price-blue">添加到收藏夹</a>
 							</div>
 						</div>
 					</c:forEach>
 					<div class="right">
-						<button class="btn-page" id="forward" onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage()-1 %>'">上一页</button>
+						<button class="btn-page" id="forward"
+							onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>'">上一页</button>
 						<span id="pageList"></span>
-						<button class="btn-page" id="afterward" onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}'">下一页</button>
+						<button class="btn-page" id="afterward"
+							onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}'">下一页</button>
 					</div>
 				</div>
 			</div>
@@ -158,8 +166,8 @@
 
 		</div>
 	</div>
-	
-<script type="text/javascript">
+
+	<script type="text/javascript">
 
 var pageList = document.getElementById("pageList");
 var currPage = ${pageParams.currPage};
