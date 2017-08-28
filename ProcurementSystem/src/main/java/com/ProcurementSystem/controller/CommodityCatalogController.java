@@ -63,7 +63,6 @@ public class CommodityCatalogController {
 			}
 			return "downStream/commodityCatalog/commodityCatalogCreate";
 		}
-
 		String mySelect = request.getParameter("mySelect");
 		HttpSession session = request.getSession();
 		session.setAttribute("commodityCatalog", commodityCatalog);

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.ISupplierDao">
+ 	<!--  
+	<resultMap type="com.ProcurementSystem.entity.Supplier" id="supplierList">
+		<result column="name" property="name" />
+		<result column="is_supplier" property="is_supplier" />
+		<result column="is_client" property="is_client" />
+	</resultMap>
+	-->
+	<select id="getSupplierDetail" parameterType="int" resultType="com.ProcurementSystem.entity.Supplier">
+		select * from supplier
+		where unique_name = ${uniqueName}
+	</select>
+	
+	
+	<select id="searchSupplier" resultType="com.ProcurementSystem.entity.Supplier">
+		select * from supplier
+	</select>
+</mapper>
