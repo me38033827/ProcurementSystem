@@ -106,5 +106,4 @@ public class SupplierController {
 	public String showSupplierDetailTeam(){
 		return "upStream/supplier/supplierDetailTeam";
 	}
-	
 }
