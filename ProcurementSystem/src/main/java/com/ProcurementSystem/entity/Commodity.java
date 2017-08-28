@@ -3,7 +3,7 @@ package com.ProcurementSystem.entity;
 import java.util.List;
 
 public class Commodity {
-	private int uniqueName;
+	private String uniqueName;
 	private Supplier supplier;
 	private Contract contract;
 	private CommodityCatalog commodityCatalog;
@@ -51,11 +51,13 @@ public class Commodity {
 		this.supplierPartAuxiliaryId = supplierPartAuxiliaryId;
 	}
 
-	public int getUniqueName() {
+	
+
+	public String getUniqueName() {
 		return uniqueName;
 	}
 
-	public void setUniqueName(int uniqueName) {
+	public void setUniqueName(String uniqueName) {
 		this.uniqueName = uniqueName;
 	}
 

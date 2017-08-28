@@ -95,6 +95,7 @@
 		c.item_description as itemDescription,
 		c.short_name as shortName,
 		c.unit_price as unitPrice,
+		c.unit_of_measure as unitOfMeasure,
 		cc.unique_name as commodityCatalogUniqueName,
 		cc.name as commodityCatalogName,
 		con.unique_name as contractUniqueName,
@@ -130,6 +131,7 @@
 		<result property="itemDescription" column="itemDescription" />
 		<result property="shortName" column="shortName" />
 		<result property="unitPrice" column="unitPrice" />
+		<result property="unitOfMeasure" column="unitOfMeasure" />
 		<association property="contract" javaType="com.ProcurementSystem.entity.Contract">
 			<id property="uniqueName" column="contractUniqueName" />
 			<result property="name" column="contractName" />

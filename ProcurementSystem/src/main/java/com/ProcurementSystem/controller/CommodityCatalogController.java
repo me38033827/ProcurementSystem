@@ -1,7 +1,10 @@
 package com.ProcurementSystem.controller;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ProcurementSystem.common.PageParams;
@@ -129,7 +133,7 @@ public class CommodityCatalogController {
 	@RequestMapping(value = "commodityCatalogContentEdit")
 	public String commodityCatalogContentEdit(@RequestParam(value = "uniqueName") String uniqueName, ModelMap map) {
 		Commodity commodity = new Commodity();
-		commodity.setUniqueName(Integer.parseInt(uniqueName));
+		commodity.setUniqueName(uniqueName);
 		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, 1);
 		Iterator<Commodity> iterator = pageParams.getData().iterator();
 		commodity = iterator.next();
@@ -178,30 +182,68 @@ public class CommodityCatalogController {
 
 	// 添加购物车
 	@RequestMapping(value="commodityCatalogAddShoppingCart")
-	public String commodityCatalogAddShoppingCart(HttpServletRequest request,@RequestParam(value="uniqueName")String uniqueName,@RequestParam(value="quantity") String quantity){
+	public @ResponseBody String commodityCatalogAddShoppingCart(HttpServletRequest request,@RequestParam(value="uniqueName")String uniqueName,@RequestParam(value="quantity") String quantity){
 		HttpSession session = request.getSession();
 		ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("shoppingCart");
 		if(shoppingCart == null) shoppingCart = new ShoppingCart();
 		Commodity commodity = new Commodity();
 		try{
-			commodity.setUniqueName(Integer.parseInt(uniqueName));
+			commodity.setUniqueName(uniqueName);
 			commodity.setBuyQuantity(Integer.parseInt(quantity));
 		}catch(Exception e){
 			
 		}
 		//当商品重复时，只修改原商品数量
 		boolean flag = false;
-		for(Commodity c : shoppingCart.getCommodities()){
-			if(c.getUniqueName() == commodity.getUniqueName()){
-				commodity.setBuyQuantity(commodity.getBuyQuantity()+c.getBuyQuantity());
+		ListIterator<Commodity> iterator = shoppingCart.getCommodities().listIterator();
+		while(iterator.hasNext()){
+			Commodity commodityTemp = iterator.next();
+			if(commodityTemp.getUniqueName().equals(commodity.getUniqueName()) ){
+				commodityTemp.setBuyQuantity(commodity.getBuyQuantity()+commodityTemp.getBuyQuantity());
 				flag = true;
 				break;
 			}
 		}
 		if(flag == false) shoppingCart.getCommodities().add(commodity);
 		session.setAttribute("shoppingCart",shoppingCart);
-		session.setAttribute("shoppingCartSize", shoppingCart.getCommodities().size());
-		System.out.println(shoppingCart.getCommodities().size());
-		return "redirect:/commodityCatalog/commodityCatalog ";
+		//session.setAttribute("shoppingCartSize", shoppingCart.getCommodities().size());
+		//return "redirect:/commodityCatalog/commodityCatalog ";
+		//Map<String,Object> map = new HashMap<>();
+		//map.put("size", shoppingCart.getCommodities().size());
+		return shoppingCart.getCommodities().size()+"";
 	}
+	
+	//购物车页面
+	@RequestMapping(value="commodityCatalogShoppingCart")
+	public String commodityCatalogShoppingCart(HttpServletRequest request){
+		//需要更新购物车，将商品类填充完整
+		HttpSession session = request.getSession();
+		ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("shoppingCart");
+		if(shoppingCart !=null && shoppingCart != null){
+			shoppingCart = commodityCatalogService.updateShoppingCart(shoppingCart);
+		}
+		session.setAttribute("shoppingCart", shoppingCart);
+		return "downStream/commodityCatalog/commodityCatalogShoppingCart";
+	}
+	//购物车删除
+	@RequestMapping(value="commodityCatalogDeleteShoppingCart")
+	public String commodityCatalogDeleteShoppingCart(@RequestParam("commodityUniqueNames")String[] uniqueNames,HttpServletRequest request){
+		HttpSession session = request.getSession();
+		ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("shoppingCart");
+		if(shoppingCart != null){
+			for(String str : uniqueNames){
+				ListIterator<Commodity> iterator = shoppingCart.getCommodities().listIterator();
+				while(iterator.hasNext()){
+					Commodity commodity = iterator.next();
+					if(commodity.getUniqueName().equals(str)){
+						iterator.remove();
+						break;
+					}
+				}
+			}
+		}
+		return "downStream/commodityCatalog/commodityCatalogShoppingCart";
+	}
+	//购物车更新总计
+	
 }

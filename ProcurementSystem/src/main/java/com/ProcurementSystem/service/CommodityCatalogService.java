@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -16,6 +19,7 @@ import com.ProcurementSystem.dao.ICommodityDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.Contract;
+import com.ProcurementSystem.entity.ShoppingCart;
 import com.ProcurementSystem.entity.Supplier;
 
 import jxl.Cell;
@@ -166,5 +170,21 @@ public class CommodityCatalogService {
 	}
 	public List<CommodityCatalog> searchCommodityCatalog(CommodityCatalog commodityCatalog) {
 		return commodityCatalogDao.searchCommodityCatalog(commodityCatalog);
+	}
+	public ShoppingCart updateShoppingCart(ShoppingCart shoppingCart) {
+		ListIterator<Commodity> iterator = shoppingCart.getCommodities().listIterator();
+		while(iterator.hasNext()){
+			Commodity commodity = iterator.next();
+			int buyQuantity = commodity.getBuyQuantity();//获取该商品的购买数量，为了简化，省略购物车item类的编写
+			
+			Map<String,Object> searchParams = new HashMap<>();
+			searchParams.put("commodity",commodity);
+			List<Commodity> commodities = commodityDao.searchCommodity(searchParams);
+			commodity = commodities.get(0);
+			
+			commodity.setBuyQuantity(buyQuantity);//设置购买数量
+			iterator.set(commodity);
+		}
+		return shoppingCart;
 	}
 }

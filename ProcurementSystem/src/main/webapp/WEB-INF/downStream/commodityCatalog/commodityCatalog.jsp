@@ -15,6 +15,10 @@
 <body>
 <%
 	PageParams<Commodity> pageParams = (PageParams<Commodity>)request.getAttribute("pageParams");
+	//获得购物车大小
+	ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("shoppingCart");
+	String size ="";
+	if(shoppingCart != null) size = shoppingCart.getCommodities().size()+"";
 %>
 	<div class="container" id="whole-container">
 		<!-- 导航栏 第三行 -->
@@ -52,10 +56,10 @@
 			<div class="thirdline-icons">
 
 				<button id="shopping-cart-btn"
-					onclick="window.location.href='procurementShoppingCart.jsp'">
+					onclick="window.location.href='commodityCatalogShoppingCart'">
 					<div>
 						<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"
-							id="shopping-cart" ><span style="color:red">${sessionScope.shoppingCartSize }</span ></span>
+							id="shopping-cart" ><span style="color:red" id="shoppingCartSize"><%=size %></span ></span>
 					</div>
 				</button>
 			</div>
@@ -133,7 +137,7 @@
 							</div>
 
 							<div class="item-price">
-								<a class="item-price-green">${commodtiy.unitPrice } CNY</a> <a
+								<a class="item-price-green">${commodity.unitPrice} CNY</a> <a
 									class="item-price-grey">&nbsp;／件</a><br> <a
 									class="item-price-black">数量： <input class="item-quantity" id="quantity_${commodity.uniqueName }"
 									value="1" />
@@ -193,7 +197,24 @@ function createButtonPage(i){//i表示页号
 	pageList.appendChild(button);//添加到pageList后面
 }
 function addShoppingCart(uniqueName){
-  	window.location.href="commodityCatalogAddShoppingCart?uniqueName="+$("#uniqueName_"+uniqueName).val()+ "&" + "quantity="+$("#quantity_"+uniqueName).val();
+  //window.location.href="commodityCatalogAddShoppingCart?uniqueName="+$("#uniqueName_"+uniqueName).val()+ "&" + "quantity="+$("#quantity_"+uniqueName).val();
+	 $.ajax({  
+		data : 
+			{
+				"uniqueName" : $("#uniqueName_"+uniqueName).val(),
+				"quantity" : $("#quantity_"+uniqueName).val()
+			},  
+	    type:"GET",  
+	    dataType: 'json',  
+	    url:"commodityCatalogAddShoppingCart",  
+	    error:function(data){  
+	            alert("出错了！！:"+data.size);  
+	        },  
+	    success:function(data){  
+	      /*  alert("success:"+data);   */
+	       $("#shoppingCartSize").html(data) ;  
+	    }  
+	        });  
 }
 </script>
 </body>
