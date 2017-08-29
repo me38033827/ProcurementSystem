@@ -1,19 +1,24 @@
 package com.ProcurementSystem.entity;
 
-import java.util.List;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
 
 public class Commodity {
+
 	private String uniqueName;
+
 	private Supplier supplier;
 	private Contract contract;
 	private CommodityCatalog commodityCatalog;
-	private double unitPrice;
+	private double unitPrice;// 基本类型是否都设置成String比较好
 	private String supplierPartId;
 	private String manufacturerName;
 	private String manufacturerPartId;
 	private String manufacturerUrl;
 	private String timeLeft;
 	private String companyCode;
+	@Email(message = "错误：邮箱格式不正确。例如：123@163.com")
 	private String gcmEmailAddress;
 	private String itemDescription;
 	private String materialGroup;
@@ -23,18 +28,29 @@ public class Commodity {
 	private String unitOfMeasure;
 	private int leadTime;
 	private double marketPrice;
+	@Pattern(regexp = "([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8])))", message = "错误：日期格式不正确。例如:2017-10-10")
 	private String effectiveDate;
+	@Pattern(regexp = "([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8])))", message = "错误：日期格式不正确。例如:2017-10-10")
 	private String expirationDate;
 	private String shortName;
 	private String image;
 	private String thumbnail;
+	@Pattern(regexp = "false|true|TRUE|FALSE", message = "错误：格式为：false|true|TRUE|FALSE")
 	private String isHazardousMaterials;
+	@Pattern(regexp = "false|true|TRUE|FALSE", message = "错误：格式为：false|true|TRUE|FALSE")
 	private String isGreen;
 	private String supplierPartAuxiliaryId;
 	private int buyQuantity;
-	
-	
-	
+	private String isChecked;
+
+	public String getIsChecked() {
+		return isChecked;
+	}
+
+	public void setIsChecked(String isChecked) {
+		this.isChecked = isChecked;
+	}
+
 	public int getBuyQuantity() {
 		return buyQuantity;
 	}
@@ -50,8 +66,6 @@ public class Commodity {
 	public void setSupplierPartAuxiliaryId(String supplierPartAuxiliaryId) {
 		this.supplierPartAuxiliaryId = supplierPartAuxiliaryId;
 	}
-
-	
 
 	public String getUniqueName() {
 		return uniqueName;
@@ -268,9 +282,11 @@ public class Commodity {
 	public void setIsGreen(String isGreen) {
 		this.isGreen = isGreen;
 	}
+
 	public CommodityCatalog getCommodityCatalog() {
 		return commodityCatalog;
 	}
+
 	public void setCommodityCatalog(CommodityCatalog commodityCatalog) {
 		this.commodityCatalog = commodityCatalog;
 	}

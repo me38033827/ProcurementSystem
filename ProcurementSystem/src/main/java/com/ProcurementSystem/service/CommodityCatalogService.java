@@ -4,12 +4,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +21,6 @@ import com.ProcurementSystem.dao.ICommodityDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.Contract;
-import com.ProcurementSystem.entity.ShoppingCart;
 import com.ProcurementSystem.entity.Supplier;
 
 import jxl.Cell;
@@ -30,7 +31,7 @@ import jxl.read.biff.BiffException;
 @Service
 public class CommodityCatalogService {
 	@Resource ICommodityCatalogDao commodityCatalogDao;
-	@Resource ICommodityDao commodityDao;
+	@Resource CommodityService commodityService;
 	
 	//获得商品目录数量
 	public int getRowCount(){
@@ -81,13 +82,16 @@ public class CommodityCatalogService {
 			// System.out.println("工作表名称：" + oFirstSheet.getName());
 			int rows = firstSheet.getRows();// 获取工作表中的总行数
 			int cols = firstSheet.getColumns();// 获取工作表中的总列数
+			boolean isCommodityCatalogchecked = true; 
 			for (int i = 0; i < rows; i++) {// 寻找数据起始标志-“DATA”
 				Cell cell = firstSheet.getCell(0, i);// 需要注意的是这里的getCell方法的参数，第一个是指定第几列，第二个参数才是指定第几行
 				if (cell.getContents().equals("DATA")) {
 					i++;
 					/**暂时只进行为空检查，后期需要补充非数字格式检查**/
 					cell = firstSheet.getCell(0, i);
-					while (!cell.getContents().equals("ENDOFDATA") && !cell.getContents().equals("")) {// 读取每行信息并进行持久化存储，直至找到数据结束标识符-“ENDOFDATA”
+					while (!cell.getContents().equals("ENDOFDATA") && !cell.getContents().equals("")) {// 共24个字段，读取每行信息并进行持久化存储，直至找到数据结束标识符-“ENDOFDATA”
+						boolean isCommodityChecked = true;//临时变量，用于商品的验证状态
+						/** 从上传文件中提取字段 */
 						Commodity commodity = new Commodity();//设置commodityCatalog
 						commodity.setCommodityCatalog(commodityCatalog);
 						Supplier supplier = new Supplier();// 读取并设置Supplier ID
@@ -150,12 +154,23 @@ public class CommodityCatalogService {
 						cell = firstSheet.getCell(22, i);//green
 						commodity.setIsGreen(cell.getContents());
 						commodityCatalog.getCommodities().add(commodity);
-						commodityDao.insertCommodity(commodity);
-						System.out.println("插入成功！");
 						i++;
 						cell = firstSheet.getCell(0, i);
+						
+						/** 对提取的字段进行验证，如果有错误，设置状态为验证错误，如果没有错误，设置状态为验证通过 */
+						isCommodityChecked = commodityService.validateCommodity(commodity);
+						if(isCommodityChecked) commodity.setIsChecked("TRUE");
+						else commodity.setIsChecked("FALSE");//设置商品的验证状态
+						if(!isCommodityChecked)	isCommodityCatalogchecked=false;//设置商品目录的验证状态
+						commodityService.insertCommodity(commodity);
+						System.out.println("插入成功！");
 					}
+					
+					if(isCommodityCatalogchecked) commodityCatalog.setIsActivated("已验证");
+					else commodityCatalog.setIsActivated("验证错误");
+					commodityCatalogDao.setIsActivated(commodityCatalog);//维护商品目录状态属性
 					commodityCatalog.setItemCount(commodityCatalog.getCommodities().size());
+					commodityCatalogDao.setItemCount(commodityCatalog);//维护商品目录商品数量属性
 				}
 			}
 		} catch (IOException | BiffException e) {
@@ -164,6 +179,8 @@ public class CommodityCatalogService {
 		}
 
 	}
+	
+	
 	public List<CommodityCatalog> getAllCommodityCatalogs() {
 		// TODO Auto-generated method stub
 		return commodityCatalogDao.getAllCommodityCatalogs();

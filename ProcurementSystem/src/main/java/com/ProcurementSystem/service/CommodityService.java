@@ -2,10 +2,16 @@ package com.ProcurementSystem.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import com.ProcurementSystem.common.PageParams;
 import com.ProcurementSystem.dao.ICommodityDao;
@@ -30,14 +36,67 @@ public class CommodityService {
 		else if (currPage < 1)
 			currPage = 1;
 		pageParams.setCurrPage(currPage);
-		int offset = (pageParams.getCurrPage()-1) * PageParams.pageSize;
+		int offset = (pageParams.getCurrPage() - 1) * PageParams.pageSize;
 		int size = PageParams.pageSize;
-		
-		Map<String,Object> searchParams = new HashMap<>();//构造查询参数
+
+		Map<String, Object> searchParams = new HashMap<>();// 构造查询参数
 		searchParams.put("commodity", commodity);
 		searchParams.put("offset", offset);
 		searchParams.put("size", size);
 		pageParams.setData(commodityDao.searchCommodity(searchParams));
 		return pageParams;
+	}
+
+	public void insertCommodity(Commodity commodity) {// 插入商品
+		// TODO Auto-generated method stub
+		commodityDao.insertCommodity(commodity);
+	}
+
+	public boolean validateCommodity(Commodity commodity) {// 验证商品的属性
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		Set<ConstraintViolation<Commodity>> constraintViolations = validator.validate(commodity);
+		System.out.println(constraintViolations.size());
+		if (constraintViolations.size() > 0)
+			return false;
+		return true;
+
+	}
+
+	public ModelMap validateCommodityAndGetMessages(Commodity commodity, ModelMap map) {// 验证商品的属性,并获取错误信息
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		String message = "";
+		try {
+			message = validator.validateProperty(commodity, "gcmEmailAddress").iterator().next().getMessage();
+		} catch (Exception e) {//如果属性验证正确会抛出异常错误
+			message = "";
+		}
+		map.put("Error_gcmEmailAddress", message);
+		try {
+			message = validator.validateProperty(commodity, "effectiveDate").iterator().next().getMessage();
+		} catch (Exception e) {
+			message = "";
+		}
+		map.put("Error_effectiveDate", message);
+		try {
+			message = validator.validateProperty(commodity, "expirationDate").iterator().next().getMessage();
+		} catch (Exception e) {
+			message = "";
+		}
+		map.put("Error_expirationDate", message);
+		try {
+			message = validator.validateProperty(commodity, "isHazardousMaterials").iterator().next().getMessage();
+		} catch (Exception e) {
+			message = "";
+		}
+		map.put("Error_isHazardousMaterials", message);
+		try {
+			message = validator.validateProperty(commodity, "isGreen").iterator().next().getMessage();
+		} catch (Exception e) {
+			message = "";
+		}
+		map.put("Error_isGreen", message);
+		return map;
 	}
 }

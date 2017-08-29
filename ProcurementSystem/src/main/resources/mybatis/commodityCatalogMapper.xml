@@ -90,7 +90,8 @@
 		c.supplier_part_id as supplierPartId,
 		c.supplier_part_auxiliary_id as
 		supplierPartAuxiliaryId,
-		c.item_description as itemDescription
+		c.item_description as itemDescription,
+		c.is_checked as isChecked
 		from
 		(commodity_catalog cc left join supplier s
 		on
@@ -117,6 +118,7 @@
 		<result property="isActivated" column="isActivated" />
 		<result property="state" column="state" />
 		<result property="lastModifyDate" column="lastModifyDate" />
+		
 		<association property="supplier"
 			javaType="com.ProcurementSystem.entity.Supplier">
 			<id property="uniqueName" column="supplierUniqueName" />
@@ -132,10 +134,21 @@
 		<result property="supplierPartId" column="supplierPartId" />
 		<result property="supplierPartAuxiliaryId" column="supplierPartAuxiliaryId" />
 		<result property="itemDescription" column="itemDescription" />
+		<result property="isChecked" column="isChecked" />
 		<association property="supplier"
 			javaType="com.ProcurementSystem.entity.Supplier">
 			<id property="uniqueName" column="supplierUniqueName" />
 			<result property="name" column="supplierName" />
 		</association>
 	</resultMap>
+	
+	
+	
+	<update id="setIsActivated" parameterType="Map">
+		update commodity_catalog set is_activated = #{isActivated} where unique_name = #{uniqueName}
+	</update>
+	
+	<update id="setItemCount" parameterType="Map">
+		update commodity_catalog set item_count = #{itemCount} where unique_name = #{uniqueName}
+	</update>
 </mapper>

@@ -132,14 +132,18 @@ public class CommodityCatalogController {
 	// 在线编辑商品目录
 	@RequestMapping(value = "commodityCatalogContentEdit")
 	public String commodityCatalogContentEdit(@RequestParam(value = "uniqueName") String uniqueName, ModelMap map) {
+		/**从数据库中提取对应的商品对象*/
 		Commodity commodity = new Commodity();
 		commodity.setUniqueName(uniqueName);
 		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, 1);
 		Iterator<Commodity> iterator = pageParams.getData().iterator();
 		commodity = iterator.next();
+		/**获得商品的验证信息*/
+		map =commodityService.validateCommodityAndGetMessages(commodity,map);
 		map.put("commodity", commodity);
 		return "downStream/commodityCatalog/commodityCatalogContentEdit";
 	}
+
 
 	// 在线修改商品目录内容
 	@RequestMapping(value = "commodityCatalogContentModify")
@@ -150,7 +154,7 @@ public class CommodityCatalogController {
 				+ commodity.getCommodityCatalog().getUniqueName();// 控制器中的跳转
 	}
 
-	// 转向商品目录版本比较野
+	// 转向商品目录版本比较页
 	@RequestMapping(value = "commodityCatalogCompare")
 	public String commodityCatalogCompare() {
 		return "downStream/commodityCatalog/commodityCatalogCompare";

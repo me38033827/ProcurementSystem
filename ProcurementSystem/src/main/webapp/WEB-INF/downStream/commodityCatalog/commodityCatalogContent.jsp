@@ -21,7 +21,8 @@
 								主页</button>
 						</div>
 						<div class="small-window-title margin-bottom ">目录 - 查看内容 -
-							${requestScope.commodityCatalog.name }，${requestScope.commodityCatalog.version}, 完整</div>
+							${requestScope.commodityCatalog.name }，${requestScope.commodityCatalog.version},
+							完整</div>
 
 					</div>
 					<div class="margin-bottom">
@@ -54,8 +55,7 @@
 					</div>
 
 					<div class="margin-bottom">
-						<div class="left">该版本中的项目数量:
-							${commodityCatalog.itemCount }。&nbsp;&nbsp;</div>
+						<div class="left">该版本中的项目数量: ${commodityCatalog.itemCount }。&nbsp;&nbsp;</div>
 						<div>
 							<button class="btn-w" style="width: 120px;">隐藏/显示字段</button>
 							<button class="btn-w">刷新图像</button>
@@ -74,12 +74,16 @@
 							<th width="20%" class="text-center">描述</th>
 						</tr>
 						<c:forEach var="commodity"
-							items="${requestScope.commodityCatalog.commodities }" varStatus="status">
+							items="${requestScope.commodityCatalog.commodities }"
+							varStatus="status">
 							<tr>
-								<td><input type="checkbox"
-									id="${commodity.uniqueName }" class="chk" /><label
-									for="${commodity.uniqueName }"></label>&nbsp;<a
-									href="commodityCatalogContentEdit?uniqueName=${commodity.uniqueName }">编辑</a></td>
+								<td><input type="checkbox" id="${commodity.uniqueName }"
+									class="chk" /><label for="${commodity.uniqueName }"></label>&nbsp;<a
+									href="commodityCatalogContentEdit?uniqueName=${commodity.uniqueName }">编辑
+										<c:if test="${commodity.isChecked == 'FALSE'}">
+											<span class="error-message">!!!</span>
+										</c:if>
+								</a></td>
 								<td>${status.count}</td>
 								<td>${commodity.unitPrice }</td>
 								<td>${commodity.supplier.name }</td>
@@ -107,5 +111,6 @@
 		</div>
 	</div>
 
-</body>·
+</body>
+·
 </html>

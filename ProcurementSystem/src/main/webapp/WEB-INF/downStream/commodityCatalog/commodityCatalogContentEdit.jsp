@@ -60,7 +60,7 @@
 									<td colspan="2">GCM Email address</td>
 									<td><input type="text" class="input margin-input"
 										name="gcmEmailAddress"
-										value="${requestScope.commodity.gcmEmailAddress }"><br></td>
+										value="${requestScope.commodity.gcmEmailAddress }"><span class="error-message">${Error_gcmEmailAddress}</span><br></td>
 								</tr>
 								<tr>
 									<td colspan="2">HSN SAC</td>
@@ -194,7 +194,7 @@
 									<td colspan="2">危险品</td>
 									<td><input type="text" class="input margin-input"
 										name="isHazardousMaterials"
-										value="${commodity.isHazardousMaterials }"></td>
+										value="${commodity.isHazardousMaterials }"><span class="error-message">${Error_isHazardousMaterials}</span></td>
 								</tr>
 								<tr>
 									<td colspan="2">可用地区</td>
@@ -212,7 +212,7 @@
 								<tr>
 									<td colspan="2">失效日期</td>
 									<td><input type="text" class="input margin-input"
-										name="expirationDate" value="${commodity.expirationDate }">&nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】</a></td>
+										name="expirationDate" value="${commodity.expirationDate }">&nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】<span class="error-message">${Error_expirationDate}</span></a></td>
 								</tr>
 								<tr>
 									<td colspan="2">已筛选</td>
@@ -242,13 +242,13 @@
 								<tr>
 									<td colspan="2">有效日期</td>
 									<td><input type="text" class="input margin-input"
-										name="effectiveDate" value="${commodity.effectiveDate }">&nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】</a>
+										name="effectiveDate" value="${commodity.effectiveDate }">&nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】</a><span class="error-message">${Error_effectiveDate}</span>
 									</td>
 								</tr>
 								<tr>
 									<td colspan="2">环保</td>
 									<td><input type="text" class="input margin-input"
-										name="isGreen" value="${commodity.isGreen }"></td>
+										name="isGreen" value="${commodity.isGreen }"> <span class="error-message">${Error_isGreen }</span></td>
 								</tr>
 								<tr>
 									<td colspan="2">目录名称</td>
