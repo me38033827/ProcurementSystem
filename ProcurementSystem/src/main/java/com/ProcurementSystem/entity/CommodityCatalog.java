@@ -6,13 +6,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class CommodityCatalog {
 	private String uniqueName;
-	
-	
-	private Supplier supplier;//暂时不验证
-	
+
+	private Supplier supplier;// 暂时不验证
+
 	private ArrayList<Commodity> commodities = new ArrayList<>();
-	
-	@NotEmpty(message="错误：不能为空")
+
+	@NotEmpty(message = "错误：不能为空")
 	private String name;
 	private String isCreateEmptyContent;
 	private String isIgnoreApprove;
@@ -27,7 +26,92 @@ public class CommodityCatalog {
 	private int itemCount;
 	private String lastModifyDate;
 	private String version;
+
+	// an补充字段
+	private String clientName;
+	private String fileName;
+	private String fileSize;
+	private String creator;
+	private String isDisplayed;
+	private String receivedDate;
+	private String type;
+	private String description;
+	private String createDate;
 	
+
+	
+	public String getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileSize() {
+		return fileSize;
+	}
+
+	public void setFileSize(String fileSize) {
+		this.fileSize = fileSize;
+	}
+
+	public String getCreator() {
+		return creator;
+	}
+
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+
+	public String getIsDisplayed() {
+		return isDisplayed;
+	}
+
+	public void setIsDisplayed(String isDisplayed) {
+		this.isDisplayed = isDisplayed;
+	}
+
+	public String getReceivedDate() {
+		return receivedDate;
+	}
+
+	public void setReceivedDate(String receivedDate) {
+		this.receivedDate = receivedDate;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getLastModifyDate() {
 		return lastModifyDate;
 	}
@@ -68,7 +152,6 @@ public class CommodityCatalog {
 		this.preview = preview;
 	}
 
-
 	public String getIsActivated() {
 		return isActivated;
 	}
@@ -92,8 +175,6 @@ public class CommodityCatalog {
 	public void setLastModityDate(String lastModityDate) {
 		this.lastModifyDate = lastModityDate;
 	}
-
-	
 
 	public String getUniqueName() {
 		return uniqueName;
