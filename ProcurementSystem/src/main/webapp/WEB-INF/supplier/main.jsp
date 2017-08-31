@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>供应商-主页</title>
-<%@include file="../other/supplierHeader1.jsp"%>
+<%@include file="../other/supplierHeader1able.jsp"%>
 <%@include file="../other/supplierHeader2.jsp"%>
 </head>
 <body>

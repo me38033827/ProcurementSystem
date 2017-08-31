@@ -52,13 +52,37 @@
 		
 		<!-- 首行靠右导航栏 -->
 		<div class="right" id="right-div">
-			<a class="firstline-company">公司设置<span
-				class="glyphicon glyphicon-triangle-bottom"
-				style="height: 10px; width: 10px;" aria-hidden="true"></span></a> 
+			<button class="firstline-icon">
+				<span class="glyphicon glyphicon-th firstline-grid" style="color:white;"
+					aria-hidden="true"></span>
+			</button>
 			
+			<div class="btn-group" role="group">
+				<button type="button"
+					class="btn btn-default dropdown-toggle" id="secondline-right-title"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top:0;margin-top:3px;">
+					公司设置&nbsp;<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" id="secondline-dropright">
+					<li><a class="secondline-right" href="editProfile">公司概要</a></li>
+					<li><a class="secondline-right">客户关系</a></li>
+					<li><a class="secondline-right">用户</a></li>
+					<li><a class="secondline-right">通知</a></li>
+				</ul>
+			</div>
 			
-			<a	class="firstline-supplier btn-h">用户：L-8899</a>
-
+			<div class="btn-group" role="group">
+				<button type="button"
+					class="btn btn-default dropdown-toggle" id="secondline-right-title"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top:0;margin-top:3px;">
+					用户：HP&nbsp;<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" id="secondline-dropright">
+					<li><a class="secondline-right">注销</a></li>
+					<li><a class="secondline-right">我的账户</a></li>
+					<li><a class="secondline-right">我的社区概要</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

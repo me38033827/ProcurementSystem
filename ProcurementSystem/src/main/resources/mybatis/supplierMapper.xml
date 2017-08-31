@@ -2,20 +2,79 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ProcurementSystem.dao.ISupplierDao">
- 	<!--  
-	<resultMap type="com.ProcurementSystem.entity.Supplier" id="supplierList">
-		<result column="name" property="name" />
-		<result column="is_supplier" property="is_supplier" />
-		<result column="is_client" property="is_client" />
-	</resultMap>
-	-->
+ 	
 	<select id="getSupplierDetail" parameterType="int" resultType="com.ProcurementSystem.entity.Supplier">
 		select * from supplier
-		where unique_name = ${uniqueName}
+		where unique_name = ${uniqueName};
+	</select>
+	 
+	<select id="findMaxUniqueName" resultType="int">
+		select max(unique_name) from supplier;
+	</select>	
+	
+	<insert id="insertSupplier" parameterType="com.ProcurementSystem.entity.Supplier">
+		insert into supplier(unique_name, name, is_supplier, is_client, description,
+		approve_state, other_name1, other_name2, full_name_by_law, stock_code, province, switchboard, 
+		main_email, other_address, main_fax, corporate_url, organizationType, creator_unique_name, manage)
+		values(#{uniqueName}, #{name}, #{isSupplier}, #{isClient}, #{description},
+		#{approveState}, #{otherName1}, #{otherName2}, #{fullNameByLaw}, #{stockCode}, #{province}, #{switchboard},
+		#{mainEmail}, #{otherAddress}, #{mainFax}, #{corporateUrl}, #{organizationType}, #{creatorUniqueName}, #{manage})
+	</insert>
+
+	<select id="searchSupplier" parameterType="String" resultType="com.ProcurementSystem.entity.Supplier">
+		select * from supplier where name like #{content}
+		union
+		select * from supplier where unique_name like #{content};
+	</select>
+
+	<select id="searchAllSupplier" resultType="com.ProcurementSystem.entity.Supplier">
+		select * from supplier;
 	</select>
 	
-	
-	<select id="searchSupplier" resultType="com.ProcurementSystem.entity.Supplier">
-		select * from supplier
-	</select>
+	<update id="updateSupplier" parameterType="com.ProcurementSystem.entity.Supplier">
+		update supplier
+		<set>
+			<if test="name!='' and name!=null">
+				name = #{name},
+			</if>
+			<if test="otherName1!='' and otherName1!=null">
+				other_name1 = #{otherName1},
+ 			</if>
+ 			<if test="otherName2!='' and otherName2!=null">
+				other_name2 = #{otherName2},
+			</if>
+			<if test="description!='' and description!=null">
+				description = #{description},
+			</if>
+			<if test="corporateUrl!='' and corporateUrl!=null">
+				corporate_url = #{corporateUrl},
+			</if>
+			<if test="mainEmail!='' and mainEmail!=null">
+				main_email = #{mainEmail},
+			</if>
+			<if test="switchboard!='' and switchboard!=null">
+				switchboard = #{switchboard},
+			</if>
+			<if test="switchboardZone!='' and switchboardZone!=null">
+				switchboard_zone = #{switchboardZone},
+			</if>
+			<if test="mainFax!='' and mainFax!=null">
+				main_fax = #{mainFax},
+			</if>
+			<if test="mainFaxZone!='' and mainFaxZone!=null">
+				main_fax_zone = #{mainFaxZone},
+			</if>
+			<if test="postCode!='' and postCode!=null">
+				post_code = #{postCode},
+			</if>
+			<if test="address!='' and address!=null">
+				address = #{address},
+			</if>
+			<if test="otherAddress!='' and otherAddress!=null">
+				other_address = #{otherAddress}
+			</if>
+			
+ 		</set>
+		where unique_name = #{uniqueName};
+	</update>
 </mapper>

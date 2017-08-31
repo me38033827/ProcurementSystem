@@ -29,8 +29,26 @@ public class SupplierService {
 		return supplier;
 	}
 	
-	public List<Supplier> searchSupplier(){
-		List<Supplier> suppliers = dao.searchSupplier();
+	public List<Supplier> searchAllSupplier(){
+		List<Supplier> suppliers = dao.searchAllSupplier();
 		return suppliers;
+	}
+	
+	public List<Supplier> searchSupplier(String content){
+		System.out.println("Content in service: "+content);
+		List<Supplier> suppliers = dao.searchSupplier("%"+content+"%");
+		return suppliers;
+	}
+	
+	public void insertSupplier(Supplier supplier){
+		dao.insertSupplier(supplier);
+	}
+	
+	public int findMaxUniqueName(){
+		return dao.findMaxUniqueName();
+	}
+	
+	public void updateSupplier(Supplier supplier){
+		dao.updateSupplier(supplier);
 	}
 }

@@ -138,7 +138,7 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">其他地址：</td>
-								<td class="col-standard2">${supplier.otherEmail}</td>
+								<td class="col-standard2">${supplier.otherAddress}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">主要传真：</td>

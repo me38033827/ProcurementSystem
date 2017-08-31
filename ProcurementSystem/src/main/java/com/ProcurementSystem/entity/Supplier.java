@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Supplier {
 	private	int	uniqueName	;
 	private	ArrayList<Commodity>	commodities	;
-	private	User	contact	;
+	private	int 	contactUniqueName;
 	private	String	name	;
 	private	String	isSupplier	;
 	private	String	isClient	;
@@ -18,19 +18,22 @@ public class Supplier {
 	private	String	province	;
 	private	String	switchboard	;
 	private	String	mainEmail	;
-	private	String	otherEmail	;
 	private	String	UNSPSCCommodity	;
 	private	String	duns	;
 	private	String	supplierIntegrityState	;
 	private	String	supplierIntegritySystemName	;
 	private	String	otherAddress	;
 	private	String	mainFax	;
-	private	String	coporateURL	;
-	private	String	origanizationType	;
+	private	String	corporateUrl	;
+	private	String	organizationType	;
 	private	String	parentValue	;
-	private	String	taxNumber	;
 	private String creatorUniqueName		;
 	private String manage	;
+	private int postCode		;
+	private String address	;
+	private String district		;
+	private String mainFaxZone	;
+	private String switchboardZone	;
 	public int getUniqueName() {
 		return uniqueName;
 	}
@@ -43,12 +46,6 @@ public class Supplier {
 	}
 	public void setCommodities(ArrayList<Commodity> commodities) {
 		this.commodities = commodities;
-	}
-	public User getContact() {
-		return contact;
-	}
-	public void setContact(User contact) {
-		this.contact = contact;
 	}
 	public String getName() {
 		return name;
@@ -122,12 +119,6 @@ public class Supplier {
 	public void setMainEmail(String mainEmail) {
 		this.mainEmail = mainEmail;
 	}
-	public String getOtherEmail() {
-		return otherEmail;
-	}
-	public void setOtherEmail(String otherEmail) {
-		this.otherEmail = otherEmail;
-	}
 	public String getUNSPSCCommodity() {
 		return UNSPSCCommodity;
 	}
@@ -164,29 +155,11 @@ public class Supplier {
 	public void setMainFax(String mainFax) {
 		this.mainFax = mainFax;
 	}
-	public String getCoporateURL() {
-		return coporateURL;
-	}
-	public void setCoporateURL(String coporateURL) {
-		this.coporateURL = coporateURL;
-	}
-	public String getOriganizationType() {
-		return origanizationType;
-	}
-	public void setOriganizationType(String origanizationType) {
-		this.origanizationType = origanizationType;
-	}
 	public String getParentValue() {
 		return parentValue;
 	}
 	public void setParentValue(String parentValue) {
 		this.parentValue = parentValue;
-	}
-	public String getTaxNumber() {
-		return taxNumber;
-	}
-	public void setTaxNumber(String taxNumber) {
-		this.taxNumber = taxNumber;
 	}
 	public String getCreatorUniqueName() {
 		return creatorUniqueName;
@@ -199,6 +172,54 @@ public class Supplier {
 	}
 	public void setManage(String manage) {
 		this.manage = manage;
+	}
+	public int getContactUniqueName() {
+		return contactUniqueName;
+	}
+	public void setContactUniqueName(int contactUniqueName) {
+		this.contactUniqueName = contactUniqueName;
+	}
+	public String getCorporateUrl() {
+		return corporateUrl;
+	}
+	public void setCorporateUrl(String corporateUrl) {
+		this.corporateUrl = corporateUrl;
+	}
+	public String getOrganizationType() {
+		return organizationType;
+	}
+	public void setOrganizationType(String organizationType) {
+		this.organizationType = organizationType;
+	}
+	public int getPostCode() {
+		return postCode;
+	}
+	public void setPostCode(int postCode) {
+		this.postCode = postCode;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+	public String getMainFaxZone() {
+		return mainFaxZone;
+	}
+	public void setMainFaxZone(String mainFaxZone) {
+		this.mainFaxZone = mainFaxZone;
+	}
+	public String getSwitchboardZone() {
+		return switchboardZone;
+	}
+	public void setSwitchboardZone(String switchboardZone) {
+		this.switchboardZone = switchboardZone;
 	}
 	
 }

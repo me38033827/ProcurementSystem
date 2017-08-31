@@ -7,7 +7,6 @@
 
 <title>创建供应商界面</title>
 
-
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -33,17 +32,16 @@
 					<form action="supplierAnalyze" method="post">
 						<div class="row">
 							<div class="col-md-5">
-								<table class="fulltab">
+								<table class="fulltab" style="margin-left:80px;">
 									<tr class="row-standard">
 										<td class="col-standard1">＊组织名称：</td>
-										<td class="col-standard2"><input
-											class="form-control input" /></td>
+										<td class="col-standard2"><input class="form-control input" name="name"/></td>
 									</tr>
 			
 									<tr class="row-standard">
-										<td class="col-standard1">简短描述：</td>
+										<td class="col-standard1" valign="top">简短描述：</td>
 										<td class="col-standard2"><textarea
-												class="form-control" id="pr-textarea"></textarea></td>
+												class="form-control" id="pr-textarea" name="description" style="border:1px solid #428bca; border-radius:0;"></textarea></td>
 									</tr>
 			
 									<tr class="row-standard">
@@ -55,9 +53,9 @@
 										<td class="col-standard1">客户：</td>
 										<td class="col-standard2">
 											<div class="radio">
-												<label><input type="radio" name="empty"
-													id="optionsRadios1" value="option1">是</label> <label><input
-													type="radio" name="empty" id="optionsRadios2" value="option2"
+												<label><input type="radio" name="isClient"
+													id="optionsRadios1" value="是">是</label> <label><input
+													type="radio" name="isClient" id="optionsRadios2" value="否"
 													checked>否</label>
 											</div>
 										</td>
@@ -65,69 +63,33 @@
 			
 									<tr class="row-standard">
 										<td class="col-standard1">审批状态：</td>
-										<td class="col-standard2"><select id="my-select">
+										<td class="col-standard2"><select id="my-select" name="approveState">
 												<option>已批准</option>
-												<option>选项1</option>
-												<option>选项2</option>
+												<option>未批准</option>
 										</select></td>
 									</tr>
 			
 									<tr class="row-standard">
 										<td class="col-standard1">其他名称1：</td>
 										<td class="col-standard2"><input
-											class="form-control input" /></td>
+											class="form-control input" name="otherName1"/></td>
 									</tr>
 			
 									<tr class="row-standard">
 										<td class="col-standard1">其他名称2：</td>
 										<td class="col-standard2"><input
-											class="form-control input" /></td>
+											class="form-control input" name="otherName2"/></td>
 									</tr>
 			
 									<tr class="row-standard">
 										<td class="col-standard1">法定全称：</td>
-										<td class="col-standard2"><input
+										<td class="col-standard2"><input name="fullNameByLaw"
 											class="form-control input" /></td>
 									</tr>
 			
 									<tr class="row-standard">
 										<td class="col-standard1">股票交易代码：</td>
-										<td class="col-standard2"><input
-											class="form-control input" /></td>
-									</tr>
-			
-									<tr class="row-standard">
-										<td class="col-standard1">全球位置码：</td>
-										<td class="col-standard2"><input
-											class="form-control input" /></td>
-									</tr>
-			
-									<tr class="row-standard">
-										<td class="col-standard1">税款标识符：</td>
-										<td class="col-standard2"><input
-											class="form-control input" /></td>
-									</tr>
-			
-									<tr class="row-standard">
-										<td class="col-standard1">州税款标识符：</td>
-										<td class="col-standard2"><input
-											class="form-control input" /></td>
-									</tr>
-			
-									<tr class="row-standard">
-										<td class="col-standard1">地区税款标识符：</td>
-										<td class="col-standard2"><input
-											class="form-control input" /></td>
-									</tr>
-									<tr class="row-standard">
-										<td class="col-standard1">VAT标识符：</td>
-										<td class="col-standard2"><input
-											class="form-control input" /></td>
-									</tr>
-			
-									<tr class="row-standard">
-										<td class="col-standard1">免缴预扣税：</td>
-										<td class="col-standard2"><input
+										<td class="col-standard2"><input name="stockCode"
 											class="form-control input" /></td>
 									</tr>
 									<tr class="row-standard">
@@ -150,7 +112,7 @@
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">公司所在州／省：</td>
-										<td class="col-standard2"><input
+										<td class="col-standard2"><input name="province"
 											class="form-control input" /></td>
 									</tr>
 									<tr class="row-standard">
@@ -173,39 +135,33 @@
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">＊总机：</td>
-										<td class="col-standard2"><input
+										<td class="col-standard2"><input name="switchboard"
 											class="form-control input" /></td>
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">主要传真：</td>
-										<td class="col-standard2"><input
+										<td class="col-standard2"><input name="mainFax"
 											class="form-control input" /></td>
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">主要电子邮件地址：</td>
-										<td class="col-standard2"><input
+										<td class="col-standard2"><input name="mainEmail"
 											class="form-control input" /></td>
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">公司URL：</td>
-										<td class="col-standard2"><input
+										<td class="col-standard2"><input name="corporateUrl"
 											class="form-control input" /></td>
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">标识符：</td>
-										<td class="col-standard2">ACM_2342</td>
-									</tr>
-									<tr class="row-standard">
-										<td class="col-standard1">首选语言：</td>
-										<td class="col-standard2"><select id="my-select">
-												<option>(无值)</option>
-												<option>选项1</option>
-												<option>选项2</option>
-										</select></td>
+										<td class="col-standard2">SU<%=request.getAttribute("uniqueName") %>
+										<input type="hidden" name="uniqueName" value=<%=request.getAttribute("uniqueName")%>>
+										</td>
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">组织类型：</td>
-										<td class="col-standard2"><input
+										<td class="col-standard2"><input name="organizationType"
 											class="form-control input" /></td>
 									</tr>
 									<tr class="row-standard">
@@ -219,138 +175,128 @@
 								</table>
 							</div>
 						</div>
-					</form>
-					
-					<div >
 						
-			
-						<div class="inline-b filters">
-							<div class="half inline-b">
-								<table class="tab-height" id="supplier-crea-tab1">
-									
-								</table>
-							</div>
-							<div class="half inline-b right">
-								<div class="inline-b tab-height" id="supplier-crea-tab2">
-									<table>
-										<tr>
-											<td class="col-standard1">其他地址：</td>
-											<td class="col-standard2" style="width: 170px;">（选择一个值）［&nbsp;<a
-												class="blue inline-b">选择</a>&nbsp;］
-											</td>
-										</tr>
-			
-										<tr>
-											<td class="col-standard1">＊总机：</td>
-											<td class="col-standard2"><input
-												class="form-control input" /></td>
-										</tr>
-										<tr>
-											<td class="col-standard1">主要传真：</td>
-											<td class="col-standard2"><input
-												class="form-control input" /></td>
-										</tr>
-										<tr>
-											<td class="col-standard1">主要电子邮件地址：</td>
-											<td class="col-standard2"><input
-												class="form-control input" /></td>
-										</tr>
-										<tr>
-											<td class="col-standard1">公司URL：</td>
-											<td class="col-standard2"><input
-												class="form-control input" /></td>
-										</tr>
-										<tr>
-											<td class="col-standard1">标识符：</td>
-											<td class="col-standard2">ACM_2342</td>
-										</tr>
-										<tr>
-											<td class="col-standard1">首选语言：</td>
-											<td class="col-standard2"><select id="my-select">
-													<option>(无值)</option>
-													<option>选项1</option>
-													<option>选项2</option>
-											</select></td>
-										</tr>
-										<tr>
-											<td class="col-standard1">组织类型：</td>
-											<td class="col-standard2"><input
-												class="form-control input" /></td>
-										</tr>
-										<tr>
-											<td class="col-standard1">父级：</td>
-											<td class="col-standard2"><select id="my-select">
-													<option>(无值)</option>
-													<option>选项1</option>
-													<option>选项2</option>
-											</select></td>
-										</tr>
-									</table>
-								</div>
-							</div>
-						</div>
-			
-			
-			
-						<div class="invoice-detail-title">
-							<a class="black">概要问卷</a>
-						</div>
+						<div class="standard-subtitle">概要问卷</div>
 						<div>
-							<table class="fulltab">
-								<tr class="searching-tab-row1">
-									<td>名称</td>
+							<table class="table table-hover">
+								<tr class="standard-row1">
+									<td style="width:75%;">名称</td>
+									<td style="width:25%;">答案</td>
 								</tr>
 							</table>
 						</div>
-						<div id="approval-tab">
-							<table class="fulltab" id="supplier-tab-bot">
-								<tr class="searching-tab-row2">
-									<td>1 公司信息</td>
+						<div class="roll-tab" style="max-height:240px;" id="question">
+							<table class="table table-hover">
+								<tr>
+									<td class="question-1" style="width:75%;"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+										&nbsp;1&nbsp;&nbsp;&nbsp;公司信息</b></td>
+									<td style="width:25%;"></td>
+								</tr>
+								<tr>
+									<td class="question-1-1">1.1&nbsp;&nbsp;&nbsp;&nbsp;公司名称</td>
 									<td></td>
 								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.1 公司名称</td>
-									<td>HP</td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.2 请简要介绍一下贵公司</td>
-									<td>教育培训</td>
-								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.3 您有多少长期员工</td>
+								<tr>
+									<td class="question-1-1">1.2&nbsp;&nbsp;&nbsp;&nbsp;请简要介绍一下贵公司</td>
 									<td></td>
 								</tr>
-								<tr class="searching-tab-row2">
-									<td>1.3 贵公司创办于哪一年</td>
+								<tr>
+									<td class="question-1-1">1.3&nbsp;&nbsp;&nbsp;&nbsp;贵公司创办于哪一年</td>
 									<td></td>
 								</tr>
-								<tr class="searching-tab-row2">
-									<td>2 所有权信息</td>
+								<tr>
+									<td class="question-1"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+										&nbsp;2&nbsp;&nbsp;&nbsp;所有权信息</b></td>
 									<td></td>
 								</tr>
-								<tr class="searching-tab-row2">
-									<td>2.1 妇女所有企业证书</td>
+								<tr>
+									<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+										&nbsp;2.1&nbsp;&nbsp;&nbsp;妇女所有企业证书</b></td>
 									<td></td>
 								</tr>
-			
+								<tr>
+									<td class="question-3">2.1.1&nbsp;&nbsp;&nbsp;妇女所有企业证书</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+										&nbsp;2.2&nbsp;&nbsp;&nbsp;少数族裔所有企业证书</b></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="question-3">2.2.1&nbsp;&nbsp;&nbsp;您是否通过少数族裔所有企业认证？</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-3">2.2.2&nbsp;&nbsp;&nbsp;您是否通过 NMSDC（全国少数族裔供应商发展理事会）认证？</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-3">2.2.3&nbsp;&nbsp;&nbsp;您是否通过小型企业管理认证？</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-3">2.2.4&nbsp;&nbsp;&nbsp;您是否通过州政府认证？</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-3">2.2.5&nbsp;&nbsp;&nbsp;您是否通过所在地/机构认证？</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-3">2.2.6&nbsp;&nbsp;&nbsp;您是否为自我认证？</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-3">2.2.7&nbsp;&nbsp;&nbsp;其他认证</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-3">2.2.8&nbsp;&nbsp;&nbsp;您是否通过环球国际认证？</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+										&nbsp;2.3&nbsp;&nbsp;&nbsp;小型企业证书</b></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="question-3">2.3.1&nbsp;&nbsp;&nbsp;您是否通过小型企业认证？</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
+										&nbsp;2.4&nbsp;&nbsp;&nbsp;退伍军人所有企业证书</b></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="question-3">2.4.1&nbsp;&nbsp;&nbsp;您是否通过退伍军人所有企业认证?</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-3">2.4.2&nbsp;&nbsp;&nbsp;您是否通过残疾退伍军人所有企业认证?</td>
+									<td>否</td>
+								</tr>
+								<tr>
+									<td class="question-3">2.4.3&nbsp;&nbsp;&nbsp;您是否通过越战退伍军人所有企业认证?</td>
+									<td>否</td>
+								</tr>
 							</table>
 						</div>
 						<div>
-							<table class="fulltab">
-								<tr class="searching-tab-row3">
+							<table class="table table-hover">
+								<tr class="standard-row3">
 									<td colspan="2">
 										<div align="right">
-											<button class="btn-b">确定</button>
-											<button class="btn-w"
-												onclick="window.location.href='supplierSearching.jsp'">取消</button>
+											<input type="submit" class="btn-b" value="确定"/>
+											<input type="button" class="btn-w" value="取消"/>
 										</div>
 									</td>
 								</tr>
 							</table>
 						</div>
-			
-					</div>
-				</div>
+					</form>
+					
 				<div class="theme-popover">
 					<div class="popover-container">
 						<!-- 弹窗第一行  -->

@@ -41,22 +41,32 @@
 					</div>
 					<div class="row searching-content">
 						<div class="col-md-6">
-							<table>
-								<tr class="row-standard">
-									<td class="col-standard1" style="width:350px;padding-left:30px;"><input type="text" class="col-md-5 form-control input" style="width:300px;"
-											value="惠普">
-									</td>
-									<td class="col-standard2">
-										<a href=""><span class="glyphicon glyphicon-plus-sign blue" style="font-size:20px;margin-top:3px;margin-left:40px;" aria-hidden="true"></span></a>
-									</td>
-								</tr>
-							</table>
+							<form method = "post" id="supplierSearch">
+								<table>
+									<tr class="row-standard">
+										<td class="col-standard1" style="width:350px;padding-left:30px;"><input type="text" class="col-md-5 form-control input" style="width:300px;"
+											name="content"
+											<%if(request.getAttribute("content")!=null){%>
+												value = <%=request.getAttribute("content")%>
+											<%}else{%>
+												value="使用名称、标识符或任何其他词语搜索"
+											<%}%>	
+												onfocus="if(this.value=='使用名称、标识符或任何其他词语搜索') this.value=''"
+												onblur="if(this.value=='')this.value='使用名称、标识符或任何其他词语搜索' "
+											>
+										</td>
+										<td class="col-standard2">
+											<a href=""><span class="glyphicon glyphicon-plus-sign blue" style="font-size:20px;margin-top:3px;margin-left:40px;" aria-hidden="true"></span></a>
+										</td>
+									</tr>
+								</table>
+							</form>
 						</div>
 					</div>
 					<div class="searching-ending">
 						<div align="right">
-							<button class="btn-w" onclick="window.location.href='supplierSearching.jsp'">重置</button>
-							<button class="btn-b">搜索</button>
+							<button class="btn-w" form="supplierSearch" formaction="supplierInitial">重置</button>
+							<button class="btn-b" form="supplierSearch" formaction="supplierSearch">搜索</button>
 						</div>
 					</div>
 				</div>
@@ -65,6 +75,9 @@
 				<div class="adjust-10"></div>
 				
 				<div class="standard-subtitle" style="border:0; margin-bottom:0;">搜索结果
+					<%if(request.getAttribute("num")!="-1"){%>
+						<a class="f-14 black" style="margin-left:40%;">共有<%=request.getAttribute("num") %>个结果</a>
+					<%} %>
 					<div class="right">
 						<button class="icon-btn">
 							<span class="glyphicon glyphicon-th icon" aria-hidden="true"></span>
@@ -76,7 +89,7 @@
 					<table class="table table-hover">
 						<tr class="standard-row1">
 							<td style="padding:5px;">
-								<input type="checkbox" id="chk-searching-s1" class="chk" /><label for="chk-searching-s1"></label>
+								<input type="checkbox" id="chk-searching-s0" class="chk" /><label for="chk-searching-s0"></label>
 							</td>
 							<td style="width:20%;">组织名称</td>
 							<td style="width:20%;">系统标识符</td>
@@ -85,16 +98,25 @@
 							<td style="width:15%;">客户</td>
 							<td style="width:10%;"></td>
 						</tr>
+						<%
+						if(request.getAttribute("num").equals("-1") || request.getAttribute("num").equals("0")){%>
+						<tr>
+							<td colspan="7" class="no-item f-13 grey">请在上面输入搜索条件，然后单击<b>搜索</b></td>
+						</tr>
+						<%}else{
+							int i = 1;
+						%>
 					</table>
 				</div>
-				<div class="roll-tab" style="max-height:150px;">
+				<div class="roll-tab" style="max-height:220px;">
 					<table class="table table-hover">
 						<c:forEach var="supplier" items="${suppliers}" varStatus="status">
 		                    <tr>
 		                    		<td style="padding:5px;">
-									<input type="checkbox" id="chk-searching-s1" class="chk" /><label for="chk-searching-s1"></label>
+									<input type="checkbox" id="chk-searching-s<%=i %>" class="chk" /><label for="chk-searching-s<%=i %>"></label>
 								</td>
-		                        <td  style="width:20%;"><a href="supplierDetail">${supplier.name}</a></td>
+								<% i=i+1; %>
+		                        <td  style="width:20%;"><a href="supplierDetail?id=${supplier.uniqueName}">${supplier.name}</a></td>
 		                        <td style="width:20%;">SU${supplier.uniqueName}</td>
 								<td style="width:15%;">${supplier.approveState}</td>
 								<td style="width:15%;">${supplier.isSupplier}</td>
@@ -105,7 +127,7 @@
 											操作&nbsp;<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu manu-btn-o" >
-											<li><a class="manu-btn">停用</a></li>
+											<li><a class="manu-btn" href="">停用</a></li>
 										</ul>
 									</div>
 								</td>
@@ -113,8 +135,10 @@
 		                </c:forEach>
 					</table>
 				</div>
+				
 				 <div>
 					<table class="table table-hover">
+					<%}%>
 						<tr class="standard-row3">
 							<td colspan="7">
 								<a class="arrow-turn">&#8627;</a>
