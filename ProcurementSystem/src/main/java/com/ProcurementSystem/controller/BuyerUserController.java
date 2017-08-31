@@ -7,13 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ProcurementSystem.entity.User;
-import com.ProcurementSystem.service.UserService;
+import com.ProcurementSystem.service.BuyerUserService;
 
 @Controller
-public class UserController {
+public class BuyerUserController {
 
 	@Resource
-	UserService service;
+	BuyerUserService service;
 	
 	@RequestMapping(value="userCreation")
 	public String userCreation(){

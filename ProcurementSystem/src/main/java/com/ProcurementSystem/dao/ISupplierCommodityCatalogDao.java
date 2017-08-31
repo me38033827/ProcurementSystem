@@ -2,7 +2,7 @@ package com.ProcurementSystem.dao;
 
 import com.ProcurementSystem.entity.CommodityCatalog;
 
-public interface ISupplierSystemCommodityCatalogDao {
+public interface ISupplierCommodityCatalogDao {
 
 	void insertCommodityCatalog(CommodityCatalog commodityCatalog);
 

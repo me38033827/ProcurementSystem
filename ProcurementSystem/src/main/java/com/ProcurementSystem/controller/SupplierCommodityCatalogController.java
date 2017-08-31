@@ -18,15 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ProcurementSystem.entity.CommodityCatalog;
-import com.ProcurementSystem.service.CommodityCatalogService;
+import com.ProcurementSystem.service.BuyerCommodityCatalogService;
 
 @Controller
-@RequestMapping(value = "supplierSystem")
-public class SupplierSystemController {
+@RequestMapping(value = "supplierSystem/commodityCatalog/")
+public class SupplierCommodityCatalogController {
 	@Resource
-	CommodityCatalogService commodityCatalogService;
-	
-	
+	BuyerCommodityCatalogService commodityCatalogService;
 	
 	/** 转向商品目录创建-详细信息页 */
 	@RequestMapping(value = "commodityCatalogCreateDetail")
@@ -73,7 +71,7 @@ public class SupplierSystemController {
 		return "supplierSystem/commodityCatalog/commodityCatalogCreateContent";
 	}
 	
-	/**上传文件，解析，验证，并持久化储存*/
+	/** 上传文件，解析，验证，并持久化储存 */
 	@RequestMapping(value="commodityCatalogValidateAndSave")
 	public String commodityCatalogValidateAndSave(@RequestParam("file") MultipartFile file,HttpServletRequest request){
 		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/supplierSystem/";

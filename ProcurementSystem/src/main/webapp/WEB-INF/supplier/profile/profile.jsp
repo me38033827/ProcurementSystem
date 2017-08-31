@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>公司概要</title>
-	<%@include file="../other/supplierHeader1.jsp"%>
+	<%@include file="../../other/supplierHeader1.jsp"%>
 	<script LANGUAGE="JavaScript">
 		function loadProvince(regionId){
 		  $("#id_provSelect").html("");
@@ -231,7 +231,7 @@
 	</div>
 	
 	<!-- CONTENT-WRAPPER SECTION END-->
-	<%@ include file="../other/supplierFooter.jsp"%>
+	<%@ include file="../../other/supplierFooter.jsp"%>
 
 </body>
 </html>

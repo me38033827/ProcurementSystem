@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>主页</title>
-<%@include file="header1.jsp"%>
+<%@include file="other/header1.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body class="a-dashbrd-page-bg">
@@ -23,7 +23,7 @@
 				<button class="secondline-left"
 					onclick="window.location.href='procurementCommodityCatalog.jsp'">目录</button>
 			</div>
-			<%@include file="header2r.jsp"%>
+			<%@include file="other/header2r.jsp"%>
 		</div>
 		<!-- 导航栏 第三行 -->
 		<div id="thirdline-out" style="background-color: transparent;">
@@ -362,7 +362,7 @@
 	</div>
 
 	<!-- CONTENT-WRAPPER SECTION END-->
-	<%@ include file="footer.jsp"%>
+	<%@ include file="other/footer.jsp"%>
 
 	<script type="text/javascript">
 		var myChart1 = echarts.init(document.getElementById('chart1'));

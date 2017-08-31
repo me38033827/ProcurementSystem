@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>公司概要－请求的客户</title>
-<%@include file="../other/supplierHeader1.jsp"%>
+<title>公司概要－其他文档</title>
+<%@include file="../../other/supplierHeader1.jsp"%>
 </head>
 <body>
 	<div class="content">
@@ -28,32 +28,40 @@
 							<button class="tag-not-clicked" onclick="window.location.href='profileMarket'">营销</button>
 							<button class="tag-not-clicked" onclick="window.location.href='profileContact'">联系人</button>
 							<button class="tag-not-clicked" onclick="window.location.href='profileAuth'">认证</button>
-							<button class="tag-clicked" onclick="window.location.href='profileCustomer'">请求的客户</button>
-							<button class="tag-not-clicked" onclick="window.location.href='profileDoc'">其他文档</button>
+							<button class="tag-not-clicked" onclick="window.location.href='profileCustomer'">请求的客户</button>
+							<button class="tag-clicked" onclick="window.location.href='profileDoc'">其他文档</button>
 						</div>
 						
 						<div class="profile-left">
-							<div class="title-description">＊表示必填字段
+							<div class="title-description">＊表示必填字段<br>仅“基本”选项卡上为主地址指定的国家／地区的文档显示在“其他文档”选项卡
 							</div>
 							
-							<div class="standard-subtitle">寻源客户列表
+	
+							<div class="standard-subtitle">文档
 							</div>
 							
 							<div>
 								<table class="table table-hover">
 									<tr class="standard-row1">
-										<td>客户</td>
-										<td>客户请求的概要信息</td>
+										<td class="blue">文档类型&#8595;</td>
+										<td class="blue">文档名称</td>
+										<td class="blue">文档编号</td>
+										<td class="blue">失效日期</td>
+										<td class="blue">上传日期</td>
 									</tr>
-									<tr id="profile-row">
-										<td href="">Lenovo</td>
-										<td >完整</td>
+									<tr>
+										<td class="no-item" colspan="5">无项目</td>
+									</tr>
+									<tr class="standard-row3">
+										<td colspan="5">
+											<a class="arrow-turn">&#8627;</a>
+											<button class="btn-w">新增</button>
+										</td>
 									</tr>
 								</table>
 							</div>
 						</div>
 					</div>
-					
 					
 					<%@ include file="profileR.jsp"%>
 					
@@ -69,7 +77,7 @@
 		</div>
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
-	<%@ include file="../other/supplierFooter.jsp"%>
+	<%@ include file="../../other/supplierFooter.jsp"%>
 	
 	
 

@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ProcurementSystem.dao.ICommodityDao;
+import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.ShoppingCart;
 
 @Service
-public class ShoppingCartService {
+public class BuyerShoppingCartService {
 	@Resource
-	ICommodityDao commodityDao;
+	IBuyerCommodityDao commodityDao;
 
 	// 更新购物车中的商品对象,并维护购物车totalAmount属性
 	public ShoppingCart updateShoppingCart(ShoppingCart shoppingCart) {

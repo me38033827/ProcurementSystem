@@ -7,13 +7,13 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.ProcurementSystem.dao.IUserDao;
+import com.ProcurementSystem.dao.IBuyerUserDao;
 import com.ProcurementSystem.entity.User;
 
 @Service
-public class UserService {
+public class BuyerUserService {
 
-	@Resource IUserDao dao;
+	@Resource IBuyerUserDao dao;
 	public User getUserDetail(String userIdentifier){
 		System.out.println("In user service...");
 		

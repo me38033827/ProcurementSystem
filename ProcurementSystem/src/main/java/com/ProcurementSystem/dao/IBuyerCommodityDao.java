@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.ProcurementSystem.entity.Commodity;
 
-public interface ICommodityDao {
+public interface IBuyerCommodityDao {
 	public boolean insertCommodity(Commodity Commodity);//增
 
 	public List<Commodity> searchCommodity(Map<String,Object> searchParams);//查（分页）

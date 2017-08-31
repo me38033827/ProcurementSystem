@@ -16,8 +16,8 @@ import javax.validation.ValidatorFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ProcurementSystem.dao.ICommodityCatalogDao;
-import com.ProcurementSystem.dao.ICommodityDao;
+import com.ProcurementSystem.dao.IBuyerCommodityCatalogDao;
+import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.Contract;
@@ -29,9 +29,9 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
 @Service
-public class CommodityCatalogService {
-	@Resource ICommodityCatalogDao commodityCatalogDao;
-	@Resource CommodityService commodityService;
+public class BuyerCommodityCatalogService {
+	@Resource IBuyerCommodityCatalogDao commodityCatalogDao;
+	@Resource BuyerCommodityService commodityService;
 	
 	//获得商品目录数量
 	public int getRowCount(){
@@ -123,7 +123,7 @@ public class CommodityCatalogService {
 						cell = firstSheet.getCell(8, i);// Manufacturer Name
 						commodity.setManufacturerName(cell.getContents());
 						cell = firstSheet.getCell(9, i);// Supplier URL
-						supplier.setCoporateURL(cell.getContents());
+						//supplier.setCoporateURL(cell.getContents());
 						commodity.setSupplier(supplier);
 						cell = firstSheet.getCell(10, i);// Manufacturer URL
 						commodity.setManufacturerUrl(cell.getContents());

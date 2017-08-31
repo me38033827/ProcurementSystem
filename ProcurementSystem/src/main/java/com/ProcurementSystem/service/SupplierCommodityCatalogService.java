@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ProcurementSystem.dao.ISupplierSystemCommodityCatalogDao;
+import com.ProcurementSystem.dao.ISupplierCommodityCatalogDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.Contract;
@@ -22,11 +22,11 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
 @Service
-public class SupplierSystemCommodityCatalogService {
+public class SupplierCommodityCatalogService {
 	@Resource
-	ISupplierSystemCommodityCatalogDao supplierSystemCommodityCatalogDao;
+	ISupplierCommodityCatalogDao supplierSystemCommodityCatalogDao;
 	@Resource
-	CommodityService commodityService;
+	BuyerCommodityService commodityService;
 
 	// 保存所要上传的文件
 	public void commodityCatalogUpload(MultipartFile file, String uploadUrl) {
@@ -116,7 +116,7 @@ public class SupplierSystemCommodityCatalogService {
 						cell = firstSheet.getCell(8, i);// Manufacturer Name
 						commodity.setManufacturerName(cell.getContents());
 						cell = firstSheet.getCell(9, i);// Supplier URL
-						supplier.setCoporateURL(cell.getContents());
+						//supplier.setCoporateURL(cell.getContents());
 						commodity.setSupplier(supplier);
 						cell = firstSheet.getCell(10, i);// Manufacturer URL
 						commodity.setManufacturerUrl(cell.getContents());

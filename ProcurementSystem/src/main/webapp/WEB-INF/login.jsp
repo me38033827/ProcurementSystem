@@ -51,7 +51,7 @@
 				<li></li>
 				<li></li>
 			</ul>
-			<%@ include file="footerLogin.jsp"%>
+			<%@ include file="other/footerLogin.jsp"%>
 		</div>
 
 	</div>

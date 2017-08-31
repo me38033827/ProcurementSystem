@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>公司概要－认证</title>
-<%@include file="../other/supplierHeader1.jsp"%>
+<%@include file="../../other/supplierHeader1.jsp"%>
 <script>
 	function check(id){
 		var element = "#"+id;
@@ -234,7 +234,7 @@
 	</div>
 	
 	<!-- CONTENT-WRAPPER SECTION END-->
-	<%@ include file="../other/supplierFooter.jsp"%>
+	<%@ include file="../../other/supplierFooter.jsp"%>
 	
 	
 

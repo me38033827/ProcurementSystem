@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
 import com.ProcurementSystem.common.PageParams;
-import com.ProcurementSystem.dao.ICommodityDao;
+import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
 
 @Service
-public class CommodityService {
+public class BuyerCommodityService {
 	@Resource
-	ICommodityDao commodityDao;
+	IBuyerCommodityDao commodityDao;
 
 	public Boolean updateCommodity(Commodity commodity) {// 不分页的查询方法
 		return commodityDao.updateCommodity(commodity);

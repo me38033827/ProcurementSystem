@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ProcurementSystem.entity.CommodityCatalog;
 
-public interface ICommodityCatalogDao {
+public interface IBuyerCommodityCatalogDao {
 	
 	public int getRowCount();//获取总行数
 	public void insertCommodityCatalog(CommodityCatalog commodityCatalog);

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.ProcurementSystem.entity.User;
 
-public interface IUserDao {
+public interface IBuyerUserDao {
 	
 	User getUserDetail(Map<String, String> params);
 	

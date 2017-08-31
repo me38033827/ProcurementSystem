@@ -23,19 +23,19 @@ import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.ShoppingCart;
 import com.ProcurementSystem.entity.Supplier;
-import com.ProcurementSystem.service.CommodityCatalogService;
-import com.ProcurementSystem.service.CommodityService;
-import com.ProcurementSystem.service.ShoppingCartService;
+import com.ProcurementSystem.service.BuyerCommodityCatalogService;
+import com.ProcurementSystem.service.BuyerCommodityService;
+import com.ProcurementSystem.service.BuyerShoppingCartService;
 
 @Controller
 @RequestMapping(value = "commodityCatalog")
-public class CommodityCatalogController {
+public class BuyerCommodityCatalogController {
 	@Resource
-	CommodityCatalogService commodityCatalogService;
+	BuyerCommodityCatalogService commodityCatalogService;
 	@Resource
-	CommodityService commodityService;
+	BuyerCommodityService commodityService;
 	@Resource
-	ShoppingCartService shoppingCartService;
+	BuyerShoppingCartService shoppingCartService;
 
 	// 测试
 	@RequestMapping(value = "index")
