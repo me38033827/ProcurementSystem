@@ -48,7 +48,8 @@
 
 								<div class="right">
 									<button class="btn-b" type="submit">搜索</button>
-									<button class="btn-w" onclick="window.location.href='commodityCatalogListSearch">全部列出</button>
+									<button class="btn-w"
+										onclick="window.location.href='commodityCatalogListSearch">全部列出</button>
 								</div>
 							</div>
 						</form>
@@ -80,13 +81,17 @@
 								var="commodityCatalog">
 								<tr>
 									<td width="5%"><input type="checkbox"
-										id=${commodityCatalog.uniqueName }
-										class="chk" /><label
+										id=${commodityCatalog.uniqueName } class="chk" /><label
 										for=${commodityCatalog.uniqueName}></label></td>
 									<td width="10%"><a> ${commodityCatalog.supplier.name}
 									</a></td>
 									<td width="15%"><a>${commodityCatalog.name } </a></td>
-									<td width="5%"><a href="showCommodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">${commodityCatalog.version }</a></td>
+									<td width="5%"><a
+										href="showCommodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">${commodityCatalog.version }
+											<c:if test="${commodityCatalog.isActivated =='验证错误' }">
+												<span class="error-message">!!!</span>
+											</c:if>
+									</a></td>
 									<td width="10%">${commodityCatalog.loadMode }</td>
 									<td width="10%">${commodityCatalog.contentAbstract }</td>
 									<td width="5%">${commodityCatalog.preview}</td>

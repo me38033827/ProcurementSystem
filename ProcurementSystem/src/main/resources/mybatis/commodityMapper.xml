@@ -6,7 +6,7 @@
 	<insert id="insertCommodity" parameterType="com.ProcurementSystem.entity.Commodity">
 		insert into
 		commodity(
-		supplier_id,
+		supplier_unique_name,
 		contract_unique_name ,
 		unit_price ,
 		supplier_part_id ,
@@ -15,7 +15,7 @@
 		manufacturer_url ,
 		time_left ,
 		company_code ,
-		gcm_email_adress ,
+		gcm_email_address ,
 		item_description ,
 		material_group ,
 		commodity_type ,
@@ -32,7 +32,8 @@
 		is_hazardous_materials,
 		is_green,
 		is_approved,
-		commodity_catalog_unique_name)
+		commodity_catalog_unique_name,
+		is_checked)
 		values(
 		#{
 		supplier.uniqueName },
@@ -49,7 +50,7 @@
 		#{
 		timeLeft },
 		#{ companyCode },
-		#{ gcmEmailAdress },
+		#{ gcmEmailAddress },
 		#{ itemDescription },
 		#{ materialGroup },
 		#{ commodityType },
@@ -71,7 +72,8 @@
 		#{ isHazardousMaterials },
 		#{isGreen },
 		#{isApproved},
-		#{commodityCatalog.uniqueName}
+		#{commodityCatalog.uniqueName},
+		#{isChecked}
 		)
 	</insert>
 
@@ -96,6 +98,7 @@
 		c.short_name as shortName,
 		c.unit_price as unitPrice,
 		c.unit_of_measure as unitOfMeasure,
+		c.is_checked as isChecked,
 		cc.unique_name as commodityCatalogUniqueName,
 		cc.name as commodityCatalogName,
 		con.unique_name as contractUniqueName,
@@ -132,6 +135,7 @@
 		<result property="shortName" column="shortName" />
 		<result property="unitPrice" column="unitPrice" />
 		<result property="unitOfMeasure" column="unitOfMeasure" />
+		<result property="isChecked" column="isChecked" />
 		<association property="contract" javaType="com.ProcurementSystem.entity.Contract">
 			<id property="uniqueName" column="contractUniqueName" />
 			<result property="name" column="contractName" />

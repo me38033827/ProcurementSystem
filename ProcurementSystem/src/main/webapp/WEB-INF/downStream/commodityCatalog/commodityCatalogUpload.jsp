@@ -17,65 +17,66 @@
 
 <div id="catalog-creation">
 	<p>请输入必须的信息，然后选择相应的设置，以导入新目录或者创建新的空目录</p>
-	<table class="catalog-table">
-		<form action="commodityCatalogAnalyze" method="post"
-			enctype="multipart/form-data">
-		<tr>
-			<td class="col1">*供应商：</td>
-			<td class="col2">
-		<tr>
-			<td class="col1">*目录订阅名称：</td>
-			<td class="col2" name="name">${commodityCatalog.name }</td>
-		</tr>
+	<form action="commodityCatalogAnalyze" method="post"
+		enctype="multipart/form-data">
+		<table class="catalog-table">
+			<tr>
+				<td class="col1">*供应商：</td>
+				<td class="col2">
+			<tr>
+				<td class="col1">*目录订阅名称：</td>
+				<td class="col2" name="name">${commodityCatalog.name }</td>
+			</tr>
 
-		<tr>
-			<td class="col1">跳过审批：</td>
-			<td class="col2">${commodityCatalog.isIgnoreApprove }</td>
-		</tr>
+			<tr>
+				<td class="col1">跳过审批：</td>
+				<td class="col2">${commodityCatalog.isIgnoreApprove }</td>
+			</tr>
 
-		<tr>
-			<td class="col1">在送往审批前停止：</td>
-			<td class="col2">${commodityCatalog.isStopBeforeApprove }</td>
-		</tr>
+			<tr>
+				<td class="col1">在送往审批前停止：</td>
+				<td class="col2">${commodityCatalog.isStopBeforeApprove }</td>
+			</tr>
 
-		<tr>
-			<td class="col1">自动激活：</td>
-			<td class="col2">${commodityCatalog.isAutoActivate }</td>
-		</tr>
+			<tr>
+				<td class="col1">自动激活：</td>
+				<td class="col2">${commodityCatalog.isAutoActivate }</td>
+			</tr>
 
-		<tr>
-			<td class="col1">允许多供应商CIF：</td>
-			<td class="col2">${commodityCatalog.isAllowMultiSupplierCIF }</td>
-		</tr>
+			<tr>
+				<td class="col1">允许多供应商CIF：</td>
+				<td class="col2">${commodityCatalog.isAllowMultiSupplierCIF }</td>
+			</tr>
 
 
-		<tr>
-			<td class="col1">层级：</td>
-			<td class="col2">${commodityCatalog.level}</td>
-		</tr>
+			<tr>
+				<td class="col1">层级：</td>
+				<td class="col2">${commodityCatalog.level}</td>
+			</tr>
 
-		<!-- 目录文件上传 -->
+			<!-- 目录文件上传 -->
 
-		<tr>
-			<td class="col1">目录文件：</td>
-			<td class="col2"><input type="file" name="file"></td>
-		</tr>
-		<tr>
-			<td class="col1">可选的图像文件:</td>
-			<td class="col2"><input type="file" name="imageFile"></td>
-		</tr>
-		</form>
-		<tr>
-			<td class="col1">
-				<button type="submit" class="btn-b">导入</button>&nbsp&nbsp
-			</td>
+			<tr>
+				<td class="col1">目录文件：</td>
+				<td class="col2"><input type="file" name="file"></td>
+			</tr>
+			<tr>
+				<td class="col1">可选的图像文件:</td>
+				<td class="col2"><input type="file" name="imageFile"></td>
+			</tr>
 
-			<td class="col2">
-				<button class="btn-w" onclick="window.location.href='commodityCatalogList'">取消</button>
-			</td>
-		</tr>
+			<tr>
+				<td class="col1">
+					<button type="submit" class="btn-b">导入</button>&nbsp&nbsp
+				</td>
 
-	</table>
+				<td class="col2">
+					<button class="btn-w" type="button"
+						onclick="window.location.href='commodityCatalogList'">取消</button>
+				</td>
+			</tr>
+		</table>
+	</form>
 </div>
 
 
