@@ -75,7 +75,7 @@
 				<button type="button"
 					class="btn btn-default dropdown-toggle" id="secondline-right-title"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top:0;margin-top:3px;">
-					用户：HP&nbsp;<span class="caret"></span>
+					用户：<%= request.getSession().getAttribute("username")%>&nbsp;<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" id="secondline-dropright">
 					<li><a class="secondline-right">注销</a></li>

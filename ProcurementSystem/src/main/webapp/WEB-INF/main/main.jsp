@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>主页</title>
-<%@include file="other/header1.jsp"%>
+<%@include file="../other/header1.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body class="a-dashbrd-page-bg">
@@ -12,18 +12,17 @@
 		<div class="container" id="secondline-out" style="width: 100%">
 			<div class="dropdown" id="secondline-dropdown">
 				<!-- 第二行靠左 -->
-				<button class="secondline-left header-clicked"
-					onclick="window.location.href='main.jsp'">主页</button>
+				<button class="secondline-left header-clicked">主页</button>
 				<button class="secondline-left">寻源</button>
 				<button class="secondline-left">合同</button>
 				<button class="secondline-left">采购</button>
 				<button class="secondline-left">开发票</button>
 				<button class="secondline-left"
-					onclick="window.location.href='mainSupplier.jsp'">供应商</button>
+					onclick="window.location.href='mainSupplier'">供应商</button>
 				<button class="secondline-left"
 					onclick="window.location.href='procurementCommodityCatalog.jsp'">目录</button>
 			</div>
-			<%@include file="other/header2r.jsp"%>
+			<%@include file="../other/header2r.jsp"%>
 		</div>
 		<!-- 导航栏 第三行 -->
 		<div id="thirdline-out" style="background-color: transparent;">
@@ -362,7 +361,7 @@
 	</div>
 
 	<!-- CONTENT-WRAPPER SECTION END-->
-	<%@ include file="other/footer.jsp"%>
+	<%@ include file="../other/footer.jsp"%>
 
 	<script type="text/javascript">
 		var myChart1 = echarts.init(document.getElementById('chart1'));
@@ -638,6 +637,5 @@
 	
 
 </script>
-	</bo
-								dy>
+</body>
 </html>

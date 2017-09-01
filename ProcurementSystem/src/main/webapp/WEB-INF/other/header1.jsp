@@ -55,7 +55,7 @@
 					aria-hidden="true"></span>
 			</button>
 			<button class="firstline-help">帮助</button>
-			<button class="firstline-user btn-h">用户：test</button>
+			<button class="firstline-user btn-h">用户：<%=request.getSession().getAttribute("username") %></button>
 		</div>
 	</div>
 </div>
