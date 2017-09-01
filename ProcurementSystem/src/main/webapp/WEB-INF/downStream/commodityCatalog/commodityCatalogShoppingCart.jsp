@@ -22,7 +22,7 @@
 				<!-- 主要内容开始 -->
 				<div class="container-all">
 					<div class="page-title">
-						<a class="inline-b black page-title-font">PR19723：</a>
+						<a class="inline-b black page-title-font">购物车</a>
 						<div class="inline-b right">
 							<button class="btn-w"
 								onclick="window.location.href='commodityCatalog'">继续购物</button>
