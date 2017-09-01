@@ -106,7 +106,6 @@ public class BuyerCommodityCatalogService {
 						if(cell.getContents().matches("^[0-9]+$"))//匹配整数
 						commodity.setSupplierPartId(cell.getContents());
 						cell = firstSheet.getCell(2, i);// 读取并设置Manufacturer Part ID
-						if(cell.getContents().matches("^[0-9]+$"))//匹配整数
 						commodity.setManufacturerPartId(cell.getContents());
 						cell = firstSheet.getCell(3, i);// 读取并设置Item Description
 						commodity.setItemDescription(cell.getContents());

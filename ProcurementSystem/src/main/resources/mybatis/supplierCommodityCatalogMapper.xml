@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.ISupplierCommodityCatalogDao">
+	<select id="searchCommodityCatalog" parameterType="com.ProcurementSystem.entity.CommodityCatalog"
+		resultMap="CommodityCatalogDetail">
+		select
+		cc.unique_name as uniqueName,
+		cc.name,
+		cc.version,
+		cc.file_name as fileName,
+		cc.file_size as fileSize,
+		cc.is_displayed as isDisplayed,
+		cc.creator,
+		cc.create_date as createDate,
+		cc.is_activated as isActivated,
+		cc.item_count as itemCount,
+		cc.description,
+		c.unique_name as commodityUniqueName,
+		c.unit_price as unitPrice,
+		c.supplier_part_id as supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.item_description as itemDescription,
+		c.is_checked as isChecked,
+		c.manufacturer_part_id as manufacturerPartId,
+		c.spsc_code as spscCode,
+		s.unique_name as supplierUniqueName
+		from (commodity_catalog cc left join commodity c on cc.unique_name = c.commodity_catalog_unique_name) left join supplier s
+		on s.unique_name = c.supplier_unique_name
+		where 1=1
+		<if test="isActivated != '' and isActivated != null">
+			AND is_activated = #{isActivated}
+		</if>
+		<if test="uniqueName != '' and uniqueName != null">
+			AND cc.unique_name = #{uniqueName}
+		</if>
+		<if test="type != '' and type != null">
+			AND cc.type = #{type}
+		</if>
+	</select>
+	<resultMap id="CommodityCatalogDetail" type="com.ProcurementSystem.entity.CommodityCatalog">
+		<id property="uniqueName" column="uniqueName" />
+		<result property="name" column="name" />
+		<result property="version" column="version" />
+		<result property="fileName" column="fileName" />
+		<result property="fileSize" column="fileSize" />
+		<result property="isDisplayed" column="isDisplayed" />
+		<result property="creator" column="creator" />
+		<result property="createDate" column="createDate" />
+		<result property="itemCount" column="itemCount" />
+		<result property="isActivated" column="isActivated" />
+		<result property="description" column="description" />
+		<collection property="commodities"
+			ofType="com.ProcurementSystem.entity.Commodity" resultMap="commodityResult" />
+	</resultMap>
+	<resultMap id="commodityResult" type="com.ProcurementSystem.entity.Commodity">
+		<id property="uniqueName" column="commodityUniqueName" />
+		<result property="unitPrice" column="unitPrice" />
+		<result property="supplierPartId" column="supplierPartId" />
+		<result property="supplierPartAuxiliaryId" column="supplierPartAuxiliaryId" />
+		<result property="itemDescription" column="itemDescription" />
+		<result property="isChecked" column="isChecked" />
+		<result property="spscCode" column="spscCode" />
+		<result property="manufacturerPartId" column="manufacturerPartId" />
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierUniqueName" />
+			<result property="name" column="supplierName" />
+		</association>
+	</resultMap>
+	
+	
+	<update id="updateCommodityCatalog" parameterType="com.ProcurementSystem.entity.CommodityCatalog">
+		update commodity_catalog 
+		set
+		is_displayed = #{isDisplayed},
+		description = #{description}
+		where unique_name = #{uniqueName}
+	</update>
+</mapper>

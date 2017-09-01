@@ -29,7 +29,7 @@
 					href="">非PO发表</a></li>
 				<li class="border-bottom-grey"><a class="secondline-right"
 					href="">贷项凭单</a></li>
-				<li><a class="secondline-right" href="commodityCatalogList.jsp">目录</a></li>
+				<li><a class="secondline-right" href="/ProcurementSystem/supplier/commodityCatalog/commodityCatalogList">目录</a></li>
 
 			</ul>
 		</div>
