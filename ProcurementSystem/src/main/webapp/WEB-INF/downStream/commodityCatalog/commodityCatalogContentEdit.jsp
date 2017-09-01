@@ -15,15 +15,16 @@
 			<div class="col-md-12">
 				<div class="container-padding margin-bottom">
 					<div class="page-main-title-btn">
-						<button class="btn-w"
-							type="submit" form="commodityCatalogContentModify">保存</button>
+						<button class="btn-w" type="submit"
+							form="commodityCatalogContentModify">保存</button>
 						<button class="btn-w">取消</button>
 					</div>
 					<div class="page-main-title">目录 - 编辑项目</div>
 					<div class="margin-bottom">
 						请复查此目录项中的错误。导致错误的字段已经添加了标志。<br>
 					</div>
-					<form action="commodityCatalogContentModify" method="post" id="commodityCatalogContentModify">
+					<form action="commodityCatalogContentModify" method="post"
+						id="commodityCatalogContentModify">
 						<div class="border-bottom-grey">
 
 							<table border="1" class="fulltab">
@@ -60,7 +61,8 @@
 									<td colspan="2">GCM Email address</td>
 									<td><input type="text" class="input margin-input"
 										name="gcmEmailAddress"
-										value="${requestScope.commodity.gcmEmailAddress }"><span class="error-message">${Error_gcmEmailAddress}</span><br></td>
+										value="${requestScope.commodity.gcmEmailAddress }"><span
+										class="error-message">${Error_gcmEmailAddress}</span><br></td>
 								</tr>
 								<tr>
 									<td colspan="2">HSN SAC</td>
@@ -194,7 +196,8 @@
 									<td colspan="2">危险品</td>
 									<td><input type="text" class="input margin-input"
 										name="isHazardousMaterials"
-										value="${commodity.isHazardousMaterials }"><span class="error-message">${Error_isHazardousMaterials}</span></td>
+										value="${commodity.isHazardousMaterials }"><span
+										class="error-message">${Error_isHazardousMaterials}</span></td>
 								</tr>
 								<tr>
 									<td colspan="2">可用地区</td>
@@ -212,7 +215,8 @@
 								<tr>
 									<td colspan="2">失效日期</td>
 									<td><input type="text" class="input margin-input"
-										name="expirationDate" value="${commodity.expirationDate }">&nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】<span class="error-message">${Error_expirationDate}</span></a></td>
+										name="expirationDate" value="${commodity.expirationDate }">&nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】<span
+											class="error-message">${Error_expirationDate}</span></a></td>
 								</tr>
 								<tr>
 									<td colspan="2">已筛选</td>
@@ -242,13 +246,14 @@
 								<tr>
 									<td colspan="2">有效日期</td>
 									<td><input type="text" class="input margin-input"
-										name="effectiveDate" value="${commodity.effectiveDate }">&nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】</a><span class="error-message">${Error_effectiveDate}</span>
-									</td>
+										name="effectiveDate" value="${commodity.effectiveDate }">&nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】</a><span
+										class="error-message">${Error_effectiveDate}</span></td>
 								</tr>
 								<tr>
 									<td colspan="2">环保</td>
 									<td><input type="text" class="input margin-input"
-										name="isGreen" value="${commodity.isGreen }"> <span class="error-message">${Error_isGreen }</span></td>
+										name="isGreen" value="${commodity.isGreen }"> <span
+										class="error-message">${Error_isGreen }</span></td>
 								</tr>
 								<tr>
 									<td colspan="2">目录名称</td>
@@ -260,7 +265,9 @@
 								<tr>
 									<td colspan="2">简称</td>
 									<td><input type="text" class="input margin-input"
-										name="shortName" value="${commodity.shortName }"></td>
+										name="shortName" value="${commodity.shortName }"><input
+										type="hidden" name="uniqueName"
+										value="${commodity.uniqueName }"></td>
 								</tr>
 								<tr>
 									<td colspan="2">类型名称</td>

@@ -20,7 +20,7 @@
 				<button class="secondline-left"
 					onclick="window.location.href='mainSupplier'">供应商</button>
 				<button class="secondline-left"
-					onclick="window.location.href='procurementCommodityCatalog.jsp'">目录</button>
+					onclick="window.location.href='/ProcurementSystem/commodityCatalog/commodityCatalog'">目录</button>
 			</div>
 			<%@include file="../other/header2r.jsp"%>
 		</div>

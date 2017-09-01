@@ -70,7 +70,7 @@
 							<th width="10%" class="text-center">金额</th>
 							<th width="20%" class="text-center">供应商名称</th>
 							<th width="20%" class="text-center">供应商部件识别符</th>
-							<th width="15%" class="text-center">供应商部件辅助识别符</th>
+							<th width="15%" class="text-center">商品名称</th>
 							<th width="20%" class="text-center">描述</th>
 						</tr>
 						<c:forEach var="commodity"
@@ -88,7 +88,7 @@
 								<td>${commodity.unitPrice }</td>
 								<td>${commodity.supplier.name }</td>
 								<td>${commodity.supplierPartId }</td>
-								<td>${commodity.supplierPartAuxiliaryId }</td>
+								<td>${commodity.shortName }</td>
 								<td nowrap>${commodity.itemDescription }</td>
 							</tr>
 						</c:forEach>

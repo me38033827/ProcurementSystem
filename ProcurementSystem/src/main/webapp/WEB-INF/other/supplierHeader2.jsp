@@ -7,11 +7,11 @@
 	<div class="dropdown" id="secondline-dropdown">
 		<!-- 第二行靠左 -->
 		<button class="secondline-left"
-			onclick="window.location.href='main.jsp'">首页</button>
+			onclick="window.location.href='/ProcurementSystem/supplier/main'">首页</button>
 		<button class="secondline-left">收件箱</button>
 		<button class="secondline-left">发件箱</button>
 		<button class="secondline-left"
-			onclick="window.location.href='commodityCatalogList.jsp'">目录</button>
+			onclick="window.location.href='/ProcurementSystem/supplier/commodityCatalog/commodityCatalogList'">目录</button>
 		<button class="secondline-left"
 			onclick="window.location.href='commodityCatalogList.jsp'">报告</button>
 

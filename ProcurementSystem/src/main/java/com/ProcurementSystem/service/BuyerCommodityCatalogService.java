@@ -97,8 +97,10 @@ public class BuyerCommodityCatalogService {
 						Commodity commodity = new Commodity();//设置commodityCatalog
 						commodity.setCommodityCatalog(commodityCatalog);
 						Supplier supplier = new Supplier();// 读取并设置Supplier ID
+						//暂时设置默认的供应商，之后需要做修改！！！！
 						if(cell.getContents().matches("^[0-9]+$"))//匹配整数
 						supplier.setUniqueName(Integer.parseInt(cell.getContents()));
+						supplier.setName("佳能（中国）");
 						commodity.setSupplier(supplier);
 						System.out.println(commodity.getSupplier().getUniqueName());
 						cell = firstSheet.getCell(1, i);// 读取并设置Supplier Part ID

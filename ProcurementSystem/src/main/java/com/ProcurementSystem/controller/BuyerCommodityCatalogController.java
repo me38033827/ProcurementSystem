@@ -50,7 +50,7 @@ public class BuyerCommodityCatalogController {
 		return "downStream/commodityCatalog/commodityCatalogCreate";
 	}
 
-	// 上传商品目录
+	// 保存商品目录基本信息，上传商品目录
 	@RequestMapping(value = "commodityCatalogUpload")
 	public String commodityCatalogUpload(HttpServletRequest request, @Valid CommodityCatalog commodityCatalog,
 			BindingResult result, ModelMap map) {
@@ -65,6 +65,7 @@ public class BuyerCommodityCatalogController {
 		}
 		String mySelect = request.getParameter("mySelect");
 		HttpSession session = request.getSession();
+		commodityCatalog.setVersion("版本1");//暂时设置默认为版本1，之后需要修改！！！
 		session.setAttribute("commodityCatalog", commodityCatalog);
 		return "downStream/commodityCatalog/commodityCatalogUpload";
 	}
@@ -81,8 +82,8 @@ public class BuyerCommodityCatalogController {
 		System.out.println("商品目录唯一标识:" + commodityCatalog.getUniqueName());
 		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl + file.getOriginalFilename());// 解析文件，持久化存储商品
 		request.setAttribute("commodityCatalog", commodityCatalog);
-		// 获取当前上传目录内容，准备在前端显示
-		return "downStream/commodityCatalog/commodityCatalogContent";
+		// 获取当前上传目录内容，准备在前端显示，转向
+		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName="+commodityCatalog.getUniqueName();
 	}
 
 	// 转向商品目录列表页

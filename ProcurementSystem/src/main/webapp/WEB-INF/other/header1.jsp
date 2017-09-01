@@ -10,34 +10,34 @@
 <meta name="description" content="A demo for Ariba" />
 <meta name="author" content="Zhixuan Sheng" />
 <!-- BOOTSTRAP CORE STYLE  -->
-<link href="../css/bootstrap.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/bootstrap.css" rel="stylesheet" />
 <!-- FONT AWESOME STYLE  -->
-<link href="../css/font-awesome.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/font-awesome.css" rel="stylesheet" />
 <!-- CUSTOM STYLE  -->
-<link href="../css/style.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/style.css" rel="stylesheet" />
 <!-- GOOGLE FONT -->
-<link href='http://fonts.googleapis.com../css?family=Open+Sans'
-	rel='stylesheet' type='text../css' />
+<link href='http://fonts.googleapis.com/ProcurementSystem/css?family=Open+Sans'
+	rel='stylesheet' type='text/ProcurementSystem/css' />
 <!-- MY CSS -->
-<link href="../css/mycss.css" rel="stylesheet" />
-<link href="../css/order.css" rel="stylesheet" />
-<link href="../css/approval.css" rel="stylesheet" />
-<link href="../css/catalog.css" rel="stylesheet" />
-<link href="../css/detail.css" rel="stylesheet" />
-<link href="../css/settlement.css" rel="stylesheet" />
-<link href="../css/relevant.css" rel="stylesheet" />
-<link href="../css/standard.css" rel="stylesheet" />
-<link href="../css/supplierP.css" rel="stylesheet" />
-<link href="../css/supplier.css" rel="stylesheet" />
-<link href="../css/convention.css" rel="stylesheet" />
-<link href="../css/commodityCatalog.css" rel="stylesheet" />
-<script src="../js/echarts.common.min.js"></script>
+<link href="/ProcurementSystem/css/mycss.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/order.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/approval.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/catalog.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/detail.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/settlement.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/relevant.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/standard.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/supplierP.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/supplier.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/convention.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/commodityCatalog.css" rel="stylesheet" />
+<script src="/ProcurementSystem/js/echarts.common.min.js"></script>
 <!-- CORE JQUERY  -->
-<script src="../js/jquery.js"></script>
+<script src="/ProcurementSystem/js/jquery.js"></script>
 <!-- BOOTSTRAP SCRIPTS  -->
-<script src="../js/bootstrap.js"></script>
+<script src="/ProcurementSystem/js/bootstrap.js"></script>
 <!-- CUSTOM SCRIPTS  -->
-<script src="../js/custom.js"></script>
+<script src="/ProcurementSystem/js/custom.js"></script>
 
 <!-- 标题及导航栏第一行 -->
 <div class="container firstline-out" style="width: 100%; padding: 0">
