@@ -33,10 +33,10 @@
 								</select>
 							</div>
 							<div class="right">
-								<a><img src="/demo/assets/img/icon-guide.png"
+								<a><img src="/ProcurementSystem/images/icon-guide.png"
 									class="img-icon icon-choose-white "></a> <a><img
-									src="/demo/assets/img/icon-trend.png" class="img-icon"></a><a><img
-									src="/demo/assets/img/icon-refresh.png" class="img-icon"></a>
+									src="/ProcurementSystem/images/icon-trend.png" class="img-icon"></a><a><img
+									src="/ProcurementSystem/images/icon-refresh.png" class="img-icon"></a>
 							</div>
 							<div>
 								<input type="text" class="inline-b border-g left col-md-4"
@@ -67,11 +67,11 @@
 								<div class="main-middle-left-title margin-bottom"
 									style="border: 0">将用户添加到您的帐户</div>
 								<div style="text-align: center" class="margin-bottom">
-									<img src="/demo/assets/img/icon-user.png" width="70px"
+									<img src="/ProcurementSystem/images/icon-user.png" width="70px"
 										height="70px;">
 								</div>
 								<div class="margin-bottom">
-									<span>Xu Han</span>，您好！为了更好地管理您的帐户，请为在
+									<span><%= request.getSession().getAttribute("username")%></span>，您好！为了更好地管理您的帐户，请为在
 									Ariba上执行任务的每个员工创建新用户。如果您这次还没准备好添加用户，稍后可以随时在您的“公司设置”中执行此操作。
 								</div>
 								<div class="right">
