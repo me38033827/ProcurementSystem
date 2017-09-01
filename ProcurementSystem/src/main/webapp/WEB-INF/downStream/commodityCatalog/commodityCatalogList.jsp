@@ -66,13 +66,13 @@
 							<th width="5%"></th>
 							<th width="10%">源供应商</th>
 							<th width="15%">目录订阅名称</th>
-							<th width="5%">版本</th>
+							<th width="10%">版本</th>
 							<th width="10%">加载模式</th>
 							<th width="10%">内容摘要</th>
 							<th width="5%">预览</th>
-							<th width="5%">状态</th>
+							<th width="10%">状态</th>
 							<th width="10%">项目数量</th>
-							<th width="25%">上次修改时间</th>
+							<th width="15%">上次修改时间</th>
 						</tr>
 					</table>
 					<div id="sourcing-tab" style="border-bottom: 2px solid #ddd">
@@ -86,7 +86,7 @@
 									<td width="10%"><a> ${commodityCatalog.supplier.name}
 									</a></td>
 									<td width="15%"><a>${commodityCatalog.name } </a></td>
-									<td width="5%"><a
+									<td width="10%"><a
 										href="showCommodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">${commodityCatalog.version }
 											<c:if test="${commodityCatalog.isActivated =='验证错误' }">
 												<span class="error-message">!!!</span>
@@ -95,7 +95,7 @@
 									<td width="10%">${commodityCatalog.loadMode }</td>
 									<td width="10%">${commodityCatalog.contentAbstract }</td>
 									<td width="5%">${commodityCatalog.preview}</td>
-									<td width="5%"><a> ${commodityCatalog.isActivated } </a></td>
+									<td width="10%"><a> ${commodityCatalog.isActivated } </a></td>
 									<td width="10%"><a>${commodityCatalog.itemCount}</a></td>
 									<td width="25%">${commodityCatalog.lastModifyDate }</td>
 								</tr>
