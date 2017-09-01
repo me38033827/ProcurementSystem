@@ -60,24 +60,27 @@
 					<div>
 						查看并编辑目录内容。在目录中添加或删除项目。要替换现有目录，请单击“上载目录文件”。已发布的目录不可编辑。<br> <br>
 					</div>
-					<div>
+					<form action="commodityCatalogValidateAndSave" method="post"
+						enctype="multipart/form-data">
 						<div>
-							<strong>上载您的目录文件</strong>
+							<div>
+								<strong>上载您的目录文件</strong>
+							</div>
+
+							<div
+								class="border-bottom-grey border-top-grey border-left-grey border-right-grey container-text">
+								<input type="file" size="30" id="upload-file" name="file">
+							</div>
 						</div>
 						<div
-							class="border-bottom-grey border-top-grey border-left-grey border-right-grey container-text">
-							<input type="file" size="30" id="upload-file">
+							class="caution-div container-text border-bottom-grey border-top-grey border-left-grey border-right-grey">
+							<span class="caution-span"><strong>!</strong></span>
+							单击“验证并发布”之后，在目录上载完成之前，请不要使用 Web 浏览器。上载较大的目录可能要花几分钟时间。
 						</div>
-					</div>
-					<div
-						class="caution-div container-text border-bottom-grey border-top-grey border-left-grey border-right-grey">
-						<span class="caution-span"><strong>!</strong></span>
-						单击“验证并发布”之后，在目录上载完成之前，请不要使用 Web 浏览器。上载较大的目录可能要花几分钟时间。
-					</div>
-					<div class="table-bottom-btn">
-						<button class="btn-b"
-							onclick="window.location.href='commodityCatalogValidateAndSave'">验证并发布</button>
-					</div>
+						<div class="table-bottom-btn">
+							<button class="btn-b" type="submit" >验证并发布</button>
+						</div>
+					</form>
 					<div class=" border-bottom-grey ">
 						<div class=" standard-subtitle-main">管理目录内容。下载并编辑这些目录文件</div>
 					</div>

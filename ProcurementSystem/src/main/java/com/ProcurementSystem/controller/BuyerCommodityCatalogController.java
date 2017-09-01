@@ -76,6 +76,7 @@ public class BuyerCommodityCatalogController {
 		HttpSession session = request.getSession();
 		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");
 		commodityCatalogService.commodityCatalogUpload(file, uploadUrl,commodityCatalog);// 保存上传的文件
+		commodityCatalog.setType("0");//设置商品目录为buyer上传
 		commodityCatalogService.insertCommodityCatalog(commodityCatalog);// 持久化存储商品目录
 		System.out.println("商品目录唯一标识:" + commodityCatalog.getUniqueName());
 		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl + file.getOriginalFilename());// 解析文件，持久化存储商品

@@ -38,9 +38,7 @@ text-center {
 	float: right;
 }
 
-td {
-	white-space: nowrap;
-}
+
 /* 搜索结果提示框 */
 .search-result-container {
 	border: 1px solid #56c0e0;

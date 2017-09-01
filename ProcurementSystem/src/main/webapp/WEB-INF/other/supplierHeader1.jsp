@@ -4,54 +4,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1" />
 <meta name="description" content="A demo for Ariba" />
 <meta name="author" content="Zhixuan Sheng" />
 <!-- BOOTSTRAP CORE STYLE  -->
-<link href="../css/bootstrap.css" rel="stylesheet" />
+<link href="../../css/bootstrap.css" rel="stylesheet" />
 <!-- FONT AWESOME STYLE  -->
-<link href="../css/font-awesome.css" rel="stylesheet" />
+<link href="../../css/font-awesome.css" rel="stylesheet" />
 <!-- CUSTOM STYLE  -->
-<link href="../css/style.css" rel="stylesheet" />
+<link href="../../css/style.css" rel="stylesheet" />
 <!-- GOOGLE FONT -->
-<link href='http://fonts.googleapis.com../css?family=Open+Sans'
-	rel='stylesheet' type='text../css' />
+<link href='http://fonts.googleapis.com../../css?family=Open+Sans'
+	rel='stylesheet' type='text../../css' />
 <!-- MY CSS -->
-<link href="../css/mycss.css" rel="stylesheet" />
-<link href="../css/order.css" rel="stylesheet" />
-<link href="../css/approval.css" rel="stylesheet" />
-<link href="../css/catalog.css" rel="stylesheet" />
-<link href="../css/detail.css" rel="stylesheet" />
-<link href="../css/settlement.css" rel="stylesheet" />
-<link href="../css/relevant.css" rel="stylesheet" />
-<link href="../css/standard.css" rel="stylesheet" />
-<<<<<<< HEAD
-<link href="../css/supplierProfile.css" rel="stylesheet" />
-=======
->>>>>>> origin/master
-<link href="../css/supplierP.css" rel="stylesheet" />
-<link href="../css/supplier.css" rel="stylesheet" />
-<link href="../css/convention.css" rel="stylesheet" />
-<link href="../css/commodityCatalog.css" rel="stylesheet" />
-<<<<<<< HEAD
+<link href="../../css/mycss.css" rel="stylesheet" />
+<link href="../../css/order.css" rel="stylesheet" />
+<link href="../../css/approval.css" rel="stylesheet" />
+<link href="../../css/catalog.css" rel="stylesheet" />
+<link href="../../css/detail.css" rel="stylesheet" />
+<link href="../../css/settlement.css" rel="stylesheet" />
+<link href="../../css/relevant.css" rel="stylesheet" />
+<link href="../../css/standard.css" rel="stylesheet" />
+<link href="../../css/supplierP.css" rel="stylesheet" />
+<link href="../../css/supplier.css" rel="stylesheet" />
+<link href="../../css/convention.css" rel="stylesheet" />
+<link href="../../css/commodityCatalog.css" rel="stylesheet" />
+<script src="../../js/echarts.common.min.js"></script>
 <!-- CORE JQUERY  -->
-<script src="../js/jquery.js"></script>
-
-=======
-<script src="../js/echarts.common.min.js"></script>
-<!-- CORE JQUERY  -->
-<script src="../js/jquery.js"></script>
->>>>>>> origin/master
+<script src="../../js/jquery.js"></script>
 <!-- BOOTSTRAP SCRIPTS  -->
-<script src="../js/bootstrap.js"></script>
+<script src="../../js/bootstrap.js"></script>
 <!-- CUSTOM SCRIPTS  -->
-<script src="../js/custom.js"></script>
-<!-- ECharts -->
-<script src="../js/echarts.common.min.js"></script>
+<script src="../../js/custom.js"></script>
 <!-- 标题及导航栏第一行 -->
 <div class="container firstline-out" style="width: 100%; padding: 0">
 	<div class="navbar navbar-inverse set-radius-zero firstline">

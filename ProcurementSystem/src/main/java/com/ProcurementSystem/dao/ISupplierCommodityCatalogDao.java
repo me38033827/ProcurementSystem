@@ -1,14 +1,13 @@
 package com.ProcurementSystem.dao;
 
+import java.util.List;
+
 import com.ProcurementSystem.entity.CommodityCatalog;
 
 public interface ISupplierCommodityCatalogDao {
 
-	void insertCommodityCatalog(CommodityCatalog commodityCatalog);
+	public List<CommodityCatalog> searchCommodityCatalog(CommodityCatalog commodityCatalog);//获得所有商品目录
 
-	void setIsActivated(CommodityCatalog commodityCatalog);
-
-	void setItemCount(CommodityCatalog commodityCatalog);
-
+	public void updateCommodityCatalog(CommodityCatalog commodityCatalog);
 
 }
