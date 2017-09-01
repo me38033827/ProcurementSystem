@@ -34,7 +34,7 @@
 					<div class="col-md-10">
 						
 						<div class="tag-line">
-							<button class="tag-not-clicked" onclick="window.location.href='profile'">基本</button>
+							<button class="tag-not-clicked" onclick="window.location.href='profileBasic'">基本</button>
 							<button class="tag-not-clicked" onclick="window.location.href='profileBusiness'">商务</button>
 							<button class="tag-not-clicked" onclick="window.location.href='profileMarket'">营销</button>
 							<button class="tag-not-clicked" onclick="window.location.href='profileContact'">联系人</button>

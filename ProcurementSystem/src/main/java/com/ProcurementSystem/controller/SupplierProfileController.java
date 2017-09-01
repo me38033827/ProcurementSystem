@@ -22,7 +22,9 @@ public class SupplierProfileController {
 	public String editProfile(HttpServletRequest request){
 		System.out.println("---Controller: editProfile---");
 		HttpSession session = request.getSession();
-		Supplier supplierSession = service.getSupplierDetail(10000025);
+		int uniqueName=(int)session.getAttribute("supplierUniqueName");
+		System.out.println(uniqueName);
+		Supplier supplierSession = service.getSupplierDetail(uniqueName);
 		session.setAttribute("supplierSession", supplierSession);
 		return "supplier/profile/profile";
 	}
@@ -38,7 +40,7 @@ public class SupplierProfileController {
 		//Remove attribute
 		session.removeAttribute("supplierSession");
 		System.out.println("Session attribute 'supplierSession' has already been removed.");
-		return "redirect:main";
+		return "redirect:../main";
 	}
 	
 	//AN关闭供应商信息
@@ -82,11 +84,12 @@ public class SupplierProfileController {
 		if(to.equals("save")){return "redirect:profileSave";}
 		if(to.equals("business")){return "redirect:profileBusiness";}
 		if(to.equals("auth")){return "redirect:profileAuth";}
-		if(to.equals("contact")){return "redirect:profileContact";}
+		if(to.equals("contact")){System.out.println("fail");
+			return "redirect:profileContact";}
 		if(to.equals("customer")){return "redirect:profileCustomer";}
 		if(to.equals("doc")){return "redirect:profileDoc";}
 		if(to.equals("market")){return "redirect:profileMarket";}
-		return "supplier/profile";
+		return "supplier/profile/profile";
 	}
 	
 	//AN保存当前供应商信息－4联系人
@@ -116,55 +119,64 @@ public class SupplierProfileController {
 		if(to.equals("customer")){return "redirect:profileCustomer";}
 		if(to.equals("doc")){return "redirect:profileDoc";}
 		if(to.equals("market")){return "redirect:profileMarket";}
-		return "supplier/profileContact";
+		return "supplier/profile/profileContact";
 	}
 	
 	//AN显示供应商信息－1基本
 	@RequestMapping(value = "profileBasic")
-	public String showSupplierProfileBasic(){
+	public String showSupplierProfileBasic(HttpServletRequest request){
 		System.out.println("---Controller: profileBasic---");
-		return "supplier/profile";
+		HttpSession session = request.getSession();
+		Supplier supplierSession = (Supplier) session.getAttribute("supplierSession");
+		request.setAttribute("supplierSession", supplierSession);
+		return "supplier/profile/profile";
 	}
 	
 	//AN显示供应商信息－2商务
 	@RequestMapping(value = "profileBusiness")
-	public String showSupplierProfileBusiness(){
+	public String showSupplierProfileBusiness(HttpServletRequest request){
 		System.out.println("---Controller: profileBusiness---");
-		return "supplier/profileBusiness";
+		HttpSession session = request.getSession();
+		Supplier supplierSession = (Supplier) session.getAttribute("supplierSession");
+		request.setAttribute("supplierSession", supplierSession);
+		return "supplier/profile/profileBusiness";
 	}
 	
 	//AN显示供应商信息－3营销
 	@RequestMapping(value = "profileMarket")
 	public String showSupplierProfileMarket(){
 		System.out.println("---Controller: profileMarket---");
-		return "supplier/profileMarket";
+		return "supplier/profile/profileMarket";
 	}
 	
 	//AN显示供应商信息－4联系人
 	@RequestMapping(value = "profileContact")
-	public String showSupplierProfileContact(){
+	public String showSupplierProfileContact(HttpServletRequest request){
 		System.out.println("---Controller: profileContact---");
-		return "supplier/profileContact";
+		HttpSession session = request.getSession();
+		Supplier supplierSession = (Supplier) session.getAttribute("supplierSession");
+		request.setAttribute("supplierSession", supplierSession);
+		return "supplier/profile/profileContact";
 	}
 	
 	//AN显示供应商信息－5认证
 	@RequestMapping(value = "profileAuth")
 	public String showSupplierProfileAuth(){
 		System.out.println("---Controller: profileAuth---");
-		return "supplier/profileAuth";
+		return "supplier/profile/profileAuth";
 	}
 	
 	//AN显示供应商信息－6请求的客户
 	@RequestMapping(value = "profileCustomer")
 	public String showSupplierProfileCustomer(){
 		System.out.println("---Controller: profileCustomer---");
-		return "supplier/profileCustomer";
+		return "supplier/profile/profileCustomer";
 	}
 	
 	//AN显示供应商信息－7其他文档
 	@RequestMapping(value = "profileDoc")
 	public String showSupplierProfileDoc(){
 		System.out.println("---Controller: profileDoc---");
-		return "supplier/profileDoc";
+		return "supplier/profile/profileDoc";
 	}
 }

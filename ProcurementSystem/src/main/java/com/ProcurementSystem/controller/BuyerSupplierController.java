@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,8 +51,17 @@ public class BuyerSupplierController {
 	//P2P显示供应商概要
 	@RequestMapping(value = "supplierDetail")
 	public String showSupplierDetail(HttpServletRequest request){
-		int uniqueName = Integer.parseInt(request.getParameter("id"));
-		
+		String uniqueNameStr = request.getParameter("id");
+		int uniqueName = -1;
+		HttpSession session = request.getSession();
+		System.out.println(uniqueNameStr);
+		if(uniqueNameStr!=null){
+			uniqueName = Integer.parseInt(uniqueNameStr);
+			session.setAttribute("uniqueName", uniqueName);
+		}else{
+			uniqueName = (int) session.getAttribute("uniqueName");
+			
+		}
 		System.out.println("----------------------------------------------------");
 		System.out.println("Look up detail information for SUPPLIER (Unique Name) " + uniqueName);
 		System.out.println("In supplier controller...");
@@ -69,7 +79,11 @@ public class BuyerSupplierController {
 	
 	//P2P显示供应商概述
 	@RequestMapping(value = "supplierDetailSummary")
-	public String showSupplierDetailSummary(){
+	public String showSupplierDetailSummary(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		int uniqueName = (int) session.getAttribute("uniqueName");
+		Supplier supplier = service.getSupplierDetail(uniqueName);
+		request.setAttribute("supplier", supplier);
 		return "upStream/supplier/supplierDetailSummary";
 	}
 	
@@ -175,7 +189,7 @@ public class BuyerSupplierController {
 		
 		System.out.println("----------------------------------------------------");
 
-		return "upStream/supplier/supplierSearching";
+		return "redirect:supplierInitial";
 	}
 	
 

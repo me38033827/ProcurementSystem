@@ -149,7 +149,7 @@
 										新建&nbsp;<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu manu-btn-o" >
-										<li><a class="manu-btn" >供应商</a></li>
+										<li><a class="manu-btn" onclick="window.location.href='supplierCreation'">供应商</a></li>
 										<li><a class="manu-btn" >客户</a></li>
 									</ul>
 								</div>

@@ -194,15 +194,16 @@
 								</tr>
 								<tr>
 									<td class="question-1-1">1.1&nbsp;&nbsp;&nbsp;&nbsp;公司名称</td>
-									<td></td>
+									<td style="padding:5px;"><input class="form-control input" />
+									</td>
 								</tr>
 								<tr>
 									<td class="question-1-1">1.2&nbsp;&nbsp;&nbsp;&nbsp;请简要介绍一下贵公司</td>
-									<td></td>
+									<td style="padding:5px;"><input class="form-control input" /></td>
 								</tr>
 								<tr>
 									<td class="question-1-1">1.3&nbsp;&nbsp;&nbsp;&nbsp;贵公司创办于哪一年</td>
-									<td></td>
+									<td style="padding:5px;"> <input class="form-control input" /></td>
 								</tr>
 								<tr>
 									<td class="question-1"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
@@ -216,7 +217,13 @@
 								</tr>
 								<tr>
 									<td class="question-3">2.1.1&nbsp;&nbsp;&nbsp;妇女所有企业证书</td>
-									<td>否</td>
+									<td>
+										<select style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
@@ -225,35 +232,83 @@
 								</tr>
 								<tr>
 									<td class="question-3">2.2.1&nbsp;&nbsp;&nbsp;您是否通过少数族裔所有企业认证？</td>
-									<td>否</td>
+									<td>
+										<select  style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-3">2.2.2&nbsp;&nbsp;&nbsp;您是否通过 NMSDC（全国少数族裔供应商发展理事会）认证？</td>
-									<td>否</td>
+									<td>
+										<select  style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-3">2.2.3&nbsp;&nbsp;&nbsp;您是否通过小型企业管理认证？</td>
-									<td>否</td>
+									<td>
+										<select  style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-3">2.2.4&nbsp;&nbsp;&nbsp;您是否通过州政府认证？</td>
-									<td>否</td>
+									<td>
+										<select  style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-3">2.2.5&nbsp;&nbsp;&nbsp;您是否通过所在地/机构认证？</td>
-									<td>否</td>
+									<td>
+										<select  style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-3">2.2.6&nbsp;&nbsp;&nbsp;您是否为自我认证？</td>
-									<td>否</td>
+									<td>
+										<select style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-3">2.2.7&nbsp;&nbsp;&nbsp;其他认证</td>
-									<td>否</td>
+									<td>
+										<select style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-3">2.2.8&nbsp;&nbsp;&nbsp;您是否通过环球国际认证？</td>
-									<td>否</td>
+									<td>
+										<select style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
@@ -262,7 +317,13 @@
 								</tr>
 								<tr>
 									<td class="question-3">2.3.1&nbsp;&nbsp;&nbsp;您是否通过小型企业认证？</td>
-									<td>否</td>
+									<td>
+										<select style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
@@ -271,15 +332,33 @@
 								</tr>
 								<tr>
 									<td class="question-3">2.4.1&nbsp;&nbsp;&nbsp;您是否通过退伍军人所有企业认证?</td>
-									<td>否</td>
+									<td>
+										<select style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-3">2.4.2&nbsp;&nbsp;&nbsp;您是否通过残疾退伍军人所有企业认证?</td>
-									<td>否</td>
+									<td>
+										<select style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="question-3">2.4.3&nbsp;&nbsp;&nbsp;您是否通过越战退伍军人所有企业认证?</td>
-									<td>否</td>
+									<td>
+										<select style="height:30px;">
+												<option>否</option>
+												<option>是</option>
+												<option>未指定</option>
+										</select>
+									</td>
 								</tr>
 							</table>
 						</div>
