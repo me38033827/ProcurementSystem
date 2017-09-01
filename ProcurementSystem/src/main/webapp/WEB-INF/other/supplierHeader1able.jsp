@@ -64,7 +64,7 @@
 					公司设置&nbsp;<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" id="secondline-dropright">
-					<li><a class="secondline-right" href="editProfile">公司概要</a></li>
+					<li><a class="secondline-right" href="profile/editProfile">公司概要</a></li>
 					<li><a class="secondline-right">客户关系</a></li>
 					<li><a class="secondline-right">用户</a></li>
 					<li><a class="secondline-right">通知</a></li>

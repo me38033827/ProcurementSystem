@@ -27,6 +27,7 @@
 <link href="/ProcurementSystem/css/settlement.css" rel="stylesheet" />
 <link href="/ProcurementSystem/css/relevant.css" rel="stylesheet" />
 <link href="/ProcurementSystem/css/standard.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/supplierProfile.css" rel="stylesheet" />
 <link href="/ProcurementSystem/css/supplierP.css" rel="stylesheet" />
 <link href="/ProcurementSystem/css/supplier.css" rel="stylesheet" />
 <link href="/ProcurementSystem/css/convention.css" rel="stylesheet" />
