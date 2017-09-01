@@ -89,15 +89,15 @@
 						<table class="tab-height" id="supplier-crea-tab1" style="margin-left:80px;">
 							<tr>
 								<td class="col-standard1">工作区标识符：</td>
-								<td class="col-standard2">WS1030204199</td>
+								<td class="col-standard2">WS100000199</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">名称：</td>
-								<td class="col-standard2">惠普（北京）有限公司</td>
+								<td class="col-standard2">${supplier.name}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">审批状态：</td>
-								<td class="col-standard2">已批准</td>
+								<td class="col-standard2">${supplier.approveState}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">账户所有者：</td>
@@ -109,11 +109,11 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">标识符：</td>
-								<td class="col-standard2">SU0000134</td>
+								<td class="col-standard2">SU${supplier.uniqueName}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">说明：</td>
-								<td class="col-standard2"></td>
+								<td class="col-standard2">${supplier.description}</td>
 							</tr>
 						</table>
 					</div>

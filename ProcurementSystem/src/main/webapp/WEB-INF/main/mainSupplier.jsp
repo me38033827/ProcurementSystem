@@ -5,7 +5,17 @@
 <head>
 <title></title>
 <%@include file="../other/header1.jsp"%>
-
+<!-- <script>
+	function checkSearchContent(){
+		var content = $("#content").val();
+		if(content=="使用名称、标识符或任何其他词语搜索"){
+			alert(1);
+			window.location.href="/ProcurementSystem/buyer/supplier/supplierInitial";
+		}else{
+			location.href="supplier/supplierSearch";
+		}
+	}
+</script> -->
 </head>
 <!-- 页面整体宽度：1320px -->
 <body class="a-dashbrd-page-bg">
@@ -19,7 +29,7 @@
 				<button class="secondline-left">采购</button>
 				<button class="secondline-left">开发票</button>
 				<button class="secondline-left header-clicked">供应商</button>
-				<button class="secondline-left" onclick="window.location.href='procurementCommodityCatalog.jsp'">目录</button>
+				<button class="secondline-left">目录</button>
 				</div>
 			<%@include file="../other/header2r.jsp"%>
 		</div>
@@ -36,15 +46,17 @@
 			</div>
 			<!-- 第三行搜索框 -->
 			<div style="position: relative; left: 20px;">
-				<input type="text" class="inline-b border-g left col-md-4"
+				<form method="post" action="supplier/supplierInitial">
+				<input type="text" id="content" class="inline-b border-g left col-md-4"
 					value="使用名称、标识符或任何其他词语搜索"
 					onfocus="if(this.value=='使用名称、标识符或任何其他词语搜索') this.value=''"
 					onblur="if(this.value=='')this.value='使用名称、标识符或任何其他词语搜索' "
 					style="top: 0px;">
 				<button class="btn btn-default inline-b border-g left"
-					id="search-btn" style="top: 0px;" onclick="window.location.href='supplierSearching.jsp'">
+					id="search-btn" style="top: 0px;">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				</button>
+				</form>
 			</div>
 			<!-- 第三行右侧图标 -->
 	

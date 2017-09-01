@@ -36,7 +36,7 @@
 					<div class="col-md-10">
 						
 						<div class="tag-line">
-							<button class="tag-not-clicked" onclick="window.location.href='profile'">基本</button>
+							<button class="tag-not-clicked" onclick="window.location.href='profileBasic'">基本</button>
 							<button class="tag-not-clicked" onclick="window.location.href='profileBusiness'">商务</button>
 							<button class="tag-clicked" onclick="window.location.href='profileMarket'">营销</button>
 							<button class="tag-not-clicked" onclick="window.location.href='profileContact'">联系人</button>
@@ -57,7 +57,7 @@
 							</div>
 							
 							<div>
-								<img id="linkedin" src="../images/linkedin.jpg">
+								<img id="linkedin" src="../../images/linkedin.jpg">
 								<a id="linkedin-web">linkedin.com/</a>
 								<input id="linkedin-input" class="form-control input"/>
 							</div>
@@ -99,7 +99,7 @@
 							
 							<div class="row">
 								<div class="col-md-2">
-									<img src="../images/upload-img.jpg" id="upload-img"/>
+									<img src="../../images/upload-img.jpg" id="upload-img"/>
 								</div>
 								<div class="col-md-10">
 									<a id="upload-desc" class="standard-subsubtitle-description">上载徽标，使其与公司简介一起显示。徽标必须是.gif文件，最大宽度为250像素，最大高度为250像素，最大大小为20kB。</a><br>
