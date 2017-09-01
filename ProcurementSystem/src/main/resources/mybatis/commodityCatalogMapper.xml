@@ -109,7 +109,8 @@
 		c.supplier_part_auxiliary_id as
 		supplierPartAuxiliaryId,
 		c.item_description as itemDescription,
-		c.is_checked as isChecked
+		c.is_checked as isChecked,
+		c.short_name as shortName
 		from
 		(commodity_catalog cc left join supplier
 		s
@@ -154,6 +155,7 @@
 		<result property="supplierPartAuxiliaryId" column="supplierPartAuxiliaryId" />
 		<result property="itemDescription" column="itemDescription" />
 		<result property="isChecked" column="isChecked" />
+		<result property="shortName" column="shortName" />
 		<association property="supplier"
 			javaType="com.ProcurementSystem.entity.Supplier">
 			<id property="uniqueName" column="supplierUniqueName" />

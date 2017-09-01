@@ -39,14 +39,14 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<td colspan="10"><a id="settlement-line2-left-left">总共1个项目</a></td>
+												<td colspan="10"><a id="settlement-line2-left-left">总共<%=size %>个项目</a></td>
 												<td colspan="2"><a id="settlement-line2-left-right">显示详细信息</a></td>
 											</tr>
 										</thead>
 										<tr>
 											<td></td>
 											<td>编号</td>
-											<td>类型</td>
+											<td>简称</td>
 											<td>说明</td>
 											<td>数量</td>
 											<td>单位</td>
@@ -64,7 +64,7 @@
 													name="commodityUniqueNames" value="${commodity.uniqueName }" /><label
 													for="${commodity.uniqueName }"></label></td>
 												<td>${status.count}</td>
-												<td></td>
+												<td>${commodity.shortName }</td>
 												<td>${commodity.itemDescription }</td>
 												<td><input class="settlement-amount"
 													value="${commodity.buyQuantity }"
@@ -107,7 +107,7 @@
 									<td class="settlement-tab2-col2">¥0.00</td>
 								</tr>
 								<tr id="abstract-line4">
-									<td class="settlement-tab2-col1">小计 ${shoppingCart.totalAmount }（ <%=size%>个项目）
+									<td class="settlement-tab2-col1">小计 ${shoppingCart.totalAmount }<br>（ <%=size%>个项目）
 									</td>
 									<td class="settlement-tab2-col2"></td>
 								</tr>
