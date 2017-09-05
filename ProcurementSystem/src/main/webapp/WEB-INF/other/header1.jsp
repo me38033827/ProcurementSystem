@@ -16,7 +16,8 @@
 <!-- CUSTOM STYLE  -->
 <link href="/ProcurementSystem/css/style.css" rel="stylesheet" />
 <!-- GOOGLE FONT -->
-<link href='http://fonts.googleapis.com/ProcurementSystem/css?family=Open+Sans'
+<link
+	href='http://fonts.googleapis.com/ProcurementSystem/css?family=Open+Sans'
 	rel='stylesheet' type='text/ProcurementSystem/css' />
 <!-- MY CSS -->
 <link href="/ProcurementSystem/css/mycss.css" rel="stylesheet" />
@@ -30,7 +31,8 @@
 <link href="/ProcurementSystem/css/supplierP.css" rel="stylesheet" />
 <link href="/ProcurementSystem/css/supplier.css" rel="stylesheet" />
 <link href="/ProcurementSystem/css/convention.css" rel="stylesheet" />
-<link href="/ProcurementSystem/css/commodityCatalog.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/commodityCatalog.css"
+	rel="stylesheet" />
 <script src="/ProcurementSystem/js/echarts.common.min.js"></script>
 <!-- CORE JQUERY  -->
 <script src="/ProcurementSystem/js/jquery.js"></script>
@@ -38,6 +40,12 @@
 <script src="/ProcurementSystem/js/bootstrap.js"></script>
 <!-- CUSTOM SCRIPTS  -->
 <script src="/ProcurementSystem/js/custom.js"></script>
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+
+
+
 
 <!-- 标题及导航栏第一行 -->
 <div class="container firstline-out" style="width: 100%; padding: 0">
@@ -55,7 +63,8 @@
 					aria-hidden="true"></span>
 			</button>
 			<button class="firstline-help">帮助</button>
-			<button class="firstline-user btn-h">用户：<%=request.getSession().getAttribute("username") %></button>
+			<button class="firstline-user btn-h">
+				用户：<%=request.getSession().getAttribute("username")%></button>
 		</div>
 	</div>
 </div>

@@ -65,7 +65,7 @@ public class BuyerCommodityCatalogController {
 		}
 		String mySelect = request.getParameter("mySelect");
 		HttpSession session = request.getSession();
-		commodityCatalog.setVersion("版本1");//暂时设置默认为版本1，之后需要修改！！！
+		commodityCatalog.setVersion("版本1");// 暂时设置默认为版本1，之后需要修改！！！
 		session.setAttribute("commodityCatalog", commodityCatalog);
 		return "downStream/commodityCatalog/commodityCatalogUpload";
 	}
@@ -76,14 +76,14 @@ public class BuyerCommodityCatalogController {
 		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";
 		HttpSession session = request.getSession();
 		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");
-		commodityCatalogService.commodityCatalogUpload(file, uploadUrl,commodityCatalog);// 保存上传的文件
-		commodityCatalog.setType("0");//设置商品目录为buyer上传
+		commodityCatalogService.commodityCatalogUpload(file, uploadUrl, commodityCatalog);// 保存上传的文件
+		commodityCatalog.setType("0");// 设置商品目录为buyer上传
 		commodityCatalogService.insertCommodityCatalog(commodityCatalog);// 持久化存储商品目录
 		System.out.println("商品目录唯一标识:" + commodityCatalog.getUniqueName());
 		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl + file.getOriginalFilename());// 解析文件，持久化存储商品
 		request.setAttribute("commodityCatalog", commodityCatalog);
 		// 获取当前上传目录内容，准备在前端显示，转向
-		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName="+commodityCatalog.getUniqueName();
+		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName=" + commodityCatalog.getUniqueName();
 	}
 
 	// 转向商品目录列表页
@@ -134,24 +134,30 @@ public class BuyerCommodityCatalogController {
 	// 在线编辑商品目录
 	@RequestMapping(value = "commodityCatalogContentEdit")
 	public String commodityCatalogContentEdit(@RequestParam(value = "uniqueName") String uniqueName, ModelMap map) {
-		/**从数据库中提取对应的商品对象*/
+		/** 从数据库中提取对应的商品对象 */
 		Commodity commodity = new Commodity();
 		commodity.setUniqueName(uniqueName);
 		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, 1);
 		Iterator<Commodity> iterator = pageParams.getData().iterator();
 		commodity = iterator.next();
-		/**获得商品的验证信息*/
-		map =commodityService.validateCommodityAndGetMessages(commodity,map);
+		/** 获得商品的验证信息 */
+		map = commodityService.validateCommodityAndGetMessages(commodity, map);
 		map.put("commodity", commodity);
 		return "downStream/commodityCatalog/commodityCatalogContentEdit";
 	}
 
-
-	// 在线修改商品目录内容
+	// 保存在线修改商品目录内容
 	@RequestMapping(value = "commodityCatalogContentModify")
 	public String commodityCatalogModify(Commodity commodity, ModelMap map) {
 		commodity.getContract().setUniqueName(commodity.getContract().getUniqueName().substring(1));
+		map = commodityService.validateCommodityAndGetMessages(commodity, map);// 获得商品验证信息
+		if (!(boolean) map.get("result")) {
+			commodity.setIsChecked("FALSE");
+		} else {
+			commodity.setIsChecked("TRUE");
+		} // 更改商品验证字段
 		commodityService.updateCommodity(commodity);
+		commodityCatalogService.validate(commodity.getCommodityCatalog().getUniqueName());
 		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName="
 				+ commodity.getCommodityCatalog().getUniqueName();// 控制器中的跳转
 	}
@@ -193,7 +199,7 @@ public class BuyerCommodityCatalogController {
 		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
 		if (shoppingCart != null) {
 			shoppingCart = shoppingCartService.updateShoppingCart(shoppingCart);// 更新购物车，将商品类填充完整
-		} 
+		}
 		session.setAttribute("shoppingCart", shoppingCart);
 		return "downStream/commodityCatalog/commodityCatalogShoppingCart";
 	}
@@ -223,9 +229,9 @@ public class BuyerCommodityCatalogController {
 	public String commodityCatalogDeleteShoppingCart(@RequestParam("commodityUniqueNames") String[] uniqueNames,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");//获得购物车
+		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");// 获得购物车
 		if (shoppingCart != null) {
-			shoppingCartService.commodityCatalogDeleteShoppingCart(uniqueNames, shoppingCart);//删除商品
+			shoppingCartService.commodityCatalogDeleteShoppingCart(uniqueNames, shoppingCart);// 删除商品
 		}
 		return "redirect:/commodityCatalog/commodityCatalogShoppingCart";
 	}
@@ -246,4 +252,5 @@ public class BuyerCommodityCatalogController {
 		}
 		return "redirect:/commodityCatalog/commodityCatalogShoppingCart";
 	}
+	
 }

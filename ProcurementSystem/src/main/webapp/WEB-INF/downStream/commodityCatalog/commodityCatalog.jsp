@@ -123,11 +123,15 @@
 									name="commodityUniqueNames" value="${commodity.uniqueName }" /><label
 									for="${commodity.uniqueName }"></label>
 							</div>
+
 							<div class="left container-thumbnail">
 								<img alt=""
 									src="/ProcurementSystem/images/default-thumbnail.png">
 							</div>
 							<div class="item-whole">
+								<div>
+									<a>${commodity.shortName }</a>
+								</div>
 								<a class="item-content-blue" href=""></a><br> <a
 									class="item-content-grey">供应商：</a> <a class="item-content-blue">${commodity.supplier.name}</a><br>
 								<a class="item-content-grey">供应商部件号：</a> <a

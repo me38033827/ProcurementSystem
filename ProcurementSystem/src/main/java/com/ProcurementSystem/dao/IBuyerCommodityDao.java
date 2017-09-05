@@ -13,4 +13,6 @@ public interface IBuyerCommodityDao {
 	public Boolean updateCommodity(Commodity commodity);//更新商品信息
 
 	public int getRowCount();//查询总行数，分页使用
+	
+	public List<String> getAllCommoditiesValidateStateByCatalog(String uniqueName);//获得对应商品目录的商品验证状态，用于修改商品目录的验证状态
 }

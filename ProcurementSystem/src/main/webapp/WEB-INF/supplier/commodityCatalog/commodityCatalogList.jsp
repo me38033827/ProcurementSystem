@@ -55,7 +55,7 @@
 									<td width="10%">${commodityCatalog.creator }</td>
 									<td width="20%">${commodityCatalog.createDate }</td>
 									<td width="10%" style="color: #26C533">${commodityCatalog.isActivated }</td>
-									<td width="20%">2016年11月7日</td>
+									<td width="20%">2017年9月2日</td>
 								</tr>
 							</c:forEach>
 						</table>

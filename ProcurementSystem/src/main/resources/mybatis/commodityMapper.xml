@@ -36,7 +36,8 @@
 		is_checked)
 		values(
 		#{
-		supplier.uniqueName },
+		supplier.uniqueName
+		},
 		#{
 		contract.uniqueName },
 		#{ unitPrice },
@@ -78,41 +79,57 @@
 	</insert>
 
 
-	<select id="searchCommodity" parameterType="map"
-		resultMap="commodityMap">
-		select 
+	<select id="searchCommodity" parameterType="map" resultMap="commodityMap">
+		select
 		c.unique_name as uniqueName,
 		c.company_code as companyCode,
-		c.gcm_email_address as gcmEmailAddress,
-		c.supplier_part_id as supplierPartId,
-		c.supplier_part_auxiliary_id as supplierPartAuxiliaryId,
-		c.spsc_code as spscCode,
-		c.manufacturer_name as manufacturerName,
+		c.gcm_email_address as
+		gcmEmailAddress,
+		c.supplier_part_id as
+		supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.spsc_code as
+		spscCode,
+		c.manufacturer_name as
+		manufacturerName,
 		c.manufacturer_part_id as manufacturerPartId,
-		c.manufacturer_url as manufacturerUrl,
-		c.is_hazardous_materials as isHazardousMaterials,
+		c.manufacturer_url as
+		manufacturerUrl,
+		c.is_hazardous_materials as
+		isHazardousMaterials,
 		c.is_green as isGreen,
-		c.expiration_date as expirationDate,
+		c.expiration_date as
+		expirationDate,
 		c.effective_date as effectiveDate,
-		c.item_description as itemDescription,
+		c.item_description as
+		itemDescription,
 		c.short_name as shortName,
 		c.unit_price as unitPrice,
 		c.unit_of_measure as unitOfMeasure,
 		c.is_checked as isChecked,
 		cc.unique_name as commodityCatalogUniqueName,
-		cc.name as commodityCatalogName,
+		cc.name as
+		commodityCatalogName,
 		con.unique_name as contractUniqueName,
-		con.name as contractName,
+		con.name as
+		contractName,
 		sup.unique_name as supplieruniqueName,
-		sup.name as supplierName
-		from ((commodity c left join contract con on c.contract_unique_name = con.unique_name) 
-		left join supplier sup on c.supplier_unique_name = sup.unique_name)
-		left join commodity_catalog cc on  c.commodity_catalog_unique_name = cc.unique_name
+		sup.name as
+		supplierName
+		from ((commodity c left join contract con on
+		c.contract_unique_name = con.unique_name)
+		left join supplier sup on
+		c.supplier_unique_name = sup.unique_name)
+		left
+		join commodity_catalog cc
+		on c.commodity_catalog_unique_name =
+		cc.unique_name
 		where 1 = 1
 		<if test="commodity.uniqueName != '' and commodity.uniqueName != null">
-		  and c.unique_name = #{commodity.uniqueName}
+			and c.unique_name = #{commodity.uniqueName}
 		</if>
-		<if test="offset != null and size != null" >
+		<if test="offset != null and size != null">
 			limit #{offset},#{size}
 		</if>
 	</select>
@@ -136,47 +153,67 @@
 		<result property="unitPrice" column="unitPrice" />
 		<result property="unitOfMeasure" column="unitOfMeasure" />
 		<result property="isChecked" column="isChecked" />
-		<association property="contract" javaType="com.ProcurementSystem.entity.Contract">
+		<association property="contract"
+			javaType="com.ProcurementSystem.entity.Contract">
 			<id property="uniqueName" column="contractUniqueName" />
 			<result property="name" column="contractName" />
 		</association>
-		<association property="supplier" javaType="com.ProcurementSystem.entity.Supplier">
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
 			<id property="uniqueName" column="supplierUniqueName" />
 			<result property="name" column="supplierName" />
 		</association>
-		<association property="commodityCatalog" javaType="com.ProcurementSystem.entity.CommodityCatalog">
+		<association property="commodityCatalog"
+			javaType="com.ProcurementSystem.entity.CommodityCatalog">
 			<id property="uniqueName" column="commodityCatalogUniqueName" />
 			<result property="name" column="commodityCatalogName" />
 		</association>
 	</resultMap>
-	
-	
-	
-	<update id="updateCommodity" parameterType="com.ProcurementSystem.entity.Commodity" >
-		update commodity 
-		set 
-			company_code = #{companyCode},
-			contract_unique_name = #{contract.uniqueName},
-			gcm_email_address = #{gcmEmailAddress},
-			supplier_part_id = #{supplierPartId},
-			supplier_part_auxiliary_id = #{supplierPartAuxiliaryId},
-			manufacturer_url = #{manufacturerUrl},
-			manufacturer_name = #{manufacturerName},
-			manufacturer_part_id = #{manufacturerPartId},
-			is_hazardous_materials = #{isHazardousMaterials},
-			is_green = #{isGreen},
-			expiration_date = #{expirationDate},
-			effective_date = #{effectiveDate},
-			item_description = #{itemDescription},
-			short_name = #{shortName}
+
+
+
+	<update id="updateCommodity" parameterType="com.ProcurementSystem.entity.Commodity">
+		update commodity
+		set
+		company_code = #{companyCode},
+		contract_unique_name
+		= #{contract.uniqueName},
+		gcm_email_address = #{gcmEmailAddress},
+		supplier_part_id = #{supplierPartId},
+		supplier_part_auxiliary_id =
+		#{supplierPartAuxiliaryId},
+		manufacturer_url = #{manufacturerUrl},
+		manufacturer_name = #{manufacturerName},
+		manufacturer_part_id =
+		#{manufacturerPartId},
+		is_hazardous_materials =
+		#{isHazardousMaterials},
+		is_green = #{isGreen},
+		expiration_date =
+		#{expirationDate},
+		effective_date = #{effectiveDate},
+		item_description =
+		#{itemDescription},
+		short_name = #{shortName},
+		is_checked = #{isChecked}
 		where 1=1
 		<if test="uniqueName!='' and uniqueName!=null">
 			and unique_name = #{uniqueName}
 		</if>
 	</update>
-	
-	
-	<select id = "getRowCount" resultType="int">
-		select count(*) from commodity;
+
+
+	<select id="getRowCount" resultType="int">
+		select count(*) from
+		commodity;
 	</select>
+
+
+
+
+	<select id="getAllCommoditiesValidateStateByCatalog" resultType="String">
+		select is_checked from commodity
+		where commodity_catalog_unique_name = #{uniqueName}
+	</select>
+
 </mapper>

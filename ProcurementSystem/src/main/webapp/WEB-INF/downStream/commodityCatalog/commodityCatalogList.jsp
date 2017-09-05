@@ -64,12 +64,13 @@
 					<table class="table table-hover">
 						<tr class="standard-row1">
 							<th width="5%"></th>
+							<th width="5%"></th>
 							<th width="10%">源供应商</th>
 							<th width="15%">目录订阅名称</th>
 							<th width="10%">版本</th>
 							<th width="10%">加载模式</th>
 							<th width="10%">内容摘要</th>
-							<th width="5%">预览</th>
+
 							<th width="10%">状态</th>
 							<th width="10%">项目数量</th>
 							<th width="15%">上次修改时间</th>
@@ -83,18 +84,23 @@
 									<td width="5%"><input type="checkbox"
 										id=${commodityCatalog.uniqueName } class="chk" /><label
 										for=${commodityCatalog.uniqueName}></label></td>
+									<td width="5%"><c:if
+											test="${commodityCatalog.type == '0'}">
+											<i class="fa fa-sun-o" style="color: #FFA500"></i>
+										</c:if> <c:if test="${commodityCatalog.type == '1' }">
+											<i class="fa fa-tint" style="color: #87CEFA"></i>
+										</c:if></td>
 									<td width="10%"><a> ${commodityCatalog.supplier.name}
 									</a></td>
 									<td width="15%"><a>${commodityCatalog.name } </a></td>
 									<td width="10%"><a
 										href="showCommodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">${commodityCatalog.version }
 											<c:if test="${commodityCatalog.isActivated =='验证错误' }">
-												<span class="error-message">!!!</span>
+												<span class="error-message"><strong>!!!</strong></span>
 											</c:if>
 									</a></td>
-									<td width="10%">${commodityCatalog.loadMode }</td>
+									<td width="10%">完整</td>
 									<td width="10%">${commodityCatalog.contentAbstract }</td>
-									<td width="5%">${commodityCatalog.preview}</td>
 									<td width="10%"><a> ${commodityCatalog.isActivated } </a></td>
 									<td width="10%"><a>${commodityCatalog.itemCount}</a></td>
 									<td width="25%">${commodityCatalog.lastModifyDate }</td>
@@ -113,7 +119,6 @@
 						<button class="btn-w">删除预览</button>
 						<button class="btn-w">强行批准</button>
 					</div>
-
 				</div>
 			</div>
 		</div>

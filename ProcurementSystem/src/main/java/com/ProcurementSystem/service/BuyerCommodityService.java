@@ -66,37 +66,44 @@ public class BuyerCommodityService {
 	public ModelMap validateCommodityAndGetMessages(Commodity commodity, ModelMap map) {// 验证商品的属性,并获取错误信息
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		Validator validator = factory.getValidator();
+		boolean result = true;
 		String message = "";
 		try {
 			message = validator.validateProperty(commodity, "gcmEmailAddress").iterator().next().getMessage();
+			result = false;
 		} catch (Exception e) {//如果属性验证正确会抛出异常错误
 			message = "";
 		}
 		map.put("Error_gcmEmailAddress", message);
 		try {
 			message = validator.validateProperty(commodity, "effectiveDate").iterator().next().getMessage();
+			result = false;
 		} catch (Exception e) {
 			message = "";
 		}
 		map.put("Error_effectiveDate", message);
 		try {
 			message = validator.validateProperty(commodity, "expirationDate").iterator().next().getMessage();
+			result = false;
 		} catch (Exception e) {
 			message = "";
 		}
 		map.put("Error_expirationDate", message);
 		try {
 			message = validator.validateProperty(commodity, "isHazardousMaterials").iterator().next().getMessage();
+			result = false;
 		} catch (Exception e) {
 			message = "";
 		}
 		map.put("Error_isHazardousMaterials", message);
 		try {
 			message = validator.validateProperty(commodity, "isGreen").iterator().next().getMessage();
+			result = false;
 		} catch (Exception e) {
 			message = "";
 		}
 		map.put("Error_isGreen", message);
+		map.put("result", result);
 		return map;
 	}
 }

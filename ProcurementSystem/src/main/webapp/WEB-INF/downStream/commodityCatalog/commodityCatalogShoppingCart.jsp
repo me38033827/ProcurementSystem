@@ -7,6 +7,7 @@
 <%@include file="../../other/header1.jsp"%>
 <%@include file="../../other/header2.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -39,7 +40,8 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<td colspan="10"><a id="settlement-line2-left-left">总共<%=size %>个项目</a></td>
+												<td colspan="10"><a id="settlement-line2-left-left">总共<%=size%>个项目
+												</a></td>
 												<td colspan="2"><a id="settlement-line2-left-right">显示详细信息</a></td>
 											</tr>
 										</thead>
@@ -60,8 +62,10 @@
 										<c:forEach items="${sessionScope.shoppingCart.commodities}"
 											var="commodity" varStatus="status">
 											<tr>
-												<td><input type="checkbox" id="${commodity.uniqueName }" class="chk"
-													name="commodityUniqueNames" value="${commodity.uniqueName }" /><label
+												<td><input type="checkbox"
+													id="${commodity.uniqueName }" class="chk"
+													name="commodityUniqueNames"
+													value="${commodity.uniqueName }" /><label
 													for="${commodity.uniqueName }"></label></td>
 												<td>${status.count}</td>
 												<td>${commodity.shortName }</td>
@@ -75,13 +79,16 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td>${commodity.unitPrice * commodity.buyQuantity}</td>
+												<td><fmt:formatNumber
+														value="${commodity.unitPrice * commodity.buyQuantity}"
+														pattern="#,#00.00#" /></td>
 											</tr>
 										</c:forEach>
 										<tr>
 											<td colspan="2"><button class="btn-w" type="submit">删除</button></td>
 											<td colspan="8"></td>
-											<td colspan="2"><button class="btn-w right" type="submit" formaction="updateShoppingCartBuyQuantity">更新总计</button></td>
+											<td colspan="2"><button class="btn-w right"
+													type="submit" formaction="updateShoppingCartBuyQuantity">更新总计</button></td>
 										</tr>
 									</table>
 								</form>
@@ -99,7 +106,9 @@
 									var="commodity" varStatus="status">
 									<tr id="abstract-line2">
 										<td class="settlement-tab2-col1">${commodity.shortName}</td>
-										<td class="settlement-tab2-col2"><a></a></td>
+										<td class="settlement-tab2-col2">￥<fmt:formatNumber
+												value="${commodity.unitPrice * commodity.buyQuantity}"
+												pattern="#,#00.00#" /></td>
 									</tr>
 								</c:forEach>
 								<tr id="abstract-line3">
@@ -107,9 +116,10 @@
 									<td class="settlement-tab2-col2">¥0.00</td>
 								</tr>
 								<tr id="abstract-line4">
-									<td class="settlement-tab2-col1">小计 ${shoppingCart.totalAmount }<br>（ <%=size%>个项目）
+									<td class="settlement-tab2-col1">小计（<%=size%>个项目）：
 									</td>
-									<td class="settlement-tab2-col2"></td>
+									<td class="settlement-tab2-col2"><fmt:formatNumber
+											value="${shoppingCart.totalAmount }" pattern="￥#,#00.00#" /></td>
 								</tr>
 							</table>
 						</div>
@@ -129,13 +139,13 @@
 		</div>
 	</div>
 	<script>
-	/* function delete(){
-		var url="commodityCatalogDeleteShoppingCart?";
-		var commodities = document.getElementByName("commodity");
-		for(var i=0;i<commodities.length;i++){
-			if(commodities[i].checked) url+=""
-		}
-	}	 */
+		/* function delete(){
+			var url="commodityCatalogDeleteShoppingCart?";
+			var commodities = document.getElementByName("commodity");
+			for(var i=0;i<commodities.length;i++){
+				if(commodities[i].checked) url+=""
+			}
+		}	 */
 	</script>
 </body>
 </html>

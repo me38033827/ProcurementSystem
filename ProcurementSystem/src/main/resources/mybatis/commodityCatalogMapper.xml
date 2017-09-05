@@ -20,7 +20,8 @@
 		cc.is_activated as isActivated,
 		cc.item_count as
 		itemCount,
-		cc.last_modify_date as lastModifyDate
+		cc.last_modify_date as lastModifyDate,
+		cc.type 
 		from commodity_catalog
 		cc left join supplier s
 		on cc.supplier_unique_name = s.unique_name;
@@ -35,6 +36,7 @@
 		<result property="isActivated" column="isActivated" />
 		<result property="state" column="state" />
 		<result property="lastModifyDate" column="lastModifyDate" />
+		<result property="type" column="type" />
 		<association property="supplier"
 			javaType="com.ProcurementSystem.entity.Supplier">
 			<id property="uniqueName" column="supplierUniqueName" />
