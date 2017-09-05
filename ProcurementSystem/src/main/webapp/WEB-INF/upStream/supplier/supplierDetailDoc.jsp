@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>供应商详情－文档</title>
-<%@include file="../../other/header1.jsp"%>
+<%@include file="../../other/header1return.jsp"%>
 <script>
 	function folder(){
 		$("#triangle-right").hide();
@@ -116,6 +116,10 @@
 		<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
 	<%@ include file="../../other/footer.jsp"%>
-
+		<script>
+			function back(){
+				location.href="supplierSearch?action=back";
+			}
+		</script>
 </body>
 </html>

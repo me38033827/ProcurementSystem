@@ -17,19 +17,38 @@ public class BuyerSupplierController {
 	
 	@Resource
 	SupplierService service;
-	//供应商搜索重置页面
-	@RequestMapping(value = "supplierInitial")
-	public String supplierInitial(HttpServletRequest request){
-		System.out.println("---Controller: supplierInitial---");
-		request.setAttribute("num", "-1");
-		return "upStream/supplier/supplierSearchingR";
-	}
 	
 	//供应商搜索功能页面
 	@RequestMapping(value = "supplierSearch")
 	public String supplierSearch(HttpServletRequest request){
 		System.out.println("---Controller: supplierSearch---");
+		String action = request.getParameter("action");
+		System.out.println("action is " + action);
+		if(action.equals("reset")){
+			request.getSession().setAttribute("contentSession","");
+			request.setAttribute("num", "-1");
+			return "upStream/supplier/supplierSearching";
+		}
 		String content = request.getParameter("content");
+		if(action.equals("initial")){
+			request.getSession().setAttribute("contentSession", content);
+			System.out.println(content);
+			if(content.equals("使用名称、标识符或任何其他词语搜索")){
+				request.setAttribute("num", "-1");
+				return "upStream/supplier/supplierSearching";
+			}
+		}
+		
+		if(action.equals("back")){
+			content=(String) request.getSession().getAttribute("contentSession");
+		}
+
+		if(content==null){
+			request.setAttribute("num", "-1");
+			return "upStream/supplier/supplierSearching";
+		}
+		
+		// search
 		System.out.println("Search for content: " + content);
 		if(content.equals("使用名称、标识符或任何其他词语搜索")){
 			List<Supplier> suppliers = service.searchAllSupplier();
@@ -44,8 +63,8 @@ public class BuyerSupplierController {
 			System.out.println("共有"+Integer.toString(suppliers.size())+"个搜索结果");
 		}
 		
-		
-		return "upStream/supplier/supplierSearchingR";
+		request.getSession().setAttribute("contentSession", content);
+		return "upStream/supplier/supplierSearching";
 	}
 	
 	//P2P显示供应商概要
@@ -189,7 +208,7 @@ public class BuyerSupplierController {
 		
 		System.out.println("----------------------------------------------------");
 
-		return "redirect:supplierInitial";
+		return "redirect:supplierSearch?action=back";
 	}
 	
 

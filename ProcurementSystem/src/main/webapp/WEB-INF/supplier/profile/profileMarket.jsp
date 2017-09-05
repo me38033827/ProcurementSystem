@@ -5,11 +5,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>公司概要－营销</title>
-	<link href="../js/editor/themes/simple/simple.css"/>
+	<link href="../../js/editor/themes/simple/simple.css"/>
 	<%@include file="../../other/supplierHeader1.jsp"%>
-	<script charset="utf-8" src="../js/editor/kindeditor-all.js"></script>
-	<script charset="utf-8" src="../js/editor/kindeditor-all-min.js"></script>
-	<script charset="utf-8" src="../js/editor/lang/zh-CN.js"></script>
+	<script charset="utf-8" src="../../js/editor/kindeditor-all.js"></script>
+	<script charset="utf-8" src="../../js/editor/kindeditor-all-min.js"></script>
+	<script charset="utf-8" src="../../js/editor/lang/zh-CN.js"></script>
 	
 	<script>
 		var editor;

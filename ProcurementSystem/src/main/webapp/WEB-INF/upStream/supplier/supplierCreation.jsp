@@ -17,8 +17,8 @@
 					<div class="standard-title">
 						<div class="standard-title-main">创建新的供应商</div> 
 						<div class="standard-title-r">
-							<button class="btn-b">确定</button>
-							<button class="btn-w">取消</button>
+							<button form="supplierCreation" class="btn-b">确定</button>
+							<button class="btn-w" onclick="window.location.href='supplierSearch?action=back'">取消</button>
 						</div>
 					</div>
 					
@@ -29,7 +29,7 @@
 					<div class="adjust-10"></div>
 					
 					<div class="standard-subtitle">组织概要</div>
-					<form action="supplierAnalyze" method="post">
+					<form id="supplierCreation" action="supplierAnalyze" method="post">
 						<div class="row">
 							<div class="col-md-5">
 								<table class="fulltab" style="margin-left:80px;">
@@ -362,19 +362,20 @@
 								</tr>
 							</table>
 						</div>
+					</form>
 						<div>
 							<table class="table table-hover">
 								<tr class="standard-row3">
 									<td colspan="2">
 										<div align="right">
-											<input type="submit" class="btn-b" value="确定"/>
-											<input type="button" class="btn-w" value="取消"/>
+											<button form="supplierCreation" class="btn-b">确定</button>
+											<button class="btn-w" onclick="window.location.href='supplierSearch?action=back'">取消</button>
 										</div>
 									</td>
 								</tr>
 							</table>
 						</div>
-					</form>
+					
 					
 				<div class="theme-popover">
 					<div class="popover-container">

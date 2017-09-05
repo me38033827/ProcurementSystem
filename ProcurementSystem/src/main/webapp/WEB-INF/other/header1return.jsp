@@ -16,8 +16,7 @@
 <!-- CUSTOM STYLE  -->
 <link href="/ProcurementSystem/css/style.css" rel="stylesheet" />
 <!-- GOOGLE FONT -->
-<link
-	href='http://fonts.googleapis.com/ProcurementSystem/css?family=Open+Sans'
+<link href='http://fonts.googleapis.com/ProcurementSystem/css?family=Open+Sans'
 	rel='stylesheet' type='text/ProcurementSystem/css' />
 <!-- MY CSS -->
 <link href="/ProcurementSystem/css/mycss.css" rel="stylesheet" />
@@ -31,8 +30,7 @@
 <link href="/ProcurementSystem/css/supplierP.css" rel="stylesheet" />
 <link href="/ProcurementSystem/css/supplier.css" rel="stylesheet" />
 <link href="/ProcurementSystem/css/convention.css" rel="stylesheet" />
-<link href="/ProcurementSystem/css/commodityCatalog.css"
-	rel="stylesheet" />
+<link href="/ProcurementSystem/css/commodityCatalog.css" rel="stylesheet" />
 <script src="/ProcurementSystem/js/echarts.common.min.js"></script>
 <!-- CORE JQUERY  -->
 <script src="/ProcurementSystem/js/jquery.js"></script>
@@ -40,17 +38,17 @@
 <script src="/ProcurementSystem/js/bootstrap.js"></script>
 <!-- CUSTOM SCRIPTS  -->
 <script src="/ProcurementSystem/js/custom.js"></script>
-<link
-	href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet">
-
-
-
 
 <!-- 标题及导航栏第一行 -->
 <div class="container firstline-out" style="width: 100%; padding: 0">
 	<div class="navbar navbar-inverse set-radius-zero firstline">
 		<a class="left page-name">LOGO</a>
+
+		<button style="color:white; padding:0; margin-left:15px;margin-top:15px;background-color:transparent; border:0; font-size:12px;" onclick="return back();">
+		<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+		转到数据中心</button>
+
 		<%@ include file="header1right.jsp"%>
+		
 	</div>
 </div>

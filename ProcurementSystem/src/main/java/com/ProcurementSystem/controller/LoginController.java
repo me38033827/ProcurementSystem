@@ -69,4 +69,9 @@ public class LoginController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "logout")
+	public String logout(HttpServletRequest request){
+		return "redirect:login";
+	}
+	
 }
