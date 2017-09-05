@@ -31,7 +31,7 @@
 						</span>&nbsp;&nbsp; > &nbsp;&nbsp;<span> <a
 							href="commodityCatalogCompare">步骤2.分析数据</a>
 						</span>&nbsp;&nbsp; >&nbsp;&nbsp; <span> <a
-							href="commodityCatalogActivate">步骤3.生效</a>
+							href="commodityCatalogActivate?uniqueName=${commodityCatalog.uniqueName }">步骤3.生效</a>
 						</span>
 					</div>
 

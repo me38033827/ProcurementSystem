@@ -210,8 +210,8 @@ public class BuyerCommodityCatalogService {
 	public List<CommodityCatalog> searchCommodityCatalog(CommodityCatalog commodityCatalog) {
 		return commodityCatalogDao.searchCommodityCatalog(commodityCatalog);
 	}
-	//验证目录
-	public void validate(String uniqueName) {//获得对应商品的验证状态，进行遍历，修改商品目录的状态
+	//验证目录,true为已验证，false为验证错误
+	public boolean validate(String uniqueName) {//获得对应商品的验证状态，进行遍历，修改商品目录的状态
 		List<String> list = commodityDao.getAllCommoditiesValidateStateByCatalog(uniqueName);
 		boolean flag = true;
 		for(String str : list){
@@ -222,9 +222,15 @@ public class BuyerCommodityCatalogService {
 		}
 		CommodityCatalog commodityCatalog = new CommodityCatalog();
 		commodityCatalog.setUniqueName(uniqueName);
-		if(flag) commodityCatalog.setIsActivated("已验证");
-		else commodityCatalog.setIsActivated("验证错误");
+		if(flag) {
+			commodityCatalog.setIsActivated("已验证");
+		}
+		else {
+			commodityCatalog.setIsActivated("验证错误");
+		}
 		setIsActivated(commodityCatalog);//修改验证状态
+		if(flag) return true;
+		return false;
 	}
 
 

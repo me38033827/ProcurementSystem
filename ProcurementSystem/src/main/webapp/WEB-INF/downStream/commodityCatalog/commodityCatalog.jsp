@@ -130,7 +130,8 @@
 							</div>
 							<div class="item-whole">
 								<div>
-									<a>${commodity.shortName }</a>
+									<a
+										href="/ProcurementSystem/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }">${commodity.shortName }</a>
 								</div>
 								<a class="item-content-blue" href=""></a><br> <a
 									class="item-content-grey">供应商：</a> <a class="item-content-blue">${commodity.supplier.name}</a><br>
@@ -151,7 +152,7 @@
 									class="item-price-black">数量： <input class="item-quantity"
 									id="quantity_${commodity.uniqueName }" value="1" />
 									<button class="item-add"
-										onclick="addShoppingCart(${commodity.uniqueName });">添加到购物车</button></a>
+										onclick="add(${commodity.uniqueName});">添加到购物车</button></a>
 								<a class="item-price-blue">添加到收藏夹</a>
 							</div>
 						</div>
@@ -199,34 +200,9 @@ if(currPage  == totalPages) {
 }
 $("#page"+currPage).attr("class","btn-page-choose");
 
-function createButtonPage(i){//i表示页号
-	var button = document.createElement("button")//创建button结点
-	var text = document.createTextNode(""+i);
-	button.appendChild(text);
-	button.id="page"+i;//设置button属性
-	button.setAttribute("class","btn-page");
-	button.setAttribute("onclick","window.location.href='commodityCatalog?currPage="+i+"'");
-	pageList.appendChild(button);//添加到pageList后面
-}
-function addShoppingCart(uniqueName){
-  //window.location.href="commodityCatalogAddShoppingCart?uniqueName="+$("#uniqueName_"+uniqueName).val()+ "&" + "quantity="+$("#quantity_"+uniqueName).val();
-	 $.ajax({  
-		data : 
-			{
-				"uniqueName" : $("#uniqueName_"+uniqueName).val(),
-				"quantity" : $("#quantity_"+uniqueName).val()
-			},  
-	    type:"GET",  
-	    dataType: 'json',  
-	    url:"commodityCatalogAddShoppingCart",  
-	    error:function(data){  
-	            alert("出错了！！:"+data.size);  
-	        },  
-	    success:function(data){  
-	      /*  alert("success:"+data);   */
-	       $("#shoppingCartSize").html(data) ;  
-	    }  
-	        });  
+function add(uniqueName){
+	var quantity = $("#quantity_"+uniqueName).val();
+	addShoppingCart(uniqueName,quantity);
 }
 </script>
 </body>

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import javax.annotation.Resource;
+import javax.jws.WebParam.Mode;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -170,8 +171,41 @@ public class BuyerCommodityCatalogController {
 
 	// 转向商品目录激活页
 	@RequestMapping(value = "commodityCatalogActivate")
-	public String commodityCatalogActivate() {
+	public String commodityCatalogActivate(@RequestParam(value = "uniqueName") String uniqueName, ModelMap map) {
+		CommodityCatalog commodityCatalog = new CommodityCatalog();
+		commodityCatalog.setUniqueName(uniqueName);
+		List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
+		commodityCatalog = commodityCatalogs.get(0);
+		map.put("commodityCatalog", commodityCatalog);
 		return "downStream/commodityCatalog/commodityCatalogActivate";
+	}
+
+	// 激活商品目录，并持久化存储
+	@RequestMapping(value = "commodityCatalogActivateSave")
+	public String commodityCatalogActivateSave(@RequestParam(value = "uniqueName") String uniqueName) {
+		boolean isValidated = commodityCatalogService.validate(uniqueName);
+		if (isValidated) {
+			CommodityCatalog commodityCatalog = new CommodityCatalog();
+			commodityCatalog.setUniqueName(uniqueName);
+			commodityCatalog.setIsActivated("已激活");
+			commodityCatalogService.setIsActivated(commodityCatalog);
+		}
+		return "redirect: /ProcurementSystem/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
+	}
+
+	// 停用商品目录，并惊醒持久化存储
+	@RequestMapping(value = "commodityCatalogStopSave")
+	public String commodityCatalogStopSave(@RequestParam(value = "uniqueName") String uniqueName) {
+		CommodityCatalog commodityCatalog = new CommodityCatalog();
+		commodityCatalog.setUniqueName(uniqueName);
+		List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
+		commodityCatalog = commodityCatalogs.get(0);
+		if (commodityCatalog.getIsActivated().equals("已激活")){
+			commodityCatalog.setUniqueName(uniqueName);
+			commodityCatalog.setIsActivated("已停用");
+			commodityCatalogService.setIsActivated(commodityCatalog);
+		}
+		return "redirect: /ProcurementSystem/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
 	}
 
 	// 转向商品目录主页
@@ -252,5 +286,18 @@ public class BuyerCommodityCatalogController {
 		}
 		return "redirect:/commodityCatalog/commodityCatalogShoppingCart";
 	}
-	
+
+	// 转向商品信息详情页
+	@RequestMapping(value = "commodityInfo")
+	public String commodityInfo(@RequestParam(value = "uniqueName") String uniqueName,
+			@RequestParam(value = "currPage", required = false) String currPage, ModelMap map) {
+		Commodity commodity = new Commodity();
+		commodity.setUniqueName(uniqueName);
+		PageParams<Commodity> commodities = commodityService.searchCommodity(commodity, 1);
+		commodity = commodities.getData().get(0);
+		map.put("commodity", commodity);
+		map.put("currPage", currPage);
+		return "downStream/commodityCatalog/commodityInfo";
+	}
+
 }

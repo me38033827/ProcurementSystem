@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../../other/header1.jsp"%>
 <%@include file="../..//other/header2.jsp"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 </head>
 <body>
 	<!-- 第一行 -->
@@ -25,10 +25,13 @@
 
 					</div>
 					<div class="margin-bottom">
-						<span> <a href="#">步骤1.清理数据</a>
-						</span> &nbsp;&nbsp;> &nbsp;&nbsp;<span> <a href="commodityCatalogCompare">步骤2.分析数据</a>
+						<span> <a
+							href="commodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">步骤1.清理数据</a>
+						</span> &nbsp;&nbsp;> &nbsp;&nbsp;<span> <a
+							href="commodityCatalogCompare">步骤2.分析数据</a>
 						</span> &nbsp;&nbsp;> &nbsp;&nbsp;<span
-							class="caution-div container-text border-blue"> <a href="#">步骤3.生效</a>
+							class="caution-div container-text border-blue"> <a
+							href="#">步骤3.生效</a>
 						</span>
 					</div>
 
@@ -45,17 +48,47 @@
 						<div>
 							<strong>激活目录</strong>
 						</div>
-						<div>
-							不能激活此目录，因为它包含错误或者需要重新验证。必须首先更正所有错误，然后才能激活目录。<br>
-						</div>
-						<button class="btn-g">激活</button>
-						<button class="btn-g">重建</button>
+						<c:if test="${commodityCatalog.isActivated  == '验证错误'}">
+							<div>
+								不能激活此目录，因为它包含错误或者需要重新验证。必须首先更正所有错误，然后才能激活目录。<br>
+							</div>
+							<button class="btn-g">激活</button>
+							<button class="btn-g">重建</button>
+						</c:if>
+						<c:if
+							test="${commodityCatalog.isActivated  == '已验证' || commodityCatalog.isActivated  == '已停用'}">
+							<button class="btn-w"
+								onclick="window.location.href='commodityCatalogActivateSave?uniqueName=${commodityCatalog.uniqueName}'">激活</button>
+							<button class="btn-g">重建</button>
+						</c:if>
+						<c:if test="${commodityCatalog.isActivated  == '已激活'}">
+							<div>
+								此目录已激活，或当前正在激活，或当前正在进行预览。<br>
+							</div>
+							<button class="btn-g">激活</button>
+							<button class="btn-w">重建</button>
+						</c:if>
+
 					</div>
 					<div class="margin-bottom border-bottom-grey">
-					<div><strong>停用目录</strong></div>
-					<div>不能停用此目录，因为它尚未激活。<br></div>
-					<button class="btn-g">停用</button>
-					<br><br>
+						<div>
+							<strong>停用目录</strong>
+						</div>
+						<c:if test="${commodityCatalog.isActivated  != '已激活'}">
+							<div>
+								不能停用此目录，因为它尚未激活。<br>
+							</div>
+							<button class="btn-g">停用</button>
+						</c:if>
+
+						<c:if test="${commodityCatalog.isActivated  == '已激活'}">
+							<div>
+								停用目录后，用户不能搜索和订阅目录中列出的内容。这样，该订阅的所有活动目录都将被停用。只有在目录是增量目录时，一个特定的订阅才能存在多个活动目录。<br>
+							</div>
+							<button class="btn-w"
+								onclick="window.location.href='commodityCatalogStopSave?uniqueName=${commodityCatalog.uniqueName}'">停用</button>
+						</c:if>
+						<br> <br>
 					</div>
 					<div class="right">
 						<button class="btn-w"
