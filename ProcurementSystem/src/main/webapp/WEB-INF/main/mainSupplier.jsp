@@ -5,17 +5,6 @@
 <head>
 <title></title>
 <%@include file="../other/header1.jsp"%>
-<!-- <script>
-	function checkSearchContent(){
-		var content = $("#content").val();
-		if(content=="使用名称、标识符或任何其他词语搜索"){
-			alert(1);
-			window.location.href="/ProcurementSystem/buyer/supplier/supplierInitial";
-		}else{
-			location.href="supplier/supplierSearch";
-		}
-	}
-</script> -->
 </head>
 <!-- 页面整体宽度：1320px -->
 <body class="a-dashbrd-page-bg">
@@ -46,8 +35,8 @@
 			</div>
 			<!-- 第三行搜索框 -->
 			<div style="position: relative; left: 20px;">
-				<form method="post" action="supplier/supplierInitial">
-				<input type="text" id="content" class="inline-b border-g left col-md-4"
+				<form method="post" action="supplier/supplierSearch?action=initial">
+				<input type="text" name="content" class="inline-b border-g left col-md-4"
 					value="使用名称、标识符或任何其他词语搜索"
 					onfocus="if(this.value=='使用名称、标识符或任何其他词语搜索') this.value=''"
 					onblur="if(this.value=='')this.value='使用名称、标识符或任何其他词语搜索' "

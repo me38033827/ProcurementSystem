@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>供应商详情－任务</title>
-<%@include file="../../other/header1.jsp"%>
+<%@include file="../../other/header1return.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -166,6 +166,10 @@
 		<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
 	<%@ include file="../../other/footer.jsp"%>
-
+		<script>
+			function back(){
+				location.href="supplierSearch?action=back";
+			}
+		</script>
 </body>
 </html>

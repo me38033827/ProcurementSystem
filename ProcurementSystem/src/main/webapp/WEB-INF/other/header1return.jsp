@@ -44,6 +44,11 @@
 	<div class="navbar navbar-inverse set-radius-zero firstline">
 		<a class="left page-name">LOGO</a>
 
+		<button style="color:white; padding:0; margin-left:15px;margin-top:15px;background-color:transparent; border:0; font-size:12px;" onclick="return back();">
+		<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+		转到数据中心</button>
+
 		<%@ include file="header1right.jsp"%>
+		
 	</div>
 </div>

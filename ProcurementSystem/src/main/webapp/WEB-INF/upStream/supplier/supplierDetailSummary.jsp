@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<%@include file="../../other/header1.jsp"%>
+<%@include file="../../other/header1return.jsp"%>
 <title>供应商详情－概述</title>
 </head>
 <!-- 页面整体宽度：1320px -->
@@ -203,6 +203,10 @@
 		<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
 	<%@ include file="../../other/footer.jsp"%>
-
+		<script>
+			function back(){
+				location.href="supplierSearch?action=back";
+			}
+		</script>
 </body>
 </html>

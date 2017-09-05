@@ -53,7 +53,7 @@
 				style="height: 10px; width: 10px;" aria-hidden="true"></span></a> 
 			
 			
-			<a	class="firstline-supplier btn-h">用户：L-8899</a>
+			<a	class="firstline-supplier btn-h">用户：<%= request.getSession().getAttribute("username")%></a>
 
 		</div>
 	</div>
