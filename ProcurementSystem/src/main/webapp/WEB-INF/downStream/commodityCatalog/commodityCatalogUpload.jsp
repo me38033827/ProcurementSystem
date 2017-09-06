@@ -21,8 +21,8 @@
 		enctype="multipart/form-data">
 		<table class="catalog-table">
 			<tr>
-				<td class="col1">*供应商：佳能（中国</td>
-				<td class="col2">
+				<td class="col1">*供应商：</td>
+				<td class="col2">佳能（中国)</td>
 			<tr>
 				<td class="col1">*目录订阅名称：</td>
 				<td class="col2" name="name">${commodityCatalog.name }</td>

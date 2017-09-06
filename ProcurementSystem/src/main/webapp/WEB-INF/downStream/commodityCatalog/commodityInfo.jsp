@@ -76,17 +76,20 @@
 				<div class="row" style="padding: 10px 50px 10px 50px;">
 					<div class="col-md-12">
 						<div class="standard-title-main margin-bottom"
-							style="padding-left: 150px;">
+							style="padding-left: 100px;">
 							<strong>${commodity.shortName }</strong>
 						</div>
 					</div>
 					<div class="col-md-6 border-right-grey">
-						<div style="padding-right: 150px;" class="right">
+						<div style="padding-right: 100px;" class="right">
 							<div class="left">
-								<img alt=""
-									src="/ProcurementSystem/images/default-thumbnail.png">
+								<img alt="" id="image-${commodity.uniqueName }"
+									src="${commodity.thumbnail }"
+									onerror="error('image-${commodity.uniqueName }');"
+									width="220px" height="220px">
 							</div>
 							<table>
+							<tr><td><br></td></tr>
 								<tr>
 									<td class="right">供应商：</td>
 									<td>${commodity.supplier.name }</td>
@@ -111,7 +114,7 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<div class="left" style="padding-left: 150px;">
+						<div class="left" style="padding-left: 100px;">
 							<a class="item-price-green" style="font-size: 18px;">${commodity.unitPrice }
 								CNY</a> <a class="item-price-grey">&nbsp;／件</a><br> <a
 								class="item-price-black">数量： <input class="item-quantity"
@@ -180,5 +183,6 @@
 		var quantity = $("#quantity_"+uniqueName).val();
 		addShoppingCart(uniqueName,quantity);
 	}
+	
 </script>
 </html>

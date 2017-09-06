@@ -38,3 +38,7 @@ function addShoppingCart(uniqueName,quantity){
 	    }  
 	        });  
 }
+
+function error(imageUniqueName){
+	$('#'+imageUniqueName).attr('src',"/ProcurementSystem/images/default-thumbnail.png")
+}

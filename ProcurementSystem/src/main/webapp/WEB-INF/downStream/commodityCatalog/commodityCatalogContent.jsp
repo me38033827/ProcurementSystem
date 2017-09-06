@@ -89,7 +89,7 @@
 								<td>${commodity.supplier.name }</td>
 								<td>${commodity.supplierPartId }</td>
 								<td>${commodity.shortName }</td>
-								<td nowrap>${commodity.itemDescription }</td>
+								<td >${commodity.itemDescription }</td>
 							</tr>
 						</c:forEach>
 					</table>

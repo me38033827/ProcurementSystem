@@ -108,9 +108,10 @@
 		c.unit_price as unitPrice,
 		c.unit_of_measure as unitOfMeasure,
 		c.is_checked as isChecked,
+		c.thumbnail as thumbnail,
+		c.image as image,
 		cc.unique_name as commodityCatalogUniqueName,
-		cc.name as
-		commodityCatalogName,
+		cc.name as	commodityCatalogName,
 		con.unique_name as contractUniqueName,
 		con.name as
 		contractName,
@@ -129,9 +130,11 @@
 		<if test="commodity.uniqueName != '' and commodity.uniqueName != null">
 			and c.unique_name = #{commodity.uniqueName}
 		</if>
+		order by uniqueName desc
 		<if test="offset != null and size != null">
 			limit #{offset},#{size}
 		</if>
+		
 	</select>
 
 	<resultMap id="commodityMap" type="com.ProcurementSystem.entity.Commodity">
@@ -153,6 +156,8 @@
 		<result property="unitPrice" column="unitPrice" />
 		<result property="unitOfMeasure" column="unitOfMeasure" />
 		<result property="isChecked" column="isChecked" />
+		<result property="image" column="image" />
+		<result property="thumbnail" column="thumbnail" />
 		<association property="contract"
 			javaType="com.ProcurementSystem.entity.Contract">
 			<id property="uniqueName" column="contractUniqueName" />

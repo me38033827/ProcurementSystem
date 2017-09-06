@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ProcurementSystem.common.FileUnZip;
 import com.ProcurementSystem.dao.IBuyerCommodityCatalogDao;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
@@ -31,6 +32,7 @@ public class BuyerCommodityCatalogService {
 	BuyerCommodityService commodityService;
 	@Resource
 	IBuyerCommodityDao commodityDao;
+
 	// 获得商品目录数量
 	public int getRowCount() {
 		return commodityCatalogDao.getRowCount();
@@ -73,12 +75,12 @@ public class BuyerCommodityCatalogService {
 	}
 
 	// 解析商品目录文件,并对商品信息进行持久化存储
-	public void commodityCatalogAnalyze(CommodityCatalog commodityCatalog, String uploadUrl) {
+	public void commodityCatalogAnalyze(CommodityCatalog commodityCatalog, String uploadUrl, String fileName) {
 		// TODO Auto-generated method stub
 		InputStream is = null;
 		Workbook rwb = null;
 		try {
-			is = new FileInputStream(uploadUrl);// 1、构造excel文件输入流对象
+			is = new FileInputStream(uploadUrl + fileName);// 1、构造excel文件输入流对象
 			rwb = Workbook.getWorkbook(is); // 2、声明工作簿对象
 			rwb.getNumberOfSheets(); // 3、获得工作簿的个数,对应于一个excel中的工作表个数
 			Sheet firstSheet = rwb.getSheet(0);// 使用索引形式获取第一个工作表，也可以使用rwb.getSheet(sheetName);其中sheetName表示的是工作表的名称
@@ -122,8 +124,7 @@ public class BuyerCommodityCatalogService {
 						cell = firstSheet.getCell(6, i);// Unit of Measure
 						commodity.setUnitOfMeasure(cell.getContents());
 						cell = firstSheet.getCell(7, i);// Lead Time
-						if (cell.getContents().matches("^[0-9]*$"))// 匹配整数
-							commodity.setLeadTime(Integer.parseInt(cell.getContents()));
+						commodity.setLeadTime(cell.getContents());
 						cell = firstSheet.getCell(8, i);// Manufacturer Name
 						commodity.setManufacturerName(cell.getContents());
 						cell = firstSheet.getCell(9, i);// Supplier URL
@@ -144,10 +145,11 @@ public class BuyerCommodityCatalogService {
 						commodity.setExpirationDate(cell.getContents());
 						cell = firstSheet.getCell(15, i);// Short Name
 						commodity.setShortName(cell.getContents());
+						String imagesPath = "/ProcurementSystem/upload/" + commodityCatalog.getUniqueName() + "/";
 						cell = firstSheet.getCell(16, i);// Image
-						commodity.setImage(cell.getContents());
+						commodity.setImage(imagesPath + cell.getContents());
 						cell = firstSheet.getCell(17, i);// Thumbnail
-						commodity.setThumbnail(cell.getContents());
+						commodity.setThumbnail(imagesPath + cell.getContents());
 						cell = firstSheet.getCell(18, i);// ContractNumber
 						Contract contract = new Contract();
 						contract.setUniqueName(cell.getContents());
@@ -210,30 +212,60 @@ public class BuyerCommodityCatalogService {
 	public List<CommodityCatalog> searchCommodityCatalog(CommodityCatalog commodityCatalog) {
 		return commodityCatalogDao.searchCommodityCatalog(commodityCatalog);
 	}
-	//验证目录,true为已验证，false为验证错误
-	public boolean validate(String uniqueName) {//获得对应商品的验证状态，进行遍历，修改商品目录的状态
+
+	// 验证目录,true为已验证，false为验证错误
+	public boolean validate(String uniqueName) {// 获得对应商品的验证状态，进行遍历，修改商品目录的状态
 		List<String> list = commodityDao.getAllCommoditiesValidateStateByCatalog(uniqueName);
 		boolean flag = true;
-		for(String str : list){
-			if(!str.equals("TRUE") && !str.equals("true")){
+		for (String str : list) {
+			if (!str.equals("TRUE") && !str.equals("true")) {
 				flag = false;
 				break;
 			}
 		}
 		CommodityCatalog commodityCatalog = new CommodityCatalog();
 		commodityCatalog.setUniqueName(uniqueName);
-		if(flag) {
+		if (flag) {
 			commodityCatalog.setIsActivated("已验证");
-		}
-		else {
+		} else {
 			commodityCatalog.setIsActivated("验证错误");
 		}
-		setIsActivated(commodityCatalog);//修改验证状态
-		if(flag) return true;
+		setIsActivated(commodityCatalog);// 修改验证状态
+		if (flag)
+			return true;
 		return false;
 	}
 
-
-
+	// 保存image文件，并解压
+	public void commodityCatalogUploadImages(MultipartFile imageFile, String path) {
+		String fileName = imageFile.getOriginalFilename();
+		File dir = new File(path);// 创建文件夹
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		System.out.println("图片文件上传到: " + path + fileName);
+		File targetFile = new File(path + fileName);// 创建文件
+		if (!targetFile.exists()) {
+			try {
+				targetFile.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		try {
+			imageFile.transferTo(targetFile);
+			FileUnZip.zipToFile(path + fileName, path);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

@@ -28,7 +28,7 @@
 
 			<tr>
 				<td class="col1">*供应商：</td>
-				<td class="col2">佳能（中国）<input type="hidden" value="1000001" name="supplier.uniqueName"><a
+				<td class="col2">佳能（中国）<input type="hidden" value="10000001" name="supplier.uniqueName"><a
 					href="commodityCatalogCreateChooseSupplier">【 选择 】 </a><span class="error-message">${ERR_supplier}</span></td>
 			</tr>
 

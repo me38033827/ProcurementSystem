@@ -73,15 +73,17 @@ public class BuyerCommodityCatalogController {
 
 	// 解析商品目录，并进行持久化存储;转向商品目录内容
 	@RequestMapping(value = "commodityCatalogAnalyze")
-	public String commodityCatalogUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
-		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";
+	public String commodityCatalogUpload(@RequestParam("file") MultipartFile file,
+			@RequestParam(value="imageFile" , required = false) MultipartFile imageFile, HttpServletRequest request) {
+		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";//upload未上传文件的根目录
 		HttpSession session = request.getSession();
-		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");
-		commodityCatalogService.commodityCatalogUpload(file, uploadUrl, commodityCatalog);// 保存上传的文件
+		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");//获得准备上传的商品目录文件
+		commodityCatalogService.commodityCatalogUpload(file, uploadUrl, commodityCatalog);// 保存上传的商品目录文件至根目录upload文件夹下
 		commodityCatalog.setType("0");// 设置商品目录为buyer上传
 		commodityCatalogService.insertCommodityCatalog(commodityCatalog);// 持久化存储商品目录
-		System.out.println("商品目录唯一标识:" + commodityCatalog.getUniqueName());
-		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl + file.getOriginalFilename());// 解析文件，持久化存储商品
+		System.out.println("商品目录唯一标识:" + commodityCatalog.getUniqueName());//获得商品目录的uniqueName
+		commodityCatalogService.commodityCatalogUploadImages(imageFile,uploadUrl+commodityCatalog.getUniqueName()+"/");// 保存图片的压缩包文至以商品目录uniqueName命名的文件下，并解压
+		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl,  file.getOriginalFilename());// 解析文件，持久化存储商品
 		request.setAttribute("commodityCatalog", commodityCatalog);
 		// 获取当前上传目录内容，准备在前端显示，转向
 		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName=" + commodityCatalog.getUniqueName();
@@ -193,14 +195,14 @@ public class BuyerCommodityCatalogController {
 		return "redirect: /ProcurementSystem/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
 	}
 
-	// 停用商品目录，并惊醒持久化存储
+	// 停用商品目录，并进行持久化存储
 	@RequestMapping(value = "commodityCatalogStopSave")
 	public String commodityCatalogStopSave(@RequestParam(value = "uniqueName") String uniqueName) {
 		CommodityCatalog commodityCatalog = new CommodityCatalog();
 		commodityCatalog.setUniqueName(uniqueName);
 		List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
 		commodityCatalog = commodityCatalogs.get(0);
-		if (commodityCatalog.getIsActivated().equals("已激活")){
+		if (commodityCatalog.getIsActivated().equals("已激活")) {
 			commodityCatalog.setUniqueName(uniqueName);
 			commodityCatalog.setIsActivated("已停用");
 			commodityCatalogService.setIsActivated(commodityCatalog);

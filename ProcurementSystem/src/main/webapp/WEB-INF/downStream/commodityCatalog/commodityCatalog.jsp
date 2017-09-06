@@ -62,10 +62,7 @@
 				</button>
 				<button class="btn-w " style="margin-right: 20px;"
 					onclick="window.location.href='procurementCatalog.jsp'">目录管理</button>
-
-
 			</div>
-
 			<!-- 第三行右侧标记 -->
 		</div>
 
@@ -125,24 +122,44 @@
 							</div>
 
 							<div class="left container-thumbnail">
-								<img alt=""
-									src="/ProcurementSystem/images/default-thumbnail.png">
+								<img alt="" id="image-${commodity.uniqueName }"
+									src="${commodity.thumbnail }"
+									onerror="error('image-${commodity.uniqueName }');"
+									width="130px" height="130px">
 							</div>
 							<div class="item-whole">
 								<div>
 									<a
 										href="/ProcurementSystem/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }">${commodity.shortName }</a>
 								</div>
-								<a class="item-content-blue" href=""></a><br> <a
-									class="item-content-grey">供应商：</a> <a class="item-content-blue">${commodity.supplier.name}</a><br>
-								<a class="item-content-grey">供应商部件号：</a> <a
-									class="item-content-black">${commodity.supplierPartId}</a><br>
-								<a class="item-content-grey">剩余时间：</a> <a
-									class="item-content-black"></a><br> <a
-									class="item-content-grey">合同：</a> <a class="item-content-black">${commodity.contract.name }</a><br>
-								<a class="item-content-grey">描述:</a> <a
-									class="item-content-black">${commodity.itemDescription }</a> <input
-									type="hidden" id="uniqueName_${commodity.uniqueName }"
+								<table class="">
+									<tr>
+										<td class="item-content-grey">供应商：</td>
+										<td class="item-content-blue">${commodity.supplier.name}</td>
+
+									</tr>
+									<tr>
+										<td class="item-content-grey">供应商部件号：</td>
+										<td class="item-content-black">${commodity.supplierPartId}</td>
+
+									</tr>
+									<tr>
+										<td class="item-content-grey">剩余时间：</td>
+										<td class="item-content-black"></td>
+
+									</tr>
+									<tr>
+										<td class="item-content-grey">合同：</td>
+										<td class="item-content-blue">${commodity.contract.name }</td>
+									</tr>
+									<tr>
+										<td><span class="item-content-grey">描述：</span><span>${commodity.itemDescription }</span></td>
+										<td class="item-content-black"></td>
+									</tr>
+
+								</table>
+
+								<input type="hidden" id="uniqueName_${commodity.uniqueName }"
 									value="${commodity.uniqueName }" />
 							</div>
 
@@ -152,8 +169,8 @@
 									class="item-price-black">数量： <input class="item-quantity"
 									id="quantity_${commodity.uniqueName }" value="1" />
 									<button class="item-add"
-										onclick="add(${commodity.uniqueName});">添加到购物车</button></a>
-								<a class="item-price-blue">添加到收藏夹</a>
+										onclick="add(${commodity.uniqueName});">添加到购物车</button></a> <a
+									class="item-price-blue">添加到收藏夹</a>
 							</div>
 						</div>
 					</c:forEach>
@@ -204,6 +221,7 @@ function add(uniqueName){
 	var quantity = $("#quantity_"+uniqueName).val();
 	addShoppingCart(uniqueName,quantity);
 }
+
 </script>
 </body>
 </html>
