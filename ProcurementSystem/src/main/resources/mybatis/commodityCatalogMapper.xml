@@ -113,7 +113,7 @@
 		c.item_description as itemDescription,
 		c.is_checked as isChecked,
 		c.short_name as shortName,
-		c.item_count as itemCount
+		cc.item_count as itemCount
 		from
 		(commodity_catalog cc left join supplier
 		s

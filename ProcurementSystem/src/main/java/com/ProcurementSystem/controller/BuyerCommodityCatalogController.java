@@ -51,6 +51,54 @@ public class BuyerCommodityCatalogController {
 		return "downStream/commodityCatalog/commodityCatalogCreate";
 	}
 
+	@RequestMapping(value = "supplierSearch")
+	public String supplierSearch(HttpServletRequest request) {
+		System.out.println("---Controller: supplierSearch---");
+		String action = request.getParameter("action");
+		System.out.println("action is " + action);
+		if (action.equals("reset")) {
+			request.getSession().setAttribute("contentSession", "");
+			request.setAttribute("num", "-1");
+			return "upStream/supplier/supplierSearching";
+		}
+		String content = request.getParameter("content");
+		if (action.equals("initial")) {
+			request.getSession().setAttribute("contentSession", content);
+			System.out.println(content);
+			if (content.equals("使用名称、标识符或任何其他词语搜索")) {
+				request.setAttribute("num", "-1");
+				return "upStream/supplier/supplierSearching";
+			}
+		}
+
+		if (action.equals("back")) {
+			content = (String) request.getSession().getAttribute("contentSession");
+		}
+
+		if (content == null) {
+			request.setAttribute("num", "-1");
+			return "upStream/supplier/supplierSearching";
+		}
+
+		// search
+		System.out.println("Search for content: " + content);
+		if (content.equals("使用名称、标识符或任何其他词语搜索")) {
+			List<Supplier> suppliers = service.searchAllSupplier();
+			request.setAttribute("suppliers", suppliers);
+			request.setAttribute("num", Integer.toString(suppliers.size()));
+			System.out.println("共有" + Integer.toString(suppliers.size()) + "个搜索结果");
+		} else {
+			List<Supplier> suppliers = service.searchSupplier(content);
+			request.setAttribute("suppliers", suppliers);
+			request.setAttribute("content", content);
+			request.setAttribute("num", Integer.toString(suppliers.size()));
+			System.out.println("共有" + Integer.toString(suppliers.size()) + "个搜索结果");
+		}
+
+		request.getSession().setAttribute("contentSession", content);
+		return "upStream/supplier/supplierSearching";
+	}
+
 	// 保存商品目录基本信息，上传商品目录
 	@RequestMapping(value = "commodityCatalogUpload")
 	public String commodityCatalogUpload(HttpServletRequest request, @Valid CommodityCatalog commodityCatalog,
@@ -74,16 +122,17 @@ public class BuyerCommodityCatalogController {
 	// 解析商品目录，并进行持久化存储;转向商品目录内容
 	@RequestMapping(value = "commodityCatalogAnalyze")
 	public String commodityCatalogUpload(@RequestParam("file") MultipartFile file,
-			@RequestParam(value="imageFile" , required = false) MultipartFile imageFile, HttpServletRequest request) {
-		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";//upload未上传文件的根目录
+			@RequestParam(value = "imageFile", required = false) MultipartFile imageFile, HttpServletRequest request) {
+		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";// upload未上传文件的根目录
 		HttpSession session = request.getSession();
-		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");//获得准备上传的商品目录文件
+		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");// 获得准备上传的商品目录文件
 		commodityCatalogService.commodityCatalogUpload(file, uploadUrl, commodityCatalog);// 保存上传的商品目录文件至根目录upload文件夹下
 		commodityCatalog.setType("0");// 设置商品目录为buyer上传
 		commodityCatalogService.insertCommodityCatalog(commodityCatalog);// 持久化存储商品目录
-		System.out.println("商品目录唯一标识:" + commodityCatalog.getUniqueName());//获得商品目录的uniqueName
-		commodityCatalogService.commodityCatalogUploadImages(imageFile,uploadUrl+commodityCatalog.getUniqueName()+"/");// 保存图片的压缩包文至以商品目录uniqueName命名的文件下，并解压
-		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl,  file.getOriginalFilename());// 解析文件，持久化存储商品
+		System.out.println("商品目录唯一标识:" + commodityCatalog.getUniqueName());// 获得商品目录的uniqueName
+		commodityCatalogService.commodityCatalogUploadImages(imageFile,
+				uploadUrl + commodityCatalog.getUniqueName() + "/");// 保存图片的压缩包文至以商品目录uniqueName命名的文件下，并解压
+		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl, file.getOriginalFilename());// 解析文件，持久化存储商品
 		request.setAttribute("commodityCatalog", commodityCatalog);
 		// 获取当前上传目录内容，准备在前端显示，转向
 		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName=" + commodityCatalog.getUniqueName();

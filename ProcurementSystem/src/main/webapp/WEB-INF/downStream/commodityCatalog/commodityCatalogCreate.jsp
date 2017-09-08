@@ -20,7 +20,7 @@
 		<table class="catalog-table">
 			<tr>
 				<td class="col1">选择：</td>
-				<td class="col2"><select id="my-select" name="mySelect">
+				<td class="col2"><select id="my-select" name="mySelect" onchange="changePage();">
 						<option value="1">创建新的目录订阅</option>
 						<option value="2">使用现有的目录订阅</option>
 				</select></td>
@@ -34,10 +34,10 @@
 
 			<tr>
 				<td class="col1">*目录订阅名称：</td>
-				<td class="col2"><input id="creation-title" name="name" /><span class="error-message">${ERR_name}</span></td>
+				<td class="col2" id="name"><input id="creation-title" name="name" /><span class="error-message">${ERR_name}</span></td>
 			</tr>
 
-			<tr>
+			<tr id="isCreateEmptyContent">
 				<td class="col1">创建空目录：</td>
 				<td class="col2">
 					<div class="radio">
@@ -123,6 +123,16 @@
 </div>
 
 
-
+<script>
+	function changePage(){
+		var text = $("#my-select").find("option:selected").val();
+		if(text == 1){
+			$("#isCreateEmptyContent").show();
+		}else if(text == 2){
+			$("#isCreateEmptyContent").hide();
+			$("#name").html("<em>请首先选择供应商。</em>")
+		}
+	}
+</script>
 </body>
 </html>

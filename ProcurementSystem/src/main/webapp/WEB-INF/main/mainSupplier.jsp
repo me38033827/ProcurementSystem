@@ -18,7 +18,7 @@
 				<button class="secondline-left">采购</button>
 				<button class="secondline-left">开发票</button>
 				<button class="secondline-left header-clicked">供应商</button>
-				<button class="secondline-left">目录</button>
+				<button class="secondline-left" onclick="window.location.href='../commodityCatalog/commodityCatalog'">目录</button>
 				</div>
 			<%@include file="../other/header2r.jsp"%>
 		</div>
