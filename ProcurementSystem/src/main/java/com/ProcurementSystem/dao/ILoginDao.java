@@ -6,8 +6,11 @@ import com.ProcurementSystem.entity.Login;
 
 public interface ILoginDao {
 
-	List<Login> getLoginInformation(Login login);
+	Login getLoginInformation(Login login);
 	
 	int getUsernameExistance(Login login);
+	
+	void insertSupplierLogin(Login login);
+
 }
 

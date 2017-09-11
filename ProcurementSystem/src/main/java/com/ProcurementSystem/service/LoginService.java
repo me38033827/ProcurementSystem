@@ -14,12 +14,17 @@ import com.ProcurementSystem.entity.Login;
 public class LoginService {
 	
 	@Resource ILoginDao dao;
-	public List<Login> getLoginInformation(Login login){
+	public Login getLoginInformation(Login login){
 		return dao.getLoginInformation(login);
 	}
 	
 	public int getUsernameExistance(Login login){
 		return dao.getUsernameExistance(login);
 	}
+	
+	public void insertSupplierLogin(Login login){
+		dao.insertSupplierLogin(login);
+	}
+	
 	
 }

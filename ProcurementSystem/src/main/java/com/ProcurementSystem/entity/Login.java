@@ -1,11 +1,19 @@
 package com.ProcurementSystem.entity;
 
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Login {
+	@NotEmpty(message="用户名不能为空")
 	private String username;
+	@NotEmpty(message="密码不能为空")
 	private String password;
 	private String role;
-	private int supplierUniqueName;
-	private int userUniqueName;
+	@Valid
+	private 	Supplier supplier;
+	private User user;
+
 	public String getUsername() {
 		return username;
 	}
@@ -18,17 +26,17 @@ public class Login {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public int getSupplierUniqueName() {
-		return supplierUniqueName;
+	public Supplier getSupplier() {
+		return supplier;
 	}
-	public void setSupplierUniqueName(int supplierUniqueName) {
-		this.supplierUniqueName = supplierUniqueName;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
-	public int getUserUniqueName() {
-		return userUniqueName;
+	public User getUser() {
+		return user;
 	}
-	public void setUserUniqueName(int userUniqueName) {
-		this.userUniqueName = userUniqueName;
+	public void setUserUniqueName(User user) {
+		this.user = user;
 	}
 	public String getPassword() {
 		return password;

@@ -211,6 +211,47 @@ public class BuyerSupplierController {
 		return "redirect:supplierSearch?action=back";
 	}
 	
-
+	/* SQM搜索 */
+	@RequestMapping(value = "sqmSearching")
+	public String sqmSearching(HttpServletRequest request){
+		return "upStream/supplier/supplierSQMsearching";
+	}
+	
+	/* SQM详情 */
+	@RequestMapping(value = "sqmSummary")
+	public String sqmSummary(HttpServletRequest request){
+		return "upStream/supplier/supplierSQMsummary";
+	}
+	
+	@RequestMapping(value = "sqmDoc")
+	public String sqmDoc(HttpServletRequest request){
+		return "upStream/supplier/supplierSQMdoc";
+	}
+	
+	@RequestMapping(value = "sqmTask")
+	public String sqmTask(HttpServletRequest request){
+		return "upStream/supplier/supplierSQMtask";
+	}
+	
+	@RequestMapping(value = "sqmTeam")
+	public String sqmTeam(HttpServletRequest request){
+		return "upStream/supplier/supplierSQMteam";
+	}
+	
+	@RequestMapping(value = "sqmInfo")
+	public String sqmInfo(HttpServletRequest request){
+		return "upStream/supplier/supplierSQMinfo";
+	}
+	
+	@RequestMapping(value = "sqmNews")
+	public String sqmNews(HttpServletRequest request){
+		return "upStream/supplier/supplierSQMnews";
+	}
+	
+	@RequestMapping(value = "sqmHistory")
+	public String sqmHistory(HttpServletRequest request){
+		return "upStream/supplier/supplierSQMhistory";
+	}
+	
 
 }

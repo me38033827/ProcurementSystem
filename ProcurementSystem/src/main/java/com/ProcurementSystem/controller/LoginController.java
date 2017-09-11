@@ -31,40 +31,41 @@ public class LoginController {
 		String role = login.getRole();
 		
 		// login为从页面上获取的登录信息，loginResult为从数据库中返回的登录信息
-		List<Login> loginResult = service.getLoginInformation(login);
-		int numOfResults = loginResult.size();
+		Login loginResult = service.getLoginInformation(login);
 		
 		// 判断是否有相关的登录信息
-		if(numOfResults==1){
+		if(loginResult != null){
 			// 成功登录，将supplierUniqueName/buyerUniqueName以及username存储到session中
 			HttpSession session = request.getSession();
 			
 			if(role.equals("supplier")){
-				session.setAttribute("supplierUniqueName", loginResult.get(0).getSupplierUniqueName());
+				int a = loginResult.getSupplier().getUniqueName();
+				System.out.println("adsfsd");
+				session.setAttribute("supplierUniqueName", loginResult.getSupplier().getUniqueName());
 				session.setAttribute("username", username);
 				System.out.println("Login SUPPLIER " + username + " successfully!");
 				//System.out.println(loginResult.get(0).getSupplierUniqueName());
 				return "redirect:supplier/main";
 			}
 			if(role.equals("buyer")){
-				session.setAttribute("userUniqueName", loginResult.get(0).getUserUniqueName());
+				session.setAttribute("userUniqueName", loginResult.getUser().getUniqueName());
 				session.setAttribute("username", username);
 				System.out.println("Login USER " + username + " successfully!");
 				//System.out.println(loginResult.get(0).getUserUniqueName());
 				return "redirect:buyer/main";
 			}
 		}
-		if(numOfResults==0){
-			int usernameExistance = service.getUsernameExistance(login);
-			request.setAttribute("loginInfo", login);
-			request.setAttribute("role", login.getRole());
-			if(usernameExistance==0){
-				request.setAttribute("error", "username");
-				System.out.println("Username does not exist!");
-			}else{
-				request.setAttribute("error", "password");
-				System.out.println("Wrong password!");
-			}
+		
+		
+		int usernameExistance = service.getUsernameExistance(login);
+		request.setAttribute("loginInfo", login);
+		request.setAttribute("role", login.getRole());
+		if(usernameExistance==0){
+			request.setAttribute("error", "username");
+			System.out.println("Username does not exist!");
+		}else{
+			request.setAttribute("error", "password");
+			System.out.println("Wrong password!");
 		}
 		return "login";
 	}

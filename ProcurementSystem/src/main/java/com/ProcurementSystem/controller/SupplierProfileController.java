@@ -51,7 +51,7 @@ public class SupplierProfileController {
 		//Remove attribute
 		session.removeAttribute("supplierSession");
 		System.out.println("Session attribute 'supplierSession' has already been removed.");
-		return "redirect:main";
+		return "redirect:../main";
 	}
 	
 	//AN保存当前供应商信息－1基本

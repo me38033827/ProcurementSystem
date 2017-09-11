@@ -3,7 +3,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh">
 <head>
-<script src="assets/js/jquery-2.1.1.min.js" type="text/javascript"></script>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,10 +43,11 @@
 							<input id="psdalert" style="background-color:transparent; text-align:right; border:0;color:red; font-weight:bold; line-height:26px;" <%if(request.getAttribute("loginInfo")!=null){
 									if(request.getAttribute("error").equals("password")){ %>
 									value="密码错误！""
-								<%}} %>
+								<%}} %> disabled
 								/>
 							</div>
-							<div class="radio" style="margin-bottom:2px; margin-top:-2px; font-size:16px;">
+							
+							<div class="radio" style="margin-bottom:2px; margin-top:-2px; font-size:16px; width:200px; display:inline-block" onChange="showSignUp();">
 								<label> <input type="radio" name="role" id="buyer" value="buyer"
 								<%if(request.getAttribute("loginInfo")!=null){
 									if(request.getAttribute("role").equals("buyer")){%>checked
@@ -62,10 +62,22 @@
 								<%}}%>
 								> 供应商
 								</label>
-								
 							</div>
-							<button id="login-button" style="margin-top:14px;" onclick="return check();">登录</button>
-
+							<div style="display:inline-block; width:95px; text-align:right;">
+								
+								<button form="initialSignUp" <%if(request.getAttribute("loginInfo")!=null){
+									if(request.getAttribute("role").equals("buyer")){%>hidden="hidden" 
+								<%}}else{%> hidden="hidden" <%} %>
+								id="signup" >注册供应商</button>
+							</div>
+							<button id="login-button" style="margin-top:14px; display:block;" onclick="return check();">登录</button>
+						</form>
+						<form id="initialSignUp" action="supplier/signUp" method="post" hidden="hidden">
+							<table>
+								<tr>
+									<td><input name="signup" value="true"></td>
+								</tr>
+							</table>
 						</form>
 					</div>
 				</div>
@@ -89,9 +101,17 @@
 	</div>
 
 	<script>
-		function check1(){
-			alert(1);
+		function showSignUp(){
+			var role=$('input:radio[name="role"]:checked').val();
+			if(role=="supplier"){
+				//alert("123");
+				$("#signup").show()
+			}else{
+				//alert("1234");
+				$("#signup").hide()
+			}
 		}
+		
 		function check() {
 			var username = $("#username").val();
 			var psd = $("#psd").val();
