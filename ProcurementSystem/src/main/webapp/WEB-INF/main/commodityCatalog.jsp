@@ -7,8 +7,8 @@
 <head>
 <title>商品目录界面</title>
 
-<%@include file="../../other/header1.jsp"%>
-<%@include file="../../other/header2.jsp"%>
+<%@include file="../other/header1.jsp"%>
+<%@include file="../other/header2.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 </head>
 <!-- 页面整体宽度：1320px -->
@@ -190,7 +190,7 @@
 	</div>
 
 	<script type="text/javascript">
-
+	$("#commodityCatalog").attr('class',"header-clicked secondline-left");
 var pageList = document.getElementById("pageList");
 var currPage = ${pageParams.currPage};
 var totalPages = ${pageParams.totalPages};

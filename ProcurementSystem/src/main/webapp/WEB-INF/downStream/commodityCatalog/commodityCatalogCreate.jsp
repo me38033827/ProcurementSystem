@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -20,7 +21,8 @@
 		<table class="catalog-table">
 			<tr>
 				<td class="col1">选择：</td>
-				<td class="col2"><select id="my-select" name="mySelect" onchange="changePage();">
+				<td class="col2"><select id="my-select" name="mySelect"
+					onchange="changePage();">
 						<option value="1">创建新的目录订阅</option>
 						<option value="2">使用现有的目录订阅</option>
 				</select></td>
@@ -28,13 +30,18 @@
 
 			<tr>
 				<td class="col1">*供应商：</td>
-				<td class="col2">佳能（中国）<input type="hidden" value="10000001" name="supplier.uniqueName"><a
-					href="commodityCatalogCreateChooseSupplier">【 选择 】 </a><span class="error-message">${ERR_supplier}</span></td>
+
+				<td class="col2">${supplier.name }<input type="hidden"
+					value="${supplier.uniqueName }" name="supplier.uniqueName"><a
+					href="commodityCatalogCreateChooseSupplier?action=initial">【 选择
+						】 </a><span class="error-message">${ERR_supplier}</span></td>
+
 			</tr>
 
 			<tr>
 				<td class="col1">*目录订阅名称：</td>
-				<td class="col2" id="name"><input id="creation-title" name="name" /><span class="error-message">${ERR_name}</span></td>
+				<td class="col2" id="name"><input id="creation-title"
+					name="name" /><span class="error-message">${ERR_name}</span></td>
 			</tr>
 
 			<tr id="isCreateEmptyContent">
@@ -119,16 +126,17 @@
 			</tr>
 		</table>
 	</form>
-	<button class="btn btn-default" id="catalog-creation-cancel" onclick="window.location.href='commodityCatalogList'">取消</button>
+	<button class="btn btn-default" id="catalog-creation-cancel"
+		onclick="window.location.href='commodityCatalogList'">取消</button>
 </div>
 
 
 <script>
-	function changePage(){
+	function changePage() {
 		var text = $("#my-select").find("option:selected").val();
-		if(text == 1){
+		if (text == 1) {
 			$("#isCreateEmptyContent").show();
-		}else if(text == 2){
+		} else if (text == 2) {
 			$("#isCreateEmptyContent").hide();
 			$("#name").html("<em>请首先选择供应商。</em>")
 		}

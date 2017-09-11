@@ -14,7 +14,7 @@
 		<li><a class="secondline-right"
 			href="contractWorkspaceCreation.jsp">合同</a></li>
 		<li><a class="secondline-right"
-			href="/ProcurementSystem/commodityCatalog/commodityCatalogCreate">商品目录</a></li>
+			href="/ProcurementSystem/buyer/commodityCatalog/commodityCatalogCreate">商品目录</a></li>
 		<li><a class="secondline-right" href="prCreation.jsp">请购单</a></li>
 		<li><a class="secondline-right" href="invoiceCreation.jsp">发票</a></li>
 		<li><a class="secondline-right" href="templateCreation.jsp">模版</a></li>
@@ -34,7 +34,7 @@
 		<li><a class="secondline-right" href="supplierSearching.jsp">供应商管理</a></li>
 		<li><a class="secondline-right" href="contractSearching.jsp">合同管理</a></li>
 		<li><a class="secondline-right"
-			href="/ProcurementSystem/commodityCatalog/commodityCatalogList">商品目录</a></li>
+			href="/ProcurementSystem/buyer/commodityCatalog/commodityCatalogList">商品目录</a></li>
 		<li><a class="secondline-right" href="orderSearching.jsp">订单协同</a></li>
 		<li><a class="secondline-right" href="receiptSearching.jsp">收\发货协同</a></li>
 		<li><a class="secondline-right" href="deliverySearching.jsp">物流管理</a></li>

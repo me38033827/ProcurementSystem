@@ -27,9 +27,10 @@ import com.ProcurementSystem.entity.Supplier;
 import com.ProcurementSystem.service.BuyerCommodityCatalogService;
 import com.ProcurementSystem.service.BuyerCommodityService;
 import com.ProcurementSystem.service.BuyerShoppingCartService;
+import com.ProcurementSystem.service.SupplierService;
 
 @Controller
-@RequestMapping(value = "commodityCatalog")
+@RequestMapping(value = "buyer/commodityCatalog")
 public class BuyerCommodityCatalogController {
 	@Resource
 	BuyerCommodityCatalogService commodityCatalogService;
@@ -37,6 +38,8 @@ public class BuyerCommodityCatalogController {
 	BuyerCommodityService commodityService;
 	@Resource
 	BuyerShoppingCartService shoppingCartService;
+	@Resource
+	SupplierService supplierService;
 
 	// 测试
 	@RequestMapping(value = "index")
@@ -47,56 +50,56 @@ public class BuyerCommodityCatalogController {
 
 	// 转向创建商品目录页
 	@RequestMapping(value = "commodityCatalogCreate")
-	public String commodityCatalogCreate() {
+	public String commodityCatalogCreate(Supplier supplier, ModelMap map) {
+		map.put("supplier", supplier);
 		return "downStream/commodityCatalog/commodityCatalogCreate";
 	}
 
-	@RequestMapping(value = "supplierSearch")
-	public String supplierSearch(HttpServletRequest request) {
+	// 创建商品目录页->选择供应商
+	@RequestMapping(value = "commodityCatalogCreateChooseSupplier")
+	public String commodityCatalogCreateChooseSupplier(HttpServletRequest request) {
+		String target = "downStream/commodityCatalog/commodityCatalogCreateChooseSupplier";
 		System.out.println("---Controller: supplierSearch---");
 		String action = request.getParameter("action");
 		System.out.println("action is " + action);
-		if (action.equals("reset")) {
+		if (action.equals("reset")) {// 搜索重置
 			request.getSession().setAttribute("contentSession", "");
-			request.setAttribute("num", "-1");
-			return "upStream/supplier/supplierSearching";
+			request.setAttribute("num", "-1");// -1表示无项目
+			return target;
 		}
 		String content = request.getParameter("content");
-		if (action.equals("initial")) {
-			request.getSession().setAttribute("contentSession", content);
-			System.out.println(content);
-			if (content.equals("使用名称、标识符或任何其他词语搜索")) {
-				request.setAttribute("num", "-1");
-				return "upStream/supplier/supplierSearching";
-			}
+		if (action.equals("initial")) {// 搜索初始化
+			// request.getSession().setAttribute("contentSession", content);
+			// System.out.println(content);
+			// if (content.equals("使用名称、标识符或任何其他词语搜索")) {
+			request.setAttribute("num", "-1");
+			return target;
+			// }
 		}
 
 		if (action.equals("back")) {
 			content = (String) request.getSession().getAttribute("contentSession");
 		}
-
 		if (content == null) {
 			request.setAttribute("num", "-1");
-			return "upStream/supplier/supplierSearching";
+			return target;
 		}
-
 		// search
 		System.out.println("Search for content: " + content);
-		if (content.equals("使用名称、标识符或任何其他词语搜索")) {
-			List<Supplier> suppliers = service.searchAllSupplier();
+		if (content.equals("使用名称、标识符或任何其他词语搜索")) {// 默认搜索全部
+			List<Supplier> suppliers = supplierService.searchAllSupplier();
 			request.setAttribute("suppliers", suppliers);
 			request.setAttribute("num", Integer.toString(suppliers.size()));
 			System.out.println("共有" + Integer.toString(suppliers.size()) + "个搜索结果");
-		} else {
-			List<Supplier> suppliers = service.searchSupplier(content);
+		} else {// 按条件搜索
+			List<Supplier> suppliers = supplierService.searchSupplier(content);
 			request.setAttribute("suppliers", suppliers);
 			request.setAttribute("content", content);
 			request.setAttribute("num", Integer.toString(suppliers.size()));
 			System.out.println("共有" + Integer.toString(suppliers.size()) + "个搜索结果");
 		}
-
 		request.getSession().setAttribute("contentSession", content);
-		return "upStream/supplier/supplierSearching";
+		return target;
 	}
 
 	// 保存商品目录基本信息，上传商品目录
@@ -156,12 +159,6 @@ public class BuyerCommodityCatalogController {
 		List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
 		request.setAttribute("commodityCatalogs", commodityCatalogs);
 		return "downStream/commodityCatalog/commodityCatalogList";
-	}
-
-	// 转向选择供应商页面
-	@RequestMapping(value = "commodityCatalogCreateChooseSupplier")
-	public String commodityCatalogCreateChooseSupplier() {
-		return "downStream/commodityCatalog/commodityCatalogCreateChooseSupplier";
 	}
 
 	// 商品目录搜索供应商
@@ -257,24 +254,6 @@ public class BuyerCommodityCatalogController {
 			commodityCatalogService.setIsActivated(commodityCatalog);
 		}
 		return "redirect: /ProcurementSystem/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
-	}
-
-	// 转向商品目录主页
-	@RequestMapping(value = "commodityCatalog")
-	public String commodityCatalog(ModelMap map, @RequestParam(value = "currPage", required = false) String currPage) {
-		if (currPage == null || currPage.equals(""))
-			currPage = 1 + ""; // 如果未指定请求页，则默认设置为第一页
-		int temp = 0;
-		try {
-			temp = Integer.parseInt(currPage);
-		} catch (Exception e) {
-			// TODO: handle exception
-			return "other/error";
-		}
-		Commodity commodity = new Commodity();
-		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp);
-		map.put("pageParams", pageParams);
-		return "downStream/commodityCatalog/commodityCatalog";
 	}
 
 	// 显示购物车内容

@@ -5,63 +5,11 @@
 <head>
 <title>主页</title>
 <%@include file="../other/header1.jsp"%>
+<%@include file="../other/header2.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body class="a-dashbrd-page-bg">
 	<div class="content">
-		<div class="container" id="secondline-out" style="width: 100%">
-			<div class="dropdown" id="secondline-dropdown">
-				<!-- 第二行靠左 -->
-				<button class="secondline-left header-clicked">主页</button>
-				<button class="secondline-left">寻源</button>
-				<button class="secondline-left">合同</button>
-				<button class="secondline-left">采购</button>
-				<button class="secondline-left">开发票</button>
-				<button class="secondline-left"
-					onclick="window.location.href='mainSupplier'">供应商</button>
-				<button class="secondline-left"
-					onclick="window.location.href='/ProcurementSystem/commodityCatalog/commodityCatalog'">目录</button>
-			</div>
-			<%@include file="../other/header2r.jsp"%>
-		</div>
-		<!-- 导航栏 第三行 -->
-		<div id="thirdline-out" style="background-color: transparent;">
-
-			<div class="col-md-2 inline-b left" id="search-service"
-				style="postion: relative; left: 20px;">
-				<select class="col-md-12" id="my-select">
-					<option>服务</option>
-					<option>服务</option>
-					<option>服务</option>
-				</select>
-
-			</div>
-			<!-- 第三行搜索框 -->
-			<div style="position: relative; left: 20px;">
-				<input type="text" class="inline-b border-g left col-md-4"
-					value="按部件号、供应商名称或关键字搜索"
-					onfocus="if(this.value=='按部件号、供应商名称或关键字搜索') this.value=''"
-					onblur="if(this.value=='')this.value='按部件号、供应商名称或关键字搜索' "
-					style="top: 0px;">
-				<button class="btn btn-default inline-b border-g left"
-					id="search-btn" style="top: 0px;">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-				</button>
-			</div>
-			<!-- 第三行右侧图标 -->
-
-			<div class="thirdline-icons">
-				<button id="wrench-btn" onclick="">
-					<span class="glyphicon glyphicon-wrench" aria-hidden="true" id=""></span>
-				</button>
-				<button id="refresh-btn" onclick="">
-					<span class="glyphicon glyphicon-refresh" aria-hidden="true" id=""></span>
-				</button>
-			</div>
-
-			<!-- 第三行右侧标记 -->
-		</div>
-
 
 		<!--主要内容  -->
 		<div class="container">
@@ -364,6 +312,8 @@
 	<%@ include file="../other/footer.jsp"%>
 
 	<script type="text/javascript">
+		$("#main").attr('class',"header-clicked secondline-left");
+		/*图标初始化  */
 		var myChart1 = echarts.init(document.getElementById('chart1'));
 		var myChart2 = echarts.init(document.getElementById('chart2'));
 		var myChart3 = echarts.init(document.getElementById('chart3'));
