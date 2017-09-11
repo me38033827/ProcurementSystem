@@ -72,12 +72,8 @@
 							</div>
 							<button id="login-button" style="margin-top:14px; display:block;" onclick="return check();">登录</button>
 						</form>
-						<form id="initialSignUp" action="supplier/signUp" method="post" hidden="hidden">
-							<table>
-								<tr>
-									<td><input name="signup" value="true"></td>
-								</tr>
-							</table>
+						<form id="initialSignUp" action="supplier/signUp?signup=true" method="post" hidden="hidden">
+							
 						</form>
 					</div>
 				</div>

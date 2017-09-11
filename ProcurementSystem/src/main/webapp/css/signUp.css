@@ -11,11 +11,11 @@ body{
 
 .form-container{
 	width:500px;
-	height:400px;
+	height:460px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:10%;
-	border:1px solid grey;
+	margin-top:5%;
+	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .3);
 	background-color:white;
 	opacity:0.7;
 	border-radius:7px;
@@ -24,7 +24,8 @@ body{
 
 .form-title{
 	border-bottom:1px solid #ddd;
-	margin: 10px auto;
+	margin: 20px auto;
+	padding-top:8px;
 	text-align:center;
 }
 
@@ -43,7 +44,7 @@ body{
 	width:150px;
 	height:40px;
 	border-radius:3px;
-	background-color:#4888fd;
+	background-color:#4abefc;
 	color:white;
 	font-size:14px;
 }
@@ -52,4 +53,30 @@ body{
 	margin-left:100px;
 }
 
+#signup{
+	margin-left:80px;
+}
+
+.signup-row1{
+	height:30px;
+	font-size:16px;
+}
+
+.signup-row1 td{
+	padding:0;
+}
+
+.signup-row1 td input{
+	height:26px;
+	font-size:16px;
+	width:180px;
+}
+
+.signup-row2{
+	padding:0;
+	height:14px;
+	line-height:14px;
+	font-size:12px;
+	color:red;
+}
 
