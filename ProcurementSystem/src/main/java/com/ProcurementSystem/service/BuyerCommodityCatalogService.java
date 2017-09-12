@@ -99,12 +99,13 @@ public class BuyerCommodityCatalogService {
 						/** 从上传文件中提取字段 */
 						Commodity commodity = new Commodity();// 设置commodityCatalog
 						commodity.setCommodityCatalog(commodityCatalog);
-						Supplier supplier = new Supplier();// 读取并设置Supplier ID
-						// 暂时设置默认的供应商，之后需要做修改！！！！
-						if (cell.getContents().matches("^[0-9]+$"))// 匹配整数
-							supplier.setUniqueName(Integer.parseInt(cell.getContents()));
-						supplier.setName("佳能（中国）");
-						commodity.setSupplier(supplier);
+						Supplier supplier = new Supplier();// 读取并设置Supplier ID(supplier.uniqueName)
+						//if (cell.getContents().matches("^[0-9]+$"))// 匹配整数 //此处有问题？？？？  需要将uniqueName设置为String
+						//	supplier.setUniqueName(Integer.parseInt(cell.getContents()));
+						//暂时没涉及多供应商上传的问题
+						supplier.setName(commodityCatalog.getSupplier().getName());
+						supplier.setUniqueName(commodityCatalog.getSupplier().getUniqueName());
+						commodity.setSupplier(supplier);//此处是为了直接显示商品信息，减少一次数据库提取操作
 						System.out.println(commodity.getSupplier().getUniqueName());
 						cell = firstSheet.getCell(1, i);// 读取并设置Supplier Part ID
 						commodity.setSupplierPartId(cell.getContents());
@@ -175,7 +176,7 @@ public class BuyerCommodityCatalogService {
 						if (!isCommodityChecked)
 							isCommodityCatalogchecked = false;// 设置商品目录的验证状态
 						commodityService.insertCommodity(commodity);
-						System.out.println("插入成功！");
+						System.out.println("成功插入一条商品信息！");
 					}
 
 					if (isCommodityCatalogchecked)
@@ -266,6 +267,25 @@ public class BuyerCommodityCatalogService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public CommodityCatalog setCommodityCatalogVersion(String createMode, CommodityCatalog commodityCatalog) {
+		// TODO Auto-generated method stub
+		if(createMode.equals("1")){//创建新目录
+			commodityCatalog.setVersion("版本1");
+		}else{//创建新版本
+			int count = commodityCatalogDao.getCommodityCatalogVersionCount(commodityCatalog);
+			commodityCatalog.setVersion("版本"+(count+1));
+		}
+		return commodityCatalog;
+	}
+
+	public boolean validateCommodityCatalogDupeName(CommodityCatalog commodityCatalog) {
+		CommodityCatalog commodityCatalogName = new CommodityCatalog();
+		commodityCatalogName.setName(commodityCatalog.getName());
+		List<CommodityCatalog> commodityCatalogs = commodityCatalogDao.searchCommodityCatalog(commodityCatalog);
+		if(commodityCatalogs.size() > 0) return true;
+		return false;
 	}
 
 }

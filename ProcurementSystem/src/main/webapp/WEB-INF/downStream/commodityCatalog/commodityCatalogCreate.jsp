@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.ProcurementSystem.entity.*" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,7 +10,15 @@
 <%@ include file="../../other/header1.jsp"%>
 <%@ include file="../../other/header2.jsp"%>
 </head>
-
+<body>
+<%
+	List<CommodityCatalog> commodityCatalogs = (List<CommodityCatalog>)request.getAttribute("commodityCatalogs");
+	int size = -1;//-1表示未选择供应商
+	if(commodityCatalogs != null){
+		size = commodityCatalogs.size();
+	}
+	
+%>
 <!-- 导入新目录标题 -->
 <div id="catalog-creation-title1">
 	<a id="catalog-creation-title-font">目录－导入新目录</a>
@@ -21,7 +31,7 @@
 		<table class="catalog-table">
 			<tr>
 				<td class="col1">选择：</td>
-				<td class="col2"><select id="my-select" name="mySelect"
+				<td class="col2"><select id="createMode" name="createMode"
 					onchange="changePage();">
 						<option value="1">创建新的目录订阅</option>
 						<option value="2">使用现有的目录订阅</option>
@@ -30,21 +40,39 @@
 
 			<tr>
 				<td class="col1">*供应商：</td>
-
-				<td class="col2">${supplier.name }<input type="hidden"
-					value="${supplier.uniqueName }" name="supplier.uniqueName"><a
-					href="commodityCatalogCreateChooseSupplier?action=initial">【 选择
-						】 </a><span class="error-message">${ERR_supplier}</span></td>
+				<td class="col2">
+					<div>
+						${supplier.name }
+						<input type="hidden" value="${supplier.uniqueName }"
+							name="supplier.uniqueName"> <input type="hidden"
+							value="${supplier.name }" name="supplier.name"> <a
+							href="javascript:void(0)" onclick="toChooseSupplierPage();">【
+							选择 】</a> <span class="error-message">${ERR_supplier}</span>
+					</div>
+				</td>
 
 			</tr>
 
 			<tr>
 				<td class="col1">*目录订阅名称：</td>
-				<td class="col2" id="name"><input id="creation-title"
-					name="name" /><span class="error-message">${ERR_name}</span></td>
+				<td class="col2">
+						<input id="creation-title" class="createMode1" name="name" />
+						<select class="createMode2" name="name">
+							<% if(size == -1){  %>
+								<option value="">请首先选择供应商</option>
+							<%}else if(size == 0){ %>
+								<option value="">无项目</option>
+							<%}else{ %>
+							<c:forEach var="commodityCatalog" items="${ commodityCatalogs }">
+								<option value="${commodityCatalog.name }">${commodityCatalog.name }</option>
+							</c:forEach>
+							<%} %>
+						</select>
+						<span class="error-message">${ERR_name}${Error_dupeName}</span>
+				</td>
 			</tr>
 
-			<tr id="isCreateEmptyContent">
+			<tr class="createMode1">
 				<td class="col1">创建空目录：</td>
 				<td class="col2">
 					<div class="radio">
@@ -103,9 +131,6 @@
 					</div>
 				</td>
 			</tr>
-
-
-
 			<tr>
 				<td class="col1">层级：</td>
 				<td class="col2">
@@ -127,20 +152,41 @@
 		</table>
 	</form>
 	<button class="btn btn-default" id="catalog-creation-cancel"
-		onclick="window.location.href='commodityCatalogList'">取消</button>
+		>取消</button>
 </div>
 
 
 <script>
-	function changePage() {
-		var text = $("#my-select").find("option:selected").val();
-		if (text == 1) {
-			$("#isCreateEmptyContent").show();
-		} else if (text == 2) {
-			$("#isCreateEmptyContent").hide();
-			$("#name").html("<em>请首先选择供应商。</em>")
+	
+	pageType(${createMode});//初始化页面类型
+	/**更改页面类型*/
+	function changePage(){
+		var createMode = $("#createMode").find("option:selected").val();
+		pageType(createMode);
+	}
+	/**页面类型选择*/
+	function pageType(createMode) {
+		if (createMode == 1) {
+		 	$("#createMode").val(1);
+			$(".createMode1").show();
+			$(".createMode2").hide();//隐藏
+			$(".createMode2").attr('name',"")//取消表单上传
+			//var temp = "<input id='creation-title' name='name' /><span class='error-message'>${ERR_name}</span> ";
+			//$("#name").html(temp)
+		} else if (createMode == 2) {
+			$("#createMode").val(2);
+			$(".createMode1").hide();//隐藏
+			$(".createMode1").attr('name',"")//取消表单上传
+			$(".createMode2").show();
+			//$("#name").html("<em>请首先选择供应商。</em>");
 		}
 	}
+	/**转向选择供应商页面，并保存创建类型信息*/
+	function toChooseSupplierPage(){
+		var createMode = $("#createMode").find("option:selected").val();
+		window.location.href="commodityCatalogCreateChooseSupplier?action=initial&createMode="+createMode;
+	}
+	
 </script>
 </body>
 </html>

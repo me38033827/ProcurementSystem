@@ -2,12 +2,15 @@ package com.ProcurementSystem.entity;
 
 import java.util.ArrayList;
 
+import javax.validation.Valid;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class CommodityCatalog {
 	private String uniqueName;
-
-	private Supplier supplier;// 暂时不验证
+	
+	
+	private Supplier supplier;//暂时无法让框架只验证嵌套对象的某一个字段
 
 	private ArrayList<Commodity> commodities = new ArrayList<>();
 

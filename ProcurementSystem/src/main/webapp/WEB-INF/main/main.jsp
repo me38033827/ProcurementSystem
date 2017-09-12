@@ -6,6 +6,7 @@
 <title>主页</title>
 <%@include file="../other/header1.jsp"%>
 <%@include file="../other/header2.jsp"%>
+<%@include file="../other/header3.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body class="a-dashbrd-page-bg">

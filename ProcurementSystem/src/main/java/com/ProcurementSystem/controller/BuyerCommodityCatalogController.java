@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.ListIterator;
 
 import javax.annotation.Resource;
-import javax.jws.WebParam.Mode;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -48,17 +47,27 @@ public class BuyerCommodityCatalogController {
 		return "page/index";
 	}
 
+	/** 商品目录创建 */
 	// 转向创建商品目录页
 	@RequestMapping(value = "commodityCatalogCreate")
-	public String commodityCatalogCreate(Supplier supplier, ModelMap map) {
-		map.put("supplier", supplier);
+	public String commodityCatalogCreate(HttpServletRequest request, ModelMap map) {
+		HttpSession session = request.getSession();
+		String createMode = (String) session.getAttribute("createMode");// 获得创建商品目录的模式，1表示创建新目录，2表示创建新版本
+		if (createMode == null)
+			createMode = "1";// 默认为创建新目录
+		map.put("createMode", createMode);
 		return "downStream/commodityCatalog/commodityCatalogCreate";
 	}
 
-	// 创建商品目录页->选择供应商
+	// 创建商品目录页->选择供应商页
 	@RequestMapping(value = "commodityCatalogCreateChooseSupplier")
-	public String commodityCatalogCreateChooseSupplier(HttpServletRequest request) {
-		String target = "downStream/commodityCatalog/commodityCatalogCreateChooseSupplier";
+	public String commodityCatalogCreateChooseSupplier(HttpServletRequest request,
+			@RequestParam(value = "createMode", required = false) String createMode) {
+		String target = "downStream/commodityCatalog/commodityCatalogCreateChooseSupplier";// 跳转页面路径
+		if (createMode != null) {
+			request.getSession().setAttribute("createMode", createMode);// 保存创建目录模式
+			System.out.println("createMode: " + createMode);
+		}
 		System.out.println("---Controller: supplierSearch---");
 		String action = request.getParameter("action");
 		System.out.println("action is " + action);
@@ -102,22 +111,61 @@ public class BuyerCommodityCatalogController {
 		return target;
 	}
 
+	// 获得已选择供应商所拥有的全部商品目录
+	@RequestMapping(value = "getAllCommodityCatalogsBySupplier")
+	public String getAllCommodityCatalogsBySupplier(HttpServletRequest request, Supplier supplier, ModelMap map) {
+		HttpSession session = request.getSession();
+		String createMode = (String) session.getAttribute("createMode");// 获得创建商品目录的模式，1表示创建新目录，2表示创建新版本
+		if (createMode == null)
+			createMode = "1";// 默认为创建新目录
+		else {
+			session.removeAttribute("createMode");// 清空，初始化
+		}
+		if (createMode != null && createMode.equals("2")) {// 模式2下搜索商品目录
+			CommodityCatalog commodityCatalog = new CommodityCatalog();
+			commodityCatalog.setSupplier(supplier);
+			List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);// 获得供应商所拥有的商品目录
+			map.put("supplier", supplier);
+			map.put("commodityCatalogs", commodityCatalogs);// 向前端传递供应商信息和商品目录信息
+		}
+		map.put("createMode", createMode);// 用于恢复页面结构
+		return "downStream/commodityCatalog/commodityCatalogCreate";
+	}
+
 	// 保存商品目录基本信息，上传商品目录
 	@RequestMapping(value = "commodityCatalogUpload")
 	public String commodityCatalogUpload(HttpServletRequest request, @Valid CommodityCatalog commodityCatalog,
-			BindingResult result, ModelMap map) {
+			BindingResult result, ModelMap map, @RequestParam(value = "createMode") String createMode) {
+		// String createMode = request.getParameter("createMode");
 		// 数据校验
-		if (result.hasErrors()) {
-			List<FieldError> errorList = result.getFieldErrors();
-			for (FieldError error : errorList) {
-				System.out.println(error.getField() + "*" + error.getDefaultMessage());
-				map.put("ERR_" + error.getField(), error.getDefaultMessage());
+		boolean isDupeName = false;
+		if(createMode.equals("1") && !commodityCatalog.getName().equals("")){
+			isDupeName = commodityCatalogService.validateCommodityCatalogDupeName(commodityCatalog);// 验证是否重名
+		}
+		boolean isSupplierUniqueNameEmpty = commodityCatalog.getSupplier().getUniqueName() == 0 ? true:false;
+		if (isDupeName ||isSupplierUniqueNameEmpty ||  result.hasErrors()) {
+			if (result.hasErrors()) {
+				List<FieldError> errorList = result.getFieldErrors();
+				for (FieldError error : errorList) {
+					System.out.println(error.getField() + "*" + error.getDefaultMessage());
+					map.put("ERR_" + error.getField(), error.getDefaultMessage());
+				}
 			}
+			// 验证supplier.uniqueName
+			if (commodityCatalog.getSupplier().getUniqueName() == 0) {// 因为supplier.uniqueName为int型，所以与0相比
+				map.put("ERR_supplier", "错误：不能为空");
+			}
+			// 如果创建模式为1，验证商品目录名称是否重复
+			if(isDupeName){
+				map.put("Error_dupeName", "错误：目录名称重复");
+			}
+			map.put("supplier", commodityCatalog.getSupplier());// 保留已选择的供应商
+			map.put("createMode", createMode);// 恢复页面状态
 			return "downStream/commodityCatalog/commodityCatalogCreate";
 		}
-		String mySelect = request.getParameter("mySelect");
+
+		commodityCatalog = commodityCatalogService.setCommodityCatalogVersion(createMode, commodityCatalog);// 设置商品目录版本
 		HttpSession session = request.getSession();
-		commodityCatalog.setVersion("版本1");// 暂时设置默认为版本1，之后需要修改！！！
 		session.setAttribute("commodityCatalog", commodityCatalog);
 		return "downStream/commodityCatalog/commodityCatalogUpload";
 	}
@@ -138,7 +186,8 @@ public class BuyerCommodityCatalogController {
 		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl, file.getOriginalFilename());// 解析文件，持久化存储商品
 		request.setAttribute("commodityCatalog", commodityCatalog);
 		// 获取当前上传目录内容，准备在前端显示，转向
-		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName=" + commodityCatalog.getUniqueName();
+		return "redirect:/buyer/commodityCatalog/showCommodityCatalogContent?uniqueName="
+				+ commodityCatalog.getUniqueName();
 	}
 
 	// 转向商品目录列表页
@@ -329,5 +378,4 @@ public class BuyerCommodityCatalogController {
 		map.put("currPage", currPage);
 		return "downStream/commodityCatalog/commodityInfo";
 	}
-
 }

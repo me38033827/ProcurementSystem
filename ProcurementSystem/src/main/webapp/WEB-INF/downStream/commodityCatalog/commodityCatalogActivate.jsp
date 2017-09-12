@@ -26,7 +26,7 @@
 					</div>
 					<div class="margin-bottom">
 						<span> <a
-							href="commodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">步骤1.清理数据</a>
+							href="showCommodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">步骤1.清理数据</a>
 						</span> &nbsp;&nbsp;> &nbsp;&nbsp;<span> <a
 							href="commodityCatalogCompare">步骤2.分析数据</a>
 						</span> &nbsp;&nbsp;> &nbsp;&nbsp;<span

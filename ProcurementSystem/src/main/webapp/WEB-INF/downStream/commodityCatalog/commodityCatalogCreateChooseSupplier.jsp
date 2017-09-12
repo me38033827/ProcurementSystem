@@ -130,7 +130,7 @@
 								<td style="width: 15%;">${supplier.isClient}</td>
 								<td style="width: 10%; padding: 3px;">
 									<div align="right">
-										<form method="post" action="commodityCatalogCreate">
+										<form method="post" action="getAllCommodityCatalogsBySupplier">
 											<input name="uniqueName" type="hidden"
 												value="${supplier.uniqueName }"> <input
 												name="name" type="hidden" value="${supplier.name }">

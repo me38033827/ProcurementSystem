@@ -18,6 +18,9 @@ function createButtonPage(i){//i表示页号
 	button.setAttribute("onclick","window.location.href='commodityCatalog?currPage="+i+"'");
 	pageList.appendChild(button);//添加到pageList后面
 }
+
+
+/**添加购物车，修改购物车图标数量*/
 function addShoppingCart(uniqueName,quantity){
   //window.location.href="commodityCatalogAddShoppingCart?uniqueName="+$("#uniqueName_"+uniqueName).val()+ "&" + "quantity="+$("#quantity_"+uniqueName).val();
 	 $.ajax({  
@@ -38,7 +41,8 @@ function addShoppingCart(uniqueName,quantity){
 	    }  
 	        });  
 }
-
+/**图标获取失败，用默认图片代替*/
 function error(imageUniqueName){
 	$('#'+imageUniqueName).attr('src',"/ProcurementSystem/images/default-thumbnail.png")
 }
+

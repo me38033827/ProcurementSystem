@@ -63,10 +63,10 @@
 		received_date,
 		description,
 		create_date,
-		
+		version,
 		type)
 		values(
-		10000001 ,
+		#{supplier.uniqueName} ,
 		#{name },
 		#{isCreateEmptyContent },
 		#{isIgnoreApprove} ,
@@ -81,7 +81,7 @@
 		#{receivedDate},
 		#{description},
 		#{createDate},
-		
+		#{version},
 		#{type}
 		)
 	</insert>
@@ -129,6 +129,12 @@
 		</if>
 		<if test="uniqueName != '' and uniqueName != null">
 			AND cc.unique_name = #{uniqueName}
+		</if>
+		<if test="supplier!=null and supplier.uniqueName != '' and supplier.uniqueName != null">
+			AND cc.supplier_unique_name = #{supplier.uniqueName}
+		</if>
+		<if test="name != '' and name != null">
+			AND cc.name = #{name}
 		</if>
 	</select>
 	<resultMap id="CommodityCatalogDetail" type="com.ProcurementSystem.entity.CommodityCatalog">
@@ -178,4 +184,9 @@
 		update commodity_catalog
 		set item_count = #{itemCount} where unique_name = #{uniqueName}
 	</update>
+	
+	
+	<select id="getCommodityCatalogVersionCount" resultType="int" parameterType="com.ProcurementSystem.entity.CommodityCatalog">
+		select count(*) from commodity_catalog where name = #{name}
+	</select>
 </mapper>
