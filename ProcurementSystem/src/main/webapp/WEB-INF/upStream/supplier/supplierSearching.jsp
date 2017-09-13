@@ -5,12 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <script type="text/javascript">
-	function supplierDetail(uniqueName) {
-		//location.href="supplierDetail";
-		$.post("supplierDetail", {
-			"uniqueName" : uniqueName
-		}, function() {
-		});
+	function toshow(){
+		alert(1);
+		var num = request.getParameter("num");
+		alert(num);
 	}
 </script>
 <title>搜索供应商和客户结果</title>

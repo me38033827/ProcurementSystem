@@ -1579,3 +1579,70 @@ body.a-dashbrd-page-bg {
 .my-dropdown {
 	width: 120px
 }
+
+/* login box */
+
+.login-box {
+	width:380px;
+	margin:0 auto
+}
+
+.login-title {
+	color:#fc5652
+}
+
+.login-box-middle {
+	height:156px;
+	margin-top:10px
+}
+
+.login-box-input {
+	margin-bottom:25px
+}
+
+.login-box-btn {
+	padding-top:15px
+}
+
+.login-btn {
+	background-color:#fc5652;
+	color:white;
+	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .3)
+}
+
+.login-btn:hover {
+	color:white;
+	background-color:#ff2a42
+}
+
+.login-find-psd {
+	color:grey;
+	margin-top: 5px
+}
+
+.login-find-psd:hover {
+	color:#fc5652
+}
+
+.theme-popover-mask {
+	z-index: 9998;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:#000;
+	opacity:0.4;
+	filter:alpha(opacity=40);
+	display:none
+}
+.theme-popover {
+	z-index:9999;
+	position:fixed;
+	margin-top:10%;
+	height:354px;
+	border-radius:6px;
+	background-color:#fff;
+	display:none;
+	box-shadow: 0 0 10px #666
+}

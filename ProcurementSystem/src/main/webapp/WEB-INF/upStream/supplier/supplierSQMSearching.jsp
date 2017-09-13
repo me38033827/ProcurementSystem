@@ -4,16 +4,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<script type="text/javascript">
-	
-	function supplierDetail(uniqueName){
-		//location.href="supplierDetail";
-		$.post("supplierDetail",{"uniqueName":uniqueName},function(){});
-	}
-		
-</script>
 <title>搜索供应商和客户结果</title>
-
+<script>
+	function changeStatus(sqmId,status){
+		/* alert(sqmId);
+		alert(status); */
+ 		$.ajax({  
+			data:{"sqmId" : sqmId,
+				"status" : status
+			},  
+			type:"GET",  
+			dataType: 'json',
+		    url:"sqmStatus",  
+		    error:function(data){  
+		        alert("状态修改失败！");  
+		    },  
+		    success:function(data){ 
+		      alert("状态修改成功！");  
+		   }  
+		});
+ 		location.href="sqmSearching?action=search";
+	}
+</script>
 <%@include file="../../other/header1return.jsp"%>
 </head>
 <!-- 页面整体宽度：1320px -->
@@ -58,47 +70,99 @@
 					</div>
 					<div class="searching-ending">
 						<div align="right">
-							<form id = "empty" method="post"></form>
-							<button class="btn-w" form="empty" formaction="supplierSearch?action=reset">重置</button>
-							<button class="btn-b" form="supplierSearch" formaction="supplierSearch?action=search">搜索</button>
+							<button class="btn-w" onclick="window.location.href='sqmSearching?action=initial'">重置</button>
+							<button class="btn-b" onclick="window.location.href='sqmSearching?action=search'">搜索</button>
 						</div>
 					</div>
 				</div>
 	
 				<div class="adjust-10"></div>
 				<div class="adjust-10"></div>
+				<% if(request.getAttribute("num")==null){ %>
 				
-				<div class="standard-subtitle" style="border:0; margin-bottom:0;">最近查看的内容
+				<div id="sqm-recent">
+					<div class="standard-subtitle" style="border:0; margin-bottom:0;">最近查看的内容
+						
+						<div class="right">
+							<button class="icon-btn">
+								<span class="glyphicon glyphicon-th icon" aria-hidden="true"></span>
+							</button>
+						</div>
+					</div>
 					
-					<div class="right">
-						<button class="icon-btn">
-							<span class="glyphicon glyphicon-th icon" aria-hidden="true"></span>
-						</button>
+					<div>
+						<table class="table table-hover">
+							<tr class="standard-row1">
+								<td style="width:30%;">
+									标题
+								</td>
+								<td style="width:10%;">所有者</td>
+								<td style="width:15%;">供应商</td>
+								<td style="width:10%;">资格状态</td>
+								<td style="width:35%;">商品</td>
+							</tr>
+							<tr>
+								<td><a href="">供应商资格管理项目</a></td>
+								<td><a>zhangliu</a></td>
+								<td><a>佳能（北京）</a></td>
+								<td>进行中</td>
+								<td>打印机
+									<a style="margin-left:30px;"class="inline-b f-13" href="">查看更多信息</a>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
-				
-				<div>
-					<table class="table table-hover">
-						<tr class="standard-row1">
-							<td style="width:30%;">
-								标题
-							</td>
-							<td style="width:10%;">所有者</td>
-							<td style="width:15%;">供应商</td>
-							<td style="width:10%;">资格状态</td>
-							<td style="width:35%;">商品</td>
-						</tr>
-						<tr>
-							<td><a href="">供应商资格管理项目</a></td>
-							<td><a>zhangliu</a></td>
-							<td><a>佳能（北京）</a></td>
-							<td>进行中</td>
-							<td>打印机
-								<a style="margin-left:30px;"class="inline-b f-13" href="">查看更多信息</a>
-							</td>
-						</tr>
-					</table>
+				<%}else{ %>
+				<div id="sqm-search">
+					<div>
+						<table class="table table-hover">
+							<tr class="standard-row1">
+								<td style="width:30%;">
+									标题
+								</td>
+								<td style="width:10%;">所有者</td>
+								<td style="width:10%;">供应商</td>
+								<td style="width:35%;">商品</td>
+								<td style="width:15%;">资格状态</td>
+							</tr>
+						</table>
+					</div>
+					<div class="roll-tab" style="max-height: 220px;">
+						<table class="table table-hover">
+							<c:forEach var="supplierSQM" items="${supplierSQMs}" varStatus="status">
+								<tr>
+									<td style="width: 30%;"><a
+										href="sqmSummary?id=${supplierSQM.id}">${supplierSQM.title}</a></td>
+									<td style="width: 10%;">${supplierSQM.userId}</td>
+									<td style="width: 10%;">SU${supplierSQM.supplierId}</td>
+									<td style="width: 35%;">
+									</td>
+									<td style="width: 15%; padding: 3px;">${supplierSQM.status} &nbsp;&nbsp;&nbsp;&nbsp;
+										<div class="btn-group" align="right">
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu manu-btn-o">
+												<c:if test="${supplierSQM.status == '待审核'}">
+													<li><button class="manu-btn" onclick="changeStatus(${supplierSQM.id},'已批准');">批准</button></li>
+												</c:if>
+												<c:if test="${supplierSQM.status == '已批准'}">
+													<li><button class="manu-btn" onclick="changeStatus(${supplierSQM.id},'已停用');">停用</button></li>
+												</c:if>
+												<c:if test="${supplierSQM.status == '已停用'}">
+													<li><button class="manu-btn" onclick="changeStatus(${supplierSQM.id},'已批准');">取消停用</button></li>
+												</c:if>
+											</ul>
+										</div>
+									</td>
+									
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
 				</div>
+				<%} %>
 			</div>
 		</div>
 	</div>

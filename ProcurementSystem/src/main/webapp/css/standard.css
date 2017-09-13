@@ -444,6 +444,8 @@ button{
 .manu-btn {
 	width: 98px;
 	text-align: center;
+	border:0 !important;
+	background-color:transparent !important;
 }
 
 .btn-b {

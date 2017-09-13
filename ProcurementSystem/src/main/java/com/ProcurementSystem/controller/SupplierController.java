@@ -32,13 +32,6 @@ public class SupplierController {
 		return "supplier/main";
 	}
 	
-//	//AN注册
-//	@RequestMapping(value = "signUp")
-//	public String signUp(){
-//		return "supplier/signUp";
-//	}
-	
-	
 	//AN注册
 	@RequestMapping(value = "signUp")
 	public String signUpAnalyze(HttpServletRequest request, @Valid Login login,
@@ -76,6 +69,7 @@ public class SupplierController {
 		
 		int uniqueName = supplierService.findMaxUniqueName()+1;
 		login.getSupplier().setUniqueName(uniqueName);
+		login.getSupplier().setApproveState("待审批");
 		supplierService.insertSupplier(login.getSupplier());
 		
 		loginService.insertSupplierLogin(login);
