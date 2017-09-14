@@ -134,8 +134,8 @@
 								<tr>
 									<td style="width: 30%;"><a
 										href="sqmSummary?id=${supplierSQM.id}">${supplierSQM.title}</a></td>
-									<td style="width: 10%;">${supplierSQM.userId}</td>
-									<td style="width: 10%;">SU${supplierSQM.supplierId}</td>
+									<td style="width: 10%;">${supplierSQM.user.uniqueName}</td>
+									<td style="width: 10%;">SU${supplierSQM.supplier.uniqueName}</td>
 									<td style="width: 35%;">
 									</td>
 									<td style="width: 15%; padding: 3px;">${supplierSQM.status} &nbsp;&nbsp;&nbsp;&nbsp;
@@ -145,13 +145,13 @@
 											</button>
 											<ul class="dropdown-menu manu-btn-o">
 												<c:if test="${supplierSQM.status == '待审核'}">
-													<li><button class="manu-btn" onclick="changeStatus(${supplierSQM.id},'已批准');">批准</button></li>
+													<li><button class="manu-btn" onClick="changeStatus(${supplierSQM.id},'已批准');">批准</button></li>
 												</c:if>
 												<c:if test="${supplierSQM.status == '已批准'}">
-													<li><button class="manu-btn" onclick="changeStatus(${supplierSQM.id},'已停用');">停用</button></li>
+													<li><button class="manu-btn" onClick="changeStatus(${supplierSQM.id},'已停用');">停用</button></li>
 												</c:if>
 												<c:if test="${supplierSQM.status == '已停用'}">
-													<li><button class="manu-btn" onclick="changeStatus(${supplierSQM.id},'已批准');">取消停用</button></li>
+													<li><button class="manu-btn" onClick="changeStatus(${supplierSQM.id},'已批准');">取消停用</button></li>
 												</c:if>
 											</ul>
 										</div>

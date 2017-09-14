@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ProcurementSystem.entity.Supplier;
-import com.ProcurementSystem.entity.supplierSQM;
+import com.ProcurementSystem.entity.SupplierSQM;
 import com.ProcurementSystem.service.SupplierSQMService;
 import com.ProcurementSystem.service.SupplierService;
 
@@ -234,16 +234,20 @@ public class BuyerSupplierController {
 		// search
 		System.out.println("Search for content: " + content);
 		if(content==null){
-			List<supplierSQM> supplierSQMs = sqmService.searchAllSupplierSQM();
+			List<SupplierSQM> supplierSQMs = sqmService.searchAllSupplierSQM();
 			request.setAttribute("supplierSQMs", supplierSQMs);
 			request.setAttribute("num", Integer.toString(supplierSQMs.size()));
+			System.out.println("id: " + supplierSQMs.get(0).getId());
+			System.out.println("title: " + supplierSQMs.get(0).getTitle());
+			System.out.println("user: " + supplierSQMs.get(0).getUser());
+			System.out.println("user unique name: " + supplierSQMs.get(0).getUser().getUniqueName());
 			System.out.println("共有"+Integer.toString(supplierSQMs.size())+"个搜索结果");
 		}else{
-			List<Supplier> suppliers = service.searchSupplier(content);
-			request.setAttribute("suppliers", suppliers);
-			request.setAttribute("content", content);
-			request.setAttribute("num", Integer.toString(suppliers.size()));
-			System.out.println("共有"+Integer.toString(suppliers.size())+"个搜索结果");
+//			List<Supplier> suppliers = service.searchSupplier(content);
+//			request.setAttribute("suppliers", suppliers);
+//			request.setAttribute("content", content);
+//			request.setAttribute("num", Integer.toString(suppliers.size()));
+//			System.out.println("共有"+Integer.toString(suppliers.size())+"个搜索结果");
 		}
 		
 		request.getSession().setAttribute("contentSession", content);
@@ -299,7 +303,7 @@ public class BuyerSupplierController {
 	@RequestMapping(value = "sqmSummary")
 	public String sqmSummary(HttpServletRequest request){
 		int id = Integer.parseInt(request.getParameter("id"));
-		supplierSQM sqm = sqmService.searchSupplierSQM(id);
+		SupplierSQM sqm = sqmService.getSupplierSQM(id);
 		request.getSession().setAttribute("sqm", sqm);
 		return "upStream/supplier/supplierSQMsummary";
 	}
@@ -335,9 +339,11 @@ public class BuyerSupplierController {
 	}
 	
 	@RequestMapping(value = "sqmCreation")
-	public String sqmCreation(HttpServletRequest request, supplierSQM sqm){
+	public String sqmCreation(HttpServletRequest request, SupplierSQM sqm){
 		String action = request.getParameter("action");
 		if(action==null){
+			SupplierSQM sqmSession = new SupplierSQM();
+			request.getSession().setAttribute("sqmSession", sqmSession);
 			return "upStream/supplier/supplierSQMcreation";
 		}
 //		System.out.println(sqm.getTitle());
@@ -347,13 +353,69 @@ public class BuyerSupplierController {
 //		System.out.println(sqm.getLastValid());
 //		System.out.println(sqm.getCommodity());
 		sqm.setStatus("待审核");
+		SupplierSQM supplierSession = (SupplierSQM)request.getSession().getAttribute("sqmSession");
+		
 		sqmService.InsertSQM(sqm);
 		return "redirect:sqmSummary";
 	}
 	
+	// 创建sqm->选择供应商页
+	@RequestMapping(value = "sqmCreationChooseSupplier")
+	public String commodityCatalogCreateChooseSupplier(HttpServletRequest request) {
+		String target = "upStream/supplier/supplierSQMCreationChooseSupplier";// 跳转页面路径
+
+		System.out.println("---Controller: supplierSearch---");
+		String action = request.getParameter("action");
+		System.out.println("action is " + action);
+		if (action.equals("reset")) {// 搜索重置
+			request.getSession().setAttribute("contentSession", "");
+			request.setAttribute("num", "-1");// -1表示无项目
+			return target;
+		}
+		String content = request.getParameter("content");
+		if (action.equals("initial")) {//
+			request.setAttribute("num", "-1");
+			return target;
+			// }
+		}
+
+		if (action.equals("back")) {
+			content = (String) request.getSession().getAttribute("contentSession");
+		}
+		if (content == null) {
+			request.setAttribute("num", "-1");
+			return target;
+		}
+		// search
+		System.out.println("Search for content: " + content);
+		if (content.equals("使用名称、标识符或任何其他词语搜索")) {// 默认搜索全部
+			List<Supplier> suppliers = service.searchAllSupplier();
+			request.setAttribute("suppliers", suppliers);
+			request.setAttribute("num", Integer.toString(suppliers.size()));
+			System.out.println("共有" + Integer.toString(suppliers.size()) + "个搜索结果");
+		} else {// 按条件搜索
+			List<Supplier> suppliers = service.searchSupplier(content);
+			request.setAttribute("suppliers", suppliers);
+			request.setAttribute("content", content);
+			request.setAttribute("num", Integer.toString(suppliers.size()));
+			System.out.println("共有" + Integer.toString(suppliers.size()) + "个搜索结果");
+		}
+		request.getSession().setAttribute("contentSession", content);
+		return target;
+	}
+	
+	@RequestMapping(value = "getSelectedSupplier")
+	public String getSelectedSupplier(HttpServletRequest request){
+		int uniqueName = Integer.parseInt(request.getParameter("uniqueName"));
+		String name = request.getParameter("name");
+		System.out.println(uniqueName);
+		System.out.println(name);
+		return "redirect: sqmCreation";
+	}
+	
 	@RequestMapping(value = "sqmStatus")
 	public @ResponseBody String sqmStatus(@RequestParam("sqmId") int sqmId, @RequestParam("status") String status){
-		supplierSQM sqm = new supplierSQM();
+		SupplierSQM sqm = new SupplierSQM();
 		sqm.setId(sqmId);
 		sqm.setStatus(status);
 		sqmService.updateSQMStatus(sqm);

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ProcurementSystem.dao.ISupplierSQMDao">
-	<!-- <resultMap id="SQMMap" type="com.ProcurementSystem.entity.supplierSQM">
-		<id property="id" column="id" />
+	<resultMap id="SQMMap" type="com.ProcurementSystem.entity.SupplierSQM">
+		<result property="id" column="id" />
 		<result property="title" column="title" />
 		<result property="description" column="description" />
 		<result property="commodity" column="commodity" />
@@ -11,36 +11,69 @@
 		<result property="validTo" column="valid_to" />
 		<result property="lastValid" column="last_valid" />
 		<association property="supplier" javaType="com.ProcurementSystem.entity.Supplier">
-			<id property="uniqueName" column="supplier" />
+			<id property="uniqueName" column="supplier_id" />
 		</association>
 		<association property="user" javaType="com.ProcurementSystem.entity.User">
-			<id property="uniqueName" column="user" />
+			<id property="uniqueName" column="user_id" />
 		</association>
-	</resultMap> -->
+	</resultMap>
 
-	<insert id="insertSQM" parameterType="com.ProcurementSystem.entity.supplierSQM">
+<!-- 	<insert id="insertSQM" parameterType="com.ProcurementSystem.entity.SupplierSQM">
 		insert into supplier_sqm(id, title, description, commodity, status, valid_to, 
 		last_valid, supplier_id, user_id)
 		values(#{id}, #{title}, #{description}, #{commodity}, #{status}, #{validTo},
 		#{lastValid}, #{supplierId}, #{userId});
-	</insert>
+	</insert> -->
 	
-	<select id="searchAllSupplierSQM" resultType="com.ProcurementSystem.entity.supplierSQM">
-		select *
+	<select id="searchAllSupplierSQM" resultType="com.ProcurementSystem.entity.SupplierSQM">
+		select 
+			id as id,
+			title as title,
+			description as description,
+			commodity as commodity,
+			valid_to as validTo,
+			last_valid as lastValid,
+			supplier_id as supplierId,
+			user_id as userId,
+			status as status
 		from supplier_sqm;
 	</select>
 	
-	<select id="searchSupplierSQM" parameterType="int" resultType="com.ProcurementSystem.entity.supplierSQM">
-		select *
+	<select id="getSupplierSQM" parameterType="int" resultType="com.ProcurementSystem.entity.SupplierSQM">
+		select
+			id as id,
+			title as title,
+			description as description,
+			commodity as commodity,
+			valid_to as validTo,
+			last_valid as lastValid,
+			supplier_id as supplierId,
+			user_id as userId,
+			status as status
 		from supplier_sqm where id = #{id};
 	</select>
 	
-	<update id="updateSQMStatus" parameterType="com.ProcurementSystem.entity.supplierSQM">
+	<select id="searchSupplierSQM" parameterType="String" resultType="com.ProcurementSystem.entity.SupplierSQM">
+		select
+			id as id,
+			title as title,
+			description as description,
+			commodity as commodity,
+			valid_to as validTo,
+			last_valid as lastValid,
+			supplier_id as supplierId,
+			user_id as userId,
+			status as status
+		from supplier_sqm 
+		where title = #{title};
+	</select>
+	<!-- 
+	<update id="updateSQMStatus" parameterType="com.ProcurementSystem.entity.SupplierSQM">
 		update supplier_sqm
 		<set>	
 			status=#{status}
 		</set>
 		where id = #{id};
-	</update>
+	</update> -->
 	
 </mapper>

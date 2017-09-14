@@ -6,7 +6,12 @@
 <%@include file="../../other/header1.jsp"%>
 
 <title>创建供应商界面</title>
-
+<script>
+	function toChooseSupplierPage(){
+		var createMode = 1;
+		window.location.href="sqmCreationChooseSupplier?action=initial";
+	}
+</script>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -32,7 +37,7 @@
 								<table class="fulltab" style="margin-left:80px;">
 									<tr class="row-standard">
 										<td class="col-standard1">＊名称：</td>
-										<td class="col-standard2"><input placeholder="无标题供应商资格管理项目" class="form-control input" name="title" style="width:230px;" /></td>
+										<td class="col-standard2"><input placeholder="无标题供应商资格管理项目" class="form-control input" name="title" style="width:230px;" value="${sqm.}" /></td>
 									</tr>
 			
 									<tr class="row-standard">
@@ -52,7 +57,15 @@
 								<table class="fulltab">
 									<tr class="row-standard">
 										<td class="col-standard1">＊供应商：</td>
-										<td class="col-standard2"><input class="form-control input" name="supplierId"/>
+										<td class="col-standard2">
+											<div>
+												${supplier.name }
+												<input type="hidden" value="${supplier.uniqueName }"
+													name="supplier.uniqueName"> <input type="hidden"
+													value="${supplier.name }" name="supplier.name"> <a
+													href="javascript:void(0)" onclick="toChooseSupplierPage();">【
+													选择 】</a> <span class="error-message">${ERR_supplier}</span>
+											</div>
 										</td>
 									</tr>
 									<tr class="row-standard">

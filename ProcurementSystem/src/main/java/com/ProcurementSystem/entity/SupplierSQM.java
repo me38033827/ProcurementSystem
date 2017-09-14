@@ -2,13 +2,13 @@ package com.ProcurementSystem.entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class supplierSQM {
+public class SupplierSQM {
 	private int id;
 //	@NotEmpty(message="供应商不能为空")
-	private int supplierId;
-	private int userId;
-//	private Supplier supplier;
-//	private User user;
+//	private int supplierId;
+//	private int userId;
+	private Supplier supplier;
+	private User user;
 	@NotEmpty(message="项目名称不能为空")
 	private String title;
 	private String description;
@@ -58,16 +58,28 @@ public class supplierSQM {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getSupplierId() {
-		return supplierId;
+//	public int getSupplierId() {
+//		return supplierId;
+//	}
+//	public void setSupplierId(int supplierId) {
+//		this.supplierId = supplierId;
+//	}
+//	public int getUserId() {
+//		return userId;
+//	}
+//	public void setUserId(int userId) {
+//		this.userId = userId;
+//	}
+	public Supplier getSupplier() {
+		return supplier;
 	}
-	public void setSupplierId(int supplierId) {
-		this.supplierId = supplierId;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

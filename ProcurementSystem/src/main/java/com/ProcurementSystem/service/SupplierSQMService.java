@@ -5,26 +5,26 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.ProcurementSystem.dao.ISupplierSQMDao;
-import com.ProcurementSystem.entity.supplierSQM;
+import com.ProcurementSystem.entity.SupplierSQM;
 
 
 @Service
 public class SupplierSQMService {
 
 	@Resource ISupplierSQMDao dao;
-	public void InsertSQM(supplierSQM sqm){
+	public void InsertSQM(SupplierSQM sqm){
 		dao.insertSQM(sqm);
 	}
 	
-	public List<supplierSQM> searchAllSupplierSQM(){
+	public List<SupplierSQM> searchAllSupplierSQM(){
 		return dao.searchAllSupplierSQM();
 	}
 	
-	public void updateSQMStatus(supplierSQM sqm){
+	public void updateSQMStatus(SupplierSQM sqm){
 		dao.updateSQMStatus(sqm);
 	}
 	
-	public supplierSQM searchSupplierSQM(int id){
-		return dao.searchSupplierSQM(id);
+	public SupplierSQM getSupplierSQM(int id){
+		return dao.getSupplierSQM(id);
 	}
 }
