@@ -4,7 +4,7 @@ import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class SupplierSQM {
+public class SupplierSPM {
 	private int id;
 	@Valid
 	private Supplier supplier;
@@ -15,8 +15,8 @@ public class SupplierSQM {
 	private String description;
 	private String commodity;
 	private String status;
-	private String lastValid;
-	private String validTo;
+	private String startDate;
+	private String endDate;
 	public int getId() {
 		return id;
 	}
@@ -41,36 +41,13 @@ public class SupplierSQM {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getLastValid() {
-		return lastValid;
-	}
-	public void setLastValid(String lastValid) {
-		this.lastValid = lastValid;
-	}
-	public String getValidTo() {
-		return validTo;
-	}
-	public void setValidTo(String validTo) {
-		this.validTo = validTo;
-	}
+	
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
-//	public int getSupplierId() {
-//		return supplierId;
-//	}
-//	public void setSupplierId(int supplierId) {
-//		this.supplierId = supplierId;
-//	}
-//	public int getUserId() {
-//		return userId;
-//	}
-//	public void setUserId(int userId) {
-//		this.userId = userId;
-//	}
 	public Supplier getSupplier() {
 		return supplier;
 	}
@@ -82,5 +59,17 @@ public class SupplierSQM {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 }

@@ -16,7 +16,7 @@
 				<!-- supplier detail title -->
 				<div class="p2p-supplier-title">
 					<div class="left">
-						<a class="p2p-supplier-title-main">惠普（北京）</a> <br>
+						<a class="p2p-supplier-title-main">${supplier.name }</a> <br>
 						<a class="p2p-supplier-subtitle">供应商工作区</a>
 					</div>
 					
@@ -82,7 +82,7 @@
 				</div>
 	
 				<div class="adjust-10"></div>
-				<div class="standard-subtitle">惠普（北京）
+				<div class="standard-subtitle">${supplier.name }
 					<div class="right">
 						<div class="btn-group" >
 							<button class="btn-m" data-toggle="dropdown" style="width:80px;">
@@ -122,7 +122,7 @@
 								<span class="glyphicon glyphicon-time blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;
 								<a href="">PSC检查CPL和DPL列表＊<span class="caret"></span></a>
 							</td>
-							<td><a href="">惠普（北京）<span class="caret"></span></a></td>
+							<td><a href="">${supplier.name }<span class="caret"></span></a></td>
 							<td>PSC组</td>
 							<td>未开始</td>
 							<td>2017年8月16日</td>
@@ -144,7 +144,7 @@
 								<span class="glyphicon glyphicon-time blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;
 								<a href="">完成供应商信息问卷调查（GCM问题）＊<span class="caret"></span></a>
 							</td>
-							<td><a href="">惠普（北京）<span class="caret"></span></a></td>
+							<td><a href="">${supplier.name }<span class="caret"></span></a></td>
 							<td>项目所有者</td>
 							<td>未开始</td>
 							<td></td>

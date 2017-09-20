@@ -72,6 +72,9 @@ public class LoginController {
 	
 	@RequestMapping(value = "logout")
 	public String logout(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		session.removeAttribute("sqm");
+		session.removeAttribute("spm");
 		return "redirect:login";
 	}
 	

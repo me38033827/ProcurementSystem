@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -346,6 +347,14 @@
 										<td class="question-3">2.4.3&nbsp;&nbsp;&nbsp;您是否通过越战退伍军人所有企业认证?</td>
 										<td>否</td>
 									</tr>
+									<% int count = 1; %>
+									<c:forEach var="supplierQuestion" items="${supplierQuestions}" varStatus="status">
+										<tr>
+											<td class="question-2">附加<%=count %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${supplierQuestion.question}</td>
+											<td>${supplierQuestion.answer}</td>
+										</tr>
+										<%count=count+1; %>
+									</c:forEach>
 								</table>
 							</div>
 						</div>

@@ -80,23 +80,23 @@
 						<table class="tab-height" id="supplier-crea-tab1" style="margin-left:80px;">
 							<tr>
 								<td class="col-standard1">工作区标识符：</td>
-								<td class="col-standard2">WS100000203</td>
+								<td class="col-standard2">WS${sqm.id}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">供应商：</td>
-								<td class="col-standard2">佳能（北京）</td>
+								<td class="col-standard2">{sqm.supplier.name}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">项目状态：</td>
-								<td class="col-standard2">已激活</td>
+								<td class="col-standard2">{sqm.status}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">上次资格日期：</td>
-								<td class="col-standard2"></td>
+								<td class="col-standard2">{sqm.lastValid}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">资格失效日期：</td>
-								<td class="col-standard2"></td>
+								<td class="col-standard2">{sqm.validTo}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">版本：</td>
@@ -108,15 +108,15 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">开始日期：</td>
-								<td class="col-standard2">2017年9月8日</td>
+								<td class="col-standard2"></td>
 							</tr>
 							<tr>
 								<td class="col-standard1">截止日期：</td>
-								<td class="col-standard2">2017年9月8日</td>
+								<td class="col-standard2"></td>
 							</tr>
 							<tr>
 								<td class="col-standard1">所有者：</td>
-								<td class="col-standard2">zhangliu</td>
+								<td class="col-standard2">${sqm.user.uniqueName}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">测试项目：</td>
@@ -124,7 +124,7 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">商品：</td>
-								<td class="col-standard2">打印机
+								<td class="col-standard2">{sqm.commodity}
 									<a style="margin-left:30px;"class="inline-b f-13" href="">查看更多信息</a>
 								</td>
 							</tr>
@@ -134,7 +134,7 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">说明：</td>
-								<td class="col-standard2"></td>
+								<td class="col-standard2">{sqm.description}</td>
 							</tr>
 						</table>
 					</div>
@@ -201,7 +201,7 @@
 	<%@ include file="../../other/footer.jsp"%>
 		<script>
 			function back(){
-				location.href="supplierSearch?action=back";
+				location.href="../main";
 			}
 		</script>
 </body>

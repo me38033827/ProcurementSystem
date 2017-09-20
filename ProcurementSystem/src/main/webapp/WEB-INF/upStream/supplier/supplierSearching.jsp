@@ -47,11 +47,10 @@
 											style="width: 350px; padding-left: 30px;"><input
 											type="text" class="col-md-5 form-control input"
 											style="width: 300px;" name="content"
-											<%if (request.getAttribute("content") != null) {%>
-											value=<%=request.getAttribute("content")%> <%} else {%>
-											value="使用名称、标识符或任何其他词语搜索" <%}%>
-											onfocus="if(this.value=='使用名称、标识符或任何其他词语搜索') this.value=''"
-											onblur="if(this.value=='')this.value='使用名称、标识符或任何其他词语搜索' ">
+											placeholder="使用名称、标识符或任何其他词语搜索" 
+											<%if(request.getSession().getAttribute("contentSession")!=null) {%>
+											value="<%=request.getSession().getAttribute("contentSession") %>"
+											<%} %>>
 										</td>
 										<td class="col-standard2"><a href=""><span
 												class="glyphicon glyphicon-plus-sign blue"

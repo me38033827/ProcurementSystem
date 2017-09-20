@@ -6,7 +6,63 @@
 <%@include file="../../other/header1.jsp"%>
 
 <title>创建供应商界面</title>
-
+<script>
+	function addMultipleChoice(){
+		$.ajax({  
+			data:{
+				"question" : $("#question-m").val(),
+				"a" : $("#a").val(),
+				"b" : $("#b").val(),
+				"c" : $("#c").val(),
+				"d" : $("#d").val(),
+				"supplierId":$("#uniqueName").val()
+			},  
+			type:"POST",  
+			dataType: 'json',
+		    url:"addMultipleQuestion",
+		    success:function(data){
+		    		$("#count").val($("#count")+1);
+		    		$("#more-q").append(
+	    					"<tr>"+
+						"<td class=\"question-3\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data.question+"</td>"+
+						"<td>"+
+						"<select  style=\"height:30px;width:80px;\" name=\"question"+data.id+"\">"+
+						"<option>"+data.a+"</option>"+
+						"<option>"+data.b+"</option>"+
+						"<option>"+data.c+"</option>"+
+						"<option>"+data.d+"</option>"+
+						"</select>"+
+						"</td>"+
+						"</tr>");
+		   	},
+		    error:function(data){
+		    		alert("error");
+		    } 
+		});
+		cancel();
+	}
+	function mShow(){
+		$("#multiple-choice").show();
+		$("#blank").hide();
+	}
+	function bShow(){
+		$("#multiple-choice").hide();
+		$("#blank").show();
+	}
+	function addQuestion(){
+		$('.theme-popover-mask.question').fadeIn(100);
+		$('.theme-popover.question').slideDown(200);
+	}
+	function cancel(){
+		$('.theme-popover-mask.question').fadeOut(100);
+		$('.theme-popover.question').slideUp(200);
+		$("#question-m").val("");
+	   	$("#a").val("");
+		$("#b").val("");
+		$("#c").val("");
+		$("#d").val("");
+	}
+</script>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -156,7 +212,7 @@
 									<tr class="row-standard">
 										<td class="col-standard1">标识符：</td>
 										<td class="col-standard2">SU<%=request.getAttribute("uniqueName") %>
-										<input type="hidden" name="uniqueName" value=<%=request.getAttribute("uniqueName")%>>
+										<input type="hidden" id="uniqueName"name="uniqueName" value=<%=request.getAttribute("uniqueName")%>>
 										</td>
 									</tr>
 									<tr class="row-standard">
@@ -186,7 +242,7 @@
 							</table>
 						</div>
 						<div class="roll-tab" style="max-height:240px;" id="question">
-							<table class="table table-hover">
+							<table class="table table-hover"  id="more-q">
 								<tr>
 									<td class="question-1" style="width:75%;"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
 										&nbsp;1&nbsp;&nbsp;&nbsp;公司信息</b></td>
@@ -362,19 +418,95 @@
 								</tr>
 							</table>
 						</div>
+						<input value="0" id="count" hidden="hidden"/>
 					</form>
-						<div>
-							<table class="table table-hover">
-								<tr class="standard-row3">
-									<td colspan="2">
-										<div align="right">
-											<button form="supplierCreation" class="btn-b">确定</button>
-											<button class="btn-w" onclick="window.location.href='supplierSearch?action=back'">取消</button>
-										</div>
-									</td>
-								</tr>
-							</table>
+					
+					<div>
+						<table class="table table-hover">
+							<tr class="standard-row3">
+								<td colspan="2">
+									&#8627;
+									<button class="btn-w" style="width:150px;" onclick="addQuestion();">添加自定义问题</button>
+									<!-- <div class="btn-group inline-b" role="group">
+										<button type="button" style="width:150px;"
+											class="btn-w dropdown-toggle"
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											创建自定义问题&nbsp;<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu my-dropdown">
+											<li><a class="secondline-right" href="addMultipleChoice();">选择题</a></li>
+											<li><a class="secondline-right" >填空题</a></li>
+										</ul>
+									</div> -->
+									<div class="right">
+										<button form="supplierCreation" class="btn-b">确定</button>
+										<button class="btn-w" onclick="window.location.href='supplierSearch?action=back'">取消</button>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="adjust-10"></div>
+					<div class="adjust-10"></div>
+					<div class="adjust-10"></div>
+					<div class="adjust-10"></div>
+					
+					<div class="theme-popover question" >
+						<div class="popover-container question">
+							
+							<a>题目类型：</a>
+							<select>
+								<option onclick="mShow();">选择</option>
+								<option>填空</option>
+							</select>
+							<div id="multiple-choice">
+								<table>
+									<tr>
+										<td>问题：</td>
+									<td><input class="form-control input" style="width:200px" id="question-m" />
+										</td>
+									</tr>
+									<tr>
+										<td>选项一：</td>
+										<td><input class="form-control input" style="width:200px" id="a" />
+										</td>
+									</tr>
+									<tr>
+										<td>选项二：</td>
+										<td><input class="form-control input" style="width:200px" id="b" />
+										</td>
+									</tr>
+									<tr>
+										<td>选项三：</td>
+										<td><input class="form-control input" style="width:200px" id="c" />
+										</td>
+									</tr>
+									<tr>
+										<td>选项四：</td>
+										<td><input class="form-control input" style="width:200px" id="d" />
+										</td>
+									</tr>
+								</table>
+								<div style="padding:0 20px; height:50px; margin-top:10px;">
+									<button class="btn-b" onclick="addMultipleChoice()">确定</button>
+									<button class="btn-w right" onclick="cancel();">取消</button>
+								</div>
+							</div>
+							<div id="blank" style="display:none;">
+								<table>
+									<tr>
+										<td>问题：</td>
+										<td><input class="form-control input" style="width:200px" id="a" />
+										</td>
+									</tr>
+								</table>
+								<div style="padding:0 20px; height:50px; margin-top:10px;">
+									<button class="btn-b">确定</button>
+									<button class="btn-w right">取消</button>
+								</div>
+							</div>
 						</div>
+					</div>		
 					
 					
 				<div class="theme-popover">
@@ -557,7 +689,7 @@
 			</div>
 		</div>
 	<div class="theme-popover-mask"></div>
-
+	
 	<%@ include file="../../other/footer.jsp"%>
 	<!-- CONTENT-WRAPPER SECTION END-->
 	<script>

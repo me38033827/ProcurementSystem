@@ -14,10 +14,10 @@
 			<div class="standard-out">
 					<!-- 主要内容 -->
 					<div class="standard-title">
-						<div class="standard-title-main">创建供应商资格管理项目</div> 
+						<div class="standard-title-main">创建供应商绩效管理项目</div> 
 						<div class="standard-title-r">
-							<button form="supplierSQMCreation" formaction="sqmCreation?action=submit" class="btn-b">确定</button>
-							<button class="btn-w" onclick="window.location.href='supplierSearch?action=back'">取消</button>
+							<button form="supplierSPMCreation" formaction="spmCreation?action=submit" class="btn-b">确定</button>
+							<button class="btn-w" onclick="window.location.href='../main'">取消</button>
 						</div>
 					</div>
 					<div class="title-description">
@@ -25,15 +25,15 @@
 					</div>
 					<div class="adjust-10"></div>
 					
-					<form id="supplierSQMCreation" method="post">
+					<form id="supplierSPMCreation" method="post">
 						<div class="row">
 							<div class="col-md-5">
 								<table class="fulltab" style="margin-left:80px;">
 									<tr class="row-standard">
 										<td class="col-standard1">＊名称：</td>
 										<td class="col-standard2"><input class="form-control input" name="title" style="width:230px;" 
-										<%if(request.getAttribute("sqm")!=null){ %>
-										value="${sqm.title}"
+										<%if(request.getAttribute("spm")!=null){ %>
+										value="${spm.title}"
 										<%} %>>
 										</td>
 									</tr>
@@ -45,8 +45,8 @@
 										<td class="col-standard1" valign="top">说明：</td>
 										<td class="col-standard2">
 											<textarea class="form-control" id="pr-textarea" name="description" style="border:1px solid #428bca; border-radius:0;">
-												<%if(request.getAttribute("sqm")!=null){ %>
-												 ${sqm.description}
+												<%if(request.getAttribute("spm")!=null){ %>
+												 ${spm.description}
 												<%} %></textarea>
 												<%-- <input class="form-control input" name="commodity" style="display:none;"
 												<%if(request.getAttribute("sqm")!=null){ %>
@@ -58,8 +58,8 @@
 									<tr class="row-standard">
 										<td class="col-standard1">商品：</td>
 										<td class="col-standard2"><input class="form-control input" name="commodity"
-											<%if(request.getAttribute("sqm")!=null){ %>
-											value="${sqm.commodity}"
+											<%if(request.getAttribute("spm")!=null){ %>
+											value="${spm.commodity}"
 											<%} %>>
 										</td>
 									</tr>
@@ -71,36 +71,33 @@
 										<td class="col-standard1">＊供应商：</td>
 										<td class="col-standard2">
 											<div>
-												${sqm.supplier.name}
+												${spm.supplier.name}
 												<input type="hidden" value="${supplier.uniqueName }"> 
 												<input type="hidden" value="${supplier.name }" >
-												<button style="border:0; background-color:transparent"formaction="sqmCreationChooseSupplier?action=initial">【 选择 】</button> 
+												<button style="border:0; background-color:transparent"formaction="spmCreationChooseSupplier?action=initial">【 选择 】</button> 
 												<span class="error-message">${Error_supplier}</span>
 											</div>
 										</td>
 									</tr>
-									<tr class="row-standard">
-										<td class="col-standard1">上次资格日期：</td>
-										<td class="col-standard2"><input
-											class="form-control input" name="lastValid"
-											<%if(request.getAttribute("sqm")!=null){ %>
-											value="${sqm.lastValid}"
-											<%} %>>
-										</td>
-									</tr>
-									<tr class="row-standard">
-										<td class="col-standard1">资格失效日期：</td>
-										<td class="col-standard2"><input
-											class="form-control input" name="validTo"
-											<%if(request.getAttribute("sqm")!=null){ %>
-											value="${sqm.validTo}"
-											<%} %>>
-										</td>
-									</tr>
+									
 								</table>
 							</div>
 						</div>
 				</form>
+				<div class="standard-title-main">选择模版</div> 
+				<div class="title-description">
+					请选择您要使用的模板，并回答与之相关的所有问题，以便创建您的项目。以上区段的字段设置值将对可用模板产生影响。
+				</div>
+				<div class="radio">
+					<label class="model"><input type="radio" name="spm_model" id="spm_model1" value="spm_standard">供应商绩效管理标准模版</label><br/>
+					<label class="model"><input type="radio" name="spm_model" id="spm_model2" value="spm_demo" checked>供应商绩效管理Demo</label>
+				</div>
+				<div class="standard-ending">
+				    <div align="right" class="standard-ending-r">
+				     	<button form="supplierSPMCreation" formaction="spmCreation?action=submit" class="btn-b">确定</button>
+						<button class="btn-w" onclick="window.location.href='../main'">取消</button>
+					</div>  
+				</div>
 			</div>
 		</div>
 	</div>

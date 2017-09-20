@@ -9,6 +9,9 @@
 <title>登录</title>
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link href="/ProcurementSystem/css/standard.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/signUp.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/mycss.css" rel="stylesheet" />
 <script src="js/jquery.js"></script>
 <script>
 </script>
@@ -17,6 +20,62 @@
 	<div class="htmleaf-container" >
 		<div class="wrapper">
 			<div class="container">
+			<div class="form-container">
+				<div class="form-title">
+					<h2>供应商注册</h2>
+				</div>
+				<form class="form" id="signup" method="post">
+					<table>
+						<tr class="signup-row1">
+							<td>用户名：</td>
+							<td><input class="form-control input" name="username" value="${login.username}"/><br></td>
+						</tr>
+						<tr class="signup-row2">
+							<td></td>
+							<td><span class="error-message">${Error_username}</span></td>
+						</tr>
+						<tr class="signup-row1">
+							<td>密码：</td>
+							<td><input type="password" class="form-control input" name="password" value="${login.password}"/><br></td>
+						</tr>
+						<tr class="signup-row2">
+							<td></td>
+							<td><span class="error-message">${Error_password}</span></td>
+						</tr>
+						<tr class="signup-row1">
+							<td>确认密码：</td>
+							<td><input type="password" class="form-control input" name="confirmPsd"/><br></td>
+						</tr>
+						<tr class="signup-row2">
+							<td></td>
+							<td><span class="error-message">${Error_confirmPsd}</span></td>
+						</tr>
+						<tr class="signup-row1">
+							<td>公司名称：</td>
+							<td><input class="form-control input" name="supplier.name" value="${login.supplier.name}"/><br></td>
+						</tr>
+						<tr class="signup-row2">
+							<td></td>
+							<td><span class="error-message">${Error_name}</span></td>
+						</tr>
+						<tr class="signup-row1">
+							<td>电子邮件地址：</td>
+							<td><input class="form-control input" name="supplier.mainEmail" value="${login.supplier.mainEmail }"/><br></td>
+						</tr>
+						<tr class="signup-row2">
+							<td></td>
+							<td><span class="error-message">${Error_mainEmail}</span></td>
+						</tr>
+						<tr class="signup-row1">
+							<td>总机：</td>
+							<td><input class="form-control input" name="supplier.switchboard" value="${login.supplier.switchboard }"/><br></td>
+						</tr>
+						<tr class="signup-row2">
+							<td></td>
+							<td><span class="error-message">${Error_switchboard}</span></td>
+						</tr>
+					</table>
+				</form>	
 				<div class="row">
 					<div class="col-md-5">
 						<h1>欢迎</h1>
@@ -91,39 +150,7 @@
 				<li></li>
 				<li></li>
 			</ul>
-			<%@ include file="other/footerLogin.jsp"%>
 		</div>
-
 	</div>
-
-	<script>
-		function showSignUp(){
-			var role=$('input:radio[name="role"]:checked').val();
-			if(role=="supplier"){
-				//alert("123");
-				$("#signup").show()
-			}else{
-				//alert("1234");
-				$("#signup").hide()
-			}
-		}
-		
-		function check() {
-			var username = $("#username").val();
-			var psd = $("#psd").val();
-			if(username==""){
-				$("#useralert").val("请输入用户名");
-				//alert("请输入用户名");
-				return false;
-			}
-			$("#useralert").val("");
-			if(psd==""){
-				$("#psdalert").val("请输入密码");
-				return false;
-			}
-			$("#psdalert").val("");
-			location.href = "login";
-		}
-	</script>
 </body>
 </html>

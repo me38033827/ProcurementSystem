@@ -40,25 +40,20 @@
 					
 					<div class="col-md-10">
 						<!-- supplier detail title -->
-						<div class="p2p-supplier-title">
+						<div class="p2p-supplier-title" style="height:46px;">
 							<div class="left">
-								<a class="p2p-supplier-title-main">${supplier.name }</a> <br>
-								<a class="p2p-supplier-subtitle">供应商工作区</a>
+								<a class="p2p-supplier-title-main">供应商资格管理项目</a> <br>
 							</div>
-							
+					
 							<div class="right" id="supplier-detail-top">
 								<table>
 									<tr>
+										<td class="text-right">标识符：</td>
+										<td>WS${spm.id}</td>
+									</tr>
+									<tr>
 										<td class="text-right">任务：</td>
-										<td>未完成的任务：4</td>
-									</tr>
-									<tr>
-										<td class="text-right">当前阶段：</td>
-										<td>初始阶段</td>
-									</tr>
-									<tr>
-										<td class="text-right">下一里程碑：</td>
-										<td>GCM创建新的供应商</td>
+										<td>未完成的任务：0</td>
 									</tr>
 								</table>
 							</div>
@@ -69,23 +64,17 @@
 			
 						<div class="tag-line">
 							<button class="tag-not-clicked"
-								onclick="window.location.href='supplierDetailSummary'">概述</button>
+								onclick="window.location.href='spmSummary'">概述</button>
 							<button class="tag-not-clicked"
-								onclick="window.location.href='supplierDetail'">概要</button>
+								onclick="window.location.href='spmDoc'">文档</button>
 							<button class="tag-not-clicked"
-								onclick="window.location.href='supplierDetailReport'">报告</button>
+								onclick="window.location.href='spmTask'">任务</button>
 							<button class="tag-not-clicked"
-								onclick="window.location.href='supplierDetailDoc'">文档</button>
-							<button class="tag-not-clicked"
-								onclick="window.location.href='supplierDetailTask'">任务</button>
-							<button class="tag-not-clicked"
-								onclick="window.location.href='supplierDetailTeam'">团队</button>
+								onclick="window.location.href='spmTeam'">团队</button>
 							<button class="tag-clicked"
-								onclick="window.location.href='supplierDetailInfo'">信息板</button>
+								onclick="window.location.href='spmInfo'">信息板</button>
 							<button class="tag-not-clicked"
-								onclick="window.location.href='supplierDetailNews'">事件消息</button>
-							<button class="tag-not-clicked"
-								onclick="window.location.href='supplierDetailHistory'">历史记录</button>
+								onclick="window.location.href='spmNews'">事件消息</button>
 						</div>
 				
 				
@@ -151,11 +140,11 @@
 										<input type="checkbox" id="chk-sup-de2" class="chk" /><label for="chk-sup-de2"></label>
 									</td>
 									<td><a>欢迎来到本项目！</a></td>
-									<td>系统</td>
+									<td>zhangliu</td>
 									<td><a>声明</a></td>
 									<td>0</td>
-									<td>2017年2月22日 下午 11:17</td>
-									<td>系统</td>
+									<td>2017年9月8日 下午 16:16</td>
+									<td>zhangliu</td>
 								</tr>
 								<tr class="standard-row3">
 									<td colspan="7">

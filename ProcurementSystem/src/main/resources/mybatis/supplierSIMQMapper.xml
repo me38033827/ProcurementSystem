@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.ISupplierSIMQDao">
+	<resultMap id="SIMQMap" type="com.ProcurementSystem.entity.SupplierQuestion">
+		<result property="id" column="id" />
+		<result property="type" column="type" />
+		<result property="question" column="question" />
+		<result property="a" column="a" />
+		<result property="b" column="b" />
+		<result property="c" column="c" />
+		<result property="d" column="d" />
+		<result property="answer" column="answer" />
+		<association property="supplier" javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierId" />
+		</association>
+		<!-- association property: entity class里的实体名称
+						 javaType: entity class
+				id		 property: entity class attribute
+						 column:   consistance with the following *** as ___
+		-->
+	</resultMap>
+
+	<insert id="insertSupplierQuestion" parameterType="com.ProcurementSystem.entity.SupplierQuestion">
+		insert into supplier_question_free(id, supplier_id, type, question, a, b, c, d, answer)
+		values(#{id}, #{supplier.uniqueName}, #{type}, #{question}, #{a}, #{b},
+		#{c}, #{d}, #{answer});
+	</insert>
+	
+	<select id="searchQA" parameterType="int" resultMap="SIMQMap">
+		select 
+			id as id,
+			question as question,
+			answer as answer
+		from supplier_question_free
+		where supplier_id = #{supplierId};
+	</select>
+	
+	<update id="updateAnswer" parameterType="com.ProcurementSystem.entity.SupplierQuestion">
+		update supplier_question_free
+		<set>
+			answer=#{answer}
+		</set>
+		where 
+			id = #{id};
+	</update>
+	
+	<select id="getSupplierQuestionId" resultType="int">
+		select max(id)+1 from supplier_question_free;
+	</select>
+</mapper>
