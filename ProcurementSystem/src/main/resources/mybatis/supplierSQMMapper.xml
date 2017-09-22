@@ -15,6 +15,7 @@
 		</association>
 		<association property="user" javaType="com.ProcurementSystem.entity.User">
 			<id property="uniqueName" column="userId" />
+			<id property="name" column="userName" />
 		</association>
 		<!-- association property: entity class里的实体名称
 						 javaType: entity class
@@ -74,7 +75,7 @@
 			supplier_id as supplierId,
 			user_id as userId,
 			status as status
-		from supplier_sqm 
+		from supplier_sqm
 		where title like concat("%",#{title},"%");
 	</select>
 	

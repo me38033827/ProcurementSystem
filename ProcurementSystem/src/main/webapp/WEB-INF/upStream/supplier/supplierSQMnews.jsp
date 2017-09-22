@@ -65,7 +65,7 @@
 								<table>
 									<tr>
 										<td class="text-right">标识符：</td>
-										<td>WS100000203</td>
+										<td>WS${sqm.id}</td>
 									</tr>
 									<tr>
 										<td class="text-right">任务：</td>

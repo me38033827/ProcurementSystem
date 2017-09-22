@@ -14,8 +14,8 @@
 			type:"POST",  
 			dataType: 'json',
 		    url:"sqmStatus",
-		    async:false,
 		    success:function(data){
+		    		window.location.reload();
 		      	alert("状态修改为" + data.status + "！");  
 		   	},
 		    error:function(data){

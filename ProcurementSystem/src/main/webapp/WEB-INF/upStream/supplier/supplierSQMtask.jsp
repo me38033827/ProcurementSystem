@@ -23,7 +23,7 @@
 						<table>
 							<tr>
 								<td class="text-right">标识符：</td>
-								<td>WS100000203</td>
+								<td>WS${sqm.id }</td>
 							</tr>
 							<tr>
 								<td class="text-right">任务：</td>
@@ -76,7 +76,7 @@
 				</div>
 	
 				<div class="adjust-10"></div>
-				<div class="standard-subtitle">惠普（北京）
+				<div class="standard-subtitle">${sqm.title}
 					<div class="right">
 						<div class="btn-group" >
 							<button class="btn-m" data-toggle="dropdown" style="width:80px;">

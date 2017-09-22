@@ -23,7 +23,7 @@
 						<table>
 							<tr>
 								<td class="text-right">标识符：</td>
-								<td>WS100000203</td>
+								<td>WS${sqm.id}</td>
 							</tr>
 							<tr>
 								<td class="text-right">任务：</td>
@@ -84,19 +84,19 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">供应商：</td>
-								<td class="col-standard2">{sqm.supplier.name}</td>
+								<td class="col-standard2">${sqm.supplier.name}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">项目状态：</td>
-								<td class="col-standard2">{sqm.status}</td>
+								<td class="col-standard2">${sqm.status}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">上次资格日期：</td>
-								<td class="col-standard2">{sqm.lastValid}</td>
+								<td class="col-standard2">${sqm.lastValid}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">资格失效日期：</td>
-								<td class="col-standard2">{sqm.validTo}</td>
+								<td class="col-standard2">${sqm.validTo}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">版本：</td>
@@ -124,7 +124,7 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">商品：</td>
-								<td class="col-standard2">{sqm.commodity}
+								<td class="col-standard2">${sqm.commodity}
 									<a style="margin-left:30px;"class="inline-b f-13" href="">查看更多信息</a>
 								</td>
 							</tr>
@@ -134,7 +134,7 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">说明：</td>
-								<td class="col-standard2">{sqm.description}</td>
+								<td class="col-standard2">${sqm.description}</td>
 							</tr>
 						</table>
 					</div>

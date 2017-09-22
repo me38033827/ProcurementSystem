@@ -16,7 +16,7 @@
 				<!-- supplier detail title -->
 				<div class="p2p-supplier-title" style="height:46px;">
 					<div class="left">
-						<a class="p2p-supplier-title-main">供应商资格管理项目</a> <br>
+						<a class="p2p-supplier-title-main">供应商绩效管理项目</a> <br>
 					</div>
 					
 					<div class="right" id="supplier-detail-top">

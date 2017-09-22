@@ -101,6 +101,21 @@
 							</div>
 						</div>
 				</form>
+				
+				<div class="standard-title-main">选择模版</div> 
+				<div class="title-description">
+					请选择您要使用的模板，并回答与之相关的所有问题，以便创建您的项目。以上区段的字段设置值将对可用模板产生影响。
+				</div>
+				<div class="radio">
+					<label class="model"><input type="radio" name="spm_model" id="spm_model1" value="spm_standard">供应商资格管理标准模版</label><br/>
+					<label class="model"><input type="radio" name="spm_model" id="spm_model2" value="spm_demo" checked>供应商资格管理Demo</label>
+				</div>
+				<div class="standard-ending">
+				    <div align="right" class="standard-ending-r">
+				     	<button form="supplierSQMCreation" formaction="sqmCreation?action=submit" class="btn-b">确定</button>
+							<button class="btn-w" onclick="window.location.href='supplierSearch?action=back'">取消</button>
+					</div>  
+				</div>
 			</div>
 		</div>
 	</div>

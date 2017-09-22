@@ -283,6 +283,10 @@ public class BuyerSupplierController {
 	/* SQM详情 */
 	@RequestMapping(value = "sqmSummary")
 	public String sqmSummary(HttpServletRequest request){
+		if(request.getSession().getAttribute("sqm")!=null){
+			request.setAttribute("sqm", (SupplierSQM)request.getSession().getAttribute("sqm"));
+			return "upStream/supplier/supplierSQMsummary";
+		}
 		int id = Integer.parseInt(request.getParameter("id"));
 		//System.out.println(id);
 		SupplierSQM sqm = sqmService.getSupplierSQM(id);
@@ -294,31 +298,43 @@ public class BuyerSupplierController {
 	
 	@RequestMapping(value = "sqmDoc")
 	public String sqmDoc(HttpServletRequest request){
+		SupplierSQM sqm = (SupplierSQM) request.getSession().getAttribute("sqm");
+		request.setAttribute("sqm", sqm);
 		return "upStream/supplier/supplierSQMdoc";
 	}
 	
 	@RequestMapping(value = "sqmTask")
 	public String sqmTask(HttpServletRequest request){
+		SupplierSQM sqm = (SupplierSQM) request.getSession().getAttribute("sqm");
+		request.setAttribute("sqm", sqm);
 		return "upStream/supplier/supplierSQMtask";
 	}
 	
 	@RequestMapping(value = "sqmTeam")
 	public String sqmTeam(HttpServletRequest request){
+		SupplierSQM sqm = (SupplierSQM) request.getSession().getAttribute("sqm");
+		request.setAttribute("sqm", sqm);
 		return "upStream/supplier/supplierSQMteam";
 	}
 	
 	@RequestMapping(value = "sqmInfo")
 	public String sqmInfo(HttpServletRequest request){
+		SupplierSQM sqm = (SupplierSQM) request.getSession().getAttribute("sqm");
+		request.setAttribute("sqm", sqm);
 		return "upStream/supplier/supplierSQMinfo";
 	}
 	
 	@RequestMapping(value = "sqmNews")
 	public String sqmNews(HttpServletRequest request){
+		SupplierSQM sqm = (SupplierSQM) request.getSession().getAttribute("sqm");
+		request.setAttribute("sqm", sqm);
 		return "upStream/supplier/supplierSQMnews";
 	}
 	
 	@RequestMapping(value = "sqmHistory")
 	public String sqmHistory(HttpServletRequest request){
+		SupplierSQM sqm = (SupplierSQM) request.getSession().getAttribute("sqm");
+		request.setAttribute("sqm", sqm);
 		return "upStream/supplier/supplierSQMhistory";
 	}
 	

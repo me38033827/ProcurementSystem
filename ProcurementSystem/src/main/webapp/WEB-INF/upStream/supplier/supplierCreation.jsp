@@ -451,7 +451,7 @@
 					<div class="adjust-10"></div>
 					<div class="adjust-10"></div>
 					
-					<div class="theme-popover question" >
+					<div class="theme-popover question" style="margin-left:400px;">
 						<div class="popover-container question">
 							
 							<a>题目类型：</a>

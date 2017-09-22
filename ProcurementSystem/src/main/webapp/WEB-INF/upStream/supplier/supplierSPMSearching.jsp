@@ -135,7 +135,7 @@
 							<c:forEach var="supplierSPM" items="${supplierSPMs}" varStatus="status">
 								<tr>
 									<td style="width: 30%;"><a
-										href="SPMSummary?id=${supplierSPM.id}">${supplierSPM.title}</a></td>
+										href="spmSummary?id=${supplierSPM.id}">${supplierSPM.title}</a></td>
 									<td style="width: 10%;">${supplierSPM.user.uniqueName}</td>
 									<td style="width: 10%;">SU${supplierSPM.supplier.uniqueName}</td>
 									<td style="width: 35%;">
