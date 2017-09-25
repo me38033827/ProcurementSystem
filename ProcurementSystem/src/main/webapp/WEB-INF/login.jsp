@@ -65,10 +65,10 @@
 							</div>
 							<div style="display:inline-block; width:95px; text-align:right;">
 								
-								<button form="initialSignUp" <%if(request.getAttribute("loginInfo")!=null){
+								<%-- <button form="initialSignUp" <%if(request.getAttribute("loginInfo")!=null){
 									if(request.getAttribute("role").equals("buyer")){%>hidden="hidden" 
 								<%}}else{%> hidden="hidden" <%} %>
-								id="signup" >注册供应商</button>
+								id="signup" >注册供应商</button> --%>
 							</div>
 							<button id="login-button" style="margin-top:14px; display:block;" onclick="return check();">登录</button>
 						</form>

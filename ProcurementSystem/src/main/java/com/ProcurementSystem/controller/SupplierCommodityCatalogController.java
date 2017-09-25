@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ProcurementSystem.entity.CommodityCatalog;
+import com.ProcurementSystem.entity.Login;
+import com.ProcurementSystem.entity.Supplier;
 import com.ProcurementSystem.service.BuyerCommodityCatalogService;
 import com.ProcurementSystem.service.SupplierCommodityCatalogService;
 
@@ -76,6 +78,16 @@ public class SupplierCommodityCatalogController {
 		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/supplier/";
 		HttpSession session = request.getSession();
 		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");// 从session中获得commodityCatalog对象
+		//Login login = (Login)request.getSession().getAttribute("loginInfo");
+		//需要修改
+		Supplier supplier = new Supplier();
+		supplier.setUniqueName(10000023);
+		supplier.setName("惠普（北京）");
+		commodityCatalog.setSupplier(supplier);//添加商品目录中的供应商信息
+		commodityCatalog.setVersion("版本1");
+		
+		
+		
 		commodityCatalogService.commodityCatalogUpload(file, uploadUrl, commodityCatalog);// 保存上传的文件
 		commodityCatalogService.insertCommodityCatalog(commodityCatalog);// 持久化存储商品目录
 		System.out.println("商品目录唯一标识:" + commodityCatalog.getUniqueName());

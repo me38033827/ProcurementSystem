@@ -26,7 +26,7 @@
 						<a class="inline-b black page-title-font">购物车</a>
 						<div class="inline-b right">
 							<button class="btn-w"
-								onclick="window.location.href='commodityCatalog'">继续购物</button>
+								onclick="window.location.href='/ProcurementSystem/buyer/commodityCatalog'">继续购物</button>
 							<button class="btn-b"
 								onclick="window.location.href='prCreation1.jsp'">结账</button>
 						</div>

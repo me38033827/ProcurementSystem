@@ -16,8 +16,8 @@
 				<div class="container-padding">
 					<div class="border-bottom-grey margin-bottom">
 						<div class="right">
-							<button class="btn-w"
-								onclick="window.location.href='procurementCommodityCatalogList.jsp'">目录
+							<button class="btn-w" type="button"
+								onclick="window.location.href='commodityCatalogList'">目录
 								主页</button>
 						</div>
 						<div class="small-window-title margin-bottom ">目录 - 激活或停用 -
@@ -38,9 +38,9 @@
 					<div class="margin-bottom">
 						<div>
 							<strong>工具：</strong> <a><img
-								src="/demo/assets/img/icon-check.png" class="img-icon"
+								src="/ProcurementSystem/images/icon-check.png" class="img-icon"
 								title=" 复核工具" /></a> <a><img
-								src="/demo/assets/img/icon-activate.png"
+								src="/ProcurementSystem/images/icon-activate.png"
 								class="img-icon  icon-choose" title="激活/停用工具" /></a>
 						</div>
 					</div>

@@ -256,7 +256,7 @@ public class BuyerCommodityCatalogController {
 		} // 更改商品验证字段
 		commodityService.updateCommodity(commodity);
 		commodityCatalogService.validate(commodity.getCommodityCatalog().getUniqueName());
-		return "redirect:/commodityCatalog/showCommodityCatalogContent?uniqueName="
+		return "redirect:/buyer/commodityCatalog/showCommodityCatalogContent?uniqueName="
 				+ commodity.getCommodityCatalog().getUniqueName();// 控制器中的跳转
 	}
 
@@ -287,7 +287,7 @@ public class BuyerCommodityCatalogController {
 			commodityCatalog.setIsActivated("已激活");
 			commodityCatalogService.setIsActivated(commodityCatalog);
 		}
-		return "redirect: /ProcurementSystem/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
+		return "redirect:/buyer/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
 	}
 
 	// 停用商品目录，并进行持久化存储
@@ -302,7 +302,7 @@ public class BuyerCommodityCatalogController {
 			commodityCatalog.setIsActivated("已停用");
 			commodityCatalogService.setIsActivated(commodityCatalog);
 		}
-		return "redirect: /ProcurementSystem/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
+		return "redirect:/buyer/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
 	}
 
 	// 显示购物车内容
@@ -346,7 +346,7 @@ public class BuyerCommodityCatalogController {
 		if (shoppingCart != null) {
 			shoppingCartService.commodityCatalogDeleteShoppingCart(uniqueNames, shoppingCart);// 删除商品
 		}
-		return "redirect:/commodityCatalog/commodityCatalogShoppingCart";
+		return "redirect:/buyer/commodityCatalog/commodityCatalogShoppingCart";
 	}
 
 	// 购物车更新总计
@@ -363,7 +363,7 @@ public class BuyerCommodityCatalogController {
 				commodity.setBuyQuantity(Integer.parseInt(buyQuantity));// 维护商品数量
 			}
 		}
-		return "redirect:/commodityCatalog/commodityCatalogShoppingCart";
+		return "redirect:/buyer/commodityCatalog/commodityCatalogShoppingCart";
 	}
 
 	// 转向商品信息详情页

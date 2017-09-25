@@ -35,9 +35,9 @@
 					<div class="margin-bottom">
 						<div>
 							<strong>工具：</strong> <a><img
-								src="/demo/assets/img/icon-compare.png"
+								src="/ProcurementSystem/images/icon-compare.png"
 								class="img-icon icon-choose" title="纠错工具" /></a> <a><img
-								src="/demo/assets/img/icon-view.png" class="img-icon"
+								src="/ProcurementSystem/images/icon-view.png" class="img-icon"
 								title="纠错工具" /></a>
 						</div>
 					</div>

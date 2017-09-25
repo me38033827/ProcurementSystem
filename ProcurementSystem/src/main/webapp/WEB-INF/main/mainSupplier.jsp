@@ -6,10 +6,51 @@
 <title></title>
 <%@include file="../other/header1.jsp"%>
 <%@include file="../other/header2.jsp"%>
-<%@include file="../other/header3.jsp"%>
 </head>
+
 <!-- 页面整体宽度：1320px -->
 <body class="a-dashbrd-page-bg">
+	<!-- 第三行搜索框 -->
+	<!-- 导航栏 第三行 -->
+		<div id="thirdline-out" style="background-color: transparent;">
+	
+			<div class="col-md-2 inline-b left" id="search-service"
+				style="postion: relative; left: 20px;">
+				<select class="col-md-12">
+					<option>供应商和客户</option>
+				</select>
+	
+			</div>
+			<!-- 第三行搜索框 -->
+			<div style="position: relative; left: 20px;">
+				<form method="post" action="supplier/supplierSearch?action=initial">
+				<input type="text" name="content" class="inline-b border-g left col-md-4"
+					value="使用名称、标识符或任何其他词语搜索"
+					onfocus="if(this.value=='使用名称、标识符或任何其他词语搜索') this.value=''"
+					onblur="if(this.value=='')this.value='使用名称、标识符或任何其他词语搜索' "
+					style="top: 0px;">
+				<button class="btn btn-default inline-b border-g left"
+					id="search-btn" style="top: 0px;">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>
+				</form>
+			</div>
+			<!-- 第三行右侧图标 -->
+	
+			<div class="thirdline-icons">
+				<button id="wrench-btn" onclick="">
+					<span class="glyphicon glyphicon-wrench" aria-hidden="true" id=""></span>
+				</button>
+				<button id="refresh-btn" onclick="">
+					<span class="glyphicon glyphicon-refresh" aria-hidden="true" id=""></span>
+				</button>
+			</div>
+	
+			<!-- 第三行右侧标记 -->
+		</div>
+	
+	
+
 	<div class="content">
 		<!--主要内容  -->
 		<div class="container">

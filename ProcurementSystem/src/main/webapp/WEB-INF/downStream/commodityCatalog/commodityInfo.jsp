@@ -65,8 +65,8 @@
 									onclick="window.location.href='procurementCatalog.jsp'">目录管理</button>
 							</div>
 						</div>
-						<div class="border-bottom-grey border-top-grey">
-							<a href="commodityCatalog?currPage=${currPage}"><i
+						<div class="border-bottom-grey ">
+							<a href="/ProcurementSystem/buyer/commodityCatalog?currPage=${currPage}"><i
 								class="fa fa-angle-double-left" aria-hidden="true"></i>返回 </a>&nbsp;&nbsp;&nbsp;&nbsp;|<a>
 								目录主页 </a>&nbsp;/&nbsp;<a> 计算机和IT设备 </a>/<a> 硬件和外设 </a>/<a> 计算机 </a>/<a>
 								个人计算机 </a>

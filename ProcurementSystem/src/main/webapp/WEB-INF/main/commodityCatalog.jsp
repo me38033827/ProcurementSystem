@@ -10,6 +10,8 @@
 <%@include file="../other/header1.jsp"%>
 <%@include file="../other/header2.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link href="../css/commodityNav.css" rel="stylesheet" type="text/css" />
+<script src="../js/commodityNav.js"></script>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -21,17 +23,28 @@
 		if (shoppingCart != null)
 			size = shoppingCart.getCommodities().size() + "";
 	%>
-	<div class="container" id="whole-container">
-		<!-- 导航栏 第三行 -->
+	<!-- 导航栏 第三行 -->
+	<div>
 		<div id="thirdline-out">
-			<div class="col-md-2 inline-b left">
+			<div class="col-md-3 inline-b left">
+				<div class="btn-group">
+					<button class="procure-nav" data-toggle="dropdown">
+						按类别采购&nbsp;<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu manu-btn-o">
+						<li><a class="manu-btn" href="">编辑</a></li>
+						<li><a class="manu-btn" href="">停用</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- <div class="col-md-2 inline-b left">
 				<select class="col-md-12" id="my-select"
 					style="background-color: transparent">
 					<option>按类别采购</option>
 					<option>按＊＊采购</option>
 					<option>按＊＊采购</option>
 				</select>
-			</div>
+			</div> -->
 			<div class="col-md-2 inline-b left" id="search-service">
 				<select class="col-md-12" id="my-select">
 					<option>所有类别</option>
@@ -53,24 +66,26 @@
 
 			<!-- 第三行右侧图标 -->
 			<div class="right">
+				<!-- 购物车 -->
 				<button class="shopping-cart-btn"
-					onclick="window.location.href='commodityCatalogShoppingCart'">
+					onclick="window.location.href='commodityCatalog/commodityCatalogShoppingCart'">
 					<span class="glyphicon glyphicon-shopping-cart shopping-cart-icon"
 						aria-hidden="true"></span>
 
 					<div class="shopping-cart-size right" id="shoppingCartSize"><%=size%></div>
 				</button>
 				<button class="btn-w " style="margin-right: 20px;"
-					onclick="window.location.href='procurementCatalog.jsp'">目录管理</button>
+					onclick="window.location.href='commodityCatalog/commodityCatalogList'">目录管理</button>
 			</div>
 			<!-- 第三行右侧标记 -->
 		</div>
-
+	</div>
+	<div class="container" id="whole-container">
 		<!-- 主要内容 -->
 		<div class="main-subjects">
 			<!-- 右侧过滤栏 -->
-			<div id="filter">
-				<a class="filter-title" id="filter-first">过滤条件</a> <input
+			<div class="filter">
+				<!-- <a class="filter-title" id="filter-first">过滤条件</a> <input
 					type="text" class="inline-b border-g left col-md-8" value="在结果中搜索"
 					style="font-size: 12px;"
 					onfocus="if(this.value=='在结果中搜索') this.value=''"
@@ -86,11 +101,90 @@
 				<a class="filter-content">enter(1)</a> <a class="filter-content">查看更多</a>
 				<a class="filter-title">类别</a> <a class="filter-content">其他政治、公民事物服务(1)</a>
 				<a class="filter-content">其他制造业相关业务(3)</a> <a class="filter-title">供应商</a>
-				<a class="filter-content">发发发发展有限公司(1)</a> <a class="filter-content">有限责任公司(3)</a>
+				<a class="filter-content">发发发发展有限公司(1)</a> <a class="filter-content">有限责任公司(3)</a> -->
+				
+
+
+
+	<div class="sidebar">
+		<!-- <div class="sidebar_top sidebar_top_tc">按照类别采购</div> -->
+		<div class="sidebar_con">
+			<dl class="sidebar_item">
+				<dd>
+					<h3 class="">
+						<a href="#">书籍、表格和印刷媒体</a>
+					</h3>
+					<s></s>
+					<div class="sidebar_popup dis1" style="display: none;">
+						<div class="sidebar_popup_class clearfix">
+							<div class="sidebar_popup_item">
+								<strong><a href="#">书籍、表格和印刷媒体</a></strong>
+								<p>
+									<span class="linesbg"><a href="#">印刷出版物</a></span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</dd>
+				<dd>
+					<h3 class="">
+						<a href="#">办公产品</a>
+					</h3>
+					<s></s>
+					<!-- 弹出层 -->
+					<div class="sidebar_popup dis2" style="display: none;">
+						<div class="sidebar_popup_class clearfix">
+							<div class="sidebar_popup_item">
+								<strong><a href="#">工程机械</a></strong>
+								<p>
+									<span class="linesbg"><a href="#">起重机械</a></span><span
+										class="linesbg"><a href="#">装修机械</a></span><span
+										class="linesbg"><a href="#">混凝土机械</a></span><span
+										class="linesbg"><a href="#">钢筋加工机械</a></span><span
+										class="linesbg"><a href="#">建材机械配件</a></span><span
+										class="more"><a href="#">更多</a></span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</dd>
+				<dd>
+					<h3 class="">
+						<a href="#">原材料</a>
+					</h3>
+				</dd>
+				<dd>
+					<h3 class="">
+						<a href="#">未分类的项目</a>
+					</h3>
+				</dd>
+				<dd>
+					<h3 class="">
+						<a href="#">机械和工具</a>
+					</h3>
+				</dd>
+				<dd>
+					<h3 class="">
+						<a href="#">杂项</a>
+					</h3>
+				</dd>
+				<dd>
+					<h3 class="">
+						<a href="#">维护、维修和操作</a>
+					</h3>
+				</dd>
+				<dd>
+					<h3 class="">
+						<a href="#">计算机和 IT 设备</a>
+					</h3>
+				</dd>
+			</dl>
+		</div>
+	</div>
 			</div>
 
 			<!-- 搜索结果显示区域 -->
-			<div class="results-out col-md-8">
+			<div class="results-out col-md-9">
 				<a class="result-line1 inline-b">目录主页&nbsp;／&nbsp;采购组织：CN05&nbsp;／&nbsp;服务&nbsp;／&nbsp;其他服务</a>
 				<div class="result-line2">
 					<div class="result-line2-left">
@@ -130,7 +224,7 @@
 							<div class="item-whole">
 								<div>
 									<a
-										href="/ProcurementSystem/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }">${commodity.shortName }</a>
+										href="/ProcurementSystem/buyer/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }">${commodity.shortName }</a>
 								</div>
 								<table class="">
 									<tr>
@@ -174,13 +268,13 @@
 							</div>
 						</div>
 					</c:forEach>
-					<div class="right">
-						<button class="btn-page" id="forward"
-							onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>'">上一页</button>
-						<span id="pageList"></span>
-						<button class="btn-page" id="afterward"
-							onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}'">下一页</button>
-					</div>
+				</div>
+				<div class="right">
+					<button class="btn-page" id="forward"
+						onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>'">上一页</button>
+					<span id="pageList"></span>
+					<button class="btn-page" id="afterward"
+						onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}'">下一页</button>
 				</div>
 			</div>
 

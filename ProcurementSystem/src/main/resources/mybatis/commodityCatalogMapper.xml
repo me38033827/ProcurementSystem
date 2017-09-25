@@ -21,10 +21,11 @@
 		cc.item_count as
 		itemCount,
 		cc.last_modify_date as lastModifyDate,
-		cc.type 
+		cc.type
 		from commodity_catalog
 		cc left join supplier s
-		on cc.supplier_unique_name = s.unique_name;
+		on cc.supplier_unique_name =
+		s.unique_name;
 	</select>
 	<resultMap id="CommodityCatalogResult" type="com.ProcurementSystem.entity.CommodityCatalog">
 		<id property="uniqueName" column="uniqueName" />
@@ -37,6 +38,7 @@
 		<result property="state" column="state" />
 		<result property="lastModifyDate" column="lastModifyDate" />
 		<result property="type" column="type" />
+		<result property="itemCount" column="itemCount" />
 		<association property="supplier"
 			javaType="com.ProcurementSystem.entity.Supplier">
 			<id property="uniqueName" column="supplierUniqueName" />
@@ -113,7 +115,8 @@
 		c.item_description as itemDescription,
 		c.is_checked as isChecked,
 		c.short_name as shortName,
-		cc.item_count as itemCount
+		cc.item_count as
+		itemCount
 		from
 		(commodity_catalog cc left join supplier
 		s
@@ -130,7 +133,8 @@
 		<if test="uniqueName != '' and uniqueName != null">
 			AND cc.unique_name = #{uniqueName}
 		</if>
-		<if test="supplier!=null and supplier.uniqueName != '' and supplier.uniqueName != null">
+		<if
+			test="supplier!=null and supplier.uniqueName != '' and supplier.uniqueName != null">
 			AND cc.supplier_unique_name = #{supplier.uniqueName}
 		</if>
 		<if test="name != '' and name != null">
@@ -147,7 +151,7 @@
 		<result property="isActivated" column="isActivated" />
 		<result property="state" column="state" />
 		<result property="lastModifyDate" column="lastModifyDate" />
-
+		<result property="itemCount" column="itemCount" />
 		<association property="supplier"
 			javaType="com.ProcurementSystem.entity.Supplier">
 			<id property="uniqueName" column="supplierUniqueName" />
@@ -184,9 +188,11 @@
 		update commodity_catalog
 		set item_count = #{itemCount} where unique_name = #{uniqueName}
 	</update>
-	
-	
-	<select id="getCommodityCatalogVersionCount" resultType="int" parameterType="com.ProcurementSystem.entity.CommodityCatalog">
-		select count(*) from commodity_catalog where name = #{name}
+
+
+	<select id="getCommodityCatalogVersionCount" resultType="int"
+		parameterType="com.ProcurementSystem.entity.CommodityCatalog">
+		select count(*) from commodity_catalog where name =
+		#{name}
 	</select>
 </mapper>
