@@ -14,52 +14,38 @@
 			<!-- 主要内容 -->
 		
 				<!-- supplier detail title -->
-				<div class="p2p-supplier-title">
+				<div class="p2p-supplier-title" style="height:46px;">
 					<div class="left">
-						<a class="p2p-supplier-title-main">${supplier.name}</a> <br>
-						<a class="p2p-supplier-subtitle">供应商工作区</a>
+						<a class="p2p-supplier-title-main">供应商绩效管理项目</a> <br>
 					</div>
 					
 					<div class="right" id="supplier-detail-top">
 						<table>
 							<tr>
+								<td class="text-right">标识符：</td>
+								<td>WS${spm.id}</td>
+							</tr>
+							<tr>
 								<td class="text-right">任务：</td>
-								<td>未完成的任务：4</td>
-							</tr>
-							<tr>
-								<td class="text-right">当前阶段：</td>
-								<td>初始阶段</td>
-							</tr>
-							<tr>
-								<td class="text-right">下一里程碑：</td>
-								<td>GCM创建新的供应商</td>
+								<td><a>未完成的任务：0</a></td>
 							</tr>
 						</table>
 					</div>
 				</div>
-				
-				
-	
-	
+
 				<div class="tag-line">
 					<button class="tag-clicked"
-						onclick="window.location.href='supplierDetailSummary'">概述</button>
+						onclick="window.location.href='spmSummary'">概述</button>
 					<button class="tag-not-clicked"
-						onclick="window.location.href='supplierDetail'">概要</button>
+						onclick="window.location.href='spmDoc'">文档</button>
 					<button class="tag-not-clicked"
-						onclick="window.location.href='supplierDetailReport'">报告</button>
+						onclick="window.location.href='spmTask'">任务</button>
 					<button class="tag-not-clicked"
-						onclick="window.location.href='supplierDetailDoc'">文档</button>
+						onclick="window.location.href='spmTeam'">团队</button>
 					<button class="tag-not-clicked"
-						onclick="window.location.href='supplierDetailTask'">任务</button>
+						onclick="window.location.href='spmInfo'">信息板</button>
 					<button class="tag-not-clicked"
-						onclick="window.location.href='supplierDetailTeam'">团队</button>
-					<button class="tag-not-clicked"
-						onclick="window.location.href='supplierDetailInfo'">信息板</button>
-					<button class="tag-not-clicked"
-						onclick="window.location.href='supplierDetailNews'">事件消息</button>
-					<button class="tag-not-clicked"
-						onclick="window.location.href='supplierDetailHistory'">历史记录</button>
+						onclick="window.location.href='spmNews'">事件消息</button>
 				</div>
 				
 				<div class="adjust-10"></div>
@@ -89,32 +75,50 @@
 						<table class="tab-height" id="supplier-crea-tab1" style="margin-left:80px;">
 							<tr>
 								<td class="col-standard1">工作区标识符：</td>
-								<td class="col-standard2">WS100000199</td>
+								<td class="col-standard2">WS${spm.id}</td>
 							</tr>
 							<tr>
-								<td class="col-standard1">名称：</td>
-								<td class="col-standard2">${supplier.name}</td>
+								<td class="col-standard1">供应商：</td>
+								<td class="col-standard2"><a href="supplierDetail?id=${spm.supplier.uniqueName}">${spm.supplier.name}</a></td>
 							</tr>
 							<tr>
-								<td class="col-standard1">审批状态：</td>
-								<td class="col-standard2">${supplier.approveState}</td>
+								<td class="col-standard1">项目状态：</td>
+								<td class="col-standard2">${spm.status}</td>
 							</tr>
 							<tr>
-								<td class="col-standard1">账户所有者：</td>
-								<td class="col-standard2">系统</td>
+								<td class="col-standard1">版本：</td>
+								<td class="col-standard2">原始</td>
+							</tr>
+							<tr>
+								<td class="col-standard1">项目色码：</td>
+								<td class="col-standard2"><a class="grey">Grey</a></td>
+							</tr>
+							<tr>
+								<td class="col-standard1">开始日期：</td>
+								<td class="col-standard2">2017年9月20日</td>
+							</tr>
+							<tr>
+								<td class="col-standard1">截止日期：</td>
+								<td class="col-standard2"></td>
+							</tr>
+							
+							<tr>
+								<td class="col-standard1">所有者：</td>
+								<td class="col-standard2">${spm.user.name}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">访问控制：</td>
-								<td class="col-standard2">团队成员专用，供应商管理员专用</td>
-							</tr>
-							<tr>
-								<td class="col-standard1">标识符：</td>
-								<td class="col-standard2">SU${supplier.uniqueName}</td>
+								<td class="col-standard2"></td>
 							</tr>
 							<tr>
 								<td class="col-standard1">说明：</td>
-								<td class="col-standard2">${supplier.description}</td>
+								<td class="col-standard2">团队成员专用</td>
 							</tr>
+							<tr>
+								<td class="col-standard1">所有者：</td>
+								<td class="col-standard2"></td>
+							</tr>
+							
 						</table>
 					</div>
 					<div class="col-md-6">
@@ -126,32 +130,10 @@
 									</div>
 								</div>
 								<div class="adjust-10"></div>
-								<div>
-									<table class="fulltab">
-										<tr>
-											<td style="width:70%;">
-												<div class="btn-group">
-													<button class="btn-ma" data-toggle="dropdown" style="width:130px;">
-														<span class="glyphicon glyphicon-arrow-right black" aria-hidden="true"></span><a class="black inline-b">&nbsp;&nbsp;&nbsp;审批</a>&nbsp;<span class="caret black"></span>
-													</button>
-													<ul class="dropdown-menu" style="width:160px;">
-														<li><a class="manu-deactive">操作</a></li>
-														<li><a class="manu-active" href="">&nbsp;&nbsp;打开</a></li>
-														<li><a class="manu-active" href="" >&nbsp;&nbsp;编辑阶段</a></li>
-														<li><a class="manu-active" href="">&nbsp;&nbsp;查看阶段详细信息</a></li>
-														<li><a class="manu-active" href="">&nbsp;&nbsp;标记为已开始</a></li>
-														<li><a class="manu-deactive">创建</a></li>
-														<li><a class="manu-active" href="">&nbsp;&nbsp;待办事项</a></li>
-														<li><a class="manu-active" href="">&nbsp;&nbsp;通知任务</a></li>
-														<li><a class="manu-deactive">阶段</a></li>
-													</ul>
-												</div>
-												
-											</td>
-											<td style="width:30%;">2017年3月10日</td>
-										</tr>
-									</table>
-								</div>
+								<span class="glyphicon glyphicon-arrow-right blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a>计划</a><br>
+								<span class="glyphicon glyphicon-time blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a>内部调查</a><br>
+								<span class="glyphicon glyphicon-time blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a>供应商调查</a><br>
+								<span class="glyphicon glyphicon-arrow-right blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a>关闭</a>
 							</div>
 						</div>
 						
@@ -190,7 +172,7 @@
 											<td style="width:70%;">
 												<a href="">欢迎来到本项目！</a>
 											</td>
-											<td style="width:30%;">2017年2月22日</td>
+											<td style="width:30%;">2017年9月20日</td>
 										</tr>
 									</table>
 								</div>
@@ -205,7 +187,7 @@
 	<%@ include file="../../other/footer.jsp"%>
 		<script>
 			function back(){
-				location.href="supplierSearch?action=back";
+				location.href="../main";
 			}
 		</script>
 </body>

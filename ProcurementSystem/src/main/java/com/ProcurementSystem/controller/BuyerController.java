@@ -1,6 +1,8 @@
 package com.ProcurementSystem.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,7 +24,10 @@ public class BuyerController {
 
 	// P2P主页
 	@RequestMapping(value = "main")
-	public String main() {
+	public String main(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("sqm");
+		session.removeAttribute("spm");
 		return "main/main";
 	}
 

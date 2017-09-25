@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>登录</title>
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <script src="js/jquery.js"></script>
@@ -63,9 +62,13 @@
 								> 供应商
 								</label>
 							</div>
-							<div style="display:inline-block; width:95px; text-align:right;">
+							<div style="display:inline-block; width:95px; text-align:right;height:24px;">
 								
+<<<<<<< HEAD
 								<%-- <button form="initialSignUp" <%if(request.getAttribute("loginInfo")!=null){
+=======
+								<button form="initialSignUp" style="border:0;width:100px;background-color:transparent; font-size:13px; width:100px; height:24px;margin-top:0;" <%if(request.getAttribute("loginInfo")!=null){
+>>>>>>> origin/master
 									if(request.getAttribute("role").equals("buyer")){%>hidden="hidden" 
 								<%}}else{%> hidden="hidden" <%} %>
 								id="signup" >注册供应商</button> --%>

@@ -24,7 +24,7 @@
 				<!-- supplier detail title -->
 				<div class="p2p-supplier-title">
 					<div class="left">
-						<a class="p2p-supplier-title-main">惠普（北京）</a> <br>
+						<a class="p2p-supplier-title-main">${supplier.name }</a> <br>
 						<a class="p2p-supplier-subtitle">供应商工作区</a>
 					</div>
 					
@@ -72,7 +72,7 @@
 				
 				<div class="adjust-10"></div>
 	
-				<div class="standard-subtitle">惠普（北京）
+				<div class="standard-subtitle">${supplier.name }
 					<div class="right">
 						<a href="" class="f-14">显示详细信息</a>&nbsp;&nbsp;&nbsp;
 						<div class="btn-group" >

@@ -1,82 +1,33 @@
 @CHARSET "UTF-8";
-body{
-	margin:0
-}
-.bg{
-	width:100%;
-	height:800px;
-	background-image:url("../images/signup-bg.jpg");
-	padding-top:20px;
-}
-
-.form-container{
-	width:500px;
-	height:460px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:5%;
-	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .3);
-	background-color:white;
-	opacity:0.7;
-	border-radius:7px;
-	font-size:14px;
-}
-
-.form-title{
-	border-bottom:1px solid #ddd;
-	margin: 20px auto;
-	padding-top:8px;
-	text-align:center;
-}
-
-.form{
-	margin-left:50px;
-}
-
-.form-title > .row-standard{
-	height:50px;
-}
-
-
-
-.btn1, .btn2{
-	margin-left:20px;
-	width:150px;
-	height:40px;
-	border-radius:3px;
-	background-color:#4abefc;
-	color:white;
-	font-size:14px;
-}
-
-.btn1{
-	margin-left:100px;
-}
-
 #signup{
-	margin-left:80px;
+	width:600px;
 }
 
-.signup-row1{
+#signup .signup-row1{
 	height:30px;
 	font-size:16px;
 }
 
-.signup-row1 td{
+#signup .signup-row1 td{
+	padding-top:0;
+	height:30px;
+}
+
+#signup .signup-row2{
+	height:15px;
+	font-size:13px;
+	line-height:15px;
+}
+
+#signup .signup-row2 td{
 	padding:0;
 }
 
-.signup-row1 td input{
-	height:26px;
-	font-size:16px;
-	width:180px;
-}
-
-.signup-row2{
-	padding:0;
-	height:14px;
-	line-height:14px;
-	font-size:12px;
+.error-message{
 	color:red;
+	font-size:12px;
 }
 
+.error{
+	height:18px;
+}

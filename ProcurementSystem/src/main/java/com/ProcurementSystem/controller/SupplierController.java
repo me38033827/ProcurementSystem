@@ -73,7 +73,7 @@ public class SupplierController {
 		supplierService.insertSupplier(login.getSupplier());
 		
 		loginService.insertSupplierLogin(login);
-		return "../login";
+		return "redirect:../login";
 	}
 	
 }

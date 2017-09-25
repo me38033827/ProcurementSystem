@@ -16,14 +16,14 @@
 				<!-- supplier detail title -->
 				<div class="p2p-supplier-title" style="height:46px;">
 					<div class="left">
-						<a class="p2p-supplier-title-main">供应商资格管理项目</a> <br>
+						<a class="p2p-supplier-title-main">供应商绩效管理项目</a> <br>
 					</div>
 					
 					<div class="right" id="supplier-detail-top">
 						<table>
 							<tr>
 								<td class="text-right">标识符：</td>
-								<td>WS${sqm.id }</td>
+								<td>WS${spm.id}</td>
 							</tr>
 							<tr>
 								<td class="text-right">任务：</td>
@@ -38,19 +38,17 @@
 	
 				<div class="tag-line">
 					<button class="tag-not-clicked"
-						onclick="window.location.href='sqmSummary'">概述</button>
+						onclick="window.location.href='spmSummary'">概述</button>
 					<button class="tag-not-clicked"
-						onclick="window.location.href='sqmDoc'">文档</button>
+						onclick="window.location.href='spmDoc'">文档</button>
 					<button class="tag-clicked"
-						onclick="window.location.href='sqmTask'">任务</button>
+						onclick="window.location.href='spmTask'">任务</button>
 					<button class="tag-not-clicked"
-						onclick="window.location.href='sqmTeam'">团队</button>
+						onclick="window.location.href='spmTeam'">团队</button>
 					<button class="tag-not-clicked"
-						onclick="window.location.href='sqmInfo'">信息板</button>
+						onclick="window.location.href='spmInfo'">信息板</button>
 					<button class="tag-not-clicked"
-						onclick="window.location.href='sqmNews'">事件消息</button>
-					<button class="tag-not-clicked"
-						onclick="window.location.href='sqmHistory'">历史记录</button>
+						onclick="window.location.href='spmNews'">事件消息</button>
 				</div>
 				
 				<div class="adjust-10"></div>
@@ -76,7 +74,7 @@
 				</div>
 	
 				<div class="adjust-10"></div>
-				<div class="standard-subtitle">${sqm.title}
+				<div class="standard-subtitle">${spm.title}
 					<div class="right">
 						<div class="btn-group" >
 							<button class="btn-m" data-toggle="dropdown" style="width:80px;">
@@ -101,12 +99,38 @@
 						</tr>
 						<tr>
 							<td>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="">发布第一份调查文档<span class="caret"></span></a>
+								<span class="glyphicon glyphicon-arrow-right blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">计划<span class="caret"></span></a>
 							</td>
-							<td><a href="">第一份问卷调查<span class="caret"></span></a></td>
-							<td>zhangliu</td>
-							<td>已安排发布</td>
+							<td></td>
+							<td>项目所有者</td>
+							<td>未开始</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<span class="glyphicon glyphicon-time blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">监测－内部调查－半年度<span class="caret"></span></a>
+							</td>
+							<td></td>
+							<td>项目所有者</td>
+							<td>未开始</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<span class="glyphicon glyphicon-time blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">监测－供应商调查－半年度<span class="caret"></span></a>
+							</td>
+							<td></td>
+							<td>项目所有者</td>
+							<td>未开始</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<span class="glyphicon glyphicon-arrow-right blue" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">关闭<span class="caret"></span></a>
+							</td>
+							<td></td>
+							<td>项目所有者</td>
+							<td>未开始</td>
 							<td></td>
 						</tr>
 					</table>

@@ -4,24 +4,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>搜索供应商和客户结果</title>
+<title>搜索供应商绩效管理项目</title>
 <script>
-	function changeStatus(sqmId,status){
+	function changeStatus(spmId,status){
  		$.ajax({  
-			data:{"sqmId" : sqmId,
+			data:{"spmId" : spmId,
 				"status" : status
 			},  
 			type:"POST",  
 			dataType: 'json',
 		    url:"sqmStatus",
 		    success:function(data){
-		    		window.location.reload();
-		      	alert("状态修改为" + data.status + "！");  
+		      	alert("状态修改成功！");  
 		   	},
 		    error:function(data){
-		    		alert("数据库修改错误！")
+		        alert("状态修改成功！");
 		    }  
 		});
+ 		location.reload();
+ 		location.reload();
 	}
 </script>
 <%@include file="../../other/header1return.jsp"%>
@@ -33,7 +34,7 @@
 			<div class="standard-out">
 
 				<div class="standard-title">
-					<a class="standard-title-main">搜索供应商资格管理项目</a>
+					<a class="standard-title-main">搜索供应商绩效管理项目</a>
 				</div>
 				
 				<div class="adjust-10"></div>
@@ -71,8 +72,8 @@
 					</div>
 					<div class="searching-ending">
 						<div align="right">
-							<button class="btn-w" onclick="window.location.href='sqmSearching?action=reset'">重置</button>
-							<button class="btn-b" form="supplierSearch" formaction="sqmSearching?action=search">搜索</button>
+							<button class="btn-w" onclick="window.location.href='spmSearching?action=reset'">重置</button>
+							<button class="btn-b" form="supplierSearch" formaction="spmSearching?action=search">搜索</button>
 						</div>
 					</div>
 				</div>
@@ -81,7 +82,7 @@
 				<div class="adjust-10"></div>
 				<% if(request.getAttribute("num")==null){ %>
 				
-				<div id="sqm-recent">
+				<div id="SPM-recent">
 					<div class="standard-subtitle" style="border:0; margin-bottom:0;">最近查看的内容
 						
 						<div class="right">
@@ -115,7 +116,7 @@
 					</div>
 				</div>
 				<%}else{ %>
-				<div id="sqm-search">
+				<div id="SPM-search">
 					<div>
 						<table class="table table-hover">
 							<tr class="standard-row1">
@@ -131,28 +132,28 @@
 					</div>
 					<div class="roll-tab" style="max-height: 220px;">
 						<table class="table table-hover">
-							<c:forEach var="supplierSQM" items="${supplierSQMs}" varStatus="status">
+							<c:forEach var="supplierSPM" items="${supplierSPMs}" varStatus="status">
 								<tr>
 									<td style="width: 30%;"><a
-										href="sqmSummary?id=${supplierSQM.id}">${supplierSQM.title}</a></td>
-									<td style="width: 10%;">${supplierSQM.user.uniqueName}</td>
-									<td style="width: 10%;">SU${supplierSQM.supplier.uniqueName}</td>
+										href="spmSummary?id=${supplierSPM.id}">${supplierSPM.title}</a></td>
+									<td style="width: 10%;">${supplierSPM.user.uniqueName}</td>
+									<td style="width: 10%;">SU${supplierSPM.supplier.uniqueName}</td>
 									<td style="width: 35%;">
 									</td>
-									<td style="width: 15%; padding: 3px;">${supplierSQM.status} &nbsp;&nbsp;&nbsp;&nbsp;
+									<td style="width: 15%; padding: 3px;">${supplierSPM.status} &nbsp;&nbsp;&nbsp;&nbsp;
 										<div class="btn-group" align="right">
 											<button class="btn-m" data-toggle="dropdown">
 												操作&nbsp;<span class="caret"></span>
 											</button>
 											<ul class="dropdown-menu manu-btn-o">
-												<c:if test="${supplierSQM.status == '待审核'}">
-													<li><button class="manu-btn" onClick="changeStatus(${supplierSQM.id},'已批准');">批准</button></li>
+												<c:if test="${supplierSPM.status == '待审核'}">
+													<li><button class="manu-btn" onClick="changeStatus(${supplierSPM.id},'已批准');">批准</button></li>
 												</c:if>
-												<c:if test="${supplierSQM.status == '已批准'}">
-													<li><button class="manu-btn" onClick="changeStatus(${supplierSQM.id},'已停用');">停用</button></li>
+												<c:if test="${supplierSPM.status == '已批准'}">
+													<li><button class="manu-btn" onClick="changeStatus(${supplierSPM.id},'已停用');">停用</button></li>
 												</c:if>
-												<c:if test="${supplierSQM.status == '已停用'}">
-													<li><button class="manu-btn" onClick="changeStatus(${supplierSQM.id},'已批准');">取消停用</button></li>
+												<c:if test="${supplierSPM.status == '已停用'}">
+													<li><button class="manu-btn" onClick="changeStatus(${supplierSPM.id},'已批准');">取消停用</button></li>
 												</c:if>
 											</ul>
 										</div>

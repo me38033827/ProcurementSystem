@@ -9,4 +9,6 @@ public interface ISupplierSQMDao {
 	List<SupplierSQM> searchAllSupplierSQM();
 	void updateSQMStatus(SupplierSQM sqm);
 	SupplierSQM getSupplierSQM(int id);
+	List<SupplierSQM> searchSupplierSQM(String content);
+	int getMaxId();
 }

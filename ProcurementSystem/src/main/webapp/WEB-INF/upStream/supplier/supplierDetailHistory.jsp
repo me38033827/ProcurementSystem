@@ -15,7 +15,7 @@
 				<!-- supplier detail title -->
 				<div class="p2p-supplier-title">
 					<div class="left">
-						<a class="p2p-supplier-title-main">惠普（北京）</a> <br>
+						<a class="p2p-supplier-title-main">${supplier.name }</a> <br>
 						<a class="p2p-supplier-subtitle">供应商工作区</a>
 					</div>
 					
@@ -181,7 +181,7 @@
 							<td style="width:20%;">2017年8月15日 14:39</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">工作区</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;"><a>已编辑</a></td>
 						</tr>
 						<tr>
@@ -209,21 +209,21 @@
 							<td style="width:20%;">2017年8月15日 14:39</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">阶段</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;">已更改状态</td>
 						</tr>
 						<tr>
 							<td style="width:20%;">2017年8月15日 14:39</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">工作区</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;">已编辑</td>
 						</tr>
 						<tr>
 							<td style="width:20%;">2017年8月15日 14:28</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">工作区</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;"><a>已编辑</a></td>
 						</tr>
 						<tr>
@@ -251,21 +251,21 @@
 							<td style="width:20%;">2017年8月15日 14:28</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">阶段</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;">已更改状态</td>
 						</tr>
 						<tr>
 							<td style="width:20%;">2017年8月15日 14:28</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">工作区</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;">已编辑</td>
 						</tr>
 						<tr>
 							<td style="width:20%;">2017年8月15日 11:07</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">工作区</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;"><a>已编辑</a></td>
 						</tr>
 						<tr>
@@ -293,21 +293,21 @@
 							<td style="width:20%;">2017年8月15日 11:07</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">阶段</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;">已更改状态</td>
 						</tr>
 						<tr>
 							<td style="width:20%;">2017年8月15日 11:07</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">工作区</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;">已编辑</td>
 						</tr>
 						<tr>
 							<td style="width:20%;">2017年8月10日 10:34</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">工作区</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;"><a>已编辑</a></td>
 						</tr>
 						<tr>
@@ -335,14 +335,14 @@
 							<td style="width:20%;">2017年8月10日 10:34</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">阶段</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;">已更改状态</td>
 						</tr>
 						<tr>
 							<td style="width:20%;">2017年8月10日 10:34</td>
 							<td style="width:10%;">（无值）</td>
 							<td style="width:10%;">工作区</td>
-							<td style="width:40%;">惠普（北京）</td>
+							<td style="width:40%;">${supplier.name }</td>
 							<td style="width:20%;">已编辑</td>
 						</tr>
 					</table>

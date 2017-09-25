@@ -42,14 +42,14 @@
 						<!-- supplier detail title -->
 						<div class="p2p-supplier-title" style="height:46px;">
 							<div class="left">
-								<a class="p2p-supplier-title-main">供应商资格管理项目</a> <br>
+								<a class="p2p-supplier-title-main">供应商绩效管理项目</a> <br>
 							</div>
 					
 							<div class="right" id="supplier-detail-top">
 								<table>
 									<tr>
 										<td class="text-right">标识符：</td>
-										<td>WS${sqm.id }</td>
+										<td>WS${spm.id}</td>
 									</tr>
 									<tr>
 										<td class="text-right">任务：</td>
@@ -64,19 +64,17 @@
 			
 						<div class="tag-line">
 							<button class="tag-not-clicked"
-								onclick="window.location.href='sqmSummary'">概述</button>
+								onclick="window.location.href='spmSummary'">概述</button>
 							<button class="tag-not-clicked"
-								onclick="window.location.href='sqmDoc'">文档</button>
+								onclick="window.location.href='spmDoc'">文档</button>
 							<button class="tag-not-clicked"
-								onclick="window.location.href='sqmTask'">任务</button>
+								onclick="window.location.href='spmTask'">任务</button>
 							<button class="tag-not-clicked"
-								onclick="window.location.href='sqmTeam'">团队</button>
+								onclick="window.location.href='spmTeam'">团队</button>
 							<button class="tag-clicked"
-								onclick="window.location.href='sqmInfo'">信息板</button>
+								onclick="window.location.href='spmInfo'">信息板</button>
 							<button class="tag-not-clicked"
-								onclick="window.location.href='sqmNews'">事件消息</button>
-							<button class="tag-not-clicked"
-								onclick="window.location.href='sqmHistory'">历史记录</button>
+								onclick="window.location.href='spmNews'">事件消息</button>
 						</div>
 				
 				

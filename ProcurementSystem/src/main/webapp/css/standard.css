@@ -515,3 +515,21 @@ button{
 .f-10 {
 	font-size: 10px;
 }
+
+/* 模版 */
+.model{
+	height:48px; margin-left:40px;
+}
+
+.question{
+	width:400px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.question .popover-container{
+	padding:20px 70px;
+}
+.question tr{
+	height:50px;	
+}

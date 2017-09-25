@@ -27,4 +27,12 @@ public class SupplierSQMService {
 	public SupplierSQM getSupplierSQM(int id){
 		return dao.getSupplierSQM(id);
 	}
+	
+	public List<SupplierSQM> searchSupplierSQM(String content){
+		return dao.searchSupplierSQM(content);
+	}
+	
+	public int getMaxId(){
+		return dao.getMaxId();
+	}
 }
