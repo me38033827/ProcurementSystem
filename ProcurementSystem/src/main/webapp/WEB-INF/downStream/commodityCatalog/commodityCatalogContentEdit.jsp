@@ -148,8 +148,8 @@
 								<tr>
 									<td rowspan="4">分类代码</td>
 									<td>值</td>
-									<td><input type="text" class="input margin-input"
-										value="27112700">&nbsp;&nbsp;&nbsp;&nbsp;
+									<td><input type="text" class="input margin-input" name="spscCode"
+										value="${commodity.spscCode }">&nbsp;&nbsp;&nbsp;&nbsp;
 										<button class="btn-w">删除值</button></td>
 								</tr>
 								<tr>

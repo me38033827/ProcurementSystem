@@ -20,6 +20,7 @@
 		//获得购物车大小
 		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
 		String size = "0";
+		String quantity = "0";//商品总数
 		if (shoppingCart != null)
 			size = shoppingCart.getCommodities().size() + "";
 	%>
@@ -72,7 +73,7 @@
 					<span class="glyphicon glyphicon-shopping-cart shopping-cart-icon"
 						aria-hidden="true"></span>
 
-					<div class="shopping-cart-size right" id="shoppingCartSize"><%=size%></div>
+					<div class="shopping-cart-size right" id="shoppingCartSize"><%=size %></div>
 				</button>
 				<button class="btn-w " style="margin-right: 20px;"
 					onclick="window.location.href='commodityCatalog/commodityCatalogList'">目录管理</button>
@@ -102,85 +103,44 @@
 				<a class="filter-title">类别</a> <a class="filter-content">其他政治、公民事物服务(1)</a>
 				<a class="filter-content">其他制造业相关业务(3)</a> <a class="filter-title">供应商</a>
 				<a class="filter-content">发发发发展有限公司(1)</a> <a class="filter-content">有限责任公司(3)</a> -->
-				
 
 
 
-	<div class="sidebar">
-		<!-- <div class="sidebar_top sidebar_top_tc">按照类别采购</div> -->
-		<div class="sidebar_con">
-			<dl class="sidebar_item">
-				<dd>
-					<h3 class="">
-						<a href="#">书籍、表格和印刷媒体</a>
-					</h3>
-					<s></s>
-					<div class="sidebar_popup dis1" style="display: none;">
-						<div class="sidebar_popup_class clearfix">
-							<div class="sidebar_popup_item">
-								<strong><a href="#">书籍、表格和印刷媒体</a></strong>
-								<p>
-									<span class="linesbg"><a href="#">印刷出版物</a></span>
-								</p>
-							</div>
-						</div>
+
+				<div class="sidebar">
+					<!-- <div class="sidebar_top sidebar_top_tc">按照类别采购</div> -->
+					<div class="sidebar_con">
+						<dl class="sidebar_item">
+							<c:forEach var="node" items="${firstClass}">
+								<dd>
+									<h3 class="">
+										<a href="commodityCatalog?code=${node.spscCode }">${node.name }</a>
+									</h3>
+									<s></s>
+									<!-- 弹出层 -->
+									<div class="sidebar_popup dis1" style="display: none;">
+										<div class="sidebar_popup_class clearfix">
+											<div class="sidebar_popup_item">
+												<strong>${node.name }</strong>
+												<c:forEach var="childNode" items="${node.childList}">
+													<p>
+														<span class="linesbg"><a
+															href="commodityCatalog?code=${childNode.spscCode}">${childNode.name }</a></span>
+													</p>
+												</c:forEach>
+											</div>
+										</div>
+									</div>
+								</dd>
+							</c:forEach>
+							<dd>
+								<h3 class="">
+									<a href="commodityCatalog?code=-1">未分类项目</a>
+								</h3>
+							</dd>
+						</dl>
 					</div>
-				</dd>
-				<dd>
-					<h3 class="">
-						<a href="#">办公产品</a>
-					</h3>
-					<s></s>
-					<!-- 弹出层 -->
-					<div class="sidebar_popup dis2" style="display: none;">
-						<div class="sidebar_popup_class clearfix">
-							<div class="sidebar_popup_item">
-								<strong><a href="#">工程机械</a></strong>
-								<p>
-									<span class="linesbg"><a href="#">起重机械</a></span><span
-										class="linesbg"><a href="#">装修机械</a></span><span
-										class="linesbg"><a href="#">混凝土机械</a></span><span
-										class="linesbg"><a href="#">钢筋加工机械</a></span><span
-										class="linesbg"><a href="#">建材机械配件</a></span><span
-										class="more"><a href="#">更多</a></span>
-								</p>
-							</div>
-						</div>
-					</div>
-				</dd>
-				<dd>
-					<h3 class="">
-						<a href="#">原材料</a>
-					</h3>
-				</dd>
-				<dd>
-					<h3 class="">
-						<a href="#">未分类的项目</a>
-					</h3>
-				</dd>
-				<dd>
-					<h3 class="">
-						<a href="#">机械和工具</a>
-					</h3>
-				</dd>
-				<dd>
-					<h3 class="">
-						<a href="#">杂项</a>
-					</h3>
-				</dd>
-				<dd>
-					<h3 class="">
-						<a href="#">维护、维修和操作</a>
-					</h3>
-				</dd>
-				<dd>
-					<h3 class="">
-						<a href="#">计算机和 IT 设备</a>
-					</h3>
-				</dd>
-			</dl>
-		</div>
-	</div>
+				</div>
 			</div>
 
 			<!-- 搜索结果显示区域 -->
@@ -188,7 +148,7 @@
 				<a class="result-line1 inline-b">目录主页&nbsp;／&nbsp;采购组织：CN05&nbsp;／&nbsp;服务&nbsp;／&nbsp;其他服务</a>
 				<div class="result-line2">
 					<div class="result-line2-left">
-						<a class="result-line2-font">找到3个项目。</a>
+						<a class="result-line2-font">找到${commoditiesQuantity}个项目。</a>
 					</div>
 					<div class="result-line2-middle">
 						<a class="result-line2-font">查看方式：</a> <span

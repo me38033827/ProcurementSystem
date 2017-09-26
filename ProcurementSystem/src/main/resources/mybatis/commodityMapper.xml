@@ -55,7 +55,7 @@
 		#{ itemDescription },
 		#{ materialGroup },
 		#{ commodityType },
-		#{ spsCode
+		#{ spscCode
 		},
 		#{ unitOfMeasure },
 		#{ leadTime },
@@ -78,7 +78,7 @@
 		)
 	</insert>
 
-
+	<!-- 所有商品的搜索 -->
 	<select id="searchCommodity" parameterType="map" resultMap="commodityMap">
 		select
 		c.unique_name as uniqueName,
@@ -110,32 +110,107 @@
 		c.is_checked as isChecked,
 		c.thumbnail as thumbnail,
 		c.image as image,
-		cc.unique_name as commodityCatalogUniqueName,
-		cc.name as	commodityCatalogName,
+		cc.unique_name as
+		commodityCatalogUniqueName,
+		cc.name as commodityCatalogName,
 		con.unique_name as contractUniqueName,
 		con.name as
 		contractName,
 		sup.unique_name as supplieruniqueName,
 		sup.name as
 		supplierName
-		from ((commodity c left join contract con on
-		c.contract_unique_name = con.unique_name)
+		from
+		((commodity c left join contract con on
+		c.contract_unique_name =
+		con.unique_name)
 		left join supplier sup on
-		c.supplier_unique_name = sup.unique_name)
+		c.supplier_unique_name =
+		sup.unique_name)
 		left
 		join commodity_catalog cc
-		on c.commodity_catalog_unique_name =
+		on
+		c.commodity_catalog_unique_name =
 		cc.unique_name
 		where 1 = 1
 		<if test="commodity.uniqueName != '' and commodity.uniqueName != null">
 			and c.unique_name = #{commodity.uniqueName}
 		</if>
+
 		order by uniqueName desc
 		<if test="offset != null and size != null">
 			limit #{offset},#{size}
 		</if>
-		
+
 	</select>
+	<!-- 已激活的商品搜索 -->
+	<select id="searchActivatedCommodity" parameterType="map"
+		resultMap="commodityMap">
+		select
+		c.unique_name as uniqueName,
+		c.company_code as companyCode,
+		c.gcm_email_address as
+		gcmEmailAddress,
+		c.supplier_part_id as
+		supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.spsc_code as
+		spscCode,
+		c.manufacturer_name as
+		manufacturerName,
+		c.manufacturer_part_id as manufacturerPartId,
+		c.manufacturer_url as
+		manufacturerUrl,
+		c.is_hazardous_materials as
+		isHazardousMaterials,
+		c.is_green as isGreen,
+		c.expiration_date as
+		expirationDate,
+		c.effective_date as effectiveDate,
+		c.item_description as
+		itemDescription,
+		c.short_name as shortName,
+		c.unit_price as unitPrice,
+		c.unit_of_measure as unitOfMeasure,
+		c.is_checked as isChecked,
+		c.thumbnail as thumbnail,
+		c.image as image,
+		cc.unique_name as
+		commodityCatalogUniqueName,
+		cc.name as commodityCatalogName,
+		con.unique_name as contractUniqueName,
+		con.name as
+		contractName,
+		sup.unique_name as supplieruniqueName,
+		sup.name as
+		supplierName
+		from
+		((commodity c left join contract con on
+		c.contract_unique_name =
+		con.unique_name)
+		left join supplier sup on
+		c.supplier_unique_name =
+		sup.unique_name)
+		left
+		join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name =
+		cc.unique_name
+		where 1 = 1 and
+		cc.is_activated = '已激活'
+		<if test="commodity.uniqueName != '' and commodity.uniqueName != null">
+			and c.unique_name = #{commodity.uniqueName}
+		</if>
+		<if test="commodity.spscCode != '' and commodity.spscCode != null">
+			and c.spsc_code like CONCAT(#{commodity.spscCode},'%')
+		</if>
+		order by uniqueName desc
+		<if test="offset != null and size != null">
+			limit #{offset},#{size}
+		</if>
+
+	</select>
+
 
 	<resultMap id="commodityMap" type="com.ProcurementSystem.entity.Commodity">
 		<id property="uniqueName" column="uniqueName" />
@@ -200,7 +275,8 @@
 		item_description =
 		#{itemDescription},
 		short_name = #{shortName},
-		is_checked = #{isChecked}
+		is_checked = #{isChecked},
+		spsc_code = #{spscCode}
 		where 1=1
 		<if test="uniqueName!='' and uniqueName!=null">
 			and unique_name = #{uniqueName}
@@ -214,11 +290,35 @@
 	</select>
 
 
-
+	<select id="getActivatedRowCount" resultType="int">
+		select count(*)
+		from
+		commodity c left join commodity_catalog cc
+		on c.commodity_catalog_unique_name = cc.unique_name
+		where cc.is_activated = '已激活'
+		<if test="spscCode!='' and spscCode!=null">
+			and c.spsc_code like CONCAT(#{spscCode},'%');
+		</if>
+	</select>
 
 	<select id="getAllCommoditiesValidateStateByCatalog" resultType="String">
 		select is_checked from commodity
-		where commodity_catalog_unique_name = #{uniqueName}
+		where commodity_catalog_unique_name =
+		#{uniqueName}
 	</select>
+
+
+	<select id="getAllActivatedCommodities" resultType="com.ProcurementSystem.entity.Commodity">
+		select
+		spsc_code
+		from commodity_catalog cc left join commodity c on
+		cc.unique_name = c.commodity_catalog_unique_name
+		where cc.is_activated = '已激活'
+	</select>
+
+	<update id="clearSpscCode" parameterType="String">
+		update commodity set
+		spsc_code = "-1" where spsc_code = #{spscCode}
+	</update>
 
 </mapper>

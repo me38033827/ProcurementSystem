@@ -228,8 +228,8 @@ public class BuyerCommodityCatalogController {
 		map.put("commodityCatalog", commodityCatalog);
 		return "downStream/commodityCatalog/commodityCatalogContent";
 	}
-
-	// 在线编辑商品目录
+	
+    /**在线编辑商品目录*/
 	@RequestMapping(value = "commodityCatalogContentEdit")
 	public String commodityCatalogContentEdit(@RequestParam(value = "uniqueName") String uniqueName, ModelMap map) {
 		/** 从数据库中提取对应的商品对象 */

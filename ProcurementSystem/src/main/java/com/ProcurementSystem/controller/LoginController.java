@@ -1,7 +1,5 @@
 package com.ProcurementSystem.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,7 +7,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.entity.Login;
+import com.ProcurementSystem.service.BuyerCommodityService;
 import com.ProcurementSystem.service.LoginService;
 
 @Controller
@@ -17,6 +17,8 @@ public class LoginController {
 
 	@Resource
 	LoginService service;
+	@Resource
+	BuyerCommodityService commodityService;
 
 	@RequestMapping(value = "login")
 	public String login(Login login, HttpServletRequest request){
@@ -35,9 +37,12 @@ public class LoginController {
 		
 		// 判断是否有相关的登录信息
 		if(loginResult != null){
+			
+			//生成商品目录导航
+			NavTree navTree = commodityService.generateCommodityNav();
+			request.getServletContext().setAttribute("navTree", navTree);
 			// 成功登录，将supplierUniqueName/buyerUniqueName以及username存储到session中
 			HttpSession session = request.getSession();
-			
 			if(role.equals("supplier")){
 				int a = loginResult.getSupplier().getUniqueName();
 				System.out.println("adsfsd");
@@ -55,8 +60,6 @@ public class LoginController {
 				return "redirect:buyer/main";
 			}
 		}
-		
-		
 		int usernameExistance = service.getUsernameExistance(login);
 		request.setAttribute("loginInfo", login);
 		request.setAttribute("role", login.getRole());
@@ -69,7 +72,7 @@ public class LoginController {
 		}
 		return "login";
 	}
-	
+
 	@RequestMapping(value = "logout")
 	public String logout(HttpServletRequest request){
 		HttpSession session = request.getSession();

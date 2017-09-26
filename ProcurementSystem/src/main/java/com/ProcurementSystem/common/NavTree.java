@@ -1,98 +1,41 @@
 package com.ProcurementSystem.common;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 public class NavTree {
-	class TreeNode {
-		private String selfId;
-		private String name;
-		private String spscCode;
-		private int quantity;// 当前分类下的商品数
-		private TreeNode parentNode;
-		private List<TreeNode> childList;
-
-		public TreeNode() {
-			childList = new LinkedList<TreeNode>();
-		}
-
-		public String getSelfId() {
-			return selfId;
-		}
-
-		public void setSelfId(String selfId) {
-			this.selfId = selfId;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public String getSpscCode() {
-			return spscCode;
-		}
-
-		public void setSpscCode(String spscCode) {
-			this.spscCode = spscCode;
-		}
-
-		public int getQuantity() {
-			return quantity;
-		}
-
-		public void setQuantity(int quantity) {
-			this.quantity = quantity;
-		}
-
-		public TreeNode getParentNode() {
-			return parentNode;
-		}
-
-		public void setParentNode(TreeNode parentNode) {
-			this.parentNode = parentNode;
-		}
-
-		public List<TreeNode> getChildList() {
-			return childList;
-		}
-
-		public void setChildList(List<TreeNode> childList) {
-			this.childList = childList;
-		}
-
-	}
 
 	TreeNode root;
 
 	public NavTree() {
 		root = new TreeNode();
-		root.selfId = "0";
-		root.spscCode="0";
-		root.childList = new LinkedList<TreeNode>();
+		root.setSpscCode("0");
+		root.setChildList(new LinkedList<TreeNode>());
+		root.setName("");
 	}
 
 	/** 添加结点 */
-	public void addChild(String code) {
+	public boolean addChild(String code) {
 		TreeNode parentNode = root;
+		ArrayList<String> nameList = XMLResolve.getLayerNames(code);
+		if (nameList == null) {// 将该code清空，即归为未分类项目
+			return false;
+		}
 		String spscCode = "";
+		int i = 0, length = code.length() / 2;// 用于从ArrayList中取出层级名
 		while (code.length() > 0) {
 			String leftCode = code.substring(0, 2);
 			String rightCode = code.substring(2);
 			TreeNode newNode = new TreeNode();
-			newNode.setSelfId(leftCode);// 设置selfId
 			spscCode += leftCode;
-			// 判断当前结点是否在父节点中已经存在
+			newNode.setSpscCode(spscCode);// 设置spscCode
+			// 判断当前结点是否在父节点的孩子结点中已经存在
 			TreeNode findNode = findNodeInParent(parentNode, newNode);
 			if (findNode == null) {
-				String name = getNameByCode("", leftCode);// 从xml中查找名称
-				newNode.setName(name);// 设置分类名
-				newNode.setSpscCode(spscCode);// 设置spscCode
+				newNode.setName(nameList.get(length - i - 1));// 设置分类名
 				newNode.setParentNode(parentNode);
 				parentNode.getChildList().add(newNode);// 设置父节点
 				parentNode.setQuantity(parentNode.getQuantity() + 1);// 设置分类数量
@@ -102,7 +45,9 @@ public class NavTree {
 				parentNode = findNode;// 设置下一次循环的父节点
 			}
 			code = rightCode;// 为下一个循环做准备
+			i++;
 		}
+		return true;
 
 	}
 
@@ -110,40 +55,61 @@ public class NavTree {
 	private TreeNode findNodeInParent(TreeNode parentNode, TreeNode newNode) {
 		List<TreeNode> childs = parentNode.getChildList();
 		for (TreeNode child : childs) {
-			if (child.getSelfId().equals(newNode.getSelfId())) {
+			if (child.getSpscCode().equals(newNode.getSpscCode())) {
 				return child;
 			}
 		}
 		return null;
 	}
 
-	private String getNameByCode(String filePath, String leftCode) {
-		// TODO Auto-generated method stub
-		return null;
+	/** 遍历一棵树，层次遍历，借助一个队列 */
+	public String traverse() {
+		String str="";
+		int level = 0;
+		Queue<TreeNode> quee = new LinkedList<>();
+		quee.offer(root);
+		while (!quee.isEmpty()) {
+			TreeNode node = quee.poll();
+			if (level == (node.getSpscCode().length() / 2))
+				str+=node.getName() + " ";
+			else {
+				level++;
+				str+="\n";
+				str+=node.getName() + " ";
+			}
+			List<TreeNode> childs = node.getChildList();
+			Iterator<TreeNode> iterator = childs.iterator();
+			while (iterator.hasNext()) {
+				quee.offer(iterator.next());
+			}
+		}
+		return str;
 	}
 
-	/** 遍历一棵树，层次遍历，借助一个队列 */
-	 public void traverse() {
-		 int level=0;
-		 Queue<TreeNode> quee = new LinkedList<>();
-		 quee.offer(root);
-		 while(!quee.isEmpty()){
-			 TreeNode node = quee.poll();
-			 if(level == (node.getSpscCode().length()/2))
-				 System.out.print(node.getSelfId()+" ");
-			 else{
-				 level++;
-				 System.out.println();
-				 System.out.print(node.getSelfId()+" ");
-			 }
-			 List<TreeNode> childs = node.getChildList();
-			 Iterator<TreeNode> iterator = childs.iterator();
-			 while(iterator.hasNext()){
+	public ArrayList<TreeNode> getNavClass(int i) {//获得第i层级的结点
+		ArrayList<TreeNode> list = new ArrayList<>();
+		Queue<TreeNode> quee = new LinkedList<>();
+		quee.offer(root);
+		while(!quee.isEmpty()){
+			TreeNode node = quee.poll();
+			if(node.getSpscCode().length()/2 <= i){
+				if(node.getSpscCode().length()/2 == i){//把i层的结点加入list
+					list.add(node);
+				}
+			}else{
+				break;
+			}
+			List<TreeNode> childs = node.getChildList();//将该结点的孩子结点入队
+			Iterator<TreeNode> iterator = childs.iterator();
+			while (iterator.hasNext()) {
 				quee.offer(iterator.next());
-				iterator.remove();
-			 }
-		 }
-	 }
+			}
+		}
+		return list;
+	}
+	
+	
+
 	public static void main(String[] args) {
 		NavTree navTree = new NavTree();
 		navTree.addChild("14111501");
@@ -225,7 +191,7 @@ public class NavTree {
 // /* 删除节点和它下面的晚辈 */
 // public void deleteNode() {
 // NavTree parentNode = this.getParentNode();
-// int id = this.getSelfId();
+// int id = this.getSpscCode();
 //
 // if (parentNode != null) {
 // parentNode.deleteChildNode(id);
@@ -238,7 +204,7 @@ public class NavTree {
 // int childNumber = childList.size();
 // for (int i = 0; i < childNumber; i++) {
 // NavTree child = childList.get(i);
-// if (child.getSelfId() == childId) {
+// if (child.getSpscCode() == childId) {
 // childList.remove(i);
 // return;
 // }
@@ -319,7 +285,7 @@ public class NavTree {
 // this.parentId = parentId;
 // }
 //
-// public int getSelfId() {
+// public int getSpscCode() {
 // return selfId;
 // }
 //
