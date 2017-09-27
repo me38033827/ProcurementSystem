@@ -21,7 +21,7 @@ public class NavTree {
 	public boolean addChild(String code) {
 		TreeNode parentNode = root;
 		ArrayList<String> nameList = XMLResolve.getLayerNames(code);
-		if (nameList == null) {// 将该code清空，即归为未分类项目
+		if (nameList == null) {// 将该code修改为-1，即归为未分类项目
 			return false;
 		}
 		String spscCode = "";
@@ -64,18 +64,18 @@ public class NavTree {
 
 	/** 遍历一棵树，层次遍历，借助一个队列 */
 	public String traverse() {
-		String str="";
+		String str = "";
 		int level = 0;
 		Queue<TreeNode> quee = new LinkedList<>();
 		quee.offer(root);
 		while (!quee.isEmpty()) {
 			TreeNode node = quee.poll();
 			if (level == (node.getSpscCode().length() / 2))
-				str+=node.getName() + " ";
+				str += node.getName() + " ";
 			else {
 				level++;
-				str+="\n";
-				str+=node.getName() + " ";
+				str += "\n";
+				str += node.getName() + " ";
 			}
 			List<TreeNode> childs = node.getChildList();
 			Iterator<TreeNode> iterator = childs.iterator();
@@ -86,20 +86,20 @@ public class NavTree {
 		return str;
 	}
 
-	public ArrayList<TreeNode> getNavClass(int i) {//获得第i层级的结点
+	public ArrayList<TreeNode> getNavClass(int i) {// 获得第i层级的结点
 		ArrayList<TreeNode> list = new ArrayList<>();
 		Queue<TreeNode> quee = new LinkedList<>();
 		quee.offer(root);
-		while(!quee.isEmpty()){
+		while (!quee.isEmpty()) {
 			TreeNode node = quee.poll();
-			if(node.getSpscCode().length()/2 <= i){
-				if(node.getSpscCode().length()/2 == i){//把i层的结点加入list
+			if (node.getSpscCode().length() / 2 <= i) {
+				if (node.getSpscCode().length() / 2 == i) {// 把i层的结点加入list
 					list.add(node);
 				}
-			}else{
+			} else {
 				break;
 			}
-			List<TreeNode> childs = node.getChildList();//将该结点的孩子结点入队
+			List<TreeNode> childs = node.getChildList();// 将该结点的孩子结点入队
 			Iterator<TreeNode> iterator = childs.iterator();
 			while (iterator.hasNext()) {
 				quee.offer(iterator.next());
@@ -107,8 +107,6 @@ public class NavTree {
 		}
 		return list;
 	}
-	
-	
 
 	public static void main(String[] args) {
 		NavTree navTree = new NavTree();
@@ -118,202 +116,22 @@ public class NavTree {
 		navTree.traverse();
 	}
 
-}
+	public List<TreeNode> getNavClassNames(String code) {// 根据code获取其层级路径
+		List<TreeNode> breadNav = new LinkedList<>();
+		int level = code.length() / 2;
+		TreeNode parent = root;
+		for (int i = 1; i <= level; i++) {
+			TreeNode tempNode = new TreeNode();
+			for(TreeNode node : parent.getChildList()){//寻找第i层级符合的结点
+				if(node.getSpscCode().equals(code.substring(0, i*2))){
+					breadNav.add(node);
+					tempNode = node;
+					break;
+				}
+			}
+			parent = tempNode;
+		}
+		return breadNav;
+	}
 
-//
-// public NavTree(NavTree parentNode) {
-// this.getParentNode();
-// initChildList();
-// }
-//
-// public boolean isLeaf() {
-// if (childList == null) {
-// return true;
-// } else {
-// if (childList.isEmpty()) {
-// return true;
-// } else {
-// return false;
-// }
-// }
-// }
-//
-// /* 插入一个child节点到当前节点中 */
-// public void addChildNode(NavTree treeNode) {
-// initChildList();
-// childList.add(treeNode);
-// }
-//
-// public void initChildList() {
-// if (childList == null)
-// childList = new ArrayList<NavTree>();
-// }
-//
-// public boolean isValidTree() {
-// return true;
-// }
-//
-// /* 返回当前节点的父辈节点集合 */
-// public List<NavTree> getElders() {
-// List<NavTree> elderList = new ArrayList<NavTree>();
-// NavTree parentNode = this.getParentNode();
-// if (parentNode == null) {
-// return elderList;
-// } else {
-// elderList.add(parentNode);
-// elderList.addAll(parentNode.getElders());
-// return elderList;
-// }
-// }
-//
-// /* 返回当前节点的晚辈集合 */
-// public List<NavTree> getJuniors() {
-// List<NavTree> juniorList = new ArrayList<NavTree>();
-// List<NavTree> childList = this.getChildList();
-// if (childList == null) {
-// return juniorList;
-// } else {
-// int childNumber = childList.size();
-// for (int i = 0; i < childNumber; i++) {
-// NavTree junior = childList.get(i);
-// juniorList.add(junior);
-// juniorList.addAll(junior.getJuniors());
-// }
-// return juniorList;
-// }
-// }
-//
-// /* 返回当前节点的孩子集合 */
-// public List<NavTree> getChildList() {
-// return childList;
-// }
-//
-// /* 删除节点和它下面的晚辈 */
-// public void deleteNode() {
-// NavTree parentNode = this.getParentNode();
-// int id = this.getSpscCode();
-//
-// if (parentNode != null) {
-// parentNode.deleteChildNode(id);
-// }
-// }
-//
-// /* 删除当前节点的某个子节点 */
-// public void deleteChildNode(int childId) {
-// List<NavTree> childList = this.getChildList();
-// int childNumber = childList.size();
-// for (int i = 0; i < childNumber; i++) {
-// NavTree child = childList.get(i);
-// if (child.getSpscCode() == childId) {
-// childList.remove(i);
-// return;
-// }
-// }
-// }
-//
-// /* 动态的插入一个新的节点到当前树中 */
-// public boolean insertJuniorNode(NavTree treeNode) {
-// int juniorParentId = treeNode.getParentId();
-// if (this.parentId == juniorParentId) {
-// addChildNode(treeNode);
-// return true;
-// } else {
-// List<NavTree> childList = this.getChildList();
-// int childNumber = childList.size();
-// boolean insertFlag;
-//
-// for (int i = 0; i < childNumber; i++) {
-// NavTree childNode = childList.get(i);
-// insertFlag = childNode.insertJuniorNode(treeNode);
-// if (insertFlag == true)
-// return true;
-// }
-// return false;
-// }
-// }
-//
-// /* 找到一颗树中某个节点 */
-// public NavTree findTreeNodeById(int id) {
-// if (this.selfId == id)
-// return this;
-// if (childList.isEmpty() || childList == null) {
-// return null;
-// } else {
-// int childNumber = childList.size();
-// for (int i = 0; i < childNumber; i++) {
-// NavTree child = childList.get(i);
-// NavTree resultNode = child.findTreeNodeById(id);
-// if (resultNode != null) {
-// return resultNode;
-// }
-// }
-// return null;
-// }
-// }
-//
-// /* 遍历一棵树，层次遍历 */
-// public void traverse() {
-// if (selfId < 0)
-// return;
-// print(this.selfId);
-// if (childList == null || childList.isEmpty())
-// return;
-// int childNumber = childList.size();
-// for (int i = 0; i < childNumber; i++) {
-// NavTree child = childList.get(i);
-// child.traverse();
-// }
-// }
-//
-// public void print(String content) {
-// System.out.println(content);
-// }
-//
-// public void print(int content) {
-// System.out.println(String.valueOf(content));
-// }
-//
-// public void setChildList(List<NavTree> childList) {
-// this.childList = childList;
-// }
-//
-// public int getParentId() {
-// return parentId;
-// }
-//
-// public void setParentId(int parentId) {
-// this.parentId = parentId;
-// }
-//
-// public int getSpscCode() {
-// return selfId;
-// }
-//
-// public void setSelfId(int selfId) {
-// this.selfId = selfId;
-// }
-//
-// public NavTree getParentNode() {
-// return parentNode;
-// }
-//
-// public void setParentNode(NavTree parentNode) {
-// this.parentNode = parentNode;
-// }
-//
-// public String getNodeName() {
-// return nodeName;
-// }
-//
-// public void setNodeName(String nodeName) {
-// this.nodeName = nodeName;
-// }
-//
-// public Object getObj() {
-// return obj;
-// }
-//
-// public void setObj(Object obj) {
-// this.obj = obj;
-// }
-// }
+}

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.PageParams;
+import com.ProcurementSystem.common.TreeNode;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.ShoppingCart;
@@ -305,6 +307,7 @@ public class BuyerCommodityCatalogController {
 		return "redirect:/buyer/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
 	}
 
+    /**购物车*/
 	// 显示购物车内容
 	@RequestMapping(value = "commodityCatalogShoppingCart")
 	public String commodityCatalogShoppingCart(HttpServletRequest request) {
@@ -366,16 +369,21 @@ public class BuyerCommodityCatalogController {
 		return "redirect:/buyer/commodityCatalog/commodityCatalogShoppingCart";
 	}
 
+	/**商品详情*/
 	// 转向商品信息详情页
 	@RequestMapping(value = "commodityInfo")
-	public String commodityInfo(@RequestParam(value = "uniqueName") String uniqueName,
-			@RequestParam(value = "currPage", required = false) String currPage, ModelMap map) {
+	public String commodityInfo(@RequestParam(value = "uniqueName") String uniqueName,@RequestParam(value = "code",required=false) String code,
+			@RequestParam(value = "currPage", required = false) String currPage, ModelMap map,HttpServletRequest request) {
 		Commodity commodity = new Commodity();
 		commodity.setUniqueName(uniqueName);
 		PageParams<Commodity> commodities = commodityService.searchCommodity(commodity, 1);
 		commodity = commodities.getData().get(0);
 		map.put("commodity", commodity);
 		map.put("currPage", currPage);
+		NavTree navTree = (NavTree)request.getServletContext().getAttribute("navTree");//获得面包屑导航
+		List<TreeNode> breadNav = navTree.getNavClassNames(commodity.getSpscCode());
+		map.put("breadNav", breadNav);
+		map.put("code", code);//用于返回
 		return "downStream/commodityCatalog/commodityInfo";
 	}
 }

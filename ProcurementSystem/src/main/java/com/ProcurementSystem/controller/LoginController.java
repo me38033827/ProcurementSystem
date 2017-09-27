@@ -21,52 +21,52 @@ public class LoginController {
 	BuyerCommodityService commodityService;
 
 	@RequestMapping(value = "login")
-	public String login(Login login, HttpServletRequest request){
-	
-		if(login.getUsername()==null || login.getUsername().equals("") || login.getPassword().equals("")){
+	public String login(Login login, HttpServletRequest request) {
+
+		if (login.getUsername() == null || login.getUsername().equals("") || login.getPassword().equals("")) {
 			return "login";
 		}
-		
+
 		System.out.println("123");
-		
+
 		String username = login.getUsername();
 		String role = login.getRole();
-		
+
 		// login为从页面上获取的登录信息，loginResult为从数据库中返回的登录信息
 		Login loginResult = service.getLoginInformation(login);
-		
+
 		// 判断是否有相关的登录信息
-		if(loginResult != null){
-			
-			//生成商品目录导航
-			NavTree navTree = commodityService.generateCommodityNav();
-			request.getServletContext().setAttribute("navTree", navTree);
+		if (loginResult != null) {
+
+			// //生成商品目录导航
+			// NavTree navTree = commodityService.generateCommodityNav();
+			// request.getServletContext().setAttribute("navTree", navTree);
 			// 成功登录，将supplierUniqueName/buyerUniqueName以及username存储到session中
 			HttpSession session = request.getSession();
-			if(role.equals("supplier")){
+			if (role.equals("supplier")) {
 				int a = loginResult.getSupplier().getUniqueName();
 				System.out.println("adsfsd");
 				session.setAttribute("supplierUniqueName", loginResult.getSupplier().getUniqueName());
 				session.setAttribute("username", username);
 				System.out.println("Login SUPPLIER " + username + " successfully!");
-				//System.out.println(loginResult.get(0).getSupplierUniqueName());
+				// System.out.println(loginResult.get(0).getSupplierUniqueName());
 				return "redirect:supplier/main";
 			}
-			if(role.equals("buyer")){
+			if (role.equals("buyer")) {
 				session.setAttribute("userUniqueName", loginResult.getUser().getUniqueName());
 				session.setAttribute("username", username);
 				System.out.println("Login USER " + username + " successfully!");
-				//System.out.println(loginResult.get(0).getUserUniqueName());
+				// System.out.println(loginResult.get(0).getUserUniqueName());
 				return "redirect:buyer/main";
 			}
 		}
 		int usernameExistance = service.getUsernameExistance(login);
 		request.setAttribute("loginInfo", login);
 		request.setAttribute("role", login.getRole());
-		if(usernameExistance==0){
+		if (usernameExistance == 0) {
 			request.setAttribute("error", "username");
 			System.out.println("Username does not exist!");
-		}else{
+		} else {
 			request.setAttribute("error", "password");
 			System.out.println("Wrong password!");
 		}
@@ -74,11 +74,11 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "logout")
-	public String logout(HttpServletRequest request){
+	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.removeAttribute("sqm");
 		session.removeAttribute("spm");
 		return "redirect:login";
 	}
-	
+
 }

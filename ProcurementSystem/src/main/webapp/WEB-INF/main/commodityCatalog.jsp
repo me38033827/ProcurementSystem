@@ -73,7 +73,7 @@
 					<span class="glyphicon glyphicon-shopping-cart shopping-cart-icon"
 						aria-hidden="true"></span>
 
-					<div class="shopping-cart-size right" id="shoppingCartSize"><%=size %></div>
+					<div class="shopping-cart-size right" id="shoppingCartSize"><%=size%></div>
 				</button>
 				<button class="btn-w " style="margin-right: 20px;"
 					onclick="window.location.href='commodityCatalog/commodityCatalogList'">目录管理</button>
@@ -143,9 +143,19 @@
 				</div>
 			</div>
 
-			<!-- 搜索结果显示区域 -->
-			<div class="results-out col-md-9">
-				<a class="result-line1 inline-b">目录主页&nbsp;／&nbsp;采购组织：CN05&nbsp;／&nbsp;服务&nbsp;／&nbsp;其他服务</a>
+			<!-- 面包屑导航 -->
+			<div class="results-out col-md-9" style="padding-top:0px;">
+				<ol class="breadcrumb bread-nav">
+					<li><a href="commodityCatalog">目录主页</a></li>
+					<c:forEach var="node" items="${breadNav}" varStatus="status">
+						<c:if test="${status.last == true}">
+							<li class="active">${node.name }</li>
+						</c:if>
+						<c:if test="${status.last == false}">
+							<li><a href="commodityCatalog?code=${node.spscCode }">${node.name }</a></li>
+						</c:if>
+					</c:forEach>
+				</ol>
 				<div class="result-line2">
 					<div class="result-line2-left">
 						<a class="result-line2-font">找到${commoditiesQuantity}个项目。</a>
@@ -184,7 +194,7 @@
 							<div class="item-whole">
 								<div>
 									<a
-										href="/ProcurementSystem/buyer/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }">${commodity.shortName }</a>
+										href="/ProcurementSystem/buyer/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }&code=${code}">${commodity.shortName }</a>
 								</div>
 								<table class="">
 									<tr>
@@ -248,6 +258,7 @@
 var pageList = document.getElementById("pageList");
 var currPage = ${pageParams.currPage};
 var totalPages = ${pageParams.totalPages};
+
 if(totalPages >= 4){
 	if(currPage < 3 ){
 		for(var i=1; i<=3 ;i++ ){
@@ -272,6 +283,7 @@ if(currPage  == totalPages) {
 $("#page"+currPage).attr("class","btn-page-choose");
 
 function add(uniqueName){
+	/* var sss = ${pageParams.currPage}; */
 	var quantity = $("#quantity_"+uniqueName).val();
 	addShoppingCart(uniqueName,quantity);
 }

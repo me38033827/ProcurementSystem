@@ -1,6 +1,7 @@
 package com.ProcurementSystem.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -47,11 +48,9 @@ public class BuyerController {
 	// 转向商品目录主页
 	@RequestMapping(value = "commodityCatalog")
 	public String commodityCatalog(ModelMap map, @RequestParam(value = "currPage", required = false) String currPage,
-			@RequestParam(value = "code", required = false) String code,
-			HttpServletRequest request) {
-		NavTree navTree = (NavTree) request.getServletContext().getAttribute("navTree");
-
-		navTree = commodityService.generateCommodityNav();
+			@RequestParam(value = "code", required = false) String code, HttpServletRequest request) {
+		NavTree navTree = commodityService.generateCommodityNav();
+		request.getServletContext().setAttribute("navTree", navTree);// 获得导航树
 
 		ArrayList<TreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
 		map.put("firstClass", firstClass);
@@ -65,11 +64,16 @@ public class BuyerController {
 		}
 		Commodity commodity = new Commodity();
 		commodity.setSpsCode(code);
-		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp,1);//获得对应分类的商品
+		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp, 1);// 获得对应分类的商品
 		map.put("pageParams", pageParams);
-		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);//获得商品总数量
+		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
 		map.put("commoditiesQuantity", commoditiesQuantity);
-		System.out.println("总页数："+pageParams.getTotalPages() +" 当前页："+pageParams.getCurrPage());
+		if (code != null && code != "") {// 获得面包屑导航
+			List<TreeNode> breadNav = navTree.getNavClassNames(code);
+			map.put("breadNav", breadNav);
+		}
+		map.put("code", code);//保存状态
+		System.out.println("总页数：" + pageParams.getTotalPages() + " 当前页：" + pageParams.getCurrPage());
 		return "main/commodityCatalog";
 	}
 }
