@@ -13,6 +13,8 @@ public interface ISupplierDao {
 	
 	List<Supplier> searchSupplier(String content);
 	
+	List<Supplier> completeSearchSupplier(Map<String, Object> params);
+	
 	void insertSupplier(Supplier supplier);
 	
 	int findMaxUniqueName();

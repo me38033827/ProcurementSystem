@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.ISearchDao">
+	<select id="getSearchList" parameterType="com.ProcurementSystem.entity.Search" resultType="com.ProcurementSystem.entity.Search">
+		select field_name, field_id from search_mapping
+		where page_id = #{pageId} 
+			and field_id not in 
+				(select search.field_id from search_mapping, search 
+					where search_mapping.field_id=search.field_id 
+						and user_id=#{userId} 
+						and search_mapping.page_id=#{pageId});
+	</select>
+	
+	<select id="getSelectedCondition" parameterType="com.ProcurementSystem.entity.Search" resultType="com.ProcurementSystem.entity.Search">
+		select * from search, search_mapping
+		where search.page_id = #{pageId} 
+		and search.user_id = #{userId}
+		and search.page_id = search_mapping.page_id
+		and search.field_id = search_mapping.field_id
+	</select>
+	
+	<insert id="addSearchCondition" parameterType="com.ProcurementSystem.entity.Search">
+		insert into search(page_id, user_id, field_id) values
+		(#{pageId}, #{userId}, #{fieldId});
+	</insert>
+	
+	<delete id="delSearchCondition" parameterType="com.ProcurementSystem.entity.Search">
+		delete from search 
+		where
+			page_id = #{pageId}
+			and user_id = #{userId}
+			and field_id = #{fieldId};
+	</delete>
+	
+	<select id="searchFieldName" parameterType="com.ProcurementSystem.entity.Search" resultType="String">
+		select field_name from search_mapping
+		where field_id = #{fieldId}
+			and page_id = #{pageId};
+	</select>
+</mapper>

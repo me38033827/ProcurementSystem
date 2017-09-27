@@ -69,7 +69,7 @@ public class BuyerSupplierController {
 	
 	//供应商搜索功能页面
 	@RequestMapping(value = "supplierSearch")
-	public String supplierSearch(HttpServletRequest request){
+	public String supplierSearch(HttpServletRequest request, Supplier supplier){
 		request.getSession().removeAttribute("supplierSession");
 		request.getSession().removeAttribute("supplierQuestions");
 		System.out.println("---Controller: supplierSearch---");
@@ -105,21 +105,14 @@ public class BuyerSupplierController {
 			return "upStream/supplier/supplierSearching";
 		}
 		
-		// search
 		System.out.println("Search for content: " + content);
-		if(content==""){
-			List<Supplier> suppliers = service.searchAllSupplier();
-			request.setAttribute("suppliers", suppliers);
-			request.setAttribute("num", Integer.toString(suppliers.size()));
-			System.out.println("共有"+Integer.toString(suppliers.size())+"个搜索结果");
-		}else{
-			List<Supplier> suppliers = service.searchSupplier(content);
-			request.setAttribute("suppliers", suppliers);
-			request.getSession().setAttribute("contentSession", content);
-			request.setAttribute("num", Integer.toString(suppliers.size()));
-			System.out.println("共有"+Integer.toString(suppliers.size())+"个搜索结果");
-		}
-		
+		List<Supplier> suppliers = service.completeSearchSupplier(supplier,content);
+		request.setAttribute("suppliers", suppliers);
+		request.getSession().setAttribute("contentSession", content);
+		request.setAttribute("num", Integer.toString(suppliers.size()));
+		System.out.println("共有"+Integer.toString(suppliers.size())+"个搜索结果");
+		request.getSession().setAttribute("supplierSearchInfoSession", supplier);
+		request.setAttribute("supplierSearchInfo", supplier);
 		request.getSession().setAttribute("contentSession", content);
 		return "upStream/supplier/supplierSearching";
 	}

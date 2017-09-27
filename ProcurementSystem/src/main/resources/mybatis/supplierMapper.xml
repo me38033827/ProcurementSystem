@@ -24,7 +24,27 @@
 	<select id="searchSupplier" parameterType="String" resultType="com.ProcurementSystem.entity.Supplier">
 		select * from supplier where name like #{content}
 		union
-		select * from supplier where unique_name like #{content};
+		select * from supplier where unique_name like #{content}; 
+	</select>
+
+	<select id="completeSearchSupplier" parameterType="map" resultType="com.ProcurementSystem.entity.Supplier">
+		select * from supplier 
+		where 1=1
+			<if test="content!='' and content!=null">
+				and name like concat("%",#{content},"%")
+			</if>
+			<if test="supplier.name!='' and supplier.name!=null">
+				and name like concat("%",#{supplier.name},"%")
+			</if>
+			<if test="supplier.isClient!='' and supplier.isClient!=null and supplier.isClient!='是或否'">
+				and is_client like concat("%",#{supplier.isClient},"%")
+			</if>
+			<if test="supplier.isSupplier!='' and supplier.isSupplier!=null and supplier.isSupplier!='是或否'">
+				and is_supplier like concat("%",#{supplier.isSupplier},"%")
+			</if>
+			<if test="supplier.approveState!='' and supplier.approveState!=null and supplier.approveState!='无选择'">
+				and approve_state like concat("%",#{supplier.approveState},"%")
+			</if>
 	</select>
 
 	<select id="searchAllSupplier" resultType="com.ProcurementSystem.entity.Supplier">

@@ -1,7 +1,5 @@
 package com.ProcurementSystem.service;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -25,6 +23,4 @@ public class LoginService {
 	public void insertSupplierLogin(Login login){
 		dao.insertSupplierLogin(login);
 	}
-	
-	
 }

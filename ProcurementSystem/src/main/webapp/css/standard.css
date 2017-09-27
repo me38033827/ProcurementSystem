@@ -533,3 +533,34 @@ button{
 .question tr{
 	height:50px;	
 }
+
+/* + - sign */
+.plus-sign{
+}
+
+.minus-sign{
+	margin-left: 5px;
+}
+
+/* search fields */
+.row-search{
+	height:36px;
+}
+
+.col-search1{
+	padding-left:50px;
+	font-size:14px;
+	width:400px;
+	line-height:30px;
+	
+}
+
+.col-search1 label{
+	margin-bottom:0;
+}
+
+.col-search2{
+	padding-left:30px;
+	margin-top:3px;
+	font-size:20px;
+}

@@ -14,6 +14,7 @@
 <title>搜索供应商和客户结果</title>
 
 <%@include file="../../other/header1return.jsp"%>
+<script src="/ProcurementSystem/js/SearchCondition.js"></script>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -24,6 +25,8 @@
 				<div class="standard-title">
 					<a class="standard-title-main">搜索供应商和客户</a>
 				</div>
+				<input hidden="hidden" id="userId" value="100001">
+				<input hidden="hidden" id="pageId" value="2004">
 
 				<div class="adjust-10"></div>
 
@@ -42,9 +45,8 @@
 						<div class="col-md-6">
 							<form method="post" id="supplierSearch">
 								<table>
-									<tr class="row-standard">
-										<td class="col-standard1"
-											style="width: 350px; padding-left: 30px;"><input
+									<tr class="row-search" id="search-cond-all">
+										<td class="col-search1"><input
 											type="text" class="col-md-5 form-control input"
 											style="width: 300px;" name="content"
 											placeholder="使用名称、标识符或任何其他词语搜索" 
@@ -52,9 +54,8 @@
 											value="<%=request.getSession().getAttribute("contentSession") %>"
 											<%} %>>
 										</td>
-										<td class="col-standard2"><a href=""><span
+										<td class="col-search2"><a href="javascript:addCondition('#search-cond-all');"><span
 												class="glyphicon glyphicon-plus-sign blue"
-												style="font-size: 20px; margin-top: 3px; margin-left: 40px;"
 												aria-hidden="true"></span></a></td>
 									</tr>
 								</table>

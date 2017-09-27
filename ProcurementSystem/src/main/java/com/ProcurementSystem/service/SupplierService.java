@@ -34,9 +34,16 @@ public class SupplierService {
 		return suppliers;
 	}
 	
+	public List<Supplier> completeSearchSupplier(Supplier supplier, String content){
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("supplier", supplier);
+		params.put("content", content);
+		List<Supplier> suppliers = dao.completeSearchSupplier(params);
+		return suppliers;
+	}
+	
 	public List<Supplier> searchSupplier(String content){
-		System.out.println("Content in service: "+content);
-		List<Supplier> suppliers = dao.searchSupplier("%"+content+"%");
+		List<Supplier> suppliers = dao.searchSupplier(content);
 		return suppliers;
 	}
 	
