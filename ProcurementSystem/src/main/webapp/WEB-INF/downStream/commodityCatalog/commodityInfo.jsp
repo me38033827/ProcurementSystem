@@ -66,7 +66,6 @@
 			<div class="standart-out">
 				<div class="row">
 					<div class="col-md-12">
-
 						<div class="border-bottom-grey ">
 							<!-- 面包屑导航 -->
 							<ol class="breadcrumb bread-nav">
@@ -88,27 +87,65 @@
 					</div>
 				</div>
 				<div class="row" style="padding: 10px 50px 10px 50px;">
-					<div class="col-md-12">
-						<div class="standard-title-main margin-bottom"
-							style="padding-left: 100px;">
-							<strong>${commodity.shortName }</strong>
-						</div>
-					</div>
+
 					<div class="col-md-6 border-right-grey">
 						<div style="padding-right: 100px;" class="right">
 							<div class="left">
-								<img alt="" id="image-${commodity.uniqueName }"
+								<%-- <img alt="" id="image-${commodity.uniqueName }"
 									src="${commodity.thumbnail }"
 									onerror="error('image-${commodity.uniqueName }');"
-									width="220px" height="220px">
+									width="220px" height="220px"> --%>
+
+								<div class="">
+									<div class="bigImg">
+										<img id= iimage-${commodity.uniqueName} onerror="error('iimage-${commodity.uniqueName }');"
+											src="/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${commodity.thumbnail}">
+									</div>
+									<div class="smallImgs">
+										<!-- 	<p class="left">
+											<strong><i class="fa fa-angle-left"
+												style="font-size: 50px; color:#ddd"></i></strong>
+										</p> -->
+										<c:forEach var="path" items="${paths}">
+											<div class="smallImg left">
+												<img id= image-${commodity.uniqueName}
+													src="/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${path}"
+													onerror="error('image-${commodity.uniqueName }');">
+											</div>
+										</c:forEach>
+										<!-- <div class="smallImg">
+											<img src="/ProcurementSystem/images/shangpinxiangqing/X7.png">
+										</div>
+										<div class="smallImg">
+											<img src="/ProcurementSystem/images/shangpinxiangqing/X8.png">
+										</div>
+										<div class="smallImg">
+											<img src="/ProcurementSystem/images/shangpinxiangqing/X9.png">
+										</div>
+										<div class="smallImg">
+											<img
+												src="/ProcurementSystem/images/shangpinxiangqing/X10.png">
+										</div>
+										 -->
+										<!-- <p class="left" >
+											<strong><i class="fa fa-angle-right"
+												style="font-size: 50px;color:#ddd"></i></strong>
+										</p> -->
+									</div>
+								</div>
 							</div>
-							<table>
-								<tr>
-									<td><br></td>
-								</tr>
+						</div>
+					</div>
+					<div class="col-md-6">
+
+						<div class="" style="padding-left: 100px;">
+							<div class="standard-title-main margin-bottom">
+								<strong>${commodity.shortName }</strong>
+							</div>
+							<table class="commodity-item-table">
 								<tr>
 									<td class="right">供应商：</td>
-									<td>${commodity.supplier.name }</td>
+									<td><a href=""> ${commodity.supplier.name }</a></td>
 								</tr>
 								<tr>
 									<td class="right">供应商部件号：</td>
@@ -118,31 +155,32 @@
 									<td class="right">制造商：</td>
 									<td>${commodity.manufacturerName }</td>
 								</tr>
-								<tr>
-									<td class="right">剩余时间：</td>
-									<td>${commodity.timeLeft }</td>
-								</tr>
+
 								<tr>
 									<td class="right">合同：</td>
 									<td>C${commodity.contract.uniqueName }</td>
 								</tr>
+								<tr>
+									<td class="right">价格：</td>
+									<td><a class="item-price-green" style="font-size: 18px;">${commodity.unitPrice }
+											CNY</a> <a class="item-price-grey">&nbsp;／件</a></td>
+								</tr>
 							</table>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="left" style="padding-left: 100px;">
-							<a class="item-price-green" style="font-size: 18px;">${commodity.unitPrice }
-								CNY</a> <a class="item-price-grey">&nbsp;／件</a><br> <a
-								class="item-price-black">数量： <input class="item-quantity"
-								id="quantity_${commodity.uniqueName }" value="1" />
-								<button class="item-add"
-									onclick="add(${commodity.uniqueName });">添加到购物车</button></a>
 							<div>
-								<a class="item-price-blue">添加到收藏夹</a>
+								<br> <a class="item-price-black">数量： <input
+									class="item-quantity" id="quantity_${commodity.uniqueName }"
+									value="1" />
+									<button class="item-add"
+										onclick="add(${commodity.uniqueName });">添加到购物车</button></a>
+								<div>
+									<a class="item-price-blue">添加到收藏夹</a>
+								</div>
 							</div>
-							<br> <br>
+
 						</div>
 					</div>
+				</div>
+				<div class="row" style="padding: 10px 50px 10px 50px;">
 					<div class="col-md-12">
 						<div class="margin-bottom">
 							<div class="standard-subtitle">产品说明</div>
@@ -199,6 +237,29 @@
 		var quantity = $("#quantity_"+uniqueName).val();
 		addShoppingCart(uniqueName,quantity);
 	}
-	
+	$(document).ready(function(){
+		var $miaobian=$('.smallImgs>div');
+		var $huantu=$('.bigImg>img');
+		/* var $miaobian1=$('.Xcontent26>div'); */
+		$miaobian.mousemove(function(){miaobian(this);});
+		/* $miaobian1.click(function(){miaobian1(this);}); */
+		function miaobian(thisMb){
+			for(var i=0; i<$miaobian.length; i++){
+				$miaobian[i].style.borderColor = '#dedede';
+			}
+			thisMb.style.borderColor = '#cd2426';
+
+			$huantu[0].src = thisMb.children[0].src;
+		}
+		function miaobian1(thisMb1){
+			for(var i=0; i<$miaobian1.length; i++){
+				$miaobian1[i].style.borderColor = '#dedede';
+			}
+//	thisMb.style.borderColor = '#cd2426';
+		$miaobian.css('border-color','#dedede');
+		thisMb1.style.borderColor = '#cd2426';
+		$huantu[0].src = thisMb1.children[0].src;
+		}
+})
 </script>
 </html>

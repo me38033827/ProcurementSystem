@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerTemplateTreeNodeDao">
+
+	<insert id="add" parameterType="com.ProcurementSystem.entity.TemplateTreeNode">
+		insert into template_tree_node(parent_id,template_id,template_folder_id,type) 
+		values(
+			#{parentId},#{template.id},#{templateFolder.id},#{type}
+		)
+	</insert>
+
+</mapper>

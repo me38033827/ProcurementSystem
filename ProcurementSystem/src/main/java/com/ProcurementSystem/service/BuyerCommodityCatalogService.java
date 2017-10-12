@@ -146,11 +146,16 @@ public class BuyerCommodityCatalogService {
 						commodity.setExpirationDate(cell.getContents());
 						cell = firstSheet.getCell(15, i);// Short Name
 						commodity.setShortName(cell.getContents());
-						String imagesPath = "/ProcurementSystem/upload/" + commodityCatalog.getUniqueName() + "/";
+						//String imagesPath = "/ProcurementSystem/upload/" + commodityCatalog.getUniqueName() + "/" + commodity.getShortName()+"/";
 						cell = firstSheet.getCell(16, i);// Image
-						commodity.setImage(imagesPath + cell.getContents());
+//						String[] strs = cell.getContents().split("&");//对图像路径的原始数据进行处理,路径与路径之间用&隔开
+//						String result ="";
+//						for(String str : strs){
+//							result+=imagesPath + str + "&";
+//						}
+						commodity.setImage(cell.getContents());
 						cell = firstSheet.getCell(17, i);// Thumbnail
-						commodity.setThumbnail(imagesPath + cell.getContents());
+						commodity.setThumbnail(cell.getContents());
 						cell = firstSheet.getCell(18, i);// ContractNumber
 						Contract contract = new Contract();
 						contract.setUniqueName(cell.getContents());
@@ -238,7 +243,7 @@ public class BuyerCommodityCatalogService {
 	}
 
 	// 保存image文件，并解压
-	public void commodityCatalogUploadImages(MultipartFile imageFile, String path) {
+	public void commodityCatalogUploadImages(MultipartFile imageFile, String path) {//存到以商品目录id命名的文件夹下
 		String fileName = imageFile.getOriginalFilename();
 		File dir = new File(path);// 创建文件夹
 		if (!dir.exists()) {
@@ -256,7 +261,8 @@ public class BuyerCommodityCatalogService {
 		}
 		try {
 			imageFile.transferTo(targetFile);
-			FileUnZip.zipToFile(path + fileName, path);
+			FileUnZip.zipToFile(path + fileName, path);//解压文件
+			
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

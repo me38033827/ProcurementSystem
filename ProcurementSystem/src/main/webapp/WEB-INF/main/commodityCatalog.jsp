@@ -103,10 +103,7 @@
 				<a class="filter-title">类别</a> <a class="filter-content">其他政治、公民事物服务(1)</a>
 				<a class="filter-content">其他制造业相关业务(3)</a> <a class="filter-title">供应商</a>
 				<a class="filter-content">发发发发展有限公司(1)</a> <a class="filter-content">有限责任公司(3)</a> -->
-
-
-
-
+				<!--导航  -->
 				<div class="sidebar">
 					<!-- <div class="sidebar_top sidebar_top_tc">按照类别采购</div> -->
 					<div class="sidebar_con">
@@ -144,7 +141,7 @@
 			</div>
 
 			<!-- 面包屑导航 -->
-			<div class="results-out col-md-9" style="padding-top:0px;">
+			<div class="results-out col-md-9" style="padding-top: 0px;">
 				<ol class="breadcrumb bread-nav">
 					<li><a href="commodityCatalog">目录主页</a></li>
 					<c:forEach var="node" items="${breadNav}" varStatus="status">
@@ -187,7 +184,7 @@
 
 							<div class="left container-thumbnail">
 								<img alt="" id="image-${commodity.uniqueName }"
-									src="${commodity.thumbnail }"
+									src="/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
 									onerror="error('image-${commodity.uniqueName }');"
 									width="130px" height="130px">
 							</div>

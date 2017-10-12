@@ -5,6 +5,7 @@ encoding//src/main/resources/i18n/messages.properties=UTF-8
 encoding//src/main/webapp/WEB-INF/downStream/order/createPrOrder.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/other/header1right.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/springmvc.xml=UTF-8
+encoding//src/main/webapp/WEB-INF/upStream/template/templateNav.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/user/userCreation.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/user/userDetail.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/user/userSearching.jsp=UTF-8

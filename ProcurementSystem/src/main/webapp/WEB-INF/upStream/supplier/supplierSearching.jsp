@@ -14,7 +14,7 @@
 <title>搜索供应商和客户结果</title>
 
 <%@include file="../../other/header1return.jsp"%>
-<script src="/ProcurementSystem/js/SearchCondition.js"></script>
+<script src="/ProcurementSystem/js/searchCondition.js"></script>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -80,7 +80,7 @@
 					搜索结果
 					<%
 					if (request.getAttribute("num") != "-1") {
-				%>
+					%>
 					<a class="f-14 black" style="margin-left: 40%;">共有<%=request.getAttribute("num")%>个结果
 					</a>
 					<%

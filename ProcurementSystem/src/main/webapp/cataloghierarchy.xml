@@ -3976,166 +3976,7 @@
         </ProductCategoryConditions>
       </ProductCategoryLeaf>
     </ProductCategoryBranch>
-    <ProductCategoryBranch nodeID="NI.1299.1146072102234">
-      <Description xml:lang="en-US">Computer Accessories</Description>
-      <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerAccessories</Description>
-      <Description xml:lang="zh-CN">计算机附件</Description>
-      <Image xml:lang="en-US">Accessories.jpg</Image>
-      <ProductCategoryLeaf nodeID="NI.1300.1146072102234">
-        <Description xml:lang="en-US">Computer Switch Boxes</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerSwitchBoxes</Description>
-        <Description xml:lang="zh-CN">计算机开关盒</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211601</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1301.1146072102234">
-        <Description xml:lang="en-US">Docking Stations</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/DockingStations</Description>
-        <Description xml:lang="zh-CN">对接站</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211602</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1302.1146072102234">
-        <Description xml:lang="en-US">Port Replicators</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/PortReplicators</Description>
-        <Description xml:lang="zh-CN">通讯口复制器</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211603</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1303.1146072102234">
-        <Description xml:lang="en-US">Peripheral Switch Boxes</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/PeripheralSwitchBoxes</Description>
-        <Description xml:lang="zh-CN">辅助设备开关转换器</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211604</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1304.1146072102234">
-        <Description xml:lang="en-US">Signal Processor Upgrades</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/SignalProcessorUpgrades</Description>
-        <Description xml:lang="zh-CN">信号处理器</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211605</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1305.1146072102234">
-        <Description xml:lang="en-US">Multimedia Kits</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/MultimediaKits</Description>
-        <Description xml:lang="zh-CN">多媒体工具箱</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211606</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1306.1146072102234">
-        <Description xml:lang="en-US">Computer Speakers</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerSpeakers</Description>
-        <Description xml:lang="zh-CN">计算机扬声器</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211607</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1307.1146072102234">
-        <Description xml:lang="en-US">Encoder Decoder Equipment</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/EncoderDecoderEquipment</Description>
-        <Description xml:lang="zh-CN">编码译码器设备</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211608</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1308.1146072102234">
-        <Description xml:lang="en-US">Universal Serial Bus Hubs or Connectors</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/UniversalSerialBusHubsorConnectors</Description>
-        <Description xml:lang="zh-CN">通用串行总线集线器或连接器</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211609</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1309.1146072102234">
-        <Description xml:lang="en-US">Computer Country or Localization Kits</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerCountryorLocalizationKits</Description>
-        <Description xml:lang="zh-CN">计算机本地化套件</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211610</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1310.1146072102234">
-        <Description xml:lang="en-US">Handheld Pda Starter Kits</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/HandheldPdaStarterKits</Description>
-        <Description xml:lang="zh-CN">手持 PDA 起动器套件</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211611</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1311.1146072102234">
-        <Description xml:lang="en-US">Computer Accessory Kits</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerAccessoryKits</Description>
-        <Description xml:lang="zh-CN">计算机附件工具包</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211612</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1312.1146072102234">
-        <Description xml:lang="en-US">Computer or Notebook Stands</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerorNotebookStands</Description>
-        <Description xml:lang="zh-CN">台式计算机或笔记本电脑支座</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>43211613</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-      <ProductCategoryLeaf nodeID="NI.1313.1146072102234">
-        <Description xml:lang="en-US">Miscellaneous Computer Accessories</Description>
-        <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/MiscellaneousComputerAccessories</Description>
-        <Description xml:lang="zh-CN">其他计算机附件</Description>
-        <ProductCategoryConditions>
-          <IsIn>
-            <Field>ClassificationCode.unspsc</Field>
-            <Literal>432116</Literal>
-          </IsIn>
-        </ProductCategoryConditions>
-      </ProductCategoryLeaf>
-    </ProductCategoryBranch>
+    
     <ProductCategoryBranch nodeID="NI.2.1146072102234">
       <Description xml:lang="en-US">Office Machines and Accessories</Description>
       <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/OfficeMachinesandTheirSuppliesandAccessories</Description>
@@ -14096,6 +13937,166 @@
           </ProductCategoryConditions>
         </ProductCategoryLeaf>
       </ProductCategoryBranch>
+      <ProductCategoryBranch nodeID="NI.1299.1146072102234">
+  <Description xml:lang="en-US">Computer Accessories</Description>
+  <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerAccessories</Description>
+  <Description xml:lang="zh-CN">计算机附件</Description>
+  <Image xml:lang="en-US">Accessories.jpg</Image>
+  <ProductCategoryLeaf nodeID="NI.1300.1146072102234">
+    <Description xml:lang="en-US">Computer Switch Boxes</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerSwitchBoxes</Description>
+    <Description xml:lang="zh-CN">计算机开关盒</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211601</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1301.1146072102234">
+    <Description xml:lang="en-US">Docking Stations</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/DockingStations</Description>
+    <Description xml:lang="zh-CN">对接站</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211602</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1302.1146072102234">
+    <Description xml:lang="en-US">Port Replicators</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/PortReplicators</Description>
+    <Description xml:lang="zh-CN">通讯口复制器</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211603</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1303.1146072102234">
+    <Description xml:lang="en-US">Peripheral Switch Boxes</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/PeripheralSwitchBoxes</Description>
+    <Description xml:lang="zh-CN">辅助设备开关转换器</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211604</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1304.1146072102234">
+    <Description xml:lang="en-US">Signal Processor Upgrades</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/SignalProcessorUpgrades</Description>
+    <Description xml:lang="zh-CN">信号处理器</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211605</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1305.1146072102234">
+    <Description xml:lang="en-US">Multimedia Kits</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/MultimediaKits</Description>
+    <Description xml:lang="zh-CN">多媒体工具箱</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211606</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1306.1146072102234">
+    <Description xml:lang="en-US">Computer Speakers</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerSpeakers</Description>
+    <Description xml:lang="zh-CN">计算机扬声器</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211607</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1307.1146072102234">
+    <Description xml:lang="en-US">Encoder Decoder Equipment</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/EncoderDecoderEquipment</Description>
+    <Description xml:lang="zh-CN">编码译码器设备</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211608</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1308.1146072102234">
+    <Description xml:lang="en-US">Universal Serial Bus Hubs or Connectors</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/UniversalSerialBusHubsorConnectors</Description>
+    <Description xml:lang="zh-CN">通用串行总线集线器或连接器</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211609</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1309.1146072102234">
+    <Description xml:lang="en-US">Computer Country or Localization Kits</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerCountryorLocalizationKits</Description>
+    <Description xml:lang="zh-CN">计算机本地化套件</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211610</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1310.1146072102234">
+    <Description xml:lang="en-US">Handheld Pda Starter Kits</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/HandheldPdaStarterKits</Description>
+    <Description xml:lang="zh-CN">手持 PDA 起动器套件</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211611</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1311.1146072102234">
+    <Description xml:lang="en-US">Computer Accessory Kits</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerAccessoryKits</Description>
+    <Description xml:lang="zh-CN">计算机附件工具包</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211612</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1312.1146072102234">
+    <Description xml:lang="en-US">Computer or Notebook Stands</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerorNotebookStands</Description>
+    <Description xml:lang="zh-CN">台式计算机或笔记本电脑支座</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>43211613</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+  <ProductCategoryLeaf nodeID="NI.1313.1146072102234">
+    <Description xml:lang="en-US">Miscellaneous Computer Accessories</Description>
+    <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/MiscellaneousComputerAccessories</Description>
+    <Description xml:lang="zh-CN">其他计算机附件</Description>
+    <ProductCategoryConditions>
+      <IsIn>
+        <Field>ClassificationCode.unspsc</Field>
+        <Literal>432116</Literal>
+      </IsIn>
+    </ProductCategoryConditions>
+  </ProductCategoryLeaf>
+</ProductCategoryBranch>
       <ProductCategoryBranch nodeID="NI.1050.1146072102234">
         <Description xml:lang="en-US">Computer Data Input Devices</Description>
         <Description xml:lang="x-ariba-I18N">@ariba.catalog.hierarchy/ComputerDataInputDevices</Description>

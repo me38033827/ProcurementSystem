@@ -1,0 +1,12 @@
+td {
+	/* padding:6px; */
+	
+}
+
+div>p {
+	padding-left: 50px;
+}
+
+.table-no-border>tbody>tr>td {
+	border: 0px
+}

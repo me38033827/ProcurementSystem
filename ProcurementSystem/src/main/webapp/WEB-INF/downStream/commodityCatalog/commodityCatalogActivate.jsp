@@ -21,7 +21,7 @@
 								主页</button>
 						</div>
 						<div class="small-window-title margin-bottom ">目录 - 激活或停用 -
-							catalog for test，版本 4, 完整</div>
+							${commodityCatalog.name }，${commodityCatalog.version }, 完整</div>
 
 					</div>
 					<div class="margin-bottom">

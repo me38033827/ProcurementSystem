@@ -176,16 +176,17 @@ public class BuyerCommodityCatalogController {
 	@RequestMapping(value = "commodityCatalogAnalyze")
 	public String commodityCatalogUpload(@RequestParam("file") MultipartFile file,
 			@RequestParam(value = "imageFile", required = false) MultipartFile imageFile, HttpServletRequest request) {
-		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";// upload未上传文件的根目录
+		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";// upload为上传文件的根目录
 		HttpSession session = request.getSession();
+		System.out.println("uploadUrl:" + uploadUrl);
 		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");// 获得准备上传的商品目录文件
-		commodityCatalogService.commodityCatalogUpload(file, uploadUrl, commodityCatalog);// 保存上传的商品目录文件至根目录upload文件夹下
 		commodityCatalog.setType("0");// 设置商品目录为buyer上传
 		commodityCatalogService.insertCommodityCatalog(commodityCatalog);// 持久化存储商品目录
 		System.out.println("商品目录唯一标识:" + commodityCatalog.getUniqueName());// 获得商品目录的uniqueName
+		commodityCatalogService.commodityCatalogUpload(file, uploadUrl + commodityCatalog.getUniqueName() + "/", commodityCatalog);// 保存上传的商品目录文件至根目录upload文件夹下
 		commodityCatalogService.commodityCatalogUploadImages(imageFile,
 				uploadUrl + commodityCatalog.getUniqueName() + "/");// 保存图片的压缩包文至以商品目录uniqueName命名的文件下，并解压
-		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl, file.getOriginalFilename());// 解析文件，持久化存储商品
+		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl + commodityCatalog.getUniqueName()+ "/", file.getOriginalFilename());// 解析文件，持久化存储商品
 		request.setAttribute("commodityCatalog", commodityCatalog);
 		// 获取当前上传目录内容，准备在前端显示，转向
 		return "redirect:/buyer/commodityCatalog/showCommodityCatalogContent?uniqueName="
@@ -384,6 +385,9 @@ public class BuyerCommodityCatalogController {
 		List<TreeNode> breadNav = navTree.getNavClassNames(commodity.getSpscCode());
 		map.put("breadNav", breadNav);
 		map.put("code", code);//用于返回
+		String path = commodity.getImage();//处理商品多图片显示
+		String[] paths = path.split("&");
+		map.put("paths", paths);
 		return "downStream/commodityCatalog/commodityInfo";
 	}
 }
