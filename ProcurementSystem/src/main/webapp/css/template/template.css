@@ -1,6 +1,8 @@
-td {
-	/* padding:6px; */
-	
+.adjust-td {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #ddd;
 }
 
 div>p {
@@ -9,4 +11,12 @@ div>p {
 
 .table-no-border>tbody>tr>td {
 	border: 0px
+}
+
+.icon-folder {
+	font-size: 18px;
+}
+
+.icon-caret {
+	font-size: 25px;
 }

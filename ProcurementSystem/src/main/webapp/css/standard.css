@@ -409,9 +409,10 @@ button{
 
 .manu-deactive{
 	background-color:#ebebeb;
-<<<<<<< HEAD
 }
-
+.btn-ma:hover {
+	color: #199DE0 ;
+}
 
 /* 带边框的操作按钮 */
 .btn-m {

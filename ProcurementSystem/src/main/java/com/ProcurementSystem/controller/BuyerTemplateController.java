@@ -6,14 +6,19 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ProcurementSystem.common.TemplateTree;
 import com.ProcurementSystem.entity.TemplateFolder;
 import com.ProcurementSystem.entity.TemplateTreeNode;
 import com.ProcurementSystem.service.BuyerTemplateFolderService;
 import com.ProcurementSystem.service.BuyerTemplateService;
 import com.ProcurementSystem.service.BuyerTemplateTreeNodeService;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 
 @Controller
 @RequestMapping(value = "buyer/template")
@@ -33,11 +38,23 @@ public class BuyerTemplateController {
 
 	// 模板文档
 	@RequestMapping(value = "templateDoc")
-	public String templateDoc(@RequestParam(value="parentId",required=false)Integer parentId) {
-		if(parentId == null) parentId = 1000001;
-		List<TemplateFolder>templateFolders = templateFolderService.getByParentId(parentId);//获得所有文件夹
-		
+	public String templateDoc(@RequestParam(value = "parentId", required = false) Integer parentId, ModelMap map) {
+		parentId = 1000001;
+		List<TemplateTreeNode> templateTreeNodes = templateTreeNodeService.getFolderByParentId(parentId);// 获得所有文件夹
+		map.put("templateTreeNodes", templateTreeNodes);
+		TemplateTree templateTree = templateTreeNodeService.generateTemplateTree();
+		templateTree.traverse();
 		return "upStream/template/templateDoc";
+	}
+
+	// 模板文档
+	@RequestMapping(value = "getChildNodes")
+	public @ResponseBody JSON getChildNodes(@RequestParam(value = "parentId") Integer parentId) {
+		List<TemplateTreeNode> templateTreeNodes = templateTreeNodeService.getFolderByParentId(parentId);// 获得所有文件夹
+		// map.put("templateTreeNodes", templateTreeNodes);
+		JSON jsonArray = (JSON)JSONArray.toJSON(templateTreeNodes);
+		System.out.println(jsonArray.toString());
+		return jsonArray;
 	}
 
 	// 模板团队
@@ -97,6 +114,7 @@ public class BuyerTemplateController {
 	// SPM模板 - 文档
 	@RequestMapping(value = "templateSupplierSPMDoc")
 	public String templateSupplierSPMDoc() {
+		
 		return "upStream/template/templateSupplierSPMDoc";
 	}
 

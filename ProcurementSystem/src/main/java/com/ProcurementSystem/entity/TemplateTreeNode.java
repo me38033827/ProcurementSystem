@@ -1,11 +1,14 @@
 package com.ProcurementSystem.entity;
 
+import java.util.List;
+
 public class TemplateTreeNode {
 	private Integer id;
 	private Integer parentId;
 	private Template template;
 	private TemplateFolder templateFolder;
 	private Integer type;
+	private List<TemplateTreeNode> children;
 
 	public Integer getId() {
 		return id;
@@ -45,6 +48,14 @@ public class TemplateTreeNode {
 
 	public void setTemplateFolder(TemplateFolder templateFolder) {
 		this.templateFolder = templateFolder;
+	}
+
+	public List<TemplateTreeNode> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<TemplateTreeNode> children) {
+		this.children = children;
 	}
 
 }
