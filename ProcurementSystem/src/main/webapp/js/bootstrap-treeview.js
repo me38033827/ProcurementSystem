@@ -46,7 +46,7 @@
 		borderColor: undefined, // '#dddddd',
 		onhoverColor: '#F5F5F5',
 		selectedColor: '#FFFFFF',
-		selectedBackColor: '#428bca',
+		//selectedBackColor: '#428bca',
 		searchResultColor: '#D9534F',
 		searchResultBackColor: undefined, //'#FFFFFF',
 
@@ -227,9 +227,9 @@
 			this.$element.on('nodeExpanded', this.options.onNodeExpanded);
 		}
 
-		if (typeof (this.options.onNodeSelected) === 'function') {
-			this.$element.on('nodeSelected', this.options.onNodeSelected);
-		}
+//		if (typeof (this.options.onNodeSelected) === 'function') {
+//			this.$element.on('nodeSelected', this.options.onNodeSelected);
+//		}
 
 		if (typeof (this.options.onNodeUnchecked) === 'function') {
 			this.$element.on('nodeUnchecked', this.options.onNodeUnchecked);
@@ -397,34 +397,34 @@
 		this.setSelectedState(node, !node.state.selected, options);
 	};
 
-	Tree.prototype.setSelectedState = function (node, state, options) {
-
-		if (state === node.state.selected) return;
-
-		if (state) {
-
-			// If multiSelect false, unselect previously selected
-			if (!this.options.multiSelect) {
-				$.each(this.findNodes('true', 'g', 'state.selected'), $.proxy(function (index, node) {
-					this.setSelectedState(node, false, options);
-				}, this));
-			}
-
-			// Continue selecting node
-			node.state.selected = true;
-			if (!options.silent) {
-				this.$element.trigger('nodeSelected', $.extend(true, {}, node));
-			}
-		}
-		else {
-
-			// Unselect node
-			node.state.selected = false;
-			if (!options.silent) {
-				this.$element.trigger('nodeUnselected', $.extend(true, {}, node));
-			}
-		}
-	};
+//	Tree.prototype.setSelectedState = function (node, state, options) {
+//
+//		if (state === node.state.selected) return;
+//
+//		if (state) {
+//
+//			// If multiSelect false, unselect previously selected
+//			if (!this.options.multiSelect) {
+//				$.each(this.findNodes('true', 'g', 'state.selected'), $.proxy(function (index, node) {
+//					this.setSelectedState(node, false, options);
+//				}, this));
+//			}
+//
+//			// Continue selecting node
+//			node.state.selected = true;
+//			if (!options.silent) {
+//				this.$element.trigger('nodeSelected', $.extend(true, {}, node));
+//			}
+//		}
+//		else {
+//
+//			// Unselect node
+//			node.state.selected = false;
+//			if (!options.silent) {
+//				this.$element.trigger('nodeUnselected', $.extend(true, {}, node));
+//			}
+//		}
+//	};
 
 	Tree.prototype.toggleCheckedState = function (node, options) {
 		if (!node) return;
@@ -515,7 +515,7 @@
 				.addClass('node-' + _this.elementId)
 				.addClass(node.state.checked ? 'node-checked' : '')
 				.addClass(node.state.disabled ? 'node-disabled': '')
-				.addClass(node.state.selected ? 'node-selected' : '')
+//				.addClass(node.state.selected ? 'node-selected' : '')
 				.addClass(node.searchResult ? 'search-result' : '') 
 				.attr('data-nodeid', node.nodeId)
 				.attr('style', _this.buildStyleOverride(node));

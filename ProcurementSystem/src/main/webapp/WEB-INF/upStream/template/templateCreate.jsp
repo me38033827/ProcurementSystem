@@ -20,36 +20,40 @@
 						<br>
 						<div class="border-bottom-grey ">
 							<div class="right">
-								<button class="btn-b" type="button"
-									onclick="window.location.href='commodityCatalogList'">确定</button>
+								<button class="btn-b" type="submit" form="createForm">确定</button>
 								<button class="btn-w" type="button"
-									onclick="window.location.href='commodityCatalogList'">取消</button>
+									onclick="window.location.href='templateDoc'">取消</button>
 							</div>
 
 							<div class="small-window-title margin-bottom ">新建项目模板</div>
 						</div>
 
 						<div class="title-description">
-							输入该模板的“名称”和“说明”。如果该模板尚未翻译成用户使用的界面语言 (在首选项中设置) ，则会使用“基本语言”显示该模板。例如，假设您建立了一个基本语言为英语的模板，并提供了法语和日语翻译。
-						</div>
+							输入该模板的“名称”和“说明”。如果该模板尚未翻译成用户使用的界面语言 (在首选项中设置)
+							，则会使用“基本语言”显示该模板。例如，假设您建立了一个基本语言为英语的模板，并提供了法语和日语翻译。</div>
 						<br>
 						<div class="adjust-left-80">
-							<table class="fulltab">
-								<tr class="row-standard">
-									<td class="col-standard1">＊名称：</td>
-									<td class="col-standard2"><input
-										class="form-control input" name="title" style="width: 400px;">
-									</td>
-								</tr>
+							<form action="templateCreateSave" method="post" id="createForm">
+								<table class="fulltab">
+									<tr class="row-standard">
+										<td class="col-standard1">＊名称：</td>
+										<td class="col-standard2"><input
+											class="form-control input" name="name" style="width: 400px;"><span
+											class="error-message">${Error_name}</span></td>
+									</tr>
 
-								<tr class="row-standard">
-									<td class="col-standard1" valign="top">说明：</td>
-									<td class="col-standard2"><textarea class="" id=""
-											name="description" rows="5" cols="80"
-											style="border: 1px solid #428bca; border-radius: 0;">
-												</textarea></td>
-								</tr>
-							</table>
+									<tr class="row-standard">
+										<td class="col-standard1" valign="top">说明：</td>
+										<td class="col-standard2"><textarea class="" id=""
+												name="description" rows="5" cols="80"
+												style="border: 1px solid #428bca; border-radius: 0;"></textarea></td>
+									</tr>
+									<tr class="row-standard">
+										<td class="col-standard1">基本语言：</td>
+										<td class="col-standard2">中文</td>
+									</tr>
+								</table>
+							</form>
 						</div>
 						<br>
 					</div>

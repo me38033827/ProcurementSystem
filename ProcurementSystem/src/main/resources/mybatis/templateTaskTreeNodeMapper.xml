@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerTemplateTaskTreeNodeDao">
+
+
+	<insert id="add"
+		parameterType="com.ProcurementSystem.dao.IBuyerTemplateTaskTreeNodeDao">
+		insert into
+		template_task_tree_node(parent_id,title,description,reserve_content,rank,is_duped)
+		values(
+		#{parentId},#{title},#{description},#{reserveContent},#{rank},#{isDuped}
+		)
+	</insert>
+
+	<select id="getFolderByParentId" resultMap="templateTreeNodeMap">
+		select ttn.id,
+		ttn.parent_id as parentId,
+		ttn.type,
+		tf.id as templateFolderId,
+		tf.name,
+		tf.description,
+		tf.access_control
+		from template_tree_node ttn left join
+		template_folder tf on ttn.template_folder_id = tf.id
+		where
+		ttn.parent_id = #{parentId} and ttn.id != 1000001
+	</select>
+	<resultMap id="templateTreeNodeMap" type="com.ProcurementSystem.entity.TemplateTreeNode">
+		<id property="id" column="id" />
+		<result property="parentId" column="parentId" />
+		<result property="type" column="type" />
+		<association property="templateFolder"
+			javaType="com.ProcurementSystem.entity.TemplateFolder">
+			<id property="id" column="templateFolderId" />
+			<result property="name" column="name" />
+			<result property="description" column="description" />
+			<result property="accessControl" column="access_control" />
+		</association>
+	</resultMap>
+</mapper>

@@ -26,7 +26,7 @@ public class BuyerTemplateTreeNodeService {
 
 	public List<TemplateTreeNode> getFolderByParentId(Integer parentId) {
 		// TODO Auto-generated method stub
-		return templateTreeNodeDao.getFolderByParentId(parentId);
+		return templateTreeNodeDao.getFolderTreeNodeByParentId(parentId);
 	}
 	//生成模板树
 	public TemplateTree generateTemplateTree() {
@@ -35,7 +35,7 @@ public class BuyerTemplateTreeNodeService {
 		quee.offer(templateTree.root);
 		while (!quee.isEmpty()) {
 			TemplateTreeNode parent = quee.poll();//父节点
-			List<TemplateTreeNode> children = templateTreeNodeDao.getFolderByParentId(parent.getId());
+			List<TemplateTreeNode> children= templateTreeNodeDao.getTreeNodeByParentId(parent.getId());
 			if(children != null){
 				parent.setChildren(children);//设置子节点
 				Iterator<TemplateTreeNode> iterator = children.iterator();

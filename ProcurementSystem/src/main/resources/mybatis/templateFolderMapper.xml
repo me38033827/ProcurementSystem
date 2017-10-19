@@ -12,13 +12,6 @@
 		)
 	</insert>
 
-	<select id="getByParentId" resultType="com.ProcurementSystem.entity.TemplateFolder">
-		select * from
-		template_folder
-		where id in (
-		select template_folder_id
-		from template_tree_node
-		where parent_id = #{parentId} and id != #{parentId}
-		)
-	</select>
+	
+	
 </mapper>
