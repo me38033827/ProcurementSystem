@@ -75,7 +75,31 @@
 							<td style="width:20%;">状态</td>
 						</tr>
 						<tr class="standard-row2 bottom-border">
-							<td><a href="supplierQuestionnaire">供应商概要问卷</a></td>
+							<td align="left">
+								<div class="btn-group" >
+									<button class="btn-ma" data-toggle="dropdown"
+						            		style="background-color: transparent;width:100%;">
+						            		供应商概要问卷<span class="caret"></span>
+						           	</button>
+						           	<ul class="dropdown-menu" style="z-index: 9999">
+						           		<li><a class="manu-deactive">操作</a></li>
+						           		<li><a class="manu-active" href="simQuestionnaire">打开</a></li>
+						           		<li><a class="manu-active">查看详细信息</a></li>
+						           		<li><a class="manu-active">编辑属性</a></li>
+						           		<li><a class="manu-deactive">移动</a></li>
+						           		<li><a class="manu-active">发布</a></li>
+						           	<!-- 	<li><a class="manu-active">添加到快速链接</a></li> -->
+						           		<li><a class="manu-active">锁定</a></li>
+						           		<li><a class="manu-active">另存为新版本</a></li>
+						           		<li><a class="manu-deactive">新建任务</a></li>
+						           		<li><a class="manu-active">待办任务</a></li>
+						           		<li><a class="manu-active">复查</a></li>
+						           		<li><a class="manu-active">审批</a></li>
+						           		<li><a class="manu-active">议价</a></li>
+						           		<li><a class="manu-active">通知</a></li>
+						           	</ul>
+					           	</div>
+							</td>
 							<td><a>Kelly Dai</a></td>
 							<td>已发布</td>
 						</tr>

@@ -31,6 +31,18 @@
 	</select>
 
 	<!-- 获取父节点id,名称,父节点下的order -->
+	<select id="getNode" parameterType="int" resultMap="SIMTreeMap">
+		select 
+			n.order,
+			c.id as simId, 
+			c.title as simTitle
+		from supplier_sim c, supplier_sim_nodes n
+		where n.children_id = #{id}
+		and c.id = n.children_id;
+	</select>
+
+
+	<!-- 获取父节点id,名称,父节点下的order -->
 	<select id="getParentNode" parameterType="int" resultMap="SIMTreeMap">
 		select 
 			n.order,
@@ -41,26 +53,50 @@
 		and c.id = n.parent_id;
 	</select>
 
+	<!-- 获取父节点下最大的子节点号码 -->
+	<select id="getMaxChildOrder" parameterType="int" resultType="int">
+		select
+		max(supplier_sim_nodes.order)
+		from supplier_sim_nodes
+		where parent_id = #{parentId}
+	</select>
+	
+	<select id="haveChildOrNot" parameterType="int" resultMap="SIMTreeMap">
+		select children_id as simId
+		from supplier_sim_nodes
+		where parent_id = #{parentId}
+	</select>
+
 	<select id="getMaxId" resultType="int">
 		select max(id) from supplier_sim
 	</select>
 	
+	<!-- 在supplier_sim 中添加区段-->
 	<insert id="addFolder" parameterType="com.ProcurementSystem.entity.SupplierSIM">
 		<!-- type:1 folder -->
 		insert into supplier_sim(id, type, title, description, visible_to_participants, group_restriction, visible_condition) values
 		(#{id}, "1", #{title}, #{description}, #{visibleToParticipants}, #{groupRestriction}, "");
 	</insert>
 	
+	<!-- 在supplier_sim 中添加问题-->
 	<insert id="addQuestion" parameterType="com.ProcurementSystem.entity.SupplierSIM">
 		<!-- type:2 question -->
 		insert into supplier_sim(id, type, title, description, answer_type, multiple_value, initial_answer, accept_value) values
 		(#{id}, "2", #{title}, #{description}, #{answerType}, #{multipleValue}, #{initialAnswer}, #{acceptValue});
 	</insert>
 	
+	<!-- 在supplier_sim_selection 中添加问题选项-->
 	<insert id="addSelection" parameterType="com.ProcurementSystem.entity.SupplierSIMSelection">
 		<!-- type:2 question -->
 		insert into supplier_sim_selection(question_id, selection_id, content) values
 		(#{questionId}, #{selectionId}, #{content});
+	</insert>
+
+	<!-- 将node parent order信息存入 supplier_sim_nodes-->
+	<insert id="addNode" parameterType="map">
+		insert into supplier_sim_nodes(children_id, parent_id, supplier_sim_nodes.order, publish)
+		values
+		(#{childrenId}, #{parentId}, #{order}, 1);
 	</insert>
 
 </mapper>
