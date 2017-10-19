@@ -1,14 +1,14 @@
-<<<<<<< HEAD
+
 $(function(){
 	if(pageId==2004){
 		showSupplierBox();
 	}
-=======
+
 
 $(function(){	
 	var userId = $("#userId").val();
 	var pageId = $("#pageId").val();
->>>>>>> origin/master
+
 	$.ajax({
 		data:{
 			"userId":userId,
