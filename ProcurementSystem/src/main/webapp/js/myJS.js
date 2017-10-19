@@ -31,7 +31,7 @@ function addShoppingCart(uniqueName,quantity){
 			},  
 	    type:"GET",  
 	    dataType: 'json',  
-	    url:"commodityCatalog/commodityCatalogAddShoppingCart",  
+	    url:"/ProcurementSystem/buyer/commodityCatalog/commodityCatalogAddShoppingCart",  
 	    error:function(data){  
 	            alert("出错了！！:"+data.size);  
 	        },  

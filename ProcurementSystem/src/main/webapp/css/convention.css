@@ -4,7 +4,21 @@
 	border-style: solid;
 	border-color: rgb(153, 153, 204);
 }
+.border-bottom-grey {
+	border-bottom: 2px solid #ebebeb;
+}
 
+.border-top-grey {
+	border-top: 2px solid #ebebeb;
+}
+
+.border-left-grey {
+	border-left: 2px solid #ebebeb;
+}
+
+.border-right-grey {
+	border-right: 2px solid #ebebeb;
+}
 .margin-bottom {
 	margin-bottom: 15px;
 }

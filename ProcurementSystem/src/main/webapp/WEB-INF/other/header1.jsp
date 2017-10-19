@@ -33,6 +33,7 @@
 <link href="/ProcurementSystem/css/convention.css" rel="stylesheet" />
 <link href="/ProcurementSystem/css/commodityCatalog.css"
 	rel="stylesheet" />
+
 <script src="/ProcurementSystem/js/echarts.common.min.js"></script>
 <!-- CORE JQUERY  -->
 <script src="/ProcurementSystem/js/jquery.js"></script>

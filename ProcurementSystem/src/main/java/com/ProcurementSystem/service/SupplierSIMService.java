@@ -77,6 +77,7 @@ public class SupplierSIMService {
 			nodeList.add(0,node);
 			id= node.getSupplierSIM().getId();
 		}
+		nodeList.remove(nodeList.size()-1);
 		int count = 0;
 		for (SIMTreeNode node : nodeList){
 			count++;

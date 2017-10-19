@@ -46,7 +46,7 @@
 		<li><a class="secondline-right" href="invoiceSearching.jsp">发票管理</a></li>
 		<li><a class="secondline-right" href="paymentSearching.jsp">支付管理</a></li>
 		<li><a class="secondline-right" href="userSearching.jsp">用户管理</a></li>
-		<li><a class="secondline-right" href="templateDetailDoc.jsp">模版管理</a></li>
+		<li><a class="secondline-right" href="/ProcurementSystem/buyer/template/templateDoc">模版管理</a></li>
 		<li><a class="secondline-right" href="approvalSearching.jsp">审批管理</a></li>
 	</ul>
 </div>

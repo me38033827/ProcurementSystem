@@ -12,7 +12,7 @@
 }
 
 .content{
-	min-height: 700px;
+	min-height: 580px;
 }
 
 /* select-option*/
@@ -410,7 +410,9 @@ button{
 .manu-deactive{
 	background-color:#ebebeb;
 }
-
+.btn-ma:hover {
+	color: #199DE0 ;
+}
 
 /* 带边框的操作按钮 */
 .btn-m {

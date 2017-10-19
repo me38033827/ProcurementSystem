@@ -145,6 +145,4 @@ public class BuyerCommodityService {
 		return navTree;
 	}
 
-
-
 }
