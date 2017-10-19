@@ -3,14 +3,20 @@ package com.ProcurementSystem.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ProcurementSystem.dto.ISupplierDto;
+import com.ProcurementSystem.entity.Page;
 import com.ProcurementSystem.entity.Search;
+import com.ProcurementSystem.entity.Supplier;
 import com.ProcurementSystem.service.SearchService;
+import com.ProcurementSystem.service.SupplierService;
 
 @Controller
 @RequestMapping(value = "buyer/search")
@@ -18,19 +24,26 @@ public class SearchController {
 
 	@Resource
 	SearchService service;
-
-	@RequestMapping(value = "addSearchCondition")
-	public @ResponseBody List<Search> addSearchCondition(
-			@RequestParam("userId") int userId,
-			@RequestParam("pageId") int pageId){
-		Search searchInput = new Search();
-		searchInput.setUserId(userId);
-		searchInput.setPageId(pageId);
-		return service.getSearchList(searchInput);
+	@Resource
+	SupplierService supplierService;
+	
+	// 从主页跳转到不同类型的搜索页面
+	@RequestMapping(value = "supplierSearchDistribute")
+	public String supplierSearchDistribute(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String page = request.getParameter("page");
+		int pageId = Integer.parseInt(page.split("_")[0]);
+		String pageName = page.split("_")[1];
+		String content = request.getParameter("content");
+		session.setAttribute("pageId", pageId);
+		session.setAttribute("pageName", pageName);
+		session.setAttribute("content", content);
+		return "main/search";
 	}
 	
-	@RequestMapping(value = "addSpecSearchCondition")
-	public @ResponseBody Search addSpecSearchCondition(
+	// ＋功能实现：添加搜索条件
+	@RequestMapping(value = "addSearchCondition")
+	public @ResponseBody Search addSearchCondition(
 			@RequestParam("userId") int userId,
 			@RequestParam("pageId") int pageId,
 			@RequestParam("fieldId") int fieldId){
@@ -38,10 +51,10 @@ public class SearchController {
 		searchInput.setUserId(userId);
 		searchInput.setPageId(pageId);
 		searchInput.setFieldId(fieldId);
-		Search result = service.addSpecCondition(searchInput);
-		return result;
+		return service.addCondition(searchInput);
 	}
 	
+	// －功能实现：删除搜索条件
 	@RequestMapping(value = "delSearchCondition")
 	public @ResponseBody Search delSearchCondition(
 			@RequestParam("userId") int userId,
@@ -55,6 +68,26 @@ public class SearchController {
 		return search;
 	}
 	
+	// 改变搜索条件
+	@RequestMapping(value = "changeSearchCondition")
+	public @ResponseBody Search changeSearchCondition(
+			@RequestParam("userId") int userId,
+			@RequestParam("pageId") int pageId,
+			@RequestParam("newId") int newId,
+			@RequestParam("originId") int originId){
+		Search newSearch = new Search();
+		newSearch.setUserId(userId);
+		newSearch.setPageId(pageId);
+		newSearch.setFieldId(newId);
+		Search originSearch = new Search();
+		originSearch.setUserId(userId);
+		originSearch.setPageId(pageId);
+		originSearch.setFieldId(originId);
+		Search result = service.changeSearchCondition(newSearch, originSearch);
+		return result;
+	}
+	
+	//获取下拉框中ajax加载出的其它搜索条件
 	@RequestMapping(value = "findOtherCondition")
 	public @ResponseBody List<Search> findOtherCondition(
 			@RequestParam("userId") int userId,
@@ -62,10 +95,11 @@ public class SearchController {
 		Search search = new Search();
 		search.setPageId(pageId);
 		search.setUserId(userId);
-		service.delSearchCondition(search);
+		service.delSearchConditionNoMinus(search);
 		return service.getSearchListNoAdd(search);
 	}
 	
+	//获取已经显示的搜索条件
 	@RequestMapping(value = "getSelectedCondition")
 	public @ResponseBody List<Search> getSelectedCondition(
 			@RequestParam("userId") int userId,
@@ -74,5 +108,23 @@ public class SearchController {
 		search.setPageId(pageId);
 		search.setUserId(userId);
 		return service.getSelectedCondition(search);
+	}
+	
+	//供应商搜索
+	@RequestMapping(value = "supplierSearch")
+	public @ResponseBody List<Supplier> supplierSearch(
+			@RequestParam("content") String content,
+			@RequestParam("isClient") String isClient,
+			@RequestParam("isSupplier") String isSupplier,
+			@RequestParam("approveState") String approveState,
+			@RequestParam("name") String name
+			){
+		Supplier supplier = new Supplier();
+		supplier.setApproveState(approveState);
+		supplier.setIsClient(isClient);
+		supplier.setIsSupplier(isSupplier);
+		supplier.setName(name);
+		System.out.println(name);
+		return supplierService.completeSearchSupplier(supplier, content);
 	}
 }

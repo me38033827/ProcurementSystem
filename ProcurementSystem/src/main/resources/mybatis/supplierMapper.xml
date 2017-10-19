@@ -3,9 +3,78 @@
 
 <mapper namespace="com.ProcurementSystem.dao.ISupplierDao">
  	
-	<select id="getSupplierDetail" parameterType="int" resultType="com.ProcurementSystem.entity.Supplier">
-		select * from supplier
-		where unique_name = ${uniqueName};
+ 	<resultMap id="SupplierMap" type="com.ProcurementSystem.entity.Supplier">
+		<result property="uniqueName" column="unique_name" />
+		<result property="contactUniqueName" column="contact_unique_name" />
+		<result property="name" column="name" />
+		<result property="isSupplier" column="is_supplier" />
+		<result property="isClient" column="is_client" />
+		<result property="description" column="description" />
+		<result property="approveState" column="approve_state" />
+		<result property="otherName1" column="other_name1" />
+		<result property="otherName2" column="other_name2" />
+		<result property="fullNameByLaw" column="full_name_by_law" />
+		<result property="stockCode" column="stock_code" />
+		<result property="province" column="province" />
+		<result property="switchboard" column="switchboard" />
+		<result property="mainEmail" column="main_email" />
+		<result property="UNSPSCCommodity" column="unspsc_commodity" />
+		<result property="duns" column="duns" />
+		<result property="supplierIntegrityState" column="supplier_integrity_state" />
+		<result property="supplierIntegritySystemName" column="supplier_integrity_system_name" />
+		<result property="otherAddress" column="other_address" />
+		<result property="mainFax" column="main_fax" />
+		<result property="corporateUrl" column="corporate_url" />
+		<result property="organizationType" column="organizationType" />
+		<result property="parentValue" column="parentValue" />
+		<result property="mainFax" column="main_fax" />
+		<result property="manage" column="manage" />
+		<result property="postCode" column="post_code" />
+		<result property="district" column="district" />
+		<result property="address" column="address" />
+		<result property="switchboardZone" column="switchboard_zone" />
+		<result property="mainFaxZone" column="main_fax_zone" />
+		
+   		<association property="creator" javaType="com.ProcurementSystem.entity.User">
+			<id property="uniqueName" column="creatorUniqueName" />
+			<id property="name" column="creatorName" />
+		</association>
+	</resultMap>
+ 	
+	<select id="getSupplierDetail" parameterType="int" resultMap="SupplierMap">
+		select
+			supplier.unique_name as uniqueName,
+			contact_unique_name as contactUniqueName,
+			supplier.name as name,
+			is_supplier as isSupplier,
+			is_client as isClient,
+			description as description,
+			approve_state as approveState,
+			other_name1 as otherName1,
+			other_name2 as otherName2,
+			full_name_by_law as fullNameByLaw,
+			stock_code as stockCode,
+			province as province,
+			switchboard as switchboard,
+			main_email as mainEmail,
+			unspsc_commodity as UNSPSCCommodity,
+			duns as duns,
+			other_address as otherAddress,
+			main_fax as mainFax,
+			corporate_url as corporateUrl,
+			organization_type as organizationType,
+			parent_value as parentValue,
+			manage as manage,
+			post_code as postCode,
+			address as address,
+			district as district,
+			main_fax_zone as mainFaxZone,
+			switchboard_zone as swtichboardZone,
+			creator_unique_name as creatorUniqueName, 
+			user.name as creatorName
+		from supplier, user
+		where supplier.unique_name = ${uniqueName}
+		and creator_unique_name = user.unique_name;
 	</select>
 	 
 	<select id="findMaxUniqueName" resultType="int">
@@ -21,14 +90,14 @@
 		#{mainEmail}, #{otherAddress}, #{mainFax}, #{corporateUrl}, #{organizationType}, #{creatorUniqueName}, #{manage})
 	</insert>
 
-	<select id="searchSupplier" parameterType="String" resultType="com.ProcurementSystem.entity.Supplier">
-		select * from supplier where name like #{content}
-		union
-		select * from supplier where unique_name like #{content}; 
-	</select>
-
 	<select id="completeSearchSupplier" parameterType="map" resultType="com.ProcurementSystem.entity.Supplier">
-		select * from supplier 
+		select 
+			unique_name as uniqueName,
+			name as name,
+			approve_state as approveState,
+			is_supplier as isSupplier,
+			is_client as isClient
+		from supplier 
 		where 1=1
 			<if test="content!='' and content!=null">
 				and name like concat("%",#{content},"%")
@@ -45,10 +114,6 @@
 			<if test="supplier.approveState!='' and supplier.approveState!=null and supplier.approveState!='无选择'">
 				and approve_state like concat("%",#{supplier.approveState},"%")
 			</if>
-	</select>
-
-	<select id="searchAllSupplier" resultType="com.ProcurementSystem.entity.Supplier">
-		select * from supplier;
 	</select>
 	
 	<update id="updateSupplier" parameterType="com.ProcurementSystem.entity.Supplier">

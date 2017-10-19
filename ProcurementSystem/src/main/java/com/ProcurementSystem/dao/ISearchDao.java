@@ -1,7 +1,9 @@
 package com.ProcurementSystem.dao;
 
 import java.util.List;
+import java.util.Map;
 
+import com.ProcurementSystem.entity.Page;
 import com.ProcurementSystem.entity.Search;
 
 public interface ISearchDao {
@@ -15,5 +17,13 @@ public interface ISearchDao {
 	String searchFieldName(Search search);
 	
 	List<Search> getSelectedCondition(Search search);
+	
+	void addOne(Search search);
+	
+	void minusOne(Search search);
+	
+	List<Page> getPageOptions(Map<String, Object> params);
+	
+	int getPosition(Search search);
 }
 
