@@ -227,7 +227,10 @@
 			this.$element.on('nodeExpanded', this.options.onNodeExpanded);
 		}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 //		if (typeof (this.options.onNodeSelected) === 'function') {
 //			this.$element.on('nodeSelected', this.options.onNodeSelected);
 //		}
@@ -325,6 +328,7 @@
 		
 		var classList = target.attr('class') ? target.attr('class').split(' ') : [];
 		if ((classList.indexOf('expand-icon') !== -1)) {
+<<<<<<< HEAD
 			this.toggleExpandedState(node, _default.options);
 			this.render();
 		}
@@ -358,6 +362,27 @@
 //
 //			this.render();
 //		}
+=======
+
+			this.toggleExpandedState(node, _default.options);
+			this.render();
+		}
+		else if ((classList.indexOf('check-icon') !== -1)) {
+			
+			this.toggleCheckedState(node, _default.options);
+			this.render();
+		}
+		else {
+			
+			if (node.selectable) {
+				this.toggleSelectedState(node, _default.options);
+			} else {
+				this.toggleExpandedState(node, _default.options);
+			}
+
+			this.render();
+		}
+>>>>>>> origin/master
 	};
 
 	// Looks up the DOM for the closest parent list item to retrieve the
@@ -407,13 +432,20 @@
 		}
 	};
 
+<<<<<<< HEAD
 //	Tree.prototype.toggleSelectedState = function (node, options) {
 //		if (!node) return;
 //		this.setSelectedState(node, !node.state.selected, options);
 //	};
+=======
+	Tree.prototype.toggleSelectedState = function (node, options) {
+		if (!node) return;
+		this.setSelectedState(node, !node.state.selected, options);
+	};
+>>>>>>> origin/master
 
 //	Tree.prototype.setSelectedState = function (node, state, options) {
-//		
+//
 //		if (state === node.state.selected) return;
 //
 //		if (state) {
@@ -446,6 +478,7 @@
 		this.setCheckedState(node, !node.state.checked, options);
 	};
 
+<<<<<<< HEAD
 //	Tree.prototype.setCheckedState = function (node, state, options) {
 //		console.log(1);
 //		if (state === node.state.checked) return;
@@ -493,6 +526,57 @@
 //				this.$element.trigger('nodeEnabled', $.extend(true, {}, node));
 //			}
 //		}
+=======
+	Tree.prototype.setCheckedState = function (node, state, options) {
+
+		if (state === node.state.checked) return;
+
+		if (state) {
+
+			// Check node
+			node.state.checked = true;
+
+			if (!options.silent) {
+				this.$element.trigger('nodeChecked', $.extend(true, {}, node));
+			}
+		}
+		else {
+
+			// Uncheck node
+			node.state.checked = false;
+			if (!options.silent) {
+				this.$element.trigger('nodeUnchecked', $.extend(true, {}, node));
+			}
+		}
+	};
+
+	Tree.prototype.setDisabledState = function (node, state, options) {
+
+		if (state === node.state.disabled) return;
+
+		if (state) {
+
+			// Disable node
+			node.state.disabled = true;
+
+			// Disable all other states
+			this.setExpandedState(node, false, options);
+			this.setSelectedState(node, false, options);
+			this.setCheckedState(node, false, options);
+
+			if (!options.silent) {
+				this.$element.trigger('nodeDisabled', $.extend(true, {}, node));
+			}
+		}
+		else {
+
+			// Enabled node
+			node.state.disabled = false;
+			if (!options.silent) {
+				this.$element.trigger('nodeEnabled', $.extend(true, {}, node));
+			}
+		}
+>>>>>>> origin/master
 	};
 
 	Tree.prototype.render = function () {
@@ -528,9 +612,13 @@
 				.addClass('node-' + _this.elementId)
 				.addClass(node.state.checked ? 'node-checked' : '')
 				.addClass(node.state.disabled ? 'node-disabled': '')
+<<<<<<< HEAD
 
 //				.addClass(node.state.selected ? 'node-selected' : '')
 				
+=======
+//				.addClass(node.state.selected ? 'node-selected' : '')
+>>>>>>> origin/master
 				.addClass(node.searchResult ? 'search-result' : '') 
 				.attr('data-nodeid', node.nodeId)
 				.attr('style', _this.buildStyleOverride(node));
@@ -816,6 +904,7 @@
 		@param {Object|Number} identifiers - A valid node, node id or array of node identifiers
 		@param {optional Object} options
 	*/
+<<<<<<< HEAD
 	
 //	Tree.prototype.selectNode = function (identifiers, options) {
 //		this.forEachIdentifier(identifiers, options, $.proxy(function (node, options) {
@@ -824,12 +913,22 @@
 //
 //		this.render();
 //	};
+=======
+	Tree.prototype.selectNode = function (identifiers, options) {
+		this.forEachIdentifier(identifiers, options, $.proxy(function (node, options) {
+			this.setSelectedState(node, true, options);
+		}, this));
+
+		this.render();
+	};
+>>>>>>> origin/master
 
 	/**
 		Set a node state to unselected
 		@param {Object|Number} identifiers - A valid node, node id or array of node identifiers
 		@param {optional Object} options
 	*/
+<<<<<<< HEAD
 
 //	Tree.prototype.unselectNode = function (identifiers, options) {
 //		this.forEachIdentifier(identifiers, options, $.proxy(function (node, options) {
@@ -838,12 +937,22 @@
 //
 //		this.render();
 //	};
+=======
+	Tree.prototype.unselectNode = function (identifiers, options) {
+		this.forEachIdentifier(identifiers, options, $.proxy(function (node, options) {
+			this.setSelectedState(node, false, options);
+		}, this));
+
+		this.render();
+	};
+>>>>>>> origin/master
 
 	/**
 		Toggles a node selected state; selecting if unselected, unselecting if selected.
 		@param {Object|Number} identifiers - A valid node, node id or array of node identifiers
 		@param {optional Object} options
 	*/
+<<<<<<< HEAD
 	
 //	Tree.prototype.toggleNodeSelected = function (identifiers, options) {
 //		this.forEachIdentifier(identifiers, options, $.proxy(function (node, options) {
@@ -852,6 +961,16 @@
 //
 //		this.render();
 //	};
+=======
+	Tree.prototype.toggleNodeSelected = function (identifiers, options) {
+		this.forEachIdentifier(identifiers, options, $.proxy(function (node, options) {
+			this.toggleSelectedState(node, options);
+		}, this));
+
+		this.render();
+	};
+
+>>>>>>> origin/master
 
 	/**
 		Collapse all tree nodes
