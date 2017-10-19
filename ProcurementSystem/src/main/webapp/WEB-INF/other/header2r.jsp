@@ -34,6 +34,7 @@
 	<ul class="dropdown-menu" id="secondline-dropright">
 		<li><a class="secondline-right" href="sourcingSearching.jsp">在线寻源</a></li>
 		<li><a class="secondline-right" href="supplierSearching.jsp">供应商管理</a></li>
+		<li><a class="secondline-right" href="supplier/supplierInformationManagement">供应商信息</a></li>
 		<li><a class="secondline-right" href="supplier/spmSearching?action=initial">供应商绩效</a></li>
 		<li><a class="secondline-right" href="supplier/sqmSearching?action=initial">供应商资格</a></li>
 		<li><a class="secondline-right" href="contractSearching.jsp">合同管理</a></li>

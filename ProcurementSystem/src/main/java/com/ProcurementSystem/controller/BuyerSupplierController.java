@@ -1,6 +1,7 @@
 package com.ProcurementSystem.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,18 +17,21 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.ProcurementSystem.entity.Login;
+import com.ProcurementSystem.entity.SIMTree;
 import com.ProcurementSystem.entity.Supplier;
 import com.ProcurementSystem.entity.SupplierQuestion;
+import com.ProcurementSystem.entity.SupplierSIM;
 import com.ProcurementSystem.entity.SupplierSPM;
 import com.ProcurementSystem.entity.SupplierSQM;
 import com.ProcurementSystem.entity.User;
 import com.ProcurementSystem.service.SupplierSIMQService;
+import com.ProcurementSystem.service.SupplierSIMService;
 import com.ProcurementSystem.service.SupplierSPMService;
 import com.ProcurementSystem.service.SupplierSQMService;
 import com.ProcurementSystem.service.SupplierService;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 @Controller
 @RequestMapping(value = "buyer/supplier")
@@ -36,36 +40,107 @@ public class BuyerSupplierController {
 	@Resource
 	SupplierService service;
 	@Resource
+	SupplierSIMService simService;
+	@Resource
 	SupplierSQMService sqmService;
 	@Resource
 	SupplierSPMService spmService;
 	@Resource
 	SupplierSIMQService simqService;
 	
-	@RequestMapping(value = "supplierSearchDistribute")
-	public String supplierSearchDistribute(HttpServletRequest request){
-		String type = request.getParameter("searchType");
-		String content = request.getParameter("content");
-		System.out.println(type);
-		System.out.println(content);
-		if(type.equals("spm")||type.equals("sqm")){
-			if(content==null){
-				return "redirect:" + type + "Searching?action=initial";
-			}else{
-				request.getSession().setAttribute("content", content);
-				return "redirect:" + type + "Searching?action=search";
-			}
-		}
-		if(type.equals("supplier")){
-			if(content==null){
-				return "redirect:supplierSearch?action=initial";
-			}else{
-				request.getSession().setAttribute("content", content);
-				return "redirect:supplierSearch?action=search";
-			}
-		}
-		return "";
+	//P2P显示供应商信息管理
+	@RequestMapping(value = "showQuestionEdit")
+	public String showQuestionEdit(HttpServletRequest request){
+		SIMTree simTree = simService.generateSIMTree();
+		JSONArray json = simTree.traverseToJSONArray();
+		request.setAttribute("treeData",json);
+		return "upStream/supplier/sim/showQuestionEdit";
 	}
+	
+	//P2P显示供应商信息管理
+	@RequestMapping(value = "supplierInformationManagement")
+	public String supplierInformationManagement(HttpServletRequest request){
+		return "upStream/supplier/sim/supplierInformationManagement";
+	}
+	
+	//P2P显示供应商信息管理－创建文件夹
+	@RequestMapping(value = "createFolder")
+	public String createFolder(String id, HttpServletRequest request){
+		return "upStream/supplier/sim/createFolder";
+	}
+	
+	//P2P显示供应商信息管理－创建问题
+	@RequestMapping(value = "createQuestion")
+	public String createQuestion(String id,HttpServletRequest request){
+		int id_int = Integer.parseInt(id);
+		System.out.println("id"+id);
+		request.setAttribute("parentList", simService.getAllParentNodes(id_int));
+		return "upStream/supplier/sim/createQuestion";
+	}
+	
+	//P2P显示供应商信息管理－将问题添加到数据库
+	@RequestMapping(value = "addQuestion")
+	public String addQuestion(HttpServletRequest request){
+		String title = request.getParameter("title");
+		int answerType = Integer.parseInt(request.getParameter("answerType"));
+		String initialAnswer = request.getParameter("initialAnswer");
+		int multipleValue = Integer.parseInt(request.getParameter("multipleValue"));
+		int acceptValue = Integer.parseInt(request.getParameter("acceptValue"));
+		System.out.println("acceptValue" + acceptValue);
+		SupplierSIM sim = new SupplierSIM();
+		sim.setTitle(title);
+		sim.setAnswerType(answerType);
+		sim.setAcceptValue(acceptValue);
+		sim.setMultipleValue(multipleValue);
+		if(acceptValue==1){
+			sim.setInitialAnswer(initialAnswer);
+			simService.addQuestion(sim);
+		}
+		if(acceptValue==2){
+			System.out.println("qweqweqw"+request.getParameter("selection"));
+			int selection = Integer.parseInt(request.getParameter("selection"));
+			String selectionValue = "";
+			List<String> selections = new ArrayList<String>();
+			for(int i = 1; i <= selection; i++){
+				selectionValue = request.getParameter("selection-"+i);
+				System.out.println(i+":"+selectionValue);
+				selections.add(i-1, selectionValue);
+			}
+			simService.addQuestionWithSelection(sim, selections);
+		}
+		return "upStream/supplier/sim/showQuestionEdit";
+	}
+	
+	@RequestMapping(value = "addFolder")
+	public String addFolder(SupplierSIM sim, HttpServletRequest request){
+		simService.addFolder(sim);
+		return "upStream/supplier/sim/showQuestionEdit";
+	}
+	
+//	@RequestMapping(value = "supplierSearchDistribute")
+//	public String supplierSearchDistribute(HttpServletRequest request){
+//		String type = request.getParameter("searchType");
+//		String content = request.getParameter("content");
+//		System.out.println(type);
+//		System.out.println(content);
+//		if(type.equals("spm")||type.equals("sqm")){
+//			if(content==null){
+//				return "redirect:" + type + "Searching?action=initial";
+//			}else{
+//				request.getSession().setAttribute("content", content);
+//				return "redirect:" + type + "Searching?action=search";
+//			}
+//		}
+//		if(type.equals("supplier")){
+//			if(content==null){
+//				return "redirect:supplierSearch?action=initial";
+//			}else{
+//				request.getSession().setAttribute("content", content);
+//				return "redirect:supplierSearch?action=search";
+//			}
+//		}
+//		return "";
+//	}
 	
 	//供应商搜索功能页面
 	@RequestMapping(value = "supplierSearch")

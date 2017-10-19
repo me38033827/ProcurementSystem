@@ -5,6 +5,7 @@ public class Search {
 	private int userId;
 	private int fieldId;
 	private String fieldName;
+	private int position;
 	
 	public int getPageId() {
 		return pageId;
@@ -29,6 +30,12 @@ public class Search {
 	}
 	public void setFieldName(String fieldName) {
 		this.fieldName = fieldName;
+	}
+	public int getPosition() {
+		return position;
+	}
+	public void setPosition(int position) {
+		this.position = position;
 	}
 	
 }

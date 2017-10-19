@@ -16,6 +16,7 @@
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top:0;margin-top:3px;">
 			用户：<%= request.getSession().getAttribute("username")%>&nbsp;<span class="caret"></span>
 		</button>
+		<input type="text" hidden="hidden" id="userId" value="100001" />
 		<ul class="dropdown-menu" id="secondline-dropright">
 			<li><a href="/ProcurementSystem/logout" class="secondline-right">注销</a></li>
 			<li><a class="secondline-right">更改密码</a></li>

@@ -27,14 +27,12 @@ public class Supplier {
 	private String mainEmail;
 	private String UNSPSCCommodity;
 	private String duns;
-	private String supplierIntegrityState;
-	private String supplierIntegritySystemName;
 	private String otherAddress;
 	private String mainFax;
 	private String corporateUrl;
 	private String organizationType;
 	private String parentValue;
-	private String creatorUniqueName;
+	private User creator;
 	private String manage;
 	private int postCode;
 	private String address;
@@ -170,22 +168,6 @@ public class Supplier {
 		this.duns = duns;
 	}
 
-	public String getSupplierIntegrityState() {
-		return supplierIntegrityState;
-	}
-
-	public void setSupplierIntegrityState(String supplierIntegrityState) {
-		this.supplierIntegrityState = supplierIntegrityState;
-	}
-
-	public String getSupplierIntegritySystemName() {
-		return supplierIntegritySystemName;
-	}
-
-	public void setSupplierIntegritySystemName(String supplierIntegritySystemName) {
-		this.supplierIntegritySystemName = supplierIntegritySystemName;
-	}
-
 	public String getOtherAddress() {
 		return otherAddress;
 	}
@@ -208,14 +190,6 @@ public class Supplier {
 
 	public void setParentValue(String parentValue) {
 		this.parentValue = parentValue;
-	}
-
-	public String getCreatorUniqueName() {
-		return creatorUniqueName;
-	}
-
-	public void setCreatorUniqueName(String creatorUniqueName) {
-		this.creatorUniqueName = creatorUniqueName;
 	}
 
 	public String getManage() {
@@ -288,6 +262,14 @@ public class Supplier {
 
 	public void setSwitchboardZone(String switchboardZone) {
 		this.switchboardZone = switchboardZone;
+	}
+
+	public User getCreator() {
+		return creator;
+	}
+
+	public void setCreator(User creator) {
+		this.creator = creator;
 	}
 
 }

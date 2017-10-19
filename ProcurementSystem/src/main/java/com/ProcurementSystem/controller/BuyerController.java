@@ -18,6 +18,7 @@ import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.service.BuyerCommodityCatalogService;
 import com.ProcurementSystem.service.BuyerCommodityService;
+import com.ProcurementSystem.service.SearchService;
 
 @Controller
 @RequestMapping(value = "buyer")
@@ -28,6 +29,8 @@ public class BuyerController {
 	BuyerCommodityService commodityService;
 	@Resource
 	IBuyerCommodityDao commodityDao;
+	@Resource
+	SearchService service;
 
 	// P2P主页
 	@RequestMapping(value = "main")
@@ -40,7 +43,8 @@ public class BuyerController {
 
 	// P2P供应商主页
 	@RequestMapping(value = "mainSupplier")
-	public String mainSupplier() {
+	public String mainSupplier(HttpServletRequest request) {
+		request.setAttribute("pageOptions",service.getPageOptions("supplier"));
 		return "main/mainSupplier";
 	}
 

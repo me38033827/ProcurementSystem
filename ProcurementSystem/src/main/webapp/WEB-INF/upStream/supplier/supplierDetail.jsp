@@ -97,7 +97,7 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">创建人：</td>
-								<td class="col-standard2">${supplier.creatorUniqueName}</td>
+								<td class="col-standard2">${supplier.creator.name}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">客户：</td>
@@ -147,7 +147,7 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">商品(UNSPSC)：</td>
-								<td class="col-standard2">${supplier.UNSPSCCommodity}</td>
+								<td class="col-standard2"><%-- ${supplier.UNSPSCCommodity} --%></td>
 							</tr>
 							<tr>
 								<td class="col-standard1">标识符：</td>
