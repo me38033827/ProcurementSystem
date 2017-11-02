@@ -1,14 +1,24 @@
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 $(function(){
 	if(pageId==2004){
 		showSupplierBox();
+	}else if(pageId=='2005'){
+		showSupplierSPMBox();
+	}else if(pageId=='2006'){
+		showSupplierSQMBox();
 	}
+<<<<<<< Updated upstream
 
 
 $(function(){	
 	var userId = $("#userId").val();
 	var pageId = $("#pageId").val();
 
+=======
+>>>>>>> Stashed changes
 	$.ajax({
 		data:{
 			"userId":userId,
@@ -37,7 +47,13 @@ $(function(){
 							+"</td>"
 			      			+"</tr>"
 	    			);
-	    			supplierDistribute(data[i].fieldName, "#search-cond"+data[i].fieldId);
+	    			if(pageId==2004){
+	    				supplierDistribute(data[i].fieldName, "#search-cond"+data[i].fieldId);
+	    			}else if(pageId==2005){
+	    				supplierSPMDistribute(data[i].fieldName, "#search-cond"+data[i].fieldId);
+	    			}else if(pageId==2006){
+	    				supplierSQMDistribute(data[i].fieldName, "#search-cond"+data[i].fieldId);
+	    			}
 	    		}
 	   	},
 	    error:function(data){
@@ -57,6 +73,10 @@ $(function(){
 function reset(){
 	if(pageId=='2004'){
 		resetSupplier();
+	}else if(pageId=='2005'){
+		resetSupplierSPM();
+	}else if(pageId=='2006'){
+		resetSupplierSQM();
 	}
 }
 
@@ -64,13 +84,22 @@ function reset(){
 function search(){
 	if(pageId=='2004'){
 		searchSupplier();
+	}else if(pageId=='2005'){
+		searchSupplierSPM();
+	}else if(pageId=='2006'){
+		searchSupplierSQM();
 	}
+	
 }
 
 // 添加搜索结果下的操作栏 － 管理／创建
 function action(){
 	if(pageId=='2004'){
 		actionSupplier();
+	}else if(pageId=='2005'){
+		actionSupplierSPM();
+	}else if(pageId=='2006'){
+		actionSupplierSQM();
 	}
 }
 
@@ -107,7 +136,13 @@ function addCondition(place){
 						+"</td>"
 		      			+"</tr>"
 	      	);
-	      	supplierDistribute(data.fieldName, "#search-cond"+data.fieldId);
+	      	if(pageId==2004){
+				supplierDistribute(data.fieldName, "#search-cond"+data.fieldId);
+			}else if(pageId==2005){
+				supplierSPMDistribute(data.fieldName, "#search-cond"+data.fieldId);
+			}else if(pageId==2006){
+				supplierSQMDistribute(data.fieldName, "#search-cond"+data.fieldId);
+			}
 	   	},
 	    error:function(data){
 	    		alert("无更多搜索条件！")
@@ -280,6 +315,10 @@ function searchSupplier(){
 	});
 }
 
+
+
+
+
 // 重置供应商搜索结果
 function resetSupplier(){
 	// empty all search field
@@ -330,7 +369,7 @@ function actionSupplier(){
 										+"新建&nbsp;<span class=\"caret\"></span>"
 									+"</button>"
 									+"<ul class=\"dropdown-menu manu-btn-o\">"
-										+"<li><a class=\"manu-btn\" onclick=\"window.location.href='supplierCreation'\">供应商</a></li>"
+										+"<li><a class=\"manu-btn\" onclick=\"window.location.href='../supplier/supplierCreation'\">供应商</a></li>"
 										+"<li><a class=\"manu-btn\">客户</a></li>"
 									+"</ul>"
 								+"</div>"
@@ -386,3 +425,242 @@ function commoditiesProvided(place, value){
 function owner(place, value){
 	$(place).append("&nbsp;<input style=\"padding-left:10px;\" class=\"input\" id=\"creator\"/>");
 }
+
+// supplierSPM 绩效
+function searchSupplierSPM(){
+	var content = $("#content").val();
+	var status = $("#status").val();
+	var supplierId = $('#supplierId').val();
+	var title = $("#title").val();
+	if(title==null){title="";}
+	if(supplierId==null){supplierId="";}
+	if(status==null){status="";}
+	if(content==null){content="";}
+//	console.log(content);
+//	console.log(status);
+//	console.log(supplierId);
+//	console.log(title);
+	$.ajax({
+		data:{
+			"content":content,
+			"status":status,
+			"supplierId":supplierId,
+			"title":title
+		},  
+		type:"POST",  
+		dataType: 'json',
+	    url:"../search/supplierSPMSearch",
+	    success:function(data){
+	    	console.log(data);
+	      	if(data.length!=0){
+		      	$("#numOfResults").text(data.length);
+		      	var results = "";
+		      	for(var i = 0; i< data.length; i++){
+		      		results=results+"<tr>\n" +
+		      	    "<td style=\"width: 30%;\"><a href=\"../supplier/spmSummary?id="+data[i].id+"\">"+data[i].title+"</a></td>\n" +
+		      	    "<td style=\"width: 10%;\">"+data[i].user.name+"</td>\n" +
+		      	    "<td style=\"width: 10%;\">"+data[i].supplier.name+"</td>\n" +
+		      	    "<td style=\"width: 35%;\">\n" +
+		      	    "</td>\n" +
+		      	    "<td style=\"width: 15%; padding: 3px;\">"+data[i].status+" &nbsp;&nbsp;&nbsp;&nbsp;\n" +
+		      	    "</td>\n" +
+		      	    "</tr>";
+		      	};
+	      	}else{
+	      		$("#numOfResults").text(0);
+	      		var results = "<tr id=\"no-result\">"
+							+"<td colspan=\"7\" class=\"no-item f-13 grey\">请在上面输入搜索条件，然后单击<b>搜索</b></td>"
+						+"</tr>";
+	      	}
+	      	$("#result-content").empty();
+	      	$("#result-content").append("<table class=\"table table-hover\">"+results+"</table>");
+	    },
+	    error:function(data){
+	    		console.log(data);
+	    		alert("数据库错误！")
+	    }  
+	});
+}
+
+//重置 spm
+function resetSupplierSPM(){
+	// empty all search field
+	$("#content").val("");
+	$("#title").val("");
+	$("#supplierId").val("");
+	$('#statue').val("");
+	
+	// empty number of results
+	$("#numOfResults").text(0);
+	//set result-content to original state
+	$("#result-content").empty();
+  	$("#result-content").append("<table class=\"table table-hover\">"
+  			+"<tr id=\"no-result\">"
+			+"<td colspan=\"7\" class=\"no-item f-13 grey\">请在上面输入搜索条件，然后单击<b>搜索</b></td>"
+			+"</tr>"
+  			+"</table>");
+}
+
+function supplierSPMDistribute(fieldName, place){
+	if(fieldName=="组织名称"){organizationNameSPM(place, supplierSPM_title)};
+	if(fieldName=="审批状态"){approveStateSPM(place, supplierSPM_supplierId)};
+	if(fieldName=="供应商标识符"){identifierSPM(place, supplierSPM_status)};
+}
+
+function organizationNameSPM(place, value){
+	$(place).append("&nbsp;<input class=\"input\" style=\"padding-left:10px;\" id=\"title\" value=\""+ value +"\"/>");
+}
+
+function approveStateSPM(place, value){
+	$(place).append("&nbsp;<select id=\"status\">"
+			+"<option value=\"无选择\">无选择</option>"
+			+"<option value=\"已批准\">已批准</option>"
+			+"<option value=\"待审核\">待审核</option>"
+			+"<option value=\"已拒绝\">已拒绝</option>"
+			+"<option value=\"重新提交以进行审批\">重新提交以进行审批</option>"
+			+"</select>");
+}
+
+function identifierSPM(place, value){
+	$(place).append("&nbsp;<input class=\"input\" style=\"padding-left:10px;\" id=\"supplierId\" value=\""+ value +"\"/>");
+}
+
+//显示spm搜索结果表头
+function showSupplierSPMBox(){
+	$("#result-title").append("<table class=\"table table-hover\">"+
+					"<tr class=\"standard-row1\">\n" +
+				    "<td style=\"width:30%;\">\n" +
+				    "标题\n" +
+				    "</td>\n" +
+				    "<td style=\"width:10%;\">所有者</td>\n" +
+				    "<td style=\"width:10%;\">供应商</td>\n" +
+				    "<td style=\"width:35%;\">商品</td>\n" +
+				    "<td style=\"width:15%;\">资格状态</td>\n" +
+				    "</tr>"+
+					"</table>"
+			);
+}
+
+//显示spm搜索结果最后一行操作栏
+function actionSupplierSPM(){
+	$("#result-action").append("<table class=\"table table-hover\">"
+						+"<tr class=\"standard-row3\">"
+							+"<td colspan=\"7\"><a class=\"arrow-turn\">&#8627;</a>"
+								+"<button class=\"btn-w\">管理</button>"
+							+"</td>"
+						+"</tr>"
+					+"</table>"
+			);
+}
+
+//supplierSQM 资格 可共用spm的方法
+function supplierSQMDistribute(fieldName, place){
+	if(fieldName=="组织名称"){organizationNameSPM(place, supplierSQM_title)};
+	if(fieldName=="审批状态"){approveStateSPM(place, supplierSQM_supplierId)};
+	if(fieldName=="供应商标识符"){identifierSPM(place, supplierSQM_status)};
+}
+
+//显示sqm搜索结果表头
+function showSupplierSQMBox(){
+	$("#result-title").append("<table class=\"table table-hover\">" + 
+					"<tr class=\"standard-row1\">\n" +
+				    "<td style=\"width:30%;\">\n" +
+				    "标题\n" +
+				    "</td>\n" +
+				    "<td style=\"width:10%;\">所有者</td>\n" +
+				    "<td style=\"width:10%;\">供应商</td>\n" +
+				    "<td style=\"width:35%;\">商品</td>\n" +
+				    "<td style=\"width:15%;\">资格状态</td>\n" +
+				    "</tr>"+
+					"</table>"
+			);
+}
+
+//显示sqm搜索结果最后一行操作栏
+function actionSupplierSQM(){
+	$("#result-action").append("<table class=\"table table-hover\">"
+						+"<tr class=\"standard-row3\">"
+							+"<td colspan=\"7\"><a class=\"arrow-turn\">&#8627;</a>"
+								+"<button class=\"btn-w\">管理</button>"
+							+"</td>"
+						+"</tr>"
+					+"</table>"
+			);
+	
+}
+
+//重置SQM
+function resetSupplierSQM(){
+	// empty all search field
+	$("#content").val("");
+	$("#title").val("");
+	$("#supplierId").val("");
+	$('#statue').val("");
+	
+	// empty number of results
+	$("#numOfResults").text(0);
+	//set result-content to original state
+	$("#result-content").empty();
+  	$("#result-content").append("<table class=\"table table-hover\">"
+  			+"<tr id=\"no-result\">"
+			+"<td colspan=\"7\" class=\"no-item f-13 grey\">请在上面输入搜索条件，然后单击<b>搜索</b></td>"
+			+"</tr>"
+  			+"</table>");
+}
+//supplierSQM 绩效
+function searchSupplierSQM(){
+	var content = $("#content").val();
+	var status = $("#status").val();
+	var supplierId = $('#supplierId').val();
+	var title = $("#title").val();
+	if(title==null){title="";}
+	if(supplierId==null){supplierId="";}
+	if(status==null){status="";}
+	if(content==null){content="";}
+//	console.log(content);
+//	console.log(status);
+//	console.log(supplierId);
+//	console.log(title);
+	$.ajax({
+		data:{
+			"content":content,
+			"status":status,
+			"supplierId":supplierId,
+			"title":title
+		},  
+		type:"POST",  
+		dataType: 'json',
+	    url:"../search/supplierSQMSearch",
+	    success:function(data){
+	    	console.log(data);
+	      	if(data.length!=0){
+		      	$("#numOfResults").text(data.length);
+		      	var results = "";
+		      	for(var i = 0; i< data.length; i++){
+		      		results=results+"<tr>\n" +
+		      	    "<td style=\"width: 30%;\"><a href=\"../supplier/sqmSummary?id="+data[i].id+"\">"+data[i].title+"</a></td>\n" +
+		      	    "<td style=\"width: 10%;\">"+data[i].user.name+"</td>\n" +
+		      	    "<td style=\"width: 10%;\">"+data[i].supplier.name+"</td>\n" +
+		      	    "<td style=\"width: 35%;\">\n" +
+		      	    "</td>\n" +
+		      	    "<td style=\"width: 15%; padding: 3px;\">"+data[i].status+" &nbsp;&nbsp;&nbsp;&nbsp;\n" +
+		      	    "</td>\n" +
+		      	    "</tr>";
+		      	};
+	      	}else{
+	      		$("#numOfResults").text(0);
+	      		var results = "<tr id=\"no-result\">"
+							+"<td colspan=\"7\" class=\"no-item f-13 grey\">请在上面输入搜索条件，然后单击<b>搜索</b></td>"
+						+"</tr>";
+	      	}
+	      	$("#result-content").empty();
+	      	$("#result-content").append("<table class=\"table table-hover\">"+results+"</table>");
+	    },
+	    error:function(data){
+	    		console.log(data);
+	    		alert("数据库错误！")
+	    }  
+	});
+}
+
+

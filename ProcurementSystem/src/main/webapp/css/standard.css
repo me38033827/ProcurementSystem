@@ -565,3 +565,10 @@ button{
 	margin-top:3px;
 	font-size:20px;
 }
+
+/* sim questionnaire */
+.questionnaire-ans{
+	float:right;
+	color: black;
+	width:300px;
+}

@@ -1,10 +1,13 @@
 package com.ProcurementSystem.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.ProcurementSystem.dao.ISupplierSQMDao;
+import com.ProcurementSystem.entity.SupplierSPM;
 import com.ProcurementSystem.entity.SupplierSQM;
 
 
@@ -34,5 +37,13 @@ public class SupplierSQMService {
 	
 	public int getMaxId(){
 		return dao.getMaxId();
+	}
+
+	public List<SupplierSQM> completeSearchSupplierSQM(SupplierSQM supplierSQM, String content){
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("supplierSQM", supplierSQM);
+		params.put("content", content);
+		List<SupplierSQM> supplierSQMs = dao.completeSearchSupplierSQM(params);
+		return supplierSQMs;
 	}
 }

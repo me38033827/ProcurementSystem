@@ -5,6 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@include file="../../other/header1return.jsp"%>
+<script src="/ProcurementSystem/js/bootstrap-treeview.js"></script>
+<script src="/ProcurementSystem/js/simQuestionnaire.js"></script>
 <title>供应商详情－概要</title>
 </head>
 <!-- 页面整体宽度：1320px -->
@@ -151,7 +153,7 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">标识符：</td>
-								<td class="col-standard2">SU${supplier.uniqueName}</td>
+								<td class="col-standard2">SU<%=request.getSession().getAttribute("uniqueName") %></td>
 							</tr>
 							<tr>
 								<td class="col-standard1">DUNS：</td>
@@ -159,11 +161,11 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">供应商集成状态：</td>
-								<td class="col-standard2">${supplier.supplierIntegrityState}</td>
+								<td class="col-standard2"></td>
 							</tr>
 							<tr>
 								<td class="col-standard1">供应商系统名称：</td>
-								<td class="col-standard2">${supplier.supplierIntegritySystemName}</td>
+								<td class="col-standard2"></td>
 							</tr>
 							<tr>
 								<td class="col-standard1">已阻止：</td>
@@ -238,8 +240,20 @@
 						</div>
 					</div>
 				</div>
-	
+				
 				<div class="row">
+					<div class="col-md-12">
+						<div class="standard-subtitle">概要问卷
+						</div>
+						
+						<!-- 问卷内容 -->
+						<div style="border:1px solid #ddd; max-height:500px; overflow-x:scroll;">
+				          <div id="treeview-sim" class=""></div>
+				        </div>
+					</div>
+				</div>
+	
+				<%-- <div class="row">
 					<div class="col-md-12">
 						<div class="standard-subtitle">概要问卷
 						</div>
@@ -358,17 +372,45 @@
 								</table>
 							</div>
 						</div>
-					</div>
-				</div>
+					</div>--%>
+				</div> 
 			</div>
 		</div>
 		<!-- CONTENT-WRAPPER SECTION END-->
 		<%@ include file="../../other/supplierFooter.jsp"%>
 
 		<script>
-			function back(){
-				location.href="supplierSearch?action=back";
-			}
-		</script>
+		function back(){
+			location.href="";
+		}
+		$(function(){
+ 	        var defaultData = ${treeData};
+ 	        $('#treeview-sim').treeview({
+ 	          data: defaultData
+ 	        });
+		})
+ 	        
+<%--  	        //set answers 
+ 	       	var supplierId = <%=request.getSession().getAttribute("uniqueName") %>;
+	    	     $.ajax({  
+	    	        traditional: true,  
+	    	        data:{  
+	    	            "supplierId":supplierId
+	    	        },    
+	    	        type:"POST",    
+	    	        dataType: 'json',  
+	    	        url:"getSIMAnswers",  
+	    	        success:function(data){  
+	    	        		console.log(data);
+	    	        		for(var i = 0; i < data.length; i++){
+	    	        			$("#ans-"+data[i].questionId).text(data[i].answer);
+	    	        		}
+	    	        },  
+	    	        error:function(data){  
+	    	        		alert("数据库错误！")  
+	    	        }    
+	    	    });   --%> 
+	//})
+	</script>
 </body>
 </html>

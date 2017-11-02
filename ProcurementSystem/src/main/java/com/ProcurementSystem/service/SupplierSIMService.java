@@ -12,9 +12,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.ProcurementSystem.dao.ISupplierSIMDao;
+import com.ProcurementSystem.entity.ParentChild;
 import com.ProcurementSystem.entity.SIMTree;
 import com.ProcurementSystem.entity.SIMTreeNode;
 import com.ProcurementSystem.entity.SupplierSIM;
+import com.ProcurementSystem.entity.SupplierSIMAnswer;
 import com.ProcurementSystem.entity.SupplierSIMSelection;
 
 @Service
@@ -29,13 +31,19 @@ public class SupplierSIMService {
 		queue.offer(tree.root);
 		while (!queue.isEmpty()) {
 			SIMTreeNode parent = queue.poll();//父节点
+			parent.getSupplierSIM();
 			List<SIMTreeNode> children = dao.getChildren(parent.getSupplierSIM().getId());
 			if(children != null){
 				parent.setChildren(children);//设置子节点
 				Iterator<SIMTreeNode> iterator = children.iterator();
 				while(iterator.hasNext()){
-					System.out.println(iterator.hasNext());
-					queue.offer(iterator.next());//入队
+					SIMTreeNode node = iterator.next();
+					
+					//如果是带选项的问题，则把选项放到selection里面
+					if(node.getType()==2&&node.getSupplierSIM().getAcceptValue()==2){
+						node.getSupplierSIM().setSelections(dao.getSelectionsById(node.getSupplierSIM().getId()));
+					}
+					queue.offer(node);//入队
 				}
 			}//一个结点完成
 		}
@@ -50,9 +58,6 @@ public class SupplierSIMService {
 		params.put("parentId", parentId);
 		params.put("childrenId", new_id);
 		params.put("order", order);
-		System.out.println(parentId);
-		System.out.println(new_id);
-		System.out.println(order);
 		dao.addFolder(sim);
 		dao.addNode(params);
 	}
@@ -66,9 +71,6 @@ public class SupplierSIMService {
 		params.put("parentId", parentId);
 		params.put("childrenId", new_id);
 		params.put("order", order);
-		System.out.println(parentId);
-		System.out.println(new_id);
-		System.out.println(order);
 		dao.addNode(params);
 	}
 	
@@ -89,14 +91,11 @@ public class SupplierSIMService {
 		params.put("parentId", parentId);
 		params.put("childrenId", newId);
 		params.put("order", order);
-		System.out.println(parentId);
-		System.out.println(newId);
-		System.out.println(order);
 		dao.addNode(params);
 	}
 	
-	// 获得某子节点所有父节点信息
-	public Map<String, Object> getAllParentNodes(int id){
+	// 获得某子节点所有父节点信息 创建／编辑
+	public Map<String, Object> getAllParentNodes(int id, boolean create){
 		List<SIMTreeNode> nodeList = new ArrayList<SIMTreeNode>();
 		int origin_id = id;
 		String number = "";
@@ -120,17 +119,105 @@ public class SupplierSIMService {
 				number = number + "." + node.getOrder().toString();
 			}
 		}
+		
 		int new_id=1;
-		if(dao.haveChildOrNot(current.getSupplierSIM().getId())!=null){
-			new_id = dao.getMaxChildOrder(current.getSupplierSIM().getId())+1;
+		if(create){
+			if(dao.haveChildOrNot(current.getSupplierSIM().getId())!=null){
+				new_id = dao.getMaxChildOrder(current.getSupplierSIM().getId())+1;
+			}
+			result = result + "  /  " + number +"." + new_id + "Unititled";
 		}
-		result = result + "  /  " + number +"." + new_id + "Unititled";
+		
 		if(result.startsWith("  /  ")){result=result.substring(5);}
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("resultStr", result);
-		params.put("parentId", origin_id);
-		params.put("order", new_id);
+		if(create){
+			params.put("parentId", origin_id);
+			params.put("order", new_id);
+		}
+	
 		return params;
+	}
+	
+	List<SupplierSIMSelection> getSelectionsById(int id){
+		return dao.getSelectionsById(id);
+	}
+	
+	//获得10000最大子节点order
+	public int getMaxNewId(){
+		return dao.getMaxNewId();
+	}
+	
+	public void deleteQuestion(int id){
+		//cascade删除node中相关数据
+		dao.nodeMinusOne(id);
+		dao.deleteSIM(id);
+	}
+	
+	public void deleteFolder(int id){
+		//删除文件夹及所有相关内容
+		//dao.nodeMinusOne(id);
+		//找到所有不同层级子节点 生成一个id list 然后加上原本的id 全部删掉
+		List<ParentChild> relation = dao.getAllChildNodeId(id);
+		ArrayList<Integer> results = new ArrayList<Integer>();
+		int size = relation.size();
+		for(int i = 0; i < size; i++){
+			results.add(relation.get(i).getParent());
+			if(relation.get(i).getChildren()!=null){
+				List<ParentChild> children = relation.get(i).getChildren();
+				for(int j = 0; j < children.size(); j++){
+					relation.add(children.get(j));
+					size++;
+				}
+			}
+		}
+		System.out.println(results);
+		int[] ids = new int[size+1];
+		for(int i = 0; i < size; i++){
+			ids[i]=results.get(i);
+		}
+		ids[size]=id;
+		dao.deleteMultipleSIMs(ids);
+	}
+	
+	//获得某文件夹或问题及选项的全部信息
+	public SupplierSIM getFolderOrQuestion(int id){
+		return dao.getFolderOrQuestion(id);
+	}
+	
+	//更新文件夹
+	public void updateFolder(SupplierSIM sim){
+		dao.updateFolder(sim);
+	}
+	//更新问题
+	public void updateQuestion(SupplierSIM sim){
+		dao.updateQuestion(sim);
+		dao.delSelections(sim.getId());
+	}
+	//更新带选项的问题
+	public void updateQuestionWithSelection(SupplierSIM sim, List<String> selections){
+		dao.updateQuestion(sim);
+		dao.delSelections(sim.getId());
+		SupplierSIMSelection selection = new SupplierSIMSelection();
+		selection.setQuestionId(sim.getId());
+		for(int i = 0; i < selections.size(); i++){
+			selection.setContent(selections.get(i));
+			selection.setSelectionId(i+1);
+			dao.addSelection(selection);
+		}
+	}
+	
+	public List<SupplierSIMAnswer> getSupplierSIMAnswer(int supplierId){
+		return dao.getSupplierSIMAnswer(supplierId);
+	}
+	
+	//获得当前问卷中所有问题的id号码
+	public List<SupplierSIM> getAllQuestionId(){
+		return dao.getAllQuestionId();
+	}
+	
+	public void addSIMAnswers(List<SupplierSIMAnswer> answers){
+		dao.addSIMAnswers(answers);
 	}
 }

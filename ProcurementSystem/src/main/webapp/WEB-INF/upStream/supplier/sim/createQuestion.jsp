@@ -17,13 +17,13 @@
 					<div class="standard-title-main">添加问题</div> 
 					<div class="standard-title-r">
 						<button class="btn-b" form="addQuestion" formaction="addQuestion">完成</button>
-						<button class="btn-w">取消</button>
+						<button class="btn-w" onclick="window.location.href='simQuestionnaire'">取消</button>
 					</div>
 				</div>
 				
 				<div class="adjust-10"></div>
 				
-				${parentList }
+				<div class="standard-subsubtitle"> ${parentList }</div>
 				
 				<form id="addQuestion" method="post">
 					<input hidden="hidden" name = "parentId" value="${parentId }" />
@@ -32,7 +32,7 @@
 						<tr class="row-standard">
 							<td valign="top" class="col-standard1" style="width:200px; padding-top:5px;">名称：</td>
 							<td class="col-standard2" style="height:110px;">
-								<textarea name="title" class="input" style="width:280px; height:100px;"></textarea>
+								<textarea name="title" class="input" style="width:280px; height:100px;padding-left:5px;"></textarea>
 							</td>
 						</tr>
 						<tr class="row-standard">
@@ -109,7 +109,7 @@
 				<div class="standard-ending">
 				    <div align="right" class="standard-ending-r">
 				    		<button class="btn-b" form="addQuestion" formaction="addQuestion">确定</button>
-						<button class="btn-w">取消</button>
+						<button class="btn-w" onclick="window.location.href='simQuestionnaire'">取消</button>
 				    </div>  
 				</div>
 			</div>
@@ -123,7 +123,7 @@
 	<script>
 		var selection = 1;
 		function back(){
-			location.href="supplierSearch?action=back";
+			location.href="simQuestionnaire";
 		}
 	</script>
 </body>

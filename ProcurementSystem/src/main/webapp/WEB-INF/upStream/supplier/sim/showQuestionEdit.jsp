@@ -20,23 +20,20 @@
 					<div class="standard-title-r">
 						<button class="btn-b">完成</button>
 						<button class="btn-w">取消</button>
-						<div class="btn-group" style="margin-top:0;">
-							<button class="btn-w" data-toggle="dropdown">添加&nbsp;<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu manu-btn-o">
-								<li><a class="manu-btn" onclick="window.location.href=''">供应商</a></li>
-								<li><a class="manu-btn">客户</a></li>
-							</ul>
-						</div>
 					</div>
 				</div>
 				
 				<div class="adjust-10"></div>
 
-				<div>
+				<div style="border:1px solid #ddd; max-height:500px; overflow-x:scroll;">
 		          <div id="treeview-sim" class=""></div>
 		        </div>
-				
+		        
+		        <div class="adjust-10"></div>
+		       	<div class="right">
+		       		<button class="btn-w" onclick="addFolderBottom()">添加区段</button>
+		        		<button class="btn-w" onclick="addQuestionBottom()">添加问题</button>
+				</div> 
 			</div>
 		</div>
 	</div>
@@ -47,7 +44,7 @@
 
 	<script>
 		function back(){
-			location.href="supplierSearch?action=back";
+			location.href="supplierInformationManagement";
 		}
 		$(function(){
  	        var defaultData = ${treeData};
@@ -55,8 +52,6 @@
  	          data: defaultData
  	        });
 		})
-		
-		
 	</script>
 </body>
 </html>

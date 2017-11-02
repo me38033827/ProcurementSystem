@@ -13,55 +13,45 @@
 			<div class="standard-out">
 				<!-- 主要内容 -->
 				<div class="standard-title">
-					<div class="standard-title-main">添加区段</div> 
+					<div class="standard-title-main">编辑区段</div> 
 					<div class="standard-title-r">
-						<button class="btn-b" form="addFolder" formaction="addFolder">确定</button>
-						<button class="btn-w">取消</button>
-						<div class="btn-group" style="padding-top:-3px;">
-							<button class="btn-w" data-toggle="dropdown">添加&nbsp;<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu manu-btn-o">
-								<li><a class="manu-btn" onclick="window.location.href=''">问题</a></li>
-								<li><a class="manu-btn">要求</a></li>
-								<li><a class="manu-btn">条件</a></li>
-							</ul>
-						</div>
+						<button class="btn-b" form="editFolder" formaction="updateFolder">确定</button>
+						<button class="btn-w" onclick="window.location.href='simQuestionnaire'">取消</button>
 					</div>
 				</div>
 				
 				<div class="adjust-10"></div>
 				
-				${parentList }
+				<div class="standard-subsubtitle"> ${parentList }</div>
 				
-				<form id="addFolder" method="post">
-					<input hidden="hidden" name = "parentId" value="${parentId }" />
-					<input hidden="hidden" name="order" value="${order }" />
+				<form id="editFolder" method="post">
+					<input value="${id}" hidden="hidden" name="id"/>
 					<table class="fulltab">
 						<tr class="row-standard">
 							<td valign="top" class="col-standard1" style="width:200px; padding-top:5px;">名称：</td>
 							<td class="col-standard2">
-								<input name="title" class="input"/>
+								<input name="title" style="padding-left:5px;" value="${sim.title}" class="input"/>
 							</td>
 						</tr>
 						<tr class="row-standard">
 							<td valign="top" class="col-standard1" style="width:200px; padding-top:5px;">说明：</td>
 							<td class="col-standard2" style="padding-top:8px;padding-bottom:8px;">
-								<textarea name="description" class="input" style="width:400px; height:160px;"></textarea>
+								<textarea name="description" class="input" style="width:400px; height:160px;">${sim.description }</textarea>
 							</td>
 						</tr>
 						<tr class="row-standard">
 							<td class="col-standard1">对参与者可见：</td>
 							<td class="col-standard2">
-								<select name="visibleToParticipants">
+								<select name="visibleToParticipants" id="visibleToParticipants">
 									<option value="1">是</option>
-									<option value="0">否</option>
+									<option value="2">否</option>
 								</select>
 							</td>
 						</tr>
 						<tr class="row-standard">
 							<td class="col-standard1">团队访问控制：</td>
 							<td class="col-standard2">
-								<select name="groupRestriction">
+								<select name="groupRestriction" id="groupRestriction">
 									<option value="0">（无值）</option>
 									<option value="1">财务信息</option>
 									<option value="2">法律信息</option>
@@ -79,17 +69,8 @@
 				</form>
 				<div class="standard-ending">
 				    <div align="right" class="standard-ending-r">
-				    	<button class="btn-b" form="addFolder" formaction="addFolder">确定</button>
-						<button class="btn-w">取消</button>
-						<div class="btn-group" style="padding-top:-3px;">
-							<button class="btn-w" data-toggle="dropdown">添加&nbsp;<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu manu-btn-o">
-								<li><a class="manu-btn" onclick="window.location.href=''">问题</a></li>
-								<li><a class="manu-btn">要求</a></li>
-								<li><a class="manu-btn">条件</a></li>
-							</ul>
-						</div>
+				    		<button class="btn-b" form="editFolder" formaction="editFolder">确定</button>
+						<button class="btn-w" onclick="window.location.href='simQuestionnaire'">取消</button>
 				    </div>  
 				</div>
 			</div>
@@ -101,9 +82,12 @@
 	<%@ include file="../../../other/supplierFooter.jsp"%>
 
 	<script>
-		var selection = 1;
+		var visibleToParticipants = ${sim.visibleToParticipants};
+		var groupRestriction = ${sim.groupRestriction};
+		$("#groupRestriction").val(groupRestriction);
+		$("#visibleToParticipants").val(visibleToParticipants);
 		function back(){
-			location.href="supplierSearch?action=back";
+			location.href="simQuestionnaire";
 		}
 	</script>
 </body>

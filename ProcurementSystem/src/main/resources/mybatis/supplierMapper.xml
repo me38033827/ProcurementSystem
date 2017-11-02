@@ -4,7 +4,7 @@
 <mapper namespace="com.ProcurementSystem.dao.ISupplierDao">
  	
  	<resultMap id="SupplierMap" type="com.ProcurementSystem.entity.Supplier">
-		<result property="uniqueName" column="unique_name" />
+		<result property="uniqueName" column="uniqueName" />
 		<result property="contactUniqueName" column="contact_unique_name" />
 		<result property="name" column="name" />
 		<result property="isSupplier" column="is_supplier" />
@@ -43,7 +43,7 @@
  	
 	<select id="getSupplierDetail" parameterType="int" resultMap="SupplierMap">
 		select
-			supplier.unique_name as uniqueName,
+			#{uniqueName} as supplierUniqueName,
 			contact_unique_name as contactUniqueName,
 			supplier.name as name,
 			is_supplier as isSupplier,
@@ -73,7 +73,7 @@
 			creator_unique_name as creatorUniqueName, 
 			user.name as creatorName
 		from supplier, user
-		where supplier.unique_name = ${uniqueName}
+		where supplier.unique_name = #{uniqueName}
 		and creator_unique_name = user.unique_name;
 	</select>
 	 
@@ -84,10 +84,10 @@
 	<insert id="insertSupplier" parameterType="com.ProcurementSystem.entity.Supplier">
 		insert into supplier(unique_name, name, is_supplier, is_client, description,
 		approve_state, other_name1, other_name2, full_name_by_law, stock_code, province, switchboard, 
-		main_email, other_address, main_fax, corporate_url, organizationType, creator_unique_name, manage)
+		main_email, other_address, main_fax, corporate_url, organization_type, creator_unique_name, manage)
 		values(#{uniqueName}, #{name}, #{isSupplier}, #{isClient}, #{description},
 		#{approveState}, #{otherName1}, #{otherName2}, #{fullNameByLaw}, #{stockCode}, #{province}, #{switchboard},
-		#{mainEmail}, #{otherAddress}, #{mainFax}, #{corporateUrl}, #{organizationType}, #{creatorUniqueName}, #{manage})
+		#{mainEmail}, #{otherAddress}, #{mainFax}, #{corporateUrl}, #{organizationType}, #{creator.uniqueName}, #{manage})
 	</insert>
 
 	<select id="completeSearchSupplier" parameterType="map" resultType="com.ProcurementSystem.entity.Supplier">

@@ -15,7 +15,11 @@ import com.ProcurementSystem.dto.ISupplierDto;
 import com.ProcurementSystem.entity.Page;
 import com.ProcurementSystem.entity.Search;
 import com.ProcurementSystem.entity.Supplier;
+import com.ProcurementSystem.entity.SupplierSPM;
+import com.ProcurementSystem.entity.SupplierSQM;
 import com.ProcurementSystem.service.SearchService;
+import com.ProcurementSystem.service.SupplierSPMService;
+import com.ProcurementSystem.service.SupplierSQMService;
 import com.ProcurementSystem.service.SupplierService;
 
 @Controller
@@ -26,6 +30,10 @@ public class SearchController {
 	SearchService service;
 	@Resource
 	SupplierService supplierService;
+	@Resource
+	SupplierSPMService supplierSPMService;
+	@Resource
+	SupplierSQMService supplierSQMService;
 	
 	// 从主页跳转到不同类型的搜索页面
 	@RequestMapping(value = "supplierSearchDistribute")
@@ -126,5 +134,44 @@ public class SearchController {
 		supplier.setName(name);
 		System.out.println(name);
 		return supplierService.completeSearchSupplier(supplier, content);
+	}
+	
+	//供应商搜索
+	@RequestMapping(value = "supplierSPMSearch")
+	public @ResponseBody List<SupplierSPM> supplierSPMSearch(
+			@RequestParam("content") String content,
+			@RequestParam("status") String status,
+			@RequestParam("supplierId") String supplierId,
+			@RequestParam("title") String title
+			){
+		SupplierSPM supplierSPM = new SupplierSPM();
+		supplierSPM.setTitle(title);
+		supplierSPM.setStatus(status);
+		Supplier supplier = new Supplier();
+		if(supplierId!=""){
+			supplier.setUniqueName(Integer.parseInt(supplierId));
+		}
+		supplierSPM.setSupplier(supplier);
+		return supplierSPMService.completeSearchSupplierSPM(supplierSPM, content);
+	}
+	
+	
+	//供应商搜索
+	@RequestMapping(value = "supplierSQMSearch")
+	public @ResponseBody List<SupplierSQM> supplierSQMSearch(
+			@RequestParam("content") String content,
+			@RequestParam("status") String status,
+			@RequestParam("supplierId") String supplierId,
+			@RequestParam("title") String title
+			){
+		SupplierSQM supplierSQM = new SupplierSQM();
+		supplierSQM.setTitle(title);
+		supplierSQM.setStatus(status);
+		Supplier supplier = new Supplier();
+		if(supplierId!=""){
+			supplier.setUniqueName(Integer.parseInt(supplierId));
+		}
+		supplierSQM.setSupplier(supplier);
+		return supplierSQMService.completeSearchSupplierSQM(supplierSQM, content);
 	}
 }

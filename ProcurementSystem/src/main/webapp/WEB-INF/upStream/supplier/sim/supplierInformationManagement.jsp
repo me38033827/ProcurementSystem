@@ -115,7 +115,7 @@
 
 	<script>
 		function back(){
-			location.href="supplierSearch?action=back";
+			location.href="../mainSupplier";
 		}
 	</script>
 </body>

@@ -20,7 +20,8 @@
 				(select search.field_id from search_mapping, search 
 					where search_mapping.field_id=search.field_id 
 						and user_id=#{userId} 
-						and search_mapping.page_id=#{pageId});
+						and search_mapping.page_id=#{pageId}
+						and search.page_id=#{pageId});
 	</select>
 	
 	<select id="getSelectedCondition" parameterType="com.ProcurementSystem.entity.Search" resultType="com.ProcurementSystem.entity.Search">

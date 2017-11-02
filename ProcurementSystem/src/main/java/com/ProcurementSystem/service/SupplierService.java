@@ -17,13 +17,11 @@ public class SupplierService {
 
 	@Resource ISupplierDao dao;
 	public Supplier getSupplierDetail(int uniqueName){
-		System.out.println("In supplier service...");
-		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("uniqueName", uniqueName);
 		
 		Supplier supplier = dao.getSupplierDetail(params);
-		System.out.println("SUPPLIER (Name):" + supplier.getName());
+		System.out.println("SUPPLIER (unique name):" + supplier.getUniqueName());
 		System.out.println("Back to supplier service...");
 		
 		return supplier;
