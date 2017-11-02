@@ -90,6 +90,14 @@
 			var supplier_isClient = "${supplierSearchInfo.isClient}";
 			var supplier_isSupplier = "${supplierSearchInfo.isSupplier}";
 			var supplier_approveState = "${supplierSearchInfo.approveState}";
+		}else if(pageId == 2005){
+			var supplierSPM_title = "${supplierSPMSearchInfo.title}";
+			var supplierSPM_supplierId = "${supplierSPMSearchInfo.supplierId}";
+			var supplierSPM_status = "${supplierSPMSearchInfo.status}";
+		}else if(pageId == 2006){
+			var supplierSQM_title = "${supplierSQMSearchInfo.title}";
+			var supplierSQM_supplierId = "${supplierSQMSearchInfo.supplierId}";
+			var supplierSQM_status = "${supplierSQMSearchInfo.status}";
 		}
 	</script>
 </body>

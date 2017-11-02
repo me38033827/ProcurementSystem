@@ -5,9 +5,13 @@
 <head>
 <%@include file="../../other/header1.jsp"%>
 
+<script src="/ProcurementSystem/js/bootstrap-treeview.js"></script>
+<script src="/ProcurementSystem/js/simQuestionnaire.js"></script>
+
 <title>创建供应商界面</title>
 <script>
-	function addMultipleChoice() {
+
+/* 	function addMultipleChoice() {
 		$
 				.ajax({
 					data : {
@@ -66,7 +70,7 @@
 		$("#b").val("");
 		$("#c").val("");
 		$("#d").val("");
-	}
+	} */
 </script>
 </head>
 <!-- 页面整体宽度：1320px -->
@@ -251,8 +255,10 @@
 							</tr>
 						</table>
 					</div>
-					<div class="roll-tab" style="max-height: 240px;" id="question">
-						<table class="table table-hover" id="more-q">
+					<div style="border:1px solid #ddd; max-height:500px; overflow-x:scroll;">
+		          		<div id="treeview-sim" class=""></div>
+						
+<!-- 						<table class="table table-hover" id="more-q">
 							<tr>
 								<td class="question-1" style="width: 75%;"><b><span
 										class="glyphicon glyphicon-triangle-bottom blue f-12"
@@ -409,17 +415,17 @@
 										<option>未指定</option>
 								</select></td>
 							</tr>
-						</table>
+						</table> -->
 					</div>
 					<input value="0" id="count" hidden="hidden" />
 				</form>
 
-				<div>
+				<!-- <div>
 					<table class="table table-hover">
 						<tr class="standard-row3">
 							<td colspan="2">&#8627;
 								<button class="btn-w" style="width: 150px;"
-									onclick="addQuestion();">添加自定义问题</button> <!-- <div class="btn-group inline-b" role="group">
+									onclick="addQuestion();">添加自定义问题</button> <div class="btn-group inline-b" role="group">
 										<button type="button" style="width:150px;"
 											class="btn-w dropdown-toggle"
 											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -429,7 +435,7 @@
 											<li><a class="secondline-right" href="addMultipleChoice();">选择题</a></li>
 											<li><a class="secondline-right" >填空题</a></li>
 										</ul>
-									</div> -->
+									</div>
 								<div class="right">
 									<button form="supplierCreation" class="btn-b">确定</button>
 									<button class="btn-w"
@@ -438,7 +444,7 @@
 							</td>
 						</tr>
 					</table>
-				</div>
+				</div> -->
 				<div class="adjust-10"></div>
 				<div class="adjust-10"></div>
 				<div class="adjust-10"></div>
@@ -691,6 +697,12 @@
 	<%@ include file="../../other/footer.jsp"%>
 	<!-- CONTENT-WRAPPER SECTION END-->
 	<script>
+		$(function(){
+		     var defaultData = ${treeData};
+		     $('#treeview-sim').treeview({
+		       data: defaultData
+		     });
+		})
 		jQuery(document)
 				.ready(
 						function($) {

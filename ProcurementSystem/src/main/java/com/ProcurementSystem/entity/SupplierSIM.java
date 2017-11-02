@@ -1,5 +1,7 @@
 package com.ProcurementSystem.entity;
 
+import java.util.List;
+
 public class SupplierSIM {
 	private int id;
 	private int type;
@@ -11,6 +13,7 @@ public class SupplierSIM {
 	private int acceptValue;
 	private int visibleToParticipants;
 	private int groupRestriction;
+	private List<SupplierSIMSelection> selections;
 	public int getId() {
 		return id;
 	}
@@ -70,6 +73,12 @@ public class SupplierSIM {
 	}
 	public void setGroupRestriction(int groupRestriction) {
 		this.groupRestriction = groupRestriction;
+	}
+	public List<SupplierSIMSelection> getSelections() {
+		return selections;
+	}
+	public void setSelections(List<SupplierSIMSelection> selections) {
+		this.selections = selections;
 	}
 	
 }

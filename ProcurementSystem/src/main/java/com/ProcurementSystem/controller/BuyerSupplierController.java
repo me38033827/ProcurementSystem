@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import com.ProcurementSystem.entity.SIMTree;
 import com.ProcurementSystem.entity.Supplier;
 import com.ProcurementSystem.entity.SupplierQuestion;
 import com.ProcurementSystem.entity.SupplierSIM;
+import com.ProcurementSystem.entity.SupplierSIMAnswer;
 import com.ProcurementSystem.entity.SupplierSPM;
 import com.ProcurementSystem.entity.SupplierSQM;
 import com.ProcurementSystem.entity.User;
@@ -52,8 +54,7 @@ public class BuyerSupplierController {
 	@RequestMapping(value = "simQuestionnaire")
 	public String simQuestionnaire(HttpServletRequest request){
 		SIMTree simTree = simService.generateSIMTree();
-		JSONArray json = simTree.traverseToJSONArray();
-		request.setAttribute("treeData",json);
+		request.setAttribute("treeData", simTree.traverseToJSONArray());
 		return "upStream/supplier/sim/showQuestionEdit";
 	}
 	
@@ -67,9 +68,18 @@ public class BuyerSupplierController {
 	@RequestMapping(value = "createFolder")
 	public String createFolder(String id, HttpServletRequest request){
 		int id_int = Integer.parseInt(id);
-		request.setAttribute("parentList", simService.getAllParentNodes(id_int).get("resultStr"));
-		request.setAttribute("parentId", simService.getAllParentNodes(id_int).get("parentId"));
-		request.setAttribute("order", simService.getAllParentNodes(id_int).get("order"));
+		if(id_int==10000){
+			int order = simService.getMaxNewId()+1;
+			request.setAttribute("parentList", order+" Untitled");
+			request.setAttribute("parentId", 10000);
+			request.setAttribute("order", order);
+			return "upStream/supplier/sim/createFolder";
+		}
+		Map<String, Object> params = simService.getAllParentNodes(id_int, true);
+		
+		request.setAttribute("parentList", params.get("resultStr"));
+		request.setAttribute("parentId", params.get("parentId"));
+		request.setAttribute("order", params.get("order"));
 		return "upStream/supplier/sim/createFolder";
 	}
 	
@@ -77,9 +87,18 @@ public class BuyerSupplierController {
 	@RequestMapping(value = "createQuestion")
 	public String createQuestion(String id,HttpServletRequest request){
 		int id_int = Integer.parseInt(id);
-		request.setAttribute("parentList", simService.getAllParentNodes(id_int).get("resultStr"));
-		request.setAttribute("parentId", simService.getAllParentNodes(id_int).get("parentId"));
-		request.setAttribute("order", simService.getAllParentNodes(id_int).get("order"));
+		if(id_int==10000){
+			int order = simService.getMaxNewId()+1;
+			request.setAttribute("parentList", order+" Untitled");
+			request.setAttribute("parentId", 10000);
+			request.setAttribute("order", order);
+			return "upStream/supplier/sim/createQuestion";
+		}
+		Map<String, Object> params = simService.getAllParentNodes(id_int, true);
+		
+		request.setAttribute("parentList", params.get("resultStr"));
+		request.setAttribute("parentId", params.get("parentId"));
+		request.setAttribute("order", params.get("order"));
 		return "upStream/supplier/sim/createQuestion";
 	}
 	
@@ -94,7 +113,7 @@ public class BuyerSupplierController {
 		String initialAnswer = request.getParameter("initialAnswer");
 		int multipleValue = Integer.parseInt(request.getParameter("multipleValue"));
 		int acceptValue = Integer.parseInt(request.getParameter("acceptValue"));
-		System.out.println("acceptValue" + acceptValue);
+		
 		SupplierSIM sim = new SupplierSIM();
 		sim.setTitle(title);
 		sim.setAnswerType(answerType);
@@ -105,7 +124,6 @@ public class BuyerSupplierController {
 			simService.addQuestion(sim, parentId, order);
 		}
 		if(acceptValue==2){
-			System.out.println("qweqweqw"+request.getParameter("selection"));
 			int selection = Integer.parseInt(request.getParameter("selection"));
 			String selectionValue = "";
 			List<String> selections = new ArrayList<String>();
@@ -119,12 +137,93 @@ public class BuyerSupplierController {
 		return "redirect:simQuestionnaire";
 	}
 	
+	//P2P显示供应商信息管理－将文件夹添加到数据库
 	@RequestMapping(value = "addFolder")
 	public String addFolder(SupplierSIM sim, HttpServletRequest request){
 		int parentId = Integer.parseInt(request.getParameter("parentId"));
 		int order = Integer.parseInt(request.getParameter("order"));
-		
 		simService.addFolder(sim, parentId, order);
+		return "redirect:simQuestionnaire";
+	}
+	
+	//P2P显示供应商信息管理－编辑文件夹
+	@RequestMapping(value = "editFolder")
+	public String editFolder(String id, HttpServletRequest request){
+		int id_int = Integer.parseInt(id);
+		SupplierSIM sim = simService.getFolderOrQuestion(id_int);
+		request.setAttribute("id", id_int);
+		request.setAttribute("sim",sim);
+		
+		request.setAttribute("parentList", simService.getAllParentNodes(id_int, false).get("resultStr"));
+		
+		return "upStream/supplier/sim/editFolder";
+	}
+	
+	//P2P显示供应商信息管理－编辑问题
+	@RequestMapping(value = "editQuestion")
+	public String editQuestion(String id,HttpServletRequest request){
+		int id_int = Integer.parseInt(id);
+		SupplierSIM sim = simService.getFolderOrQuestion(id_int);
+		request.setAttribute("id", id_int);
+		request.setAttribute("sim",sim);
+		//问题是否带选项 选项个数存进 selection 无选项则为0
+		int selection = 0;
+		if(sim.getAcceptValue()==2){
+			selection = sim.getSelections().size();
+		}
+		System.out.println("selection: "+ 0);
+		request.setAttribute("selection", selection);
+		request.setAttribute("parentList", simService.getAllParentNodes(id_int, false).get("resultStr"));
+		
+		return "upStream/supplier/sim/editQuestion";
+	}	
+	
+	//P2P显示供应商信息管理－更新问题
+	@RequestMapping(value = "updateQuestion")
+	public String updateQuestion(SupplierSIM sim, HttpServletRequest request){
+		int acceptValue = sim.getAcceptValue();
+		if(acceptValue==1){
+			//更新问题
+			simService.updateQuestion(sim);
+		}
+		if(acceptValue==2){
+			//更新问题及选项
+			int selection = Integer.parseInt(request.getParameter("selection"));
+			String selectionValue = "";
+			List<String> selections = new ArrayList<String>();
+			for(int i = 1; i <= selection; i++){
+				selectionValue = request.getParameter("selection-"+i);
+				System.out.println(i+":"+selectionValue);
+				selections.add(i-1, selectionValue);
+			}
+			simService.updateQuestionWithSelection(sim, selections);
+		}
+		return "redirect:simQuestionnaire";
+	}
+	
+	//P2P显示供应商信息管理－更新文件夹
+	@RequestMapping(value = "updateFolder")
+	public String updateFolder(SupplierSIM sim, HttpServletRequest request){
+		String id = request.getParameter("id");
+		int int_id = Integer.parseInt(id);
+		sim.setId(int_id);
+		simService.updateFolder(sim);
+		return "redirect:simQuestionnaire";
+	}
+	
+	//P2P显示供应商信息管理－删除问题
+	@RequestMapping(value = "deleteQuestion")
+	public String deleteQuestion(String id){
+		int int_id = Integer.parseInt(id);
+		simService.deleteQuestion(int_id);
+		return "redirect:simQuestionnaire";
+	}
+	
+	//P2P显示供应商信息管理－删除问题
+	@RequestMapping(value = "deleteFolder")
+	public String deleteFolder(String id){
+		int int_id = Integer.parseInt(id);
+		simService.deleteFolder(int_id);
 		return "redirect:simQuestionnaire";
 	}
 	
@@ -204,15 +303,17 @@ public class BuyerSupplierController {
 	}
 	
 	//P2P显示供应商概要
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "supplierDetail")
 	public String showSupplierDetail(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		Supplier supplier = null;
-		List<SupplierQuestion> supplierQuestions = null;
-		if(session.getAttribute("supplierSession")!=null){
-			 supplier = (Supplier) session.getAttribute("supplierSession");
-			 supplierQuestions = (List<SupplierQuestion>) session.getAttribute("supplierQuestions");
-		}else{
+		List<SupplierSIMAnswer> answers = new ArrayList<SupplierSIMAnswer>();
+		//List<SupplierQuestion> supplierQuestions = null;
+//		if(session.getAttribute("supplierSession")!=null){
+//			 supplier = (Supplier) session.getAttribute("supplierSession");
+//			// supplierQuestions = (List<SupplierQuestion>) session.getAttribute("supplierQuestions");
+//		}else{
 			String uniqueNameStr = request.getParameter("id");
 			int uniqueName = -1;
 			System.out.println(uniqueNameStr);
@@ -221,17 +322,30 @@ public class BuyerSupplierController {
 				session.setAttribute("uniqueName", uniqueName);
 			}else{
 				uniqueName = (int) session.getAttribute("uniqueName");
-				
 			}
 			supplier = service.getSupplierDetail(uniqueName);
-			supplierQuestions = simqService.searchQA(uniqueName);
+			//supplierQuestions = simqService.searchQA(uniqueName);
 			session.setAttribute("supplierSession", supplier);
-			session.setAttribute("supplierQuestions", supplierQuestions);
-		}
+			//session.setAttribute("supplierQuestions", supplierQuestions);
+			answers = simService.getSupplierSIMAnswer(uniqueName);
+		//}
 		request.setAttribute("supplier", supplier);
-		request.setAttribute("supplierQuestions", supplierQuestions);
+		//request.setAttribute("supplierQuestions", supplierQuestions);
+		
+		SIMTree simTree = simService.generateSIMTree();
+		//JSONArray json = simTree.traverseToJSONArrayWithoutSelection();
+		JSONArray json = simTree.traverseToJSONArrayWithAnswer(answers);
+		request.setAttribute("treeData",json);
+		
+		//获得sim answer
 		return "upStream/supplier/supplierDetail";
 	}
+	
+	@RequestMapping(value = "getSIMAnswers")  
+    public @ResponseBody List<SupplierSIMAnswer> getSIMAnswers(  
+        @RequestParam("supplierId") int supplierId){  
+		return simService.getSupplierSIMAnswer(supplierId);
+	}  
 	
 	//P2P显示供应商概述
 	@RequestMapping(value = "supplierDetailSummary")
@@ -302,24 +416,46 @@ public class BuyerSupplierController {
 	public String creationSupplier(HttpServletRequest request){
 		int uniqueName = service.findMaxUniqueName()+1;
 		request.setAttribute("uniqueName", uniqueName);
-		
+		SIMTree simTree = simService.generateSIMTree();
+		request.setAttribute("treeData", simTree.traverseToJSONArray());
 		return "upStream/supplier/supplierCreation";
 	}
 	
 	//P2P传递创建供应商的信息到数据库
 	@RequestMapping(value = "supplierAnalyze")
 	public String creationSupplierAnalyze(Supplier supplier, HttpServletRequest request){
-		System.out.println("123123123");
 		int uniqueName = Integer.parseInt(request.getParameter("uniqueName"));
 		String isSupplier = "是";
 		supplier.setIsSupplier(isSupplier);
+		User creator = new User();
+		creator.setUniqueName(100001);
+		supplier.setCreator(creator);
 		service.insertSupplier(supplier);
-		List<SupplierQuestion> supplierQuestions = simqService.searchQA(uniqueName);
-		for(int i=0; i<supplierQuestions.size();i++){
-			supplierQuestions.get(i).setAnswer(request.getParameter("question"+supplierQuestions.get(i).getId()));
-			simqService.updateAnswer(supplierQuestions.get(i));
+		//SIM Questionnaire 
+		//查找所有问题序号
+		List<SupplierSIM> questionObjs = simService.getAllQuestionId();
+		List<SupplierSIMAnswer> allAnswers = new ArrayList<SupplierSIMAnswer>();
+		//从前端读取问题号及答案到list
+		String[] answers = new String[questionObjs.size()];
+		System.out.println(request.getParameter("ans-10002"));
+		for(int i = 0; i < questionObjs.size(); i++){
+			int id =  questionObjs.get(i).getId();
+			answers[i] = request.getParameter("ans-"+id);
+			SupplierSIMAnswer answer = new SupplierSIMAnswer();
+			answer.setAnswer(answers[i]);
+			answer.setSupplierId(uniqueName);
+			answer.setQuestionId(id);
+			allAnswers.add(answer);
 		}
-		System.out.println(supplierQuestions.get(0).getAnswer());
+		//将问卷答案填写至问卷
+		simService.addSIMAnswers(allAnswers);
+		
+//		List<SupplierQuestion> supplierQuestions = simqService.searchQA(uniqueName);
+//		for(int i=0; i<supplierQuestions.size();i++){
+//			supplierQuestions.get(i).setAnswer(request.getParameter("question"+supplierQuestions.get(i).getId()));
+//			simqService.updateAnswer(supplierQuestions.get(i));
+//		}
+//		System.out.println(supplierQuestions.get(0).getAnswer());
 		return "redirect:supplierSearch?action=back";
 	}
 	

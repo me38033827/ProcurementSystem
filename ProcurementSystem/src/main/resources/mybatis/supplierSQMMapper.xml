@@ -12,6 +12,7 @@
 		<result property="lastValid" column="last_valid" />
 		<association property="supplier" javaType="com.ProcurementSystem.entity.Supplier">
 			<id property="uniqueName" column="supplierId" />
+			<id property="name" column="supplierName" />
 		</association>
 		<association property="user" javaType="com.ProcurementSystem.entity.User">
 			<id property="uniqueName" column="userId" />
@@ -86,5 +87,37 @@
 		</set>
 		where id = #{id};
 	</update>
+	
+		<!-- 带条件搜索 -->
+	<select id="completeSearchSupplierSQM" parameterType="map" resultMap="SQMMap">
+		select 
+			id as id,
+			title as title,
+			supplier_sqm.description as description,
+			commodity as commodity,
+			supplier_id as supplierId,
+			user_id as userId,
+			supplier_id as supplierId,
+			user_id as userId,
+			supplier_sqm.status as status,
+			supplier.name as supplierName,
+			user.name as userName
+		from supplier_sqm, supplier, user
+		where 1=1
+			and supplier_sqm.supplier_id = supplier.unique_name
+			and supplier_sqm.user_id = user.unique_name
+			<if test="content!='' and content!=null">
+				and title like concat("%",#{content},"%")
+			</if>
+			<if test="supplierSQM.title!='' and supplierSQM.title!=null">
+				and title like concat("%",#{supplierSPM.title},"%")
+			</if>
+			<if test="supplierSQM.supplier.uniqueName!='' and supplierSQM.supplier.uniqueName!=null">
+				and supplier_id like concat("%",#{supplierSQM.supplier.uniqueName},"%")
+			</if>
+			<if test="supplierSQM.status!='' and supplierSQM.status!=null and supplierSQM.status!='无选择'">
+				and status like concat("%",#{supplierSQM.status},"%")
+			</if>
+	</select>
 	
 </mapper>

@@ -39,6 +39,7 @@ public class SearchService {
 		
 		//获取未显示的搜索条件的第一个resultsFirstObj，只包含field_id field_name
 		List<Search> results = dao.getSearchList(searchInput);
+		System.out.println(results.size());
 		Search resultsFirstObj = results.get(0);
 		//向resultsFirstObj中添加page_id, user_id, position
 		resultsFirstObj.setPageId(searchInput.getPageId());

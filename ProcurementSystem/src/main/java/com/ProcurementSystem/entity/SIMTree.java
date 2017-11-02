@@ -53,6 +53,107 @@ public class SIMTree {
 			} 
 		}
 	}
+
+	
+	// 遍历创建json 不可编辑
+	public JSONArray traverseToJSONArrayWithAnswer(List<SupplierSIMAnswer> answers) {
+		Queue<SIMTreeNode> queue = new LinkedList<>();
+		queue.offer(root);
+		SIMTreeNode a = queue.poll();
+		return traverseHelperWithAnswer(a,answers);
+	}
+		
+	
+	public JSONArray traverseHelperWithAnswer(SIMTreeNode parentNode,List<SupplierSIMAnswer> answers){
+		JSONArray array = new JSONArray();
+		// type: folder
+		if(parentNode.getType()==1){
+			List<SIMTreeNode> children = parentNode.getChildren();
+			// control: used for 序号显示
+			Boolean control = false;
+			if(parentNode.getNumber()==null){
+				control = true;
+			}
+			
+			for (SIMTreeNode child : children){
+				String answer="";
+				JSONObject jsonObj = new JSONObject();
+				if(control==true){
+					child.setNumber(child.getOrder().toString());
+				}else{
+					child.setNumber(parentNode.getNumber()+"."+child.getOrder().toString());
+				}
+				if(child.getType()==2){
+					int id = child.getSupplierSIM().getId();
+					for(SupplierSIMAnswer a:answers){
+						if(a.getQuestionId()==id){
+							answer="<a class=\"questionnaire-ans\"id=\"ans-"+ child.getSupplierSIM().getId() +"\">"+a.getAnswer()+"</a>";
+							answers.remove(a);
+							break;
+						}
+					}
+				}
+				
+				jsonObj.put("text", child.getNumber()+"    "+child.getSupplierSIM().getTitle()
+						+answer);
+				jsonObj.put("href", "");
+				if(child.getType()==1){
+					jsonObj.put("nodes", traverseHelperWithAnswer(child,answers));
+				}
+				array.add(jsonObj);
+			}
+			return array;
+		}
+		// type: question
+		return array;
+	}
+	
+	
+	public JSONArray traverseHelperWithoutSelection(SIMTreeNode parentNode){
+		JSONArray array = new JSONArray();
+		// type: folder
+		if(parentNode.getType()==1){
+			List<SIMTreeNode> children = parentNode.getChildren();
+			// control: used for 序号显示
+			Boolean control = false;
+			if(parentNode.getNumber()==null){
+				control = true;
+			}
+			
+			for (SIMTreeNode child : children){
+				String answer="";
+				JSONObject jsonObj = new JSONObject();
+				if(control==true){
+					child.setNumber(child.getOrder().toString());
+				}else{
+					child.setNumber(parentNode.getNumber()+"."+child.getOrder().toString());
+				}
+				if(child.getType()==2){
+					answer="<a class=\"questionnaire-ans\"id=\"ans-"+ child.getSupplierSIM().getId() +"\"></a>";
+				}
+				
+				jsonObj.put("text", child.getNumber()+"    "+child.getSupplierSIM().getTitle()
+						+answer);
+				jsonObj.put("href", "");
+				if(child.getType()==1){
+					jsonObj.put("nodes", traverseHelperWithoutSelection(child));
+				}
+				array.add(jsonObj);
+			}
+			return array;
+		}
+		// type: question
+		return array;
+	}
+	
+	
+	// 遍历创建json 不可编辑
+	public JSONArray traverseToJSONArrayWithoutSelection() {
+		Queue<SIMTreeNode> queue = new LinkedList<>();
+		queue.offer(root);
+		SIMTreeNode a = queue.poll();
+		return traverseHelperWithoutSelection(a);
+	}
 	
 	public JSONArray traverseHelper(SIMTreeNode parentNode){
 		JSONArray array = new JSONArray();
@@ -68,21 +169,44 @@ public class SIMTree {
 			for (SIMTreeNode child : children){
 				JSONObject jsonObj = new JSONObject();
 				String li="";
+				String answer = "";
 				if(control==true){
 					child.setNumber(child.getOrder().toString());
 				}else{
 					child.setNumber(parentNode.getNumber()+"."+child.getOrder().toString());
 				}
+				//folder
 				if(child.getType()==1){
 					li="<li><a class=\"manu-deactive\">添加</a ></li>\n"+
 							"<li><a class=\"manu-active sim-create-folder folder-" + child.getSupplierSIM().getId()+"\" >区段</a ></li>\n"+
 							"<li><a class=\"manu-active sim-create-question question-" + child.getSupplierSIM().getId()+"\" >问题</a ></li>\n"+
 							"<li><a class=\"manu-deactive\">操作</a ></li>\n"+
-							"<li><a class=\"manu-active\">编辑</a ></li>\n";
+							"<li><a class=\"manu-active sim-edit-folder edit-" + child.getSupplierSIM().getId()+"\" >编辑</a ></li>\n"+
+							"<li><a class=\"manu-active sim-delete-folder delete-" + child.getSupplierSIM().getId()+"\" >删除</a ></li>\n";
 				}
+				//question
 				else{
+					
 					li="<li><a class=\"manu-deactive\">操作</a ></li>\n"+
-							"<li><a class=\"manu-active\">编辑</a ></li>\n";
+							"<li><a class=\"manu-active sim-edit-question edit-" + child.getSupplierSIM().getId()+"\" >编辑</a ></li>\n"+
+							"<li><a class=\"manu-active sim-delete-question delete-" + child.getSupplierSIM().getId()+"\" >删除</a ></li>\n";
+
+					int child_type = child.getType();
+					int child_accept_value = child.getSupplierSIM().getAcceptValue();
+					int child_answer_type = child.getSupplierSIM().getAnswerType();
+					//有选项
+					if(child_type==2 && child_accept_value==2){
+						answer= "<select class=\"selection\" id=\"ans-"+child.getSupplierSIM().getId()+"\" name=\"ans-"+child.getSupplierSIM().getId()+"\">\n";
+						List<SupplierSIMSelection> selections = child.getSupplierSIM().getSelections();
+						for(SupplierSIMSelection selection: selections){
+							answer = answer +  "<option class=\"selection\" value=\""+selection.getContent()+"\">"+selection.getContent()+"</option>\n";
+						}
+						answer=answer+"</select>";
+					}
+					if(child_type==2 && child_accept_value!=2 && child_answer_type==1){
+						answer="<input class=\"input\" id=\"ans-"+child.getSupplierSIM().getId()+"\" name=\"ans-"+child.getSupplierSIM().getId()+"\"/>";
+					}
+					
 				}
 				jsonObj.put("text", child.getNumber()+"    "+child.getSupplierSIM().getTitle()
 						+"<div class=\"btn-group\">\n" +
@@ -92,7 +216,7 @@ public class SIMTree {
 					    "\t\t<ul class=\"dropdown-menu\" style=\"z-index: 9999\">\n" +
 					    li+
 					    "\t\t</ul>\n" +
-					    "\t\t</div>");
+					    "\t\t</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + answer);
 				jsonObj.put("href", "");
 				if(child.getType()==1){
 					jsonObj.put("nodes", traverseHelper(child));
@@ -105,7 +229,7 @@ public class SIMTree {
 		return array;
 	}
 	
-	// 遍历创建json
+	// 遍历创建json 可编辑
 	public JSONArray traverseToJSONArray() {
 		Queue<SIMTreeNode> queue = new LinkedList<>();
 		queue.offer(root);

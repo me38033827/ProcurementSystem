@@ -14,30 +14,25 @@
 			<div class="standard-out">
 				<!-- 主要内容 -->
 				<div class="standard-title">
-					<div class="standard-title-main">添加问题</div> 
+					<div class="standard-title-main">编辑问题</div> 
 					<div class="standard-title-r">
-						<button class="btn-b" form="addQuestion" formaction="addQuestion">完成</button>
-						<button class="btn-w">取消</button>
+						<button class="btn-b" form="editQuestion" formaction="updateQuestion">完成</button>
+						<button class="btn-w" onclick="window.location.href='simQuestionnaire'">取消</button>
 					</div>
 				</div>
 				
 				<div class="adjust-10"></div>
 				
-				${parentList }
+				<div class="standard-subsubtitle"> ${parentList }</div>
 				
-				<form id="addQuestion" method="post">
-					<input hidden="hidden" name = "parentId" value="${parentId }" />
-					<input hidden="hidden" name="order" value="${order }" />
+				<form id="editQuestion" method="post">
+					<input hidden="hidden" value="${id }" name="id"/>
 					<table class="fulltab">
 						<tr class="row-standard">
 							<td valign="top" class="col-standard1" style="width:200px; padding-top:5px;">名称：</td>
 							<td class="col-standard2" style="height:110px;">
-								<textarea name="title" class="input" style="width:280px; height:100px;"></textarea>
+								<textarea name="title" class="input" style="width:280px; height:100px;padding-left:5px;">${sim.title}</textarea>
 							</td>
-						</tr>
-						<tr class="row-standard">
-							<td class="col-standard1">位置：</td>
-							<td class="col-standard2">在里面添加</td>
 						</tr>
 						<tr class="row-standard">
 							<td class="col-standard1">答案类型：</td>
@@ -76,14 +71,26 @@
 										<td style="padding-left:20px;">值</td>
 										<td></td>
 									</tr>
-									<tr id="selection-outer-1" >
-										<td style="padding:5px 20px;">
-											<input class="input" style="margin-right:200px;padding-left:10px;" id="selection-1" name="selection-1"/>
-										</td>
-										<td id="selection-btn-1">
-											<button type="button" class="trans-btn grey" onclick="deleteSelection(1);">删除</button>
-										</td>
-									</tr>
+									<% int i = 0;%>
+									<c:forEach var="selection" items="${sim.selections}">
+										<% i = i + 1;
+										String selectionouter = "selection-outer-"+i;
+										String selectionbtn = "selection-btn-"+i;
+										String selectionstr = "selection-"+i;
+										%>
+										<tr id=<%=selectionouter %> >
+											<td style="padding:5px 20px;">
+												<input class="input" style="margin-right:200px;padding-left:10px;" id=<%=selectionstr %> name=<%=selectionstr %>
+												value = "${selection.content }"/>
+											</td>
+											<td id=<%=selectionbtn %>>
+												<button type="button" class="trans-btn grey" onclick="deleteSelection(<%=i%>);">删除</button>
+											</td>
+										</tr>
+									</c:forEach>
+									
+									
+									
 									<tr class="standard-row3">
 										<td colspan="2">
 											<a class="arrow-turn">&#8627;</a>
@@ -108,8 +115,8 @@
 				
 				<div class="standard-ending">
 				    <div align="right" class="standard-ending-r">
-				    		<button class="btn-b" form="addQuestion" formaction="addQuestion">确定</button>
-						<button class="btn-w">取消</button>
+				    	<button class="btn-b" form="editQuestion" formaction="updateQuestion">确定</button>
+						<button class="btn-w" onclick="window.location.href='simQuestionnaire'">取消</button>
 				    </div>  
 				</div>
 			</div>
@@ -121,10 +128,30 @@
 	<%@ include file="../../../other/supplierFooter.jsp"%>
 
 	<script>
-		var selection = 1;
 		function back(){
-			location.href="supplierSearch?action=back";
+			location.href="simQuestionnaire";
 		}
+		var acceptValue = ${sim.acceptValue};
+		/* 有选项 */
+		if(acceptValue==2){
+			$("#initial").hide();
+			$("#multiple").show();
+			$("#acceptValue").val(acceptValue);
+			$("#selection-list").show();
+		}
+		var selection = ${selection};
+		if(selection == 0){
+			$("#selection-title").after("<tr id=\"selection-outer-1\" >\n" +
+		    "<td style=\"padding:5px 20px;\">\n" +
+		    "<input class=\"input\" style=\"margin-right:200px;padding-left:10px;\" id=\"selection-1\" name=\"selection-1\"/>\n" +
+		    "</td>\n" +
+		    "<td id=\"selection-btn-1\">\n" +
+		    "<button type=\"button\" class=\"trans-btn grey\" onclick=\"deleteSelection(1);\">删除</button>\n" +
+		    "</td>\n" +
+		    "</tr>");
+			selection = 1;
+		}
+		$("#selection").val(selection);
 	</script>
 </body>
 </html>
