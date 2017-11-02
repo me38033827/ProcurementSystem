@@ -74,6 +74,7 @@
 			this.tree = $.extend(true, [], options.data);
 			delete options.data;
 		}
+		//给option添加style
 		this.options = $.extend({}, _default.settings, options);
 		
 		console.log(this.options);
