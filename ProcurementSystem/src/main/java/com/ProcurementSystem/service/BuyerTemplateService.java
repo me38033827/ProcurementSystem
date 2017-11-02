@@ -11,9 +11,19 @@ import com.ProcurementSystem.entity.Template;
 public class BuyerTemplateService {
 	@Resource
 	IBuyerTemplateDao templateDao;
+
 	public void add(Template template) {
 		// TODO Auto-generated method stub
 		templateDao.add(template);
+	}
+
+	public Template getById(Integer id) {
+		return templateDao.getById(id);
+	}
+
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		 templateDao.delete(id);
 	}
 
 }

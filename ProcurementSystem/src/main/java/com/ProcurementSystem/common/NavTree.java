@@ -8,18 +8,18 @@ import java.util.Queue;
 
 public class NavTree {
 
-	TreeNode root;
+	NavTreeNode root;
 
 	public NavTree() {
-		root = new TreeNode();
+		root = new NavTreeNode();
 		root.setSpscCode("0");
-		root.setChildList(new LinkedList<TreeNode>());
+		root.setChildList(new LinkedList<NavTreeNode>());
 		root.setName("");
 	}
 
 	/** 添加结点 */
 	public boolean addChild(String code) {
-		TreeNode parentNode = root;
+		NavTreeNode parentNode = root;
 		ArrayList<String> nameList = XMLResolve.getLayerNames(code);
 		if (nameList == null) {// 将该code修改为-1，即归为未分类项目
 			return false;
@@ -29,11 +29,11 @@ public class NavTree {
 		while (code.length() > 0) {
 			String leftCode = code.substring(0, 2);
 			String rightCode = code.substring(2);
-			TreeNode newNode = new TreeNode();
+			NavTreeNode newNode = new NavTreeNode();
 			spscCode += leftCode;
 			newNode.setSpscCode(spscCode);// 设置spscCode
 			// 判断当前结点是否在父节点的孩子结点中已经存在
-			TreeNode findNode = findNodeInParent(parentNode, newNode);
+			NavTreeNode findNode = findNodeInParent(parentNode, newNode);
 			if (findNode == null) {
 				newNode.setName(nameList.get(length - i - 1));// 设置分类名
 				newNode.setParentNode(parentNode);
@@ -52,9 +52,9 @@ public class NavTree {
 	}
 
 	/** 在父节点中查找 */
-	private TreeNode findNodeInParent(TreeNode parentNode, TreeNode newNode) {
-		List<TreeNode> childs = parentNode.getChildList();
-		for (TreeNode child : childs) {
+	private NavTreeNode findNodeInParent(NavTreeNode parentNode, NavTreeNode newNode) {
+		List<NavTreeNode> childs = parentNode.getChildList();
+		for (NavTreeNode child : childs) {
 			if (child.getSpscCode().equals(newNode.getSpscCode())) {
 				return child;
 			}
@@ -66,10 +66,10 @@ public class NavTree {
 	public String traverse() {
 		String str = "";
 		int level = 0;
-		Queue<TreeNode> quee = new LinkedList<>();
+		Queue<NavTreeNode> quee = new LinkedList<>();
 		quee.offer(root);
 		while (!quee.isEmpty()) {
-			TreeNode node = quee.poll();
+			NavTreeNode node = quee.poll();
 			if (level == (node.getSpscCode().length() / 2))
 				str += node.getName() + " ";
 			else {
@@ -77,8 +77,8 @@ public class NavTree {
 				str += "\n";
 				str += node.getName() + " ";
 			}
-			List<TreeNode> childs = node.getChildList();
-			Iterator<TreeNode> iterator = childs.iterator();
+			List<NavTreeNode> childs = node.getChildList();
+			Iterator<NavTreeNode> iterator = childs.iterator();
 			while (iterator.hasNext()) {
 				quee.offer(iterator.next());
 			}
@@ -86,12 +86,12 @@ public class NavTree {
 		return str;
 	}
 
-	public ArrayList<TreeNode> getNavClass(int i) {// 获得第i层级的结点
-		ArrayList<TreeNode> list = new ArrayList<>();
-		Queue<TreeNode> quee = new LinkedList<>();
+	public ArrayList<NavTreeNode> getNavClass(int i) {// 获得第i层级的结点
+		ArrayList<NavTreeNode> list = new ArrayList<>();
+		Queue<NavTreeNode> quee = new LinkedList<>();
 		quee.offer(root);
 		while (!quee.isEmpty()) {
-			TreeNode node = quee.poll();
+			NavTreeNode node = quee.poll();
 			if (node.getSpscCode().length() / 2 <= i) {
 				if (node.getSpscCode().length() / 2 == i) {// 把i层的结点加入list
 					list.add(node);
@@ -99,8 +99,8 @@ public class NavTree {
 			} else {
 				break;
 			}
-			List<TreeNode> childs = node.getChildList();// 将该结点的孩子结点入队
-			Iterator<TreeNode> iterator = childs.iterator();
+			List<NavTreeNode> childs = node.getChildList();// 将该结点的孩子结点入队
+			Iterator<NavTreeNode> iterator = childs.iterator();
 			while (iterator.hasNext()) {
 				quee.offer(iterator.next());
 			}
@@ -116,13 +116,13 @@ public class NavTree {
 		navTree.traverse();
 	}
 
-	public List<TreeNode> getNavClassNames(String code) {// 根据code获取其层级路径
-		List<TreeNode> breadNav = new LinkedList<>();
+	public List<NavTreeNode> getNavClassNames(String code) {// 根据code获取其层级路径
+		List<NavTreeNode> breadNav = new LinkedList<>();
 		int level = code.length() / 2;
-		TreeNode parent = root;
+		NavTreeNode parent = root;
 		for (int i = 1; i <= level; i++) {
-			TreeNode tempNode = new TreeNode();
-			for(TreeNode node : parent.getChildList()){//寻找第i层级符合的结点
+			NavTreeNode tempNode = new NavTreeNode();
+			for(NavTreeNode node : parent.getChildList()){//寻找第i层级符合的结点
 				if(node.getSpscCode().equals(code.substring(0, i*2))){
 					breadNav.add(node);
 					tempNode = node;

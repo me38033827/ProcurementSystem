@@ -3,8 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>供应商详情－信息板</title>
 <%@include file="../../../other/header1return.jsp"%>
+<script src="../../js/my-bootstrap-treeview.js"></script>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -38,30 +38,27 @@
 								<ul class="dropdown-menu manu-btn-o">
 									<li><a class="manu-deactive">创建</a></li>
 									<li><a class="manu-active"
-									href="templateSIMTaskPhaseCreate?parentId=1000001">&nbsp;&nbsp;阶段</a></li>
+										href="templateSIMTaskPhaseCreate?parentId=${template.templateTaskTreeNode.id }">&nbsp;&nbsp;阶段</a></li>
+									<li><a class="manu-active"
+										href="templateSIMTaskScheduleCreate?parentId=${template.templateTaskTreeNode.id }">&nbsp;&nbsp;待办事项</a></li>
 								</ul>
 							</div>
 
 							<div class="">
-								信息项目模板
+								${template.name }
 								<div class="right"></div>
 							</div>
 						</div>
 						<div class="adjust-10"></div>
 
-						<div>
-							<table class="table table-hover">
-								<tr class="standard-row1">
-									<td style="width: 50%;">名称&#8595;</td>
-									<td style="width: 25%;">所有者</td>
-									<td style="width: 25%;">条件</td>
-								</tr>
-								<tr class="bottom-border">
-									<td style="width: 50%;">名称&#8595;</td>
-									<td style="width: 25%;">所有者</td>
-									<td style="width: 25%;">条件</td>
-								</tr>
-							</table>
+						<div class="">
+							<div class="standard-row1">
+								<div class="template-tree-title1">名称</div>
+								<div class="template-tree-title2">所有者</div>
+								<div class="template-tree-title3">条件</div>
+								<div style="clear: both"></div>
+							</div>
+							<div id="treeview1"></div>
 						</div>
 					</div>
 				</div>
@@ -72,9 +69,37 @@
 	<%@ include file="../../../other/footer.jsp"%>
 	<script>
 		$("#task").attr("class", "tag-clicked")
-		function back() {
-			location.href = "supplierSearch?action=back";
+		$(function() {
+			console.log( ${json});
+		    var $tree = $('#treeview1').treeview({
+		   	 data: ${json}
+		    });
+		});
+		function createTemplateTaskPhase(id){
+			window.location.href="templateSIMTaskPhaseCreate?parentId="+id;
 		}
+		function createTemplateTaskSchedule(id){
+			window.location.href="templateSIMTaskScheduleCreate?parentId="+id;
+		}
+		function templateTaskPhaseEdit(id){
+			window.location.href="templateTaskPhaseEdit?id="+id;
+		}
+		function templateTaskPhaseDelete(id){
+			window.location.href="templateTaskTreeNodeDelete?id="+id;
+		}
+		function templateTaskScheduleEdit(id){
+			window.location.href="templateTaskScheduleEdit?id="+id;
+		}
+		function templateTaskScheduleDelete(id){
+			window.location.href="templateTaskTreeNodeDelete?id="+id;
+		}
+		function templateTaskScheduleInfo(id){
+			window.location.href="templateTaskScheduleInfo?id="+id;
+		}
+		function templateTaskPhaseInfo(id){
+			window.location.href="templateTaskPhaseInfo?id="+id;
+		}
+		
 	</script>
 </body>
 </html>

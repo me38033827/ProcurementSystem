@@ -61,15 +61,55 @@ public class TemplateTree {
 
 	public JSONArray traverseHelper(TemplateTreeNode parentNode) {
 		JSONArray array = new JSONArray();
-		
+
 		List<TemplateTreeNode> children = parentNode.getChildren();
 		for (TemplateTreeNode child : children) {
 			JSONObject jsonObj = new JSONObject();
-			if (child.getType() == 1) {
-				jsonObj.put("text", child.getTemplateFolder().getName());//folder
-			}
-			else{
-				jsonObj.put("text", child.getTemplate().getName());//template
+			String icon = createIcon(child);// 创建icon
+			if (child.getType() == 1) {// folder
+				String li = "<div class=\"btn-group\">" + "<button class=\"btn-ma\" data-toggle=\"dropdown\" "
+						+ "style=\"background-color: transparent; width: 100%\">" + icon
+						+ child.getTemplateFolder().getName() + "<span class=\"caret\"></span>" + "</button>"
+						+ "<ul class=\"dropdown-menu\" style=\"z-index: 9999\">"
+						+ "<li><a class=\"manu-deactive\">操作</a></li>" + "<li><a class=\"manu-active folder-profile-"
+						+ child.getTemplateFolder().getId() + "\">&nbsp;&nbsp;查看详细信息</a></li>"
+						+ "<li><a class=\"manu-active folder-edit-" + child.getTemplateFolder().getId()
+						+ "\">&nbsp;&nbsp;编辑</a></li>" + "<li><a class=\"manu-active folder-delete-" + child.getId()
+						+ "\">&nbsp;&nbsp;删除</a></li>" + "<li><a class=\"manu-deactive\">创建</a></li>"
+						+ "<li><a class=\"manu-active folder-create-" + child.getId() + "\">&nbsp;&nbsp;文件夹</a></li>"
+						+ "<li><a class=\"manu-active template-create-" + child.getId() + "\">&nbsp;&nbsp;模板</a></li>"
+						+ "</ul></div>";
+				String col2 = "<div class=\"tree-2-col\">未激活</div>";
+				String col3 = "<div class=\"tree-2-col\">System</div>";
+				li += col2 + col3;
+				jsonObj.put("text", li);
+			} else {// template
+				if (child.getTemplate().getType().equals("SIM")) {
+					String li = "<div class=\"btn-group\">" + "<button class=\"btn-ma\" data-toggle=\"dropdown\" "
+							+ "style=\"background-color: transparent; width: 100%\">" + icon
+							+ child.getTemplate().getName() + "<span class=\"caret\"></span>" + "</button>"
+							+ "<ul class=\"dropdown-menu\" style=\"z-index: 9999\">"
+							+ "<li><a class=\"manu-deactive\">操作</a></li>" + "<li><a class=\"manu-active template-open-"
+							+ child.getTemplate().getId() + "\">&nbsp;&nbsp;打开</a></li>" + "</ul></div>";
+					String col2 = "<div class=\"tree-2-col\">无</div>";
+					String col3 = "<div class=\"tree-2-col\">System</div>";
+					li += col2 + col3;
+					jsonObj.put("text", li);
+				} else {
+					String li = "<div class=\"btn-group\">" + "<button class=\"btn-ma\" data-toggle=\"dropdown\" "
+							+ "style=\"background-color: transparent; width: 100%\">" + icon
+							+ child.getTemplate().getName() + "<span class=\"caret\"></span>" + "</button>"
+							+ "<ul class=\"dropdown-menu\" style=\"z-index: 9999\">"
+							+ "<li><a class=\"manu-deactive\">操作</a></li>" + "<li><a class=\"manu-active template-open-"
+							+ child.getTemplate().getId() + "\">&nbsp;&nbsp;打开</a></li>"
+							+ "<li><a class=\"manu-active\" href=\"\">&nbsp;&nbsp;复制</a></li>"
+							+ "<li><a class=\"manu-active template-delete-" + child.getTemplate().getId()
+							+ "\">&nbsp;&nbsp;删除</a></li>" + "</ul></div>";
+					String col2 = "<div class=\"tree-2-col\">未激活</div>";
+					String col3 = "<div class=\"tree-2-col\">System</div>";
+					li += col2 + col3;
+					jsonObj.put("text", li);
+				}
 			}
 			jsonObj.put("href", "");
 			if (child.getType() == 1) {
@@ -80,7 +120,24 @@ public class TemplateTree {
 		return array;
 	}
 
-	// 遍历创建字符串
+	/** 创建图标 */
+	private String createIcon(TemplateTreeNode child) {
+		String icon = "";
+		if (child.getType() == 1) {// folder
+			icon = "<i class=\"fa fa-folder-o icon-folder\">&nbsp;&nbsp;</i>";
+		} else {
+			if (child.getTemplate().getType().equals("SIM")) {
+				icon = "<i class=\"fa fa-user icon-folder \">&nbsp;&nbsp;</i>";
+			} else if (child.getTemplate().getType().equals("SPM")) {
+				icon = "<i class=\"fa fa-address-card icon-folder \">&nbsp;&nbsp;</i>";
+			} else if (child.getTemplate().getType().equals("SQM")) {
+				icon = "<i class=\"fa fa-address-card-o icon-folder \">&nbsp;&nbsp;</i>";
+			}
+		}
+		return icon;
+	}
+
+	// 转json格式
 	public JSONArray traverseToJSONArray() {
 		Queue<TemplateTreeNode> queue = new LinkedList<>();
 		queue.offer(root);

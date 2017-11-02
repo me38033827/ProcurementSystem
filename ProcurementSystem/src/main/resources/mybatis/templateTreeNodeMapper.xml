@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ProcurementSystem.dao.IBuyerTemplateTreeNodeDao">
 
-	<insert id="add" parameterType="com.ProcurementSystem.dao.IBuyerTemplateTreeNodeDao">
+	<insert id="add" parameterType="com.ProcurementSystem.entity.TemplateTreeNode">
 		insert into
 		template_tree_node(parent_id,template_id,template_folder_id,type)
 		values(
@@ -21,7 +21,7 @@
 		tf.name,
 		tf.description,
 		tf.access_control,
-		tf.id as templateId,
+		t.id as templateId,
 		t.name as templateName,
 		t.description as templateDescription,
 		t.type as templateType
@@ -56,7 +56,14 @@
 			<result property="name" column="templateName" />
 			<result property="description" column="templateDescription" />
 			<result property="accessControl" column="templateAccess_control" />
+			<result property="type" column="templateType" />
 		</association>
 	</resultMap>
+
+
+	<delete id="deleteById">
+		delete from template_tree_node
+		where id = #{id}
+	</delete>
 
 </mapper>

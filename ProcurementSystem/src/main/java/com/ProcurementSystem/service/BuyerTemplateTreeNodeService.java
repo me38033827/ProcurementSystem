@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.ProcurementSystem.common.TemplateTree;
-import com.ProcurementSystem.common.TreeNode;
+import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.dao.IBuyerTemplateTreeNodeDao;
 import com.ProcurementSystem.entity.TemplateTreeNode;
 
@@ -45,6 +45,11 @@ public class BuyerTemplateTreeNodeService {
 			}//一个结点完成
 		}
 		return templateTree;
+	}
+
+	public void deleteById(Integer id) {
+		// TODO Auto-generated method stub
+		templateTreeNodeDao.deleteById(id);
 	}
 	
 }

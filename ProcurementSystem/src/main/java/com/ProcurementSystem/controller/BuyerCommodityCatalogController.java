@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.PageParams;
-import com.ProcurementSystem.common.TreeNode;
+import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.ShoppingCart;
@@ -176,7 +176,7 @@ public class BuyerCommodityCatalogController {
 	@RequestMapping(value = "commodityCatalogAnalyze")
 	public String commodityCatalogUpload(@RequestParam("file") MultipartFile file,
 			@RequestParam(value = "imageFile", required = false) MultipartFile imageFile, HttpServletRequest request) {
-		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";// upload为上传文件的根目录
+		String uploadUrl =  "/usr/develop/upload/";// upload为上传文件的根目录
 		HttpSession session = request.getSession();
 		System.out.println("uploadUrl:" + uploadUrl);
 		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");// 获得准备上传的商品目录文件
@@ -382,7 +382,7 @@ public class BuyerCommodityCatalogController {
 		map.put("commodity", commodity);
 		map.put("currPage", currPage);
 		NavTree navTree = (NavTree)request.getServletContext().getAttribute("navTree");//获得面包屑导航
-		List<TreeNode> breadNav = navTree.getNavClassNames(commodity.getSpscCode());
+		List<NavTreeNode> breadNav = navTree.getNavClassNames(commodity.getSpscCode());
 		map.put("breadNav", breadNav);
 		map.put("code", code);//用于返回
 		String path = commodity.getImage();//处理商品多图片显示

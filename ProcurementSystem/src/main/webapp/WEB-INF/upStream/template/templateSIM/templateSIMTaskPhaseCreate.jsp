@@ -19,7 +19,7 @@
 						<br>
 						<div class="border-bottom-grey ">
 							<div class="right">
-								<button class="btn-b" type="submit" form="createForm">确定</button>
+								<button class="btn-b" type="submit" form="saveForm">确定</button>
 								<button class="btn-w" type="button"
 									onclick="window.location.href='templateSIMTask'">取消</button>
 							</div>
@@ -32,7 +32,7 @@
 						</div>
 						<br>
 						<div class="adjust-left-80">
-							<form id="createForm" action="templateSIMTaskPhaseSave"
+							<form id="saveForm" action="templateSIMTaskPhaseSave"
 								method="post">
 								<table class="fulltab">
 									<tr class="row-standard">

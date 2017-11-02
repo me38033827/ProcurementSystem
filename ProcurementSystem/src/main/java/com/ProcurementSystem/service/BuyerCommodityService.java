@@ -17,7 +17,7 @@ import org.springframework.ui.ModelMap;
 
 import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.PageParams;
-import com.ProcurementSystem.common.TreeNode;
+import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
 

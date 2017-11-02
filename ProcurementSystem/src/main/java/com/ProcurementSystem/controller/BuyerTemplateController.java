@@ -1,26 +1,28 @@
 package com.ProcurementSystem.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ProcurementSystem.common.TemplateTaskTree;
 import com.ProcurementSystem.common.TemplateTree;
 import com.ProcurementSystem.entity.Template;
 import com.ProcurementSystem.entity.TemplateFolder;
+import com.ProcurementSystem.entity.TemplateTaskPhase;
+import com.ProcurementSystem.entity.TemplateTaskSchedule;
 import com.ProcurementSystem.entity.TemplateTaskTreeNode;
 import com.ProcurementSystem.entity.TemplateTreeNode;
 import com.ProcurementSystem.service.BuyerTemplateFolderService;
 import com.ProcurementSystem.service.BuyerTemplateService;
+import com.ProcurementSystem.service.BuyerTemplateTaskPhaseService;
+import com.ProcurementSystem.service.BuyerTemplateTaskScheduleService;
 import com.ProcurementSystem.service.BuyerTemplateTaskTreeNodeService;
 import com.ProcurementSystem.service.BuyerTemplateTreeNodeService;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 
 @Controller
@@ -34,6 +36,10 @@ public class BuyerTemplateController {
 	BuyerTemplateTreeNodeService templateTreeNodeService;
 	@Resource
 	BuyerTemplateTaskTreeNodeService templateTaskTreeNodeService;
+	@Resource
+	BuyerTemplateTaskPhaseService templateTaskPhaseService;
+	@Resource
+	BuyerTemplateTaskScheduleService templateTaskScheduleService;
 
 	// 模板概述
 	@RequestMapping(value = "templateSummary")
@@ -51,16 +57,6 @@ public class BuyerTemplateController {
 		return "upStream/template/templateDoc";
 	}
 
-//	// 模板文档
-//	@RequestMapping(value = "getChildNodes")
-//	public @ResponseBody JSON getChildNodes(@RequestParam(value = "parentId") Integer parentId) {
-//		List<TemplateTreeNode> templateTreeNodes = templateTreeNodeService.getFolderByParentId(parentId);// 获得所有文件夹
-//		// map.put("templateTreeNodes", templateTreeNodes);
-//		JSON jsonArray = (JSON) JSONArray.toJSON(templateTreeNodes);
-//		System.out.println(jsonArray.toString());
-//		return jsonArray;
-//	}
-
 	// 模板团队
 	@RequestMapping(value = "templateTeam")
 	public String templateTeam() {
@@ -71,6 +67,15 @@ public class BuyerTemplateController {
 	@RequestMapping(value = "templateHistory")
 	public String templateHistory() {
 		return "upStream/template/templateHistory";
+	}
+
+	/** 模板文件夹 **/
+	// 显示文件夹Profile
+	@RequestMapping(value = "templateFolderProfile")
+	public String templateFolderProfile(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
+		TemplateFolder templateFolder = templateFolderService.getById(id);
+		request.getSession().setAttribute("folder", templateFolder);
+		return "upStream/template/templateFolderProfile";
 	}
 
 	// 创建文件夹
@@ -96,26 +101,58 @@ public class BuyerTemplateController {
 		return "error";
 	}
 
+	// 编辑文件夹
+	@RequestMapping(value = "templateFolderEdit")
+	public String templateFolderEdit(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
+		TemplateFolder templateFolder = templateFolderService.getById(id);
+		request.setAttribute("folder", templateFolder);
+		return "upStream/template/templateFolderEdit";
+	}
+
+	// 编辑保存
+	@RequestMapping(value = "templateFolderEditSave")
+	public String templateFolderEditSave(TemplateFolder templateFolder, HttpServletRequest request) {
+		templateFolderService.editById(templateFolder);
+		return "redirect:templateDoc?parentId=1000001";
+	}
+
+	// 删除文件夹
+	@RequestMapping(value = "templateFolderDelete")
+	public String templateFolderDelete(@RequestParam(value = "id") Integer id) {
+		templateTreeNodeService.deleteById(id);
+		return "redirect:templateDoc?parentId=1000001";
+	}
+
 	// 选择模板类型
 	@RequestMapping(value = "templateChooseType")
-	public String templatChooseType(HttpServletRequest request,@RequestParam(value = "parentId",required=false) Integer parentId) {
-		if(parentId == null) parentId = 1000001;
+	public String templatChooseType(HttpServletRequest request,
+			@RequestParam(value = "parentId", required = false) Integer parentId) {
+		if (parentId == null)
+			parentId = 1000001;
 		request.getSession().setAttribute("parentId", parentId);
-		
 		return "upStream/template/templateChooseType";
 	}
 
 	// 创建模板
 	@RequestMapping(value = "templateCreate")
-	public String templateCreate(@RequestParam(value = "type") String type,HttpServletRequest request) {
+	public String templateCreate(@RequestParam(value = "type") String type, HttpServletRequest request) {
 		request.getSession().setAttribute("type", type);
 		return "upStream/template/templateCreate";
 	}
 
 	// 创建模板,保存至数据库
+	@Transactional
 	@RequestMapping(value = "templateCreateSave")
-	public String templateCreateSave(Template template, HttpServletRequest request,ModelMap map) {
-		if(template.getName() == null && template.getName().equals("")){
+	public String templateCreateSave(Template template, HttpServletRequest request, ModelMap map) {
+		TemplateTaskTreeNode templateTaskTreeNode = new TemplateTaskTreeNode();
+		templateTaskTreeNode.setType(1);
+		TemplateTaskPhase templateTaskPhase = new TemplateTaskPhase();
+		templateTaskPhase.setTitle("根节点");
+		templateTaskPhaseService.add(templateTaskPhase);// 持久化任务阶段
+		templateTaskTreeNode.setTemplateTaskPhase(templateTaskPhase);
+		templateTaskTreeNodeService.add(templateTaskTreeNode);// 持久化任务结点
+		template.setTemplateTaskTreeNode(templateTaskTreeNode);
+		if (template.getName() == null && template.getName().equals("")) {// 模板标题非空检测
 			map.put("Error_name", "名称不能为空");
 			return "upStream/template/templateCreate";
 		}
@@ -127,52 +164,15 @@ public class BuyerTemplateController {
 		templateTreeNode.setParentId(parentId);
 		templateTreeNode.setType(0);
 		templateTreeNode.setTemplate(template);
-		templateTreeNodeService.add(templateTreeNode);//持久化treeNode
+		templateTreeNodeService.add(templateTreeNode);// 持久化treeNode
 		return "redirect:templateDoc";
 	}
 
-	/** SPM模板 **/
-	// SPM模板 - 概述
-	@RequestMapping(value = "templateSPMSummary")
-	public String templateSPMSummary() {
-		return "upStream/template/templateSPM/templateSPMSummary";
-	}
-
-	// SPM模板 - 文档
-	@RequestMapping(value = "templateSPMDoc")
-	public String templateSPMDoc() {
-
-		return "upStream/template/templateSPM/templateSPMDoc";
-	}
-
-	// SPM模板 - 任务
-	@RequestMapping(value = "templateSPMTask")
-	public String templateSPMTask() {
-		return "upStream/template/templateSPMTask";
-	}
-
-	// SPM模板 - 团队
-	@RequestMapping(value = "templateSPMTeam")
-	public String templateSPMTeam() {
-		return "upStream/template/templateSPMTeam";
-	}
-
-	// SPM模板 - 时间消息
-	@RequestMapping(value = "templateSPMCondition")
-	public String templateSPMMessage() {
-		return "upStream/template/templateSPMCondition";
-	}
-
-	// SPM模板 - 高级选项
-	@RequestMapping(value = "templateSPMOption")
-	public String templateSPMOption() {
-		return "upStream/template/templateSPMOption";
-	}
-
-	// SPM模板 - 历史记录
-	@RequestMapping(value = "templateSPMHistory")
-	public String templateSPMHistory() {
-		return "upStream/template/templateSPMHistory";
+	// 删除模板
+	@RequestMapping(value = "templateDelete")
+	public String templateDelete(@RequestParam(value = "id") Integer id) {
+		templateService.delete(id);
+		return "redirect:templateDoc";
 	}
 
 	/** SIM模板 **/
@@ -185,19 +185,29 @@ public class BuyerTemplateController {
 	// SIM模板 - 文档
 	@RequestMapping(value = "templateSIMDoc")
 	public String templateSIMDoc() {
-
 		return "upStream/template/templateSIM/templateSIMDoc";
 	}
 
 	// SIM模板 - 任务
 	@RequestMapping(value = "templateSIMTask")
-	public String templateSIMTask() {
+	public String templateSIMTask(@RequestParam(value = "id", required = false) Integer id, ModelMap map,
+			HttpServletRequest request) {
+		if (id == null)
+			id = ((Template) request.getSession().getAttribute("template")).getId();// 若未提供id，自动获取已存在session中的Template
+		Template template = templateService.getById(id);
+		TemplateTaskTree templateTaskTree = new TemplateTaskTree(template.getTemplateTaskTreeNode());
+		templateTaskTreeNodeService.generateTemplateTree(templateTaskTree);// 生成模板任务树
+		templateTaskTree.traverse();
+		JSONArray json = templateTaskTree.traverseToJSONArray();
+		map.put("json", json);
+		map.put("template", template);
+		request.getSession().setAttribute("template", template);// 保存访问的模板
 		return "upStream/template/templateSIM/templateSIMTask";
 	}
 
 	// SIM模板 - 任务 - 创建阶段
 	@RequestMapping(value = "templateSIMTaskPhaseCreate")
-	public String templateSIMTaskPhaseCreate(@RequestParam(value = "parentId", required = false) Integer parentId,
+	public String templateSIMTaskPhaseCreate(@RequestParam(value = "parentId") Integer parentId,
 			HttpServletRequest request) {
 		request.getSession().setAttribute("parentId", parentId);
 		return "upStream/template/templateSIM/templateSIMTaskPhaseCreate";
@@ -205,18 +215,112 @@ public class BuyerTemplateController {
 
 	// SIM模板 - 任务 - 创建阶段保存至数据库
 	@RequestMapping(value = "templateSIMTaskPhaseSave")
-	public String templateSIMTaskPhaseSave(HttpServletRequest request, TemplateTaskTreeNode templateTaskTreeNode,
+	public String templateSIMTaskPhaseSave(HttpServletRequest request, TemplateTaskPhase templateTaskPhase,
 			ModelMap map) {
+		TemplateTaskTreeNode templateTaskTreeNode = new TemplateTaskTreeNode();
 		Integer parentId = (Integer) request.getSession().getAttribute("parentId");
-		if (templateTaskTreeNode.getTitle().equals("") || templateTaskTreeNode.getTitle() == null) {
+		if (templateTaskPhase.getTitle().equals("") || templateTaskPhase.getTitle() == null) {
 			map.put("Error_title", "标题不能为空");
 			return "upStream/template/templateSIM/templateSIMTaskPhaseCreate";
 		}
 		if (parentId != null) {
+			templateTaskPhaseService.add(templateTaskPhase);// 持久化任务阶段
 			templateTaskTreeNode.setParentId(parentId);
-			templateTaskTreeNodeService.add(templateTaskTreeNode);
+			templateTaskTreeNode.setTemplateTaskPhase(templateTaskPhase);
+			templateTaskTreeNode.setType(1);
+			templateTaskTreeNodeService.add(templateTaskTreeNode);// 持久化结点
 		}
+		Template template = (Template) request.getSession().getAttribute("template");
+		return "redirect:templateSIMTask?id=" + template.getId();
+	}
+
+	// SIM模板 - 任务 - 编辑阶段
+	@RequestMapping(value = "templateTaskPhaseEdit")
+	public String templateTaskPhaseEdit(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
+		if (id != null) {
+			TemplateTaskPhase templateTaskPhase = templateTaskPhaseService.getById(id);
+			request.setAttribute("taskPhase", templateTaskPhase);
+			return "upStream/template/templateSIM/templateSIMTaskPhaseEdit";
+		}
+		Template template = (Template) request.getSession().getAttribute("template");
+		return "redirect:templateSIMTask?id=" + template.getId();
+	}
+
+	// SIM模板 - 任务 - 保存编辑阶段
+	@RequestMapping(value = "templateTaskPhaseEditSave")
+	public String templateSIMTaskPhaseEditSave(TemplateTaskPhase templateTaskPhase, HttpServletRequest request) {
+		templateTaskPhaseService.editById(templateTaskPhase);
+		Template template = (Template) request.getSession().getAttribute("template");
+		return "redirect:templateSIMTask?id=" + template.getId();
+	}
+
+	// 任务-删除任务树节点(任务阶段和待办任务)
+	@RequestMapping(value = "templateTaskTreeNodeDelete")
+	public String templateTaskTreeNodeDelete(@RequestParam(value = "id") Integer id) {
+		templateTaskTreeNodeService.deleteById(id);
 		return "redirect:templateSIMTask";
+	}
+
+	// SIM模板 - 任务 - 创建待办任务
+	@RequestMapping(value = "templateSIMTaskScheduleCreate")
+	public String templateSIMTaskInformCreate(@RequestParam(value = "parentId") Integer parentId,
+			HttpServletRequest request) {
+		request.getSession().setAttribute("parentId", parentId);
+		return "upStream/template/templateSIM/templateSIMTaskScheduleCreate";
+	}
+
+	// SIM模板 - 任务 - 创建待办任务保存至数据库
+	@RequestMapping(value = "templateSIMTaskScheduleSave")
+	public String templateSIMTaskInformSave(HttpServletRequest request, TemplateTaskSchedule templateTaskSchedule,
+			ModelMap map) {
+		Integer parentId = (Integer) request.getSession().getAttribute("parentId");
+		if (templateTaskSchedule.getTitle().equals("") || templateTaskSchedule.getTitle() == null) {
+			map.put("Error_title", "标题不能为空");
+			return "upStream/template/templateSIM/templateSIMTaskPhaseCreate";
+		}
+		if (parentId != null) {
+			templateTaskScheduleService.add(templateTaskSchedule);// 持久化待办任务
+			TemplateTaskTreeNode templateTaskTreeNode = new TemplateTaskTreeNode();
+			templateTaskTreeNode.setParentId(parentId);
+			templateTaskTreeNode.setType(0);
+			templateTaskTreeNode.setTemplateTaskSchedule(templateTaskSchedule);
+			templateTaskTreeNodeService.add(templateTaskTreeNode);// 持久化任务结点
+		}
+		Template template = (Template) request.getSession().getAttribute("template");
+		return "redirect:templateSIMTask?id=" + template.getId();
+	}
+
+	// SIM模板 - 任务 - 编辑待办任务
+	@RequestMapping(value = "templateTaskScheduleEdit")
+	public String templateTaskScheduleEdit(Integer id, HttpServletRequest request) {
+		if (id != null) {
+			TemplateTaskSchedule templateTaskSchedule = templateTaskScheduleService.getById(id);
+			request.setAttribute("schedule", templateTaskSchedule);
+		}
+		return "upStream/template/templateSIM/templateSIMTaskScheduleEdit";
+	}
+
+	// SIM模板 - 任务 - 编辑待办任务保存至数据库
+	@RequestMapping(value = "templateTaskScheduleEditSave")
+	public String templateTaskScheduleEditSave(TemplateTaskSchedule templateTaskSchedule, HttpServletRequest request) {
+		templateTaskScheduleService.edit(templateTaskSchedule);
+		return "redirect:templateSIMTask?";
+	}
+
+	// 查看阶段详细信息
+	@RequestMapping(value = "templateTaskPhaseInfo")
+	public String templateTaskPhaseInfo(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
+		TemplateTaskPhase templateTaskPhase = templateTaskPhaseService.getById(id);
+		request.getSession().setAttribute("taskPhase", templateTaskPhase);
+		return "upStream/template/templateSIM/templateSIMTaskPhaseInfo";
+	}
+
+	// 查看阶段详细信息
+	@RequestMapping(value = "templateTaskScheduleInfo")
+	public String templateTaskScheduleInfo(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
+		TemplateTaskSchedule templateTaskSchedule = templateTaskScheduleService.getById(id);
+		request.getSession().setAttribute("schedule", templateTaskSchedule);
+		return "upStream/template/templateSIM/templateSIMTaskScheduleInfo";
 	}
 
 	// SIM模板 - 团队

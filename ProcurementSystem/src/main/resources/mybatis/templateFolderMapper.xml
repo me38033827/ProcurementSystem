@@ -12,6 +12,18 @@
 		)
 	</insert>
 
-	
+	<select id="getById" resultType="com.ProcurementSystem.entity.TemplateFolder">
+		select * from template_folder
+		where id = #{id}
+	</select>
+
+	<update id="editById" parameterType="com.ProcurementSystem.entity.TemplateFolder">
+		update template_folder set
+		name = #{name},
+		description = #{description},
+		owner = #{owner},
+		access_control = #{accessControl}
+		where id = #{id}
+	</update>
 	
 </mapper>

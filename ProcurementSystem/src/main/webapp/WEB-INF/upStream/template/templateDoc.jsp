@@ -5,47 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@include file="../../other/header1return.jsp"%>
-<script src="../../js/bootstrap-treeview.js"></script>
+<script src="../../js/my-bootstrap-treeview.js"></script>
 <style type="text/css">
-.jq22-header {
-	margin-bottom: 15px;
-	font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial,
-		"Microsoft YaHei", FreeSans, Arimo, "Droid Sans",
-		"wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3",
-		"FontAwesome", sans-serif;
-}
-
-.jq22-icon {
-	color: #fff;
-}
-
-.tree-2-col {
-	width: 30%;
-	/* background-color: red; */
-	float: right;
-	padding: 0 16px 0 16px;
-}
-
-.template-tree-title1 {
-	width: 40%;
-	/* background-color: red; */
-	float: left;
-	padding: 10px 16px 10px 16px;
-}
-
-.template-tree-title2 {
-	width: 29%;
-	/* background-color: red; */
-	float: left;
-	padding: 10px 16px 10px 16px;
-}
-
-.template-tree-title3 {
-	/* width: 29%; */
-	/* background-color: red; */
-	float: left;
-	padding: 10px 16px 10px 16px;
-}
 </style>
 </head>
 <!-- 页面整体宽度：1320px -->
@@ -70,7 +31,8 @@
 								<li><a class="manu-deactive">创建</a></li>
 								<li><a class="manu-active"
 									href="templateCreateFolder?parentId=1000001">&nbsp;&nbsp;文件夹</a></li>
-								<li><a class="manu-active" href="templateChooseType?parentId=1000001">&nbsp;&nbsp;模板</a></li>
+								<li><a class="manu-active"
+									href="templateChooseType?parentId=1000001">&nbsp;&nbsp;模板</a></li>
 							</ul>
 						</div>
 					</div>
@@ -84,7 +46,6 @@
 						<div style="clear: both"></div>
 					</div>
 					<div id="treeview1"></div>
-
 				</div>
 			</div>
 		</div>
@@ -99,6 +60,29 @@
 		   	 data: ${json}
 		    });
 		});
+		
+		function createFolder(id){
+			window.location.href="templateCreateFolder?parentId="+id;
+		}
+		function createTemplate(id){
+			window.location.href="templateChooseType?parentId="+id;
+		}
+		function openTemplate(id){
+			window.location.href="templateSIMTask?id="+id;
+		}
+		
+		function deleteTemplate(id){
+			window.location.href="templateDelete?id="+id;
+		}
+		function folderEdit(id){
+			window.location.href="templateFolderEdit?id="+id;
+		}
+		function folderDelete(id){
+			window.location.href="templateFolderDelete?id="+id;
+		}
+		function folderProfile(id){
+			window.location.href="templateFolderProfile?id="+id;
+		}
 	</script>
 </body>
 </html>
