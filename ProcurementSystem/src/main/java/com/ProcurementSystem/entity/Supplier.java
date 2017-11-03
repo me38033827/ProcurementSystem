@@ -9,7 +9,7 @@ public class Supplier {
 	private int uniqueName;
 	private ArrayList<Commodity> commodities;
 	private int contactUniqueName;
-	@NotEmpty(message="公司名称不能为空")
+	@NotEmpty(message = "公司名称不能为空")
 	private String name;
 	private String isSupplier;
 	private String isClient;
@@ -20,10 +20,10 @@ public class Supplier {
 	private String fullNameByLaw;
 	private String stockCode;
 	private String province;
-	@NotEmpty(message="总机不能为空")
+	@NotEmpty(message = "总机不能为空")
 	private String switchboard;
-	@NotEmpty(message="电子邮件地址不能为空")
-	@Email(message="请输入合法的电子邮件地址，如：zhangsan@126.com")
+	@NotEmpty(message = "电子邮件地址不能为空")
+	@Email(message = "请输入合法的电子邮件地址，如：zhangsan@126.com")
 	private String mainEmail;
 	private String UNSPSCCommodity;
 	private String duns;
@@ -39,6 +39,7 @@ public class Supplier {
 	private String district;
 	private String mainFaxZone;
 	private String switchboardZone;
+	private TemplateTaskTreeNode templateTaskTreeNode;
 
 	public int getUniqueName() {
 		return uniqueName;
@@ -270,6 +271,14 @@ public class Supplier {
 
 	public void setCreator(User creator) {
 		this.creator = creator;
+	}
+
+	public TemplateTaskTreeNode getTemplateTaskTreeNode() {
+		return templateTaskTreeNode;
+	}
+
+	public void setTemplateTaskTreeNode(TemplateTaskTreeNode templateTaskTreeNode) {
+		this.templateTaskTreeNode = templateTaskTreeNode;
 	}
 
 }

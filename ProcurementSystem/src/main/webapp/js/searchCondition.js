@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 $(function(){
 	if(pageId==2004){
 		showSupplierBox();
@@ -10,15 +6,6 @@ $(function(){
 	}else if(pageId=='2006'){
 		showSupplierSQMBox();
 	}
-<<<<<<< Updated upstream
-
-
-$(function(){	
-	var userId = $("#userId").val();
-	var pageId = $("#pageId").val();
-
-=======
->>>>>>> Stashed changes
 	$.ajax({
 		data:{
 			"userId":userId,
@@ -369,7 +356,7 @@ function actionSupplier(){
 										+"新建&nbsp;<span class=\"caret\"></span>"
 									+"</button>"
 									+"<ul class=\"dropdown-menu manu-btn-o\">"
-										+"<li><a class=\"manu-btn\" onclick=\"window.location.href='../supplier/supplierCreation'\">供应商</a></li>"
+										+"<li><a class=\"manu-btn\" onclick=\"window.location.href='supplierCreation'\">供应商</a></li>"
 										+"<li><a class=\"manu-btn\">客户</a></li>"
 									+"</ul>"
 								+"</div>"
