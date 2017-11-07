@@ -99,7 +99,7 @@
 					<div class="standard-row1">
 						<div class="template-tree-title1">名称</div>
 						<div class="template-tree-title2">所有者</div>
-						<div class="template-tree-title3">条件</div>
+						<div class="template-tree-title3">状态</div>
 						<div style="clear: both"></div>
 					</div>
 					<div id="treeview1"></div>
@@ -142,6 +142,24 @@
 		}
 		function templateTaskPhaseInfo(id){
 			window.location.href="templateTaskPhaseInfo?id="+id;
+		}
+		function templateTaskScheduleMarkStart(id){
+			window.location.href="templateTaskScheduleMarkStart?id="+id;
+		}
+		function templateTaskScheduleMarkComplete(id){
+			window.location.href="templateTaskScheduleMarkComplete?id="+id;
+		}
+		function templateTaskScheduleReactive(id){
+			window.location.href="templateTaskScheduleReactive?id="+id;
+		}
+		function templateTaskPhaseMarkReactive(id){
+			window.location.href="templateTaskPhaseMarkReactive?id="+id;
+		}
+		function templateTaskPhaseMarkComplete(id){
+			window.location.href="templateTaskPhaseMarkComplete?id="+id;
+		}
+		function templateTaskPhaseMarkStart(id){
+			window.location.href="templateTaskPhaseMarkStart?id="+id;
 		}
 	</script>
 </body>

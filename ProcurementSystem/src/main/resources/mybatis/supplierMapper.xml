@@ -51,6 +51,7 @@
 				<result property="reserveContent" column="templateTaskPhaseReserveContent" />
 				<result property="rank" column="templateTaskPhaseReserveRank" />
 				<result property="isDuped" column="templateTaskPhaseIsDuped" />
+				<result property="status" column="templateTaskPhaseStatus" />
 			</association>
 			<association property="templateTaskSchedule"
 				javaType="com.ProcurementSystem.entity.TemplateTaskSchedule">
@@ -64,6 +65,7 @@
 				<result property="setField" column="templateTaskScheduleSetField" />
 				<result property="preTask" column="templateTaskSchedulePreTask" />
 				<result property="rank" column="templateTaskScheduleRank" />
+				<result property="status" column="templateTaskScheduleStatus" />
 			</association>
 		</association>
 	</resultMap>
@@ -117,12 +119,15 @@
 		ttp.rank as
 		templateTaskPhaseReserveRank,
 		ttp.is_duped as templateTaskPhaseIsDuped,
-		tts.id as templateTaskScheduleId,
+		ttp.status as templateTaskPhaseStatus,
+		tts.id as
+		templateTaskScheduleId,
 		tts.title as
 		templateTaskScheduleTitle,
 		tts.owner as
 		templateTaskScheduleOwner,
-		tts.watcher as templateTaskScheduleWatcher,
+		tts.watcher as
+		templateTaskScheduleWatcher,
 		tts.ddl as
 		templateTaskScheduleDdl,
 		tts.is_milestone as
@@ -133,16 +138,20 @@
 		templateTaskScheduleSetField,
 		tts.pre_task as
 		templateTaskSchedulePreTask,
-		tts.rank as templateTaskScheduleRank
+		tts.rank as templateTaskScheduleRank,
+		tts.status as templateTaskScheduleStatus
 		from
-		supplier left join user on creator_unique_name =
+		supplier left join user on
+		creator_unique_name =
 		user.unique_name left
-		join template_task_tree_node tttn
+		join template_task_tree_node
+		tttn
 		on
 		supplier.task_tree_node_id =
 		tttn.id
 		left join
-		template_task_phase ttp
+		template_task_phase
+		ttp
 		on
 		tttn.template_task_phase_id =
 		ttp.id and

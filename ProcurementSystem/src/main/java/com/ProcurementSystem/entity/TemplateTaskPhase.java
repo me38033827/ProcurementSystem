@@ -7,6 +7,7 @@ public class TemplateTaskPhase {
 	private String reserveContent;
 	private String rank;
 	private String isDuped;
+	private String status;
 
 	public Integer getId() {
 		return id;
@@ -54,6 +55,14 @@ public class TemplateTaskPhase {
 
 	public void setIsDuped(String isDuped) {
 		this.isDuped = isDuped;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

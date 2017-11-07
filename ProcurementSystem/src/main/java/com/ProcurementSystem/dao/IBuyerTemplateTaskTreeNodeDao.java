@@ -12,4 +12,7 @@ public interface IBuyerTemplateTaskTreeNodeDao {
 
 	void deleteById(Integer id);
 
+	TemplateTaskTreeNode getById(Integer id);
+
+
 }

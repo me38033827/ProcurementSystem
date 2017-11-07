@@ -34,8 +34,8 @@
 
 		levels : 2,
 
-		expandIcon : 'glyphicon glyphicon-plus',
-		collapseIcon : 'glyphicon glyphicon-minus',
+		expandIcon: 'glyphicon glyphicon-chevron-right',
+		collapseIcon: 'glyphicon glyphicon-chevron-down',
 		emptyIcon : 'glyphicon',
 		nodeIcon : '',
 		selectedIcon : '',
@@ -395,6 +395,25 @@
 			} else if (classList[1].indexOf('templateTaskPhase-info') !== -1) {
 				var id = classList[1].split("-")[2];
 				templateTaskPhaseInfo(id);
+			} else if (classList[1].indexOf('templateTaskSchedule-markStart') !== -1) {
+				var id = classList[1].split("-")[2];
+				templateTaskScheduleMarkStart(id);
+			} else if (classList[1]
+					.indexOf('templateTaskSchedule-markComplete') !== -1) {
+				var id = classList[1].split("-")[2];
+				templateTaskScheduleMarkComplete(id);
+			} else if (classList[1].indexOf('templateTaskSchedule-reactive') !== -1) {
+				var id = classList[1].split("-")[2];
+				templateTaskScheduleReactive(id);
+			} else if (classList[1].indexOf('templateTaskPhase-markStart') !== -1) {
+				var id = classList[1].split("-")[2];
+				templateTaskPhaseMarkStart(id);
+			} else if (classList[1].indexOf('templateTaskPhase-markComplete') !== -1) {
+				var id = classList[1].split("-")[2];
+				templateTaskPhaseMarkComplete(id);
+			} else if (classList[1].indexOf('templateTaskPhase-reactive') !== -1) {
+				var id = classList[1].split("-")[2];
+				templateTaskPhaseMarkReactive(id);
 			}
 
 		} else {

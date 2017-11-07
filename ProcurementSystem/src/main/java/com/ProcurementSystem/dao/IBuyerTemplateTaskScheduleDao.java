@@ -1,6 +1,9 @@
 package com.ProcurementSystem.dao;
 
+import java.util.Map;
+
 import com.ProcurementSystem.entity.TemplateTaskSchedule;
+import com.ProcurementSystem.entity.TemplateTaskTreeNode;
 
 public interface IBuyerTemplateTaskScheduleDao {
 
@@ -9,5 +12,9 @@ public interface IBuyerTemplateTaskScheduleDao {
 	TemplateTaskSchedule getById(Integer id);
 
 	void edit(TemplateTaskSchedule templateTaskSchedule);
+
+	void setStatus(Map<String, Object> map);
+
+	TemplateTaskTreeNode getTemplateTaskTreeNode(Integer id);
 
 }

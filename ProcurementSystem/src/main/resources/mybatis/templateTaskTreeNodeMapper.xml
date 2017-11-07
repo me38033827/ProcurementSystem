@@ -28,12 +28,15 @@
 		ttp.rank as
 		templateTaskPhaseReserveRank,
 		ttp.is_duped as templateTaskPhaseIsDuped,
-		tts.id as templateTaskScheduleId,
+		ttp.status as templateTaskPhaseStatus,
+		tts.id as
+		templateTaskScheduleId,
 		tts.title as
 		templateTaskScheduleTitle,
 		tts.owner as
 		templateTaskScheduleOwner,
-		tts.watcher as templateTaskScheduleWatcher,
+		tts.watcher as
+		templateTaskScheduleWatcher,
 		tts.ddl as
 		templateTaskScheduleDdl,
 		tts.is_milestone as
@@ -44,17 +47,22 @@
 		templateTaskScheduleSetField,
 		tts.pre_task as
 		templateTaskSchedulePreTask,
-		tts.rank as templateTaskScheduleRank
+		tts.rank as templateTaskScheduleRank,
+		tts.status as templateTaskScheduleStatus
 		from
-		template_task_tree_node tttn left join
+		template_task_tree_node
+		tttn left join
 		template_task_phase ttp on
-		tttn.template_task_phase_id = ttp.id and
+		tttn.template_task_phase_id =
+		ttp.id and
 		tttn.type=1
 		left join
-		template_task_schedule tts on tttn.template_task_schedule_id =
+		template_task_schedule tts on
+		tttn.template_task_schedule_id =
 		tts.id
 		and tttn.type=0
-		where parent_id = #{parentId};
+		where parent_id =
+		#{parentId};
 	</select>
 	<resultMap type="com.ProcurementSystem.entity.TemplateTaskTreeNode"
 		id="taskTreeNodeMap">
@@ -69,6 +77,7 @@
 			<result property="reserveContent" column="templateTaskPhaseReserveContent" />
 			<result property="rank" column="templateTaskPhaseReserveRank" />
 			<result property="isDuped" column="templateTaskPhaseIsDuped" />
+			<result property="status" column="templateTaskPhaseStatus" />
 		</association>
 		<association property="templateTaskSchedule"
 			javaType="com.ProcurementSystem.entity.TemplateTaskSchedule">
@@ -82,9 +91,64 @@
 			<result property="setField" column="templateTaskScheduleSetField" />
 			<result property="preTask" column="templateTaskSchedulePreTask" />
 			<result property="rank" column="templateTaskScheduleRank" />
+			<result property="status" column="templateTaskScheduleStatus" />
 		</association>
 	</resultMap>
 
+
+
+	<select id="getById" resultMap="taskTreeNodeMap">
+		select
+		tttn.id,
+		tttn.parent_id as
+		parentId,
+		tttn.type,
+		ttp.id as templateTaskPhaseId,
+		ttp.title as
+		templateTaskPhaseTitle,
+		ttp.description as
+		templateTaskPhaseDescription,
+		ttp.reserve_content as
+		templateTaskPhaseReserveContent,
+		ttp.rank as
+		templateTaskPhaseReserveRank,
+		ttp.is_duped as templateTaskPhaseIsDuped,
+		ttp.status as templateTaskPhaseStatus,
+		tts.id as
+		templateTaskScheduleId,
+		tts.title as
+		templateTaskScheduleTitle,
+		tts.owner as
+		templateTaskScheduleOwner,
+		tts.watcher as
+		templateTaskScheduleWatcher,
+		tts.ddl as
+		templateTaskScheduleDdl,
+		tts.is_milestone as
+		templateTaskScheduleIsMileStone,
+		tts.is_must as
+		templateTaskScheduleIsMust,
+		tts.set_field as
+		templateTaskScheduleSetField,
+		tts.pre_task as
+		templateTaskSchedulePreTask,
+		tts.rank as templateTaskScheduleRank,
+		tts.status as templateTaskScheduleStatus
+		from
+		template_task_tree_node
+		tttn left join
+		template_task_phase ttp on
+		tttn.template_task_phase_id =
+		ttp.id and
+		tttn.type=1
+		left join
+		template_task_schedule tts on
+		tttn.template_task_schedule_id =
+		tts.id
+		and tttn.type=0
+		where tttn.id =
+		#{id};
+	</select>
 
 	<delete id="deleteById">
 		delete from template_task_tree_node

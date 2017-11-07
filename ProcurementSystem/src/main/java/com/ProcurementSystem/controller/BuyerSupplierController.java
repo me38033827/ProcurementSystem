@@ -416,16 +416,17 @@ public class BuyerSupplierController {
 		return "upStream/supplier/supplierDetailTeam";
 	}
 
+	/** 任务 */
 	// P2P显示供应商任务
 	@RequestMapping(value = { "supplierDetailTask", "templateSIMTask" })
 	public String showSupplierDetailTask(HttpServletRequest request, ModelMap map) {
 		Supplier supplier = (Supplier) request.getSession().getAttribute("supplierSession");
 		TemplateTaskTreeNode root = supplier.getTemplateTaskTreeNode();
-		if(root != null){
-			TemplateTaskTree taskaskTree = new TemplateTaskTree(root);// 生成任务树
-			templateTaskTreeNodeService.generateTemplateTree(taskaskTree);
-			taskaskTree.traverse();
-			JSONArray json = taskaskTree.traverseToJSONArray();
+		if (root != null) {
+			TemplateTaskTree taskTree = new TemplateTaskTree(root);// 生成任务树
+			templateTaskTreeNodeService.generateTemplateTree(taskTree);
+			taskTree.traverse();
+			JSONArray json = taskTree.supplierTasktraverseToJSONArray();
 			map.put("json", json);// json格式的任务树
 		}
 		request.setAttribute("supplier", supplier);
@@ -549,6 +550,62 @@ public class BuyerSupplierController {
 		request.getSession().setAttribute("schedule", templateTaskSchedule);
 		return "upStream/template/templateSIM/templateSIMTaskScheduleInfo";
 	}
+
+	// 待办事项标记已开始
+	@RequestMapping(value = "templateTaskScheduleMarkStart")
+	public String templateTaskScheduleMarkStart(@RequestParam(value = "id") Integer id) {
+		templateTaskScheduleService.setStatus(id, "已开始");
+		TemplateTaskTreeNode templateTaskTreeNode = templateTaskScheduleService.getTemplateTaskTreeNode(id);
+		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
+		return "redirect:supplierDetailTask";
+	}
+
+	// 待办事项标记已完成
+	@RequestMapping(value = "templateTaskScheduleMarkComplete")
+	public String templateTaskScheduleMarkComplete(@RequestParam(value = "id") Integer id) {
+		templateTaskScheduleService.setStatus(id, "已完成");
+		TemplateTaskTreeNode templateTaskTreeNode = templateTaskScheduleService.getTemplateTaskTreeNode(id);
+		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
+		return "redirect:supplierDetailTask";
+	}
+
+	// 待办事项重新激活
+	@RequestMapping(value = "templateTaskScheduleReactive")
+	public String templateTaskScheduleReactive(@RequestParam(value = "id") Integer id) {
+		templateTaskScheduleService.setStatus(id, "未开始");
+		TemplateTaskTreeNode templateTaskTreeNode = templateTaskScheduleService.getTemplateTaskTreeNode(id);
+		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
+		return "redirect:supplierDetailTask";
+	}
+
+	// 阶段标记已开始
+	@RequestMapping(value = "templateTaskPhaseMarkStart")
+	public String templateTaskPhaseMarkStart(@RequestParam(value = "id") Integer id) {
+		templateTaskPhaseService.setStatus(id, "已开始");
+		TemplateTaskTreeNode templateTaskTreeNode = templateTaskPhaseService.getTemplateTaskTreeNode(id);
+		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
+		return "redirect:supplierDetailTask";
+	}
+
+	// 阶段标记已完成
+	@RequestMapping(value = "templateTaskPhaseMarkComplete")
+	public String templateTaskPhaseMarkComplete(@RequestParam(value = "id") Integer id) {
+		templateTaskPhaseService.setStatus(id, "已完成");
+		TemplateTaskTreeNode templateTaskTreeNode = templateTaskPhaseService.getTemplateTaskTreeNode(id);
+		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
+		return "redirect:supplierDetailTask";
+	}
+
+	// 阶段重新激活
+	@RequestMapping(value = "templateTaskPhaseMarkReactive")
+	public String templateTaskPhaseMarkReactive(@RequestParam(value = "id") Integer id) {
+		templateTaskPhaseService.setStatus(id, "未开始");
+		TemplateTaskTreeNode templateTaskTreeNode = templateTaskPhaseService.getTemplateTaskTreeNode(id);
+		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
+		return "redirect:supplierDetailTask";
+	}
+
+	/** 任务结束 */
 
 	// P2P创建供应商 产生新的供应商标识符
 	@RequestMapping(value = "supplierCreation")

@@ -31,5 +31,18 @@
 		is_duped = #{isDuped}
 		where id = #{id}
 	</update>
+	
+	<update id="setStatus">
+		update template_task_phase set
+		status = #{status}
+		where id = #{id}
+	</update>
+	
+	
+	<select id="getTemplateTaskTreeNode" resultType="com.ProcurementSystem.entity.TemplateTaskTreeNode">
+		select parent_id 
+		from template_task_tree_node
+		where template_task_phase_id = #{id}
+	</select>
 
 </mapper>

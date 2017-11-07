@@ -13,6 +13,7 @@ public class TemplateTaskSchedule {
 	private String preTask;
 	private String rank;
 	private String description;
+	private String status;
 
 	public String getSetField() {
 		return setField;
@@ -100,6 +101,14 @@ public class TemplateTaskSchedule {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

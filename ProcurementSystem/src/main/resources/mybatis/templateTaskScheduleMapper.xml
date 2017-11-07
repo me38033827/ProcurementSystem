@@ -45,4 +45,17 @@
 		rank = #{rank}
 		where id = #{id}
 	</update>
+	
+	<update id="setStatus">
+		update template_task_schedule set
+		status = #{status}
+		where id = #{id}
+	</update>
+	
+	
+	<select id="getTemplateTaskTreeNode" resultType="com.ProcurementSystem.entity.TemplateTaskTreeNode">
+		select parent_id 
+		from template_task_tree_node
+		where template_task_schedule_id = #{id}
+	</select>
 </mapper>

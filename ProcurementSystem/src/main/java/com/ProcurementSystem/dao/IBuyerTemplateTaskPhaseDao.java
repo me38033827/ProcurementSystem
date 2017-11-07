@@ -1,6 +1,9 @@
 package com.ProcurementSystem.dao;
 
+import java.util.Map;
+
 import com.ProcurementSystem.entity.TemplateTaskPhase;
+import com.ProcurementSystem.entity.TemplateTaskTreeNode;
 
 public interface IBuyerTemplateTaskPhaseDao {
 
@@ -9,5 +12,9 @@ public interface IBuyerTemplateTaskPhaseDao {
 	TemplateTaskPhase getById(Integer id);// 根据id查询
 
 	void editById(TemplateTaskPhase templateTaskPhase);
+
+	void setStatus(Map<String, Object> map);
+
+	TemplateTaskTreeNode getTemplateTaskTreeNode(Integer id);
 
 }
