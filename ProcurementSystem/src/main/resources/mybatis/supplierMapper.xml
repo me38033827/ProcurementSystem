@@ -72,7 +72,7 @@
 
 	<select id="getSupplierDetail" parameterType="int" resultMap="SupplierMap">
 		select
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD
 			supplier.unique_name as uniqueName,
 			contact_unique_name as contactUniqueName,
 			supplier.name as name,
@@ -105,7 +105,7 @@
 		from supplier, user
 		where supplier.unique_name = #{uniqueName}
 		and creator_unique_name = user.unique_name;
-=======
+======= -->
 		#{uniqueName} as supplierUniqueName,
 		contact_unique_name as
 		contactUniqueName,
@@ -198,7 +198,6 @@
 		where
 		supplier.unique_name = #{uniqueName}
 		;
->>>>>>> origin/master
 	</select>
 
 	<select id="findMaxUniqueName" resultType="int">
@@ -302,12 +301,7 @@
 			<if test="otherAddress!='' and otherAddress!=null">
 				other_address = #{otherAddress}
 			</if>
-<<<<<<< HEAD
- 		</set>
-=======
-
 		</set>
->>>>>>> origin/master
 		where unique_name = #{uniqueName};
 	</update>
 	
