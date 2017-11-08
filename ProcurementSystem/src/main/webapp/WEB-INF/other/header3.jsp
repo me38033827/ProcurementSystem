@@ -8,8 +8,8 @@
 		<div class="col-md-2 inline-b left" id="search-service"
 			style="postion: relative; left: 20px;">
 			<select class="col-md-12" id="page-option" name="page">
-				<c:forEach var="pageOption" items="${pageOptions}" varStatus="status">
-					<option value="${pageOption.pageId}_${pageOption.pageName}">${pageOption.pageName }</option>
+				<c:forEach var="pageOption" items="${pageOptions }" varStatus="status">
+					<option value="${pageOption.pageId }">${pageOption.pageName }</option>
 				</c:forEach>
 			</select>
 	

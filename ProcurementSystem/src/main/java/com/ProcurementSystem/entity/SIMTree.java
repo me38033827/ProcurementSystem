@@ -178,18 +178,18 @@ public class SIMTree {
 				//folder
 				if(child.getType()==1){
 					li="<li><a class=\"manu-deactive\">添加</a ></li>\n"+
-							"<li><a class=\"manu-active sim-create-folder folder-" + child.getSupplierSIM().getId()+"\" >区段</a ></li>\n"+
-							"<li><a class=\"manu-active sim-create-question question-" + child.getSupplierSIM().getId()+"\" >问题</a ></li>\n"+
+							"<li><a onclick=\"createFolder("+child.getSupplierSIM().getId()+")\" class=\"manu-active sim-create-folder folder-" + child.getSupplierSIM().getId()+"\" >区段</a ></li>\n"+
+							"<li><a onclick=\"createQuestion("+child.getSupplierSIM().getId()+")\" class=\"manu-active sim-create-question question-" + child.getSupplierSIM().getId()+"\" >问题</a ></li>\n"+
 							"<li><a class=\"manu-deactive\">操作</a ></li>\n"+
-							"<li><a class=\"manu-active sim-edit-folder edit-" + child.getSupplierSIM().getId()+"\" >编辑</a ></li>\n"+
-							"<li><a class=\"manu-active sim-delete-folder delete-" + child.getSupplierSIM().getId()+"\" >删除</a ></li>\n";
+							"<li><a onclick=\"editFolder("+child.getSupplierSIM().getId()+")\" class=\"manu-active sim-edit-folder edit-" + child.getSupplierSIM().getId()+"\" >编辑</a ></li>\n"+
+							"<li><a onclick=\"deleteFolder("+child.getSupplierSIM().getId()+")\" class=\"manu-active sim-delete-folder delete-" + child.getSupplierSIM().getId()+"\" >删除</a ></li>\n";
 				}
 				//question
 				else{
 					
 					li="<li><a class=\"manu-deactive\">操作</a ></li>\n"+
-							"<li><a class=\"manu-active sim-edit-question edit-" + child.getSupplierSIM().getId()+"\" >编辑</a ></li>\n"+
-							"<li><a class=\"manu-active sim-delete-question delete-" + child.getSupplierSIM().getId()+"\" >删除</a ></li>\n";
+							"<li><a onclick=\"editQuestion("+child.getSupplierSIM().getId()+")\" class=\"manu-active sim-edit-question edit-" + child.getSupplierSIM().getId()+"\" >编辑</a ></li>\n"+
+							"<li><a onclick=\"deleteQuestion("+child.getSupplierSIM().getId()+")\" class=\"manu-active sim-delete-question delete-" + child.getSupplierSIM().getId()+"\" >删除</a ></li>\n";
 
 					int child_type = child.getType();
 					int child_accept_value = child.getSupplierSIM().getAcceptValue();

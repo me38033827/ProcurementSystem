@@ -265,11 +265,13 @@
 	</select>
 	
 	<!-- 批量添加问题答案 -->
-	<insert id="addSIMAnswers" parameterType="com.ProcurementSystem.entity.SupplierSIMAnswer">  
+	<insert id="insertOrUpdateSIMAnswers" parameterType="com.ProcurementSystem.entity.SupplierSIMAnswer">  
        <foreach item="item" collection="list" open="" separator=";" close="">  
        		insert into 
        		supplier_sim_answer(supplier_id, question_id, answer)
            	values(#{item.supplierId},#{item.questionId},#{item.answer})
+           	on duplicate key 
+           		update answer = #{item.answer}
        </foreach>  
    </insert> 
 </mapper>

@@ -16,11 +16,11 @@
 			<div class="standard-out">
 				<!-- 主要内容 -->
 				<div class="standard-title">
-					<div class="standard-title-main">创建新的供应商</div>
+					<div class="standard-title-main">编辑供应商概要</div>
 					<div class="standard-title-r">
 						<button form="supplierCreation" class="btn-b">确定</button>
 						<button class="btn-w"
-							onclick="../search/supplierSearchDistribute?page=2004">取消</button>
+							onclick="window.location.href='supplierSearch?action=back'">取消</button>
 					</div>
 				</div>
 
@@ -31,21 +31,22 @@
 				<div class="adjust-10"></div>
 
 				<div class="standard-subtitle">组织概要</div>
-				<form id="supplierCreation" action="supplierAnalyze" method="post">
+				<form id="supplierCreation" action="editSupplierAnalyze" method="post">
 					<div class="row">
 						<div class="col-md-5">
 							<table class="fulltab" style="margin-left: 80px;">
 								<tr class="row-standard">
 									<td class="col-standard1">＊组织名称：</td>
 									<td class="col-standard2"><input
-										class="form-control input" name="name" /></td>
+										class="form-control input" name="name" 
+										value="${supplier.name }"/></td>
 								</tr>
 
 								<tr class="row-standard">
 									<td class="col-standard1" valign="top">简短描述：</td>
 									<td class="col-standard2"><textarea class="form-control"
 											id="pr-textarea" name="description"
-											style="border: 1px solid #428bca; border-radius: 0;"></textarea></td>
+											style="border: 1px solid #428bca; border-radius: 0;">${supplier.description }</textarea></td>
 								</tr>
 
 								<tr class="row-standard">
@@ -57,10 +58,8 @@
 									<td class="col-standard1">客户：</td>
 									<td class="col-standard2">
 										<div class="radio">
-											<label><input type="radio" name="isClient"
-												id="optionsRadios1" value="是">是</label> <label><input
-												type="radio" name="isClient" id="optionsRadios2" value="否"
-												checked>否</label>
+											<label><input type="radio" name="isClient" id="isClient是" value="是">是</label> 
+											<label><input type="radio" name="isClient" id="isClient否" value="否">否</label>
 										</div>
 									</td>
 								</tr>
@@ -68,7 +67,7 @@
 								<tr class="row-standard">
 									<td class="col-standard1">审批状态：</td>
 									<td class="col-standard2"><select id="my-select"
-										name="approveState">
+										name="approveState" value="${supplier.description }">
 											<option>已批准</option>
 											<option>未批准</option>
 									</select></td>
@@ -77,19 +76,19 @@
 								<tr class="row-standard">
 									<td class="col-standard1">其他名称1：</td>
 									<td class="col-standard2"><input
-										class="form-control input" name="otherName1" /></td>
+										class="form-control input" name="otherName1" value="${supplier.otherName1}" /></td>
 								</tr>
 
 								<tr class="row-standard">
 									<td class="col-standard1">其他名称2：</td>
 									<td class="col-standard2"><input
-										class="form-control input" name="otherName2" /></td>
+										class="form-control input" name="otherName2" value="${supplier.otherName2}"/></td>
 								</tr>
 
 								<tr class="row-standard">
 									<td class="col-standard1">法定全称：</td>
 									<td class="col-standard2"><input name="fullNameByLaw"
-										class="form-control input" /></td>
+										class="form-control input" value="${supplier.fullNameByLaw}"/></td>
 								</tr>
 
 								<tr class="row-standard">
@@ -141,34 +140,34 @@
 								<tr class="row-standard">
 									<td class="col-standard1">＊总机：</td>
 									<td class="col-standard2"><input name="switchboard"
-										class="form-control input" /></td>
+										class="form-control input" value="${supplier.switchboard}"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">主要传真：</td>
 									<td class="col-standard2"><input name="mainFax"
-										class="form-control input" /></td>
+										class="form-control input" value="${supplier.mainFax}"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">主要电子邮件地址：</td>
 									<td class="col-standard2"><input name="mainEmail"
-										class="form-control input" /></td>
+										class="form-control input" value="${supplier.mainEmail}"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">公司URL：</td>
 									<td class="col-standard2"><input name="corporateUrl"
-										class="form-control input" /></td>
+										class="form-control input" value="${supplier.corporateUrl}"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">标识符：</td>
-									<td class="col-standard2">SU<%=request.getAttribute("uniqueName")%>
+									<td class="col-standard2">SU${supplier.uniqueName}
 										<input type="hidden" id="uniqueName" name="uniqueName"
-										value=<%=request.getAttribute("uniqueName")%>>
+										value="${supplier.uniqueName}">
 									</td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">组织类型：</td>
 									<td class="col-standard2"><input name="organizationType"
-										class="form-control input" /></td>
+										class="form-control input" value="${supplier.organizationType}"/></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">父级：</td>
@@ -193,13 +192,72 @@
 					</div>
 					<div style="border:1px solid #ddd; max-height:500px; overflow-x:scroll;">
 		          		<div id="treeview-sim" class=""></div>
+						
 					</div>
 					<input value="0" id="count" hidden="hidden" />
 				</form>
+
 				<div class="adjust-10"></div>
 				<div class="adjust-10"></div>
 				<div class="adjust-10"></div>
 				<div class="adjust-10"></div>
+
+				<div class="theme-popover question" style="margin-left: 400px;">
+					<div class="popover-container question">
+
+						<a>题目类型：</a> <select>
+							<option onclick="mShow();">选择</option>
+							<option>填空</option>
+						</select>
+						<div id="multiple-choice">
+							<table>
+								<tr>
+									<td>问题：</td>
+									<td><input class="form-control input" style="width: 200px"
+										id="question-m" /></td>
+								</tr>
+								<tr>
+									<td>选项一：</td>
+									<td><input class="form-control input" style="width: 200px"
+										id="a" /></td>
+								</tr>
+								<tr>
+									<td>选项二：</td>
+									<td><input class="form-control input" style="width: 200px"
+										id="b" /></td>
+								</tr>
+								<tr>
+									<td>选项三：</td>
+									<td><input class="form-control input" style="width: 200px"
+										id="c" /></td>
+								</tr>
+								<tr>
+									<td>选项四：</td>
+									<td><input class="form-control input" style="width: 200px"
+										id="d" /></td>
+								</tr>
+							</table>
+							<div style="padding: 0 20px; height: 50px; margin-top: 10px;">
+								<button class="btn-b" onclick="addMultipleChoice()">确定</button>
+								<button class="btn-w right" onclick="cancel();">取消</button>
+							</div>
+						</div>
+						<div id="blank" style="display: none;">
+							<table>
+								<tr>
+									<td>问题：</td>
+									<td><input class="form-control input" style="width: 200px"
+										id="a" /></td>
+								</tr>
+							</table>
+							<div style="padding: 0 20px; height: 50px; margin-top: 10px;">
+								<button class="btn-b">确定</button>
+								<button class="btn-w right">取消</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
 
 				<div class="theme-popover">
 					<div class="popover-container">
@@ -396,6 +454,28 @@
 		     $('#treeview-sim').treeview({
 		       data: defaultData
 		     });
+		     
+		     $("#approveState").val("${supplier.approveState}");
+		     $('#isClient'+"${supplier.isClient}").prop('checked', true);
+		     var supplierId = $("#uniqueName").val();
+		     $.ajax({
+		 		data:{
+		 			"supplierId":supplierId
+		 		},  
+		 		type:"POST",  
+		 		dataType: 'json',
+		 	    url:"getSIMAnswers",
+		 	    success:function(data){
+		 	    		//初始化搜索条件
+					console.log(data);
+		 	    		for(var i = 0; i < data.length; i++){
+		 	    			$("#ans-"+data[i].questionId).val(data[i].answer);
+		 	    		}
+		 	   	},
+		 	    error:function(data){
+		 	    		alert("数据库错误！")
+		 	    }  
+		 	});
 		})
 		jQuery(document)
 				.ready(

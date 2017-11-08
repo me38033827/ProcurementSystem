@@ -43,33 +43,33 @@
  	
 	<select id="getSupplierDetail" parameterType="int" resultMap="SupplierMap">
 		select
-			#{uniqueName} as supplierUniqueName,
+			supplier.unique_name as uniqueName,
 			contact_unique_name as contactUniqueName,
 			supplier.name as name,
-			is_supplier as isSupplier,
-			is_client as isClient,
-			description as description,
-			approve_state as approveState,
-			other_name1 as otherName1,
-			other_name2 as otherName2,
-			full_name_by_law as fullNameByLaw,
-			stock_code as stockCode,
-			province as province,
-			switchboard as switchboard,
-			main_email as mainEmail,
-			unspsc_commodity as UNSPSCCommodity,
-			duns as duns,
-			other_address as otherAddress,
-			main_fax as mainFax,
-			corporate_url as corporateUrl,
-			organization_type as organizationType,
-			parent_value as parentValue,
-			manage as manage,
-			post_code as postCode,
-			address as address,
-			district as district,
-			main_fax_zone as mainFaxZone,
-			switchboard_zone as swtichboardZone,
+			is_supplier,
+			is_client,
+			description,
+			approve_state,
+			other_name1,
+			other_name2,
+			full_name_by_law,
+			stock_code,
+			province,
+			switchboard,
+			main_email,
+			unspsc_commodity,
+			duns,
+			other_address,
+			main_fax,
+			corporate_url,
+			organization_type,
+			parent_value,
+			manage,
+			post_code,
+			address,
+			district,
+			main_fax_zone,
+			switchboard_zone,
 			creator_unique_name as creatorUniqueName, 
 			user.name as creatorName
 		from supplier, user
@@ -158,8 +158,17 @@
 			<if test="otherAddress!='' and otherAddress!=null">
 				other_address = #{otherAddress}
 			</if>
-			
  		</set>
 		where unique_name = #{uniqueName};
 	</update>
+	
+	<select id="searchSupplier" parameterType="String" resultType="com.ProcurementSystem.entity.Supplier">
+		select * from supplier where name like #{content}
+		union
+		select * from supplier where unique_name like #{content};
+	</select>
+
+	<select id="searchAllSupplier" resultType="com.ProcurementSystem.entity.Supplier">
+		select * from supplier;
+	</select>
 </mapper>

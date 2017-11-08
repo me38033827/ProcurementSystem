@@ -97,4 +97,9 @@ public class SearchService {
 	public int getPosition(Search search){
 		return dao.getPosition(search);
 	}
+	
+	// 获取搜索页面名称
+	public String getPageName(int pageId){
+		return dao.getPageName(pageId);
+	}
 }

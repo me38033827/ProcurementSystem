@@ -19,7 +19,7 @@
 						<button form="supplierSQMCreation"
 							formaction="sqmCreation?action=submit" class="btn-b">确定</button>
 						<button class="btn-w"
-							onclick="window.location.href='supplierSearch?action=back'">取消</button>
+							onclick="window.location.href='../main'">取消</button>
 					</div>
 				</div>
 				<div class="title-description">
@@ -139,7 +139,7 @@
 						<button form="supplierSQMCreation"
 							formaction="sqmCreation?action=submit" class="btn-b">确定</button>
 						<button class="btn-w"
-							onclick="window.location.href='supplierSearch?action=back'">取消</button>
+							onclick="window.location.href='../main'">取消</button>
 					</div>
 				</div>
 			</div>

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@include file="../../other/header1return.jsp"%>
-<script src="/ProcurementSystem/js/bootstrap-treeview.js"></script>
+<script src="/ProcurementSystem/js/simTree.js"></script>
 <script src="/ProcurementSystem/js/simQuestionnaire.js"></script>
 <title>供应商详情－概要</title>
 </head>
@@ -73,7 +73,7 @@
 								</button>
 								<ul class="dropdown-menu" style="width:120px;">
 									<li><a class="manu-deactive">编辑</a></li>
-									<li><a class="manu-active" href="">&nbsp;&nbsp;概要</a></li>
+									<li><a class="manu-active" href="editSupplierDetail?id=<%=request.getSession().getAttribute("uniqueName") %>">&nbsp;&nbsp;概要</a></li>
 									<li><a class="manu-deactive" >查看</a></li>
 									<li><a class="manu-active" href="">&nbsp;&nbsp;组织标识符</a></li>
 									<li><a class="manu-active" href="">&nbsp;&nbsp;厂商密钥</a></li>
@@ -381,7 +381,7 @@
 
 		<script>
 		function back(){
-			location.href="";
+			location.href="../search/supplierSearchDistribute?page=2004";
 		}
 		$(function(){
  	        var defaultData = ${treeData};
@@ -389,28 +389,6 @@
  	          data: defaultData
  	        });
 		})
- 	        
-<%--  	        //set answers 
- 	       	var supplierId = <%=request.getSession().getAttribute("uniqueName") %>;
-	    	     $.ajax({  
-	    	        traditional: true,  
-	    	        data:{  
-	    	            "supplierId":supplierId
-	    	        },    
-	    	        type:"POST",    
-	    	        dataType: 'json',  
-	    	        url:"getSIMAnswers",  
-	    	        success:function(data){  
-	    	        		console.log(data);
-	    	        		for(var i = 0; i < data.length; i++){
-	    	        			$("#ans-"+data[i].questionId).text(data[i].answer);
-	    	        		}
-	    	        },  
-	    	        error:function(data){  
-	    	        		alert("数据库错误！")  
-	    	        }    
-	    	    });   --%> 
-	//})
 	</script>
 </body>
 </html>

@@ -205,7 +205,7 @@
 	<%@ include file="../../other/footer.jsp"%>
 		<script>
 			function back(){
-				location.href="supplierSearch?action=back";
+				location.href="../search/supplierSearchDistribute?page=2004";
 			}
 		</script>
 </body>

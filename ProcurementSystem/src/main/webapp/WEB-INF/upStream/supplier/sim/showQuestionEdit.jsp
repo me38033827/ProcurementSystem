@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@include file="../../../other/header1return.jsp"%>
-<script src="/ProcurementSystem/js/bootstrap-treeview.js"></script>
+<script src="/ProcurementSystem/js/simTree.js"></script>
 <script src="/ProcurementSystem/js/simQuestionnaire.js"></script>
 <title>供应商详情－概要</title>
 </head>
@@ -18,7 +18,7 @@
 				<div class="standard-title">
 					<div class="standard-title-main">供应商概要问卷</div> 
 					<div class="standard-title-r">
-						<button class="btn-b">完成</button>
+						<button class="btn-b" onclick="location.href='supplierInformationManagement'">完成</button>
 						<button class="btn-w">取消</button>
 					</div>
 				</div>

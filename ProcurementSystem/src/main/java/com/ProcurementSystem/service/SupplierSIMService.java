@@ -178,6 +178,7 @@ public class SupplierSIMService {
 			ids[i]=results.get(i);
 		}
 		ids[size]=id;
+		dao.nodeMinusOne(id);
 		dao.deleteMultipleSIMs(ids);
 	}
 	
@@ -217,7 +218,7 @@ public class SupplierSIMService {
 		return dao.getAllQuestionId();
 	}
 	
-	public void addSIMAnswers(List<SupplierSIMAnswer> answers){
-		dao.addSIMAnswers(answers);
+	public void insertOrUpdateSIMAnswers(List<SupplierSIMAnswer> answers){
+		dao.insertOrUpdateSIMAnswers(answers);
 	}
 }

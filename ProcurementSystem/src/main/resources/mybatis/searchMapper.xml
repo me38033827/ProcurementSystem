@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ProcurementSystem.dao.ISearchDao">
+	<select id="getPageName" parameterType="int" resultType="String">
+		select page_name from page_mapping
+		where page_id = #{pageid};
+	</select>
+
 	<select id="getPageOptions" parameterType="map" resultType="com.ProcurementSystem.entity.Page">
 		select page_id, page_name from page_mapping
 		where 1=1

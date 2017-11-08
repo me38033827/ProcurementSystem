@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 $(function(){
 	if(pageId==2004){
 		showSupplierBox();
@@ -10,15 +6,6 @@ $(function(){
 	}else if(pageId=='2006'){
 		showSupplierSQMBox();
 	}
-<<<<<<< Updated upstream
-
-
-$(function(){	
-	var userId = $("#userId").val();
-	var pageId = $("#pageId").val();
-
-=======
->>>>>>> Stashed changes
 	$.ajax({
 		data:{
 			"userId":userId,

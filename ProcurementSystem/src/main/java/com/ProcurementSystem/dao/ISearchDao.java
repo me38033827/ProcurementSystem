@@ -25,5 +25,7 @@ public interface ISearchDao {
 	List<Page> getPageOptions(Map<String, Object> params);
 	
 	int getPosition(Search search);
+	
+	String getPageName(int pageId);
 }
 

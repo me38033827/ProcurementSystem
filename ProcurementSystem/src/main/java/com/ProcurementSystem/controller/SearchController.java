@@ -35,20 +35,23 @@ public class SearchController {
 	@Resource
 	SupplierSQMService supplierSQMService;
 	
-	// 从主页跳转到不同类型的搜索页面
+	// 从供应商主页跳转到不同类型的搜索页面
 	@RequestMapping(value = "supplierSearchDistribute")
 	public String supplierSearchDistribute(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String page = request.getParameter("page");
-		int pageId = Integer.parseInt(page.split("_")[0]);
-		String pageName = page.split("_")[1];
+		int pageId = Integer.parseInt(page);
 		String content = request.getParameter("content");
+		
+		// 搜索页面标题
+		String pageName = service.getPageName(pageId);
+		
 		session.setAttribute("pageId", pageId);
 		session.setAttribute("pageName", pageName);
 		session.setAttribute("content", content);
 		return "main/search";
 	}
-	
+	 
 	// ＋功能实现：添加搜索条件
 	@RequestMapping(value = "addSearchCondition")
 	public @ResponseBody Search addSearchCondition(

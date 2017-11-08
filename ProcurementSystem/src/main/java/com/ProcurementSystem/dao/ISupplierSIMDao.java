@@ -55,5 +55,5 @@ public interface ISupplierSIMDao {
 	
 	List<SupplierSIM> getAllQuestionId();
 	
-	void addSIMAnswers(List<SupplierSIMAnswer> answers);
+	void insertOrUpdateSIMAnswers(List<SupplierSIMAnswer> answers);
 }
