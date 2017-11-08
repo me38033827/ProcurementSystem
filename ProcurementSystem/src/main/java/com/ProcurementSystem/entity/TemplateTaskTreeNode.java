@@ -1,54 +1,61 @@
 package com.ProcurementSystem.entity;
 
+import java.util.List;
+
 public class TemplateTaskTreeNode {
-	private	Integer	id	;
-	private	Integer	parentId	;
-	private	String	title	;
-	private	String	description	;
-	private	String	reserveContent	;
-	private	String	rank	;
-	private	Integer	isDuped	;
+	private Integer id;
+	private Integer parentId;
+	private Integer type;
+	private TemplateTaskPhase templateTaskPhase;
+	private TemplateTaskSchedule templateTaskSchedule;
+	private List<TemplateTaskTreeNode> children;
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public Integer getParentId() {
 		return parentId;
 	}
+
 	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
-	public String getTitle() {
-		return title;
+
+	public Integer getType() {
+		return type;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
-	public String getDescription() {
-		return description;
+
+	public TemplateTaskPhase getTemplateTaskPhase() {
+		return templateTaskPhase;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setTemplateTaskPhase(TemplateTaskPhase templateTaskPhase) {
+		this.templateTaskPhase = templateTaskPhase;
 	}
-	public String getReserveContent() {
-		return reserveContent;
+
+	public TemplateTaskSchedule getTemplateTaskSchedule() {
+		return templateTaskSchedule;
 	}
-	public void setReserveContent(String reserveContent) {
-		this.reserveContent = reserveContent;
+
+	public void setTemplateTaskSchedule(TemplateTaskSchedule templateTaskSchedule) {
+		this.templateTaskSchedule = templateTaskSchedule;
 	}
-	public String getRank() {
-		return rank;
+
+	public List<TemplateTaskTreeNode> getChildren() {
+		return children;
 	}
-	public void setRank(String rank) {
-		this.rank = rank;
+
+	public void setChildren(List<TemplateTaskTreeNode> children) {
+		this.children = children;
 	}
-	public Integer getIsDuped() {
-		return isDuped;
-	}
-	public void setIsDuped(Integer isDuped) {
-		this.isDuped = isDuped;
-	}
-	
+
 }

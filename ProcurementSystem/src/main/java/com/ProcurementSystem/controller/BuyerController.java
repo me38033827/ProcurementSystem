@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.PageParams;
-import com.ProcurementSystem.common.TreeNode;
+import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.service.BuyerCommodityCatalogService;
@@ -56,7 +56,7 @@ public class BuyerController {
 		NavTree navTree = commodityService.generateCommodityNav();
 		request.getServletContext().setAttribute("navTree", navTree);// 获得导航树
 
-		ArrayList<TreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
+		ArrayList<NavTreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
 		map.put("firstClass", firstClass);
 		if (currPage == null || currPage.equals(""))
 			currPage = 1 + ""; // 如果未指定请求页，则默认设置为第一页
@@ -73,7 +73,7 @@ public class BuyerController {
 		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
 		map.put("commoditiesQuantity", commoditiesQuantity);
 		if (code != null && code != "") {// 获得面包屑导航
-			List<TreeNode> breadNav = navTree.getNavClassNames(code);
+			List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
 			map.put("breadNav", breadNav);
 		}
 		map.put("code", code);//保存状态

@@ -25,4 +25,18 @@ public class BuyerTemplateFolderService {
 		return templateFolderDao.getByParentId(parentId);
 	}
 
+	public TemplateFolder getById(Integer id) {
+		return templateFolderDao.getById(id);
+	}
+
+	public void editById(TemplateFolder templateFolder) {
+		// TODO Auto-generated method stub
+		templateFolderDao.editById(templateFolder);
+	}
+
+	public void deleteById(Integer id) {
+		// TODO Auto-generated method stub
+		templateFolderDao.deleteById(id);
+	}
+
 }

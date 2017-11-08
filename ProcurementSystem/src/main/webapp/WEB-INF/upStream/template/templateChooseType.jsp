@@ -21,7 +21,8 @@
 							<div class="right">
 								<button class="btn-b" type="submit" form="createForm">创建</button>
 								<button class="btn-w" type="button"
-									onclick="window.location.href='commodityCatalogList'">取消</button>
+									onclick="window.location.href='templateDoc
+									'">取消</button>
 							</div>
 
 							<div class="small-window-title margin-bottom ">为模板选择项目类型</div>
@@ -36,10 +37,8 @@
 						<form action="templateCreate" method="post" id="createForm">
 							<div class="radio">
 								<label class="model"><input type="radio" name="type"
-									id="spm_model1" value="SIM" checked>信息项目</label><br /> <label
-									class="model"><input type="radio" name="type"
-									id="spm_model2" value="SPM">供应商绩效管理项目</label><br> <label
-									class="model"><input type="radio" name="type"
+									id="spm_model2" value="SPM" checked>供应商绩效管理项目</label><br>
+								<label class="model"><input type="radio" name="type"
 									id="spm_model2" value="SQM">供应商资格管理项目</label>
 							</div>
 						</form>

@@ -5,6 +5,7 @@ public class Template {
 	private	String	name;
 	private	String	description;
 	private	String 	type;
+	private TemplateTaskTreeNode templateTaskTreeNode;
 	public Integer getId() {
 		return id;
 	}
@@ -28,6 +29,12 @@ public class Template {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public TemplateTaskTreeNode getTemplateTaskTreeNode() {
+		return templateTaskTreeNode;
+	}
+	public void setTemplateTaskTreeNode(TemplateTaskTreeNode templateTaskTreeNode) {
+		this.templateTaskTreeNode = templateTaskTreeNode;
 	}
 	
 	
