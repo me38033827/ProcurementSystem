@@ -72,6 +72,40 @@
 
 	<select id="getSupplierDetail" parameterType="int" resultMap="SupplierMap">
 		select
+<!-- <<<<<<< HEAD
+			supplier.unique_name as uniqueName,
+			contact_unique_name as contactUniqueName,
+			supplier.name as name,
+			is_supplier,
+			is_client,
+			description,
+			approve_state,
+			other_name1,
+			other_name2,
+			full_name_by_law,
+			stock_code,
+			province,
+			switchboard,
+			main_email,
+			unspsc_commodity,
+			duns,
+			other_address,
+			main_fax,
+			corporate_url,
+			organization_type,
+			parent_value,
+			manage,
+			post_code,
+			address,
+			district,
+			main_fax_zone,
+			switchboard_zone,
+			creator_unique_name as creatorUniqueName, 
+			user.name as creatorName
+		from supplier, user
+		where supplier.unique_name = #{uniqueName}
+		and creator_unique_name = user.unique_name;
+======= -->
 		#{uniqueName} as supplierUniqueName,
 		contact_unique_name as
 		contactUniqueName,

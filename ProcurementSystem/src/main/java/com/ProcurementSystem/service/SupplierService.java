@@ -38,15 +38,6 @@ public class SupplierService {
 		params.put("uniqueName", uniqueName);
 
 		Supplier supplier = dao.getSupplierDetail(params);
-<<<<<<< HEAD
-		
-		System.out.println("othername" + supplier.getOtherName1());
-		
-=======
-		System.out.println("SUPPLIER (unique name):" + supplier.getUniqueName());
-		System.out.println("Back to supplier service...");
-
->>>>>>> origin/master
 		return supplier;
 	}
 
@@ -62,15 +53,9 @@ public class SupplierService {
 		List<Supplier> suppliers = dao.completeSearchSupplier(params);
 		return suppliers;
 	}
-<<<<<<< HEAD
 	
 	public List<Supplier> searchSupplier(String content){
 		List<Supplier> suppliers = dao.searchSupplier("%"+content+"%");
-=======
-
-	public List<Supplier> searchSupplier(String content) {
-		List<Supplier> suppliers = dao.searchSupplier(content);
->>>>>>> origin/master
 		return suppliers;
 	}
 
