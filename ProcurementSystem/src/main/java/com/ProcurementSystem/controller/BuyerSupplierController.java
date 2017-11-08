@@ -239,11 +239,7 @@ public class BuyerSupplierController {
 		simService.deleteFolder(int_id);
 		return "redirect:simQuestionnaire";
 	}
-<<<<<<< HEAD
-
 	//P2P显示供应商概要
-=======
-
 	// @RequestMapping(value = "supplierSearchDistribute")
 	// public String supplierSearchDistribute(HttpServletRequest request){
 	// String type = request.getParameter("searchType");
@@ -321,13 +317,11 @@ public class BuyerSupplierController {
 
 	// P2P显示供应商概要
 	@SuppressWarnings("unchecked")
->>>>>>> origin/master
 	@RequestMapping(value = "supplierDetail")
 	public String showSupplierDetail(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Supplier supplier = null;
-		List<SupplierSIMAnswer> answers = new ArrayList<SupplierSIMAnswer>();
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		String uniqueNameStr = request.getParameter("id");
 		int uniqueName = -1;
 		System.out.println(uniqueNameStr);
@@ -343,34 +337,34 @@ public class BuyerSupplierController {
 		request.setAttribute("supplier", supplier);
 		
 		SIMTree simTree = simService.generateSIMTree();
-=======
-		// List<SupplierQuestion> supplierQuestions = null;
-		// if(session.getAttribute("supplierSession")!=null){
-		// supplier = (Supplier) session.getAttribute("supplierSession");
-		// // supplierQuestions = (List<SupplierQuestion>)
-		// session.getAttribute("supplierQuestions");
-		// }else{
-		String uniqueNameStr = request.getParameter("id");
-		int uniqueName = -1;
-		System.out.println(uniqueNameStr);
-		if (uniqueNameStr != null) {
-			uniqueName = Integer.parseInt(uniqueNameStr);
-			session.setAttribute("uniqueName", uniqueName);
-		} else {
-			uniqueName = (int) session.getAttribute("uniqueName");
-		}
-		supplier = service.getSupplierDetail(uniqueName);
-		// supplierQuestions = simqService.searchQA(uniqueName);
-		session.setAttribute("supplierSession", supplier);
-		// session.setAttribute("supplierQuestions", supplierQuestions);
-		answers = simService.getSupplierSIMAnswer(uniqueName);
-		// }
-		request.setAttribute("supplier", supplier);
-		// request.setAttribute("supplierQuestions", supplierQuestions);
-
-		SIMTree simTree = simService.generateSIMTree();
-		// JSONArray json = simTree.traverseToJSONArrayWithoutSelection();
->>>>>>> origin/master
+//=======
+//		// List<SupplierQuestion> supplierQuestions = null;
+//		// if(session.getAttribute("supplierSession")!=null){
+//		// supplier = (Supplier) session.getAttribute("supplierSession");
+//		// // supplierQuestions = (List<SupplierQuestion>)
+//		// session.getAttribute("supplierQuestions");
+//		// }else{
+//		String uniqueNameStr = request.getParameter("id");
+//		int uniqueName = -1;
+//		System.out.println(uniqueNameStr);
+//		if (uniqueNameStr != null) {
+//			uniqueName = Integer.parseInt(uniqueNameStr);
+//			session.setAttribute("uniqueName", uniqueName);
+//		} else {
+//			uniqueName = (int) session.getAttribute("uniqueName");
+//		}
+//		supplier = service.getSupplierDetail(uniqueName);
+//		// supplierQuestions = simqService.searchQA(uniqueName);
+//		session.setAttribute("supplierSession", supplier);
+//		// session.setAttribute("supplierQuestions", supplierQuestions);
+//		answers = simService.getSupplierSIMAnswer(uniqueName);
+//		// }
+//		request.setAttribute("supplier", supplier);
+//		// request.setAttribute("supplierQuestions", supplierQuestions);
+//
+//		SIMTree simTree = simService.generateSIMTree();
+//		// JSONArray json = simTree.traverseToJSONArrayWithoutSelection();
+//>>>>>>> origin/master
 		JSONArray json = simTree.traverseToJSONArrayWithAnswer(answers);
 		request.setAttribute("treeData", json);
 
