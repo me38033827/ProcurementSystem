@@ -52,25 +52,31 @@ public class BuyerCommodityService {
 		return pageParams;
 	}
 
-	public PageParams<Commodity> searchCommodity(Commodity commodity, int currPage,int mode) {// 分页的查询方法,mode=1表示查找激活的商品
+	public PageParams<Commodity> searchCommodity(Commodity commodity, int currPage, int mode) {// 分页的查询方法,mode=1表示查找激活的商品
 		// TODO Auto-generated method stub
 		PageParams<Commodity> pageParams = new PageParams<>();
 		int rowCount = commodityDao.getActivatedRowCount(commodity);// 获得激活商品的总行数rowCount
 		pageParams.setRowCount(rowCount);
-		if (currPage > pageParams.getTotalPages())// 判断当前页的合法性
-			currPage = pageParams.getTotalPages();
-		else if (currPage < 1)
-			currPage = 1;
-		pageParams.setCurrPage(currPage);
-		int offset = (pageParams.getCurrPage() - 1) * PageParams.pageSize;
-		int size = PageParams.pageSize;
+		if (pageParams.getTotalPages() > 0) {
 
-		Map<String, Object> searchParams = new HashMap<>();// 构造查询参数
-		searchParams.put("commodity", commodity);
-		searchParams.put("offset", offset);
-		searchParams.put("size", size);
-		pageParams.setData(commodityDao.searchActivatedCommodity(searchParams));
+			if (currPage > pageParams.getTotalPages())// 判断当前页的合法性
+				currPage = pageParams.getTotalPages();
+			else if (currPage < 1)
+				currPage = 1;
+			pageParams.setCurrPage(currPage);
+			int offset = (pageParams.getCurrPage() - 1) * PageParams.pageSize;
+			int size = PageParams.pageSize;
+
+			Map<String, Object> searchParams = new HashMap<>();// 构造查询参数
+			searchParams.put("commodity", commodity);
+			searchParams.put("offset", offset);
+			searchParams.put("size", size);
+			List<Commodity> list = commodityDao.searchActivatedCommodity(searchParams);
+			if (list != null)
+				pageParams.setData(list);
+		}
 		return pageParams;
+
 	}
 
 	public void insertCommodity(Commodity commodity) {// 插入商品

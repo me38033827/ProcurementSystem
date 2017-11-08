@@ -267,12 +267,12 @@ if(totalPages >= 4){
 			createButtonPage(i);
 		}
 	}
-}else{//总页数不足4页
+}else if(totalPages > 0){//总页数不足4页
 	for(var i=1; i<=totalPages ; i++){
 		createButtonPage(i);
 	}
 }
-if(currPage == 1) $("#forward").hide();//善后处理
+if(currPage == 1 || currPage == 0) $("#forward").hide();//善后处理
 if(currPage  == totalPages) {
 	$("#afterward").hide();
 	$("#page"+(currPage+1)).hide();
