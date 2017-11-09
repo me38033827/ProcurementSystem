@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@include file="../../other/header1.jsp"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <title>创建供应商界面</title>
 </head>
 <!-- 页面整体宽度：1320px -->
@@ -18,8 +18,7 @@
 					<div class="standard-title-r">
 						<button form="supplierSQMCreation"
 							formaction="sqmCreation?action=submit" class="btn-b">确定</button>
-						<button class="btn-w"
-							onclick="window.location.href='../main'">取消</button>
+						<button class="btn-w" onclick="window.location.href='../main'">取消</button>
 					</div>
 				</div>
 				<div class="title-description">
@@ -94,13 +93,13 @@
 											value=""
 											<%} %>> --%> <label for="meeting"></label><input
 										name="lastValid" class="form-control input" id="meeting"
-										type="date" 
- 										<% if (request.getAttribute("sqm") != null) { %>
-												value="${sqm.lastValid}" /> 
-										<%	} else { %>
-										 		value="2017-01-01"/> 
-										<%	} %>
-										
+										type="date" <% if (request.getAttribute("sqm") != null) { %>
+										value="${sqm.lastValid}" /> <%
+ 	} else {
+ %> value="2017-01-01"/> <%
+ 	}
+ %>
+
 									</td>
 								</tr>
 								<tr class="row-standard">
@@ -112,36 +111,37 @@
 											value="${sqm.validTo}"
 											<%} %>> --%> <label for="meeting"></label><input
 										name="validTo" class="form-control input" id="meeting"
-										type="date" 
-										<% if (request.getAttribute("sqm") != null) { %>
-												value="${sqm.validTo}" /> 
-										<%	} else { %>
-										 		value="2017-01-01"/> 
-										<%	} %>
+										type="date" <% if (request.getAttribute("sqm") != null) { %>
+										value="${sqm.validTo}" /> <%
+ 	} else {
+ %> value="2017-01-01"/> <%
+ 	}
+ %>
 									</td>
 								</tr>
 							</table>
 						</div>
 					</div>
-				</form>
 
-				<div class="standard-title-main">选择模版</div>
-				<div class="title-description">
-					请选择您要使用的模板，并回答与之相关的所有问题，以便创建您的项目。以上区段的字段设置值将对可用模板产生影响。</div>
-				<div class="radio">
-					<label class="model"><input type="radio" name="spm_model"
-						id="spm_model1" value="spm_standard">供应商资格管理标准模版</label><br /> <label
-						class="model"><input type="radio" name="spm_model"
-						id="spm_model2" value="spm_demo" checked>供应商资格管理Demo</label>
-				</div>
-				<div class="standard-ending">
-					<div align="right" class="standard-ending-r">
-						<button form="supplierSQMCreation"
-							formaction="sqmCreation?action=submit" class="btn-b">确定</button>
-						<button class="btn-w"
-							onclick="window.location.href='../main'">取消</button>
+
+					<div class="standard-title-main">选择模版</div>
+					<div class="title-description">
+						请选择您要使用的模板，并回答与之相关的所有问题，以便创建您的项目。以上区段的字段设置值将对可用模板产生影响。</div>
+					<div class="radio">
+						<c:forEach items="${templates}" var="template">
+							<label class="model"><input type="radio" checked
+								name="sqmTemplateId" id="spm_model1" value="${template.id }">&nbsp;&nbsp;${template.name}</label>
+							<br />
+						</c:forEach>
 					</div>
-				</div>
+					<div class="standard-ending">
+						<div align="right" class="standard-ending-r">
+							<button form="supplierSQMCreation"
+								formaction="sqmCreation?action=submit" class="btn-b">确定</button>
+							<button class="btn-w" onclick="window.location.href='../main'">取消</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

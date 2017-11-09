@@ -71,10 +71,10 @@ public class SupplierService {
 		dao.updateSupplier(supplier);
 	}
 
-	public TemplateTaskTreeNode generateTaskTree() {
-		/** 获取SIM任务树 */
-		Template simTemplate = templateService.getById(1000013);// 获得SIM模板
-		TemplateTaskTree templateTaskTree = new TemplateTaskTree(simTemplate.getTemplateTaskTreeNode());
+	public TemplateTaskTreeNode generateTaskTree(Template template) {
+		/** 获取任务树 */
+		List<Template> templates = templateService.get(template);// 获得SIM模板
+		TemplateTaskTree templateTaskTree = new TemplateTaskTree(templates.get(0).getTemplateTaskTreeNode());
 		templateTaskTree = templateTaskTreeNodeService.generateTemplateTree(templateTaskTree);// 生成SIM模板任务树
 		/** 复制SIM任务树 */
 		TemplateTaskTreeNode supplierTaskTreeNode = duplicateTaskTree(templateTaskTree.root);

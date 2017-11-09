@@ -32,6 +32,7 @@ import com.ProcurementSystem.entity.TemplateTaskPhase;
 import com.ProcurementSystem.entity.TemplateTaskSchedule;
 import com.ProcurementSystem.entity.TemplateTaskTreeNode;
 import com.ProcurementSystem.entity.User;
+import com.ProcurementSystem.service.BuyerTemplateService;
 import com.ProcurementSystem.service.BuyerTemplateTaskPhaseService;
 import com.ProcurementSystem.service.BuyerTemplateTaskScheduleService;
 import com.ProcurementSystem.service.BuyerTemplateTaskTreeNodeService;
@@ -62,6 +63,8 @@ public class BuyerSupplierController {
 	BuyerTemplateTaskPhaseService templateTaskPhaseService;
 	@Resource
 	BuyerTemplateTaskScheduleService templateTaskScheduleService;
+	@Resource
+	BuyerTemplateService templateService;
 
 	// P2P显示供应商信息管理
 	@RequestMapping(value = "simQuestionnaire")
@@ -239,7 +242,7 @@ public class BuyerSupplierController {
 		simService.deleteFolder(int_id);
 		return "redirect:simQuestionnaire";
 	}
-	//P2P显示供应商概要
+	// P2P显示供应商概要
 	// @RequestMapping(value = "supplierSearchDistribute")
 	// public String supplierSearchDistribute(HttpServletRequest request){
 	// String type = request.getParameter("searchType");
@@ -319,102 +322,102 @@ public class BuyerSupplierController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "supplierDetail")
 	public String showSupplierDetail(HttpServletRequest request) {
+		request.getSession().setAttribute("backTask", "redirect:supplierDetailTask");// 设置
 		HttpSession session = request.getSession();
 		Supplier supplier = null;
 		List<SupplierSIMAnswer> answers = new ArrayList<SupplierSIMAnswer>();
 		String uniqueNameStr = request.getParameter("id");
 		int uniqueName = -1;
 		System.out.println(uniqueNameStr);
-		if(uniqueNameStr!=null){
+		if (uniqueNameStr != null) {
 			uniqueName = Integer.parseInt(uniqueNameStr);
 			session.setAttribute("uniqueName", uniqueName);
-		}else{
+		} else {
 			uniqueName = (int) session.getAttribute("uniqueName");
 		}
 		supplier = service.getSupplierDetail(uniqueName);
 		session.setAttribute("supplierSession", supplier);
 		answers = simService.getSupplierSIMAnswer(uniqueName);
 		request.setAttribute("supplier", supplier);
-		
+
 		SIMTree simTree = simService.generateSIMTree();
-//=======
-//		// List<SupplierQuestion> supplierQuestions = null;
-//		// if(session.getAttribute("supplierSession")!=null){
-//		// supplier = (Supplier) session.getAttribute("supplierSession");
-//		// // supplierQuestions = (List<SupplierQuestion>)
-//		// session.getAttribute("supplierQuestions");
-//		// }else{
-//		String uniqueNameStr = request.getParameter("id");
-//		int uniqueName = -1;
-//		System.out.println(uniqueNameStr);
-//		if (uniqueNameStr != null) {
-//			uniqueName = Integer.parseInt(uniqueNameStr);
-//			session.setAttribute("uniqueName", uniqueName);
-//		} else {
-//			uniqueName = (int) session.getAttribute("uniqueName");
-//		}
-//		supplier = service.getSupplierDetail(uniqueName);
-//		// supplierQuestions = simqService.searchQA(uniqueName);
-//		session.setAttribute("supplierSession", supplier);
-//		// session.setAttribute("supplierQuestions", supplierQuestions);
-//		answers = simService.getSupplierSIMAnswer(uniqueName);
-//		// }
-//		request.setAttribute("supplier", supplier);
-//		// request.setAttribute("supplierQuestions", supplierQuestions);
-//
-//		SIMTree simTree = simService.generateSIMTree();
-//		// JSONArray json = simTree.traverseToJSONArrayWithoutSelection();
-//>>>>>>> origin/master
+		// =======
+		// // List<SupplierQuestion> supplierQuestions = null;
+		// // if(session.getAttribute("supplierSession")!=null){
+		// // supplier = (Supplier) session.getAttribute("supplierSession");
+		// // // supplierQuestions = (List<SupplierQuestion>)
+		// // session.getAttribute("supplierQuestions");
+		// // }else{
+		// String uniqueNameStr = request.getParameter("id");
+		// int uniqueName = -1;
+		// System.out.println(uniqueNameStr);
+		// if (uniqueNameStr != null) {
+		// uniqueName = Integer.parseInt(uniqueNameStr);
+		// session.setAttribute("uniqueName", uniqueName);
+		// } else {
+		// uniqueName = (int) session.getAttribute("uniqueName");
+		// }
+		// supplier = service.getSupplierDetail(uniqueName);
+		// // supplierQuestions = simqService.searchQA(uniqueName);
+		// session.setAttribute("supplierSession", supplier);
+		// // session.setAttribute("supplierQuestions", supplierQuestions);
+		// answers = simService.getSupplierSIMAnswer(uniqueName);
+		// // }
+		// request.setAttribute("supplier", supplier);
+		// // request.setAttribute("supplierQuestions", supplierQuestions);
+		//
+		// SIMTree simTree = simService.generateSIMTree();
+		// // JSONArray json = simTree.traverseToJSONArrayWithoutSelection();
+		// >>>>>>> origin/master
 		JSONArray json = simTree.traverseToJSONArrayWithAnswer(answers);
 		request.setAttribute("treeData", json);
 
 		// 获得sim answer
 		return "upStream/supplier/supplierDetail";
 	}
-	
+
 	@RequestMapping(value = "editSupplierDetail")
-	public String editSupplierDetail(HttpServletRequest request){
+	public String editSupplierDetail(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		int id_int = Integer.parseInt(id);
 		Supplier supplier = service.getSupplierDetail(id_int);
 		request.setAttribute("supplier", supplier);
-	
-		//sim
+
+		// sim
 		SIMTree simTree = simService.generateSIMTree();
 		JSONArray json = simTree.traverseToJSONArray();
-		request.setAttribute("treeData",json);
-		
+		request.setAttribute("treeData", json);
+
 		return "upStream/supplier/editSupplierDetail";
 	}
-	
+
 	@RequestMapping(value = "editSupplierAnalyze")
-	public String editSupplierAnalyze(Supplier supplier, HttpServletRequest request){
-		//更新供应商信息
+	public String editSupplierAnalyze(Supplier supplier, HttpServletRequest request) {
+		// 更新供应商信息
 		service.updateSupplier(supplier);
-		
+
 		int uniqueName = supplier.getUniqueName();
-		//更新供应商问卷答案
+		// 更新供应商问卷答案
 		List<SupplierSIM> questionObjs = simService.getAllQuestionId();
 		List<SupplierSIMAnswer> allAnswers = new ArrayList<SupplierSIMAnswer>();
-		
-		//从前端读取answer
-		for(int i = 0; i < questionObjs.size(); i++){
-			int id =  questionObjs.get(i).getId();
+
+		// 从前端读取answer
+		for (int i = 0; i < questionObjs.size(); i++) {
+			int id = questionObjs.get(i).getId();
 			SupplierSIMAnswer answer = new SupplierSIMAnswer();
-			answer.setAnswer(request.getParameter("ans-"+id));
+			answer.setAnswer(request.getParameter("ans-" + id));
 			answer.setSupplierId(uniqueName);
 			answer.setQuestionId(id);
 			allAnswers.add(answer);
 		}
-		//将问卷答案更新至数据库
+		// 将问卷答案更新至数据库
 		simService.insertOrUpdateSIMAnswers(allAnswers);
-		
-		return "redirect:supplierDetail?id="+supplier.getUniqueName();
+
+		return "redirect:supplierDetail?id=" + supplier.getUniqueName();
 	}
-	
-	@RequestMapping(value = "getSIMAnswers")  
-    public @ResponseBody List<SupplierSIMAnswer> getSIMAnswers(  
-        @RequestParam("supplierId") int supplierId){  
+
+	@RequestMapping(value = "getSIMAnswers")
+	public @ResponseBody List<SupplierSIMAnswer> getSIMAnswers(@RequestParam("supplierId") int supplierId) {
 		return simService.getSupplierSIMAnswer(supplierId);
 	}
 
@@ -517,7 +520,8 @@ public class BuyerSupplierController {
 			templateTaskTreeNodeService.add(templateTaskTreeNode);// 持久化结点
 		}
 		Supplier supplier = (Supplier) request.getSession().getAttribute("supplierSession");
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// SIM模板 - 任务 - 编辑阶段
@@ -529,7 +533,8 @@ public class BuyerSupplierController {
 			return "upStream/template/templateSIM/templateSIMTaskPhaseEdit";
 		}
 		Supplier supplier = (Supplier) request.getSession().getAttribute("supplierSession");
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// SIM模板 - 任务 - 保存编辑阶段
@@ -537,14 +542,16 @@ public class BuyerSupplierController {
 	public String templateSIMTaskPhaseEditSave(TemplateTaskPhase templateTaskPhase, HttpServletRequest request) {
 		templateTaskPhaseService.editById(templateTaskPhase);
 		Supplier supplier = (Supplier) request.getSession().getAttribute("supplierSession");
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// 任务-删除任务树节点(任务阶段和待办任务)
 	@RequestMapping(value = "templateTaskTreeNodeDelete")
-	public String templateTaskTreeNodeDelete(@RequestParam(value = "id") Integer id) {
+	public String templateTaskTreeNodeDelete(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
 		templateTaskTreeNodeService.deleteById(id);
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// SIM模板 - 任务 - 创建待办任务
@@ -573,7 +580,8 @@ public class BuyerSupplierController {
 			templateTaskTreeNodeService.add(templateTaskTreeNode);// 持久化任务结点
 		}
 		Supplier supplier = (Supplier) request.getSession().getAttribute("supplierSession");
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// SIM模板 - 任务 - 编辑待办任务
@@ -590,7 +598,8 @@ public class BuyerSupplierController {
 	@RequestMapping(value = "templateTaskScheduleEditSave")
 	public String templateTaskScheduleEditSave(TemplateTaskSchedule templateTaskSchedule, HttpServletRequest request) {
 		templateTaskScheduleService.edit(templateTaskSchedule);
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// 查看阶段详细信息
@@ -611,56 +620,62 @@ public class BuyerSupplierController {
 
 	// 待办事项标记已开始
 	@RequestMapping(value = "templateTaskScheduleMarkStart")
-	public String templateTaskScheduleMarkStart(@RequestParam(value = "id") Integer id) {
+	public String templateTaskScheduleMarkStart(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
 		templateTaskScheduleService.setStatus(id, "已开始");
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskScheduleService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// 待办事项标记已完成
 	@RequestMapping(value = "templateTaskScheduleMarkComplete")
-	public String templateTaskScheduleMarkComplete(@RequestParam(value = "id") Integer id) {
+	public String templateTaskScheduleMarkComplete(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
 		templateTaskScheduleService.setStatus(id, "已完成");
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskScheduleService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// 待办事项重新激活
 	@RequestMapping(value = "templateTaskScheduleReactive")
-	public String templateTaskScheduleReactive(@RequestParam(value = "id") Integer id) {
+	public String templateTaskScheduleReactive(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
 		templateTaskScheduleService.setStatus(id, "未开始");
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskScheduleService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// 阶段标记已开始
 	@RequestMapping(value = "templateTaskPhaseMarkStart")
-	public String templateTaskPhaseMarkStart(@RequestParam(value = "id") Integer id) {
+	public String templateTaskPhaseMarkStart(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
 		templateTaskPhaseService.setStatus(id, "已开始");
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskPhaseService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// 阶段标记已完成
 	@RequestMapping(value = "templateTaskPhaseMarkComplete")
-	public String templateTaskPhaseMarkComplete(@RequestParam(value = "id") Integer id) {
+	public String templateTaskPhaseMarkComplete(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
 		templateTaskPhaseService.setStatus(id, "已完成");
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskPhaseService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	// 阶段重新激活
 	@RequestMapping(value = "templateTaskPhaseMarkReactive")
-	public String templateTaskPhaseMarkReactive(@RequestParam(value = "id") Integer id) {
+	public String templateTaskPhaseMarkReactive(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
 		templateTaskPhaseService.setStatus(id, "未开始");
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskPhaseService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
-		return "redirect:supplierDetailTask";
+		String backTask = (String) request.getSession().getAttribute("backTask");
+		return backTask;
 	}
 
 	/** 任务结束 */
@@ -684,8 +699,10 @@ public class BuyerSupplierController {
 		User creator = new User();
 		creator.setUniqueName(100001);
 		supplier.setCreator(creator);
-		TemplateTaskTreeNode taskTreeNode = service.generateTaskTree();
-		supplier.setTemplateTaskTreeNode(taskTreeNode);// 根据模板生成supplier任务树
+		Template template = new Template();
+		template.setType("SIM");
+		TemplateTaskTreeNode taskTreeNode = service.generateTaskTree(template);
+		supplier.setTemplateTaskTreeNode(taskTreeNode);/** 根据模板生成supplier任务树 */
 		service.insertSupplier(supplier);
 		// SIM Questionnaire
 		// 查找所有问题序号
@@ -703,7 +720,7 @@ public class BuyerSupplierController {
 			answer.setQuestionId(id);
 			allAnswers.add(answer);
 		}
-		//将问卷答案填写至问卷
+		// 将问卷答案填写至问卷
 		simService.insertOrUpdateSIMAnswers(allAnswers);
 		return "redirect:../search/supplierSearchDistribute?page=2004";
 	}
@@ -747,6 +764,8 @@ public class BuyerSupplierController {
 	/* SQM详情 */
 	@RequestMapping(value = "sqmSummary")
 	public String sqmSummary(HttpServletRequest request) {
+		String backTask = "redirect:sqmTask";
+		request.getSession().setAttribute("backTask", backTask);
 		if (request.getSession().getAttribute("sqm") != null) {
 			request.setAttribute("sqm", (SupplierSQM) request.getSession().getAttribute("sqm"));
 			return "upStream/supplier/supplierSQMsummary";
@@ -768,8 +787,16 @@ public class BuyerSupplierController {
 	}
 
 	@RequestMapping(value = "sqmTask")
-	public String sqmTask(HttpServletRequest request) {
+	public String sqmTask(HttpServletRequest request, ModelMap map) {
 		SupplierSQM sqm = (SupplierSQM) request.getSession().getAttribute("sqm");
+		TemplateTaskTreeNode root = sqm.getTemplateTaskTreeNode();
+		if (root != null) {
+			TemplateTaskTree taskTree = new TemplateTaskTree(root);// 生成任务树
+			templateTaskTreeNodeService.generateTemplateTree(taskTree);
+			taskTree.traverse();
+			JSONArray json = taskTree.supplierTasktraverseToJSONArray();
+			map.put("json", json);// json格式的任务树
+		}
 		request.setAttribute("sqm", sqm);
 		return "upStream/supplier/supplierSQMtask";
 	}
@@ -803,20 +830,26 @@ public class BuyerSupplierController {
 	}
 
 	@RequestMapping(value = "sqmCreation")
-	public String sqmCreation(HttpServletRequest request, @Valid SupplierSQM sqm, BindingResult result, ModelMap map) {
+	public String sqmCreation(HttpServletRequest request, @Valid SupplierSQM sqm, BindingResult result, ModelMap map,
+			@RequestParam(value = "sqmTemplateId", required = false) Integer sqmTemplateId) {
 		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
 		System.out.println(action);
 		if (action.equals("initial")) {
+			Template template = new Template();
+			template.setType("SQM");
+			template.setStatus("已激活");
+			List<Template> templates = templateService.get(template);/** 可供选择的模板 */
 			SupplierSQM sqmSession = new SupplierSQM();
 			request.getSession().setAttribute("sqmSession", sqmSession);
-			return "upStream/supplier/supplierSQMcreation";
+			request.getSession().setAttribute("templates", templates);
+			return "upStream/supplier/supplierSQMCreation";
 		}
 		if (action.equals("back")) {
 			SupplierSQM lastSqm = (SupplierSQM) request.getSession().getAttribute("sqmSession");
 			System.out.println(lastSqm.getTitle());
 			request.setAttribute("sqm", lastSqm);
-			return "upStream/supplier/supplierSQMcreation";
+			return "upStream/supplier/supplierSQMCreation";
 		}
 		if (action.equals("submit")) {
 			System.out.println("Submit:" + sqm.getTitle());
@@ -841,11 +874,15 @@ public class BuyerSupplierController {
 			}
 			if (sqm.getSupplier() == null || result.hasErrors()) {
 				request.setAttribute("sqm", sqm);
-				return "upStream/supplier/supplierSQMcreation";
+				return "upStream/supplier/supplierSQMCreation";
 			}
 			session.removeAttribute("sqmSession");
 			sqm.setId(sqmService.getMaxId() + 1);
-			sqmService.InsertSQM(sqm);
+			Template template = new Template();
+			template.setId(sqmTemplateId);
+			TemplateTaskTreeNode taskTreeNode = service.generateTaskTree(template);
+			sqm.setTemplateTaskTreeNode(taskTreeNode);
+			sqmService.InsertSQM(sqm);// 持久化SQM
 			return "redirect:sqmSummary?id=" + sqm.getId();
 		}
 		;
@@ -963,8 +1000,8 @@ public class BuyerSupplierController {
 					map.put("Error_" + error.getField().replace("supplier.", ""), error.getDefaultMessage());
 				}
 			}
-			if(spm.getSupplier()==null||result.hasErrors()){
-				request.setAttribute("spm",spm);
+			if (spm.getSupplier() == null || result.hasErrors()) {
+				request.setAttribute("spm", spm);
 				return "upStream/supplier/supplierSPMCreation";
 			}
 			session.removeAttribute("spmSession");

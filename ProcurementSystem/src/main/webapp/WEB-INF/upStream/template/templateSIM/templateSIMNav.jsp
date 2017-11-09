@@ -26,12 +26,12 @@
 	<div class="right" id="supplier-detail-top">
 		<table>
 			<tr>
-				<td class="text-right">标识符：</td>
-				<td>WS${sqm.id }</td>
+				<td class="text-right">状态：</td>
+				<td>${template.status }</td>
 			</tr>
 			<tr>
-				<td class="text-right">任务：</td>
-				<td>未完成的任务：0</td>
+				<td class="text-right">版本：</td>
+				<td>v1</td>
 			</tr>
 		</table>
 	</div>

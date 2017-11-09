@@ -109,13 +109,6 @@
 		<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
 	<%@ include file="../../other/footer.jsp"%>
-<<<<<<< HEAD
-		<script>
-			function back(){
-				location.href="../search/supplierSearchDistribute?page=2004";
-			}
-		</script>
-=======
 	<script>
 		function back() {
 			location.href = "supplierSearch?action=back";
@@ -169,6 +162,5 @@
 			window.location.href="templateTaskPhaseMarkStart?id="+id;
 		}
 	</script>
->>>>>>> origin/master
 </body>
 </html>
