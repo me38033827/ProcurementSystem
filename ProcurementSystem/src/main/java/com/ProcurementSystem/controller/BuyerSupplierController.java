@@ -31,6 +31,7 @@ import com.ProcurementSystem.entity.Template;
 import com.ProcurementSystem.entity.TemplateTaskPhase;
 import com.ProcurementSystem.entity.TemplateTaskSchedule;
 import com.ProcurementSystem.entity.TemplateTaskTreeNode;
+import com.ProcurementSystem.entity.UNSPSCTree;
 import com.ProcurementSystem.entity.User;
 import com.ProcurementSystem.service.BuyerTemplateService;
 import com.ProcurementSystem.service.BuyerTemplateTaskPhaseService;
@@ -41,6 +42,7 @@ import com.ProcurementSystem.service.SupplierSIMService;
 import com.ProcurementSystem.service.SupplierSPMService;
 import com.ProcurementSystem.service.SupplierSQMService;
 import com.ProcurementSystem.service.SupplierService;
+import com.ProcurementSystem.service.UNSPSCService;
 import com.alibaba.fastjson.JSONArray;
 
 @Controller
@@ -65,6 +67,8 @@ public class BuyerSupplierController {
 	BuyerTemplateTaskScheduleService templateTaskScheduleService;
 	@Resource
 	BuyerTemplateService templateService;
+	@Resource
+	UNSPSCService unspscService;
 
 	// P2P显示供应商信息管理
 	@RequestMapping(value = "simQuestionnaire")
@@ -331,12 +335,7 @@ public class BuyerSupplierController {
 		String uniqueNameStr = request.getParameter("id");
 		
 		int uniqueName = -1;
-<<<<<<< HEAD
-		if(uniqueNameStr!=null){
-=======
-		System.out.println(uniqueNameStr);
 		if (uniqueNameStr != null) {
->>>>>>> origin/master
 			uniqueName = Integer.parseInt(uniqueNameStr);
 			session.setAttribute("uniqueName", uniqueName);
 		} else {
@@ -347,41 +346,9 @@ public class BuyerSupplierController {
 		session.setAttribute("supplierSession", supplier);
 		answers = simService.getSupplierSIMAnswer(uniqueName);
 		request.setAttribute("supplier", supplier);
-<<<<<<< HEAD
-		
-		//显示sim填写结果
-=======
 
->>>>>>> origin/master
+		//显示sim填写结果
 		SIMTree simTree = simService.generateSIMTree();
-		// =======
-		// // List<SupplierQuestion> supplierQuestions = null;
-		// // if(session.getAttribute("supplierSession")!=null){
-		// // supplier = (Supplier) session.getAttribute("supplierSession");
-		// // // supplierQuestions = (List<SupplierQuestion>)
-		// // session.getAttribute("supplierQuestions");
-		// // }else{
-		// String uniqueNameStr = request.getParameter("id");
-		// int uniqueName = -1;
-		// System.out.println(uniqueNameStr);
-		// if (uniqueNameStr != null) {
-		// uniqueName = Integer.parseInt(uniqueNameStr);
-		// session.setAttribute("uniqueName", uniqueName);
-		// } else {
-		// uniqueName = (int) session.getAttribute("uniqueName");
-		// }
-		// supplier = service.getSupplierDetail(uniqueName);
-		// // supplierQuestions = simqService.searchQA(uniqueName);
-		// session.setAttribute("supplierSession", supplier);
-		// // session.setAttribute("supplierQuestions", supplierQuestions);
-		// answers = simService.getSupplierSIMAnswer(uniqueName);
-		// // }
-		// request.setAttribute("supplier", supplier);
-		// // request.setAttribute("supplierQuestions", supplierQuestions);
-		//
-		// SIMTree simTree = simService.generateSIMTree();
-		// // JSONArray json = simTree.traverseToJSONArrayWithoutSelection();
-		// >>>>>>> origin/master
 		JSONArray json = simTree.traverseToJSONArrayWithAnswer(answers);
 		request.setAttribute("treeData", json);
 
@@ -395,11 +362,7 @@ public class BuyerSupplierController {
 		Supplier supplier = service.getSupplierDetail(id_int);
 		request.setAttribute("supplier", supplier);
 
-<<<<<<< HEAD
 		//sim
-=======
-		// sim
->>>>>>> origin/master
 		SIMTree simTree = simService.generateSIMTree();
 		JSONArray json = simTree.traverseToJSONArray();
 		request.setAttribute("treeData", json);
@@ -408,17 +371,7 @@ public class BuyerSupplierController {
 	}
 
 	@RequestMapping(value = "editSupplierAnalyze")
-<<<<<<< HEAD
-	public String editSupplierAnalyze(Supplier supplier, HttpServletRequest request){
-
-		System.out.println("SUPPLIER ANALYZE" + supplier.getIsClient());
-		System.out.println("SUPPLIER ANALYZE" + supplier.getApproveState());
-		
-		//更新供应商信息
-=======
 	public String editSupplierAnalyze(Supplier supplier, HttpServletRequest request) {
-		// 更新供应商信息
->>>>>>> origin/master
 		service.updateSupplier(supplier);
 
 		int uniqueName = supplier.getUniqueName();
@@ -867,10 +820,9 @@ public class BuyerSupplierController {
 			List<Template> templates = templateService.get(template);/** 可供选择的模板 */
 			SupplierSQM sqmSession = new SupplierSQM();
 			request.getSession().setAttribute("sqmSession", sqmSession);
-<<<<<<< HEAD
-=======
 			request.getSession().setAttribute("templates", templates);
->>>>>>> origin/master
+			UNSPSCTree tree = unspscService.generateUNSPSCTree();
+			request.getSession().setAttribute("treeData",tree.UNSPSCTreeToJSON());
 			return "upStream/supplier/supplierSQMCreation";
 		}
 		if (action.equals("back")) {

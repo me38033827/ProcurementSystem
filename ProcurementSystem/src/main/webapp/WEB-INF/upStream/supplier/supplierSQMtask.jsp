@@ -106,7 +106,7 @@
 	<%@ include file="../../other/footer.jsp"%>
 	<script>
 		function back() {
-			location.href = "supplierSearch?action=back";
+			location.href = "../search/supplierSearchDistribute?page=2006";
 		}
 		$(function() {
 			console.log( ${json});

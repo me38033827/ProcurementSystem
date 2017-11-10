@@ -168,10 +168,10 @@
 		</div>
 	</div>
 	<%@ include file="../../other/footer.jsp"%>
-<script>
-	function back(){
-		location.href = "../mainSupplier";
-	}
-</script>
+	<script>
+		function back(){
+			location.href="../mainSupplier";
+		}
+	</script>
 </body>
 </html>

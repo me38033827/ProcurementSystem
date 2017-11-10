@@ -581,3 +581,14 @@ button{
 .list-group{
 	margin-bottom:0px;
 }
+
+/* sqm commodity */
+.commodity-selection{
+	margin-top:5%;
+	height:80%;
+}
+
+.commodities{
+	max-height:600px; 
+	overflow-x:scroll;
+}

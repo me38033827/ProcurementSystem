@@ -185,10 +185,10 @@
 		<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
 	<%@ include file="../../other/footer.jsp"%>
-		<script>
-			function back(){
-				location.href="../main";
-			}
-		</script>
+	<script>
+		function back(){
+			location.href="../search/supplierSearchDistribute?page=2005";
+		}
+	</script>
 </body>
 </html>

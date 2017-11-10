@@ -196,13 +196,15 @@
 				</div>
 			</div>
 		</div>
-		<!-- CONTENT-WRAPPER SECTION END-->
 	</div>
+	<div class="theme-popover-mask"></div>
+	
 	<%@ include file="../../other/footer.jsp"%>
-		<script>
-			function back(){
-				location.href="../main";
-			}
-		</script>
+	<!-- CONTENT-WRAPPER SECTION END-->
+	<script>
+		function back(){
+			location.href="../search/supplierSearchDistribute?page=2006";
+		}
+	</script>
 </body>
 </html>

@@ -252,136 +252,15 @@
 				        </div>
 					</div>
 				</div>
-	
-				<%-- <div class="row">
-					<div class="col-md-12">
-						<div class="standard-subtitle">概要问卷
-						</div>
-							<div>
-								<table class="fulltab">
-									<tr class="standard-row1">
-										<td style="width:75%;">名称</td>
-										<td style="width:25%;">答案</td>
-									</tr>
-								</table>
-							</div>
-							<div class="roll-tab" style="max-height:240px;" id="question">
-								<table class="table table-hover">
-									<tr>
-										<td class="question-1" style="width:75%;"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
-											&nbsp;1&nbsp;&nbsp;&nbsp;公司信息</b></td>
-										<td style="width:25%;"></td>
-									</tr>
-									<tr>
-										<td class="question-1-1">1.1&nbsp;&nbsp;&nbsp;&nbsp;公司名称</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td class="question-1-1">1.2&nbsp;&nbsp;&nbsp;&nbsp;请简要介绍一下贵公司</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td class="question-1-1">1.3&nbsp;&nbsp;&nbsp;&nbsp;贵公司创办于哪一年</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td class="question-1"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
-											&nbsp;2&nbsp;&nbsp;&nbsp;所有权信息</b></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
-											&nbsp;2.1&nbsp;&nbsp;&nbsp;妇女所有企业证书</b></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td class="question-3">2.1.1&nbsp;&nbsp;&nbsp;妇女所有企业证书</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
-											&nbsp;2.2&nbsp;&nbsp;&nbsp;少数族裔所有企业证书</b></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td class="question-3">2.2.1&nbsp;&nbsp;&nbsp;您是否通过少数族裔所有企业认证？</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-3">2.2.2&nbsp;&nbsp;&nbsp;您是否通过 NMSDC（全国少数族裔供应商发展理事会）认证？</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-3">2.2.3&nbsp;&nbsp;&nbsp;您是否通过小型企业管理认证？</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-3">2.2.4&nbsp;&nbsp;&nbsp;您是否通过州政府认证？</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-3">2.2.5&nbsp;&nbsp;&nbsp;您是否通过所在地/机构认证？</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-3">2.2.6&nbsp;&nbsp;&nbsp;您是否为自我认证？</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-3">2.2.7&nbsp;&nbsp;&nbsp;其他认证</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-3">2.2.8&nbsp;&nbsp;&nbsp;您是否通过环球国际认证？</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
-											&nbsp;2.3&nbsp;&nbsp;&nbsp;小型企业证书</b></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td class="question-3">2.3.1&nbsp;&nbsp;&nbsp;您是否通过小型企业认证？</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-2"><b><span class="glyphicon glyphicon-triangle-bottom blue f-12" aria-hidden="true"></span>
-											&nbsp;2.4&nbsp;&nbsp;&nbsp;退伍军人所有企业证书</b></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td class="question-3">2.4.1&nbsp;&nbsp;&nbsp;您是否通过退伍军人所有企业认证?</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-3">2.4.2&nbsp;&nbsp;&nbsp;您是否通过残疾退伍军人所有企业认证?</td>
-										<td>否</td>
-									</tr>
-									<tr>
-										<td class="question-3">2.4.3&nbsp;&nbsp;&nbsp;您是否通过越战退伍军人所有企业认证?</td>
-										<td>否</td>
-									</tr>
-									<% int count = 1; %>
-									<c:forEach var="supplierQuestion" items="${supplierQuestions}" varStatus="status">
-										<tr>
-											<td class="question-2">附加<%=count %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${supplierQuestion.question}</td>
-											<td>${supplierQuestion.answer}</td>
-										</tr>
-										<%count=count+1; %>
-									</c:forEach>
-								</table>
-							</div>
-						</div>
-					</div>--%>
-				</div> 
-			</div>
+			</div> 
 		</div>
-		<!-- CONTENT-WRAPPER SECTION END-->
-		<%@ include file="../../other/supplierFooter.jsp"%>
+	</div>
+	<!-- CONTENT-WRAPPER SECTION END-->
+	<%@ include file="../../other/supplierFooter.jsp"%>
 
-		<script>
+	<script>
 		function back(){
-			location.href="../search/supplierSearchDistribute?page=2004";
+			location.href="../search/supplierSearchDistribute?page=2005";
 		}
 		$(function(){
  	        var defaultData = ${treeData};
