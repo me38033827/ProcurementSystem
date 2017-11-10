@@ -13,15 +13,19 @@
 	</insert>
 
 
-	<select id="getById" resultMap="templateMap">
+	<select id="get" parameterType="com.ProcurementSystem.entity.Template"
+		resultMap="templateMap">
 		select
 		t.id as templateId,
 		t.name
 		as templateName,
-		t.description as templateDescription,
+		t.description as
+		templateDescription,
 		t.type as
 		templateType,
-		tttn.id as templateTaskTreeNodeId,
+		t.status as templateStatus,
+		tttn.id as
+		templateTaskTreeNodeId,
 		tttn.type,
 		ttp.id as
 		templateTaskPhaseId,
@@ -64,13 +68,23 @@
 		template_task_schedule tts on tttn.template_task_schedule_id =
 		tts.id
 		and tttn.type=0
-		where t.id = #{id}
+		where 1=1
+		<if test="id !=null and id != ''">
+			and t.id = #{id}
+		</if>
+		<if test="type !=null and type != ''">
+			and t.type = #{type}
+		</if>
+		<if test="status !=null and status != ''">
+			and t.status = #{status}
+		</if>
 	</select>
 	<resultMap id="templateMap" type="com.ProcurementSystem.entity.Template">
 		<id property="id" column="templateId" />
 		<result property="name" column="templateName" />
 		<result property="description" column="templateDescription" />
 		<result property="type" column="templateType" />
+		<result property="status" column="templateStatus" />
 		<association property="templateTaskTreeNode"
 			javaType="com.ProcurementSystem.entity.TemplateTaskTreeNode">
 			<id property="id" column="templateTaskTreeNodeId" />
@@ -105,5 +119,17 @@
 		delete from template where
 		id=#{id}
 	</delete>
+
+
+	<update id="setStatus">
+		update template
+		set status = #{status}
+		where
+		id=#{id}
+	</update>
+
+
+
+
 
 </mapper>

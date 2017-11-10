@@ -1,5 +1,7 @@
 package com.ProcurementSystem.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -182,6 +184,28 @@ public class BuyerTemplateController {
 		return "upStream/template/templateSIM/templateSIMSummary";
 	}
 
+	// 激活模板
+	@RequestMapping(value = "templateActivate")
+	public String templateActivate(@RequestParam("id") Integer id, HttpServletRequest request) {
+		templateService.setStatus(id, "已激活");
+		Template template = new Template();
+		template.setId(id);
+		List<Template> templates = templateService.get(template);
+		request.getSession().setAttribute("template", templates.get(0));
+		return "redirect:templateSIMSummary";
+	}
+
+	// 停用模板
+	@RequestMapping(value = "templateDeactivate")
+	public String templateDeactivate(@RequestParam("id") Integer id, HttpServletRequest request) {
+		templateService.setStatus(id, "草稿");
+		Template template = new Template();
+		template.setId(id);
+		List<Template> templates = templateService.get(template);
+		request.getSession().setAttribute("template", templates.get(0));
+		return "redirect:templateSIMSummary";
+	}
+
 	// SIM模板 - 文档
 	@RequestMapping(value = "templateSIMDoc")
 	public String templateSIMDoc() {
@@ -194,14 +218,16 @@ public class BuyerTemplateController {
 			HttpServletRequest request) {
 		if (id == null)
 			id = ((Template) request.getSession().getAttribute("template")).getId();// 若未提供id，自动获取已存在session中的Template
-		Template template = templateService.getById(id);
-		TemplateTaskTree templateTaskTree = new TemplateTaskTree(template.getTemplateTaskTreeNode());
+		Template template = new Template();
+		template.setId(id);
+		List<Template> templates = templateService.get(template);
+		TemplateTaskTree templateTaskTree = new TemplateTaskTree(templates.get(0).getTemplateTaskTreeNode());
 		templateTaskTreeNodeService.generateTemplateTree(templateTaskTree);// 生成模板任务树
 		templateTaskTree.traverse();
 		JSONArray json = templateTaskTree.traverseToJSONArray();
 		map.put("json", json);
-		map.put("template", template);
-		request.getSession().setAttribute("template", template);// 保存访问的模板
+		map.put("template", templates.get(0));
+		request.getSession().setAttribute("template", templates.get(0));// 保存访问的模板
 		return "upStream/template/templateSIM/templateSIMTask";
 	}
 

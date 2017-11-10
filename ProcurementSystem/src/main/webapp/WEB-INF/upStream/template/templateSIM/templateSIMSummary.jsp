@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@include file="../../../other/header1return.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -14,14 +15,40 @@
 				<div class="row">
 					<%@include file="templateSIMLeft.jsp"%>
 					<div class="col-md-10">
-						
+
 						<%@ include file="templateSIMNav.jsp"%>
 
 						<div class="adjust-10"></div>
 						<div class="col-md-6" style="padding-left: 0px;">
 							<div class="standard-subtitle">
 								属性
-								<div class="right"></div>
+								<div class="btn-group right">
+									<button class="btn-ma " data-toggle="dropdown"
+										style="background-color: transparent; border: 0">
+										操作&nbsp;<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu manu-btn-o">
+										<c:if test="${template.type =='SIM'}">
+											<li><a class="manu-active" href=""
+												style="color: #969696">激活</a></li>
+											<li><a class="manu-active" href=""
+												style="color: #969696">停用</a></li>
+										</c:if>
+										<c:if test="${template.type!='SIM' and template.status=='草稿'}">
+											<li><a class="manu-active"
+												href="templateActivate?id=${template.id }">激活</a></li>
+											<li><a class="manu-active" href=""
+												style="color: #969696">停用</a></li>
+										</c:if>
+										<c:if
+											test="${template.type!='SIM' and template.status=='已激活'}">
+											<li><a class="manu-active" href=""
+												style="color: #969696">激活</a></li>
+											<li><a class="manu-active"
+												href="templateDeactivate?id=${template.id }">停用</a></li>
+										</c:if>
+									</ul>
+								</div>
 							</div>
 							<table class="table table-no-border">
 								<tr class="">

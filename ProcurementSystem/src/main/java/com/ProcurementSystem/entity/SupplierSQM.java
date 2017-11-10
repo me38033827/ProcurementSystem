@@ -17,6 +17,7 @@ public class SupplierSQM {
 	private String status;
 	private String lastValid;
 	private String validTo;
+	private TemplateTaskTreeNode templateTaskTreeNode;
 	public int getId() {
 		return id;
 	}
@@ -82,5 +83,11 @@ public class SupplierSQM {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public TemplateTaskTreeNode getTemplateTaskTreeNode() {
+		return templateTaskTreeNode;
+	}
+	public void setTemplateTaskTreeNode(TemplateTaskTreeNode templateTaskTreeNode) {
+		this.templateTaskTreeNode = templateTaskTreeNode;
 	}
 }

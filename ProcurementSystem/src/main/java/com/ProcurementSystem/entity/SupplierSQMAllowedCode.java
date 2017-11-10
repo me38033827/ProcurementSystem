@@ -1,5 +1,5 @@
 package com.ProcurementSystem.entity;
 
-public class SupplierSQMAllowed {
+public class SupplierSQMAllowedCode {
 	int id;
 }

@@ -6,6 +6,7 @@ public class Template {
 	private	String	description;
 	private	String 	type;
 	private TemplateTaskTreeNode templateTaskTreeNode;
+	private String status;
 	public Integer getId() {
 		return id;
 	}
@@ -35,6 +36,12 @@ public class Template {
 	}
 	public void setTemplateTaskTreeNode(TemplateTaskTreeNode templateTaskTreeNode) {
 		this.templateTaskTreeNode = templateTaskTreeNode;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

@@ -141,11 +141,11 @@ public class BuyerCommodityCatalogController {
 		// String createMode = request.getParameter("createMode");
 		// 数据校验
 		boolean isDupeName = false;
-		if(createMode.equals("1") && !commodityCatalog.getName().equals("")){
+		if (createMode.equals("1") && !commodityCatalog.getName().equals("")) {
 			isDupeName = commodityCatalogService.validateCommodityCatalogDupeName(commodityCatalog);// 验证是否重名
 		}
-		boolean isSupplierUniqueNameEmpty = commodityCatalog.getSupplier().getUniqueName() == 0 ? true:false;
-		if (isDupeName ||isSupplierUniqueNameEmpty ||  result.hasErrors()) {
+		boolean isSupplierUniqueNameEmpty = commodityCatalog.getSupplier().getUniqueName() == 0 ? true : false;
+		if (isDupeName || isSupplierUniqueNameEmpty || result.hasErrors()) {
 			if (result.hasErrors()) {
 				List<FieldError> errorList = result.getFieldErrors();
 				for (FieldError error : errorList) {
@@ -158,7 +158,7 @@ public class BuyerCommodityCatalogController {
 				map.put("ERR_supplier", "错误：不能为空");
 			}
 			// 如果创建模式为1，验证商品目录名称是否重复
-			if(isDupeName){
+			if (isDupeName) {
 				map.put("Error_dupeName", "错误：目录名称重复");
 			}
 			map.put("supplier", commodityCatalog.getSupplier());// 保留已选择的供应商
@@ -176,17 +176,19 @@ public class BuyerCommodityCatalogController {
 	@RequestMapping(value = "commodityCatalogAnalyze")
 	public String commodityCatalogUpload(@RequestParam("file") MultipartFile file,
 			@RequestParam(value = "imageFile", required = false) MultipartFile imageFile, HttpServletRequest request) {
-		String uploadUrl =  "/usr/develop/upload/";// upload为上传文件的根目录
+		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";// upload为上传文件的根目录
 		HttpSession session = request.getSession();
 		System.out.println("uploadUrl:" + uploadUrl);
 		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");// 获得准备上传的商品目录文件
 		commodityCatalog.setType("0");// 设置商品目录为buyer上传
 		commodityCatalogService.insertCommodityCatalog(commodityCatalog);// 持久化存储商品目录
 		System.out.println("商品目录唯一标识:" + commodityCatalog.getUniqueName());// 获得商品目录的uniqueName
-		commodityCatalogService.commodityCatalogUpload(file, uploadUrl + commodityCatalog.getUniqueName() + "/", commodityCatalog);// 保存上传的商品目录文件至根目录upload文件夹下
+		commodityCatalogService.commodityCatalogUpload(file, uploadUrl + commodityCatalog.getUniqueName() + "/",
+				commodityCatalog);// 保存上传的商品目录文件至根目录upload文件夹下
 		commodityCatalogService.commodityCatalogUploadImages(imageFile,
 				uploadUrl + commodityCatalog.getUniqueName() + "/");// 保存图片的压缩包文至以商品目录uniqueName命名的文件下，并解压
-		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog, uploadUrl + commodityCatalog.getUniqueName()+ "/", file.getOriginalFilename());// 解析文件，持久化存储商品
+		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog,
+				uploadUrl + commodityCatalog.getUniqueName() + "/", file.getOriginalFilename());// 解析文件，持久化存储商品
 		request.setAttribute("commodityCatalog", commodityCatalog);
 		// 获取当前上传目录内容，准备在前端显示，转向
 		return "redirect:/buyer/commodityCatalog/showCommodityCatalogContent?uniqueName="
@@ -231,8 +233,8 @@ public class BuyerCommodityCatalogController {
 		map.put("commodityCatalog", commodityCatalog);
 		return "downStream/commodityCatalog/commodityCatalogContent";
 	}
-	
-    /**在线编辑商品目录*/
+
+	/** 在线编辑商品目录 */
 	@RequestMapping(value = "commodityCatalogContentEdit")
 	public String commodityCatalogContentEdit(@RequestParam(value = "uniqueName") String uniqueName, ModelMap map) {
 		/** 从数据库中提取对应的商品对象 */
@@ -257,7 +259,8 @@ public class BuyerCommodityCatalogController {
 		} else {
 			commodity.setIsChecked("TRUE");
 		} // 更改商品验证字段
-		commodityService.updateCommodity(commodity);
+		commodityService.updateCommodity(commodity);//持久化商品目录
+		commodityService.updateCommoditySpscCodeHelper(commodity);//修改spscCodeHelper表
 		commodityCatalogService.validate(commodity.getCommodityCatalog().getUniqueName());
 		return "redirect:/buyer/commodityCatalog/showCommodityCatalogContent?uniqueName="
 				+ commodity.getCommodityCatalog().getUniqueName();// 控制器中的跳转
@@ -308,7 +311,7 @@ public class BuyerCommodityCatalogController {
 		return "redirect:/buyer/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
 	}
 
-    /**购物车*/
+	/** 购物车 */
 	// 显示购物车内容
 	@RequestMapping(value = "commodityCatalogShoppingCart")
 	public String commodityCatalogShoppingCart(HttpServletRequest request) {
@@ -370,22 +373,24 @@ public class BuyerCommodityCatalogController {
 		return "redirect:/buyer/commodityCatalog/commodityCatalogShoppingCart";
 	}
 
-	/**商品详情*/
+	/** 商品详情 */
 	// 转向商品信息详情页
 	@RequestMapping(value = "commodityInfo")
-	public String commodityInfo(@RequestParam(value = "uniqueName") String uniqueName,@RequestParam(value = "code",required=false) String code,
-			@RequestParam(value = "currPage", required = false) String currPage, ModelMap map,HttpServletRequest request) {
+	public String commodityInfo(@RequestParam(value = "uniqueName") String uniqueName,
+			@RequestParam(value = "code", required = false) String code,
+			@RequestParam(value = "currPage", required = false) String currPage, ModelMap map,
+			HttpServletRequest request) {
 		Commodity commodity = new Commodity();
 		commodity.setUniqueName(uniqueName);
 		PageParams<Commodity> commodities = commodityService.searchCommodity(commodity, 1);
 		commodity = commodities.getData().get(0);
 		map.put("commodity", commodity);
 		map.put("currPage", currPage);
-		NavTree navTree = (NavTree)request.getServletContext().getAttribute("navTree");//获得面包屑导航
+		NavTree navTree = (NavTree) request.getServletContext().getAttribute("navTree");// 获得面包屑导航
 		List<NavTreeNode> breadNav = navTree.getNavClassNames(commodity.getSpscCode());
 		map.put("breadNav", breadNav);
-		map.put("code", code);//用于返回
-		String path = commodity.getImage();//处理商品多图片显示
+		map.put("code", code);// 用于返回
+		String path = commodity.getImage();// 处理商品多图片显示
 		String[] paths = path.split("&");
 		map.put("paths", paths);
 		return "downStream/commodityCatalog/commodityInfo";
