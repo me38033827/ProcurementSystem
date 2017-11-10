@@ -14,8 +14,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ProcurementSystem.common.FileUnZip;
 import com.ProcurementSystem.dao.IBuyerCommodityCatalogDao;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
+import com.ProcurementSystem.dao.IBuyerCommoditySpscCodeHelperDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
+import com.ProcurementSystem.entity.CommoditySpscCodeHelper;
 import com.ProcurementSystem.entity.Contract;
 import com.ProcurementSystem.entity.Supplier;
 
@@ -32,7 +34,7 @@ public class BuyerCommodityCatalogService {
 	BuyerCommodityService commodityService;
 	@Resource
 	IBuyerCommodityDao commodityDao;
-
+	
 	// 获得商品目录数量
 	public int getRowCount() {
 		return commodityCatalogDao.getRowCount();
@@ -117,6 +119,7 @@ public class BuyerCommodityCatalogService {
 						cell = firstSheet.getCell(3, i);// 读取并设置Item Description
 						commodity.setItemDescription(cell.getContents());
 						cell = firstSheet.getCell(4, i);// SPSC Code
+						String spscCode = cell.getContents();
 						commodity.setSpsCode(cell.getContents());
 						cell = firstSheet.getCell(5, i);// Unit Price
 						if (cell.getContents().matches("^[0-9]+\\.[0-9]*$") || cell.getContents().matches("^[0-9]+$"))// 匹配小数
@@ -180,7 +183,8 @@ public class BuyerCommodityCatalogService {
 							commodity.setIsChecked("FALSE");// 设置商品的验证状态
 						if (!isCommodityChecked)
 							isCommodityCatalogchecked = false;// 设置商品目录的验证状态
-						commodityService.insertCommodity(commodity);
+						commodityService.insertCommodity(commodity);//持久化商品
+						commodityService.divideSpscCode(commodity);//分解spscCode并持久化
 						System.out.println("成功插入一条商品信息！");
 					}
 
@@ -197,6 +201,7 @@ public class BuyerCommodityCatalogService {
 			e.printStackTrace();
 		}
 	}
+	
 
 	// 设置商品目录状态
 	public void setIsActivated(CommodityCatalog commodityCatalog) {
@@ -274,7 +279,8 @@ public class BuyerCommodityCatalogService {
 			e.printStackTrace();
 		}
 	}
-
+	
+	//创建版本
 	public CommodityCatalog setCommodityCatalogVersion(String createMode, CommodityCatalog commodityCatalog) {
 		// TODO Auto-generated method stub
 		if(createMode.equals("1")){//创建新目录

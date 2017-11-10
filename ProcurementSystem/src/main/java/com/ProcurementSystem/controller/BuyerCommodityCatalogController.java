@@ -259,7 +259,8 @@ public class BuyerCommodityCatalogController {
 		} else {
 			commodity.setIsChecked("TRUE");
 		} // 更改商品验证字段
-		commodityService.updateCommodity(commodity);
+		commodityService.updateCommodity(commodity);//持久化商品目录
+		commodityService.updateCommoditySpscCodeHelper(commodity);//修改spscCodeHelper表
 		commodityCatalogService.validate(commodity.getCommodityCatalog().getUniqueName());
 		return "redirect:/buyer/commodityCatalog/showCommodityCatalogContent?uniqueName="
 				+ commodity.getCommodityCatalog().getUniqueName();// 控制器中的跳转

@@ -19,12 +19,16 @@ import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.PageParams;
 import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
+import com.ProcurementSystem.dao.IBuyerCommoditySpscCodeHelperDao;
 import com.ProcurementSystem.entity.Commodity;
+import com.ProcurementSystem.entity.CommoditySpscCodeHelper;
 
 @Service
 public class BuyerCommodityService {
 	@Resource
 	IBuyerCommodityDao commodityDao;
+	@Resource
+	IBuyerCommoditySpscCodeHelperDao spscCodeHelperDao;
 
 	public Boolean updateCommodity(Commodity commodity) {// 不分页的查询方法
 		return commodityDao.updateCommodity(commodity);
@@ -149,6 +153,28 @@ public class BuyerCommodityService {
 		}
 		System.out.println("生成导航树:" + navTree.traverse());
 		return navTree;
+	}
+
+	// 拆分spscCode，用于准入的精确匹配
+	public void divideSpscCode(Commodity commodity) {
+		String spscCode = commodity.getSpscCode();
+		if (spscCode != null && spscCode.length() >= 2) {
+			int count = spscCode.length()/2;
+			for (int i = 1; i <= count; i++) {
+				CommoditySpscCodeHelper commoditySpscCodeHelper = new CommoditySpscCodeHelper();
+				commoditySpscCodeHelper.setCommodity(commodity);
+				commoditySpscCodeHelper.setSpscCode(spscCode.substring(0, i * 2));
+				spscCodeHelperDao.add(commoditySpscCodeHelper);
+			}
+		}
+	}
+
+	// 更新codeHelper表
+	public void updateCommoditySpscCodeHelper(Commodity commodity) {
+		CommoditySpscCodeHelper commoditySpscCodeHelper = new CommoditySpscCodeHelper();
+		commoditySpscCodeHelper.setCommodity(commodity);
+		spscCodeHelperDao.delete(commoditySpscCodeHelper);// 删除旧code
+		divideSpscCode(commodity);// 拆分新code并存储
 	}
 
 }
