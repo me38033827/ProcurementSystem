@@ -16,10 +16,14 @@
 		spsc_code = "-1" where spsc_code = #{spscCode}
 	</update>
 
-	<delete id="delete">
-		delete from commodity_spsc_code_helpe
+	<delete id="delete"
+		parameterType="com.ProcurementSystem.entity.CommoditySpscCodeHelper">
+		delete from
+		commodity_spsc_code_helper
 		where
-		commodity_id = #{commodity.uniqueName}
+		commodity_id
+		=
+		#{commodity.uniqueName}
 	</delete>
 
 
