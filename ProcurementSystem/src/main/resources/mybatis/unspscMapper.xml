@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IUNSPSCDao">
+	<!-- 插入所有unspsc code信息到数据库 -->
+	<insert id="insertUNSPSC" parameterType="com.ProcurementSystem.entity.UNSPSC">
+		<foreach item="item" collection="list">
+			insert unspsc(id, description)
+			values(#{item.id}, #{item.description});
+		</foreach>
+	</insert>
+	
+	<!-- 获得某节点的子节点 -->
+	<select id="getChildren" parameterType="int" resultType="com.ProcurementSystem.entity.UNSPSCTreeNode">
+		select * 
+		from unspsc
+		where id > #{id}*100
+		and #{id}*100+100 > id
+	</select>
+</mapper>

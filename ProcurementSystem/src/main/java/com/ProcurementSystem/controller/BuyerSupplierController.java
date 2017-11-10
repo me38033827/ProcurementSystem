@@ -296,25 +296,28 @@ public class BuyerSupplierController {
 		HttpSession session = request.getSession();
 		Supplier supplier = null;
 		List<SupplierSIMAnswer> answers = new ArrayList<SupplierSIMAnswer>();
+		
+		//获得supplier uniqueName
 		String uniqueNameStr = request.getParameter("id");
+		
 		int uniqueName = -1;
-		System.out.println(uniqueNameStr);
 		if(uniqueNameStr!=null){
 			uniqueName = Integer.parseInt(uniqueNameStr);
 			session.setAttribute("uniqueName", uniqueName);
 		}else{
 			uniqueName = (int) session.getAttribute("uniqueName");
 		}
+		
 		supplier = service.getSupplierDetail(uniqueName);
 		session.setAttribute("supplierSession", supplier);
 		answers = simService.getSupplierSIMAnswer(uniqueName);
 		request.setAttribute("supplier", supplier);
 		
+		//显示sim填写结果
 		SIMTree simTree = simService.generateSIMTree();
 		JSONArray json = simTree.traverseToJSONArrayWithAnswer(answers);
 		request.setAttribute("treeData", json);
 
-		// 获得sim answer
 		return "upStream/supplier/supplierDetail";
 	}
 	
@@ -324,7 +327,7 @@ public class BuyerSupplierController {
 		int id_int = Integer.parseInt(id);
 		Supplier supplier = service.getSupplierDetail(id_int);
 		request.setAttribute("supplier", supplier);
-	
+
 		//sim
 		SIMTree simTree = simService.generateSIMTree();
 		JSONArray json = simTree.traverseToJSONArray();
@@ -335,6 +338,10 @@ public class BuyerSupplierController {
 	
 	@RequestMapping(value = "editSupplierAnalyze")
 	public String editSupplierAnalyze(Supplier supplier, HttpServletRequest request){
+
+		System.out.println("SUPPLIER ANALYZE" + supplier.getIsClient());
+		System.out.println("SUPPLIER ANALYZE" + supplier.getApproveState());
+		
 		//更新供应商信息
 		service.updateSupplier(supplier);
 		
@@ -756,13 +763,13 @@ public class BuyerSupplierController {
 		if (action.equals("initial")) {
 			SupplierSQM sqmSession = new SupplierSQM();
 			request.getSession().setAttribute("sqmSession", sqmSession);
-			return "upStream/supplier/supplierSQMcreation";
+			return "upStream/supplier/supplierSQMCreation";
 		}
 		if (action.equals("back")) {
 			SupplierSQM lastSqm = (SupplierSQM) request.getSession().getAttribute("sqmSession");
 			System.out.println(lastSqm.getTitle());
 			request.setAttribute("sqm", lastSqm);
-			return "upStream/supplier/supplierSQMcreation";
+			return "upStream/supplier/supplierSQMCreation";
 		}
 		if (action.equals("submit")) {
 			System.out.println("Submit:" + sqm.getTitle());
@@ -787,7 +794,7 @@ public class BuyerSupplierController {
 			}
 			if (sqm.getSupplier() == null || result.hasErrors()) {
 				request.setAttribute("sqm", sqm);
-				return "upStream/supplier/supplierSQMcreation";
+				return "upStream/supplier/supplierSQMCreation";
 			}
 			session.removeAttribute("sqmSession");
 			sqm.setId(sqmService.getMaxId() + 1);

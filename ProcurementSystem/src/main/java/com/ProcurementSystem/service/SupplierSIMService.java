@@ -31,7 +31,7 @@ public class SupplierSIMService {
 		queue.offer(tree.root);
 		while (!queue.isEmpty()) {
 			SIMTreeNode parent = queue.poll();//父节点
-			parent.getSupplierSIM();
+			//parent.getSupplierSIM();
 			List<SIMTreeNode> children = dao.getChildren(parent.getSupplierSIM().getId());
 			if(children != null){
 				parent.setChildren(children);//设置子节点

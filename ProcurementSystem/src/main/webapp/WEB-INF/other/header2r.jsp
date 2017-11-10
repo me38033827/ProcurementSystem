@@ -33,7 +33,7 @@
 	</button>
 	<ul class="dropdown-menu" id="secondline-dropright">
 		<li><a class="secondline-right" href="sourcingSearching.jsp">在线寻源</a></li>
-		<li><a class="secondline-right" href="supplierSearching.jsp">供应商管理</a></li>
+		<li><a class="secondline-right" href="search/supplierSearchDistribute?page=2004">供应商管理</a></li>
 		<li><a class="secondline-right" href="supplier/supplierInformationManagement">供应商信息</a></li>
 		<li><a class="secondline-right" href="search/supplierSearchDistribute?page=2005">供应商绩效</a></li>
 		<li><a class="secondline-right" href="search/supplierSearchDistribute?page=2006">供应商资格</a></li>

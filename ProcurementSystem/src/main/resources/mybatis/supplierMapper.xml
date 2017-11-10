@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
 <mapper namespace="com.ProcurementSystem.dao.ISupplierDao">
 
 	<resultMap id="SupplierMap" type="com.ProcurementSystem.entity.Supplier">
-		<result property="uniqueName" column="uniqueName" />
-		<result property="contactUniqueName" column="contact_unique_name" />
+		<result property="uniqueName" column="unique_name" />
+		<result property="contactUniqueName" column="contactUniqueName" />
 		<result property="name" column="name" />
-		<result property="isSupplier" column="is_supplier" />
-		<result property="isClient" column="is_client" />
+		<result property="isSupplier" column="isSupplier" />
+		<result property="isClient" column="isClient" />
 		<result property="description" column="description" />
-		<result property="approveState" column="approve_state" />
-		<result property="otherName1" column="other_name1" />
-		<result property="otherName2" column="other_name2" />
-		<result property="fullNameByLaw" column="full_name_by_law" />
-		<result property="stockCode" column="stock_code" />
+		<result property="approveState" column="approveState" />
+		<result property="otherName1" column="otherName1" />
+		<result property="otherName2" column="otherName2" />
+		<result property="fullNameByLaw" column="fullNameByLaw" />
+		<result property="stockCode" column="stockCode" />
 		<result property="province" column="province" />
 		<result property="switchboard" column="switchboard" />
-		<result property="mainEmail" column="main_email" />
-		<result property="UNSPSCCommodity" column="unspsc_commodity" />
+		<result property="mainEmail" column="mainEmail" />
+		<result property="UNSPSCCommodity" column="unspscCommodity" />
 		<result property="duns" column="duns" />
-		<result property="supplierIntegrityState" column="supplier_integrity_state" />
-		<result property="supplierIntegritySystemName" column="supplier_integrity_system_name" />
-		<result property="otherAddress" column="other_address" />
-		<result property="mainFax" column="main_fax" />
-		<result property="corporateUrl" column="corporate_url" />
+		<result property="supplierIntegrityState" column="supplierIntegrityState" />
+		<result property="supplierIntegritySystemName" column="supplierIntegritySystemName" />
+		<result property="otherAddress" column="otherAddress" />
+		<result property="mainFax" column="mainFax" />
+		<result property="corporateUrl" column="corporateUrl" />
 		<result property="organizationType" column="organizationType" />
 		<result property="parentValue" column="parentValue" />
-		<result property="mainFax" column="main_fax" />
+		<result property="mainFax" column="mainFax" />
 		<result property="manage" column="manage" />
-		<result property="postCode" column="post_code" />
+		<result property="postCode" column="postCode" />
 		<result property="district" column="district" />
 		<result property="address" column="address" />
-		<result property="switchboardZone" column="switchboard_zone" />
-		<result property="mainFaxZone" column="main_fax_zone" />
+		<result property="switchboardZone" column="switchboardZone" />
+		<result property="mainFaxZone" column="mainFaxZone" />
 
 		<association property="creator" javaType="com.ProcurementSystem.entity.User">
 			<id property="uniqueName" column="creatorUniqueName" />
@@ -72,108 +73,67 @@
 
 	<select id="getSupplierDetail" parameterType="int" resultMap="SupplierMap">
 		select
-<!-- <<<<<<< HEAD
-			supplier.unique_name as uniqueName,
+			supplier.unique_name,
 			contact_unique_name as contactUniqueName,
 			supplier.name as name,
-			is_supplier,
-			is_client,
-			description,
-			approve_state,
-			other_name1,
-			other_name2,
-			full_name_by_law,
-			stock_code,
-			province,
-			switchboard,
-			main_email,
-			unspsc_commodity,
-			duns,
-			other_address,
-			main_fax,
-			corporate_url,
-			organization_type,
-			parent_value,
-			manage,
-			post_code,
-			address,
-			district,
-			main_fax_zone,
-			switchboard_zone,
-			creator_unique_name as creatorUniqueName, 
-			user.name as creatorName
-		from supplier, user
-		where supplier.unique_name = #{uniqueName}
-		and creator_unique_name = user.unique_name;
-======= -->
-		#{uniqueName} as supplierUniqueName,
-		contact_unique_name as
-		contactUniqueName,
-		supplier.name as name,
-		is_supplier as isSupplier,
-		is_client as isClient,
-		supplier.description as description,
-		approve_state as approveState,
-		other_name1 as otherName1,
-		other_name2 as
-		otherName2,
-		full_name_by_law as fullNameByLaw,
-		stock_code as stockCode,
-		province as province,
-		switchboard as switchboard,
-		main_email as
-		mainEmail,
-		unspsc_commodity as UNSPSCCommodity,
-		duns as duns,
-		other_address as otherAddress,
-		main_fax as mainFax,
-		corporate_url as
-		corporateUrl,
-		organization_type as organizationType,
-		parent_value as
-		parentValue,
-		manage as manage,
-		post_code as postCode,
-		address as address,
-		district as district,
-		main_fax_zone as mainFaxZone,
-		switchboard_zone as
-		swtichboardZone,
-		creator_unique_name as creatorUniqueName,
-		user.name as
-		creatorName,
-		tttn.id as templateTaskTreeNodeId,
-		tttn.type,
-		ttp.id as
-		templateTaskPhaseId,
-		ttp.title as templateTaskPhaseTitle,
-		ttp.description as templateTaskPhaseDescription,
-		ttp.reserve_content as
-		templateTaskPhaseReserveContent,
-		ttp.rank as
-		templateTaskPhaseReserveRank,
-		ttp.is_duped as templateTaskPhaseIsDuped,
-		ttp.status as templateTaskPhaseStatus,
-		tts.id as
-		templateTaskScheduleId,
-		tts.title as
-		templateTaskScheduleTitle,
-		tts.owner as
-		templateTaskScheduleOwner,
-		tts.watcher as
-		templateTaskScheduleWatcher,
-		tts.ddl as
-		templateTaskScheduleDdl,
-		tts.is_milestone as
-		templateTaskScheduleIsMileStone,
-		tts.is_must as
-		templateTaskScheduleIsMust,
-		tts.set_field as
-		templateTaskScheduleSetField,
-		tts.pre_task as
-		templateTaskSchedulePreTask,
-		tts.rank as templateTaskScheduleRank,
-		tts.status as templateTaskScheduleStatus
+			is_supplier as isSupplier,
+			is_client as isClient,
+			supplier.description as description,
+			approve_state as approveState,
+			other_name1 as otherName1,
+			other_name2 as otherName2,
+			full_name_by_law as fullNameByLaw,
+			stock_code as stockCode,
+			province as province,
+			switchboard as switchboard,
+			main_email as mainEmail,
+			unspsc_commodity as UNSPSCCommodity,
+			duns as duns,
+			other_address as otherAddress,
+			main_fax as mainFax,
+			corporate_url as corporateUrl,
+			organization_type as organizationType,
+			parent_value as parentValue,
+			manage as manage,
+			post_code as postCode,
+			address as address,
+			district as district,
+			main_fax_zone as mainFaxZone,
+			switchboard_zone as swtichboardZone,
+			creator_unique_name as creatorUniqueName,
+			user.name as creatorName,
+			tttn.id as templateTaskTreeNodeId,
+			tttn.type,
+			ttp.id as
+			templateTaskPhaseId,
+			ttp.title as templateTaskPhaseTitle,
+			ttp.description as templateTaskPhaseDescription,
+			ttp.reserve_content as
+			templateTaskPhaseReserveContent,
+			ttp.rank as
+			templateTaskPhaseReserveRank,
+			ttp.is_duped as templateTaskPhaseIsDuped,
+			ttp.status as templateTaskPhaseStatus,
+			tts.id as
+			templateTaskScheduleId,
+			tts.title as
+			templateTaskScheduleTitle,
+			tts.owner as
+			templateTaskScheduleOwner,
+			tts.watcher as
+			templateTaskScheduleWatcher,
+			tts.ddl as
+			templateTaskScheduleDdl,
+			tts.is_milestone as
+			templateTaskScheduleIsMileStone,
+			tts.is_must as
+			templateTaskScheduleIsMust,
+			tts.set_field as
+			templateTaskScheduleSetField,
+			tts.pre_task as
+			templateTaskSchedulePreTask,
+			tts.rank as templateTaskScheduleRank,
+			tts.status as templateTaskScheduleStatus
 		from
 		supplier left join user on
 		creator_unique_name =
@@ -299,7 +259,13 @@
 				address = #{address},
 			</if>
 			<if test="otherAddress!='' and otherAddress!=null">
-				other_address = #{otherAddress}
+				other_address = #{otherAddress},
+			</if>
+			<if test="approveState!='' and approveState!=null">
+				approve_state = #{approveState},
+			</if>
+			<if test="isClient!='' and isClient!=null">
+				is_client = #{isClient}
 			</if>
 		</set>
 		where unique_name = #{uniqueName};

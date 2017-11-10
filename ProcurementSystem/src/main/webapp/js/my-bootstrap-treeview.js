@@ -32,7 +32,7 @@
 
 		injectStyle : true,
 
-		levels : 2,
+		levels : 1,
 
 		expandIcon: 'glyphicon glyphicon-chevron-right',
 		collapseIcon: 'glyphicon glyphicon-chevron-down',
@@ -331,6 +331,10 @@
 		if ((classList.indexOf('expand-icon') !== -1)) {
 			this.toggleExpandedState(node, _default.options);
 			this.render();
+		} else if ((classList.indexOf('check-icon') !== -1)) {
+			
+			this.toggleCheckedState(node, _default.options);
+			this.render();
 		} else if (classList == "caret") {
 			// click on span caret
 		} else if (classList == "btn-ma") {
@@ -527,28 +531,25 @@
 		this.setCheckedState(node, !node.state.checked, options);
 	};
 
-	// Tree.prototype.setCheckedState = function (node, state, options) {
-	// console.log(1);
-	// if (state === node.state.checked) return;
-	// console.log(2);
-	// if (state) {
-	// console.log(state);
-	// // Check node
-	// node.state.checked = true;
-	//
-	// if (!options.silent) {
-	// this.$element.trigger('nodeChecked', $.extend(true, {}, node));
-	// }
-	// }
-	// else {
-	// console.log(state);
-	// // Uncheck node
-	// node.state.checked = false;
-	// if (!options.silent) {
-	// this.$element.trigger('nodeUnchecked', $.extend(true, {}, node));
-	// }
-	// }
-	// };
+	 Tree.prototype.setCheckedState = function (node, state, options) {
+		 if (state === node.state.checked) return;
+		 if (state) {
+			 console.log(state);
+			 // Check node
+			 node.state.checked = true;
+		
+			 if (!options.silent) {
+				 this.$element.trigger('nodeChecked', $.extend(true, {}, node));
+			 }
+		 } else {
+			 console.log(state);
+			 // Uncheck node
+			 node.state.checked = false;
+			 if (!options.silent) {
+				 this.$element.trigger('nodeUnchecked', $.extend(true, {}, node));
+			 }
+		 }
+	};
 
 	Tree.prototype.setDisabledState = function(node, state, options) {
 		// if (state === node.state.disabled){
@@ -615,6 +616,20 @@
 					'data-nodeid', node.nodeId).attr('style',
 					_this.buildStyleOverride(node));
 
+			// Add check / unchecked icon
+			if (_this.options.showCheckbox) {
+
+				var classList = [ 'check-icon' ];
+				if (node.state.checked) {
+					classList.push(_this.options.checkedIcon);
+				} else {
+					classList.push(_this.options.uncheckedIcon);
+				}
+
+				treeItem.append($(_this.template.icon).addClass(
+						classList.join(' ')));
+			}
+			
 			// Add indent/spacer to mimic tree structure
 			for (var i = 0; i < (level - 1); i++) {
 				treeItem.append(_this.template.indent);
@@ -647,20 +662,6 @@
 					classList.push(node.selectedIcon
 							|| _this.options.selectedIcon || node.icon
 							|| _this.options.nodeIcon);
-				}
-
-				treeItem.append($(_this.template.icon).addClass(
-						classList.join(' ')));
-			}
-
-			// Add check / unchecked icon
-			if (_this.options.showCheckbox) {
-
-				var classList = [ 'check-icon' ];
-				if (node.state.checked) {
-					classList.push(_this.options.checkedIcon);
-				} else {
-					classList.push(_this.options.uncheckedIcon);
 				}
 
 				treeItem.append($(_this.template.icon).addClass(
