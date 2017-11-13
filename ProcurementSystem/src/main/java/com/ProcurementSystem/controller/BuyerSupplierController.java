@@ -330,7 +330,7 @@ public class BuyerSupplierController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "supplierDetail")
 	public String showSupplierDetail(HttpServletRequest request) {
-		request.getSession().setAttribute("backTask", "redirect:supplierDetailTask");// 设置
+		request.getSession().setAttribute("backTask", "supplierDetailTask");// 设置
 		HttpSession session = request.getSession();
 		Supplier supplier = null;
 		List<SupplierSIMAnswer> answers = new ArrayList<SupplierSIMAnswer>();
@@ -503,7 +503,7 @@ public class BuyerSupplierController {
 		}
 		Supplier supplier = (Supplier) request.getSession().getAttribute("supplierSession");
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// SIM模板 - 任务 - 编辑阶段
@@ -516,7 +516,7 @@ public class BuyerSupplierController {
 		}
 		Supplier supplier = (Supplier) request.getSession().getAttribute("supplierSession");
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// SIM模板 - 任务 - 保存编辑阶段
@@ -525,7 +525,7 @@ public class BuyerSupplierController {
 		templateTaskPhaseService.editById(templateTaskPhase);
 		Supplier supplier = (Supplier) request.getSession().getAttribute("supplierSession");
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// 任务-删除任务树节点(任务阶段和待办任务)
@@ -533,7 +533,7 @@ public class BuyerSupplierController {
 	public String templateTaskTreeNodeDelete(@RequestParam(value = "id") Integer id, HttpServletRequest request) {
 		templateTaskTreeNodeService.deleteById(id);
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// SIM模板 - 任务 - 创建待办任务
@@ -563,7 +563,7 @@ public class BuyerSupplierController {
 		}
 		Supplier supplier = (Supplier) request.getSession().getAttribute("supplierSession");
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// SIM模板 - 任务 - 编辑待办任务
@@ -581,7 +581,7 @@ public class BuyerSupplierController {
 	public String templateTaskScheduleEditSave(TemplateTaskSchedule templateTaskSchedule, HttpServletRequest request) {
 		templateTaskScheduleService.edit(templateTaskSchedule);
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// 查看阶段详细信息
@@ -607,7 +607,7 @@ public class BuyerSupplierController {
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskScheduleService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// 待办事项标记已完成
@@ -617,7 +617,7 @@ public class BuyerSupplierController {
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskScheduleService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// 待办事项重新激活
@@ -627,7 +627,7 @@ public class BuyerSupplierController {
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskScheduleService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// 阶段标记已开始
@@ -637,7 +637,7 @@ public class BuyerSupplierController {
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskPhaseService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// 阶段标记已完成
@@ -647,7 +647,7 @@ public class BuyerSupplierController {
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskPhaseService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	// 阶段重新激活
@@ -657,7 +657,7 @@ public class BuyerSupplierController {
 		TemplateTaskTreeNode templateTaskTreeNode = templateTaskPhaseService.getTemplateTaskTreeNode(id);
 		templateTaskTreeNodeService.changeStatus(templateTaskTreeNode.getParentId());
 		String backTask = (String) request.getSession().getAttribute("backTask");
-		return backTask;
+		return "redirect:" + backTask;
 	}
 
 	/** 任务结束 */
@@ -746,7 +746,7 @@ public class BuyerSupplierController {
 	/* SQM详情 */
 	@RequestMapping(value = "sqmSummary")
 	public String sqmSummary(HttpServletRequest request) {
-		String backTask = "redirect:sqmTask";
+		String backTask = "sqmTask";
 		request.getSession().setAttribute("backTask", backTask);
 		if (request.getSession().getAttribute("sqm") != null) {
 			request.setAttribute("sqm", (SupplierSQM) request.getSession().getAttribute("sqm"));
@@ -813,7 +813,8 @@ public class BuyerSupplierController {
 
 	@RequestMapping(value = "sqmCreation")
 	public String sqmCreation(HttpServletRequest request, @Valid SupplierSQM sqm, BindingResult result, ModelMap map,
-			@RequestParam(value = "sqmTemplateId", required = false) Integer sqmTemplateId) {
+			@RequestParam(value = "sqmTemplateId", required = false) Integer sqmTemplateId,
+			@RequestParam(value = "commoditiesId", required = false) String commoditiesId) {
 		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
 		System.out.println(action);
@@ -869,8 +870,8 @@ public class BuyerSupplierController {
 			sqmService.InsertSQM(sqm);// 持久化SQM
 			SupplierSQMAllowedCode allowedCode = new SupplierSQMAllowedCode();
 			allowedCode.setSqm(sqm);
-			String oriCode = "";
-			allowedCode.setSpscCode(oriCode);//设置原始code，特殊分隔符分开
+			String oriCode = commoditiesId;
+			allowedCode.setSpscCode(oriCode);// 设置原始code，特殊分隔符分开
 			allowedCodeService.setAllowedSpscCode(allowedCode);// 设置SQM准入类别，并持久化
 			return "redirect:sqmSummary?id=" + sqm.getId();
 		}

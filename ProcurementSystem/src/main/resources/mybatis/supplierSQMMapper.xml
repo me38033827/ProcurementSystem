@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ProcurementSystem.dao.ISupplierSQMDao">
-	<resultMap id="SQMMap" type="com.ProcurementSystem.entity.SupplierSQM">
+	<resultMap id="SQMMapA" type="com.ProcurementSystem.entity.SupplierSQM">
 		<result property="id" column="id" />
 		<result property="title" column="title" />
 		<result property="description" column="description" />
@@ -48,10 +48,64 @@
 				<result property="status" column="templateTaskScheduleStatus" />
 			</association>
 		</association>
+		<collection property="codes" ofType="String" javaType="List">
+			<result column="unspscDescription" />
+		</collection>
+	</resultMap>
+
+	<resultMap id="SQMMap" type="com.ProcurementSystem.entity.SupplierSQM">
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="description" column="description" />
+		<result property="commodity" column="commodity" />
+		<result property="status" column="status" />
+		<result property="validTo" column="valid_to" />
+		<result property="lastValid" column="last_valid" />
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierId" />
+			<id property="name" column="supplierName" />
+		</association>
+		<association property="user" javaType="com.ProcurementSystem.entity.User">
+			<id property="uniqueName" column="userId" />
+			<id property="name" column="userName" />
+		</association>
+		<association property="templateTaskTreeNode"
+			javaType="com.ProcurementSystem.entity.TemplateTaskTreeNode">
+			<id property="id" column="templateTaskTreeNodeId" />
+			<result property="type" column="type" />
+			<association property="templateTaskPhase"
+				javaType="com.ProcurementSystem.entity.TemplateTaskPhase">
+				<id property="id" column="templateTaskPhaseId" />
+				<result property="title" column="templateTaskPhaseTitle" />
+				<result property="description" column="templateTaskPhaseDescription" />
+				<result property="reserveContent" column="templateTaskPhaseReserveContent" />
+				<result property="rank" column="templateTaskPhaseReserveRank" />
+				<result property="isDuped" column="templateTaskPhaseIsDuped" />
+				<result property="status" column="templateTaskPhaseStatus" />
+			</association>
+			<association property="templateTaskSchedule"
+				javaType="com.ProcurementSystem.entity.TemplateTaskSchedule">
+				<id property="id" column="templateTaskScheduleId" />
+				<result property="title" column="templateTaskScheduleTitle" />
+				<result property="owner" column="templateTaskScheduleOwner" />
+				<result property="watcher" column="templateTaskScheduleWatcher" />
+				<result property="ddl" column="templateTaskScheduleDdl" />
+				<result property="isMilestone" column="templateTaskScheduleIsMilestone" />
+				<result property="isMust" column="templateTaskScheduleIsMust" />
+				<result property="setField" column="templateTaskScheduleSetField" />
+				<result property="preTask" column="templateTaskSchedulePreTask" />
+				<result property="rank" column="templateTaskScheduleRank" />
+				<result property="status" column="templateTaskScheduleStatus" />
+			</association>
+
+		</association>
 		<!-- association property: entity class里的实体名称 javaType: entity class id 
 			property: entity class attribute column: consistance with the following *** 
 			as ___ -->
 	</resultMap>
+
+
 
 	<insert id="insertSQM" parameterType="com.ProcurementSystem.entity.SupplierSQM">
 		insert into
@@ -88,7 +142,7 @@
 		supplier_sqm;
 	</select>
 
-	<select id="getSupplierSQM" parameterType="int" resultMap="SQMMap">
+	<select id="getSupplierSQM" parameterType="int" resultMap="SQMMapA">
 		select
 		supplier_sqm.id as id,
 		supplier_sqm.title as title,
@@ -136,8 +190,11 @@
 		tts.pre_task as
 		templateTaskSchedulePreTask,
 		tts.rank as templateTaskScheduleRank,
-		tts.status as templateTaskScheduleStatus
-		from supplier_sqm left
+		tts.status as templateTaskScheduleStatus,
+		unspsc.description as
+		unspscDescription
+		from
+		supplier_sqm left
 		join
 		template_task_tree_node
 		tttn
@@ -157,6 +214,8 @@
 		tttn.template_task_schedule_id =
 		tts.id
 		and tttn.type=0
+		left join supplier_sqm_allowed_code ssac on ssac.sqm_id
+		= supplier_sqm.id left join unspsc on unspsc.id = ssac.spsc_code
 		where
 		supplier_sqm.id = #{id};
 	</select>

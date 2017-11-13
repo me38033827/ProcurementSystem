@@ -18,8 +18,8 @@
 				<div class="standard-title">
 					<div class="standard-title-main">供应商概要问卷</div> 
 					<div class="standard-title-r">
-						<button class="btn-b" onclick="location.href='supplierInformationManagement'">完成</button>
-						<button class="btn-w">取消</button>
+						<button class="btn-b" onclick="window.location.href='supplierInformationManagement'">完成</button>
+						<button class="btn-w" onclick="window.location.href='../mainSupplier'">取消</button>
 					</div>
 				</div>
 				

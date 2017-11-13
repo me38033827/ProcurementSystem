@@ -2,9 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ProcurementSystem.dao.IBuyerSupplierSQMAllowedCodeDao">
+	
 	<update id="insert">
 		insert into supplier_sqm_allowed_code
 		(sqm_id,spsc_code)
-		values(#{supplierSQM.id},#{spscCode})
+		values(#{sqm.id},#{spscCode})
 	</update>
 </mapper>

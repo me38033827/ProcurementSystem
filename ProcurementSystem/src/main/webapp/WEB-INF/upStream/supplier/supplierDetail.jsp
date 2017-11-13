@@ -14,33 +14,8 @@
 	<div class="content">
 		<div class="container">
 			<div class="standard-out">
-			<!-- 主要内容 -->
-		
-				<!-- supplier detail title -->
-				<div class="p2p-supplier-title">
-					<div class="left">
-						<a class="p2p-supplier-title-main">${supplier.name}</a><br>
-						<a class="p2p-supplier-subtitle">供应商工作区</a>
-					</div>
-					
-					<div class="right" id="supplier-detail-top">
-						<table>
-							<tr>
-								<td class="text-right">任务：</td>
-								<td>未完成的任务：4</td>
-							</tr>
-							<tr>
-								<td class="text-right">当前阶段：</td>
-								<td>初始阶段</td>
-							</tr>
-							<tr>
-								<td class="text-right">下一里程碑：</td>
-								<td>GCM创建新的供应商</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			
+				<%@include file="supplierDetailNav.jsp"%>
+				<!-- 主要内容 -->
 				<div class="tag-line">
 					<button class="tag-not-clicked"
 						onclick="window.location.href='supplierDetailSummary'">概述</button>
@@ -61,30 +36,33 @@
 					<button class="tag-not-clicked"
 						onclick="window.location.href='supplierDetailHistory'">历史记录</button>
 				</div>
-				
+
 				<div class="adjust-10"></div>
-	
+
 				<div class="row">
 					<div class="col-md-6">
-						<div class="standard-subtitle">组织概要
+						<div class="standard-subtitle">
+							组织概要
 							<div class="btn-group right">
 								<button class="btn-ma" data-toggle="dropdown">
 									操作&nbsp;<span class="caret"></span>
 								</button>
-								<ul class="dropdown-menu" style="width:120px;">
+								<ul class="dropdown-menu" style="width: 120px;">
 									<li><a class="manu-deactive">编辑</a></li>
-									<li><a class="manu-active" href="editSupplierDetail?id=<%=request.getSession().getAttribute("uniqueName") %>">&nbsp;&nbsp;概要</a></li>
-									<li><a class="manu-deactive" >查看</a></li>
+									<li><a class="manu-active"
+										href="editSupplierDetail?id=<%=request.getSession().getAttribute("uniqueName")%>">&nbsp;&nbsp;概要</a></li>
+									<li><a class="manu-deactive">查看</a></li>
 									<li><a class="manu-active" href="">&nbsp;&nbsp;组织标识符</a></li>
 									<li><a class="manu-active" href="">&nbsp;&nbsp;厂商密钥</a></li>
-									<li><a class="manu-deactive" >供应商集成</a></li>
+									<li><a class="manu-deactive">供应商集成</a></li>
 									<li><a class="manu-active" href="">&nbsp;&nbsp;启用</a></li>
-									<li><a class="manu-deactive" >更改审批状态</a></li>
+									<li><a class="manu-deactive">更改审批状态</a></li>
 									<li><a class="manu-active" href="">&nbsp;&nbsp;拒绝</a></li>
 								</ul>
 							</div>
 						</div>
-						<table class="tab-height" id="supplier-crea-tab1"  style="margin-left:80px;">
+						<table class="tab-height" id="supplier-crea-tab1"
+							style="margin-left: 80px;">
 							<tr>
 								<td class="col-standard1">组织名称：</td>
 								<td class="col-standard2">${supplier.name}</td>
@@ -113,12 +91,12 @@
 								<td class="col-standard1">审批状态：</td>
 								<td class="col-standard2">${supplier.approveState}</td>
 							</tr>
-	
+
 							<tr>
 								<td class="col-standard1">其他名称1：</td>
 								<td class="col-standard2">${supplier.otherName1}</td>
 							</tr>
-	
+
 							<tr>
 								<td class="col-standard1">其他名称2：</td>
 								<td class="col-standard2">${supplier.otherName2}</td>
@@ -149,11 +127,13 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">商品(UNSPSC)：</td>
-								<td class="col-standard2"><%-- ${supplier.UNSPSCCommodity} --%></td>
+								<td class="col-standard2">
+									<%-- ${supplier.UNSPSCCommodity} --%>
+								</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">标识符：</td>
-								<td class="col-standard2">SU<%=request.getSession().getAttribute("uniqueName") %></td>
+								<td class="col-standard2">SU<%=request.getSession().getAttribute("uniqueName")%></td>
 							</tr>
 							<tr>
 								<td class="col-standard1">DUNS：</td>
@@ -176,16 +156,16 @@
 					<div class="col-md-6">
 						<div class="inline-b tab-height full">
 							<div class="inline-b filters full">
-								<div class="standard-subtitle">用户
-									<div class="btn-group right">
-									</div>
+								<div class="standard-subtitle">
+									用户
+									<div class="btn-group right"></div>
 								</div>
 								<div class="adjust-10"></div>
 								<div>
 									<table class="table table-hover">
 										<tr class="standard-row1">
-											<td style="padding:5px;">
-												<input type="checkbox" id="chk-sup-de1" class="chk" /><label for="chk-sup-de1"></label>
+											<td style="padding: 5px;"><input type="checkbox"
+												id="chk-sup-de1" class="chk" /><label for="chk-sup-de1"></label>
 											</td>
 											<td>标识符</td>
 											<td>名称</td>
@@ -206,20 +186,19 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="adjust-10"></div>
 						<div class="adjust-10"></div>
-						
+
 						<div class="inline-b tab-height full">
 							<div class="inline-b filters full">
-								<div class="standard-subtitle">业务联系人
-								</div>
+								<div class="standard-subtitle">业务联系人</div>
 								<div class="adjust-10"></div>
 								<div>
 									<table class="table table-hover">
 										<tr class="standard-row1">
-											<td style="padding:5px;">
-												<input type="checkbox" id="chk-sup-de3" class="chk" /><label for="chk-sup-de3"></label>
+											<td style="padding: 5px;"><input type="checkbox"
+												id="chk-sup-de3" class="chk" /><label for="chk-sup-de3"></label>
 											</td>
 											<td>名称</td>
 											<td>电子邮件地址</td>
@@ -240,33 +219,33 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col-md-12">
-						<div class="standard-subtitle">概要问卷
-						</div>
-						
+						<div class="standard-subtitle">概要问卷</div>
+
 						<!-- 问卷内容 -->
-						<div style="border:1px solid #ddd; max-height:500px; overflow-x:scroll;">
-				          <div id="treeview-sim" class=""></div>
-				        </div>
+						<div
+							style="border: 1px solid #ddd; max-height: 500px; overflow-x: scroll;">
+							<div id="treeview-sim" class=""></div>
+						</div>
 					</div>
 				</div>
-			</div> 
+			</div>
 		</div>
 	</div>
 	<!-- CONTENT-WRAPPER SECTION END-->
 	<%@ include file="../../other/supplierFooter.jsp"%>
 
 	<script>
-		function back(){
-			location.href="../search/supplierSearchDistribute?page=2005";
+		function back() {
+			location.href = "../search/supplierSearchDistribute?page=2004";
 		}
-		$(function(){
- 	        var defaultData = ${treeData};
- 	        $('#treeview-sim').treeview({
- 	          data: defaultData
- 	        });
+		$(function() {
+			var defaultData = ${treeData};
+			$('#treeview-sim').treeview({
+				data : defaultData
+			});
 		})
 	</script>
 </body>

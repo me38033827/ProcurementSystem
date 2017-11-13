@@ -212,19 +212,23 @@
 		on
 		c.commodity_catalog_unique_name =
 		cc.unique_name
-		left join commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
+		left join
+		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
 		left join supplier_sqm ss on ss.supplier_id = c.supplier_unique_name
 		where 1 = 1 and
 		cc.is_activated = '已激活' and cch.spsc_code in(select
-		spsc_code from supplier_sqm ss2 left join supplier_sqm_allowed_code sac on
-		sac.sqm_id = ss2.id where ss2.supplier_id = c.supplier_unique_name)
+		spsc_code from supplier_sqm ss2 left join supplier_sqm_allowed_code
+		sac on
+		sac.sqm_id = ss2.id where ss2.supplier_id =
+		c.supplier_unique_name)
 		<if test="commodity.uniqueName != '' and commodity.uniqueName != null">
 			and c.unique_name = #{commodity.uniqueName}
 		</if>
 		<if test="commodity.spscCode != '' and commodity.spscCode != null">
 			and c.spsc_code like CONCAT(#{commodity.spscCode},'%')
 		</if>
-		#order by uniqueName desc
+		group by c.unique_name
+		order by uniqueName desc
 		<if test="offset != null and size != null">
 			limit #{offset},#{size}
 		</if>
@@ -319,8 +323,10 @@
 		c.commodity_catalog_unique_name = cc.unique_name left join
 		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
 		where
-		cc.is_activated = '已激活' and cch.spsc_code in(select spsc_code from
-		supplier_sqm ss2 left join supplier_sqm_allowed_code sac on sac.sqm_id = ss2.id
+		cc.is_activated = '已激活' and cch.spsc_code in(select spsc_code
+		from
+		supplier_sqm ss2 left join supplier_sqm_allowed_code sac on
+		sac.sqm_id = ss2.id
 		where ss2.supplier_id = c.supplier_unique_name)
 		<if test="spscCode!='' and spscCode!=null">
 			and c.spsc_code like CONCAT(#{spscCode},'%')

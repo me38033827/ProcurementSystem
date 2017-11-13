@@ -11,7 +11,7 @@
 	<div class="content">
 		<div class="container">
 			<div class="standard-out">
-			<!-- 主要内容 -->
+				<!-- 主要内容 -->
 				<div class="row">
 					<div class="col-md-2">
 						<div class="supplier-left-info">
@@ -21,29 +21,29 @@
 							<div class="supplier-left-info-tab">
 								<table class="fulltab">
 									<tr>
-										<td style="padding:5px; width:40px;">
-											<input type="checkbox" id="chk-sup-news1" class="chk" /><label for="chk-sup-news1"></label>
-										</td>
-										<td style="width:20px;">0</td>
+										<td style="padding: 5px; width: 40px;"><input
+											type="checkbox" id="chk-sup-news1" class="chk" /><label
+											for="chk-sup-news1"></label></td>
+										<td style="width: 20px;">0</td>
 										<td>未读取</td>
 									</tr>
 									<tr>
-										<td style="padding:5px;">
-											<input type="checkbox" id="chk-sup-news2" class="chk" /><label for="chk-sup-news2"></label>
+										<td style="padding: 5px;"><input type="checkbox"
+											id="chk-sup-news2" class="chk" /><label for="chk-sup-news2"></label>
 										</td>
 										<td>0</td>
 										<td>未回应</td>
 									</tr>
 									<tr>
-										<td style="padding:5px;">
-											<input type="checkbox" id="chk-sup-news3" class="chk" /><label for="chk-sup-news3"></label>
+										<td style="padding: 5px;"><input type="checkbox"
+											id="chk-sup-news3" class="chk" /><label for="chk-sup-news3"></label>
 										</td>
 										<td>0</td>
 										<td>最近</td>
 									</tr>
 									<tr>
-										<td style="padding:5px;">
-											<input type="checkbox" id="chk-sup-news4" class="chk" /><label for="chk-sup-news4"></label>
+										<td style="padding: 5px;"><input type="checkbox"
+											id="chk-sup-news4" class="chk" /><label for="chk-sup-news4"></label>
 										</td>
 										<td>0</td>
 										<td>未读取</td>
@@ -52,32 +52,10 @@
 							</div>
 						</div>
 					</div>
-					
-					
+
+
 					<div class="col-md-10">
-						<!-- supplier detail title -->
-						<div class="p2p-supplier-title" style="height:46px;">
-							<div class="left">
-								<a class="p2p-supplier-title-main">供应商资格管理项目</a> <br>
-							</div>
-					
-							<div class="right" id="supplier-detail-top">
-								<table>
-									<tr>
-										<td class="text-right">标识符：</td>
-										<td>WS${sqm.id}</td>
-									</tr>
-									<tr>
-										<td class="text-right">任务：</td>
-										<td>未完成的任务：0</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-						
-						
-			
-			
+						<%@include file="supplierSQMNav.jsp"%>
 						<div class="tag-line">
 							<button class="tag-not-clicked"
 								onclick="window.location.href='sqmSummary'">概述</button>
@@ -94,13 +72,12 @@
 							<button class="tag-not-clicked"
 								onclick="window.location.href='sqmHistory'">历史记录</button>
 						</div>
-				
-				
+
+
 						<div class="adjust-10"></div>
-						
-						<div class="standard-subtitle">消息
-						</div>
-						
+
+						<div class="standard-subtitle">消息</div>
+
 						<div>
 							<table class="table table-hover">
 								<tr class="standard-row1">
@@ -131,8 +108,8 @@
 	</div>
 	<%@ include file="../../other/footer.jsp"%>
 	<script>
-		function back(){
-			location.href="../search/supplierSearchDistribute?page=2006";
+		function back() {
+			location.href = "../search/supplierSearchDistribute?page=2006";
 		}
 	</script>
 </body>

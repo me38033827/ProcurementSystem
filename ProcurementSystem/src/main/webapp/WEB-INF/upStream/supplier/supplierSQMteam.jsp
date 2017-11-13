@@ -11,7 +11,7 @@
 	<div class="content">
 		<div class="container">
 			<div class="standard-out">
-			<!-- 主要内容 -->
+				<!-- 主要内容 -->
 				<div class="row">
 					<div class="col-md-2">
 						<div class="supplier-left-info">
@@ -29,39 +29,21 @@
 									<tr>
 										<td><a href="" class="f-13">发送电子邮件到项目</a></td>
 									</tr>
-									
+
 								</table>
-								<div class="supplier-left-info-manage"><a href="">管理标签</a></div>
+								<div class="supplier-left-info-manage">
+									<a href="">管理标签</a>
+								</div>
 							</div>
-							
+
 						</div>
 					</div>
-					
-					
+
+
 					<div class="col-md-10">
 						<!-- supplier detail title -->
-						<div class="p2p-supplier-title" style="height:46px;">
-							<div class="left">
-								<a class="p2p-supplier-title-main">供应商资格管理项目</a> <br>
-							</div>
-					
-							<div class="right" id="supplier-detail-top">
-								<table>
-									<tr>
-										<td class="text-right">标识符：</td>
-										<td>WS${sqm.id }</td>
-									</tr>
-									<tr>
-										<td class="text-right">任务：</td>
-										<td>未完成的任务：0</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-						
-						
-			
-			
+						<%@include file="supplierSQMNav.jsp"%>
+
 						<div class="tag-line">
 							<button class="tag-not-clicked"
 								onclick="window.location.href='sqmSummary'">概述</button>
@@ -78,24 +60,24 @@
 							<button class="tag-not-clicked"
 								onclick="window.location.href='sqmHistory'">历史记录</button>
 						</div>
-				
-				
+
+
 						<div class="adjust-10"></div>
 						<div class="adjust-10"></div>
-			
-						
-						<div class="standard-subtitle">团队成员
-							<div class="right">
-							</div>
+
+
+						<div class="standard-subtitle">
+							团队成员
+							<div class="right"></div>
 						</div>
-			
+
 						<div class="adjust-10"></div>
-						
+
 						<div>
 							<table class="table table-hover">
 								<tr class="standard-row1">
-									<td style="width:70%;">组&#8595;</td>
-									<td style="width:30%;">成员</td>
+									<td style="width: 70%;">组&#8595;</td>
+									<td style="width: 30%;">成员</td>
 								</tr>
 								<tr class="bottom-border">
 									<td><a href="">项目所有者</a></td>
@@ -111,8 +93,8 @@
 	</div>
 	<%@ include file="../../other/footer.jsp"%>
 	<script>
-		function back(){
-			location.href="../search/supplierSearchDistribute?page=2005";
+		function back() {
+			location.href = "../search/supplierSearchDistribute?page=2005";
 		}
 	</script>
 </body>
