@@ -64,7 +64,7 @@
 									<td class="col-standard1">商品：</td>
 									<td class="col-standard2">
 										<a id="commodities" name="commodities"></a>
-										<input hidden="hidden" id="commoditiesId" name="commoditiesId"/>
+										<input type="hidden" id="commoditiesId" name="commoditiesId"/>
 										（选择一个值）［&nbsp;<a class="blue inline-b choose" href="javascript:;">选择</a>&nbsp;］
 									</td>
 								</tr>
@@ -236,6 +236,31 @@
           $checkableTree.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
         });
         
+        var search = function(e) {
+            var pattern = $('#input-search').val();
+            var options = {
+              ignoreCase: $('#chk-ignore-case').is(':checked'),
+              exactMatch: $('#chk-exact-match').is(':checked'),
+              revealResults: $('#chk-reveal-results').is(':checked')
+            };
+            var results = $searchableTree.treeview('search', [ pattern, options ]);
+
+            var output = '<p>' + results.length + ' matches found</p>';
+            $.each(results, function (index, result) {
+              output += '<p>- ' + result.text + '</p>';
+            });
+            $('#search-output').html(output);
+          }
+
+          $('#btn-search').on('click', search);
+          $('#input-search').on('keyup', search);
+
+          $('#btn-clear-search').on('click', function (e) {
+            $searchableTree.treeview('clearSearch');
+            $('#input-search').val('');
+            $('#search-output').html('');
+          });
+        
         function finishCommoditySelection(){
         		var commoditiesId="";
         		var commodities="";
@@ -245,9 +270,7 @@
         			var commodityName = element.firstChild.data;
         			commodities+=commodityName+"--";
         		});
-        		console.log(commoditiesId);
-        		console.log(commodities);
-        		$("#commoditiesId").text(commoditiesId);
+        		$("#commoditiesId").val(commoditiesId);
         		$("#commodities").text(commodities);
         }
 	</script>
