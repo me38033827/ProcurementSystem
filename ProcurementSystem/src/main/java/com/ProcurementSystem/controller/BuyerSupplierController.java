@@ -27,12 +27,14 @@ import com.ProcurementSystem.entity.SupplierSIM;
 import com.ProcurementSystem.entity.SupplierSIMAnswer;
 import com.ProcurementSystem.entity.SupplierSPM;
 import com.ProcurementSystem.entity.SupplierSQM;
+import com.ProcurementSystem.entity.SupplierSQMAllowedCode;
 import com.ProcurementSystem.entity.Template;
 import com.ProcurementSystem.entity.TemplateTaskPhase;
 import com.ProcurementSystem.entity.TemplateTaskSchedule;
 import com.ProcurementSystem.entity.TemplateTaskTreeNode;
 import com.ProcurementSystem.entity.UNSPSCTree;
 import com.ProcurementSystem.entity.User;
+import com.ProcurementSystem.service.BuyerSupplierSQMAllowedCodeService;
 import com.ProcurementSystem.service.BuyerTemplateService;
 import com.ProcurementSystem.service.BuyerTemplateTaskPhaseService;
 import com.ProcurementSystem.service.BuyerTemplateTaskScheduleService;
@@ -69,6 +71,8 @@ public class BuyerSupplierController {
 	BuyerTemplateService templateService;
 	@Resource
 	UNSPSCService unspscService;
+	@Resource
+	BuyerSupplierSQMAllowedCodeService allowedCodeService;
 
 	// P2P显示供应商信息管理
 	@RequestMapping(value = "simQuestionnaire")
@@ -330,10 +334,10 @@ public class BuyerSupplierController {
 		HttpSession session = request.getSession();
 		Supplier supplier = null;
 		List<SupplierSIMAnswer> answers = new ArrayList<SupplierSIMAnswer>();
-		
-		//获得supplier uniqueName
+
+		// 获得supplier uniqueName
 		String uniqueNameStr = request.getParameter("id");
-		
+
 		int uniqueName = -1;
 		if (uniqueNameStr != null) {
 			uniqueName = Integer.parseInt(uniqueNameStr);
@@ -341,13 +345,13 @@ public class BuyerSupplierController {
 		} else {
 			uniqueName = (int) session.getAttribute("uniqueName");
 		}
-		
+
 		supplier = service.getSupplierDetail(uniqueName);
 		session.setAttribute("supplierSession", supplier);
 		answers = simService.getSupplierSIMAnswer(uniqueName);
 		request.setAttribute("supplier", supplier);
 
-		//显示sim填写结果
+		// 显示sim填写结果
 		SIMTree simTree = simService.generateSIMTree();
 		JSONArray json = simTree.traverseToJSONArrayWithAnswer(answers);
 		request.setAttribute("treeData", json);
@@ -362,7 +366,7 @@ public class BuyerSupplierController {
 		Supplier supplier = service.getSupplierDetail(id_int);
 		request.setAttribute("supplier", supplier);
 
-		//sim
+		// sim
 		SIMTree simTree = simService.generateSIMTree();
 		JSONArray json = simTree.traverseToJSONArray();
 		request.setAttribute("treeData", json);
@@ -822,7 +826,7 @@ public class BuyerSupplierController {
 			request.getSession().setAttribute("sqmSession", sqmSession);
 			request.getSession().setAttribute("templates", templates);
 			UNSPSCTree tree = unspscService.generateUNSPSCTree();
-			request.getSession().setAttribute("treeData",tree.UNSPSCTreeToJSON());
+			request.getSession().setAttribute("treeData", tree.UNSPSCTreeToJSON());
 			return "upStream/supplier/supplierSQMCreation";
 		}
 		if (action.equals("back")) {
@@ -861,8 +865,13 @@ public class BuyerSupplierController {
 			Template template = new Template();
 			template.setId(sqmTemplateId);
 			TemplateTaskTreeNode taskTreeNode = service.generateTaskTree(template);
-			sqm.setTemplateTaskTreeNode(taskTreeNode);
+			sqm.setTemplateTaskTreeNode(taskTreeNode);// 根据模板设置任务树
 			sqmService.InsertSQM(sqm);// 持久化SQM
+			SupplierSQMAllowedCode allowedCode = new SupplierSQMAllowedCode();
+			allowedCode.setSqm(sqm);
+			String oriCode = "";
+			allowedCode.setSpscCode(oriCode);//设置原始code，特殊分隔符分开
+			allowedCodeService.setAllowedSpscCode(allowedCode);// 设置SQM准入类别，并持久化
 			return "redirect:sqmSummary?id=" + sqm.getId();
 		}
 		;

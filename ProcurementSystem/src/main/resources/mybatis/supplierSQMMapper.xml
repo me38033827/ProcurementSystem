@@ -55,12 +55,17 @@
 
 	<insert id="insertSQM" parameterType="com.ProcurementSystem.entity.SupplierSQM">
 		insert into
-		supplier_sqm(id, title, description, commodity, status, valid_to,
-		last_valid, supplier_id, user_id,task_tree_node_id)
+		supplier_sqm(id, title,
+		description, commodity, status,
+		valid_to,
+		last_valid, supplier_id,
+		user_id,task_tree_node_id)
 		values(#{id},
-		#{title}, #{description}, #{commodity}, #{status},
+		#{title}, #{description},
+		#{commodity}, #{status},
 		#{validTo},
-		#{lastValid}, #{supplier.uniqueName},
+		#{lastValid},
+		#{supplier.uniqueName},
 		#{user.uniqueName},#{templateTaskTreeNode.id});
 	</insert>
 
@@ -152,7 +157,8 @@
 		tttn.template_task_schedule_id =
 		tts.id
 		and tttn.type=0
-		where supplier_sqm.id = #{id};
+		where
+		supplier_sqm.id = #{id};
 	</select>
 
 	<select id="searchSupplierSQM" parameterType="String" resultMap="SQMMap">
