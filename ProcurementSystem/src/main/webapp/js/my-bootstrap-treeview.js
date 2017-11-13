@@ -313,6 +313,11 @@
 			if (node.nodes) {
 				_this.setInitialStates(node, level);
 			}
+			
+			// set search result default true
+			if (!node.hasOwnProperty('searchResult')) {
+				node.searchResult = true;
+			}
 		});
 	};
 
@@ -541,7 +546,7 @@
 				 this.$element.trigger('nodeChecked', $.extend(true, {}, node));
 			 }
 		 } else {
-			 console.log(state);
+			 //console.log(state);
 			 // Uncheck node
 			 node.state.checked = false;
 			 if (!options.silent) {
@@ -604,92 +609,94 @@
 		level += 1;
 
 		var _this = this;
+		var count=0;
 		$.each(nodes, function addNodes(id, node) {
+			if(node.searchResult){
+				var treeItem = $(_this.template.item).addClass(
+						'node-' + _this.elementId).addClass(
+						node.state.checked ? 'node-checked' : '').addClass(
+						node.state.disabled ? 'node-disabled' : '')
+				.addClass(node.state.selected ? 'node-selected' : '')
+				.addClass(node.searchResult ? 'search-result' : '').attr(
+						'data-nodeid', node.nodeId).attr('style',
+						_this.buildStyleOverride(node));
 
-			var treeItem = $(_this.template.item).addClass(
-					'node-' + _this.elementId).addClass(
-					node.state.checked ? 'node-checked' : '').addClass(
-					node.state.disabled ? 'node-disabled' : '')
-			// .addClass(node.state.selected ? 'node-selected' : '')
-			.addClass(node.searchResult ? 'search-result' : '').attr(
-					'data-nodeid', node.nodeId).attr('style',
-					_this.buildStyleOverride(node));
+				// Add check / unchecked icon
+				if (_this.options.showCheckbox) {
 
-			// Add check / unchecked icon
-			if (_this.options.showCheckbox) {
+					var classList = [ 'check-icon' ];
+					if (node.state.checked) {
+						classList.push(_this.options.checkedIcon);
+					} else {
+						classList.push(_this.options.uncheckedIcon);
+					}
 
-				var classList = [ 'check-icon' ];
-				if (node.state.checked) {
-					classList.push(_this.options.checkedIcon);
+					treeItem.append($(_this.template.icon).addClass(
+							classList.join(' ')));
+				}
+				
+				// Add indent/spacer to mimic tree structure
+				for (var i = 0; i < (level - 1); i++) {
+					treeItem.append(_this.template.indent);
+				}
+
+				// Add expand, collapse or empty spacer icons
+				var classList = [];
+				if (node.nodes) {
+					classList.push('expand-icon');
+					if (node.state.expanded) {
+						classList.push(_this.options.collapseIcon);
+					} else {
+						classList.push(_this.options.expandIcon);
+					}
 				} else {
-					classList.push(_this.options.uncheckedIcon);
+					classList.push(_this.options.emptyIcon);
 				}
 
-				treeItem.append($(_this.template.icon).addClass(
-						classList.join(' ')));
-			}
-			
-			// Add indent/spacer to mimic tree structure
-			for (var i = 0; i < (level - 1); i++) {
-				treeItem.append(_this.template.indent);
-			}
+				treeItem.append($(_this.template.icon)
+						.addClass(classList.join(' ')));
 
-			// Add expand, collapse or empty spacer icons
-			var classList = [];
-			if (node.nodes) {
-				classList.push('expand-icon');
-				if (node.state.expanded) {
-					classList.push(_this.options.collapseIcon);
+				// Add node icon
+				if (_this.options.showIcon) {
+
+					var classList = [ 'node-icon' ];
+
+					classList.push(node.icon || _this.options.nodeIcon);
+					if (node.state.selected) {
+						classList.pop();
+						classList.push(node.selectedIcon
+								|| _this.options.selectedIcon || node.icon
+								|| _this.options.nodeIcon);
+					}
+
+					treeItem.append($(_this.template.icon).addClass(
+							classList.join(' ')));
+				}
+
+				// Add text
+				if (_this.options.enableLinks) {
+					// Add hyperlink
+					treeItem.append($(_this.template.link).attr('href', node.href)
+							.append(node.text));
 				} else {
-					classList.push(_this.options.expandIcon);
-				}
-			} else {
-				classList.push(_this.options.emptyIcon);
-			}
-
-			treeItem.append($(_this.template.icon)
-					.addClass(classList.join(' ')));
-
-			// Add node icon
-			if (_this.options.showIcon) {
-
-				var classList = [ 'node-icon' ];
-
-				classList.push(node.icon || _this.options.nodeIcon);
-				if (node.state.selected) {
-					classList.pop();
-					classList.push(node.selectedIcon
-							|| _this.options.selectedIcon || node.icon
-							|| _this.options.nodeIcon);
+					// otherwise just text
+					treeItem.append(node.text);
 				}
 
-				treeItem.append($(_this.template.icon).addClass(
-						classList.join(' ')));
-			}
+				// Add tags as badges
+				if (_this.options.showTags && node.tags) {
+					$.each(node.tags, function addTag(id, tag) {
+						treeItem.append($(_this.template.badge).append(tag));
+					});
+				}
 
-			// Add text
-			if (_this.options.enableLinks) {
-				// Add hyperlink
-				treeItem.append($(_this.template.link).attr('href', node.href)
-						.append(node.text));
-			} else {
-				// otherwise just text
-				treeItem.append(node.text);
-			}
+				// Add item to the tree
+				_this.$wrapper.append(treeItem);
 
-			// Add tags as badges
-			if (_this.options.showTags && node.tags) {
-				$.each(node.tags, function addTag(id, tag) {
-					treeItem.append($(_this.template.badge).append(tag));
-				});
-			}
-
-			// Add item to the tree
-			_this.$wrapper.append(treeItem);
-
-			// Recursively add child ndoes
-			if (node.nodes && node.state.expanded && !node.state.disabled) {
-				return _this.buildTree(node.nodes, level);
+				// Recursively add child nodes
+				if (node.nodes && node.state.expanded && !node.state.disabled) {
+					return _this.buildTree(node.nodes, level);
+				}
 			}
 		});
 	};
@@ -713,7 +720,7 @@
 				backColor = this.options.selectedBackColor;
 			}
 		}
-
+		//搜索结果
 		if (this.options.highlightSearchResults && node.searchResult
 				&& !node.state.disabled) {
 			if (this.options.searchResultColor) {
@@ -1043,12 +1050,13 @@
 	 *            Object} options
 	 */
 	Tree.prototype.revealNode = function(identifiers, options) {
+		var _this = this;
 		this.forEachIdentifier(identifiers, options, $.proxy(function(node,
 				options) {
-			var parentNode = this.getParent(node);
+			var parentNode = _this.getParent(node);
 			while (parentNode) {
 				this.setExpandedState(parentNode, true, options);
-				parentNode = this.getParent(parentNode);
+				parentNode = _this.getParent(parentNode);
 			}
 			;
 		}, this));
@@ -1283,12 +1291,14 @@
 	 * @return {Array} nodes - Matching nodes
 	 */
 	Tree.prototype.search = function(pattern, options) {
+		var _this = this;
+		
 		options = $.extend({}, _default.searchOptions, options);
 
 		this.clearSearch({
 			render : false
 		});
-
+		
 		var results = [];
 		if (pattern && pattern.length > 0) {
 
@@ -1302,12 +1312,27 @@
 			}
 
 			results = this.findNodes(pattern, modifier);
+			
+			console.log(results);
+			
+			//搜索前把searchResult改了
+			$.each(this.findNodes('true', 'g', 'searchResult'),
+				function(index, node) {
+					node.searchResult = false;
+				});
 
 			// Add searchResult property to all matching nodes
 			// This will be used to apply custom styles
 			// and when identifying result to be cleared
 			$.each(results, function(index, node) {
+				//将父级节点 变成expanded true和search result true
 				node.searchResult = true;
+				var parent = _this.getParent(node);
+				while(parent){
+					parent.searchResult = true;
+					parent.state.expanded = true;
+					parent = _this.getParent(parent);
+				}
 			})
 		}
 
@@ -1333,9 +1358,9 @@
 			render : true
 		}, options);
 
-		var results = $.each(this.findNodes('true', 'g', 'searchResult'),
+		var results = $.each(this.findNodes('false', 'g', 'searchResult'),
 				function(index, node) {
-					node.searchResult = false;
+					node.searchResult = true;
 				});
 
 		if (options.render) {

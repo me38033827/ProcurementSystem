@@ -157,8 +157,9 @@
 											<option>名称</option>
 											<option>标识符</option>
 										</select>
-										<input class="input" />
-										<button class="btn-w">搜索</button>
+										<input class="input" id="input-search"/>
+										<button class="btn-w" id="btn-search">搜索</button>
+										<button class="btn-w" id="btn-clear-search">清除</button>
 									</div>
 						          	<div id="treeview-sim" class=""></div>
 						        	</div>
@@ -190,7 +191,7 @@
 			})
 		})
 	
-		var $checkableTree= $('#treeview-sim').treeview({
+		var $Tree= $('#treeview-sim').treeview({
             data: <%=request.getSession().getAttribute("treeData")%>,
             showIcon: false,
             showCheckbox: true,
@@ -205,7 +206,7 @@
         });
        
         var findCheckableNodess = function() {
-          return $checkableTree.treeview('search', [ $('#input-check-node').val(), { ignoreCase: false, exactMatch: false } ]);
+          return $Tree.treeview('search', [ $('#input-check-node').val(), { ignoreCase: false, exactMatch: false } ]);
         };
         var checkableNodes = findCheckableNodess();
 
@@ -216,24 +217,24 @@
         });
 
         $('#btn-check-node.check-node').on('click', function (e) {
-          $checkableTree.treeview('checkNode', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
+          $Tree.treeview('checkNode', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
         });
 
         $('#btn-uncheck-node.check-node').on('click', function (e) {
-          $checkableTree.treeview('uncheckNode', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
+          $Tree.treeview('uncheckNode', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
         });
 
         $('#btn-toggle-checked.check-node').on('click', function (e) {
-          $checkableTree.treeview('toggleNodeChecked', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
+          $Tree.treeview('toggleNodeChecked', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
         });
 
         // Check/uncheck all
         $('#btn-check-all').on('click', function (e) {
-          $checkableTree.treeview('checkAll', { silent: $('#chk-check-silent').is(':checked') });
+          $Tree.treeview('checkAll', { silent: $('#chk-check-silent').is(':checked') });
         });
 
         $('#btn-uncheck-all').on('click', function (e) {
-          $checkableTree.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
+          $Tree.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
         });
         
         var search = function(e) {
@@ -243,22 +244,16 @@
               exactMatch: $('#chk-exact-match').is(':checked'),
               revealResults: $('#chk-reveal-results').is(':checked')
             };
-            var results = $searchableTree.treeview('search', [ pattern, options ]);
-
-            var output = '<p>' + results.length + ' matches found</p>';
-            $.each(results, function (index, result) {
-              output += '<p>- ' + result.text + '</p>';
-            });
-            $('#search-output').html(output);
+            var results = $Tree.treeview('search', [ pattern, options ]);
+			//console.log(results);
           }
 
           $('#btn-search').on('click', search);
-          $('#input-search').on('keyup', search);
+          //$('#input-search').on('keyup', search);
 
           $('#btn-clear-search').on('click', function (e) {
-            $searchableTree.treeview('clearSearch');
+            $Tree.treeview('clearSearch');
             $('#input-search').val('');
-            $('#search-output').html('');
           });
         
         function finishCommoditySelection(){
