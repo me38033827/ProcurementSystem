@@ -534,7 +534,6 @@
 	 Tree.prototype.setCheckedState = function (node, state, options) {
 		 if (state === node.state.checked) return;
 		 if (state) {
-			 console.log(state);
 			 // Check node
 			 node.state.checked = true;
 		

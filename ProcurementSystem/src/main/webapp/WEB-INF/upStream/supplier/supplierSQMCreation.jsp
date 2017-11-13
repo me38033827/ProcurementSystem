@@ -62,10 +62,9 @@
 
 								<tr class="row-standard">
 									<td class="col-standard1">商品：</td>
-									<td class="col-standard2"><%-- <input
-										class="form-control input" name="commodity"
-										<%if(request.getAttribute("sqm")!=null){ %>
-										value="${sqm.commodity}" <%} %>> --%>
+									<td class="col-standard2">
+										<a id="commodities" name="commodities"></a>
+										<input hidden="hidden" id="commoditiesId" name="commoditiesId"/>
 										（选择一个值）［&nbsp;<a class="blue inline-b choose" href="javascript:;">选择</a>&nbsp;］
 									</td>
 								</tr>
@@ -147,14 +146,26 @@
 				</form>
 				<div class="theme-popover commodity-selection">
 					<div class="popover-container">
+						<button class="close" style="float:right;" onclick="finishCommoditySelection();">X</button>
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-7">
 								<div class="commodities">
+									<div>选择商品值</div>
+									<div>添加到当前所选值</div>
+									<div>
+										<select>
+											<option>名称</option>
+											<option>标识符</option>
+										</select>
+										<input class="input" />
+										<button class="btn-w">搜索</button>
+									</div>
 						          	<div id="treeview-sim" class=""></div>
 						        	</div>
 					        	</div>
-					        	<div class="col-md-6">
+					        	<div class="col-md-5">
 						        	<div class="commodities">
+						        		<div>添加到当前所选值</div>
 						        		<table id="treeview-selected" class="table table-hover">
 						        		</table>
 						        	</div>
@@ -184,11 +195,11 @@
             showIcon: false,
             showCheckbox: true,
             onNodeChecked: function(event, node) {
-            		$("#treeview-selected").append("<tr id=\""+node.id+"\"><td>"+node.text+"</td></tr>")
+            		$("#treeview-selected").append("<tr id=\""+node.nodeId+"\"><td class=\"selected-commodity\">"+node.text+"</td></tr>")
                 //alert(node.text+" was checked");
             },
             onNodeUnchecked: function (event, node) {
-            	  	$("#"+node.id).remove();
+            	  	$("#"+node.nodeId).remove();
             	 	//alert(node.text+" was unchecked");
             }
         });
@@ -224,6 +235,21 @@
         $('#btn-uncheck-all').on('click', function (e) {
           $checkableTree.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
         });
+        
+        function finishCommoditySelection(){
+        		var commoditiesId="";
+        		var commodities="";
+        		$(".selected-commodity").each(function(index,element){
+        			var id = element.lastChild.firstChild.data;
+        			commoditiesId+=id+",";
+        			var commodityName = element.firstChild.data;
+        			commodities+=commodityName+"--";
+        		});
+        		console.log(commoditiesId);
+        		console.log(commodities);
+        		$("#commoditiesId").text(commoditiesId);
+        		$("#commodities").text(commodities);
+        }
 	</script>
 </body>
 </html>

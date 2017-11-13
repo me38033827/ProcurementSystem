@@ -19,8 +19,7 @@
 					<div class="standard-title-main">创建新的供应商</div>
 					<div class="standard-title-r">
 						<button form="supplierCreation" class="btn-b">确定</button>
-						<button class="btn-w"
-							onclick="../search/supplierSearchDistribute?page=2004">取消</button>
+						<button class="btn-w" onclick="window.location.href='../search/supplierSearchDistribute?page=2004'">取消</button>
 					</div>
 				</div>
 
@@ -433,6 +432,5 @@
 											})
 						})
 	</script>
-
 </body>
 </html>
