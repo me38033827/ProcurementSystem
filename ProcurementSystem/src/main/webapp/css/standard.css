@@ -589,6 +589,16 @@ button{
 }
 
 .commodities{
-	max-height:600px; 
-	overflow-x:scroll;
+	height:600px;
+}
+
+/* pop up standard */
+.pop-up-title{
+	font-size:20px;
+}
+
+.pop-up-subtitle{
+	font-size:16px;
+	line-height:32px;
+	font-weight:bold;
 }

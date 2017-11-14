@@ -61,11 +61,11 @@
 								</tr>
 
 								<tr class="row-standard">
-									<td class="col-standard1">商品：</td>
+									<td class="col-standard1" valign="top">商品：</td>
 									<td class="col-standard2">
-										<a id="commodities" name="commodities"></a>
+										<table id="commodities"></table>
 										<input type="hidden" id="commoditiesId" name="commoditiesId"/>
-										（选择一个值）［&nbsp;<a class="blue inline-b choose" href="javascript:;">选择</a>&nbsp;］
+											［&nbsp;<a class="blue inline-b choose" href="javascript:;">选择</a>&nbsp;］
 									</td>
 								</tr>
 							</table>
@@ -146,32 +146,46 @@
 				</form>
 				<div class="theme-popover commodity-selection">
 					<div class="popover-container">
-						<button class="close" style="float:right;" onclick="finishCommoditySelection();">X</button>
 						<div class="row">
 							<div class="col-md-7">
 								<div class="commodities">
-									<div>选择商品值</div>
-									<div>添加到当前所选值</div>
+									<div class="pop-up-title">选择商品值</div>
+									<div class="pop-up-subtitle">添加到当前所选值</div>
 									<div>
-										<select>
-											<option>名称</option>
-											<option>标识符</option>
-										</select>
-										<input class="input" id="input-search"/>
-										<button class="btn-w" id="btn-search">搜索</button>
-										<button class="btn-w" id="btn-clear-search">清除</button>
+										<span>名称或标识符：</span>
+										<input class="input" style="padding-left:10px;padding-right:10px;"id="input-search"/>
+										<button class="btn-b" id="btn-search">搜索</button>
+										<button class="btn-w" id="btn-clear-search">清除搜索结果</button>
 									</div>
-						          	<div id="treeview-sim" class=""></div>
-						        	</div>
-					        	</div>
-					        	<div class="col-md-5">
-						        	<div class="commodities">
-						        		<div>添加到当前所选值</div>
-						        		<table id="treeview-selected" class="table table-hover">
+									<div class="adjust-10"></div>
+									<table class="table table-hover">
+					        			<tr class="standard-row1">
+					        				<td style="width:5%;"></td>
+					        				<td style="width:77%;">名称</td>
+					        				<td style="width:18%;">标识符</td>
+					        			</tr>
+					        		</table>
+						          	<div id="treeview-sim" style="max-height:72%;overflow-x:scroll;" class="bottom-border">
+						          	</div>
+						        </div>
+					        </div>
+				        	<div class="col-md-5">
+					        	<div class="commodities">
+					        		<div class="adjust-10"></div>
+					        		<div class="pop-up-subtitle">当前所选值</div>
+					        		<div style="height:85%">
+						        		<table id="treeview-selected" style="max-height:400px;overflow-x:scroll;" class="table table-hover bottom-border" >
+						        			<tr class="standard-row1">
+						        				<td style="width:65%">名称</td>
+						        				<td style="width:15%">标识符</td>
+						        				<td style="width:20%"></td>
+						        			</tr>
 						        		</table>
 						        	</div>
+					        		<button class="btn-b right" id="finish-btn" onclick="finishCommoditySelection();">完成</button>
+					        	</div>
 						    </div>
-				        	</div>
+				        </div>
 					</div>
 				</div>
 			</div>
@@ -185,18 +199,20 @@
 				$('.theme-popover-mask').fadeIn(100);
 				$('.theme-popover').slideDown(200);
 			})
-			$('.popover-container .close').click(function() {
+			$('#finish-btn').click(function() {
 				$('.theme-popover-mask').fadeOut(100);
 				$('.theme-popover').slideUp(200);
 			})
 		})
-	
+		var a = <%=request.getSession().getAttribute("treeData")%>
 		var $Tree= $('#treeview-sim').treeview({
-            data: <%=request.getSession().getAttribute("treeData")%>,
+            data: a,
             showIcon: false,
             showCheckbox: true,
             onNodeChecked: function(event, node) {
-            		$("#treeview-selected").append("<tr id=\""+node.nodeId+"\"><td class=\"selected-commodity\">"+node.text+"</td></tr>")
+            		$("#treeview-selected").append("<tr id=\""
+            				+node.nodeId+"\"><td class=\"selected-commodity\" colspan=\"2\">"
+            				+node.text+"</td><td><button class=\"trans-btn\" onclick=\"delCommodity("+node.nodeId+");\">删除</button></td></tr>");
                 //alert(node.text+" was checked");
             },
             onNodeUnchecked: function (event, node) {
@@ -257,16 +273,24 @@
           });
         
         function finishCommoditySelection(){
+        		$("#commodities").	empty();
         		var commoditiesId="";
         		var commodities="";
         		$(".selected-commodity").each(function(index,element){
         			var id = element.lastChild.firstChild.data;
         			commoditiesId+=id+",";
         			var commodityName = element.firstChild.data;
-        			commodities+=commodityName+"--";
+        			$("#commodities").append("<tr><td>"+commodityName+"</td><td>"+id+"</td></tr>");
         		});
         		$("#commoditiesId").val(commoditiesId);
-        		$("#commodities").text(commodities);
+        }
+        
+        function delCommodity(id){
+        		$("#"+id).remove();
+        		var v = $("#treeview-sim").treeview('getNode',id);
+        		v.state.checked=false;
+     		$("#btn-search").click();
+        		
         }
 	</script>
 </body>

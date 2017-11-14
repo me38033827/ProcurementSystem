@@ -40,7 +40,7 @@ public class UNSPSCTree {
 			
 		for (UNSPSCTreeNode child : children){
 			JSONObject jsonObj = new JSONObject();
-			jsonObj.put("text", child.getDescription() + "<a class=\"right\" style=\"width:10%; color:black;\">"+child.getId()+"</a>");
+			jsonObj.put("text", child.getDescription() + "<a class=\"right\" style=\"width:15%; color:black;\">"+child.getId()+"</a>");
 			jsonObj.put("href", "");
 			
 			if(child.getChildren().size()!=0){
