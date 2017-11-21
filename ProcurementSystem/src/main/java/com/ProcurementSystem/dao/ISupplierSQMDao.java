@@ -9,8 +9,8 @@ public interface ISupplierSQMDao {
 	
 	void insertSQM(SupplierSQM sqm);
 	
-	List<SupplierSQM> searchAllSupplierSQM();
-	
+//	List<SupplierSQM> searchAllSupplierSQM();
+//	
 	void updateSQMStatus(SupplierSQM sqm);
 	
 	SupplierSQM getSupplierSQM(int id);

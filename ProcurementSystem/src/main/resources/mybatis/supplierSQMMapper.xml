@@ -6,7 +6,6 @@
 		<result property="id" column="id" />
 		<result property="title" column="title" />
 		<result property="description" column="description" />
-		<result property="commodity" column="commodity" />
 		<result property="status" column="status" />
 		<result property="validTo" column="valid_to" />
 		<result property="lastValid" column="last_valid" />
@@ -57,7 +56,7 @@
 		<result property="id" column="id" />
 		<result property="title" column="title" />
 		<result property="description" column="description" />
-		<result property="commodity" column="commodity" />
+		<!-- <result property="commodity" column="commodity" /> -->
 		<result property="status" column="status" />
 		<result property="validTo" column="valid_to" />
 		<result property="lastValid" column="last_valid" />
@@ -100,6 +99,10 @@
 			</association>
 
 		</association>
+		<collection property="commodities" ofType="com.ProcurementSystem.entity.UNSPSC" javaType="List">
+			<result property="id" column="commodityId" />
+			<result property="description" column="commodityName" />
+		</collection>
 		<!-- association property: entity class里的实体名称 javaType: entity class id 
 			property: entity class attribute column: consistance with the following *** 
 			as ___ -->
@@ -110,20 +113,23 @@
 	<insert id="insertSQM" parameterType="com.ProcurementSystem.entity.SupplierSQM">
 		insert into
 		supplier_sqm(id, title,
-		description, commodity, status,
+		description, 
+		<!-- commodity, -->
+		status,
 		valid_to,
 		last_valid, supplier_id,
 		user_id,task_tree_node_id)
 		values(#{id},
 		#{title}, #{description},
-		#{commodity}, #{status},
+		<!-- #{commodity}, -->
+		#{status},
 		#{validTo},
 		#{lastValid},
 		#{supplier.uniqueName},
 		#{user.uniqueName},#{templateTaskTreeNode.id});
 	</insert>
 
-	<select id="searchAllSupplierSQM" resultMap="SQMMap">
+<!-- 	<select id="searchAllSupplierSQM" resultMap="SQMMap">
 		select
 		id as id,
 		title as title,
@@ -135,7 +141,7 @@
 		user_id as userId,
 		status as status
 		from supplier_sqm;
-	</select>
+	</select> -->
 
 	<select id="getMaxId" resultType="int">
 		select max(id) from
@@ -147,8 +153,7 @@
 		supplier_sqm.id as id,
 		supplier_sqm.title as title,
 		supplier_sqm.description as description,
-		supplier_sqm.commodity as
-		commodity,
+		<!-- supplier_sqm.commodity as commodity, -->
 		supplier_sqm.valid_to as validTo,
 		supplier_sqm.last_valid as
 		lastValid,
@@ -225,8 +230,7 @@
 		id as id,
 		title as title,
 		description as description,
-		commodity as
-		commodity,
+		<!-- commodity as commodity, -->
 		valid_to as validTo,
 		last_valid as lastValid,
 		supplier_id as
@@ -247,32 +251,34 @@
 	</update>
 
 	<!-- 带条件搜索 -->
-	<select id="completeSearchSupplierSQM" parameterType="map"
-		resultMap="SQMMap">
+	<select id="completeSearchSupplierSQM" parameterType="map" resultMap="SQMMap">
 		select
-		id as id,
+		s.id as id,
 		title as title,
-		supplier_sqm.description as description,
-		commodity as commodity,
+		s.description as description,
+		<!-- commodity as commodity, -->
 		supplier_id as supplierId,
 		user_id as userId,
 		supplier_id as supplierId,
 		user_id as userId,
-		supplier_sqm.status as
+		s.status as
 		status,
 		supplier.name as supplierName,
-		user.name as userName
+		user.name as userName,
+		spsc_code as commodityId,
+		u.description as commodityName
 		from
-		supplier_sqm, supplier, user
+		supplier_sqm s, supplier, user, supplier_sqm_allowed_code allow, unspsc u
 		where 1=1
-		and supplier_sqm.supplier_id =
-		supplier.unique_name
-		and supplier_sqm.user_id = user.unique_name
+		and s.supplier_id = supplier.unique_name
+		and s.user_id = user.unique_name
+		and allow.sqm_id = s.id
+		and u.id = allow.spsc_code
 		<if test="content!='' and content!=null">
 			and title like concat("%",#{content},"%")
 		</if>
 		<if test="supplierSQM.title!='' and supplierSQM.title!=null">
-			and title like concat("%",#{supplierSPM.title},"%")
+			and title like concat("%",#{supplierSQM.title},"%")
 		</if>
 		<if
 			test="supplierSQM.supplier.uniqueName!='' and supplierSQM.supplier.uniqueName!=null">

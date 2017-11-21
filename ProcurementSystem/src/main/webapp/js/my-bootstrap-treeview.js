@@ -48,8 +48,9 @@
 		onhoverColor : '#F5F5F5',
 		selectedColor : '#FFFFFF',
 		// selectedBackColor: '#428bca',
-		searchResultColor : '#D9534F',
-		searchResultBackColor : undefined, // '#FFFFFF',
+		searchResultColor : '#000000',
+			//'#D9534F',
+		searchResultBackColor : '#efefef42', // '#FFFFFF',
 
 		enableLinks : false,
 		highlightSelected : true,
@@ -262,6 +263,9 @@
 		if (!node.nodes)
 			return;
 		level += 1;
+		
+		// 为节点存储层级
+		node.level = level;
 
 		var parent = node;
 		var _this = this;
@@ -315,8 +319,8 @@
 			}
 			
 			// set search result default true
-			if (!node.hasOwnProperty('searchResult')) {
-				node.searchResult = true;
+			if (!node.hasOwnProperty('show')) {
+				node.show = true;
 			}
 		});
 	};
@@ -611,7 +615,7 @@
 		var _this = this;
 		var count=0;
 		$.each(nodes, function addNodes(id, node) {
-			if(node.searchResult){
+			if(node.show){
 				var treeItem = $(_this.template.item).addClass(
 						'node-' + _this.elementId).addClass(
 						node.state.checked ? 'node-checked' : '').addClass(
@@ -1315,11 +1319,11 @@
 			
 			console.log(results);
 			
-			//搜索前把searchResult改了
-			$.each(this.findNodes('true', 'g', 'searchResult'),
+			//搜索前把show改了
+			$.each(this.findNodes('true', 'g', 'show'),
 				function(index, node) {
-					node.searchResult = false;
-				});
+					node.show = false;
+			});
 
 			// Add searchResult property to all matching nodes
 			// This will be used to apply custom styles
@@ -1327,9 +1331,10 @@
 			$.each(results, function(index, node) {
 				//将父级节点 变成expanded true和search result true
 				node.searchResult = true;
+				node.show = true;
 				var parent = _this.getParent(node);
 				while(parent){
-					parent.searchResult = true;
+					parent.show = true;
 					parent.state.expanded = true;
 					parent = _this.getParent(parent);
 				}
@@ -1354,15 +1359,34 @@
 	 */
 	Tree.prototype.clearSearch = function(options) {
 
+		var _this = this;
+		
 		options = $.extend({}, {
 			render : true
 		}, options);
 
-		var results = $.each(this.findNodes('false', 'g', 'searchResult'),
-				function(index, node) {
-					node.searchResult = true;
-				});
+		var results = $.each(this.findNodes('true', 'g', 'searchResult'),
+			function(index, node) {
+				node.searchResult = false;
+		});
 
+		//让所有节点show参数改成true
+		$.each(this.findNodes('false', 'g', 'show'),
+			function(index, node) {
+				node.show = true;
+		});
+		
+		//让expanded参数恢复成原始情况
+		var expand = $.each(this.findNodes('true', 'g', 'state.expanded'),
+			function(index, node) {
+				console.log(_this.options.levels);
+				if(node.level>_this.options.levels){
+					node.state.expanded = false;
+				}
+		});
+		console.log(expand);
+
+		
 		if (options.render) {
 			this.render();
 		}

@@ -7,6 +7,8 @@
 
 <%@include file="../other/header1return.jsp"%>
 <script src="/ProcurementSystem/js/searchCondition.js"></script>
+<script src="/ProcurementSystem/js/selectCommodity.js"></script>
+<script src="/ProcurementSystem/js/my-bootstrap-treeview.js"></script>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -89,9 +91,15 @@
 						<div id="result-action"></div>
 					</div>
 				</div>
+				<div id="result-title"></div>
+				<div id="result-content" class="roll-tab" style="max-height: 220px;"></div>
+				<div id="result-action"></div>
+				<%@include file="../other/selectCommodity.jsp"%>
 			</div>
 		</div>
 	</div>
+	<div class="theme-popover-mask"></div>
+	
 	<%@ include file="../other/footer.jsp"%>
 	<script>
 		function back() {
@@ -116,6 +124,23 @@
 			var supplierSQM_supplierId = "${supplierSQMSearchInfo.supplierId}";
 			var supplierSQM_status = "${supplierSQMSearchInfo.status}";
 		}
+		$(function(){
+			//是否已经从后端获得商品
+			var getCommodity = 0;
+			$('.choose').click(function() {
+				alert(123123213123);
+				$('.theme-popover-mask').fadeIn(100);
+				$('.theme-popover').slideDown(200);
+				if(getCommodity==0){
+					getUNSPSC();
+					getCommodity=1;
+				}
+			})
+			$('#finish-btn').click(function() {
+				$('.theme-popover-mask').fadeOut(100);
+				$('.theme-popover').slideUp(200);
+			})
+		})
 	</script>
 </body>
 </html>

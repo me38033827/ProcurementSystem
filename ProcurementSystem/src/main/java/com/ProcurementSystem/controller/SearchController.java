@@ -151,9 +151,13 @@ public class SearchController {
 
 	// 供应商搜索
 	@RequestMapping(value = "supplierSQMSearch")
-	public @ResponseBody List<SupplierSQM> supplierSQMSearch(@RequestParam("content") String content,
-			@RequestParam("status") String status, @RequestParam("supplierId") String supplierId,
-			@RequestParam("title") String title) {
+	public @ResponseBody List<SupplierSQM> supplierSQMSearch(
+			@RequestParam("content") String content,
+			@RequestParam("status") String status,
+			@RequestParam("supplierId") String supplierId,
+			@RequestParam("title") String title,
+			@RequestParam("commodities") String commodities
+			){
 		SupplierSQM supplierSQM = new SupplierSQM();
 		supplierSQM.setTitle(title);
 		supplierSQM.setStatus(status);
@@ -162,6 +166,7 @@ public class SearchController {
 			supplier.setUniqueName(Integer.parseInt(supplierId));
 		}
 		supplierSQM.setSupplier(supplier);
-		return supplierSQMService.completeSearchSupplierSQM(supplierSQM, content);
+		System.out.println(supplierSQM.getTitle());
+		return supplierSQMService.completeSearchSupplierSQM(supplierSQM, content, commodities);
 	}
 }

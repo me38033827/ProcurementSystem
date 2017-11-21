@@ -37,16 +37,17 @@ public class UNSPSCTree {
 		JSONArray array = new JSONArray();
 		
 		List<UNSPSCTreeNode> children = parentNode.getChildren();
-			
-		for (UNSPSCTreeNode child : children){
-			JSONObject jsonObj = new JSONObject();
-			jsonObj.put("text", child.getDescription() + "<a class=\"right\" style=\"width:10%; color:black;\">"+child.getId()+"</a>");
-			jsonObj.put("href", "");
-			
-			if(child.getChildren().size()!=0){
-				jsonObj.put("nodes", UNSPSCTreeToJSONHelper(child));
+		if(children != null){
+			for (UNSPSCTreeNode child : children){
+				JSONObject jsonObj = new JSONObject();
+				jsonObj.put("text", child.getDescription() + "<a class=\"right\" style=\"width:15%; color:black;\">"+child.getId()+"</a>");
+				jsonObj.put("href", "");
+				
+				if(child.getChildren()!=null){
+					jsonObj.put("nodes", UNSPSCTreeToJSONHelper(child));
+				}
+				array.add(jsonObj);
 			}
-			array.add(jsonObj);
 		}
 		return array;
 	}

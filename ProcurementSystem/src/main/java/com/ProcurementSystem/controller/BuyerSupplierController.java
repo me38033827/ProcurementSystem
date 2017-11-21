@@ -709,41 +709,41 @@ public class BuyerSupplierController {
 		return "redirect:../search/supplierSearchDistribute?page=2004";
 	}
 
-	/* SQM搜索 */
-	@RequestMapping(value = "sqmSearching")
-	public String sqmSearching(HttpServletRequest request) {
-		String action = request.getParameter("action");
-		System.out.println("action is " + action);
-		if (action.equals("reset") || action.equals("initial")) {
-			request.getSession().setAttribute("contentSession", null);
-			request.setAttribute("num", null);
-			return "upStream/supplier/supplierSQMSearching";
-		}
-		String content = (String) request.getSession().getAttribute("content");
-		System.out.println(content);
-		if (content == null) {
-			content = request.getParameter("content");
-		} else {
-			request.getSession().removeAttribute("content");
-		}
-		// search
-		System.out.println("Search for content: " + content);
-		if (content == null) {
-			List<SupplierSQM> supplierSQMs = sqmService.searchAllSupplierSQM();
-			request.setAttribute("supplierSQMs", supplierSQMs);
-			request.setAttribute("num", Integer.toString(supplierSQMs.size()));
-			System.out.println("共有" + Integer.toString(supplierSQMs.size()) + "个搜索结果");
-		} else {
-			List<SupplierSQM> supplierSQMs = sqmService.searchSupplierSQM(content);
-			request.setAttribute("supplierSQMs", supplierSQMs);
-			request.setAttribute("content", content);
-			request.setAttribute("num", Integer.toString(supplierSQMs.size()));
-			System.out.println("共有" + Integer.toString(supplierSQMs.size()) + "个搜索结果");
-		}
-
-		request.getSession().setAttribute("contentSession", content);
-		return "upStream/supplier/supplierSQMSearching";
-	}
+//	/* SQM搜索 */
+//	@RequestMapping(value = "sqmSearching")
+//	public String sqmSearching(HttpServletRequest request) {
+//		String action = request.getParameter("action");
+//		System.out.println("action is " + action);
+//		if (action.equals("reset") || action.equals("initial")) {
+//			request.getSession().setAttribute("contentSession", null);
+//			request.setAttribute("num", null);
+//			return "upStream/supplier/supplierSQMSearching";
+//		}
+//		String content = (String) request.getSession().getAttribute("content");
+//		System.out.println(content);
+//		if (content == null) {
+//			content = request.getParameter("content");
+//		} else {
+//			request.getSession().removeAttribute("content");
+//		}
+//		// search
+//		System.out.println("Search for content: " + content);
+//		if (content == null) {
+//			List<SupplierSQM> supplierSQMs = sqmService.searchAllSupplierSQM();
+//			request.setAttribute("supplierSQMs", supplierSQMs);
+//			request.setAttribute("num", Integer.toString(supplierSQMs.size()));
+//			System.out.println("共有" + Integer.toString(supplierSQMs.size()) + "个搜索结果");
+//		} else {
+//			List<SupplierSQM> supplierSQMs = sqmService.searchSupplierSQM(content);
+//			request.setAttribute("supplierSQMs", supplierSQMs);
+//			request.setAttribute("content", content);
+//			request.setAttribute("num", Integer.toString(supplierSQMs.size()));
+//			System.out.println("共有" + Integer.toString(supplierSQMs.size()) + "个搜索结果");
+//		}
+//
+//		request.getSession().setAttribute("contentSession", content);
+//		return "upStream/supplier/supplierSQMSearching";
+//	}
 
 	/* SQM详情 */
 	@RequestMapping(value = "sqmSummary")
@@ -828,8 +828,8 @@ public class BuyerSupplierController {
 			SupplierSQM sqmSession = new SupplierSQM();
 			request.getSession().setAttribute("sqmSession", sqmSession);
 			request.getSession().setAttribute("templates", templates);
-			UNSPSCTree tree = unspscService.generateUNSPSCTree();
-			request.getSession().setAttribute("treeData", tree.UNSPSCTreeToJSON());
+//			UNSPSCTree tree = unspscService.generateUNSPSCTree();
+//			request.getSession().setAttribute("treeData", tree.UNSPSCTreeToJSON());
 			return "upStream/supplier/supplierSQMCreation";
 		}
 		if (action.equals("back")) {
@@ -880,6 +880,15 @@ public class BuyerSupplierController {
 		;
 		return "redirect:sqmSummary?id=" + sqm.getId();
 	}
+	
+	/* 根据unspsc表选择商品－sqmCreation和sqm搜索的地方会用到 */
+	@RequestMapping(value = "selectCommodity")
+	public @ResponseBody JSONArray selectCommodity() {
+		UNSPSCTree tree = unspscService.generateUNSPSCTree();
+		JSONArray result = tree.UNSPSCTreeToJSON();
+		System.out.println(result);
+		return result;
+	}
 
 	// 创建sqm->选择供应商页
 	@RequestMapping(value = "sqmCreationChooseSupplier")
@@ -894,12 +903,11 @@ public class BuyerSupplierController {
 			request.setAttribute("num", "-1");// -1表示无项目
 			return target;
 		}
-		if (action.equals("initial")) {//
+		if (action.equals("initial")) {
 			request.setAttribute("num", "-1");
 			System.out.println("sqmCreationChooseSupplier" + sqm.getTitle());
 			session.setAttribute("sqmSession", sqm);
 			return target;
-			// }
 		}
 		String content = request.getParameter("content");
 		if (action.equals("back")) {

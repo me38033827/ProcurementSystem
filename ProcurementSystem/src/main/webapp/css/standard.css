@@ -551,9 +551,8 @@ button{
 .col-search1{
 	padding-left:50px;
 	font-size:14px;
-	width:400px;
+	width:550px;
 	line-height:30px;
-	
 }
 
 .col-search1 label{
@@ -564,6 +563,7 @@ button{
 	padding-left:30px;
 	margin-top:3px;
 	font-size:20px;
+	vertical-align:top;
 }
 
 /* sim questionnaire */
@@ -589,6 +589,16 @@ button{
 }
 
 .commodities{
-	max-height:600px; 
-	overflow-x:scroll;
+	height:600px;
+}
+
+/* pop up standard */
+.pop-up-title{
+	font-size:20px;
+}
+
+.pop-up-subtitle{
+	font-size:16px;
+	line-height:32px;
+	font-weight:bold;
 }

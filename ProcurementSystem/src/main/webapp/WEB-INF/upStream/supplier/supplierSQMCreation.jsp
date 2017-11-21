@@ -6,6 +6,7 @@
 <%@include file="../../other/header1.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="/ProcurementSystem/js/my-bootstrap-treeview.js"></script>
+<script src="/ProcurementSystem/js/selectCommodity.js"></script>
 <title>创建供应商界面</title>
 </head>
 <!-- 页面整体宽度：1320px -->
@@ -61,11 +62,11 @@
 								</tr>
 
 								<tr class="row-standard">
-									<td class="col-standard1">商品：</td>
+									<td class="col-standard1" valign="top">商品：</td>
 									<td class="col-standard2">
-										<a id="commodities" name="commodities"></a>
+										<table id="commodities"></table>
 										<input type="hidden" id="commoditiesId" name="commoditiesId"/>
-										（选择一个值）［&nbsp;<a class="blue inline-b choose" href="javascript:;">选择</a>&nbsp;］
+											［&nbsp;<input type="button" style="width:50px; border:none;" onclick="onSelectCommodity();" value="选择" />&nbsp;］
 									</td>
 								</tr>
 							</table>
@@ -144,130 +145,14 @@
 						</div>
 					</div>
 				</form>
-				<div class="theme-popover commodity-selection">
-					<div class="popover-container">
-						<button class="close" style="float:right;" onclick="finishCommoditySelection();">X</button>
-						<div class="row">
-							<div class="col-md-7">
-								<div class="commodities">
-									<div>选择商品值</div>
-									<div>添加到当前所选值</div>
-									<div>
-										<select>
-											<option>名称</option>
-											<option>标识符</option>
-										</select>
-										<input class="input" id="input-search"/>
-										<button class="btn-w" id="btn-search">搜索</button>
-										<button class="btn-w" id="btn-clear-search">清除</button>
-									</div>
-						          	<div id="treeview-sim" class=""></div>
-						        	</div>
-					        	</div>
-					        	<div class="col-md-5">
-						        	<div class="commodities">
-						        		<div>添加到当前所选值</div>
-						        		<table id="treeview-selected" class="table table-hover">
-						        		</table>
-						        	</div>
-						    </div>
-				        	</div>
-					</div>
-				</div>
+				<!-- 选择商品 -->
+				<%@include file="../../other/selectCommodity.jsp"%>
 			</div>
 		</div>
 	</div>
 	<div class="theme-popover-mask"></div>
 	<script>
-		$(function(){
-			//选择商品浮框
-			$('.choose').click(function() {
-				$('.theme-popover-mask').fadeIn(100);
-				$('.theme-popover').slideDown(200);
-			})
-			$('.popover-container .close').click(function() {
-				$('.theme-popover-mask').fadeOut(100);
-				$('.theme-popover').slideUp(200);
-			})
-		})
-	
-		var $Tree= $('#treeview-sim').treeview({
-            data: <%=request.getSession().getAttribute("treeData")%>,
-            showIcon: false,
-            showCheckbox: true,
-            onNodeChecked: function(event, node) {
-            		$("#treeview-selected").append("<tr id=\""+node.nodeId+"\"><td class=\"selected-commodity\">"+node.text+"</td></tr>")
-                //alert(node.text+" was checked");
-            },
-            onNodeUnchecked: function (event, node) {
-            	  	$("#"+node.nodeId).remove();
-            	 	//alert(node.text+" was unchecked");
-            }
-        });
-       
-        var findCheckableNodess = function() {
-          return $Tree.treeview('search', [ $('#input-check-node').val(), { ignoreCase: false, exactMatch: false } ]);
-        };
-        var checkableNodes = findCheckableNodess();
-
-        // Check/uncheck/toggle nodes
-        $('#input-check-node').on('keyup', function (e) {
-          checkableNodes = findCheckableNodess();
-          $('.check-node').prop('disabled', !(checkableNodes.length >= 1));
-        });
-
-        $('#btn-check-node.check-node').on('click', function (e) {
-          $Tree.treeview('checkNode', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
-        });
-
-        $('#btn-uncheck-node.check-node').on('click', function (e) {
-          $Tree.treeview('uncheckNode', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
-        });
-
-        $('#btn-toggle-checked.check-node').on('click', function (e) {
-          $Tree.treeview('toggleNodeChecked', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
-        });
-
-        // Check/uncheck all
-        $('#btn-check-all').on('click', function (e) {
-          $Tree.treeview('checkAll', { silent: $('#chk-check-silent').is(':checked') });
-        });
-
-        $('#btn-uncheck-all').on('click', function (e) {
-          $Tree.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
-        });
-        
-        var search = function(e) {
-            var pattern = $('#input-search').val();
-            var options = {
-              ignoreCase: $('#chk-ignore-case').is(':checked'),
-              exactMatch: $('#chk-exact-match').is(':checked'),
-              revealResults: $('#chk-reveal-results').is(':checked')
-            };
-            var results = $Tree.treeview('search', [ pattern, options ]);
-			//console.log(results);
-          }
-
-          $('#btn-search').on('click', search);
-          //$('#input-search').on('keyup', search);
-
-          $('#btn-clear-search').on('click', function (e) {
-            $Tree.treeview('clearSearch');
-            $('#input-search').val('');
-          });
-        
-        function finishCommoditySelection(){
-        		var commoditiesId="";
-        		var commodities="";
-        		$(".selected-commodity").each(function(index,element){
-        			var id = element.lastChild.firstChild.data;
-        			commoditiesId+=id+",";
-        			var commodityName = element.firstChild.data;
-        			commodities+=commodityName+"--";
-        		});
-        		$("#commoditiesId").val(commoditiesId);
-        		$("#commodities").text(commodities);
-        }
+		
 	</script>
 </body>
 </html>
