@@ -165,7 +165,8 @@ public class SearchController {
 			@RequestParam("content") String content,
 			@RequestParam("status") String status,
 			@RequestParam("supplierId") String supplierId,
-			@RequestParam("title") String title
+			@RequestParam("title") String title,
+			@RequestParam("commodities") String commodities
 			){
 		SupplierSQM supplierSQM = new SupplierSQM();
 		supplierSQM.setTitle(title);
@@ -175,6 +176,7 @@ public class SearchController {
 			supplier.setUniqueName(Integer.parseInt(supplierId));
 		}
 		supplierSQM.setSupplier(supplier);
-		return supplierSQMService.completeSearchSupplierSQM(supplierSQM, content);
+		System.out.println(supplierSQM.getTitle());
+		return supplierSQMService.completeSearchSupplierSQM(supplierSQM, content, commodities);
 	}
 }

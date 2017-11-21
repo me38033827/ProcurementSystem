@@ -15,7 +15,7 @@ public class SupplierSQM {
 	@NotEmpty(message = "项目名称不能为空")
 	private String title;
 	private String description;
-	private String commodity;
+	private List<Commodity> commodities;
 	private String status;
 	private String lastValid;
 	private String validTo;
@@ -36,14 +36,6 @@ public class SupplierSQM {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getCommodity() {
-		return commodity;
-	}
-
-	public void setCommodity(String commodity) {
-		this.commodity = commodity;
 	}
 
 	public String getTitle() {
@@ -77,19 +69,7 @@ public class SupplierSQM {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	// public int getSupplierId() {
-	// return supplierId;
-	// }
-	// public void setSupplierId(int supplierId) {
-	// this.supplierId = supplierId;
-	// }
-	// public int getUserId() {
-	// return userId;
-	// }
-	// public void setUserId(int userId) {
-	// this.userId = userId;
-	// }
+	
 	public Supplier getSupplier() {
 		return supplier;
 	}
@@ -120,5 +100,13 @@ public class SupplierSQM {
 
 	public void setCodes(List<String> codes) {
 		this.codes = codes;
+	}
+
+	public List<Commodity> getCommodities() {
+		return commodities;
+	}
+
+	public void setCommodities(List<Commodity> commodities) {
+		this.commodities = commodities;
 	}
 }

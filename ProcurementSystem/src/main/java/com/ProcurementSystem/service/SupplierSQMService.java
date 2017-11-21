@@ -19,9 +19,9 @@ public class SupplierSQMService {
 		dao.insertSQM(sqm);
 	}
 	
-	public List<SupplierSQM> searchAllSupplierSQM(){
-		return dao.searchAllSupplierSQM();
-	}
+//	public List<SupplierSQM> searchAllSupplierSQM(){
+//		return dao.searchAllSupplierSQM();
+//	}
 	
 	public void updateSQMStatus(SupplierSQM sqm){
 		dao.updateSQMStatus(sqm);
@@ -39,10 +39,11 @@ public class SupplierSQMService {
 		return dao.getMaxId();
 	}
 
-	public List<SupplierSQM> completeSearchSupplierSQM(SupplierSQM supplierSQM, String content){
+	public List<SupplierSQM> completeSearchSupplierSQM(SupplierSQM supplierSQM, String content, String commodities){
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("supplierSQM", supplierSQM);
 		params.put("content", content);
+		System.out.println("Service"+supplierSQM.getTitle());
 		List<SupplierSQM> supplierSQMs = dao.completeSearchSupplierSQM(params);
 		return supplierSQMs;
 	}

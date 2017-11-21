@@ -20,9 +20,9 @@ $(function(){
 	    			var addId="#search-"+data[i].fieldId.toString();
 	    			$("#search-0").after("<tr class=\"row-search\" id=\"search-" + data[i].fieldId + "\">"
 			      			+"<td class=\"col-search1\" id=\"search-cond" + data[i].fieldId + "\">"
-			      			+"<select id=\"cond-" + data[i].fieldId + "\" onclick=\"findOtherCondition("+userId+","+pageId+","+data[i].fieldId+",'"+data[i].fieldName+"');\" onchange=\"changeCond("+data[i].fieldId+");\">"
-			      			+"<option value=\"2345678\">" + data[i].fieldName + "</option>"
-			      			+"</select>"
+			      			+"<div class='left'><select id=\"cond-" + data[i].fieldId + "\" onclick=\"findOtherCondition("+userId+","+pageId+","+data[i].fieldId+",'"+data[i].fieldName+"');\" onchange=\"changeCond("+data[i].fieldId+");\">"
+			      			+"<option value=\"\">" + data[i].fieldName + "</option>"
+			      			+"</select><div>"
 			      			+"</td>"
 			      			+"<td class=\"col-search2\">"
 				      			+"<a id=\"plus"+data[i].fieldId+"\" href=\"javascript:addCondition('"+addId+"');\">" 
@@ -109,9 +109,9 @@ function addCondition(place){
 	      	var addId="#search-"+data.fieldId.toString();
 	      	$(place).after("<tr class=\"row-search\" id=\"search-" + data.fieldId + "\">"
 		      			+"<td class=\"col-search1\" id=\"search-cond" + data.fieldId + "\">"
-		      			+"<select id=\"cond-" + data.fieldId + "\" onclick=\"findOtherCondition("+userId+","+pageId+","+data.fieldId+",'"+data.fieldName+"');\" onchange=\"changeCond("+data.fieldId+");\">"
-		      			+"<option value=\"2345678\">" + data.fieldName + "</option>"
-		      			+"</select>"
+		      			+"<div class='left'><select id=\"cond-" + data.fieldId + "\" onclick=\"findOtherCondition("+userId+","+pageId+","+data.fieldId+",'"+data.fieldName+"');\" onchange=\"changeCond("+data.fieldId+");\">"
+		      			+"<option value=\"\">" + data.fieldName + "</option>"
+		      			+"</select></div>"
 		      			+"</td>"
 		      			+"<td class=\"col-search2\">"
 			      			+"<a id=\"plus"+data.fieldId+"\" href=\"javascript:addCondition('"+addId+"');\">" 
@@ -545,19 +545,20 @@ function supplierSQMDistribute(fieldName, place){
 	if(fieldName=="组织名称"){organizationNameSPM(place, supplierSQM_title)};
 	if(fieldName=="审批状态"){approveStateSPM(place, supplierSQM_supplierId)};
 	if(fieldName=="供应商标识符"){identifierSPM(place, supplierSQM_status)};
+	if(fieldName=="商品"){commoditySQM(place, supplierSQM_status)};
 }
 
 //显示sqm搜索结果表头
 function showSupplierSQMBox(){
 	$("#result-title").append("<table class=\"table table-hover\">" + 
 					"<tr class=\"standard-row1\">\n" +
-				    "<td style=\"width:30%;\">\n" +
+				    "<td style=\"width:20%;\">\n" +
 				    "标题\n" +
 				    "</td>\n" +
 				    "<td style=\"width:10%;\">所有者</td>\n" +
 				    "<td style=\"width:10%;\">供应商</td>\n" +
-				    "<td style=\"width:35%;\">商品</td>\n" +
-				    "<td style=\"width:15%;\">资格状态</td>\n" +
+				    "<td style=\"width:40%;\">商品</td>\n" +
+				    "<td colspan=\"2\" style=\"width:20%;\">资格状态</td>\n" +
 				    "</tr>"+
 					"</table>"
 			);
@@ -572,7 +573,7 @@ function actionSupplierSQM(){
 							+"</td>"
 						+"</tr>"
 					+"</table>"
-			);
+	);
 	
 }
 
@@ -582,7 +583,7 @@ function resetSupplierSQM(){
 	$("#content").val("");
 	$("#title").val("");
 	$("#supplierId").val("");
-	$('#statue').val("");
+	$('#status').val("无选择");
 	
 	// empty number of results
 	$("#numOfResults").text(0);
@@ -600,37 +601,52 @@ function searchSupplierSQM(){
 	var status = $("#status").val();
 	var supplierId = $('#supplierId').val();
 	var title = $("#title").val();
+	var commodities = $("#commoditiesId").val();
 	if(title==null){title="";}
 	if(supplierId==null){supplierId="";}
 	if(status==null){status="";}
 	if(content==null){content="";}
-//	console.log(content);
-//	console.log(status);
-//	console.log(supplierId);
-//	console.log(title);
+	if(commodities==null){commodities="";}
+	console.log(title);
 	$.ajax({
 		data:{
 			"content":content,
 			"status":status,
 			"supplierId":supplierId,
-			"title":title
+			"title":title,
+			"commodities":commodities
 		},  
 		type:"POST",  
 		dataType: 'json',
 	    url:"../search/supplierSQMSearch",
 	    success:function(data){
-	    	console.log(data);
 	      	if(data.length!=0){
 		      	$("#numOfResults").text(data.length);
 		      	var results = "";
+		      	//for every sqm
 		      	for(var i = 0; i< data.length; i++){
+		      		//for every commodity
+		      		var commodities ="<table style=\"width:100%\">";
+		      		for(var j = 0; j < data[i].commodities.length; j++){
+		      			commodities +="<tr><td style=\"width:60%;\">"+data[i].commodities[j].description+"</td><td>"+data[i].commodities[j].id+"</td></tr>"
+		      		}
+		      		commodities +="</table>";
 		      		results=results+"<tr>\n" +
-		      	    "<td style=\"width: 30%;\"><a href=\"../supplier/sqmSummary?id="+data[i].id+"\">"+data[i].title+"</a></td>\n" +
-		      	    "<td style=\"width: 10%;\">"+data[i].user.name+"</td>\n" +
-		      	    "<td style=\"width: 10%;\">"+data[i].supplier.name+"</td>\n" +
-		      	    "<td style=\"width: 35%;\">\n" +
+		      	    "<td style=\"width: 20%; vertical-align:middle;\"><a href=\"../supplier/sqmSummary?id="+data[i].id+"\">"+data[i].title+"</a></td>\n" +
+		      	    "<td style=\"width: 10%; vertical-align:middle;\">"+data[i].user.name+"</td>\n" +
+		      	    "<td style=\"width: 10%; vertical-align:middle;\">"+data[i].supplier.name+"</td>\n" +
+		      	    "<td style=\"width: 40%; vertical-align:middle;\">\n" + commodities +
 		      	    "</td>\n" +
-		      	    "<td style=\"width: 15%; padding: 3px;\">"+data[i].status+" &nbsp;&nbsp;&nbsp;&nbsp;\n" +
+		      	    "<td style=\"width: 5%; padding: 3px; vertical-align:middle;\"><span id=\"status-"+data[i].id+"\">"+data[i].status+"</span>" +
+		      	    "</td>\n" +	
+		      	    "<td valign='middle' style=\"width: 15%; padding:5px 0; vertical-align:middle;\">\n" +
+		      	    		"<div class=\"btn-group\">"+
+		      	    			"<button class=\"btn-w\" data-toggle=\"dropdown\" style=\"width:80px;\" onclick=\"appendSQMManu("+data[i].id+")\" >"+
+		      	    				"操作&nbsp;<span class=\"caret\"></span>"+
+		      	    			"</button>"+
+		      	    			"<ul class=\"dropdown-menu manu-btn-o\" id=\"manu-"+data[i].id+"\">"+
+		      	    			"</ul>"+
+		      	    		"</div>"+
 		      	    "</td>\n" +
 		      	    "</tr>";
 		      	};
@@ -650,4 +666,50 @@ function searchSupplierSQM(){
 	});
 }
 
+function appendSQMManu(id){
+	//清空操作下拉框
+	$("#manu-"+id).empty();
+	var status = $("#status-"+id).text();
+	if(status=="已批准"){
+		$("#manu-"+id).append("<li><button class=\"manu-btn trans-btn\" onclick=\"alterSQMStatus("+id+",'已停用')\">停用</button></li>");
+	}
+	if(status=="待审核"){
+		$("#manu-"+id).append("<li><button class=\"manu-btn trans-btn\" onclick=\"alterSQMStatus("+id+",'已批准')\">批准</button></li>");
+	}
+	if(status=="已停用"){
+		$("#manu-"+id).append("<li><button class=\"manu-btn trans-btn\" onclick=\"alterSQMStatus("+id+",'已批准')\">激活</button></li>");
+	}
+}
+
+function alterSQMStatus(id,newStatus){
+	$.ajax({
+		data:{
+			"sqmId":id,
+			"status":newStatus
+		},  
+		type:"POST",  
+		dataType: 'json',
+	    url:"../supplier/sqmStatus",
+	    success:function(data){
+    		$("#status-"+id).text(newStatus);
+    		alert("状态修改成功！");
+	   	},
+	    error:function(data){
+    		alert("数据库错误！请重新操作。");
+	    }  
+	});
+}
+
+function commoditySQM(place, value){
+//	$(place).append($('<a>', {
+//        href: "javascript:;",
+//       // title: "step_third",
+//        class: "choose",
+//    }).text("选择123"));
+	$(place).append("<div style='display:inline-block; margin-left:10px;' id='commodities-container'><table id=\"commodities\"></table>"
+				+"<input type='hidden' id='commoditiesId' name='commoditiesId'/></div>");
+	$("#commodities-container").append("<input type='button' onclick='onSelectCommodity()' class='trans-btn' style='display:block' value='选择'/>");
+	
+	//$(place).append("<a class='choose' href='javascript:;'>选择</a>");
+}
 

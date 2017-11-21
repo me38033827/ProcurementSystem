@@ -27,13 +27,15 @@ public class UNSPSCService {
 		
 		while (!queue.isEmpty()) {
 			UNSPSCTreeNode parent = queue.poll();//父节点
-			List<UNSPSCTreeNode> children = dao.getChildren(parent.getId());
-			if(children != null){
-				parent.setChildren(children);//设置子节点
-				Iterator<UNSPSCTreeNode> iterator = children.iterator();
-				while(iterator.hasNext()){
-					UNSPSCTreeNode node = iterator.next();
-					queue.offer(node);//入队
+			if(parent.getId()<Math.pow(10,7)){
+				List<UNSPSCTreeNode> children = dao.getChildren(parent.getId());
+				if(children != null){
+					parent.setChildren(children);//设置子节点
+					Iterator<UNSPSCTreeNode> iterator = children.iterator();
+					while(iterator.hasNext()){
+						UNSPSCTreeNode node = iterator.next();
+						queue.offer(node);//入队
+					}
 				}
 			}
 		}

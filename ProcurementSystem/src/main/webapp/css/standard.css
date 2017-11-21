@@ -551,9 +551,8 @@ button{
 .col-search1{
 	padding-left:50px;
 	font-size:14px;
-	width:400px;
+	width:550px;
 	line-height:30px;
-	
 }
 
 .col-search1 label{
@@ -564,6 +563,7 @@ button{
 	padding-left:30px;
 	margin-top:3px;
 	font-size:20px;
+	vertical-align:top;
 }
 
 /* sim questionnaire */
