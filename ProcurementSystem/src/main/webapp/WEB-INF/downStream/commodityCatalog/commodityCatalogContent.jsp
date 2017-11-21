@@ -38,15 +38,16 @@
 					<div class="margin-bottom">
 						<div>
 							<strong>工具：</strong> <a><img
-								src="/ProcurementSystem/images/icon-correct.png" class="img-icon"
-								title="纠错工具" /></a> <a><img
+								src="/ProcurementSystem/images/icon-correct.png"
+								class="img-icon" title="纠错工具" /></a> <a><img
 								src="/ProcurementSystem/images/icon-edit.png"
 								class="img-icon icon-choose" title="内容编辑工具" /></a> <a><img
-								src="/ProcurementSystem/images/icon-download.png" class="img-icon"
-								title="导入" /></a> <a><img
+								src="/ProcurementSystem/images/icon-download.png"
+								class="img-icon" title="导入" /></a> <a><img
 								src="/ProcurementSystem/images/icon-upload.png" class="img-icon"
-								title="导出" /></a> <a><img src="/ProcurementSystem/images/icon-sync.png"
-								class="img-icon" title="同步" /></a>
+								title="导出" /></a> <a><img
+								src="/ProcurementSystem/images/icon-sync.png" class="img-icon"
+								title="同步" /></a>
 
 						</div>
 					</div>
@@ -79,23 +80,23 @@
 							<tr>
 								<td><input type="checkbox" id="${commodity.uniqueName }"
 									class="chk" /><label for="${commodity.uniqueName }"></label>&nbsp;
-									<c:if test="${commodityCatalog.isActivated != '已激活' }"><!--已激活状态不可编辑  -->
-									<a href="commodityCatalogContentEdit?uniqueName=${commodity.uniqueName }">编辑
-										<c:if test="${commodity.isChecked == 'FALSE'}">
-											<span class="error-message">!!!</span>
-										</c:if>
-									</a>
-									</c:if>
-									<c:if test="${commodityCatalog.isActivated == '已激活' }">
+									<c:if test="${commodityCatalog.isActivated != '已激活' }">
+										<!--已激活状态不可编辑  -->
+										<a
+											href="commodityCatalogContentEdit?uniqueName=${commodity.uniqueName }">编辑
+											<c:if test="${commodity.isChecked == 'FALSE'}">
+												<span class="error-message">!!!</span>
+											</c:if>
+										</a>
+									</c:if> <c:if test="${commodityCatalog.isActivated == '已激活' }">
 									不可编辑
-									</c:if>
-								</td>
+									</c:if></td>
 								<td>${status.count}</td>
 								<td>${commodity.unitPrice }</td>
 								<td>${commodity.supplier.name }</td>
 								<td>${commodity.supplierPartId }</td>
 								<td>${commodity.shortName }</td>
-								<td >${commodity.itemDescription }</td>
+								<td>${commodity.itemDescription }</td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -109,7 +110,8 @@
 						</div>
 					</div>
 					<div class="right">
-						<button class="btn-w">目录 主页</button>
+						<button class="btn-w"
+							onclick="window.location.href='commodityCatalogList'">目录</button>
 						<br> <br>
 					</div>
 				</div>

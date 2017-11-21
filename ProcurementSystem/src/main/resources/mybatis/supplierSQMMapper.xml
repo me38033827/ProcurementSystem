@@ -48,7 +48,7 @@
 				<result property="status" column="templateTaskScheduleStatus" />
 			</association>
 		</association>
-		<collection property="codes" ofType="String" javaType="List">
+		<collection property="codes" ofType="String" javaType="List"><!-- 两个map的区别 -->
 			<result column="unspscDescription" />
 		</collection>
 	</resultMap>

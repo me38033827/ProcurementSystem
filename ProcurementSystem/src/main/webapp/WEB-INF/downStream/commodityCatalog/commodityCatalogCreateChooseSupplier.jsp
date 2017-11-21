@@ -123,7 +123,7 @@
 									i = i + 1;
 								%>
 								<td style="width: 20%;"><a
-									href="supplierDetail?id=${supplier.uniqueName}">${supplier.name}</a></td>
+									href="/ProcurementSystem/buyer/supplier/supplierDetail?id=${supplier.uniqueName}">${supplier.name}</a></td>
 								<td style="width: 20%;">SU${supplier.uniqueName}</td>
 								<td style="width: 15%;">${supplier.approveState}</td>
 								<td style="width: 15%;">${supplier.isSupplier}</td>

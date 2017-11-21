@@ -13,6 +13,11 @@
 	href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
 <link href="../../css/commodityNav.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	table>tbody>tr>td{
+		font-size:16px;
+	}
+</style>
 </head>
 <body>
 	<%
@@ -98,7 +103,8 @@
 
 								<div class="">
 									<div class="bigImg">
-										<img id= iimage-${commodity.uniqueName} onerror="error('iimage-${commodity.uniqueName }');"
+										<img id=iimage-${commodity.uniqueName}
+											onerror="error('iimage-${commodity.uniqueName }');"
 											src="/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${commodity.thumbnail}">
 									</div>
 									<div class="smallImgs">
@@ -108,7 +114,7 @@
 										</p> -->
 										<c:forEach var="path" items="${paths}">
 											<div class="smallImg left">
-												<img id= image-${commodity.uniqueName}
+												<img id=image-${commodity.uniqueName}
 													src="/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${path}"
 													onerror="error('image-${commodity.uniqueName }');">
 											</div>
@@ -145,7 +151,9 @@
 							<table class="commodity-item-table">
 								<tr>
 									<td class="right">供应商：</td>
-									<td><a href=""> ${commodity.supplier.name }</a></td>
+									<td><a
+										href="/ProcurementSystem/buyer/supplier/supplierDetail?id=${commodity.supplier.uniqueName }">
+											${commodity.supplier.name }</a></td>
 								</tr>
 								<tr>
 									<td class="right">供应商部件号：</td>
@@ -162,16 +170,19 @@
 								</tr>
 								<tr>
 									<td class="right">价格：</td>
-									<td><a class="item-price-green" style="font-size: 18px;">${commodity.unitPrice }
-											CNY</a> <a class="item-price-grey">&nbsp;／件</a></td>
+									<td><div class="item-price-green">${commodity.unitPrice }
+											CNY</div>
+										<div class="item-price-grey">&nbsp;／件</div></td>
 								</tr>
 							</table>
 							<div>
-								<br> <a class="item-price-black">数量： <input
-									class="item-quantity" id="quantity_${commodity.uniqueName }"
-									value="1" />
+								<br>
+								<div class="item-price-black">
+									数量： <input class="item-quantity"
+										id="quantity_${commodity.uniqueName }" value="1" />
 									<button class="item-add"
-										onclick="add(${commodity.uniqueName });">添加到购物车</button></a>
+										onclick="add(${commodity.uniqueName });">添加到购物车</button>
+								</div>
 								<div>
 									<a class="item-price-blue">添加到收藏夹</a>
 								</div>
@@ -184,7 +195,7 @@
 					<div class="col-md-12">
 						<div class="margin-bottom">
 							<div class="standard-subtitle">产品说明</div>
-							<div>${commodity.itemDescription }</div>
+							<div style="font-size:16px; ">${commodity.itemDescription }</div>
 							<br>
 						</div>
 						<div>

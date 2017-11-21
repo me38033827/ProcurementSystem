@@ -113,7 +113,7 @@ public class BuyerCommodityCatalogController {
 		return target;
 	}
 
-	// 获得已选择供应商所拥有的全部商品目录
+	// 获得已选择供应商所拥有的全部商品目录,不同版本之间不做区别
 	@RequestMapping(value = "getAllCommodityCatalogsBySupplier")
 	public String getAllCommodityCatalogsBySupplier(HttpServletRequest request, Supplier supplier, ModelMap map) {
 		HttpSession session = request.getSession();
@@ -126,7 +126,7 @@ public class BuyerCommodityCatalogController {
 		if (createMode != null && createMode.equals("2")) {// 模式2下搜索商品目录
 			CommodityCatalog commodityCatalog = new CommodityCatalog();
 			commodityCatalog.setSupplier(supplier);
-			List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);// 获得供应商所拥有的商品目录
+			List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalogNoVersion(commodityCatalog);// 获得供应商所拥有的商品目录
 			map.put("supplier", supplier);
 			map.put("commodityCatalogs", commodityCatalogs);// 向前端传递供应商信息和商品目录信息
 		}
@@ -176,7 +176,8 @@ public class BuyerCommodityCatalogController {
 	@RequestMapping(value = "commodityCatalogAnalyze")
 	public String commodityCatalogUpload(@RequestParam("file") MultipartFile file,
 			@RequestParam(value = "imageFile", required = false) MultipartFile imageFile, HttpServletRequest request) {
-		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";// upload为上传文件的根目录
+//		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";// upload为上传文件的根目录
+		String uploadUrl = "/Users/Lwx/upload/";
 		HttpSession session = request.getSession();
 		System.out.println("uploadUrl:" + uploadUrl);
 		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");// 获得准备上传的商品目录文件
@@ -259,8 +260,8 @@ public class BuyerCommodityCatalogController {
 		} else {
 			commodity.setIsChecked("TRUE");
 		} // 更改商品验证字段
-		commodityService.updateCommodity(commodity);//持久化商品目录
-		commodityService.updateCommoditySpscCodeHelper(commodity);//修改spscCodeHelper表
+		commodityService.updateCommodity(commodity);// 持久化商品目录
+		commodityService.updateCommoditySpscCodeHelper(commodity);// 修改spscCodeHelper表
 		commodityCatalogService.validate(commodity.getCommodityCatalog().getUniqueName());
 		return "redirect:/buyer/commodityCatalog/showCommodityCatalogContent?uniqueName="
 				+ commodity.getCommodityCatalog().getUniqueName();// 控制器中的跳转
@@ -287,12 +288,14 @@ public class BuyerCommodityCatalogController {
 	@RequestMapping(value = "commodityCatalogActivateSave")
 	public String commodityCatalogActivateSave(@RequestParam(value = "uniqueName") String uniqueName) {
 		boolean isValidated = commodityCatalogService.validate(uniqueName);
+		CommodityCatalog commodityCatalog = new CommodityCatalog();
 		if (isValidated) {
-			CommodityCatalog commodityCatalog = new CommodityCatalog();
 			commodityCatalog.setUniqueName(uniqueName);
 			commodityCatalog.setIsActivated("已激活");
 			commodityCatalogService.setIsActivated(commodityCatalog);
 		}
+		// 停用其他版本
+		commodityCatalogService.stopOtherVersion(commodityCatalog);// 名字相同的版本不同
 		return "redirect:/buyer/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
 	}
 
@@ -341,7 +344,7 @@ public class BuyerCommodityCatalogController {
 		} // 获得要添加的商品对象
 		shoppingCart = shoppingCartService.commodityCatalogAddShoppingCart(commodity, shoppingCart);// 添加商品
 		session.setAttribute("shoppingCart", shoppingCart);
-		return shoppingCart.getCommodities().size() + "";
+		return shoppingCart.getTotalQuantity() + "";
 	}
 
 	// 购物车删除
@@ -369,7 +372,9 @@ public class BuyerCommodityCatalogController {
 				String buyQuantity = request.getParameter("buyQuantity_" + uniqueName);
 				commodity.setBuyQuantity(Integer.parseInt(buyQuantity));// 维护商品数量
 			}
+			shoppingCartService.calTotalQuantity(shoppingCart);
 		}
+		
 		return "redirect:/buyer/commodityCatalog/commodityCatalogShoppingCart";
 	}
 

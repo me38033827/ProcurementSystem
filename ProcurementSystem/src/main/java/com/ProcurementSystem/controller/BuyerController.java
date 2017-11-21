@@ -41,11 +41,16 @@ public class BuyerController {
 		session.removeAttribute("spm");
 		return "main/main";
 	}
+	// P2P主页
+		@RequestMapping(value = "test")
+		public String test(HttpServletRequest request) {
+			return "upStream/contract/createContract";
+		}
 
 	// P2P供应商主页
 	@RequestMapping(value = "mainSupplier")
 	public String mainSupplier(HttpServletRequest request) {
-		request.setAttribute("pageOptions",service.getPageOptions("supplier"));
+		request.setAttribute("pageOptions", service.getPageOptions("supplier"));
 		return "main/mainSupplier";
 	}
 
@@ -76,7 +81,7 @@ public class BuyerController {
 			List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
 			map.put("breadNav", breadNav);
 		}
-		map.put("code", code);//保存状态
+		map.put("code", code);// 保存状态
 		System.out.println("总页数：" + pageParams.getTotalPages() + " 当前页：" + pageParams.getCurrPage());
 		return "main/commodityCatalog";
 	}

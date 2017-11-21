@@ -8,6 +8,7 @@
 <%@ include file="../../other/header1.jsp"%>
 <%@ include file="../../other/header2.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 </head>
 <body>
 	<!-- 第一行 -->
@@ -90,8 +91,9 @@
 										</c:if> <c:if test="${commodityCatalog.type == '1' }">
 											<i class="fa fa-tint" style="color: #87CEFA"></i>
 										</c:if></td>
-									<td width="10%"><a> ${commodityCatalog.supplier.name}
-									</a></td>
+									<td width="10%"><a
+										href="/ProcurementSystem/buyer/supplier/supplierDetail?id=${commodityCatalog.supplier.uniqueName }">
+											${commodityCatalog.supplier.name} </a></td>
 									<td width="15%"><a>${commodityCatalog.name } </a></td>
 									<td width="10%"><a
 										href="showCommodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">${commodityCatalog.version }
@@ -101,9 +103,10 @@
 									</a></td>
 									<td width="10%">完整</td>
 									<td width="10%">${commodityCatalog.contentAbstract }</td>
-									<td width="10%"><a> ${commodityCatalog.isActivated } </a></td>
-									<td width="10%"><a>${commodityCatalog.itemCount}</a></td>
-									<td width="25%">${commodityCatalog.lastModifyDate }</td>
+									<td width="10%">${commodityCatalog.isActivated }</td>
+									<td width="10%">${commodityCatalog.itemCount}</td>
+									<td width="25%"><fmt:formatDate
+											value="${commodityCatalog.lastModifyDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 								</tr>
 							</c:forEach>
 						</table>

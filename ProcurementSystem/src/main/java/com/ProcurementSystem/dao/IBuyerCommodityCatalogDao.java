@@ -13,4 +13,6 @@ public interface IBuyerCommodityCatalogDao {
 	public void setIsActivated(CommodityCatalog commodityCatalog);//维护isActivated，商品目录的状态属性
 	public void setItemCount(CommodityCatalog commodityCatalog);//维护itemCount，商品目录的商品数量属性
 	public int getCommodityCatalogVersionCount(CommodityCatalog commodityCatalog);//根据name获得商品目录的版本数
+	public void stopOtherVersion(CommodityCatalog commodityCatalog);
+	public List<CommodityCatalog> searchCommodityCatalogNoVersion(CommodityCatalog commodityCatalog);
 }

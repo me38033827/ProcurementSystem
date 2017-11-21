@@ -34,7 +34,8 @@
 		is_green,
 		is_approved,
 		commodity_catalog_unique_name,
-		is_checked)
+		is_checked
+		)
 		values(
 		#{
 		supplier.uniqueName
@@ -301,7 +302,7 @@
 		short_name = #{shortName},
 		is_checked =
 		#{isChecked},
-		spsc_code = #{spscCode}
+		spsc_code = #{spscCode}, unit_price = #{unitPrice}
 		where 1=1
 		<if test="uniqueName!='' and uniqueName!=null">
 			and unique_name = #{uniqueName}

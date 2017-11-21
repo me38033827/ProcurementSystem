@@ -14,10 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ProcurementSystem.common.FileUnZip;
 import com.ProcurementSystem.dao.IBuyerCommodityCatalogDao;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
-import com.ProcurementSystem.dao.IBuyerCommoditySpscCodeHelperDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
-import com.ProcurementSystem.entity.CommoditySpscCodeHelper;
 import com.ProcurementSystem.entity.Contract;
 import com.ProcurementSystem.entity.Supplier;
 
@@ -34,7 +32,7 @@ public class BuyerCommodityCatalogService {
 	BuyerCommodityService commodityService;
 	@Resource
 	IBuyerCommodityDao commodityDao;
-	
+
 	// 获得商品目录数量
 	public int getRowCount() {
 		return commodityCatalogDao.getRowCount();
@@ -101,13 +99,15 @@ public class BuyerCommodityCatalogService {
 						/** 从上传文件中提取字段 */
 						Commodity commodity = new Commodity();// 设置commodityCatalog
 						commodity.setCommodityCatalog(commodityCatalog);
-						Supplier supplier = new Supplier();// 读取并设置Supplier ID(supplier.uniqueName)
-						//if (cell.getContents().matches("^[0-9]+$"))// 匹配整数 //此处有问题？？？？  需要将uniqueName设置为String
-						//	supplier.setUniqueName(Integer.parseInt(cell.getContents()));
-						//暂时没涉及多供应商上传的问题
+						Supplier supplier = new Supplier();// 读取并设置Supplier
+															// ID(supplier.uniqueName)
+						// if (cell.getContents().matches("^[0-9]+$"))// 匹配整数
+						// //此处有问题？？？？ 需要将uniqueName设置为String
+						// supplier.setUniqueName(Integer.parseInt(cell.getContents()));
+						// 暂时没涉及多供应商上传的问题
 						supplier.setName(commodityCatalog.getSupplier().getName());
 						supplier.setUniqueName(commodityCatalog.getSupplier().getUniqueName());
-						commodity.setSupplier(supplier);//此处是为了直接显示商品信息，减少一次数据库提取操作
+						commodity.setSupplier(supplier);// 此处是为了直接显示商品信息，减少一次数据库提取操作
 						System.out.println(commodity.getSupplier().getUniqueName());
 						cell = firstSheet.getCell(1, i);// 读取并设置Supplier Part ID
 						commodity.setSupplierPartId(cell.getContents());
@@ -149,13 +149,16 @@ public class BuyerCommodityCatalogService {
 						commodity.setExpirationDate(cell.getContents());
 						cell = firstSheet.getCell(15, i);// Short Name
 						commodity.setShortName(cell.getContents());
-						//String imagesPath = "/ProcurementSystem/upload/" + commodityCatalog.getUniqueName() + "/" + commodity.getShortName()+"/";
+						// String imagesPath = "/ProcurementSystem/upload/" +
+						// commodityCatalog.getUniqueName() + "/" +
+						// commodity.getShortName()+"/";
 						cell = firstSheet.getCell(16, i);// Image
-//						String[] strs = cell.getContents().split("&");//对图像路径的原始数据进行处理,路径与路径之间用&隔开
-//						String result ="";
-//						for(String str : strs){
-//							result+=imagesPath + str + "&";
-//						}
+						// String[] strs =
+						// cell.getContents().split("&");//对图像路径的原始数据进行处理,路径与路径之间用&隔开
+						// String result ="";
+						// for(String str : strs){
+						// result+=imagesPath + str + "&";
+						// }
 						commodity.setImage(cell.getContents());
 						cell = firstSheet.getCell(17, i);// Thumbnail
 						commodity.setThumbnail(cell.getContents());
@@ -183,8 +186,8 @@ public class BuyerCommodityCatalogService {
 							commodity.setIsChecked("FALSE");// 设置商品的验证状态
 						if (!isCommodityChecked)
 							isCommodityCatalogchecked = false;// 设置商品目录的验证状态
-						commodityService.insertCommodity(commodity);//持久化商品
-						commodityService.divideSpscCode(commodity);//分解spscCode并持久化
+						commodityService.insertCommodity(commodity);// 持久化商品
+						commodityService.divideSpscCode(commodity);// 分解spscCode并持久化
 						System.out.println("成功插入一条商品信息！");
 					}
 
@@ -201,7 +204,6 @@ public class BuyerCommodityCatalogService {
 			e.printStackTrace();
 		}
 	}
-	
 
 	// 设置商品目录状态
 	public void setIsActivated(CommodityCatalog commodityCatalog) {
@@ -248,7 +250,7 @@ public class BuyerCommodityCatalogService {
 	}
 
 	// 保存image文件，并解压
-	public void commodityCatalogUploadImages(MultipartFile imageFile, String path) {//存到以商品目录id命名的文件夹下
+	public void commodityCatalogUploadImages(MultipartFile imageFile, String path) {// 存到以商品目录id命名的文件夹下
 		String fileName = imageFile.getOriginalFilename();
 		File dir = new File(path);// 创建文件夹
 		if (!dir.exists()) {
@@ -266,8 +268,8 @@ public class BuyerCommodityCatalogService {
 		}
 		try {
 			imageFile.transferTo(targetFile);
-			FileUnZip.zipToFile(path + fileName, path);//解压文件
-			
+			FileUnZip.zipToFile(path + fileName, path);// 解压文件
+
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -279,15 +281,15 @@ public class BuyerCommodityCatalogService {
 			e.printStackTrace();
 		}
 	}
-	
-	//创建版本
+
+	// 创建版本
 	public CommodityCatalog setCommodityCatalogVersion(String createMode, CommodityCatalog commodityCatalog) {
 		// TODO Auto-generated method stub
-		if(createMode.equals("1")){//创建新目录
+		if (createMode.equals("1")) {// 创建新目录
 			commodityCatalog.setVersion("版本1");
-		}else{//创建新版本
+		} else {// 创建新版本
 			int count = commodityCatalogDao.getCommodityCatalogVersionCount(commodityCatalog);
-			commodityCatalog.setVersion("版本"+(count+1));
+			commodityCatalog.setVersion("版本" + (count + 1));
 		}
 		return commodityCatalog;
 	}
@@ -296,8 +298,18 @@ public class BuyerCommodityCatalogService {
 		CommodityCatalog commodityCatalogName = new CommodityCatalog();
 		commodityCatalogName.setName(commodityCatalog.getName());
 		List<CommodityCatalog> commodityCatalogs = commodityCatalogDao.searchCommodityCatalog(commodityCatalog);
-		if(commodityCatalogs.size() > 0) return true;
+		if (commodityCatalogs.size() > 0)
+			return true;
 		return false;
+	}
+
+	// 停用其他版本
+	public void stopOtherVersion(CommodityCatalog commodityCatalog) {
+		commodityCatalogDao.stopOtherVersion(commodityCatalog);
+	}
+
+	public List<CommodityCatalog> searchCommodityCatalogNoVersion(CommodityCatalog commodityCatalog) {
+		return commodityCatalogDao.searchCommodityCatalogNoVersion(commodityCatalog);
 	}
 
 }

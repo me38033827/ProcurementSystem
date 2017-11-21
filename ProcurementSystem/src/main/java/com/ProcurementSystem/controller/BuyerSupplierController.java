@@ -331,6 +331,8 @@ public class BuyerSupplierController {
 	@RequestMapping(value = "supplierDetail")
 	public String showSupplierDetail(HttpServletRequest request) {
 		request.getSession().setAttribute("backTask", "supplierDetailTask");// 设置
+		String backCreateCommodityCatalog = "../commodityCatalog/commodityCatalogCreateChooseSupplier?action=search";// 设置返回路径
+		request.getSession().setAttribute("backCreateCommodityCatalog", backCreateCommodityCatalog);
 		HttpSession session = request.getSession();
 		Supplier supplier = null;
 		List<SupplierSIMAnswer> answers = new ArrayList<SupplierSIMAnswer>();

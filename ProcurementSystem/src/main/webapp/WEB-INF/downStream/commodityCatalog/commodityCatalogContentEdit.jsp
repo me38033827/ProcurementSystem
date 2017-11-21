@@ -15,9 +15,9 @@
 			<div class="col-md-12">
 				<div class="container-padding margin-bottom">
 					<div class="page-main-title-btn">
-						<button class="btn-w" type="submit"
+						<button class="btn-b" type="submit"
 							form="commodityCatalogContentModify">保存</button>
-						<button class="btn-w">取消</button>
+						<button class="btn-w" type="button" onclick="window.location.href='showCommodityCatalogContent?uniqueName=${commodity.commodityCatalog.uniqueName}'">取消</button>
 					</div>
 					<div class="page-main-title">目录 - 编辑项目</div>
 					<div class="margin-bottom">
@@ -31,15 +31,6 @@
 								<tr>
 									<th colspan="2">&nbsp;字段名称</th>
 									<th>&nbsp;字段值</th>
-								</tr>
-								<tr>
-									<td colspan="2">Ariba 内部主协议识别符</td>
-
-									<td><i>(该字段不可编辑。)</i></td>
-								</tr>
-								<tr>
-									<td colspan="2">Ariba 内部合同可订购</td>
-									<td><i>(该字段不可编辑。)</i></td>
 								</tr>
 								<tr>
 									<td colspan="2">Company Code</td>
@@ -92,8 +83,8 @@
 								</tr>
 								<tr>
 									<td>金额</td>
-									<td><input type="text" class="input margin-input"
-										value="100"><br></td>
+									<td><input type="text" class="input margin-input" name="unitPrice"
+										value="${commodity.unitPrice }"><br></td>
 								</tr>
 								<tr>
 									<td rowspan="2">价格单位</td>
@@ -148,8 +139,8 @@
 								<tr>
 									<td rowspan="4">分类代码</td>
 									<td>值</td>
-									<td><input type="text" class="input margin-input" name="spscCode"
-										value="${commodity.spscCode }">&nbsp;&nbsp;&nbsp;&nbsp;
+									<td><input type="text" class="input margin-input"
+										name="spscCode" value="${commodity.spscCode }">&nbsp;&nbsp;&nbsp;&nbsp;
 										<button class="btn-w">删除值</button></td>
 								</tr>
 								<tr>
@@ -232,8 +223,8 @@
 								</tr>
 								<tr>
 									<td colspan="2">描述</td>
-									<td><input type="text" class="input margin-input"
-										name="itemDescription" value="${commodity.itemDescription }"></td>
+									<td><textArea class="input margin-input"
+											style="width: 400px; height: 60px" name="itemDescription"> ${commodity.itemDescription }</textArea></td>
 								</tr>
 								<tr>
 									<td colspan="2">晋升职级</td>
@@ -264,8 +255,8 @@
 								</tr>
 								<tr>
 									<td colspan="2">简称</td>
-									<td><input type="text" class="input margin-input"
-										name="shortName" value="${commodity.shortName }"><input
+									<td><textArea class="input margin-input"
+											style="width: 400px; height: 60px" name="shortName">${commodity.shortName }</textArea><input
 										type="hidden" name="uniqueName"
 										value="${commodity.uniqueName }"></td>
 								</tr>
@@ -287,8 +278,8 @@
 								</tr>
 								<tr>
 									<td>域</td>
-									<td><input type="text" class="input margin-input"
-										value="UN"> &nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】</a></td>
+									<td><input type="text" class="input margin-input" name="unitOfMeasure"
+										value="${commodity.unitOfMeasure }"> &nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】</a></td>
 								</tr>
 								<tr>
 									<td colspan="2">适用合同</td>
@@ -319,7 +310,7 @@
 							<br>
 						</div>
 						<div class="page-main-title-btn">
-							<button class="btn-w" type="submit">保存</button>
+							<button class="btn-b" type="submit">保存</button>
 							<button class="btn-w" type="button"
 								onclick="window.location.href='commodityCatalogList'">取消</button>
 						</div>

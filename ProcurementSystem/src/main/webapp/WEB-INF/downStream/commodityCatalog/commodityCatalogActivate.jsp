@@ -91,8 +91,8 @@
 						<br> <br>
 					</div>
 					<div class="right">
-						<button class="btn-w"
-							onclick="window.location.href='procurementCommodityCatalogList.jsp'">目录
+						<button class="btn-w" type="button"
+							onclick="window.location.href='commodityCatalogList'">目录
 							主页</button>
 					</div>
 				</div>

@@ -22,7 +22,7 @@
 		String size = "0";
 		String quantity = "0";//商品总数
 		if (shoppingCart != null)
-			size = shoppingCart.getCommodities().size() + "";
+			size = shoppingCart.getTotalQuantity() + "";
 	%>
 	<!-- 导航栏 第三行 -->
 	<div>
@@ -196,7 +196,7 @@
 								<table class="">
 									<tr>
 										<td class="item-content-grey">供应商：</td>
-										<td class="item-content-blue">${commodity.supplier.name}</td>
+										<td class="item-content-blue"><a href="/ProcurementSystem/buyer/supplier/supplierDetail?id=${commodity.supplier.uniqueName }">${commodity.supplier.name}</a></td>
 
 									</tr>
 									<tr>
@@ -225,12 +225,12 @@
 							</div>
 
 							<div class="item-price">
-								<a class="item-price-green">${commodity.unitPrice} CNY</a> <a
-									class="item-price-grey">&nbsp;／件</a><br> <a
+								<div class="item-price-green">${commodity.unitPrice} CNY</div> <div
+									class="item-price-grey">&nbsp;／件</div><br> <div
 									class="item-price-black">数量： <input class="item-quantity"
 									id="quantity_${commodity.uniqueName }" value="1" />
 									<button class="item-add"
-										onclick="add(${commodity.uniqueName});">添加到购物车</button></a> <a
+										onclick="add(${commodity.uniqueName});">添加到购物车</button></div> <a
 									class="item-price-blue">添加到收藏夹</a>
 							</div>
 						</div>

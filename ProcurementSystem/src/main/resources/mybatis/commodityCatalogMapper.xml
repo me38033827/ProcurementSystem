@@ -22,7 +22,8 @@
 		itemCount,
 		cc.last_modify_date as lastModifyDate,
 		cc.type
-		from commodity_catalog
+		from
+		commodity_catalog
 		cc left join supplier s
 		on cc.supplier_unique_name =
 		s.unique_name;
@@ -194,5 +195,26 @@
 		parameterType="com.ProcurementSystem.entity.CommodityCatalog">
 		select count(*) from commodity_catalog where name =
 		#{name}
+	</select>
+
+
+
+	<update id="stopOtherVersion" parameterType="com.ProcurementSystem.entity.CommodityCatalog">
+		update
+		commodity_catalog c
+		set is_activated = '已停用' where name = (select
+		c.name from
+		( select name from commodity_catalog c
+		where unique_name =
+		#{uniqueName}) a ) and unique_name != #{uniqueName} and is_activated =
+		'已激活' ;
+	</update>
+
+
+	<select id="searchCommodityCatalogNoVersion" parameterType="com.ProcurementSystem.entity.CommodityCatalog"
+		resultType="com.ProcurementSystem.entity.CommodityCatalog">
+		select name from commodity_catalog where
+		supplier_unique_name = #{supplier.uniqueName} group by name
+	<!-- -->
 	</select>
 </mapper>

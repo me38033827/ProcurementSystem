@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
@@ -84,6 +81,7 @@ public class BuyerShoppingCartService {
 		ListIterator<Commodity> iterator = shoppingCart.getCommodities().listIterator();
 		while (iterator.hasNext()) {
 			Commodity commodityTemp = iterator.next();
+			
 			if (commodityTemp.getUniqueName().equals(commodity.getUniqueName())) {
 				commodityTemp.setBuyQuantity(commodity.getBuyQuantity() + commodityTemp.getBuyQuantity());// 维护商品数量
 				flag = true;
@@ -92,6 +90,14 @@ public class BuyerShoppingCartService {
 		} // 当商品重复时，只修改原商品数量
 		if (flag == false)
 			shoppingCart.getCommodities().add(commodity);// 当商品不重复时，直接添加至list
+		calTotalQuantity(shoppingCart);//更新商品总数量
 		return shoppingCart;
+	}
+
+	public void calTotalQuantity(ShoppingCart shoppingCart) {
+		shoppingCart.setTotalQuantity(0);
+		for(Commodity commodity : shoppingCart.getCommodities()){
+			shoppingCart.setTotalQuantity(shoppingCart.getTotalQuantity()+commodity.getBuyQuantity());
+		}
 	}
 }

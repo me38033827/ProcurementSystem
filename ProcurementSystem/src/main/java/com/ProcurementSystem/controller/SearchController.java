@@ -34,43 +34,39 @@ public class SearchController {
 	SupplierSPMService supplierSPMService;
 	@Resource
 	SupplierSQMService supplierSQMService;
-	
+
 	// 从供应商主页跳转到不同类型的搜索页面
 	@RequestMapping(value = "supplierSearchDistribute")
-	public String supplierSearchDistribute(HttpServletRequest request){
+	public String supplierSearchDistribute(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String page = request.getParameter("page");
 		int pageId = Integer.parseInt(page);
 		String content = request.getParameter("content");
-		
+
 		// 搜索页面标题
 		String pageName = service.getPageName(pageId);
-		
+
 		session.setAttribute("pageId", pageId);
 		session.setAttribute("pageName", pageName);
 		session.setAttribute("content", content);
 		return "main/search";
 	}
-	 
+
 	// ＋功能实现：添加搜索条件
 	@RequestMapping(value = "addSearchCondition")
-	public @ResponseBody Search addSearchCondition(
-			@RequestParam("userId") int userId,
-			@RequestParam("pageId") int pageId,
-			@RequestParam("fieldId") int fieldId){
+	public @ResponseBody Search addSearchCondition(@RequestParam("userId") int userId,
+			@RequestParam("pageId") int pageId, @RequestParam("fieldId") int fieldId) {
 		Search searchInput = new Search();
 		searchInput.setUserId(userId);
 		searchInput.setPageId(pageId);
 		searchInput.setFieldId(fieldId);
 		return service.addCondition(searchInput);
 	}
-	
+
 	// －功能实现：删除搜索条件
 	@RequestMapping(value = "delSearchCondition")
-	public @ResponseBody Search delSearchCondition(
-			@RequestParam("userId") int userId,
-			@RequestParam("pageId") int pageId,
-			@RequestParam("fieldId") int fieldId){
+	public @ResponseBody Search delSearchCondition(@RequestParam("userId") int userId,
+			@RequestParam("pageId") int pageId, @RequestParam("fieldId") int fieldId) {
 		Search search = new Search();
 		search.setPageId(pageId);
 		search.setUserId(userId);
@@ -78,14 +74,12 @@ public class SearchController {
 		service.delSearchCondition(search);
 		return search;
 	}
-	
+
 	// 改变搜索条件
 	@RequestMapping(value = "changeSearchCondition")
-	public @ResponseBody Search changeSearchCondition(
-			@RequestParam("userId") int userId,
-			@RequestParam("pageId") int pageId,
-			@RequestParam("newId") int newId,
-			@RequestParam("originId") int originId){
+	public @ResponseBody Search changeSearchCondition(@RequestParam("userId") int userId,
+			@RequestParam("pageId") int pageId, @RequestParam("newId") int newId,
+			@RequestParam("originId") int originId) {
 		Search newSearch = new Search();
 		newSearch.setUserId(userId);
 		newSearch.setPageId(pageId);
@@ -97,39 +91,33 @@ public class SearchController {
 		Search result = service.changeSearchCondition(newSearch, originSearch);
 		return result;
 	}
-	
-	//获取下拉框中ajax加载出的其它搜索条件
+
+	// 获取下拉框中ajax加载出的其它搜索条件
 	@RequestMapping(value = "findOtherCondition")
-	public @ResponseBody List<Search> findOtherCondition(
-			@RequestParam("userId") int userId,
-			@RequestParam("pageId") int pageId){
+	public @ResponseBody List<Search> findOtherCondition(@RequestParam("userId") int userId,
+			@RequestParam("pageId") int pageId) {
 		Search search = new Search();
 		search.setPageId(pageId);
 		search.setUserId(userId);
 		service.delSearchConditionNoMinus(search);
 		return service.getSearchListNoAdd(search);
 	}
-	
-	//获取已经显示的搜索条件
+
+	// 获取已经显示的搜索条件
 	@RequestMapping(value = "getSelectedCondition")
-	public @ResponseBody List<Search> getSelectedCondition(
-			@RequestParam("userId") int userId,
-			@RequestParam("pageId") int pageId){
+	public @ResponseBody List<Search> getSelectedCondition(@RequestParam("userId") int userId,
+			@RequestParam("pageId") int pageId) {
 		Search search = new Search();
 		search.setPageId(pageId);
 		search.setUserId(userId);
 		return service.getSelectedCondition(search);
 	}
-	
-	//供应商搜索
+
+	// 供应商搜索
 	@RequestMapping(value = "supplierSearch")
-	public @ResponseBody List<Supplier> supplierSearch(
-			@RequestParam("content") String content,
-			@RequestParam("isClient") String isClient,
-			@RequestParam("isSupplier") String isSupplier,
-			@RequestParam("approveState") String approveState,
-			@RequestParam("name") String name
-			){
+	public @ResponseBody List<Supplier> supplierSearch(@RequestParam("content") String content,
+			@RequestParam("isClient") String isClient, @RequestParam("isSupplier") String isSupplier,
+			@RequestParam("approveState") String approveState, @RequestParam("name") String name) {
 		Supplier supplier = new Supplier();
 		supplier.setApproveState(approveState);
 		supplier.setIsClient(isClient);
@@ -138,40 +126,39 @@ public class SearchController {
 		System.out.println(name);
 		return supplierService.completeSearchSupplier(supplier, content);
 	}
-	
-	//供应商搜索
+
+	// 国家征信系统搜索功能
+	@RequestMapping(value = "supplierSearchEx")
+	public String supplierSearchEx() {
+		return "main/supplierSearchingEx";
+	}
+
+	// 供应商搜索
 	@RequestMapping(value = "supplierSPMSearch")
-	public @ResponseBody List<SupplierSPM> supplierSPMSearch(
-			@RequestParam("content") String content,
-			@RequestParam("status") String status,
-			@RequestParam("supplierId") String supplierId,
-			@RequestParam("title") String title
-			){
+	public @ResponseBody List<SupplierSPM> supplierSPMSearch(@RequestParam("content") String content,
+			@RequestParam("status") String status, @RequestParam("supplierId") String supplierId,
+			@RequestParam("title") String title) {
 		SupplierSPM supplierSPM = new SupplierSPM();
 		supplierSPM.setTitle(title);
 		supplierSPM.setStatus(status);
 		Supplier supplier = new Supplier();
-		if(supplierId!=""){
+		if (supplierId != "") {
 			supplier.setUniqueName(Integer.parseInt(supplierId));
 		}
 		supplierSPM.setSupplier(supplier);
 		return supplierSPMService.completeSearchSupplierSPM(supplierSPM, content);
 	}
-	
-	
-	//供应商搜索
+
+	// 供应商搜索
 	@RequestMapping(value = "supplierSQMSearch")
-	public @ResponseBody List<SupplierSQM> supplierSQMSearch(
-			@RequestParam("content") String content,
-			@RequestParam("status") String status,
-			@RequestParam("supplierId") String supplierId,
-			@RequestParam("title") String title
-			){
+	public @ResponseBody List<SupplierSQM> supplierSQMSearch(@RequestParam("content") String content,
+			@RequestParam("status") String status, @RequestParam("supplierId") String supplierId,
+			@RequestParam("title") String title) {
 		SupplierSQM supplierSQM = new SupplierSQM();
 		supplierSQM.setTitle(title);
 		supplierSQM.setStatus(status);
 		Supplier supplier = new Supplier();
-		if(supplierId!=""){
+		if (supplierId != "") {
 			supplier.setUniqueName(Integer.parseInt(supplierId));
 		}
 		supplierSQM.setSupplier(supplier);

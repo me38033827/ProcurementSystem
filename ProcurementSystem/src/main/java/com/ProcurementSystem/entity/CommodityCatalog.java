@@ -1,16 +1,14 @@
 package com.ProcurementSystem.entity;
 
 import java.util.ArrayList;
-
-import javax.validation.Valid;
+import java.util.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class CommodityCatalog {
 	private String uniqueName;
-	
-	
-	private Supplier supplier;//暂时无法让框架只验证嵌套对象的某一个字段
+
+	private Supplier supplier;// 暂时无法让框架只验证嵌套对象的某一个字段
 
 	private ArrayList<Commodity> commodities = new ArrayList<>();
 
@@ -27,7 +25,7 @@ public class CommodityCatalog {
 	private String preview;
 	private String isActivated;
 	private int itemCount;
-	private String lastModifyDate;
+	private Date lastModifyDate;
 	private String version;
 
 	// an补充字段
@@ -40,9 +38,7 @@ public class CommodityCatalog {
 	private String type;
 	private String description;
 	private String createDate;
-	
 
-	
 	public String getCreateDate() {
 		return createDate;
 	}
@@ -115,11 +111,11 @@ public class CommodityCatalog {
 		this.type = type;
 	}
 
-	public String getLastModifyDate() {
+	public Date getLastModifyDate() {
 		return lastModifyDate;
 	}
 
-	public void setLastModifyDate(String lastModifyDate) {
+	public void setLastModifyDate(Date lastModifyDate) {
 		this.lastModifyDate = lastModifyDate;
 	}
 
@@ -171,11 +167,11 @@ public class CommodityCatalog {
 		this.itemCount = itemCount;
 	}
 
-	public String getLastModityDate() {
+	public Date getLastModityDate() {
 		return lastModifyDate;
 	}
 
-	public void setLastModityDate(String lastModityDate) {
+	public void setLastModityDate(Date lastModityDate) {
 		this.lastModifyDate = lastModityDate;
 	}
 

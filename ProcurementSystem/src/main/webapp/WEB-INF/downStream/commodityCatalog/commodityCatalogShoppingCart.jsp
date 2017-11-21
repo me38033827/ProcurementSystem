@@ -96,8 +96,9 @@
 						</div>
 
 						<!-- 购物车摘要 -->
+						<br>
 						<div class="margin-top-10 container" align="right">
-							<table class="col-md-4" id="shopping-cart-abstract">
+							<table class=" margin-top-10 col-md-4" id="shopping-cart-abstract">
 								<tr id="abstract-line1">
 									<td class="settlement-tab2-col1">购物车摘要</td>
 									<td class="settlement-tab2-col2"></td>
