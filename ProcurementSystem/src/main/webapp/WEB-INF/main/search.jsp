@@ -16,11 +16,12 @@
 		<div class="container">
 			<div class="standard-out">
 				<div class="row">
-					<div class="col-md-2">
-						<div class="adjust-10"></div>
-						<div class="adjust-10"></div>
-						<div class="contract-crea-left left blue">
-							<c:if test="${pageId == 2004}">
+					<c:if test="${pageId == 2004}">
+						<div class="col-md-2">
+							<div class="adjust-10"></div>
+							<div class="adjust-10"></div>
+							<div class="contract-crea-left left blue">
+
 								<div class="">
 									<button id="contract-crea-clicked"
 										onclick="window.location.href='supplierSearchDistribute?page=2004'">供应商和客户</button>
@@ -30,82 +31,88 @@
 										onclick="window.location.href='supplierSearchEx'"
 										scrolling="no">企业信息公示</button>
 								</div>
-							</c:if>
-							<c:if test="${pageId == 2005}">
-								<div class="">
-									<button id="contract-crea-clicked"
-										onclick="window.location.href='supplierSearchDistribute?page=2005'">供应商和客户</button>
-								</div>
-							</c:if>
-						</div>
 
+							</div>
+						</div>
+						<div class="col-md-10">
+					</c:if>
+
+					<c:if test="${pageId == 2005}">
+						<div class="col-md-12">
+							<div class="standard-title">
+								<a class="standard-title-main" id=search-title><%=request.getSession().getAttribute("pageName")%></a>
+							</div>
+					</c:if>
+					<c:if test="${pageId == 2006}">
+						<div class="col-md-12">
+							<div class="standard-title">
+								<a class="standard-title-main" id=search-title><%=request.getSession().getAttribute("pageName")%></a>
+							</div>
+					</c:if>
+					<input hidden="hidden" id="pageId"
+						value="<%=request.getSession().getAttribute("pageId")%>">
+					<div class="adjust-10"></div>
+
+					<div class="adjust-10"></div>
+
+					<div class="searching-filter">
+						<div class="filter-title">
+							<a class="filter-title-main">搜索筛选器</a> <a class="right f-12">选项<span
+								class="caret"></span></a>
+						</div>
+						<div class="row searching-content">
+							<div class="col-md-6">
+								<table>
+									<tr class="row-search" id="search-0">
+										<td class="col-search1"><input type="text"
+											class="col-md-5 form-control input" style="width: 300px;"
+											name="content" id="content" placeholder="使用名称、标识符或任何其他词语搜索"
+											value="${content}"
+											<%if(request.getSession().getAttribute("contentSession")!=null) {%>
+											value="<%=request.getSession().getAttribute("contentSession") %>"
+											<%} %>></td>
+										<td class="col-search2"><a
+											href="javascript:addCondition('#search-0');"><span
+												class="glyphicon glyphicon-plus-sign blue"
+												aria-hidden="true"></span></a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="searching-ending">
+							<div align="right">
+								<button class="btn-w" onclick="reset()">重置</button>
+								<button class="btn-b" onclick="search();">搜索</button>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-10">
-						<input hidden="hidden" id="pageId"
-							value="<%=request.getSession().getAttribute("pageId")%>">
-						<div class="adjust-10"></div>
 
-						<div class="adjust-10"></div>
+					<div class="adjust-10"></div>
+					<div class="adjust-10"></div>
 
-						<div class="searching-filter">
-							<div class="filter-title">
-								<a class="filter-title-main">搜索筛选器</a> <a class="right f-12">选项<span
-									class="caret"></span></a>
-							</div>
-							<div class="row searching-content">
-								<div class="col-md-6">
-									<table>
-										<tr class="row-search" id="search-0">
-											<td class="col-search1"><input type="text"
-												class="col-md-5 form-control input" style="width: 300px;"
-												name="content" id="content" placeholder="使用名称、标识符或任何其他词语搜索"
-												value="${content}"
-												<%if(request.getSession().getAttribute("contentSession")!=null) {%>
-												value="<%=request.getSession().getAttribute("contentSession") %>"
-												<%} %>></td>
-											<td class="col-search2"><a
-												href="javascript:addCondition('#search-0');"><span
-													class="glyphicon glyphicon-plus-sign blue"
-													aria-hidden="true"></span></a></td>
-										</tr>
-									</table>
-								</div>
-							</div>
-							<div class="searching-ending">
-								<div align="right">
-									<button class="btn-w" onclick="reset()">重置</button>
-									<button class="btn-b" onclick="search();">搜索</button>
-								</div>
-							</div>
+					<div class="standard-subtitle" style="border: 0; margin-bottom: 0;">
+						搜索结果
+						<div class="f-14 black inline-b" style="margin-left: 40%;">
+							共有<a id="numOfResults"></a>个结果
 						</div>
-
-						<div class="adjust-10"></div>
-						<div class="adjust-10"></div>
-
-						<div class="standard-subtitle"
-							style="border: 0; margin-bottom: 0;">
-							搜索结果
-							<div class="f-14 black inline-b" style="margin-left: 40%;">
-								共有<a id="numOfResults"></a>个结果
-							</div>
-							<div class="right">
-								<button class="icon-btn">
-									<span class="glyphicon glyphicon-th icon" aria-hidden="true"></span>
-								</button>
-							</div>
+						<div class="right">
+							<button class="icon-btn">
+								<span class="glyphicon glyphicon-th icon" aria-hidden="true"></span>
+							</button>
 						</div>
-						<div id="result-title"></div>
-						<div id="result-content" class="roll-tab"
-							style="max-height: 220px;"></div>
-						<div id="result-action"></div>
 					</div>
+					<div id="result-title"></div>
+					<div id="result-content" class="roll-tab"
+						style="max-height: 220px;"></div>
+					<div id="result-action"></div>
 				</div>
-				<div id="result-title"></div>
-				<div id="result-content" class="roll-tab" style="max-height: 220px;"></div>
-				<div id="result-action"></div>
-				<%@include file="../other/selectCommodity.jsp"%>
 			</div>
+			<div id="result-title"></div>
+			<div id="result-content" class="roll-tab" style="max-height: 220px;"></div>
+			<div id="result-action"></div>
+			<%@include file="../other/selectCommodity.jsp"%>
 		</div>
+	</div>
 	</div>
 	<div class="theme-popover-mask"></div>
 
