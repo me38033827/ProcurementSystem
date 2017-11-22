@@ -225,8 +225,8 @@
 							</div>
 
 							<div class="item-price">
-								<div class="item-price-green">${commodity.unitPrice} CNY</div> <div
-									class="item-price-grey">&nbsp;／件</div><br> <div
+								<div class="item-price-green">￥${commodity.unitPrice}</div> <div
+									class="item-price-grey">&nbsp;／${commodity.unitOfMeasure}</div><br> <div
 									class="item-price-black">数量： <input class="item-quantity"
 									id="quantity_${commodity.uniqueName }" value="1" />
 									<button class="item-add"

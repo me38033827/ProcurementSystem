@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ProcurementSystem.common.NavTree;
-import com.ProcurementSystem.common.PageParams;
 import com.ProcurementSystem.common.NavTreeNode;
+import com.ProcurementSystem.common.PageParams;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.ShoppingCart;
@@ -64,7 +64,7 @@ public class BuyerCommodityCatalogController {
 	// 创建商品目录页->选择供应商页
 	@RequestMapping(value = "commodityCatalogCreateChooseSupplier")
 	public String commodityCatalogCreateChooseSupplier(HttpServletRequest request,
-			@RequestParam(value = "createMode", required = false) String createMode) {
+			@RequestParam(value = "createMode", required = false) String createMode,@RequestParam(value="commodityCatalog",required=false)CommodityCatalog commodityCatalog) {
 		String target = "downStream/commodityCatalog/commodityCatalogCreateChooseSupplier";// 跳转页面路径
 		if (createMode != null) {
 			request.getSession().setAttribute("createMode", createMode);// 保存创建目录模式
@@ -126,7 +126,8 @@ public class BuyerCommodityCatalogController {
 		if (createMode != null && createMode.equals("2")) {// 模式2下搜索商品目录
 			CommodityCatalog commodityCatalog = new CommodityCatalog();
 			commodityCatalog.setSupplier(supplier);
-			List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalogNoVersion(commodityCatalog);// 获得供应商所拥有的商品目录
+			List<CommodityCatalog> commodityCatalogs = commodityCatalogService
+					.searchCommodityCatalogNoVersion(commodityCatalog);// 获得供应商所拥有的商品目录
 			map.put("supplier", supplier);
 			map.put("commodityCatalogs", commodityCatalogs);// 向前端传递供应商信息和商品目录信息
 		}
@@ -176,8 +177,10 @@ public class BuyerCommodityCatalogController {
 	@RequestMapping(value = "commodityCatalogAnalyze")
 	public String commodityCatalogUpload(@RequestParam("file") MultipartFile file,
 			@RequestParam(value = "imageFile", required = false) MultipartFile imageFile, HttpServletRequest request) {
-//		String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";// upload为上传文件的根目录
-		String uploadUrl = "/Users/Lwx/upload/";
+		// String uploadUrl =
+		// request.getSession().getServletContext().getRealPath("/") +
+		// "upload/";// upload为上传文件的根目录
+		String uploadUrl = "/Users/ProcurementSystem/upload/";
 		HttpSession session = request.getSession();
 		System.out.println("uploadUrl:" + uploadUrl);
 		CommodityCatalog commodityCatalog = (CommodityCatalog) session.getAttribute("commodityCatalog");// 获得准备上传的商品目录文件
@@ -269,7 +272,9 @@ public class BuyerCommodityCatalogController {
 
 	// 转向商品目录版本比较页
 	@RequestMapping(value = "commodityCatalogCompare")
-	public String commodityCatalogCompare() {
+	public String commodityCatalogCompare(@RequestParam(value = "uniqueName") String uniqueName,
+			HttpServletRequest request) {
+		request.setAttribute("uniqueName", uniqueName);
 		return "downStream/commodityCatalog/commodityCatalogCompare";
 	}
 
@@ -287,31 +292,46 @@ public class BuyerCommodityCatalogController {
 	// 激活商品目录，并持久化存储
 	@RequestMapping(value = "commodityCatalogActivateSave")
 	public String commodityCatalogActivateSave(@RequestParam(value = "uniqueName") String uniqueName) {
-		boolean isValidated = commodityCatalogService.validate(uniqueName);
-		CommodityCatalog commodityCatalog = new CommodityCatalog();
-		if (isValidated) {
-			commodityCatalog.setUniqueName(uniqueName);
-			commodityCatalog.setIsActivated("已激活");
-			commodityCatalogService.setIsActivated(commodityCatalog);
-		}
-		// 停用其他版本
-		commodityCatalogService.stopOtherVersion(commodityCatalog);// 名字相同的版本不同
+		commodityCatalogService.activate(uniqueName);
 		return "redirect:/buyer/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
 	}
 
 	// 停用商品目录，并进行持久化存储
 	@RequestMapping(value = "commodityCatalogStopSave")
 	public String commodityCatalogStopSave(@RequestParam(value = "uniqueName") String uniqueName) {
-		CommodityCatalog commodityCatalog = new CommodityCatalog();
-		commodityCatalog.setUniqueName(uniqueName);
-		List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
-		commodityCatalog = commodityCatalogs.get(0);
-		if (commodityCatalog.getIsActivated().equals("已激活")) {
-			commodityCatalog.setUniqueName(uniqueName);
-			commodityCatalog.setIsActivated("已停用");
-			commodityCatalogService.setIsActivated(commodityCatalog);
-		}
+		commodityCatalogService.deactivate(uniqueName);
 		return "redirect:/buyer/commodityCatalog/commodityCatalogActivate?uniqueName=" + uniqueName;
+	}
+
+	// 批量删除目录
+	@RequestMapping(value = "deleteCommodityCatalog")
+	public String deleteCommodityCatalog(HttpServletRequest request,
+			@RequestParam(value = "uniqueNames") String[] uniqueNames) {
+		for (String uniqueName : uniqueNames) {
+			CommodityCatalog commodityCatalog = new CommodityCatalog();
+			commodityCatalog.setUniqueName(uniqueName);
+			commodityCatalogService.delete(commodityCatalog);
+		}
+		return "redirect:commodityCatalogList";
+	}
+
+	// 批量激活目录
+	@RequestMapping(value = "multiCommodityCatalogActivate")
+	public String multiCommodityCatalogActivate(@RequestParam(value = "uniqueNames") String[] uniqueNames,
+			HttpServletRequest request) {
+		for (String uniqueName : uniqueNames) {// 如果不同时激活多个版本，开始激活
+			commodityCatalogService.activate(uniqueName);
+		}
+		return "redirect:commodityCatalogList";
+	}
+
+	// 批量停用目录
+	@RequestMapping(value = "multiCommodityCatalogDeactivate")
+	public String multiCommodityCatalogDeactivate(@RequestParam(value = "uniqueNames") String[] uniqueNames,
+			HttpServletRequest request) {
+		for (String uniqueName : uniqueNames)
+			commodityCatalogService.deactivate(uniqueName);
+		return "redirect:commodityCatalogList";
 	}
 
 	/** 购物车 */
@@ -349,12 +369,15 @@ public class BuyerCommodityCatalogController {
 
 	// 购物车删除
 	@RequestMapping(value = "commodityCatalogDeleteShoppingCart")
-	public String commodityCatalogDeleteShoppingCart(@RequestParam("commodityUniqueNames") String[] uniqueNames,
+	public String commodityCatalogDeleteShoppingCart(
+			@RequestParam(value = "commodityUniqueNames", required = false) String[] uniqueNames,
 			HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");// 获得购物车
-		if (shoppingCart != null) {
-			shoppingCartService.commodityCatalogDeleteShoppingCart(uniqueNames, shoppingCart);// 删除商品
+		if (uniqueNames != null) {
+			HttpSession session = request.getSession();
+			ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");// 获得购物车
+			if (shoppingCart != null) {
+				shoppingCartService.commodityCatalogDeleteShoppingCart(uniqueNames, shoppingCart);// 删除商品
+			}
 		}
 		return "redirect:/buyer/commodityCatalog/commodityCatalogShoppingCart";
 	}
@@ -374,7 +397,7 @@ public class BuyerCommodityCatalogController {
 			}
 			shoppingCartService.calTotalQuantity(shoppingCart);
 		}
-		
+
 		return "redirect:/buyer/commodityCatalog/commodityCatalogShoppingCart";
 	}
 

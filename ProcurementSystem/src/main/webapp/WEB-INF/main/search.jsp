@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../other/header1return.jsp"%>
 <script src="/ProcurementSystem/js/searchCondition.js"></script>
 <script src="/ProcurementSystem/js/selectCommodity.js"></script>
@@ -20,16 +20,19 @@
 						<div class="adjust-10"></div>
 						<div class="adjust-10"></div>
 						<div class="contract-crea-left left blue">
-							<div class="">
-								<button id="contract-crea-clicked"
-									onclick="window.location.href='supplierSearchDistribute?page=2004'">供应商和客户</button>
-							</div>
-							<div class="">
-								<button id="contract-crea-not-clicked"
-									onclick="window.location.href='supplierSearchEx'"
-									scrolling="no">企业信息公示</button>
-							</div>
+							<c:if test="${pageId = 2004}">
+								<div class="">
+									<button id="contract-crea-clicked"
+										onclick="window.location.href='supplierSearchDistribute?page=2004'">供应商和客户</button>
+								</div>
+								<div class="">
+									<button id="contract-crea-not-clicked"
+										onclick="window.location.href='supplierSearchEx'"
+										scrolling="no">企业信息公示</button>
+								</div>
+							</c:if>
 						</div>
+
 					</div>
 					<div class="col-md-10">
 						<input hidden="hidden" id="pageId"
@@ -99,7 +102,7 @@
 		</div>
 	</div>
 	<div class="theme-popover-mask"></div>
-	
+
 	<%@ include file="../other/footer.jsp"%>
 	<script>
 		function back() {
@@ -124,16 +127,16 @@
 			var supplierSQM_supplierId = "${supplierSQMSearchInfo.supplierId}";
 			var supplierSQM_status = "${supplierSQMSearchInfo.status}";
 		}
-		$(function(){
+		$(function() {
 			//是否已经从后端获得商品
 			var getCommodity = 0;
 			$('.choose').click(function() {
 				alert(123123213123);
 				$('.theme-popover-mask').fadeIn(100);
 				$('.theme-popover').slideDown(200);
-				if(getCommodity==0){
+				if (getCommodity == 0) {
 					getUNSPSC();
-					getCommodity=1;
+					getCommodity = 1;
 				}
 			})
 			$('#finish-btn').click(function() {

@@ -170,9 +170,9 @@
 								</tr>
 								<tr>
 									<td class="right">价格：</td>
-									<td><div class="item-price-green">${commodity.unitPrice }
-											CNY</div>
-										<div class="item-price-grey">&nbsp;／件</div></td>
+									<td><div class="item-price-green">￥${commodity.unitPrice }
+											</div>
+										<div class="item-price-grey">&nbsp;／${commodity.unitOfMeasure}</div></td>
 								</tr>
 							</table>
 							<div>

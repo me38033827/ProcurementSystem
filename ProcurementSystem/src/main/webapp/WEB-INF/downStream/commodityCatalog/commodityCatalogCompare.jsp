@@ -16,8 +16,8 @@
 				<div class="container-padding">
 					<div class="border-bottom-grey margin-bottom">
 						<div class="right">
-							<button class="btn-w"
-								onclick="window.location.href='procurementCommodityCatalogList.jsp'">目录
+							<button class="btn-w" type="button"
+								onclick="window.location.href='commodityCatalogList'">目录
 								主页</button>
 						</div>
 						<div class="small-window-title margin-bottom ">目录 - 比较版本 -
@@ -25,10 +25,13 @@
 
 					</div>
 					<div class="margin-bottom">
-						<span> <a href="#">步骤1.清理数据</a>
+						<span> <a
+							href="showCommodityCatalogContent?uniqueName=${uniqueName }">步骤1.清理数据</a>
 						</span> &nbsp;&nbsp;> &nbsp;&nbsp;<span
-							class="caution-div container-text border-blue"> <a href="#">步骤2.分析数据</a>
-						</span> &nbsp;&nbsp;> &nbsp;&nbsp;<span> <a href="commodityCatalogActivate?uniqueName=${commodityCatalog.uniqueName }">步骤3.生效</a>
+							class="caution-div container-text border-blue"> <a
+							href="#">步骤2.分析数据</a>
+						</span> &nbsp;&nbsp;> &nbsp;&nbsp;<span> <a
+							href="commodityCatalogActivate?uniqueName=${uniqueName}">步骤3.生效</a>
 						</span>
 					</div>
 
@@ -41,9 +44,7 @@
 								title="纠错工具" /></a>
 						</div>
 					</div>
-					<div>
-						请选择同一目录的两个版本，对更改进行直接比较。请选择要“针对其进行比较”的旧版本和进行“比较”的新版本。
-					</div>
+					<div>请选择同一目录的两个版本，对更改进行直接比较。请选择要“针对其进行比较”的旧版本和进行“比较”的新版本。</div>
 					<div>
 						<table class="commodity-catalog-compare-table">
 							<tr>
@@ -73,8 +74,8 @@
 						<br> <br>
 					</div>
 					<div class="right">
-						<button class="btn-w"
-							onclick="window.location.href='procurementCommodityCatalogList.jsp'">目录
+						<button class="btn-w" type="button"
+							onclick="window.location.href='commodityCatalogList'">目录
 							主页</button>
 					</div>
 				</div>

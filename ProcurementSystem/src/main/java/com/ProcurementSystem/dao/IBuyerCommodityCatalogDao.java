@@ -15,4 +15,5 @@ public interface IBuyerCommodityCatalogDao {
 	public int getCommodityCatalogVersionCount(CommodityCatalog commodityCatalog);//根据name获得商品目录的版本数
 	public void stopOtherVersion(CommodityCatalog commodityCatalog);
 	public List<CommodityCatalog> searchCommodityCatalogNoVersion(CommodityCatalog commodityCatalog);
+	public void delete(CommodityCatalog commodityCatalog);
 }

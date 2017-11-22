@@ -28,7 +28,7 @@
 						<span> <a
 							href="showCommodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">步骤1.清理数据</a>
 						</span> &nbsp;&nbsp;> &nbsp;&nbsp;<span> <a
-							href="commodityCatalogCompare">步骤2.分析数据</a>
+							href="commodityCatalogCompare?uniqueName=${commodityCatalog.uniqueName}">步骤2.分析数据</a>
 						</span> &nbsp;&nbsp;> &nbsp;&nbsp;<span
 							class="caution-div container-text border-blue"> <a
 							href="#">步骤3.生效</a>

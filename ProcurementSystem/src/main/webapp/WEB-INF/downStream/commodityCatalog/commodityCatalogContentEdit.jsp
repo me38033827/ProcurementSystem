@@ -224,7 +224,7 @@
 								<tr>
 									<td colspan="2">描述</td>
 									<td><textArea class="input margin-input"
-											style="width: 400px; height: 60px" name="itemDescription"> ${commodity.itemDescription }</textArea></td>
+											style="width: 400px; height: 60px" name="itemDescription">${commodity.itemDescription }</textArea></td>
 								</tr>
 								<tr>
 									<td colspan="2">晋升职级</td>

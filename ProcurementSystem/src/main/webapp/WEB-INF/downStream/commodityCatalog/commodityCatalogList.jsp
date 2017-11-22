@@ -77,46 +77,53 @@
 							<th width="15%">上次修改时间</th>
 						</tr>
 					</table>
-					<div id="sourcing-tab" style="border-bottom: 2px solid #ddd">
-						<table class="table table-hover">
-							<c:forEach items="${ requestScope.commodityCatalogs}"
-								var="commodityCatalog">
-								<tr>
-									<td width="5%"><input type="checkbox"
-										id=${commodityCatalog.uniqueName } class="chk" /><label
-										for=${commodityCatalog.uniqueName}></label></td>
-									<td width="5%"><c:if
-											test="${commodityCatalog.type == '0'}">
-											<i class="fa fa-sun-o" style="color: #FFA500"></i>
-										</c:if> <c:if test="${commodityCatalog.type == '1' }">
-											<i class="fa fa-tint" style="color: #87CEFA"></i>
-										</c:if></td>
-									<td width="10%"><a
-										href="/ProcurementSystem/buyer/supplier/supplierDetail?id=${commodityCatalog.supplier.uniqueName }">
-											${commodityCatalog.supplier.name} </a></td>
-									<td width="15%"><a>${commodityCatalog.name } </a></td>
-									<td width="10%"><a
-										href="showCommodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">${commodityCatalog.version }
-											<c:if test="${commodityCatalog.isActivated =='验证错误' }">
-												<span class="error-message"><strong>!!!</strong></span>
-											</c:if>
-									</a></td>
-									<td width="10%">完整</td>
-									<td width="10%">${commodityCatalog.contentAbstract }</td>
-									<td width="10%">${commodityCatalog.isActivated }</td>
-									<td width="10%">${commodityCatalog.itemCount}</td>
-									<td width="25%"><fmt:formatDate
-											value="${commodityCatalog.lastModifyDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-								</tr>
-							</c:forEach>
-						</table>
-					</div>
+					<form id="commodityCatalogForm" method="post">
+						<div id="sourcing-tab" style="border-bottom: 2px solid #ddd">
+							<table class="table table-hover">
+								<c:forEach items="${ requestScope.commodityCatalogs}"
+									var="commodityCatalog">
+									<tr>
+										<td width="5%"><input type="checkbox"
+											value="${commodityCatalog.uniqueName }" name="uniqueNames"
+											id=${commodityCatalog.uniqueName } class="chk" /><label
+											for=${commodityCatalog.uniqueName}></label></td>
+										<td width="5%"><c:if
+												test="${commodityCatalog.type == '0'}">
+												<i class="fa fa-sun-o" style="color: #FFA500"></i>
+											</c:if> <c:if test="${commodityCatalog.type == '1' }">
+												<i class="fa fa-tint" style="color: #87CEFA"></i>
+											</c:if></td>
+										<td width="10%"><a
+											href="/ProcurementSystem/buyer/supplier/supplierDetail?id=${commodityCatalog.supplier.uniqueName }">
+												${commodityCatalog.supplier.name} </a></td>
+										<td width="15%"><a>${commodityCatalog.name } </a><input
+											type="hidden" value="${commodityCatalog.name }">
+										<!-- 暂时没有商品目录详情 --></td>
+										<td width="10%"><a
+											href="showCommodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">${commodityCatalog.version }
+												<c:if test="${commodityCatalog.isActivated =='验证错误' }">
+													<span class="error-message"><strong>!!!</strong></span>
+												</c:if>
+										</a></td>
+										<td width="10%">完整</td>
+										<td width="10%">${commodityCatalog.contentAbstract }</td>
+										<td width="10%">${commodityCatalog.isActivated }<input type="hidden" value="${commodityCatalog.isActivated }" ></td>
+										<td width="10%">${commodityCatalog.itemCount}</td>
+										<td width="25%"><fmt:formatDate
+												value="${commodityCatalog.lastModifyDate}"
+												pattern="yyyy-MM-dd HH:mm:ss" /></td>
+									</tr>
+								</c:forEach>
+							</table>
+						</div>
+					</form>
 					<div class="table-bottom-btn">
 						<button class="btn-w">比较版本</button>
 						<button class="btn-w">发送进行审批</button>
-						<button class="btn-w">激活</button>
-						<button class="btn-w">停用</button>
-						<button class="btn-w">删除版本</button>
+						<button class="btn-w" formaction="multiCommodityCatalogActivate" form="commodityCatalogForm">激活</button>
+						<button class="btn-w" formaction="multiCommodityCatalogDeactivate" form="commodityCatalogForm">停用</button>
+						<button class="btn-w" formaction="deleteCommodityCatalog"
+							form="commodityCatalogForm">删除版本</button>
 						<button class="btn-w">删除订阅</button>
 						<button class="btn-w">预览</button>
 						<button class="btn-w">删除预览</button>
@@ -127,4 +134,6 @@
 		</div>
 	</div>
 </body>
+<script>
+</script>
 </html>

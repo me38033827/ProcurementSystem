@@ -177,4 +177,5 @@ public class BuyerCommodityService {
 		divideSpscCode(commodity);// 拆分新code并存储
 	}
 
+	
 }

@@ -312,4 +312,59 @@ public class BuyerCommodityCatalogService {
 		return commodityCatalogDao.searchCommodityCatalogNoVersion(commodityCatalog);
 	}
 
+	// 删除目录
+	public void delete(CommodityCatalog commodityCatalog) {
+		commodityCatalogDao.delete(commodityCatalog);
+	}
+
+	public void activate(String uniqueName) {
+		// TODO Auto-generated method stub
+		boolean isValidated = validate(uniqueName);
+		CommodityCatalog commodityCatalog = new CommodityCatalog();
+		if (isValidated) {
+			commodityCatalog.setUniqueName(uniqueName);
+			commodityCatalog.setIsActivated("已激活");
+			setIsActivated(commodityCatalog);
+		}
+		// 停用其他版本
+		stopOtherVersion(commodityCatalog);// 名字相同的版本不同
+	}
+
+	public boolean validateUniVersion(String[] names) {
+		boolean mark = true;
+		for (int i = 0; i < names.length; i++) {
+			for (int j = i + 1; j < names.length; j++) {
+				if (names[i].equals(names[j])) {
+					mark = false;
+					return mark;
+				}
+			}
+		}
+		return mark;
+	}
+
+	public void deactivate(String uniqueName) {
+		CommodityCatalog commodityCatalog = new CommodityCatalog();
+		commodityCatalog.setUniqueName(uniqueName);
+		List<CommodityCatalog> commodityCatalogs = searchCommodityCatalog(commodityCatalog);
+		commodityCatalog = commodityCatalogs.get(0);
+		if (commodityCatalog.getIsActivated().equals("已激活")) {
+			commodityCatalog.setUniqueName(uniqueName);
+			commodityCatalog.setIsActivated("已停用");
+			setIsActivated(commodityCatalog);
+		}
+
+	}
+
+	public boolean validateIsActivated(String[] states) {
+		boolean flag=true;
+		for(String state : states){
+			if(!state.equals("已激活")){
+				flag = false;
+				return flag;
+			}
+		}
+		return flag;
+	}
+
 }

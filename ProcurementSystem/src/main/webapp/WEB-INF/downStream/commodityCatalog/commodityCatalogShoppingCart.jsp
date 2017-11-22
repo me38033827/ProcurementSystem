@@ -27,8 +27,7 @@
 						<div class="inline-b right">
 							<button class="btn-w"
 								onclick="window.location.href='/ProcurementSystem/buyer/commodityCatalog'">继续购物</button>
-							<button class="btn-b"
-								onclick="window.location.href='prCreation1.jsp'">结账</button>
+							<button class="btn-b">结账</button>
 						</div>
 					</div>
 					<!-- 购物车内商品 -->
@@ -98,7 +97,8 @@
 						<!-- 购物车摘要 -->
 						<br>
 						<div class="margin-top-10 container" align="right">
-							<table class=" margin-top-10 col-md-4" id="shopping-cart-abstract">
+							<table class=" margin-top-10 col-md-4"
+								id="shopping-cart-abstract">
 								<tr id="abstract-line1">
 									<td class="settlement-tab2-col1">购物车摘要</td>
 									<td class="settlement-tab2-col2"></td>
@@ -130,9 +130,8 @@
 					<div class="settlement-line3">
 						<div class="right">
 							<button class="btn-w"
-								onclick="window.location.href='commodityCatalog'">继续购物</button>
-							<button class="btn-b"
-								onclick="window.location.href='prCreation.jsp'">结账</button>
+								onclick="window.location.href='/ProcurementSystem/buyer/commodityCatalog'">继续购物</button>
+							<button class="btn-b" onclick="">结账</button>
 						</div>
 					</div>
 				</div>
