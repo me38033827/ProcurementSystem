@@ -747,19 +747,14 @@ public class BuyerSupplierController {
 
 	/* SQM详情 */
 	@RequestMapping(value = "sqmSummary")
-	public String sqmSummary(HttpServletRequest request) {
+	public String sqmSummary(HttpServletRequest request, @RequestParam (value = "id", required = false) String id) {
 		String backTask = "sqmTask";
 		request.getSession().setAttribute("backTask", backTask);
-		if (request.getSession().getAttribute("sqm") != null) {
-			request.setAttribute("sqm", (SupplierSQM) request.getSession().getAttribute("sqm"));
-			return "upStream/supplier/supplierSQMsummary";
+		if(id != null){
+			SupplierSQM sqm = sqmService.getSupplierSQM(Integer.parseInt(id));
+			request.getSession().setAttribute("sqm", sqm);
+			request.setAttribute("sqm", sqm);
 		}
-		int id = Integer.parseInt(request.getParameter("id"));
-		// System.out.println(id);
-		SupplierSQM sqm = sqmService.getSupplierSQM(id);
-		request.getSession().setAttribute("sqm", sqm);
-		request.setAttribute("sqm", sqm);
-		System.out.println(sqm.getLastValid());
 		return "upStream/supplier/supplierSQMsummary";
 	}
 
@@ -828,8 +823,6 @@ public class BuyerSupplierController {
 			SupplierSQM sqmSession = new SupplierSQM();
 			request.getSession().setAttribute("sqmSession", sqmSession);
 			request.getSession().setAttribute("templates", templates);
-//			UNSPSCTree tree = unspscService.generateUNSPSCTree();
-//			request.getSession().setAttribute("treeData", tree.UNSPSCTreeToJSON());
 			return "upStream/supplier/supplierSQMCreation";
 		}
 		if (action.equals("back")) {
