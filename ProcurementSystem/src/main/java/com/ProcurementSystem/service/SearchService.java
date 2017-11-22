@@ -39,20 +39,24 @@ public class SearchService {
 		
 		//获取未显示的搜索条件的第一个resultsFirstObj，只包含field_id field_name
 		List<Search> results = dao.getSearchList(searchInput);
-		System.out.println(results.size());
-		Search resultsFirstObj = results.get(0);
-		//向resultsFirstObj中添加page_id, user_id, position
-		resultsFirstObj.setPageId(searchInput.getPageId());
-		resultsFirstObj.setUserId(searchInput.getUserId());
-		resultsFirstObj.setPosition(originalPosition+1);
+		if(results.size()!=0){
+			Search resultsFirstObj = results.get(0);
+			//向resultsFirstObj中添加page_id, user_id, position
+			resultsFirstObj.setPageId(searchInput.getPageId());
+			resultsFirstObj.setUserId(searchInput.getUserId());
+			resultsFirstObj.setPosition(originalPosition+1);
+			
+			//在search表中添加该搜索条件
+			dao.addSearchCondition(resultsFirstObj);
+			
+			//将原本搜索位置在当前位置后面的搜索条件的position＋1
+			dao.addOne(resultsFirstObj);
 		
-		//在search表中添加该搜索条件
-		dao.addSearchCondition(resultsFirstObj);
+			return resultsFirstObj;
+		}else{
+			return null;
+		}
 		
-		//将原本搜索位置在当前位置后面的搜索条件的position＋1
-		dao.addOne(resultsFirstObj);
-	
-		return resultsFirstObj;
 	}
 	
 	// －功能实现：删除搜索条件后，将所有position在他后面的搜索条件position－1

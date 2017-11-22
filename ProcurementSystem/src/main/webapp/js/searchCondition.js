@@ -105,7 +105,7 @@ function addCondition(place){
 		// 获得剩余搜索条件中排在第一个的条件
 	    url:"../search/addSearchCondition",
 	    success:function(data){
-	    		console.log(data);
+	    		//console.log(data);
 	      	var addId="#search-"+data.fieldId.toString();
 	      	$(place).after("<tr class=\"row-search\" id=\"search-" + data.fieldId + "\">"
 		      			+"<td class=\"col-search1\" id=\"search-cond" + data.fieldId + "\">"
@@ -594,6 +594,7 @@ function resetSupplierSQM(){
 			+"<td colspan=\"7\" class=\"no-item f-13 grey\">请在上面输入搜索条件，然后单击<b>搜索</b></td>"
 			+"</tr>"
   			+"</table>");
+  	resetSQMCommodities();
 }
 //supplierSQM 绩效
 function searchSupplierSQM(){
@@ -620,6 +621,7 @@ function searchSupplierSQM(){
 		dataType: 'json',
 	    url:"../search/supplierSQMSearch",
 	    success:function(data){
+	    		console.log(data);
 	      	if(data.length!=0){
 		      	$("#numOfResults").text(data.length);
 		      	var results = "";
@@ -709,7 +711,18 @@ function commoditySQM(place, value){
 	$(place).append("<div style='display:inline-block; margin-left:10px;' id='commodities-container'><table id=\"commodities\"></table>"
 				+"<input type='hidden' id='commoditiesId' name='commoditiesId'/></div>");
 	$("#commodities-container").append("<input type='button' onclick='onSelectCommodity()' class='trans-btn' style='display:block' value='选择'/>");
-	
-	//$(place).append("<a class='choose' href='javascript:;'>选择</a>");
+	resetSQMCommodities();
+}
+
+function resetSQMCommodities(){
+	//清除之前选择的内容
+	$(".commodity-row").each(function(index,element){
+		delCommodity(element.getAttribute("id"));
+	});
+	$("#commodities").empty();
+	$("#commoditiesId").val("");
+	if(showTree==1){
+		clearSearch();
+	}
 }
 

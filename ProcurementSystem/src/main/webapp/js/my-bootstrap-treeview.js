@@ -1317,7 +1317,7 @@
 
 			results = this.findNodes(pattern, modifier);
 			
-			console.log(results);
+			//console.log(results);
 			
 			//搜索前把show改了
 			$.each(this.findNodes('true', 'g', 'show'),
@@ -1379,12 +1379,12 @@
 		//让expanded参数恢复成原始情况
 		var expand = $.each(this.findNodes('true', 'g', 'state.expanded'),
 			function(index, node) {
-				console.log(_this.options.levels);
+				//console.log(_this.options.levels);
 				if(node.level>_this.options.levels){
 					node.state.expanded = false;
 				}
 		});
-		console.log(expand);
+		//console.log(expand);
 
 		
 		if (options.render) {

@@ -15,7 +15,7 @@ public class SupplierSQM {
 	@NotEmpty(message = "项目名称不能为空")
 	private String title;
 	private String description;
-	private List<Commodity> commodities;
+	private List<UNSPSC> commodities;
 	private String status;
 	private String lastValid;
 	private String validTo;
@@ -102,11 +102,12 @@ public class SupplierSQM {
 		this.codes = codes;
 	}
 
-	public List<Commodity> getCommodities() {
+	public List<UNSPSC> getCommodities() {
 		return commodities;
 	}
 
-	public void setCommodities(List<Commodity> commodities) {
+	public void setCommodities(List<UNSPSC> commodities) {
 		this.commodities = commodities;
 	}
+
 }

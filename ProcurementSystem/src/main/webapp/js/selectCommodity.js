@@ -1,6 +1,10 @@
 //是否已经从后端获得商品
 var getCommodity = 0;
 var treeData;
+var commoditiesId="";
+var treeSearch;
+var clearSearch;
+var showTree = 0;
 
 //点击商品后选择，获得UNSPSC码
 function onSelectCommodity() {
@@ -20,14 +24,14 @@ function getUNSPSC(){
 		async:false,
 	    url:"../supplier/selectCommodity",
 	    success:function(data){
-	    		console.log(data);
+	    		//console.log(data);
 	    		//treeview相关内容加载
 	    		$Tree =  $('#treeview-sim').treeview({
 	    		    data: data,
 	    		    showIcon: false,
 	    		    showCheckbox: true,
 	    		    onNodeChecked: function(event, node) {
-	    		    		$("#treeview-selected").append("<tr id=\""
+	    		    		$("#treeview-selected").append("<tr class=\"commodity-row\" id=\""
 	    		    				+node.nodeId+"\"><td class=\"selected-commodity\" colspan=\"2\">"
 	    		    				+node.text+"</td><td><button class=\"trans-btn\" onclick=\"delCommodity("+node.nodeId+");\">删除</button></td></tr>");
 	    		        //alert(node.text+" was checked");
@@ -37,10 +41,26 @@ function getUNSPSC(){
 	    		    	 	//alert(node.text+" was unchecked");
 	    		    }
 	    		});
+	    		showTree = 1;
+	    		treeSearch = function(e) {
+	    		    var pattern = $('#input-search').val();
+	    		    var options = {
+	    		      ignoreCase: $('#chk-ignore-case').is(':checked'),
+	    		      exactMatch: $('#chk-exact-match').is(':checked'),
+	    		      revealResults: $('#chk-reveal-results').is(':checked')
+	    		    };
+	    		    var results = $Tree.treeview('search', [ pattern, options ]);
+	    			//console.log(results);
+	    		}
 	    		findCheckableNodess = function() {
-	    		    return $Tree.treeview('treeSearch', [ $('#input-check-node').val(), { ignoreCase: false, exactMatch: false } ]);
+	    		    return $Tree.treeview('search', [ $('#input-check-node').val(), { ignoreCase: false, exactMatch: false } ]);
 	    		};
 	    		checkableNodes = findCheckableNodess();
+	    		//清除搜索
+	    		clearSearch = function(e) {
+	    		  $Tree.treeview('clearSearch');
+	    		  $('#input-search').val('');
+	    		};
 	   	},
 	    error:function(data, XMLHttpRequest, textStatus, errorThrown){  
 	    		console.log(data);
@@ -79,29 +99,10 @@ $('#btn-uncheck-all').on('click', function (e) {
   $Tree.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
 });
 
-var treeSearch = function(e) {
-    var pattern = $('#input-search').val();
-    var options = {
-      ignoreCase: $('#chk-ignore-case').is(':checked'),
-      exactMatch: $('#chk-exact-match').is(':checked'),
-      revealResults: $('#chk-reveal-results').is(':checked')
-    };
-    var results = $Tree.treeview('search', [ pattern, options ]);
-	//console.log(results);
-  }
-
-  $('#btn-search').on('click', search);
-  //$('#input-search').on('keyup', search);
-
-  $('#btn-clear-search').on('click', function (e) {
-    $Tree.treeview('clearSearch');
-    $('#input-search').val('');
-  });
-
 function finishCommoditySelection(){
-		$("#commodities").	empty();
-		var commoditiesId="";
+		$("#commodities").empty();
 		var commodities="";
+		commoditiesId = "";
 		$(".selected-commodity").each(function(index,element){
 			var id = element.lastChild.firstChild.data;
 			commoditiesId+=id+",";
@@ -115,9 +116,8 @@ function finishCommoditySelection(){
 }
 
 function delCommodity(id){
-		$("#"+id).remove();
-		var v = $("#treeview-sim").treeview('getNode',id);
-		v.state.checked=false;
-	$("#btn-search").click();
-		
+	$("#"+id).remove();
+	var v = $("#treeview-sim").treeview('getNode',id);
+	v.state.checked=false;
+	$("#btn-search").click();		
 }

@@ -11,8 +11,8 @@
 										<div>
 											<span>名称或标识符：</span>
 											<input class="input" style="padding-left:10px;padding-right:10px;"id="input-search"/>
-											<button class="btn-b" id="btn-search">搜索</button>
-											<button class="btn-w" id="btn-clear-search">清除搜索结果</button>
+											<button class="btn-b" id="btn-search" onclick="treeSearch();">搜索</button>
+											<button class="btn-w" onclick="clearSearch();">清除搜索结果</button>
 										</div>
 										<div class="adjust-10"></div>
 										<table class="table table-hover">

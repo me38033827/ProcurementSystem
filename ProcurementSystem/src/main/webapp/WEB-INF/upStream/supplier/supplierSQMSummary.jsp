@@ -106,10 +106,12 @@
 							</tr>
 							<tr>
 								<td class="col-standard1" valign="top">商品：</td>
-								<td class="col-standard2"><c:forEach items="${sqm.codes}"
-										var="code">
-									${code}<br>
-									</c:forEach>
+								<td class="col-standard2">
+									<table>
+										<c:forEach items="${sqm.commodities}" var="commodity">
+											<tr><td>${commodity.description}</td><td style="padding-left:10px;">${commodity.id}</td></tr>
+										</c:forEach>
+									</table>
 							</tr>
 							<tr>
 								<td class="col-standard1">访问控制：</td>

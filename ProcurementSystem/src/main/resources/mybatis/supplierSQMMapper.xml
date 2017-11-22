@@ -50,6 +50,10 @@
 		<collection property="codes" ofType="String" javaType="List"><!-- 两个map的区别 -->
 			<result column="unspscDescription" />
 		</collection>
+		<collection property="commodities" ofType="com.ProcurementSystem.entity.UNSPSC" javaType="List">
+			<result property="id" column="commodityId" />
+			<result property="description" column="commodityName" />
+		</collection>
 	</resultMap>
 
 	<resultMap id="SQMMap" type="com.ProcurementSystem.entity.SupplierSQM">
@@ -97,7 +101,6 @@
 				<result property="rank" column="templateTaskScheduleRank" />
 				<result property="status" column="templateTaskScheduleStatus" />
 			</association>
-
 		</association>
 		<collection property="commodities" ofType="com.ProcurementSystem.entity.UNSPSC" javaType="List">
 			<result property="id" column="commodityId" />
@@ -197,7 +200,9 @@
 		tts.rank as templateTaskScheduleRank,
 		tts.status as templateTaskScheduleStatus,
 		unspsc.description as
-		unspscDescription
+		unspscDescription,
+		unspsc.id as commodityId,
+		unspsc.description as commodityName
 		from
 		supplier_sqm left
 		join

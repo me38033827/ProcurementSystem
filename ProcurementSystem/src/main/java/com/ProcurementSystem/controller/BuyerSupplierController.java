@@ -886,7 +886,6 @@ public class BuyerSupplierController {
 	public @ResponseBody JSONArray selectCommodity() {
 		UNSPSCTree tree = unspscService.generateUNSPSCTree();
 		JSONArray result = tree.UNSPSCTreeToJSON();
-		System.out.println(result);
 		return result;
 	}
 
