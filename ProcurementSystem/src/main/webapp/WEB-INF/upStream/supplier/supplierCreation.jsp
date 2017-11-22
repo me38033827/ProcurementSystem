@@ -214,41 +214,6 @@
 		       data: defaultData
 		     });
 		})
-		jQuery(document)
-				.ready(
-						function($) {
-							$('.choose').click(function() {
-								$('.theme-popover-mask').fadeIn(100);
-								$('.theme-popover').slideDown(200);
-							})
-
-							$('.popover-container .close').click(function() {
-								$('.theme-popover-mask').fadeOut(100);
-								$('.theme-popover').slideUp(200);
-							})
-							$('#test').click(function() {
-								$(this).hide();
-							});
-							$('#72000000-children').hide();
-							$('#72000000')
-									.click(
-											function() {
-												$('#72000000-children')
-														.toggle();
-												if ($('#72000000').children()
-														.attr("class") == "glyphicon glyphicon-triangle-right")
-													$('#72000000')
-															.children()
-															.attr("class",
-																	"glyphicon glyphicon-triangle-bottom");
-												else {
-													$('#72000000')
-															.children()
-															.attr("class",
-																	"glyphicon glyphicon-triangle-right");
-												}
-											})
-						})
 	</script>
 </body>
 </html>
