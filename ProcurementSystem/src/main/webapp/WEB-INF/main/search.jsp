@@ -20,7 +20,7 @@
 						<div class="adjust-10"></div>
 						<div class="adjust-10"></div>
 						<div class="contract-crea-left left blue">
-							<c:if test="${pageId = 2004}">
+							<c:if test="${pageId == 2004}">
 								<div class="">
 									<button id="contract-crea-clicked"
 										onclick="window.location.href='supplierSearchDistribute?page=2004'">供应商和客户</button>
@@ -29,6 +29,12 @@
 									<button id="contract-crea-not-clicked"
 										onclick="window.location.href='supplierSearchEx'"
 										scrolling="no">企业信息公示</button>
+								</div>
+							</c:if>
+							<c:if test="${pageId == 2005}">
+								<div class="">
+									<button id="contract-crea-clicked"
+										onclick="window.location.href='supplierSearchDistribute?page=2005'">供应商和客户</button>
 								</div>
 							</c:if>
 						</div>
