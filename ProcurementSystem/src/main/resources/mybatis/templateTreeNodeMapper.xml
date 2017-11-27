@@ -24,7 +24,8 @@
 		t.id as templateId,
 		t.name as templateName,
 		t.description as templateDescription,
-		t.type as templateType
+		t.type as templateType,
+		t.status as templateStatus
 		from
 		template_tree_node ttn
 		left join
@@ -38,6 +39,7 @@
 		where
 		ttn.parent_id =
 		#{parentId} and ttn.id != 1000001
+		order by id
 	</select>
 	<resultMap id="templateTreeNodeMap" type="com.ProcurementSystem.entity.TemplateTreeNode">
 		<id property="id" column="id" />
@@ -57,6 +59,8 @@
 			<result property="description" column="templateDescription" />
 			<result property="accessControl" column="templateAccess_control" />
 			<result property="type" column="templateType" />
+			<result property="status" column="templateStatus" />
+			
 		</association>
 	</resultMap>
 

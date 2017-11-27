@@ -61,7 +61,7 @@
 								class="caret"></span></a>
 						</div>
 						<div class="row searching-content">
-							<div class="col-md-6">
+							<div class="col-md-10">
 								<table>
 									<tr class="row-search" id="search-0">
 										<td class="col-search1"><input type="text"

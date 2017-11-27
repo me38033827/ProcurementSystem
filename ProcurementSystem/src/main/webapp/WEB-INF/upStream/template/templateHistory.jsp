@@ -45,10 +45,8 @@
 							<div class="searching-ending">
 								<div align="right">
 									<form id="empty" method="post"></form>
-									<button class="btn-w" form="empty"
-										formaction="supplierSearch?action=reset">重置</button>
-									<button class="btn-b" form="supplierSearch"
-										formaction="supplierSearch?action=search">搜索</button>
+									<button class="btn-w" form="empty" formaction="">重置</button>
+									<button class="btn-b" form="supplierSearch" formaction="">搜索</button>
 								</div>
 							</div>
 						</div>
@@ -70,11 +68,11 @@
 							<div id="sourcing-tab" class="border-bottom-grey">
 								<table class=" table table-hover">
 									<tr class="">
-										<td style="width: 30%;">时间戳</td>
-										<td style="width: 20%;">用户</td>
-										<td style="width: 10%;">类型</td>
-										<td style="width: 20%;">标题</td>
-										<td style="width: 20%;">详细信息</td>
+										<td style="width: 30%;">2017年11月24日 下午 03:27</td>
+										<td style="width: 20%;"><a>Steven</a></td>
+										<td style="width: 10%;">文件夹</td>
+										<td style="width: 20%;">Contracts</td>
+										<td style="width: 20%;"><a>已编辑</a></td>
 									</tr>
 								</table>
 							</div>
