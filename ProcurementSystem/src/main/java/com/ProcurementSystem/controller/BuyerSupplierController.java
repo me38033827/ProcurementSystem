@@ -755,7 +755,7 @@ public class BuyerSupplierController {
 			request.getSession().setAttribute("sqm", sqm);
 			request.setAttribute("sqm", sqm);
 		}
-		return "upStream/supplier/supplierSQMsummary";
+		return "upStream/supplier/supplierSQMSummary";
 	}
 
 	@RequestMapping(value = "sqmDoc")

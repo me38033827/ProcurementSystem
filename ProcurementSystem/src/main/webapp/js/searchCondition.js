@@ -208,7 +208,13 @@ function changeCond(originId){
 	    success:function(data){
 	      	console.log(data);
 	      	var addId="#search-"+data.fieldId;
-	      	supplierDistribute(data.fieldName, "#search-cond"+data.fieldId);
+	      	if(pageId==2004){
+				supplierDistribute(data.fieldName, "#search-cond"+data.fieldId);
+			}else if(pageId==2005){
+				supplierSPMDistribute(data.fieldName, "#search-cond"+data.fieldId);
+			}else if(pageId==2006){
+				supplierSQMDistribute(data.fieldName, "#search-cond"+data.fieldId);
+			}
 	   	},
 	    error:function(data){
 	    		alert("数据库错误！")
@@ -219,9 +225,9 @@ function changeCond(originId){
 	document.getElementById("search-"+originId).id="search-"+newId;
 	document.getElementById("search-cond"+originId).id="search-cond"+newId;
 	$("#search-cond"+newId).empty();
-	$("#search-cond"+newId).append("<select id=\"cond-" + newId + "\" onclick=\"findOtherCondition("+userId+","+pageId+","+newId+",'"+newName+"');\" onchange=\"changeCond("+newId+");\">"
+	$("#search-cond"+newId).append("<div class='left'><select id=\"cond-" + newId + "\" onclick=\"findOtherCondition("+userId+","+pageId+","+newId+",'"+newName+"');\" onchange=\"changeCond("+newId+");\">"
 			+"<option>" + newName + "</option>"
-			+"</select>"
+			+"</select></div>"
 			);
 	// 改变＋－符号对应内容
 	document.getElementById("plus"+originId).id="plus"+newId;
