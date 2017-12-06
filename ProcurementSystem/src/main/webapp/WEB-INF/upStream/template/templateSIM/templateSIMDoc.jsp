@@ -14,7 +14,7 @@
 				<div class="row">
 					<%@include file="templateSIMLeft.jsp"%>
 					<div class="col-md-10">
-						
+
 						<%@include file="templateSIMNav.jsp"%>
 						<div class="adjust-10"></div>
 						<div class="adjust-10"></div>
@@ -30,7 +30,15 @@
 								</ul>
 							</div>
 							<div class="">
-								信息项目模板
+								<c:if test="${template.type =='SIM' }">
+									<div>信息项目</div>
+								</c:if>
+								<c:if test="${template.type =='SPM' }">
+									<div>供应商绩效管理项目</div>
+								</c:if>
+								<c:if test="${template.type =='SQM' }">
+									<div>供应商资格管理项目</div>
+								</c:if>
 								<div class="right"></div>
 							</div>
 						</div>
@@ -59,9 +67,6 @@
 	<%@ include file="../../../other/footer.jsp"%>
 	<script>
 		$("#doc").attr("class", "tag-clicked")
-		function back() {
-			location.href = "supplierSearch?action=back";
-		}
 	</script>
 </body>
 </html>

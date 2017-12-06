@@ -89,3 +89,8 @@
 .commodity-item-table>tbody>tr>td {
 	padding: 5px;
 }
+.commodity-quantity{
+	height:34px;
+	width:40px;
+	padding-left:10px;
+}

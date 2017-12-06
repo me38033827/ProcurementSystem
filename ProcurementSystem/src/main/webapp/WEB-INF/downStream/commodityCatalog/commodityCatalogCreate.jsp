@@ -25,7 +25,9 @@
 				<div class="standard-title">
 					<div class="standard-title-main">目录－导入新目录</div>
 					<div class="standard-title-r">
-						<button class="btn-w" onclick="window.location.href='../main'">取消</button><br>
+						<button class="btn-w"
+							onclick="window.location.href='clearSessionCatalog'">取消</button>
+						<br>
 					</div>
 
 					<!-- 导入新目录具体内容 -->
@@ -35,7 +37,7 @@
 							<table class="catalog-table">
 								<tr>
 									<td class="col1">选择：</td>
-									<td class="col2"><select id="createMode" name="createMode"
+									<td class="col2"><select id="createMode" name="createMode" style="width:100%"
 										onchange="changePage();">
 											<option value="1">创建新的目录订阅</option>
 											<option value="2">使用现有的目录订阅</option>
@@ -47,8 +49,9 @@
 									<td class="col2">
 										<div>
 											${supplier.name } <input type="hidden"
-												value="${supplier.uniqueName }" name="supplier.uniqueName">
-											<input type="hidden" value="${supplier.name }"
+												id="supplierUniqueName" value="${supplier.uniqueName}"
+												name="supplier.uniqueName"> <input type="hidden"
+												value="${supplier.name }" id="supplierName"
 												name="supplier.name"> <a href="javascript:void(0)"
 												onclick="toChooseSupplierPage();">【 选择 】</a> <span
 												class="error-message">${ERR_supplier}</span>
@@ -56,20 +59,21 @@
 									</td>
 
 								</tr>
-
 								<tr>
 									<td class="col1">*目录订阅名称：</td>
-									<td class="col2"><input id="creation-title"
-										class="createMode1" name="name" /> <select
-										class="createMode2" name="name">
+									<td class="col2"><input id="creation-title " 
+										class="createMode1 input" name="name" style="padding-left:10px"
+										value="${commodityCatalog.name }" /> <select id="createMode2"
+										class="createMode2" name="name" id="name2" >
 											<%
 												if (size == -1) {
 											%>
 											<option value="">请首先选择供应商</option>
+
 											<%
 												} else if (size == 0) {
 											%>
-											<option value="">无项目</option>
+											<option value="无项目">无项目</option>
 											<%
 												} else {
 											%>
@@ -80,7 +84,7 @@
 											<%
 												}
 											%>
-									</select> <span class="error-message">${ERR_name}${Error_dupeName}</span></td>
+									</select> </td><td><span id="" class="error-message">${ERR_name}${Error_dupeName}</span> <span id="item-error-message" class="error-message">${ERR_name}${Error_dupeName}</span></td>
 								</tr>
 
 								<tr class="createMode1">
@@ -88,10 +92,10 @@
 									<td class="col2">
 										<div class="radio">
 											<label><input type="radio"
-												name="isCreateEmptyCatalogue" id="optionsRadios1" value="是">是</label>
-											<label><input type="radio"
-												name="isCreateEmptyCatalogue" id="optionsRadios2" value="否"
-												checked>否</label>
+												name="isCreateEmptyContent" id="isCreateEmptyContent1"
+												value="是">是</label> <label><input type="radio"
+												name="isCreateEmptyContent" id="isCreateEmptyContent2"
+												value="否" checked>否</label>
 										</div>
 									</td>
 								</tr>
@@ -101,8 +105,8 @@
 									<td class="col2">
 										<div class="radio">
 											<label><input type="radio" name="isIgnoreApprove"
-												id="optionsRadios1" value="是">是</label> <label><input
-												type="radio" name="isIgnoreApprove" id="optionsRadios2"
+												id="isIgnoreApprove1" value="是">是</label> <label><input
+												type="radio" name="isIgnoreApprove" id="isIgnoreApprove2"
 												value="否" checked>否</label>
 										</div>
 									</td>
@@ -113,9 +117,9 @@
 									<td class="col2">
 										<div class="radio">
 											<label><input type="radio" name="isStopBeforeApprove"
-												id="optionsRadios1" value="是">是</label> <label><input
-												type="radio" name="isStopBeforeApprove" id="optionsRadios2"
-												value="否" checked>否</label>
+												id="isStopBeforeApprove1" value="是">是</label> <label><input
+												type="radio" name="isStopBeforeApprove"
+												id="isStopBeforeApprove2" value="否" checked>否</label>
 										</div>
 									</td>
 								</tr>
@@ -125,8 +129,8 @@
 									<td class="col2">
 										<div class="radio">
 											<label><input type="radio" name="isAutoActivate"
-												id="optionsRadios1" value="是">是</label> <label><input
-												type="radio" name="isAutoActivate" id="optionsRadios2"
+												id="isAutoActivate1" value="是">是</label> <label><input
+												type="radio" name="isAutoActivate" id="isAutoActivate2"
 												value="否" checked>否</label>
 										</div>
 									</td>
@@ -137,10 +141,10 @@
 									<td class="col2">
 										<div class="radio">
 											<label><input type="radio"
-												name="isAllowMultiSupplierCIF" id="optionsRadios1" value="是">是</label>
-											<label><input type="radio"
-												name="isAllowMultiSupplierCIF" id="optionsRadios2" value="否"
-												checked>否</label>
+												name="isAllowMultiSupplierCIF" id="isAllowMultiSupplierCIF1"
+												value="是">是</label> <label><input type="radio"
+												name="isAllowMultiSupplierCIF" id="isAllowMultiSupplierCIF2"
+												value="否" checked>否</label>
 										</div>
 									</td>
 								</tr>
@@ -148,13 +152,12 @@
 									<td class="col1">层级：</td>
 									<td class="col2">
 										<div class="radio">
-											<label><input type="radio" name="level"
-												id="optionsRadios1" value="白金">白金</label> <label><input
-												type="radio" name="level" id="optionsRadios2" value="黄金">黄金</label>
-											<label><input type="radio" name="level"
-												id="optionsRadios3" value="白银">白银</label> <label><input
-												type="radio" name="level" id="optionsRadios4" value="无"
-												checked>无</label>
+											<label><input type="radio" name="level" id="level1"
+												value="白金">白金</label> <label><input type="radio"
+												name="level" id="level2" value="黄金">黄金</label> <label><input
+												type="radio" name="level" id="level3" value="白银">白银</label>
+											<label><input type="radio" name="level" id="level4"
+												value="无" checked>无</label>
 										</div>
 									</td>
 								</tr>
@@ -164,19 +167,26 @@
 											class="btn btn-default" id="catalog-creation-select">选择文件</button></td>
 								</tr>
 							</table>
+							<div>
+								<input type="hidden" name="action" value="initial">
+							</div>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<script>
-	
-	pageType(${createMode});//初始化页面类型
+	<script>
+	window.onload=function(){
+		pageType(${createMode});//初始化页面类型
+		checkNoItems();//若无项目弹出提示信息
+	}
 	/**更改页面类型*/
 	function changePage(){
 		var createMode = $("#createMode").find("option:selected").val();
 		pageType(createMode);
+		checkNoItems();
 	}
 	/**页面类型选择*/
 	function pageType(createMode) {
@@ -194,13 +204,76 @@
 			$(".createMode2").show();
 			//$("#name").html("<em>请首先选择供应商。</em>");
 		}
+		if ("${commodityCatalog.isCreateEmptyContent}" == "是") {
+			$("#isCreateEmptyContent1").attr("checked", "true");
+		} else {
+			$("#isCreateEmptyContent2").attr("checked", "true");
+		}
+		if ("${commodityCatalog.isStopBeforeApprove}" == "是") {
+			$("#isStopBeforeApprove1").attr("checked", "true");
+		} else {
+			$("#isStopBeforeApprove2").attr("checked", "true");
+		}
+		if ("${commodityCatalog.isIgnoreApprove}" == "是") {
+			$("#isIgnoreApprove1").attr("checked", "true");
+		} else {
+			$("#isIgnoreApprove2").attr("checked", "true");
+		}
+		if ("${commodityCatalog.isAutoActivate}" == "是") {
+			$("#isAutoActivate1").attr("checked", "true");
+		} else {
+			$("#isAutoActivate2").attr("checked", "true");
+		}
+		if ("${commodityCatalog.isAllowMultiSupplierCIF}" == "是") {
+			$("#isAllowMultiSupplierCIF1").attr("checked", "true");
+		} else {
+			$("#isAllowMultiSupplierCIF2").attr("checked", "true");
+		}
+		if ("${commodityCatalog.level}" == "白金") {//空目录
+			$("#level1").attr("checked", "true");
+		} else if("${commodityCatalog.level}" == "黄金") {
+			$("#level2").attr("checked", "true");
+		} else if("${commodityCatalog.level}" == "白银") {
+			$("#level3").attr("checked", "true");
+		} else if("${commodityCatalog.level}" == "无") {
+			$("#level4").attr("checked", "true");
+	} 
+		
 	}
 	/**转向选择供应商页面，并保存创建类型信息*/
 	function toChooseSupplierPage(){
 		var createMode = $("#createMode").find("option:selected").val();
-		window.location.href="commodityCatalogCreateChooseSupplier?action=initial&createMode="+createMode;
+		var action="commodityCatalogCreateChooseSupplier";
+		/* ?action=initial&createMode="+createMode */
+		var supplierUniqueName=$('#supplierUniqueName').val();
+		var supplierName = $("#supplierName").val();
+		if(supplierUniqueName == ""){
+			$('#supplierUniqueName').attr("name","");
+		}else{
+			$('#supplierUniqueName').attr("name","supplierUniqueName");
+		}
+		if(supplierUniqueName == ""){
+			$('#supplierName').attr("name","");
+		}else{
+			$('#supplierName').attr("name","supplierName");
+		}//supplier.name如果为空，Spring不接收
+		$("form").attr("action",action);
+		$("form").attr("method","get");
+		$("form").submit();
 	}
 	
+	function checkNoItems(){
+		var createMode = jQuery("#createMode  option:selected").val();
+		var createMode2 = jQuery("#createMode2  option:selected").val();
+		if(createMode == 2 && createMode2 == '无项目'){
+				$("#item-error-message").text("该供应商无现有目录，请重新选择!");
+		}else{
+			$("#item-error-message").text("");
+		}
+	}
+		
 </script>
 </body>
 </html>
+
+

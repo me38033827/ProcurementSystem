@@ -74,7 +74,7 @@ public class TemplateTaskTree {
 						+ "<li><a class=\"manu-active templateTaskPhase-create-" + child.getId() + "\" "
 						+ "\">&nbsp;&nbsp;阶段</a></li>" + "<li><a class=\"manu-active templateTaskSchedule-create-"
 						+ child.getId() + "\" " + "\">&nbsp;&nbsp;待办事项</a></li>" + "</ul></div>";
-				String col2 = "<div class=\"tree-2-col\">未激活</div>";
+				String col2 = "<div class=\"tree-2-col\">无</div>";
 				String col3 = "<div class=\"tree-2-col\">System</div>";
 				li += col2 + col3;
 				jsonObj.put("text", li);
@@ -93,7 +93,7 @@ public class TemplateTaskTree {
 						+ child.getTemplateTaskSchedule().getId() + "\" " + "\">&nbsp;&nbsp;编辑</a></li>"
 						+ "<li><a class=\"manu-active templateTaskSchedule-delete-" + child.getId() + "\" "
 						+ "\">&nbsp;&nbsp;删除</a></li>" + "</ul></div>";
-				String col2 = "<div class=\"tree-2-col\">未激活</div>";
+				String col2 = "<div class=\"tree-2-col\">无</div>";
 				String col3 = "<div class=\"tree-2-col\">System</div>";
 				li += col2 + col3;
 				jsonObj.put("text", li);

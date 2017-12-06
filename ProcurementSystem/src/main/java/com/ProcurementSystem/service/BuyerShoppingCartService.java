@@ -90,14 +90,16 @@ public class BuyerShoppingCartService {
 		} // 当商品重复时，只修改原商品数量
 		if (flag == false)
 			shoppingCart.getCommodities().add(commodity);// 当商品不重复时，直接添加至list
-		calTotalQuantity(shoppingCart);//更新商品总数量
+		updateShopping(shoppingCart);//更新商品总数量
 		return shoppingCart;
 	}
 
-	public void calTotalQuantity(ShoppingCart shoppingCart) {
-		shoppingCart.setTotalQuantity(0);
+	public void updateShopping(ShoppingCart shoppingCart) {
+		shoppingCart.setTotalQuantity(0);//商品总数量
+		shoppingCart.setTotalAmount(0);//商品总价
 		for(Commodity commodity : shoppingCart.getCommodities()){
 			shoppingCart.setTotalQuantity(shoppingCart.getTotalQuantity()+commodity.getBuyQuantity());
+			shoppingCart.setTotalAmount(shoppingCart.getTotalAmount()+commodity.getBuyQuantity()*commodity.getUnitPrice());
 		}
 	}
 }

@@ -53,11 +53,11 @@
 							<table class="table table-no-border">
 								<tr class="">
 									<td align="right" style="width: 20%;">名称：</td>
-									<td style="width: 80%;">信息项目模板</td>
+									<td style="width: 80%;">${ template.name}</td>
 								</tr>
-								<tr align="right">
-									<td>说明：</td>
-									<td></td>
+								<tr>
+									<td  align="right">说明：</td>
+									<td>${template.description }</td>
 								</tr>
 								<tr class="">
 									<td align="right">版本：</td>
@@ -65,15 +65,15 @@
 								</tr>
 								<tr class="">
 									<td align="right">标识符：</td>
-									<td>WS889082746</td>
+									<td>${template.id }</td>
 								</tr>
 								<tr class="">
 									<td align="right">所有者：</td>
-									<td>Gan Qin</td>
+									<td>${username }</td>
 								</tr>
 								<tr class="">
 									<td align="right">基本语言：</td>
-									<td>英文</td>
+									<td>中文</td>
 								</tr>
 								<tr class="">
 									<td align="right">排名：</td>

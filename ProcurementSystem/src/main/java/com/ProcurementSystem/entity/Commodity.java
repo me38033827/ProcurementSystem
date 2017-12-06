@@ -10,6 +10,7 @@ public class Commodity {
 
 	private Supplier supplier;
 	private Contract contract;
+	private String contractTempId;//临时字段
 	private CommodityCatalog commodityCatalog;
 	private double unitPrice;// 基本类型是否都设置成String比较好
 	private String supplierPartId;
@@ -290,6 +291,15 @@ public class Commodity {
 
 	public void setCommodityCatalog(CommodityCatalog commodityCatalog) {
 		this.commodityCatalog = commodityCatalog;
+	}
+
+
+	public String getContractTempId() {
+		return contractTempId;
+	}
+
+	public void setContractTempId(String contractTempId) {
+		this.contractTempId = contractTempId;
 	}
 
 }

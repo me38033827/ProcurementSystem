@@ -20,7 +20,7 @@
 						<div class="border-bottom-grey ">
 							<div class="right">
 								<button class="btn-b" type="button"
-									onclick="window.location.href='templateSIMTask'">完成</button>
+									onclick="window.history.go(-1)">完成</button>
 							</div>
 
 							<div class="small-window-title margin-bottom ">查看待办事项</div>
@@ -46,7 +46,7 @@
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">所有者：</td>
-										<td class="col-standard2">（无）选择</td>
+										<td class="col-standard2">${schedule.owner }</td>
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">观察员：</td>

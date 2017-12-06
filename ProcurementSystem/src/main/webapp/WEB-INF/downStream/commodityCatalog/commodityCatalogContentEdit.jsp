@@ -17,7 +17,8 @@
 					<div class="page-main-title-btn">
 						<button class="btn-b" type="submit"
 							form="commodityCatalogContentModify">保存</button>
-						<button class="btn-w" type="button" onclick="window.location.href='showCommodityCatalogContent?uniqueName=${commodity.commodityCatalog.uniqueName}'">取消</button>
+						<button class="btn-w" type="button"
+							onclick="window.location.href='showCommodityCatalogContent?uniqueName=${commodity.commodityCatalog.uniqueName}'">取消</button>
 					</div>
 					<div class="page-main-title">目录 - 编辑项目</div>
 					<div class="margin-bottom">
@@ -40,8 +41,8 @@
 								</tr>
 								<tr>
 									<td colspan="2">Contract Number</td>
-									<td><input type="text" class="input margin-input"
-										name="contract.uniqueName"
+									<td><input type="text" class="input margin-input" name="contract.uniqueName"
+										readonly
 										value="C${requestScope.commodity.contract.uniqueName}"><br></td>
 								</tr>
 								<tr>
@@ -83,8 +84,8 @@
 								</tr>
 								<tr>
 									<td>金额</td>
-									<td><input type="text" class="input margin-input" name="unitPrice"
-										value="${commodity.unitPrice }"><br></td>
+									<td><input type="text" class="input margin-input"
+										name="unitPrice" value="${commodity.unitPrice }"><br></td>
 								</tr>
 								<tr>
 									<td rowspan="2">价格单位</td>
@@ -278,8 +279,9 @@
 								</tr>
 								<tr>
 									<td>域</td>
-									<td><input type="text" class="input margin-input" name="unitOfMeasure"
-										value="${commodity.unitOfMeasure }"> &nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】</a></td>
+									<td><input type="text" class="input margin-input"
+										name="unitOfMeasure" value="${commodity.unitOfMeasure }">
+										&nbsp;&nbsp;&nbsp;&nbsp;<a>【&nbsp;选择&nbsp;】</a></td>
 								</tr>
 								<tr>
 									<td colspan="2">适用合同</td>

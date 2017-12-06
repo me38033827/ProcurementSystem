@@ -26,7 +26,7 @@
 		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
 		String size = "0";
 		if (shoppingCart != null)
-			size = shoppingCart.getCommodities().size() + "";
+			size = shoppingCart.getTotalQuantity() + "";
 	%>
 	<div id="thirdline-out">
 		<div class="col-md-2 inline-b left">
@@ -167,6 +167,7 @@
 								<tr>
 									<td class="right">合同：</td>
 									<td>C${commodity.contract.uniqueName }</td>
+								
 								</tr>
 								<tr>
 									<td class="right">价格：</td>

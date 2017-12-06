@@ -21,7 +21,7 @@
 							<div class="right">
 								<button class="btn-b" type="submit" form="saveForm">确定</button>
 								<button class="btn-w" type="button"
-									onclick="window.location.href='${backTask}'">取消</button>
+									onclick="window.history.go(-1)">取消</button>
 							</div>
 
 							<div class="small-window-title margin-bottom ">创建阶段</div>

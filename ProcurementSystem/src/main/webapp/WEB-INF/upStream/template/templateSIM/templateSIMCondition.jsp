@@ -83,9 +83,7 @@
 	<%@ include file="../../../other/footer.jsp"%>
 	<script>
 		$("#condition").attr("class", "tag-clicked");
-		function back() {
-			location.href = "supplierSearch?action=back";
-		}
+		
 	</script>
 </body>
 </html>

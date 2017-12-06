@@ -32,10 +32,10 @@
 					<button class="procure-nav" data-toggle="dropdown">
 						按类别采购&nbsp;<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu manu-btn-o">
+					<!-- <ul class="dropdown-menu manu-btn-o">
 						<li><a class="manu-btn" href="">编辑</a></li>
 						<li><a class="manu-btn" href="">停用</a></li>
-					</ul>
+					</ul> -->
 				</div>
 			</div>
 			<!-- <div class="col-md-2 inline-b left">

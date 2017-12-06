@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@include file="../../other/header1return.jsp"%>
+<script src="../../js/my-bootstrap-treeview.js"></script>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -90,11 +91,29 @@
 								<div class="standard-subtitle">
 									文档
 									<div class="btn-group right">
-										<a class="f-14" href="">所有任务</a>
+										<div class="btn-group">
+											<button class="btn-m" data-toggle="dropdown">
+												操作&nbsp;<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu" style="width: 200px;">
+												<li><a class="manu-deactive">创建</a></li>
+												<li><a class="manu-active"
+													href="templateCreateFolder?parentId=1000001">&nbsp;&nbsp;文件夹</a></li>
+												<li><a class="manu-active"
+													href="templateChooseType?parentId=1000001">&nbsp;&nbsp;模板</a></li>
+											</ul>
+										</div>
 									</div>
 								</div>
-								<div class="adjust-10"></div>
-								<a class="grey">暂时不写</a>
+								<div class="">
+									<div class="standard-row1">
+										<div class="template-tree-title1">名称</div>
+										<div class="template-tree-title2">所有者</div>
+										<div class="template-tree-title3">状态</div>
+										<div style="clear: both"></div>
+									</div>
+									<div id="treeview1" style="height: 300px; overflow: scroll"></div>
+								</div>
 							</div>
 						</div>
 
@@ -111,6 +130,12 @@
 	<%@ include file="../../other/footer.jsp"%>
 	<script>
 		$("#summary").attr("class","tag-clicked");
+		$(function() {
+			console.log( ${json});
+		    var $tree = $('#treeview1').treeview({
+		   	 data: ${json}
+		    });
+		});
 	</script>
 </body>
 </html>

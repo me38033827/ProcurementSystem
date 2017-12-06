@@ -72,7 +72,7 @@
 
 				<td class="col2">
 					<button class="btn-w" type="button"
-						onclick="window.location.href='commodityCatalogList'">取消</button>
+						onclick="window.location.href='clearSessionCatalog'">取消</button>
 				</td>
 			</tr>
 		</table>

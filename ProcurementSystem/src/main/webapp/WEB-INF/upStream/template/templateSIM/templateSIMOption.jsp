@@ -72,9 +72,7 @@
 
 	<script>
 		$("#option").attr("class", "tag-clicked");
-		function back() {
-			location.href = "supplierSearch?action=back";
-		}
+	
 	</script>
 </body>
 </html>

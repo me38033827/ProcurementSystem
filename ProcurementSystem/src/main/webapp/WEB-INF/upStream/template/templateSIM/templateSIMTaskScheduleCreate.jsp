@@ -21,7 +21,7 @@
 							<div class="right">
 								<button class="btn-b" type="submit" form="saveForm">确定</button>
 								<button class="btn-w" type="button"
-									onclick="window.location.href='templateSIMTask'">取消</button>
+									onclick="window.history.go(-1)">取消</button>
 							</div>
 
 							<div class="small-window-title margin-bottom ">新建待办事项</div>
@@ -79,16 +79,16 @@
 										<td class="col-standard1">必须：</td>
 										<td class="col-standard2"><div class="radio">
 												<label class=""><input type="radio" name="isMust"
-													id="spm_model1" value="否">是</label>&nbsp;&nbsp;<label
+													id="spm_model1" value="是">是</label>&nbsp;&nbsp;<label
 													class=""><input type="radio" name="isMust"
-													id="spm_model2" value="是" checked>否</label>
+													id="spm_model2" value="否" checked>否</label>
 											</div></td>
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">字段设置：</td>
 										<td class="col-standard2"><select id="createMode"
 											name="setField">
-												<option value="未选择字段<">未选择字段</option>
+												<option value="未选择字段">未选择字段</option>
 												<option value="流程状态">流程状态</option>
 										</select></td>
 									</tr>

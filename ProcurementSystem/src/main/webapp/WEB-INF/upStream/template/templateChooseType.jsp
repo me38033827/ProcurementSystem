@@ -13,7 +13,7 @@
 		<div class="container">
 			<div class="standard-out">
 				<!-- 主要内容 -->
-				<div class="row border-bottom-grey">
+				<div class="row ">
 					<div class="col-md-12">
 						<!-- title -->
 						<br>
@@ -21,8 +21,7 @@
 							<div class="right">
 								<button class="btn-b" type="submit" form="createForm">创建</button>
 								<button class="btn-w" type="button"
-									onclick="window.location.href='templateDoc
-									'">取消</button>
+									onclick="window.history.go(-1)">取消</button>
 							</div>
 
 							<div class="small-window-title margin-bottom ">为模板选择项目类型</div>
@@ -31,10 +30,9 @@
 						<div class="title-description">
 							模板用于创建特定类型的项目。要创建新模板，请选择您最终要从此模板创建的项目的类型。<br>
 						</div>
-						<div class="standard-subtitle" style="color: grey;">
-							<strong>将要从此模板创建哪种类型的项目？</strong>
-						</div>
-						<form action="templateCreate" method="post" id="createForm">
+						<div class="standard-title-main">将要从此模板创建哪种类型的项目？</div>
+						<form action="templateCreate" method="post" id="createForm"
+							class="border-bottom-grey">
 							<div class="radio">
 								<label class="model"><input type="radio" name="type"
 									id="spm_model2" value="SPM" checked>供应商绩效管理项目</label><br>

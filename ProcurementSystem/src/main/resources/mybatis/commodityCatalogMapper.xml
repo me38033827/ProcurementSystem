@@ -139,7 +139,7 @@
 			AND cc.supplier_unique_name = #{supplier.uniqueName}
 		</if>
 		<if test="name != '' and name != null">
-			AND cc.name = #{name}
+			AND cc.name like concat('%',#{name},'%')<!--注意，Catalog的名字搜索采用的是模糊搜索  -->
 		</if>
 	</select>
 	<resultMap id="CommodityCatalogDetail" type="com.ProcurementSystem.entity.CommodityCatalog">
@@ -203,7 +203,8 @@
 		update
 		commodity_catalog c
 		set is_activated = '已停用' where name = (select
-		name from
+		name
+		from
 		( select name from commodity_catalog c
 		where unique_name =
 		#{uniqueName}) a ) and unique_name != #{uniqueName} and is_activated =
@@ -214,11 +215,13 @@
 	<select id="searchCommodityCatalogNoVersion" parameterType="com.ProcurementSystem.entity.CommodityCatalog"
 		resultType="com.ProcurementSystem.entity.CommodityCatalog">
 		select name from commodity_catalog where
-		supplier_unique_name = #{supplier.uniqueName} group by name
-	<!-- -->
+		supplier_unique_name =
+		#{supplier.uniqueName} group by name
+		<!-- -->
 	</select>
-	
+
 	<delete id="delete">
-		delete from commodity_catalog where unique_name = #{uniqueName} limit 1
+		delete from commodity_catalog where unique_name =
+		#{uniqueName} limit 1
 	</delete>
 </mapper>

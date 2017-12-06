@@ -22,7 +22,7 @@
 								<button class="btn-b" type="submit" form="formsubmit"
 									onclick="window.location.href=''">创建</button>
 								<button class="btn-w" type="button"
-									onclick="window.location.href='templateDoc'">取消</button>
+									onclick="window.history.go(-1)">取消</button>
 							</div>
 
 							<div class="small-window-title margin-bottom ">新建文件夹</div>
@@ -54,7 +54,7 @@
 									<tr class="row-standard">
 										<td class="col-standard1">所有者：</td>
 										<td class="col-standard2"><input
-											class="form-control input" name="" readonly></td>
+											class="form-control input" name="owner"  value="${username }"></td>
 									</tr>
 									<tr class="row-standard">
 										<td class="col-standard1">访问控制：</td>

@@ -20,7 +20,7 @@
 						<div class="border-bottom-grey ">
 							<div class="right">
 								<button class="btn-b" type="button"
-									onclick="window.location.href='templateSIMTask'">完成</button>
+									onclick="window.history.go(-1)">完成</button>
 							</div>
 
 							<div class="small-window-title margin-bottom ">查看阶段</div>

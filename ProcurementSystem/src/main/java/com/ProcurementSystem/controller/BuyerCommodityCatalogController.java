@@ -1,5 +1,6 @@
 package com.ProcurementSystem.controller;
 
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -29,6 +30,8 @@ import com.ProcurementSystem.service.BuyerCommodityCatalogService;
 import com.ProcurementSystem.service.BuyerCommodityService;
 import com.ProcurementSystem.service.BuyerShoppingCartService;
 import com.ProcurementSystem.service.SupplierService;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 @Controller
 @RequestMapping(value = "buyer/commodityCatalog")
@@ -64,7 +67,8 @@ public class BuyerCommodityCatalogController {
 	// 创建商品目录页->选择供应商页
 	@RequestMapping(value = "commodityCatalogCreateChooseSupplier")
 	public String commodityCatalogCreateChooseSupplier(HttpServletRequest request,
-			@RequestParam(value = "createMode", required = false) String createMode,@RequestParam(value="commodityCatalog",required=false)CommodityCatalog commodityCatalog) {
+			@RequestParam(value = "createMode", required = false) String createMode, CommodityCatalog commodityCatalog,
+			Supplier supplier) {
 		String target = "downStream/commodityCatalog/commodityCatalogCreateChooseSupplier";// 跳转页面路径
 		if (createMode != null) {
 			request.getSession().setAttribute("createMode", createMode);// 保存创建目录模式
@@ -83,6 +87,7 @@ public class BuyerCommodityCatalogController {
 			// request.getSession().setAttribute("contentSession", content);
 			// System.out.println(content);
 			// if (content.equals("使用名称、标识符或任何其他词语搜索")) {
+			request.getSession().setAttribute("commodityCatalog", commodityCatalog);// 用于恢复页面
 			request.setAttribute("num", "-1");
 			return target;
 			// }
@@ -123,26 +128,32 @@ public class BuyerCommodityCatalogController {
 		else {
 			session.removeAttribute("createMode");// 清空，初始化
 		}
-		if (createMode != null && createMode.equals("2")) {// 模式2下搜索商品目录
-			CommodityCatalog commodityCatalog = new CommodityCatalog();
-			commodityCatalog.setSupplier(supplier);
-			List<CommodityCatalog> commodityCatalogs = commodityCatalogService
-					.searchCommodityCatalogNoVersion(commodityCatalog);// 获得供应商所拥有的商品目录
-			map.put("supplier", supplier);
-			map.put("commodityCatalogs", commodityCatalogs);// 向前端传递供应商信息和商品目录信息
-		}
+		// if (createMode != null && createMode.equals("2")) {// 模式2下搜索商品目录
+		CommodityCatalog commodityCatalog = new CommodityCatalog();
+		commodityCatalog.setSupplier(supplier);
+		List<CommodityCatalog> commodityCatalogs = commodityCatalogService
+				.searchCommodityCatalogNoVersion(commodityCatalog);// 获得供应商所拥有的商品目录
+		map.put("supplier", supplier);
+		map.put("commodityCatalogs", commodityCatalogs);// 向前端传递供应商信息和商品目录信息
+		// }
 		map.put("createMode", createMode);// 用于恢复页面结构
 		return "downStream/commodityCatalog/commodityCatalogCreate";
+	}
+
+	// 清空session中的catalog
+	@RequestMapping(value = "clearSessionCatalog")
+	public String clearSessionCatalog(HttpServletRequest request) {
+		request.getSession().removeAttribute("commodityCatalog");
+		return "redirect:../main";
 	}
 
 	// 保存商品目录基本信息，上传商品目录
 	@RequestMapping(value = "commodityCatalogUpload")
 	public String commodityCatalogUpload(HttpServletRequest request, @Valid CommodityCatalog commodityCatalog,
 			BindingResult result, ModelMap map, @RequestParam(value = "createMode") String createMode) {
-		// String createMode = request.getParameter("createMode");
 		// 数据校验
 		boolean isDupeName = false;
-		if (createMode.equals("1") && !commodityCatalog.getName().equals("")) {
+		if (createMode.equals("1") && commodityCatalog.getName() != null && !commodityCatalog.getName().equals("")) {
 			isDupeName = commodityCatalogService.validateCommodityCatalogDupeName(commodityCatalog);// 验证是否重名
 		}
 		boolean isSupplierUniqueNameEmpty = commodityCatalog.getSupplier().getUniqueName() == 0 ? true : false;
@@ -209,9 +220,11 @@ public class BuyerCommodityCatalogController {
 
 	// 商品目录页搜索功能
 	@RequestMapping(value = "commodityCatalogListSearch")
-	public String commodityCatalogListSearch(@RequestParam(value = "state") String state, HttpServletRequest request) {
+	public String commodityCatalogListSearch(@RequestParam(value = "state") String state,
+			@RequestParam(value = "content") String content, HttpServletRequest request) {
 		CommodityCatalog commodityCatalog = new CommodityCatalog();
-		if (state.equals("已激活") || state.equals("已停用")) {
+		commodityCatalog.setName(content);
+		if (!state.equals("全部")) {
 			commodityCatalog.setIsActivated(state);
 		}
 		List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
@@ -238,6 +251,17 @@ public class BuyerCommodityCatalogController {
 		return "downStream/commodityCatalog/commodityCatalogContent";
 	}
 
+	// 显示商品目录版本
+	@RequestMapping(value = "showCommodityCatalogVersion")
+	public String showCommodityCatalogVersion(ModelMap map, @RequestParam(value = "name") String name) {
+		CommodityCatalog commodityCatalog = new CommodityCatalog();
+		commodityCatalog.setName(name);
+		List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
+		map.put("commodityCatalogs", commodityCatalogs);
+		map.put("name", commodityCatalogs.get(0).getName());
+		return "downStream/commodityCatalog/showVersion";
+	}
+
 	/** 在线编辑商品目录 */
 	@RequestMapping(value = "commodityCatalogContentEdit")
 	public String commodityCatalogContentEdit(@RequestParam(value = "uniqueName") String uniqueName, ModelMap map) {
@@ -256,7 +280,7 @@ public class BuyerCommodityCatalogController {
 	// 保存在线修改商品目录内容
 	@RequestMapping(value = "commodityCatalogContentModify")
 	public String commodityCatalogModify(Commodity commodity, ModelMap map) {
-		commodity.getContract().setUniqueName(commodity.getContract().getUniqueName().substring(1));
+		commodity.getContract().setUniqueName("10000001");// 处理contract,先默认
 		map = commodityService.validateCommodityAndGetMessages(commodity, map);// 获得商品验证信息
 		if (!(boolean) map.get("result")) {
 			commodity.setIsChecked("FALSE");
@@ -395,10 +419,35 @@ public class BuyerCommodityCatalogController {
 				String buyQuantity = request.getParameter("buyQuantity_" + uniqueName);
 				commodity.setBuyQuantity(Integer.parseInt(buyQuantity));// 维护商品数量
 			}
-			shoppingCartService.calTotalQuantity(shoppingCart);
+			shoppingCartService.updateShoppingCart(shoppingCart);//维护购买总数量
 		}
 
 		return "redirect:/buyer/commodityCatalog/commodityCatalogShoppingCart";
+	}
+
+	// 修改购物车单一商品数量
+	@RequestMapping("updateCommodityBuyQuantity")
+	public @ResponseBody JSONObject updateCommodityBuyQuantity(HttpServletRequest request, @RequestParam(value="uniqueName")String uniqueName,@RequestParam(value="quantity")Integer buyQuantity) {
+		ShoppingCart shoppingCart = (ShoppingCart)request.getSession().getAttribute("shoppingCart");
+		Commodity temp = new Commodity();
+		if(shoppingCart != null){
+			ListIterator<Commodity> iterator = shoppingCart.getCommodities().listIterator();
+			while (iterator.hasNext()) {
+				Commodity commodity = (Commodity) iterator.next();
+				if(uniqueName.equals(commodity.getUniqueName())){
+					commodity.setBuyQuantity(buyQuantity);
+					temp = commodity;
+					break;
+				}
+			}
+			shoppingCartService.updateShoppingCart(shoppingCart);// 维护购物车商品总数量和商品总价
+		}//修改商品购买数量
+		DecimalFormat    df   = new DecimalFormat("######0.00");   
+		JSONObject json = new JSONObject();
+		if(temp!=null) json.put("commodityTotalMoney", df.format(temp.getBuyQuantity()*temp.getUnitPrice()));
+		json.put("totalQuantity", shoppingCart.getTotalQuantity());
+		json.put("totalMoney", df.format(shoppingCart.getTotalAmount()));
+		return json;
 	}
 
 	/** 商品详情 */

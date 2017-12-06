@@ -45,7 +45,11 @@ public class BuyerTemplateController {
 
 	// 模板概述
 	@RequestMapping(value = "templateSummary")
-	public String templateSummary() {
+	public String templateSummary(ModelMap map) {
+		TemplateTree templateTree = templateTreeNodeService.generateTemplateTree();
+		templateTree.traverse();
+		JSONArray json = templateTree.traverseToJSONArray();
+		map.put("json", json);
 		return "upStream/template/templateSummary";
 	}
 

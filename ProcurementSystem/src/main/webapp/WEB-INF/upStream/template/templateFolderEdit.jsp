@@ -6,6 +6,11 @@
 <%@include file="../../other/header1return.jsp"%>
 <link href="/ProcurementSystem/css/template/template.css"
 	rel="stylesheet" />
+<style type="text/css">
+textArea {
+	padding-left: 10px;
+}
+</style>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -13,8 +18,8 @@
 		<div class="container">
 			<div class="standard-out">
 				<!-- 主要内容 -->
-				<div class="row border-bottom-grey">
-					<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-12 border-bottom-grey">
 						<!-- title -->
 						<br>
 						<div class="border-bottom-grey ">
@@ -36,17 +41,14 @@
 									<td class="col-standard1">是否另存为新版本？:</td>
 									<td><div class="radio">
 											&nbsp;<label class=""><input type="radio"
-												 id="spm_model1" value="spm_standard">是，另存为
-												v1 </label> <label class=""><input type="radio"
-												 id="spm_model2" value="spm_demo" checked>否，保存并继续编辑原始版本
-											</label>
+												name="version" id="spm_model1" value="">是，另存为 v1 </label> <label
+												class=""><input type="radio" id="spm_model2"
+												value="" name="version" checked>否，保存并继续编辑原始版本 </label>
 										</div></td>
 								<tr>
 									<td class="col-standard1">版本备注：</td>
 									<td><div>
-
-											<textarea class="" id=""  rows="3"
-												cols="80"
+											<textarea class="" id="" rows="3" cols="80"
 												style="border: 1px solid #428bca; border-radius: 0;"></textarea>
 										</div></td>
 								</tr>
@@ -65,7 +67,7 @@
 										<td class="col-standard1" valign="top">说明：</td>
 										<td class="col-standard2"><textarea name="description"
 												rows="5" cols="80"
-												style="border: 1px solid #428bca; border-radius: 0;">${folder.description }  </textarea></td>
+												style="border: 1px solid #428bca; border-radius: 0;">${folder.description }</textarea></td>
 									</tr>
 
 									<tr class="row-standard">

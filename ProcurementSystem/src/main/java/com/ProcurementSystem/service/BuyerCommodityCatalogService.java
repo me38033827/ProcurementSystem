@@ -40,6 +40,7 @@ public class BuyerCommodityCatalogService {
 
 	// 保存所要上传的文件
 	public void commodityCatalogUpload(MultipartFile file, String uploadUrl, CommodityCatalog commodityCatalog) {
+		if(file.getSize() == 0) return;
 		String filename = file.getOriginalFilename();
 		commodityCatalog.setFileName(filename);// 设置文件名
 		commodityCatalog.setFileSize(file.getSize() / 1024 + "kb");// 设置文件大小
@@ -77,6 +78,7 @@ public class BuyerCommodityCatalogService {
 	// 解析商品目录文件,并对商品信息进行持久化存储
 	public void commodityCatalogAnalyze(CommodityCatalog commodityCatalog, String uploadUrl, String fileName) {
 		// TODO Auto-generated method stub
+		
 		InputStream is = null;
 		Workbook rwb = null;
 		try {
@@ -94,7 +96,7 @@ public class BuyerCommodityCatalogService {
 					i++;
 					/** 暂时只进行为空检查，后期需要补充非数字格式检查 **/
 					cell = firstSheet.getCell(0, i);
-					while (!cell.getContents().equals("ENDOFDATA") && !cell.getContents().equals("")) {// 共24个字段，读取每行信息并进行持久化存储，直至找到数据结束标识符-“ENDOFDATA”
+					while (!cell.getContents().equals("ENDOFDATA") && i<=rows) {// 共24个字段，读取每行信息并进行持久化存储，直至找到数据结束标识符-“ENDOFDATA”或最后一行
 						boolean isCommodityChecked = true;// 临时变量，用于商品的验证状态
 						/** 从上传文件中提取字段 */
 						Commodity commodity = new Commodity();// 设置commodityCatalog
@@ -163,9 +165,10 @@ public class BuyerCommodityCatalogService {
 						cell = firstSheet.getCell(17, i);// Thumbnail
 						commodity.setThumbnail(cell.getContents());
 						cell = firstSheet.getCell(18, i);// ContractNumber
-						Contract contract = new Contract();
-						contract.setUniqueName(cell.getContents());
-						commodity.setContract(contract);
+						// Contract contract = new Contract();
+						// contract.setUniqueName(cell.getContents());
+						// commodity.setContract(contract);
+						// commodity.setContractTempId(cell.getContents());
 						cell = firstSheet.getCell(19, i);// CompanyCode
 						commodity.setCompanyCode(cell.getContents());
 						cell = firstSheet.getCell(20, i);// gcmemail
@@ -251,6 +254,7 @@ public class BuyerCommodityCatalogService {
 
 	// 保存image文件，并解压
 	public void commodityCatalogUploadImages(MultipartFile imageFile, String path) {// 存到以商品目录id命名的文件夹下
+		if(imageFile.getSize() == 0) return;//非null验证
 		String fileName = imageFile.getOriginalFilename();
 		File dir = new File(path);// 创建文件夹
 		if (!dir.exists()) {
@@ -357,9 +361,9 @@ public class BuyerCommodityCatalogService {
 	}
 
 	public boolean validateIsActivated(String[] states) {
-		boolean flag=true;
-		for(String state : states){
-			if(!state.equals("已激活")){
+		boolean flag = true;
+		for (String state : states) {
+			if (!state.equals("已激活")) {
 				flag = false;
 				return flag;
 			}

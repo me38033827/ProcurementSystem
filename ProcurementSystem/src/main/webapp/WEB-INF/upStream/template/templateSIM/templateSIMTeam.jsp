@@ -52,9 +52,7 @@
 	<%@ include file="../../../other/footer.jsp"%>
 	<script>
 		$("#team").attr("class","tag-clicked");
-		function back() {
-			location.href = "supplierSearch?action=back";
-		}
+		
 	</script>
 </body>
 </html>

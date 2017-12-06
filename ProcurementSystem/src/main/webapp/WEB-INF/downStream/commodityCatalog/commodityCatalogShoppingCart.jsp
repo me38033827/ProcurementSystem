@@ -49,7 +49,7 @@
 											<td>编号</td>
 											<td>简称</td>
 											<td>说明</td>
-											<td>数量</td>
+											<td align="center">数量</td>
 											<td>单位</td>
 											<td>价格</td>
 											<td>折扣</td>
@@ -69,18 +69,34 @@
 												<td>${status.count}</td>
 												<td>${commodity.shortName }</td>
 												<td>${commodity.itemDescription }</td>
-												<td><input class="settlement-amount"
-													value="${commodity.buyQuantity }"
-													name="buyQuantity_${commodity.uniqueName }" /></td>
+												<td>
+													<div class="input-group">
+														<span class="input-group-btn">
+															<button class="btn btn-default"
+																onclick="quantityChange(${commodity.uniqueName },-1)"
+																type="button">-</button>
+														</span> <input class="commodity-quantity"
+															onchange="quantityChangeServer(${commodity.uniqueName })"
+															value="${commodity.buyQuantity }"
+															name="buyQuantity_${commodity.uniqueName }"
+															id="buyQuantity_${commodity.uniqueName }" /> <span
+															class="input-group-btn">
+															<button class="btn btn-default"
+																onclick="quantityChange(${commodity.uniqueName },1)"
+																type="button">+</button>
+														</span>
+													</div>
+												</td>
 												<td>${commodity.unitOfMeasure }</td>
-												<td>${commodity.unitPrice }</td>
+												<td>￥<fmt:formatNumber value="${commodity.unitPrice }"
+														pattern="#00.00#" /></td>
 												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
-												<td><fmt:formatNumber
+												<td id="commodityTotalMoney_${commodity.uniqueName }">￥<fmt:formatNumber
 														value="${commodity.unitPrice * commodity.buyQuantity}"
-														pattern="#,#00.00#" /></td>
+														pattern="#00.00#" /></td>
 											</tr>
 										</c:forEach>
 										<tr>
@@ -91,6 +107,7 @@
 										</tr>
 									</table>
 								</form>
+
 							</div>
 						</div>
 
@@ -107,9 +124,10 @@
 									var="commodity" varStatus="status">
 									<tr id="abstract-line2">
 										<td class="settlement-tab2-col1">${commodity.shortName}</td>
-										<td class="settlement-tab2-col2">￥<fmt:formatNumber
+										<td class="settlement-tab2-col2" id="commodityTotalMoney1_${commodity.uniqueName }"
+										>￥<fmt:formatNumber
 												value="${commodity.unitPrice * commodity.buyQuantity}"
-												pattern="#,#00.00#" /></td>
+												pattern="#00.00#" /></td>
 									</tr>
 								</c:forEach>
 								<tr id="abstract-line3">
@@ -119,8 +137,8 @@
 								<tr id="abstract-line4">
 									<td class="settlement-tab2-col1">小计（<%=size%>个项目）：
 									</td>
-									<td class="settlement-tab2-col2"><fmt:formatNumber
-											value="${shoppingCart.totalAmount }" pattern="￥#,#00.00#" /></td>
+									<td class="settlement-tab2-col2" id="totalMoney"><fmt:formatNumber
+											value="${shoppingCart.totalAmount }" pattern="￥#00.00#" /></td>
 								</tr>
 							</table>
 						</div>
@@ -139,13 +157,6 @@
 		</div>
 	</div>
 	<script>
-		/* function delete(){
-			var url="commodityCatalogDeleteShoppingCart?";
-			var commodities = document.getElementByName("commodity");
-			for(var i=0;i<commodities.length;i++){
-				if(commodities[i].checked) url+=""
-			}
-		}	 */
 	</script>
 </body>
 </html>

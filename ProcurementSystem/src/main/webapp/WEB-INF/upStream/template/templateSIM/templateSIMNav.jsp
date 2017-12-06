@@ -20,7 +20,7 @@
 		<c:if test="${template.type =='SQM' }">
 			<div>供应商资格管理项目</div>
 		</c:if>
-			
+
 	</div>
 
 	<div class="right" id="supplier-detail-top">

@@ -37,16 +37,11 @@
 							<div>
 								搜索范围： <select id="my-select" name="state">
 									<option value="全部">全部</option>
-									<option value="">正在验证</option>
-									<option value="">已验证</option>
-									<option value="">正在等待审批</option>
-									<option value="">已批准</option>
+									<option value="已验证">已验证</option>
 									<option value="已激活">已激活</option>
 									<option value="已停用">已停用</option>
-									<option value="">Activating</option>
-									<option value="">Deactivating</option>
-								</select> &nbsp;搜索内容： <input type="text" class=" border-g ">
-
+									<option value="验证错误">验证错误</option>
+								</select> &nbsp;搜索内容： <input type="text" class=" border-g" name="content">
 								<div class="right">
 									<button class="btn-b" type="submit">搜索</button>
 									<button class="btn-w"
@@ -71,7 +66,6 @@
 							<th width="10%">版本</th>
 							<th width="10%">加载模式</th>
 							<th width="10%">内容摘要</th>
-
 							<th width="10%">状态</th>
 							<th width="10%">项目数量</th>
 							<th width="15%">上次修改时间</th>
@@ -96,9 +90,9 @@
 										<td width="10%"><a
 											href="/ProcurementSystem/buyer/supplier/supplierDetail?id=${commodityCatalog.supplier.uniqueName }">
 												${commodityCatalog.supplier.name} </a></td>
-										<td width="15%"><a>${commodityCatalog.name } </a><input
-											type="hidden" value="${commodityCatalog.name }">
-										<!-- 暂时没有商品目录详情 --></td>
+										<td width="15%"><a
+											href="showCommodityCatalogVersion?name=${commodityCatalog.name }">${commodityCatalog.name }
+										</a><input type="hidden" value="${commodityCatalog.name }"></td>
 										<td width="10%"><a
 											href="showCommodityCatalogContent?uniqueName=${commodityCatalog.uniqueName }">${commodityCatalog.version }
 												<c:if test="${commodityCatalog.isActivated =='验证错误' }">
@@ -107,7 +101,8 @@
 										</a></td>
 										<td width="10%">完整</td>
 										<td width="10%">${commodityCatalog.contentAbstract }</td>
-										<td width="10%">${commodityCatalog.isActivated }<input type="hidden" value="${commodityCatalog.isActivated }" ></td>
+										<td width="10%">${commodityCatalog.isActivated }<input
+											type="hidden" value="${commodityCatalog.isActivated }"></td>
 										<td width="10%">${commodityCatalog.itemCount}</td>
 										<td width="25%"><fmt:formatDate
 												value="${commodityCatalog.lastModifyDate}"
@@ -120,8 +115,10 @@
 					<div class="table-bottom-btn">
 						<button class="btn-w">比较版本</button>
 						<button class="btn-w">发送进行审批</button>
-						<button class="btn-w" formaction="multiCommodityCatalogActivate" form="commodityCatalogForm">激活</button>
-						<button class="btn-w" formaction="multiCommodityCatalogDeactivate" form="commodityCatalogForm">停用</button>
+						<button class="btn-w" formaction="multiCommodityCatalogActivate"
+							form="commodityCatalogForm">激活</button>
+						<button class="btn-w" formaction="multiCommodityCatalogDeactivate"
+							form="commodityCatalogForm">停用</button>
 						<button class="btn-w" formaction="deleteCommodityCatalog"
 							form="commodityCatalogForm">删除版本</button>
 						<button class="btn-w">删除订阅</button>
