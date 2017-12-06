@@ -28,8 +28,6 @@
 						onclick="window.location.href='sqmInfo'">信息板</button>
 					<button class="tag-not-clicked"
 						onclick="window.location.href='sqmNews'">事件消息</button>
-					<button class="tag-not-clicked"
-						onclick="window.location.href='sqmHistory'">历史记录</button>
 				</div>
 
 				<div class="adjust-10"></div>

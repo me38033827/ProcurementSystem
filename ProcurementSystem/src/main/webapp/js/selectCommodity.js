@@ -1,7 +1,8 @@
 //是否已经从后端获得商品
 var getCommodity = 0;
 var treeData;
-var commoditiesId="";
+var commoditiesId = "";
+var commoditiesName = "";
 var treeSearch;
 var clearSearch;
 var showTree = 0;
@@ -16,12 +17,38 @@ function onSelectCommodity() {
 	}
 }
 
+//function getContentSize() {
+//    var wh = document.documentElement.clientHeight; 
+//    var eh = 300;
+//    ch = (wh - eh) + "px";
+//    document.getElementById( "ens" ).style.height = ch;
+//}
+//
+//window.onload = function() {
+//    stylemenu = new SDMenu("stylemenu");
+//    stylemenu.init();
+//     getContentSize;
+//};
+//
+//window.onresize = getContentSize;
+
+//function setHeight(){
+//	var height = $(window).height();
+//	var innerHeight = Math.floor(height*0.8)-200;
+//	alert(innerHeight);
+//	var heightStr = innerHeight+"px";
+//	document.getElementById("treeview-sim").style.height="20px";
+//	
+//}
+//
+//window.onresize = setHeight();
+
 function getUNSPSC(){
 	$.ajax({
 		data:{},  
 		type:"POST",  
 		dataType: 'json',
-		async:false,
+		async:true,
 	    url:"../supplier/selectCommodity",
 	    success:function(data){
 	    		//console.log(data);
@@ -45,9 +72,9 @@ function getUNSPSC(){
 	    		treeSearch = function(e) {
 	    		    var pattern = $('#input-search').val();
 	    		    var options = {
-	    		      ignoreCase: $('#chk-ignore-case').is(':checked'),
-	    		      exactMatch: $('#chk-exact-match').is(':checked'),
-	    		      revealResults: $('#chk-reveal-results').is(':checked')
+	    		    		ignoreCase: $('#chk-ignore-case').is(':checked'),
+	    		    		exactMatch: $('#chk-exact-match').is(':checked'),
+	    		    		revealResults: $('#chk-reveal-results').is(':checked')
 	    		    };
 	    		    var results = $Tree.treeview('search', [ pattern, options ]);
 	    			//console.log(results);
@@ -58,9 +85,11 @@ function getUNSPSC(){
 	    		checkableNodes = findCheckableNodess();
 	    		//清除搜索
 	    		clearSearch = function(e) {
-	    		  $Tree.treeview('clearSearch');
-	    		  $('#input-search').val('');
+	    			$Tree.treeview('clearSearch');
+	    			$('#input-search').val('');
 	    		};
+	    		
+	    		//在选择供应商之前选择的商品check
 	   	},
 	    error:function(data, XMLHttpRequest, textStatus, errorThrown){  
 	    		console.log(data);
@@ -101,15 +130,20 @@ $('#btn-uncheck-all').on('click', function (e) {
 
 function finishCommoditySelection(){
 		$("#commodities").empty();
-		var commodities="";
+		var commodities = "";
 		commoditiesId = "";
+		var nodeIds = "";
 		$(".selected-commodity").each(function(index,element){
+			nodeIds += element.parentNode.id + ",";
 			var id = element.lastChild.firstChild.data;
-			commoditiesId+=id+",";
+			commoditiesId += id + ",";
 			var commodityName = element.firstChild.data;
+			commoditiesName += commodityName + ",";
 			$("#commodities").append("<tr><td>"+commodityName+"</td><td>"+id+"</td></tr>");
 		});
 		$("#commoditiesId").val(commoditiesId);
+		$("#commoditiesName").val(commoditiesName);
+		$("#nodeIds").val(nodeIds);
 		//浮框效果
 		$('.theme-popover-mask').fadeOut(100);
 		$('.theme-popover').slideUp(200);
@@ -119,5 +153,11 @@ function delCommodity(id){
 	$("#"+id).remove();
 	var v = $("#treeview-sim").treeview('getNode',id);
 	v.state.checked=false;
+	$("#btn-search").click();		
+}
+
+function addCommodity(id){
+	var v = $("#treeview-sim").treeview('getNode',id);
+	v.state.checked=true;
 	$("#btn-search").click();		
 }

@@ -20,7 +20,7 @@
 					<div class="standard-title-r">
 						<button form="supplierCreation" class="btn-b">确定</button>
 						<button class="btn-w"
-							onclick="window.location.href='supplierSearch?action=back'">取消</button>
+							onclick="window.location.href='../search/supplierSearchDistribute?page=2004'">取消</button>
 					</div>
 				</div>
 

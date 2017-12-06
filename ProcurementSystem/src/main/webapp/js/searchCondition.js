@@ -362,7 +362,7 @@ function actionSupplier(){
 										+"新建&nbsp;<span class=\"caret\"></span>"
 									+"</button>"
 									+"<ul class=\"dropdown-menu manu-btn-o\">"
-										+"<li><a class=\"manu-btn\" onclick=\"window.location.href='supplierCreation'\">供应商</a></li>"
+										+"<li><button class=\"manu-btn trans-btn black\" onclick=\"window.location.href='../supplier/supplierCreation'\">供应商</button></li>"
 										+"<li><a class=\"manu-btn\">客户</a></li>"
 									+"</ul>"
 								+"</div>"
@@ -548,7 +548,7 @@ function actionSupplierSPM(){
 
 //supplierSQM 资格 可共用spm的方法
 function supplierSQMDistribute(fieldName, place){
-	if(fieldName=="组织名称"){organizationNameSPM(place, supplierSQM_title)};
+	if(fieldName=="标题"){organizationNameSPM(place, supplierSQM_title)};
 	if(fieldName=="审批状态"){approveStateSPM(place, supplierSQM_supplierId)};
 	if(fieldName=="供应商标识符"){identifierSPM(place, supplierSQM_status)};
 	if(fieldName=="商品"){commoditySQM(place, supplierSQM_status)};
@@ -709,11 +709,6 @@ function alterSQMStatus(id,newStatus){
 }
 
 function commoditySQM(place, value){
-//	$(place).append($('<a>', {
-//        href: "javascript:;",
-//       // title: "step_third",
-//        class: "choose",
-//    }).text("选择123"));
 	$(place).append("<div style='display:inline-block; margin-left:10px;' id='commodities-container'><table id=\"commodities\"></table>"
 				+"<input type='hidden' id='commoditiesId' name='commoditiesId'/></div>");
 	$("#commodities-container").append("<input type='button' onclick='onSelectCommodity()' class='trans-btn' style='display:block' value='选择'/>");

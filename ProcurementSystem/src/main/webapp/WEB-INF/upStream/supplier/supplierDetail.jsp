@@ -239,19 +239,10 @@
 
 	<script>
 		function back() {
-			/* if ("${backCreateCommodityCatalog}" != null)
-				location.href = "${backCreateCommodityCatalog}";
-			else
-				location.href = "../search/supplierSearchDistribute?page=2004"; */
 			window.history.back();
-
 		}
 		$(function() {
-			var defaultData = $
-			{
-				treeData
-			}
-			;
+			var defaultData = ${treeData};
 			$('#treeview-sim').treeview({
 				data : defaultData
 			});

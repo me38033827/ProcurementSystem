@@ -47,25 +47,26 @@
 									<td class="col-standard1" valign="top">说明：</td>
 									<td class="col-standard2"><textarea class="form-control"
 											id="pr-textarea" name="description"
-											style="border: 1px solid #428bca; border-radius: 0;">
-												<%
+											style="border: 1px solid #428bca; border-radius: 0;"><%
 													if (request.getAttribute("sqm") != null) {
-												%>
-												 ${sqm.description}
-												<%
-													}
-												%>
-										</textarea> <%-- <input class="form-control input" name="commodity" style="display:none;"
-												<%if(request.getAttribute("sqm")!=null){ %>
-												value="${sqm.description}"
-												<%} %>> --%></td>
+												%>${sqm.description}<%}%></textarea>
+									</td>
 								</tr>
 
 								<tr class="row-standard">
 									<td class="col-standard1" valign="top">商品：</td>
 									<td class="col-standard2">
-										<table id="commodities"></table>
+										<table id="commodities">
+											<c:forEach items="${sqm.commodities}" var="commodity">
+												<tr>
+													<td>${commodity.description }</td>
+													<td>${commodity.id }</td>
+												</tr>
+											</c:forEach>
+										</table>
 										<input type="hidden" id="commoditiesId" name="commoditiesId"/>
+										<input type="hidden" id="commoditiesName" name="commoditiesName"/>
+										<input type="hidden" id="nodeIds" name="nodeIds"/>				
 											［&nbsp;<input type="button" style="width:50px; border:none;" onclick="onSelectCommodity();" value="选择" />&nbsp;］
 									</td>
 								</tr>
@@ -90,11 +91,7 @@
 								<tr class="row-standard">
 									<td class="col-standard1">上次资格日期：</td>
 									<td class="col-standard2">
-										<%-- <input
-											class="form-control input" name="lastValid"
-											<%if(request.getAttribute("sqm")!=null){ %>
-											value=""
-											<%} %>> --%> <label for="meeting"></label><input
+										<label for="meeting"></label><input
 										name="lastValid" class="form-control input" id="meeting"
 										type="date" <% if (request.getAttribute("sqm") != null) { %>
 										value="${sqm.lastValid}" /> <%
@@ -108,11 +105,7 @@
 								<tr class="row-standard">
 									<td class="col-standard1">资格失效日期：</td>
 									<td class="col-standard2">
-										<%-- <input
-											class="form-control input" name="validTo"
-											<%if(request.getAttribute("sqm")!=null){ %>
-											value="${sqm.validTo}"
-											<%} %>> --%> <label for="meeting"></label><input
+										<label for="meeting"></label><input
 										name="validTo" class="form-control input" id="meeting"
 										type="date" <% if (request.getAttribute("sqm") != null) { %>
 										value="${sqm.validTo}" /> <%
@@ -126,7 +119,6 @@
 						</div>
 					</div>
 
-
 					<div class="standard-title-main">选择模版</div>
 					<div class="title-description">
 						请选择您要使用的模板，并回答与之相关的所有问题，以便创建您的项目。以上区段的字段设置值将对可用模板产生影响。</div>
@@ -137,14 +129,14 @@
 							<br />
 						</c:forEach>
 					</div>
-					<div class="standard-ending">
-						<div align="right" class="standard-ending-r">
-							<button form="supplierSQMCreation"
-								formaction="sqmCreation?action=submit" class="btn-b">确定</button>
-							<button class="btn-w" onclick="window.location.href='../main'">取消</button>
-						</div>
-					</div>
 				</form>
+				<div class="standard-ending">
+					<div align="right" class="standard-ending-r">
+						<button form="supplierSQMCreation"
+							formaction="sqmCreation?action=submit" class="btn-b">确定</button>
+						<button class="btn-w" onclick="window.location.href='../main'">取消</button>
+					</div>
+				</div>
 				<!-- 选择商品 -->
 				<%@include file="../../other/selectCommodity.jsp"%>
 			</div>
@@ -153,6 +145,13 @@
 	<div class="theme-popover-mask"></div>
 	<script>
 		
+		<%if(request.getAttribute("sqm")!=null){%>
+			var templateId = ${sqm.templateTaskTreeNode.id};
+			$("input[value="+templateId+"]").prop('checked', true);
+		<%}%>
+		<%if(request.getAttribute("nodes")!=null){%>
+			var nodes = <%=request.getAttribute("nodes")%>;
+		<%}%>
 	</script>
 </body>
 </html>

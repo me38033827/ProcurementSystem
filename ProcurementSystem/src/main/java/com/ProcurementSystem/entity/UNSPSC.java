@@ -4,6 +4,7 @@ public class UNSPSC {
 
 	private int id;
 	private String description;
+	private int nodeId;
 	
 	public int getId() {
 		return id;
@@ -16,5 +17,11 @@ public class UNSPSC {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public int getNodeId() {
+		return nodeId;
+	}
+	public void setNodeId(int nodeId) {
+		this.nodeId = nodeId;
 	}	
 }

@@ -69,7 +69,7 @@
 				</form>
 				<div class="standard-ending">
 				    <div align="right" class="standard-ending-r">
-				    		<button class="btn-b" form="editFolder" formaction="editFolder">确定</button>
+				    		<button class="btn-b" form="editFolder" formaction="updateFolder">确定</button>
 						<button class="btn-w" onclick="window.location.href='simQuestionnaire'">取消</button>
 				    </div>  
 				</div>

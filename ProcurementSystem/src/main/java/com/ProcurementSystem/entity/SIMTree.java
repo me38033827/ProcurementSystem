@@ -87,7 +87,9 @@ public class SIMTree {
 					int id = child.getSupplierSIM().getId();
 					for(SupplierSIMAnswer a:answers){
 						if(a.getQuestionId()==id){
-							answer="<a class=\"questionnaire-ans\"id=\"ans-"+ child.getSupplierSIM().getId() +"\">"+a.getAnswer()+"</a>";
+							if(a.getAnswer()!=null){
+								answer="<a class=\"questionnaire-ans\"id=\"ans-"+ child.getSupplierSIM().getId() +"\">"+a.getAnswer()+"</a>";
+							}
 							answers.remove(a);
 							break;
 						}
@@ -197,6 +199,7 @@ public class SIMTree {
 					//有选项
 					if(child_type==2 && child_accept_value==2){
 						answer= "<select class=\"selection\" id=\"ans-"+child.getSupplierSIM().getId()+"\" name=\"ans-"+child.getSupplierSIM().getId()+"\">\n";
+						answer+="<option class='selection' selected=\"selected\" disabled=\"disabled\" style='display:none' value=''></option>";
 						List<SupplierSIMSelection> selections = child.getSupplierSIM().getSelections();
 						for(SupplierSIMSelection selection: selections){
 							answer = answer +  "<option class=\"selection\" value=\""+selection.getContent()+"\">"+selection.getContent()+"</option>\n";

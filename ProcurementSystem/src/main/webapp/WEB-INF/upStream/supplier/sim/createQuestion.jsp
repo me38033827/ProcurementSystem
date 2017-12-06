@@ -16,7 +16,7 @@
 				<div class="standard-title">
 					<div class="standard-title-main">添加问题</div> 
 					<div class="standard-title-r">
-						<button class="btn-b" form="addQuestion" formaction="addQuestion">完成</button>
+						<button class="btn-b" onclick="finish();">完成</button>
 						<button class="btn-w" onclick="window.location.href='simQuestionnaire'">取消</button>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 						<tr class="row-standard">
 							<td valign="top" class="col-standard1" style="width:200px; padding-top:5px;">名称：</td>
 							<td class="col-standard2" style="height:110px;">
-								<textarea name="title" class="input" style="width:280px; height:100px;padding-left:5px;"></textarea>
+								<textarea name="title" id="title" class="input" style="width:280px; height:100px;padding-left:5px;"></textarea>
 							</td>
 						</tr>
 						<tr class="row-standard">
@@ -71,7 +71,7 @@
 						<tr class="row-standard" id="selection-list" hidden="hidden">
 							<td class="col-standard1" valign="top">选择列表：</td>
 							<td class="col-standard2">
-								<table class="table table-hover" style="width:50%;margin-top:5px; margin-bottom:5px;">
+								<table class="table table-hover" id="selection-table" style="width:50%;margin-top:5px; margin-bottom:5px;">
 									<tr class="standard-row1" id="selection-title">
 										<td style="padding-left:20px;">值</td>
 										<td></td>
@@ -124,6 +124,32 @@
 		var selection = 1;
 		function back(){
 			location.href="simQuestionnaire";
+		}
+		function finish(){
+			$(".alert-msg").remove();
+			var pass = 1;
+			var emptySelection = 0;
+			var acceptValue = $("#acceptValue").val();
+			if(acceptValue==2){
+				for(var i = 1; i < selection + 1; i++){
+					var value = $("#selection-"+i).val();
+					if(!value){
+						pass = 0;
+						if(emptySelection==0){
+							$("#selection-table").append("<span class='left alert-msg' style='color:red'>选项内容不能为空！</span>");
+						}
+						emptySelection++;
+					}
+				}
+			}
+			if($("#title").val()==""){
+				pass = 0;
+				$("#title").after("<span class='alert-msg' style='color:red;'>名称不能为空！</span>");
+			}
+			//通过验证
+			if(pass){
+				$("form").submit();
+			}
 		}
 	</script>
 </body>

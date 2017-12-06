@@ -32,6 +32,7 @@ import com.ProcurementSystem.entity.Template;
 import com.ProcurementSystem.entity.TemplateTaskPhase;
 import com.ProcurementSystem.entity.TemplateTaskSchedule;
 import com.ProcurementSystem.entity.TemplateTaskTreeNode;
+import com.ProcurementSystem.entity.UNSPSC;
 import com.ProcurementSystem.entity.UNSPSCTree;
 import com.ProcurementSystem.entity.User;
 import com.ProcurementSystem.service.BuyerSupplierSQMAllowedCodeService;
@@ -151,10 +152,15 @@ public class BuyerSupplierController {
 			int selection = Integer.parseInt(request.getParameter("selection"));
 			String selectionValue = "";
 			List<String> selections = new ArrayList<String>();
+			int j = 0;
 			for (int i = 1; i <= selection; i++) {
 				selectionValue = request.getParameter("selection-" + i);
-				System.out.println(i + ":" + selectionValue);
-				selections.add(i - 1, selectionValue);
+				if(selectionValue != null && selectionValue != ""){
+					selections.add(j, selectionValue);
+					j++;
+				}else{
+					System.out.println("Empty selection");
+				}
 			}
 			simService.addQuestionWithSelection(sim, selections, parentId, order);
 		}
@@ -827,12 +833,10 @@ public class BuyerSupplierController {
 		}
 		if (action.equals("back")) {
 			SupplierSQM lastSqm = (SupplierSQM) request.getSession().getAttribute("sqmSession");
-			System.out.println(lastSqm.getTitle());
 			request.setAttribute("sqm", lastSqm);
 			return "upStream/supplier/supplierSQMCreation";
 		}
 		if (action.equals("submit")) {
-			System.out.println("Submit:" + sqm.getTitle());
 			sqm.setStatus("待审核");
 			SupplierSQM sqmSession = (SupplierSQM) session.getAttribute("sqmSession");
 			sqm.setSupplier(sqmSession.getSupplier());
@@ -884,12 +888,15 @@ public class BuyerSupplierController {
 
 	// 创建sqm->选择供应商页
 	@RequestMapping(value = "sqmCreationChooseSupplier")
-	public String sqmCreateChooseSupplier(SupplierSQM sqm, HttpServletRequest request) {
+	public String sqmCreateChooseSupplier(SupplierSQM sqm, HttpServletRequest request,
+			@RequestParam(value = "sqmTemplateId", required = false) Integer sqmTemplateId,
+			@RequestParam(value = "commoditiesId", required = false) String commoditiesId,
+			@RequestParam(value = "commoditiesName", required = false) String commoditiesName,
+			@RequestParam(value = "nodeIds", required = false) String nodeIds) {
 		HttpSession session = request.getSession();
 		String target = "upStream/supplier/supplierSQMCreationChooseSupplier";// 跳转页面路径
 
 		String action = request.getParameter("action");
-		System.out.println("action is " + action);
 		if (action.equals("reset")) {// 搜索重置
 			session.setAttribute("contentSession", "");
 			request.setAttribute("num", "-1");// -1表示无项目
@@ -897,32 +904,47 @@ public class BuyerSupplierController {
 		}
 		if (action.equals("initial")) {
 			request.setAttribute("num", "-1");
-			System.out.println("sqmCreationChooseSupplier" + sqm.getTitle());
+			if(sqmTemplateId!=null){
+				TemplateTaskTreeNode template = new TemplateTaskTreeNode();
+				template.setId(sqmTemplateId);
+				sqm.setTemplateTaskTreeNode(template);
+			}
+			if(commoditiesId!="" && commoditiesName != ""){
+				String[] ids = commoditiesId.split(",");
+				String[] names = commoditiesName.split(",");
+				String[] nodes = nodeIds.split(",");
+				List<UNSPSC> commodities = new ArrayList<UNSPSC>();
+				for(int i = 0; i<ids.length; i++){
+					UNSPSC un = new UNSPSC();
+					un.setId(Integer.parseInt(ids[i]));
+					un.setDescription(names[i]);
+					un.setNodeId(Integer.parseInt(nodes[i]));
+					commodities.add(un);
+				}
+				sqm.setCommodities(commodities);
+			}
+			request.setAttribute("nodes", nodeIds);
 			session.setAttribute("sqmSession", sqm);
 			return target;
 		}
 		String content = request.getParameter("content");
 		if (action.equals("back")) {
 			content = (String) request.getSession().getAttribute("sqmSession");
-
 		}
 		if (content == null) {
 			request.setAttribute("num", "-1");
 			return target;
 		}
 		// search
-		System.out.println("Search for content: " + content);
 		if (content.equals("使用名称、标识符或任何其他词语搜索")) {// 默认搜索全部
 			List<Supplier> suppliers = service.searchAllSupplier();
 			request.setAttribute("suppliers", suppliers);
 			request.setAttribute("num", Integer.toString(suppliers.size()));
-			System.out.println("共有" + Integer.toString(suppliers.size()) + "个搜索结果");
 		} else {// 按条件搜索
 			List<Supplier> suppliers = service.searchSupplier(content);
 			request.setAttribute("suppliers", suppliers);
 			request.setAttribute("content", content);
 			request.setAttribute("num", Integer.toString(suppliers.size()));
-			System.out.println("共有" + Integer.toString(suppliers.size()) + "个搜索结果");
 		}
 		request.getSession().setAttribute("contentSession", content);
 		return target;
