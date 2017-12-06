@@ -833,6 +833,22 @@ public class BuyerSupplierController {
 		}
 		if (action.equals("back")) {
 			SupplierSQM lastSqm = (SupplierSQM) request.getSession().getAttribute("sqmSession");
+			
+			if(lastSqm.getCommodities()!=null){
+				String nodeIds = "";
+				String ids = "";
+				String names = "";
+				for(UNSPSC c: lastSqm.getCommodities()){
+					nodeIds += c.getNodeId() + ",";
+					ids += c.getId() + ",";
+					names += c.getDescription() + ",";
+				}
+				request.setAttribute("commoditiesName", names);
+				request.setAttribute("commoditiesId", ids);
+				request.setAttribute("commoditiesNodeId", nodeIds);
+				System.out.println(names);
+				System.out.println(ids);
+			}
 			request.setAttribute("sqm", lastSqm);
 			return "upStream/supplier/supplierSQMCreation";
 		}
@@ -845,21 +861,6 @@ public class BuyerSupplierController {
 			user.setUniqueName(userUniqueName);
 			sqm.setUser(user);
 
-			// error
-			if (sqm.getSupplier() == null) {
-				map.put("Error_" + "supplier", "供应商不能为空");
-			}
-			if (result.hasErrors()) {
-				List<FieldError> errorList = result.getFieldErrors();
-				for (FieldError error : errorList) {
-					System.out.println(error.getField().replace("supplier.", "") + ":" + error.getDefaultMessage());
-					map.put("Error_" + error.getField().replace("supplier.", ""), error.getDefaultMessage());
-				}
-			}
-			if (sqm.getSupplier() == null || result.hasErrors()) {
-				request.setAttribute("sqm", sqm);
-				return "upStream/supplier/supplierSQMCreation";
-			}
 			session.removeAttribute("sqmSession");
 			sqm.setId(sqmService.getMaxId() + 1);
 			Template template = new Template();
@@ -912,6 +913,7 @@ public class BuyerSupplierController {
 			if(commoditiesId!="" && commoditiesName != ""){
 				String[] ids = commoditiesId.split(",");
 				String[] names = commoditiesName.split(",");
+				System.out.println(nodeIds);
 				String[] nodes = nodeIds.split(",");
 				List<UNSPSC> commodities = new ArrayList<UNSPSC>();
 				for(int i = 0; i<ids.length; i++){
@@ -923,12 +925,14 @@ public class BuyerSupplierController {
 				}
 				sqm.setCommodities(commodities);
 			}
-			request.setAttribute("nodes", nodeIds);
 			session.setAttribute("sqmSession", sqm);
 			return target;
 		}
 		String content = request.getParameter("content");
 		if (action.equals("back")) {
+			request.setAttribute("commoditiesName",commoditiesName);
+			request.setAttribute("commoditiesId",commoditiesId);
+			request.setAttribute("commoditiesNodeId", nodeIds);
 			content = (String) request.getSession().getAttribute("sqmSession");
 		}
 		if (content == null) {
@@ -942,7 +946,6 @@ public class BuyerSupplierController {
 			request.setAttribute("num", Integer.toString(suppliers.size()));
 		} else {// 按条件搜索
 			List<Supplier> suppliers = service.searchSupplier(content);
-			request.setAttribute("suppliers", suppliers);
 			request.setAttribute("content", content);
 			request.setAttribute("num", Integer.toString(suppliers.size()));
 		}
@@ -960,9 +963,6 @@ public class BuyerSupplierController {
 		HttpSession session = request.getSession();
 		SupplierSQM sqmSession = (SupplierSQM) session.getAttribute("sqmSession");
 		sqmSession.setSupplier(supplier);
-		session.setAttribute("sqmSession", sqmSession);
-		// System.out.println("success in choose!");
-		// System.out.println(sqmSession.getTitle());
 		return "redirect: sqmCreation?action=back";
 	}
 

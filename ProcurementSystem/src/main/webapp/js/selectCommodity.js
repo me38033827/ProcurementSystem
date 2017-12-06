@@ -17,32 +17,6 @@ function onSelectCommodity() {
 	}
 }
 
-//function getContentSize() {
-//    var wh = document.documentElement.clientHeight; 
-//    var eh = 300;
-//    ch = (wh - eh) + "px";
-//    document.getElementById( "ens" ).style.height = ch;
-//}
-//
-//window.onload = function() {
-//    stylemenu = new SDMenu("stylemenu");
-//    stylemenu.init();
-//     getContentSize;
-//};
-//
-//window.onresize = getContentSize;
-
-//function setHeight(){
-//	var height = $(window).height();
-//	var innerHeight = Math.floor(height*0.8)-200;
-//	alert(innerHeight);
-//	var heightStr = innerHeight+"px";
-//	document.getElementById("treeview-sim").style.height="20px";
-//	
-//}
-//
-//window.onresize = setHeight();
-
 function getUNSPSC(){
 	$.ajax({
 		data:{},  
@@ -60,7 +34,8 @@ function getUNSPSC(){
 	    		    onNodeChecked: function(event, node) {
 	    		    		$("#treeview-selected").append("<tr class=\"commodity-row\" id=\""
 	    		    				+node.nodeId+"\"><td class=\"selected-commodity\" colspan=\"2\">"
-	    		    				+node.text+"</td><td><button class=\"trans-btn\" onclick=\"delCommodity("+node.nodeId+");\">删除</button></td></tr>");
+	    		    				+node.text+"<input type='hidden' name='node' value='" + node.nodeId + "' /></td><td><button class=\"trans-btn\" onclick=\"delCommodity("+node.nodeId+");\">删除</button></td>" +
+	    		    						"</tr>");
 	    		        //alert(node.text+" was checked");
 	    		    },
 	    		    onNodeUnchecked: function (event, node) {
@@ -90,6 +65,13 @@ function getUNSPSC(){
 	    		};
 	    		
 	    		//在选择供应商之前选择的商品check
+	    		var select = $("#nodeIds").val();
+	    		if(select!="null"){
+	    			var selected = select.split(",");
+	    			for(var i=0; i<selected.length-1; i++){
+		    			addCommodity(selected[i]);
+		    		}
+	    		}
 	   	},
 	    error:function(data, XMLHttpRequest, textStatus, errorThrown){  
 	    		console.log(data);
@@ -134,12 +116,13 @@ function finishCommoditySelection(){
 		commoditiesId = "";
 		var nodeIds = "";
 		$(".selected-commodity").each(function(index,element){
-			nodeIds += element.parentNode.id + ",";
-			var id = element.lastChild.firstChild.data;
+			var name = element.childNodes[0].data;
+			var id = element.childNodes[1].text;
+			var node = element.childNodes[2].value;
 			commoditiesId += id + ",";
-			var commodityName = element.firstChild.data;
-			commoditiesName += commodityName + ",";
-			$("#commodities").append("<tr><td>"+commodityName+"</td><td>"+id+"</td></tr>");
+			commoditiesName += name + ",";
+			nodeIds += node + ",";
+			$("#commodities").append("<tr><td>"+name+"</td><td>"+id+"</td></tr>");
 		});
 		$("#commoditiesId").val(commoditiesId);
 		$("#commoditiesName").val(commoditiesName);

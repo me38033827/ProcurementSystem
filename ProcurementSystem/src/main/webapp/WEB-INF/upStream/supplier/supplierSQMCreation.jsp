@@ -18,8 +18,9 @@
 				<div class="standard-title">
 					<div class="standard-title-main">创建供应商资格管理项目</div>
 					<div class="standard-title-r">
-						<button form="supplierSQMCreation"
-							formaction="sqmCreation?action=submit" class="btn-b">确定</button>
+						<button onclick="validCheck()" class="btn-b">确定</button>
+						<!-- <button form="supplierSQMCreation"
+							formaction="sqmCreation?action=submit" class="btn-b">确定</button> -->
 						<button class="btn-w" onclick="window.location.href='../main'">取消</button>
 					</div>
 				</div>
@@ -28,20 +29,20 @@
 				</div>
 				<div class="adjust-10"></div>
 
-				<form id="supplierSQMCreation" method="post">
+				<form id="supplierSQMCreation" method="post" action="sqmCreation?action=submit">
 					<div class="row">
 						<div class="col-md-5">
 							<table class="fulltab" style="margin-left: 80px;">
 								<tr class="row-standard">
 									<td class="col-standard1">＊名称：</td>
 									<td class="col-standard2"><input
-										class="form-control input" name="title" style="width: 230px;"
+										class="form-control input" id="title" name="title" style="width: 230px;"
 										<%if(request.getAttribute("sqm")!=null){ %>
 										value="${sqm.title}" <%} %>></td>
 								</tr>
 								<tr>
 									<td></td>
-									<td><span class="error-message">${Error_title}</span></td>
+									<td><span id="title-error" class="error-message">${Error_title}</span></td>
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1" valign="top">说明：</td>
@@ -64,9 +65,9 @@
 												</tr>
 											</c:forEach>
 										</table>
-										<input type="hidden" id="commoditiesId" name="commoditiesId"/>
-										<input type="hidden" id="commoditiesName" name="commoditiesName"/>
-										<input type="hidden" id="nodeIds" name="nodeIds"/>				
+										<input type="hidden" id="commoditiesId" name="commoditiesId" value="${commoditiesId}"/>
+										<input type="hidden" id="commoditiesName" name="commoditiesName" value="<%=request.getAttribute("commoditiesName")%>"/>
+										<input type="hidden" id="nodeIds" name="nodeIds" value=<%=request.getAttribute("commoditiesNodeId")%> />
 											［&nbsp;<input type="button" style="width:50px; border:none;" onclick="onSelectCommodity();" value="选择" />&nbsp;］
 									</td>
 								</tr>
@@ -77,14 +78,14 @@
 								<tr class="row-standard">
 									<td class="col-standard1">＊供应商：</td>
 									<td class="col-standard2">
-										<div>
-											${sqm.supplier.name} <input type="hidden"
-												value="${supplier.uniqueName }"> <input
-												type="hidden" value="${supplier.name }">
+										<div>${sqm.supplier.name} 
+											<input type="hidden" id="supplierUniqueName"
+												value="${sqm.supplier.uniqueName }"> <input
+												type="hidden" value="${sqm.supplier.name }">
 											<button style="border: 0; background-color: transparent"
 												formaction="sqmCreationChooseSupplier?action=initial">【
 												选择 】</button>
-											<span class="error-message">${Error_supplier}</span>
+											<span class="error-message" id="supplier-error">${Error_supplier}</span>
 										</div>
 									</td>
 								</tr>
@@ -96,7 +97,7 @@
 										type="date" <% if (request.getAttribute("sqm") != null) { %>
 										value="${sqm.lastValid}" /> <%
 										 	} else {
-										 %> value="2017-01-01"/> <%
+										 %> value="2017-12-01"/> <%
 										 	}
 										 %>
 
@@ -110,7 +111,7 @@
 										type="date" <% if (request.getAttribute("sqm") != null) { %>
 										value="${sqm.validTo}" /> <%
 										 	} else {
-										 %> value="2017-01-01"/> <%
+										 %> value="2018-03-31"/> <%
 										 	}
 										 %>
 									</td>
@@ -132,11 +133,10 @@
 				</form>
 				<div class="standard-ending">
 					<div align="right" class="standard-ending-r">
-						<button form="supplierSQMCreation"
-							formaction="sqmCreation?action=submit" class="btn-b">确定</button>
+						<button onclick="validCheck()" class="btn-b">确定</button>
 						<button class="btn-w" onclick="window.location.href='../main'">取消</button>
 					</div>
-				</div>
+				</div>	
 				<!-- 选择商品 -->
 				<%@include file="../../other/selectCommodity.jsp"%>
 			</div>
@@ -144,12 +144,33 @@
 	</div>
 	<div class="theme-popover-mask"></div>
 	<script>
-		
+		var templateId = "";
+		function validCheck(){
+			$(".error-message").empty();
+			var pass = 1;
+			//项目名称查空
+			var title = $("#title").val();
+			if(title==""){
+				$("#title-error").text("项目名称不能为空");
+				pass = 0
+			}
+			//供应商查空
+			var supplier = $("#supplierUniqueName").val();
+			if(supplier==""){
+				$("#supplier-error").text("供应商不能为空");
+				pass = 0
+			}
+			
+			if(pass){
+				console.log(123);
+				$("form").submit();
+			}
+		}
 		<%if(request.getAttribute("sqm")!=null){%>
-			var templateId = ${sqm.templateTaskTreeNode.id};
+			templateId = ${sqm.templateTaskTreeNode.id};
 			$("input[value="+templateId+"]").prop('checked', true);
 		<%}%>
-		<%if(request.getAttribute("nodes")!=null){%>
+		<%if(request.getAttribute("commodities")!=null){%>
 			var nodes = <%=request.getAttribute("nodes")%>;
 		<%}%>
 	</script>

@@ -38,7 +38,7 @@
 							        				<td style="width:20%"></td>
 							        			</tr>
 							        			<c:forEach items="${sqm.commodities}" var="commodity">
-												<tr class = "commodity-row" id="{commodity.nodeId}">
+												<tr class = "commodity-row" id="${commodity.nodeId}">
 													<td class="selected-commodity" colspan="2">${commodity.description }
 														<a class="right" style="width:15%;color:black;">${commodity.id }</a>
 													</td>
