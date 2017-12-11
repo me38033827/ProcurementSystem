@@ -243,7 +243,7 @@
 						onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>'">上一页</button>
 					<span id="pageList"></span>
 					<button class="btn-page" id="afterward"
-						onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}'">下一页</button>
+						onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}'">下一页</button><span>共<strong>${pageParams.totalPages}</strong>页</span>
 				</div>
 			</div>
 

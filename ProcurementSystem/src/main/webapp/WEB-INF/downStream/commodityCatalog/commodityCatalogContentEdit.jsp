@@ -152,7 +152,7 @@
 								<tr>
 									<td>值</td>
 									<td><input type="text" class="input margin-input"
-										value="43191504">&nbsp;&nbsp;&nbsp;&nbsp;
+										value="">&nbsp;&nbsp;&nbsp;&nbsp;
 										<button class="btn-w">删除值</button></td>
 								</tr>
 								<tr>
