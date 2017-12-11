@@ -118,7 +118,13 @@ function finishCommoditySelection(){
 		$(".selected-commodity").each(function(index,element){
 			var name = element.childNodes[0].data;
 			var id = element.childNodes[1].text;
-			var node = element.childNodes[2].value;
+			var node;
+			var nodeName = element.childNodes[2].nodeName;
+			if(nodeName!="INPUT"){
+				node = element.childNodes[3].value;
+			}else{
+				node = element.childNodes[2].value;
+			}
 			commoditiesId += id + ",";
 			commoditiesName += name + ",";
 			nodeIds += node + ",";

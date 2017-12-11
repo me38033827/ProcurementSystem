@@ -39,8 +39,8 @@
 							        			</tr>
 							        			<c:forEach items="${sqm.commodities}" var="commodity">
 												<tr class = "commodity-row" id="${commodity.nodeId}">
-													<td class="selected-commodity" colspan="2">${commodity.description }
-														<a class="right" style="width:15%;color:black;">${commodity.id }</a>
+													<td class="selected-commodity" colspan="2">${commodity.description }<a class="right" style="width:15%;color:black;">${commodity.id }</a>
+														<input type="hidden" name="node" value="${commodity.nodeId}"/>
 													</td>
 													<td>
 														<button class="trans-btn" onclick="delCommodity(${commodity.nodeId});">删除</button>

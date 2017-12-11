@@ -18,6 +18,7 @@
 			<result property="title" column="simTitle" />
 			<result property="answerType" column="simAnswerType" />
 			<result property="acceptValue" column="simAcceptValue" />
+			<result property="multipleValue" column="simMultipleValue" />
 		</association>
 	</resultMap>	
 	
@@ -46,7 +47,8 @@
 			c.id as simId, 
 			c.title as simTitle,
 			c.accept_value as simAcceptValue,
-			c.answer_type as simAnswerType
+			c.answer_type as simAnswerType,
+			c.multiple_value as simMultipleValue
 		from supplier_sim c, supplier_sim_nodes n
 		where parent_id = #{parentId}
 		and children_id = c.id
@@ -104,8 +106,8 @@
 	<!-- 在supplier_sim 中添加问题-->
 	<insert id="addQuestion" parameterType="com.ProcurementSystem.entity.SupplierSIM">
 		<!-- type:2 question -->
-		insert into supplier_sim(id, type, title, description, answer_type, multiple_value, initial_answer, accept_value) values
-		(#{id}, "2", #{title}, #{description}, #{answerType}, #{multipleValue}, #{initialAnswer}, #{acceptValue});
+		insert into supplier_sim(id, type, title, description, answer_type, multiple_value, initial_answer, accept_value, must) values
+		(#{id}, "2", #{title}, #{description}, #{answerType}, #{multipleValue}, #{initialAnswer}, #{acceptValue}, #{must});
 	</insert>
 	
 	<!-- 获取所有某问题的所有selection -->
@@ -161,6 +163,7 @@
 			s.answer_type,
 			s.accept_value,
 			s.initial_answer,
+			s.multiple_value,
 			null as selectionId,
 			null as selectionContent
 		from supplier_sim s
@@ -178,6 +181,7 @@
 			s.answer_type,
 			s.accept_value,
 			s.initial_answer,
+			s.multiple_value,
 			s2.selection_id as selectionId,
 			s2.content as selectionContent
 		from supplier_sim s, supplier_sim_selection s2
@@ -274,4 +278,27 @@
            		update answer = #{item.answer}
        </foreach>  
    </insert> 
+   
+   <select id="getMultiSelectionDate" resultMap="SIMMap">
+   		select 
+   			id, 
+   			initial_answer,
+   			null as selectionId,
+   			null as selectionContent,
+   			answer_type,
+   			null as multiple_value
+   		from supplier_sim
+   		where answer_type = 5
+   		union
+   		select 
+   			id,
+   			initial_answer,
+   			selection_id as selectionId,
+   			content as selectionContent,
+   			null as answer_type,
+   			multiple_value
+   		from supplier_sim, supplier_sim_selection
+   		where multiple_value = 1
+   		and question_id = id;
+   </select>
 </mapper>

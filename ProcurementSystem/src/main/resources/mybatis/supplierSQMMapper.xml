@@ -7,8 +7,8 @@
 		<result property="title" column="title" />
 		<result property="description" column="description" />
 		<result property="status" column="status" />
-		<result property="validTo" column="valid_to" />
-		<result property="lastValid" column="last_valid" />
+		<result property="validTo" column="validTo" />
+		<result property="lastValid" column="lastValid" />
 		<association property="supplier"
 			javaType="com.ProcurementSystem.entity.Supplier">
 			<id property="uniqueName" column="supplierId" />
@@ -52,6 +52,7 @@
 		</collection>
 		<collection property="commodities" ofType="com.ProcurementSystem.entity.UNSPSC" javaType="List">
 			<result property="id" column="commodityId" />
+			<result property="nodeId" column="commodityNodeId" />
 			<result property="description" column="commodityName" />
 		</collection>
 	</resultMap>
@@ -158,12 +159,13 @@
 		supplier_sqm.description as description,
 		<!-- supplier_sqm.commodity as commodity, -->
 		supplier_sqm.valid_to as validTo,
-		supplier_sqm.last_valid as
-		lastValid,
+		supplier_sqm.last_valid as lastValid,
 		supplier_sqm.supplier_id as
 		supplierId,
+		supplier.name as supplierName,
 		supplier_sqm.user_id
 		as userId,
+		user.name as userName,
 		supplier_sqm.status as status,
 		tttn.id as
 		templateTaskTreeNodeId,
@@ -202,9 +204,15 @@
 		unspsc.description as
 		unspscDescription,
 		unspsc.id as commodityId,
-		unspsc.description as commodityName
+		unspsc.description as commodityName,
+		ssac.node_id as commodityNodeId
 		from
-		supplier_sqm left
+		supplier_sqm 
+		left join user
+		on user.unique_name = supplier_sqm.user_id
+		left join supplier
+		on supplier.unique_name = supplier_sqm.supplier_id
+		left
 		join
 		template_task_tree_node
 		tttn
@@ -251,6 +259,18 @@
 		update supplier_sqm
 		<set>
 			status=#{status}
+		</set>
+		where id = #{id};
+	</update>
+	
+	<update id="updateSQM" parameterType="com.ProcurementSystem.entity.SupplierSQM">
+		update supplier_sqm
+		<set>
+			title = #{title},
+			description = #{description},
+			valid_to = #{validTo},
+			last_valid = #{lastValid},
+			supplier_id = #{supplier.uniqueName}
 		</set>
 		where id = #{id};
 	</update>

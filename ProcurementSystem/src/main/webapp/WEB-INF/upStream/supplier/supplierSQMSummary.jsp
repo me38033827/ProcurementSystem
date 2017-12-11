@@ -42,7 +42,7 @@
 									操作&nbsp;<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" style="width: 200px;">
-									<li><a class="manu-active" href="">&nbsp;&nbsp;编辑概述</a></li>
+									<li><a class="manu-active" href="sqmEdit?id=${sqm.id}&action=initial">&nbsp;&nbsp;编辑概述</a></li>
 									<li><a class="manu-active" href="">&nbsp;&nbsp;编辑概要</a></li>
 									<li><a class="manu-active" href="">&nbsp;&nbsp;查看详细信息</a></li>
 									<li><a class="manu-active" href="">&nbsp;&nbsp;移动</a></li>
@@ -72,11 +72,11 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">上次资格日期：</td>
-								<td class="col-standard2">${sqm.lastValid}</td>
+								<td class="col-standard2"><span id="lastValid"></span><input type="hidden" id="lastValidValue" value="${sqm.lastValid}" /></td>
 							</tr>
 							<tr>
 								<td class="col-standard1">资格失效日期：</td>
-								<td class="col-standard2">${sqm.validTo}</td>
+								<td class="col-standard2"><span id="validTo"></span><input type="hidden" id="validToValue" value="${sqm.validTo}" /></td>
 							</tr>
 							<tr>
 								<td class="col-standard1">版本：</td>
@@ -96,7 +96,7 @@
 							</tr>
 							<tr>
 								<td class="col-standard1">所有者：</td>
-								<td class="col-standard2">${sqm.user.uniqueName}</td>
+								<td class="col-standard2">${sqm.user.name}</td>
 							</tr>
 							<tr>
 								<td class="col-standard1">测试项目：</td>
@@ -189,6 +189,14 @@
 		function back() {
 			location.href = "../search/supplierSearchDistribute?page=2006";
 		}
+		$(function(){
+			var lastValidValue = $("#lastValidValue").val().split("-");
+			var lastValid = lastValidValue[0]+"年"+lastValidValue[1]+"月"+lastValidValue[2]+"日";
+			$("#lastValid").text(lastValid);
+			var validToValue = $("#validToValue").val().split("-");
+			var validTo = validToValue[0]+"年"+validToValue[1]+"月"+validToValue[2]+"日";
+			$("#validTo").text(validTo);
+		});
 	</script>
 </body>
 </html>

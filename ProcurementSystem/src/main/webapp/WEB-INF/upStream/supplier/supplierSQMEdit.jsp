@@ -15,12 +15,10 @@
 			<div class="standard-out">
 				<!-- 主要内容 -->
 				<div class="standard-title">
-					<div class="standard-title-main">创建供应商资格管理项目</div>
+					<div class="standard-title-main">编辑供应商资格管理项目</div>
 					<div class="standard-title-r">
 						<button onclick="validCheck()" class="btn-b">确定</button>
-						<!-- <button form="supplierSQMCreation"
-							formaction="sqmCreation?action=submit" class="btn-b">确定</button> -->
-						<button class="btn-w" onclick="window.location.href='../main'">取消</button>
+						<button class="btn-w" onclick="window.location.href='sqmSummary?id=${sqm.id} '">取消</button>
 					</div>
 				</div>
 				<div class="title-description">
@@ -28,10 +26,25 @@
 				</div>
 				<div class="adjust-10"></div>
 
-				<form id="supplierSQMCreation" method="post" action="sqmCreation?action=submit">
+				<form id="supplierSQMCreation" method="post" action="sqmEdit?id=${sqm.id}&action=submit">
 					<div class="row">
 						<div class="col-md-5">
 							<table class="fulltab" style="margin-left: 80px;">
+								<tr class="row-standard">
+									<td class="col-standard1">＊供应商：</td>
+									<td class="col-standard2">
+										<div>
+											${sqm.supplier.name} 
+											<input type="hidden" id="supplierUniqueName" name="supplierUniqueName"
+												value="${sqm.supplier.uniqueName }"> <input
+												type="hidden" value="${sqm.supplier.name }">
+											<button style="border: 0; background-color: transparent"
+												formaction="sqmEditCreationChooseSupplier?id=${sqm.id}&action=initial">【
+												选择 】</button>
+											<span class="error-message" id="supplier-error">${Error_supplier}</span>
+										</div>
+									</td>
+								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">＊名称：</td>
 									<td class="col-standard2"><input
@@ -52,40 +65,9 @@
 												%>${sqm.description}<%}%></textarea>
 									</td>
 								</tr>
-
 								<tr class="row-standard">
-									<td class="col-standard1" valign="top">商品：</td>
+									<td class="col-standard1">开始日期：</td>
 									<td class="col-standard2">
-										<table id="commodities">
-											<c:forEach items="${sqm.commodities}" var="commodity">
-												<tr>
-													<td>${commodity.description }</td>
-													<td>${commodity.id }</td>
-												</tr>
-											</c:forEach>
-										</table>
-										<input type="hidden" id="commoditiesId" name="commoditiesId" value="${commoditiesId}"/>
-										<input type="hidden" id="commoditiesName" name="commoditiesName" value="<%=request.getAttribute("commoditiesName")%>"/>
-										<input type="hidden" id="nodeIds" name="nodeIds" value=<%=request.getAttribute("commoditiesNodeId")%> />
-											［&nbsp;<input type="button" style="width:50px; border:none;" onclick="onSelectCommodity();" value="选择" />&nbsp;］
-									</td>
-								</tr>
-							</table>
-						</div>
-						<div class="col-md-5">
-							<table class="fulltab">
-								<tr class="row-standard">
-									<td class="col-standard1">＊供应商：</td>
-									<td class="col-standard2">
-										<div>${sqm.supplier.name} 
-											<input type="hidden" id="supplierUniqueName"
-												value="${sqm.supplier.uniqueName }"> <input
-												type="hidden" value="${sqm.supplier.name }">
-											<button style="border: 0; background-color: transparent"
-												formaction="sqmCreationChooseSupplier?action=initial">【
-												选择 】</button>
-											<span class="error-message" id="supplier-error">${Error_supplier}</span>
-										</div>
 									</td>
 								</tr>
 								<tr class="row-standard">
@@ -115,25 +97,33 @@
 										 %>
 									</td>
 								</tr>
+								<tr class="row-standard">
+									<td class="col-standard1" valign="top">商品：</td>
+									<td class="col-standard2">
+										<table id="commodities">
+											<c:forEach items="${sqm.commodities}" var="commodity">
+												<tr>
+													<td>${commodity.description }</td>
+													<td>${commodity.id }</td>
+												</tr>
+											</c:forEach>
+										</table>
+										<input type="hidden" id="commoditiesId" name="commoditiesId" value="${commoditiesId}"/>
+										<input type="hidden" id="commoditiesName" name="commoditiesName" value="<%=request.getAttribute("commoditiesName")%>"/>
+										<input type="hidden" id="nodeIds" name="nodeIds" value=<%=request.getAttribute("commoditiesNodeId")%> />
+											［&nbsp;<input type="button" style="width:50px; border:none;" onclick="onSelectCommodity();" value="选择" />&nbsp;］
+									</td>
+								</tr>
 							</table>
 						</div>
-					</div>
-
-					<div class="standard-title-main">选择模版</div>
-					<div class="title-description">
-						请选择您要使用的模板，并回答与之相关的所有问题，以便创建您的项目。以上区段的字段设置值将对可用模板产生影响。</div>
-					<div class="radio">
-						<c:forEach items="${templates}" var="template">
-							<label class="model"><input type="radio" checked
-								name="sqmTemplateId" id="spm_model1" value="${template.id }">&nbsp;&nbsp;${template.name}</label>
-							<br />
-						</c:forEach>
+						<div class="col-md-5">
+						</div>
 					</div>
 				</form>
 				<div class="standard-ending">
 					<div align="right" class="standard-ending-r">
 						<button onclick="validCheck()" class="btn-b">确定</button>
-						<button class="btn-w" onclick="window.location.href='../main'">取消</button>
+						<button class="btn-w" onclick="window.location.href='sqmSummary?id=${sqm.id} '">取消</button>
 					</div>
 				</div>	
 				<!-- 选择商品 -->
@@ -164,10 +154,6 @@
 				$("form").submit();
 			}
 		}
-		<%if(request.getAttribute("sqm")!=null){%>
-			templateId = ${sqm.templateTaskTreeNode.id};
-			$("input[value="+templateId+"]").prop('checked', true);
-		<%}%>
 		<%if(request.getAttribute("commodities")!=null){%>
 			var nodes = <%=request.getAttribute("nodes")%>;
 		<%}%>

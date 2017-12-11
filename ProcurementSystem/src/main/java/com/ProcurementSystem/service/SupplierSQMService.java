@@ -24,12 +24,12 @@ public class SupplierSQMService {
 		dao.insertSQM(sqm);
 	}
 	
-//	public List<SupplierSQM> searchAllSupplierSQM(){
-//		return dao.searchAllSupplierSQM();
-//	}
-	
 	public void updateSQMStatus(SupplierSQM sqm){
 		dao.updateSQMStatus(sqm);
+	}
+	
+	public void updateSQM(SupplierSQM sqm){
+		dao.updateSQM(sqm);
 	}
 	
 	public SupplierSQM getSupplierSQM(int id){

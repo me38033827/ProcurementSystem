@@ -123,19 +123,36 @@ public class SIMTree {
 			}
 			
 			for (SIMTreeNode child : children){
-				String answer="";
 				JSONObject jsonObj = new JSONObject();
+				String li="";
+				String answer = "";
 				if(control==true){
 					child.setNumber(child.getOrder().toString());
 				}else{
 					child.setNumber(parentNode.getNumber()+"."+child.getOrder().toString());
 				}
+				//folder
 				if(child.getType()==2){
-					answer="<a class=\"questionnaire-ans\"id=\"ans-"+ child.getSupplierSIM().getId() +"\"></a>";
+					int child_type = child.getType();
+					int child_accept_value = child.getSupplierSIM().getAcceptValue();
+					int child_answer_type = child.getSupplierSIM().getAnswerType();
+					//有选项
+					if(child_type==2 && child_accept_value==2){
+						answer= "<select class=\"selection\" id=\"ans-"+child.getSupplierSIM().getId()+"\" name=\"ans-"+child.getSupplierSIM().getId()+"\">\n";
+						answer+="<option class='selection' selected=\"selected\" disabled=\"disabled\" style='display:none' value=''></option>";
+						List<SupplierSIMSelection> selections = child.getSupplierSIM().getSelections();
+						for(SupplierSIMSelection selection: selections){
+							answer = answer +  "<option class=\"selection\" value=\""+selection.getContent()+"\">"+selection.getContent()+"</option>\n";
+						}
+						answer=answer+"</select>";
+					}
+					if(child_type==2 && child_accept_value!=2 && child_answer_type==1){
+						answer="<input class=\"input\" id=\"ans-"+child.getSupplierSIM().getId()+"\" name=\"ans-"+child.getSupplierSIM().getId()+"\"/>";
+					}
+					
 				}
-				
 				jsonObj.put("text", child.getNumber()+"    "+child.getSupplierSIM().getTitle()
-						+answer);
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + answer);
 				jsonObj.put("href", "");
 				if(child.getType()==1){
 					jsonObj.put("nodes", traverseHelperWithoutSelection(child));
@@ -196,8 +213,9 @@ public class SIMTree {
 					int child_type = child.getType();
 					int child_accept_value = child.getSupplierSIM().getAcceptValue();
 					int child_answer_type = child.getSupplierSIM().getAnswerType();
-					//有选项
-					if(child_type==2 && child_accept_value==2){
+					int child_multiple = child.getSupplierSIM().getMultipleValue();
+					//单选
+					if(child_type==2 && child_accept_value==2 && child_multiple == 0){
 						answer= "<select class=\"selection\" id=\"ans-"+child.getSupplierSIM().getId()+"\" name=\"ans-"+child.getSupplierSIM().getId()+"\">\n";
 						answer+="<option class='selection' selected=\"selected\" disabled=\"disabled\" style='display:none' value=''></option>";
 						List<SupplierSIMSelection> selections = child.getSupplierSIM().getSelections();
@@ -206,10 +224,27 @@ public class SIMTree {
 						}
 						answer=answer+"</select>";
 					}
+					//多选
+					if(child_type==2 && child_accept_value==2 && child_multiple == 1){
+						int simId = child.getSupplierSIM().getId();
+						answer+="<div id=\""+simId+"\"></div>";
+//						List<SupplierSIMSelection> selections = child.getSupplierSIM().getSelections();
+//						for(SupplierSIMSelection selection: selections){
+//							String label = simId+"-"+child.getOrder();
+//							answer+="<div id=\""+simId+"\"></div>";
+////							answer+="<input type=\"checkbox\" id=\""+label+"\" class=\"chk\" value=\""+selection.getContent()+"\">"
+////									+"<label for=\""+label+"\"></label><span>"+selection.getContent()+"</span><br>";
+//						}
+					}
+					//填空
 					if(child_type==2 && child_accept_value!=2 && child_answer_type==1){
 						answer="<input class=\"input\" id=\"ans-"+child.getSupplierSIM().getId()+"\" name=\"ans-"+child.getSupplierSIM().getId()+"\"/>";
 					}
-					
+					//日期
+					if(child_type==2 && child_accept_value!=2 && child_answer_type==5){
+						answer="<label for=\"meeting\"></label><input name=\"initialAnswer\" class=\"form-control input inline-b\" id=\"meeting\""
+							+ "type=\"date\" value=\"2017-12-01\" />";
+					}
 				}
 				jsonObj.put("text", child.getNumber()+"    "+child.getSupplierSIM().getTitle()
 						+"<div class=\"btn-group\">\n" +

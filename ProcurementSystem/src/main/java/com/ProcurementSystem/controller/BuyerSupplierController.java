@@ -82,6 +82,12 @@ public class BuyerSupplierController {
 		request.setAttribute("treeData", simTree.traverseToJSONArray());
 		return "upStream/supplier/sim/showQuestionEdit";
 	}
+	
+	//获得空白选项 (多选和日期)
+	@RequestMapping(value = "getMultiSelectionDate")
+	public @ResponseBody List<SupplierSIM> getMultiSelectionDate(HttpServletRequest request) {
+		return simService.getMultiSelectionDate();
+	}
 
 	// P2P显示供应商信息管理
 	@RequestMapping(value = "supplierInformationManagement")
@@ -129,7 +135,7 @@ public class BuyerSupplierController {
 
 	// P2P显示供应商信息管理－将问题添加到数据库
 	@RequestMapping(value = "addQuestion")
-	public String addQuestion(HttpServletRequest request) {
+	public String addQuestion(SupplierSIM suppliersim, HttpServletRequest request) {
 		int parentId = Integer.parseInt(request.getParameter("parentId"));
 		int order = Integer.parseInt(request.getParameter("order"));
 
@@ -143,6 +149,8 @@ public class BuyerSupplierController {
 		sim.setTitle(title);
 		sim.setAnswerType(answerType);
 		sim.setAcceptValue(acceptValue);
+		System.out.println(suppliersim.getMultipleValue());
+		System.out.println(multipleValue);
 		sim.setMultipleValue(multipleValue);
 		if (acceptValue == 1) {
 			sim.setInitialAnswer(initialAnswer);
@@ -676,7 +684,7 @@ public class BuyerSupplierController {
 		int uniqueName = service.findMaxUniqueName() + 1;
 		request.setAttribute("uniqueName", uniqueName);
 		SIMTree simTree = simService.generateSIMTree();
-		request.setAttribute("treeData", simTree.traverseToJSONArray());
+		request.setAttribute("treeData", simTree.traverseToJSONArrayWithoutSelection());
 		return "upStream/supplier/supplierCreation";
 	}
 
@@ -714,42 +722,6 @@ public class BuyerSupplierController {
 		simService.insertOrUpdateSIMAnswers(allAnswers);
 		return "redirect:../search/supplierSearchDistribute?page=2004";
 	}
-
-//	/* SQM搜索 */
-//	@RequestMapping(value = "sqmSearching")
-//	public String sqmSearching(HttpServletRequest request) {
-//		String action = request.getParameter("action");
-//		System.out.println("action is " + action);
-//		if (action.equals("reset") || action.equals("initial")) {
-//			request.getSession().setAttribute("contentSession", null);
-//			request.setAttribute("num", null);
-//			return "upStream/supplier/supplierSQMSearching";
-//		}
-//		String content = (String) request.getSession().getAttribute("content");
-//		System.out.println(content);
-//		if (content == null) {
-//			content = request.getParameter("content");
-//		} else {
-//			request.getSession().removeAttribute("content");
-//		}
-//		// search
-//		System.out.println("Search for content: " + content);
-//		if (content == null) {
-//			List<SupplierSQM> supplierSQMs = sqmService.searchAllSupplierSQM();
-//			request.setAttribute("supplierSQMs", supplierSQMs);
-//			request.setAttribute("num", Integer.toString(supplierSQMs.size()));
-//			System.out.println("共有" + Integer.toString(supplierSQMs.size()) + "个搜索结果");
-//		} else {
-//			List<SupplierSQM> supplierSQMs = sqmService.searchSupplierSQM(content);
-//			request.setAttribute("supplierSQMs", supplierSQMs);
-//			request.setAttribute("content", content);
-//			request.setAttribute("num", Integer.toString(supplierSQMs.size()));
-//			System.out.println("共有" + Integer.toString(supplierSQMs.size()) + "个搜索结果");
-//		}
-//
-//		request.getSession().setAttribute("contentSession", content);
-//		return "upStream/supplier/supplierSQMSearching";
-//	}
 
 	/* SQM详情 */
 	@RequestMapping(value = "sqmSummary")
@@ -817,7 +789,8 @@ public class BuyerSupplierController {
 	@RequestMapping(value = "sqmCreation")
 	public String sqmCreation(HttpServletRequest request, @Valid SupplierSQM sqm, BindingResult result, ModelMap map,
 			@RequestParam(value = "sqmTemplateId", required = false) Integer sqmTemplateId,
-			@RequestParam(value = "commoditiesId", required = false) String commoditiesId) {
+			@RequestParam(value = "commoditiesId", required = false) String commoditiesId,
+			@RequestParam(value = "nodeIds", required = false) String nodesId) {
 		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
 		System.out.println(action);
@@ -872,6 +845,7 @@ public class BuyerSupplierController {
 			allowedCode.setSqm(sqm);
 			String oriCode = commoditiesId;
 			allowedCode.setSpscCode(oriCode);// 设置原始code，特殊分隔符分开
+			allowedCode.setNodeId(nodesId);
 			allowedCodeService.setAllowedSpscCode(allowedCode);// 设置SQM准入类别，并持久化
 			return "redirect:sqmSummary?id=" + sqm.getId();
 		}
@@ -946,6 +920,7 @@ public class BuyerSupplierController {
 			request.setAttribute("num", Integer.toString(suppliers.size()));
 		} else {// 按条件搜索
 			List<Supplier> suppliers = service.searchSupplier(content);
+			request.setAttribute("suppliers", suppliers);
 			request.setAttribute("content", content);
 			request.setAttribute("num", Integer.toString(suppliers.size()));
 		}
@@ -964,6 +939,151 @@ public class BuyerSupplierController {
 		SupplierSQM sqmSession = (SupplierSQM) session.getAttribute("sqmSession");
 		sqmSession.setSupplier(supplier);
 		return "redirect: sqmCreation?action=back";
+	}
+	
+	@RequestMapping(value = "sqmEdit")
+	public String sqmEdit(HttpServletRequest request, SupplierSQM sqmFin,
+			@RequestParam(value = "id", required = true) String id,
+			@RequestParam(value = "action", required = true) String action,
+			@RequestParam(value = "commoditiesId", required = false) String commoditiesId,
+			@RequestParam(value = "commoditiesName", required = false) String commoditiesName,
+			@RequestParam(value = "nodeIds", required = false) String nodeIds) {
+		SupplierSQM sqm = sqmService.getSupplierSQM(Integer.parseInt(id));
+		request.getSession().setAttribute("sqm", sqm);
+		request.setAttribute("sqm", sqm);
+		HttpSession session = request.getSession();
+		if (action.equals("initial")){
+			if(sqm.getCommodities()!=null){
+				String nodes = "";
+				String ids = "";
+				String names = "";
+				for(UNSPSC c: sqm.getCommodities()){
+					nodes += c.getNodeId() + ",";
+					ids += c.getId() + ",";
+					names += c.getDescription() + ",";
+				}
+				request.setAttribute("commoditiesName", names);
+				request.setAttribute("commoditiesId", ids);
+				request.setAttribute("commoditiesNodeId", nodes);
+			}
+			return "upStream/supplier/supplierSQMEdit";
+		}else if(action.equals("back")){
+			SupplierSQM lastSqm = (SupplierSQM) request.getSession().getAttribute("sqmSession");
+			
+			if(lastSqm.getCommodities()!=null){
+				String nodes = "";
+				String ids = "";
+				String names = "";
+				for(UNSPSC c: lastSqm.getCommodities()){
+					nodes += c.getNodeId() + ",";
+					ids += c.getId() + ",";
+					names += c.getDescription() + ",";
+				}
+				request.setAttribute("commoditiesName", names);
+				request.setAttribute("commoditiesId", ids);
+				request.setAttribute("commoditiesNodeId", nodes);
+			}
+			request.setAttribute("sqm", lastSqm);
+			return "upStream/supplier/supplierSQMEdit";
+		}else if(action.equals("submit")){
+			//SupplierSQM sqmSession = (SupplierSQM) request.getSession().getAttribute("sqmSession");
+			String supplierUniqueName = (String) request.getParameter("supplierUniqueName");
+			Supplier supplier = new Supplier();
+			supplier.setUniqueName(Integer.parseInt(supplierUniqueName));
+			sqmFin.setSupplier(supplier);
+			
+			session.removeAttribute("sqmSession");
+			
+			sqmService.updateSQM(sqmFin);// 持久化SQM
+			
+			SupplierSQMAllowedCode allowedCode = new SupplierSQMAllowedCode();
+			allowedCode.setSqm(sqmFin);
+			String oriCode = commoditiesId;
+			allowedCode.setSpscCode(oriCode);// 设置原始code，特殊分隔符分开
+			String oriNodes = nodeIds;
+			allowedCode.setNodeId(oriNodes );
+			allowedCodeService.modifyAllowedSpscCode(allowedCode);// 设置SQM准入类别，并持久化
+			return "redirect:sqmSummary?id=" + sqm.getId();
+		}
+		return "upStream/supplier/supplierSQMEdit";
+	}
+	
+	// 创建sqm->选择供应商页
+	@RequestMapping(value = "sqmEditCreationChooseSupplier")
+	public String sqmEditCreateChooseSupplier(SupplierSQM sqm, HttpServletRequest request,
+			@RequestParam(value = "commoditiesId", required = false) String commoditiesId,
+			@RequestParam(value = "commoditiesName", required = false) String commoditiesName,
+			@RequestParam(value = "nodeIds", required = false) String nodeIds) {
+		HttpSession session = request.getSession();
+		request.setAttribute("sqmId", sqm.getId());
+		String target = "upStream/supplier/supplierSQMEditChooseSupplier";// 跳转页面路径
+
+		String action = request.getParameter("action");
+		if (action.equals("reset")) {// 搜索重置
+			session.setAttribute("contentSession", "");
+			request.setAttribute("num", "-1");// -1表示无项目
+			return target;
+		}
+		if (action.equals("initial")) {
+			request.setAttribute("num", "-1");
+			if(commoditiesId!="" && commoditiesName != ""){
+				String[] ids = commoditiesId.split(",");
+				String[] names = commoditiesName.split(",");
+				System.out.println(nodeIds);
+				String[] nodes = nodeIds.split(",");
+				List<UNSPSC> commodities = new ArrayList<UNSPSC>();
+				for(int i = 0; i<ids.length; i++){
+					UNSPSC un = new UNSPSC();
+					un.setId(Integer.parseInt(ids[i]));
+					un.setDescription(names[i]);
+					un.setNodeId(Integer.parseInt(nodes[i]));
+					commodities.add(un);
+				}
+				sqm.setCommodities(commodities);
+			}
+			session.setAttribute("sqmSession", sqm);
+			return target;
+		}
+		String content = request.getParameter("content");
+		if (action.equals("back")) {
+			request.setAttribute("commoditiesName",commoditiesName);
+			request.setAttribute("commoditiesId",commoditiesId);
+			request.setAttribute("commoditiesNodeId", nodeIds);
+			content = (String) request.getSession().getAttribute("sqmSession");
+		}
+		if (content == null) {
+			request.setAttribute("num", "-1");
+			return target;
+		}
+		// search
+		if (content.equals("使用名称、标识符或任何其他词语搜索")) {// 默认搜索全部
+			List<Supplier> suppliers = service.searchAllSupplier();
+			request.setAttribute("suppliers", suppliers);
+			request.setAttribute("num", Integer.toString(suppliers.size()));
+		} else {// 按条件搜索
+			List<Supplier> suppliers = service.searchSupplier(content);
+			request.setAttribute("suppliers", suppliers);
+			request.setAttribute("content", content);
+			request.setAttribute("num", Integer.toString(suppliers.size()));
+		}
+		request.getSession().setAttribute("contentSession", content);
+		return target;
+	}
+
+	@RequestMapping(value = "sqmEditGetSelectedSupplier")
+	public String sqmEditGetSelectedSupplier(HttpServletRequest request,
+			@RequestParam(value = "uniqueName", required = true) int uniqueName,
+			@RequestParam(value = "name", required = true) String name,
+			@RequestParam(value = "id", required = true) String id) {
+//		int uniqueName = Integer.parseInt(request.getParameter("uniqueName"));
+//		String name = request.getParameter("name");
+		Supplier supplier = new Supplier();
+		supplier.setUniqueName(uniqueName);
+		supplier.setName(name);
+		HttpSession session = request.getSession();
+		SupplierSQM sqmSession = (SupplierSQM) session.getAttribute("sqmSession");
+		sqmSession.setSupplier(supplier);
+		return "redirect: sqmEdit?id="+id+"&action=back";
 	}
 
 	@RequestMapping(value = "sqmStatus")

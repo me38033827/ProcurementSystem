@@ -1,9 +1,9 @@
 $(function(){
 	if(pageId==2004){
 		showSupplierBox();
-	}else if(pageId=='2005'){
+	}else if(pageId==2005){
 		showSupplierSPMBox();
-	}else if(pageId=='2006'){
+	}else if(pageId==2006){
 		showSupplierSQMBox();
 	}
 	$.ajax({
@@ -575,7 +575,7 @@ function actionSupplierSQM(){
 	$("#result-action").append("<table class=\"table table-hover\">"
 						+"<tr class=\"standard-row3\">"
 							+"<td colspan=\"7\"><a class=\"arrow-turn\">&#8627;</a>"
-								+"<button class=\"btn-w\">管理</button>"
+								+"<button class=\"btn-w\" onclick=\"window.location.href='../supplier/sqmCreation?action=initial'\">创建</button>"
 							+"</td>"
 						+"</tr>"
 					+"</table>"
@@ -627,7 +627,7 @@ function searchSupplierSQM(){
 		dataType: 'json',
 	    url:"../search/supplierSQMSearch",
 	    success:function(data){
-	    		console.log(data);
+	    		//console.log(data);
 	      	if(data.length!=0){
 		      	$("#numOfResults").text(data.length);
 		      	var results = "";
@@ -642,7 +642,7 @@ function searchSupplierSQM(){
 		      		results=results+"<tr>\n" +
 		      	    "<td style=\"width: 20%; vertical-align:middle;\"><a href=\"../supplier/sqmSummary?id="+data[i].id+"\">"+data[i].title+"</a></td>\n" +
 		      	    "<td style=\"width: 10%; vertical-align:middle;\">"+data[i].user.name+"</td>\n" +
-		      	    "<td style=\"width: 10%; vertical-align:middle;\">"+data[i].supplier.name+"</td>\n" +
+		      	    "<td style=\"width: 10%; vertical-align:middle;\"><a href=\"../supplier/supplierDetail?id="+data[i].supplier.uniqueName+"\">"+data[i].supplier.name+"</a></td>\n" +
 		      	    "<td style=\"width: 40%; vertical-align:middle;\">\n" + commodities +
 		      	    "</td>\n" +
 		      	    "<td style=\"width: 5%; padding: 3px; vertical-align:middle;\"><span id=\"status-"+data[i].id+"\">"+data[i].status+"</span>" +

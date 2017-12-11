@@ -6,4 +6,6 @@ public interface IBuyerSupplierSQMAllowedCodeDao {
 
 	void insert(SupplierSQMAllowedCode allowedCode);//插入allowedCode
 
+	void delete(int sqmId);
+	
 }

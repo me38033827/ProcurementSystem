@@ -18,41 +18,7 @@
 						<a class="p2p-supplier-title-main">供应商信息区域</a><br>
 						<a class="p2p-supplier-subtitle">信息项目</a>
 					</div>
-					
-					<div class="right" id="supplier-detail-top" style="margin-top:15px; width:200px;">
-						<table>
-							<tr>
-								<td class="text-right">任务：</td>
-								<td><a>未完成的任务：2</a></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><a>显示基本试图</a></td>
-							</tr>
-						</table>
-					</div>
-				</div>
-				
-				<div class="tag-line">
-					<button class="tag-not-clicked"
-						onclick="window.location.href=''">概述</button>
-					<button class="tag-clicked"
-						onclick="window.location.href=''">文档</button>
-					<button class="tag-not-clicked"
-						onclick="window.location.href=''">任务</button>
-					<button class="tag-not-clicked"
-						onclick="window.location.href=''">团队</button>
-					<button class="tag-not-clicked"
-						onclick="window.location.href=''">信息板</button>
-					<button class="tag-not-clicked"
-						onclick="window.location.href=''">历史记录</button>
-				</div>
-				
-				<div class="adjust-10"></div>
-				<div class="adjust-10"></div>
-				
-				<div class="standard-subtitle">供应商信息区域
-					<div class="right">
+					<div class="right" style="margin-top:40px;">
 						<div class="btn-group">
 							<button class="btn-m" style="width:80px;" data-toggle="dropdown">
 							    操作&nbsp;<span class="caret"></span>
@@ -64,6 +30,9 @@
 						</div>
 					</div>
 				</div>
+				
+				
+				<div class="standard-subtitle"></div>
 	
 				<div class="adjust-10"></div>
 				

@@ -4,12 +4,15 @@ function selectAcceptValue(){
 		$("#selection-list").hide();
 		$("#multiple").hide();
 		$("#initial").show();
+		$("#type").show();
 	}
+	//有选择
 	if(acceptValue==2){
 		$("#selection-list").show();
 		$("#initial").hide();
 		$("#selection").val(selection);
 		$("#multiple").show();
+		$("#type").hide();
 	}
 }
 

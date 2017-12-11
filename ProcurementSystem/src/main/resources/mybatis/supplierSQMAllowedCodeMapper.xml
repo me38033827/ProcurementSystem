@@ -5,7 +5,11 @@
 	
 	<update id="insert">
 		insert into supplier_sqm_allowed_code
-		(sqm_id,spsc_code)
-		values(#{sqm.id},#{spscCode})
+		(sqm_id,spsc_code,node_id)
+		values(#{sqm.id},#{spscCode},#{nodeId})
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from supplier_sqm_allowed_code where sqm_id = #{sqmId}
+	</delete>
 </mapper>

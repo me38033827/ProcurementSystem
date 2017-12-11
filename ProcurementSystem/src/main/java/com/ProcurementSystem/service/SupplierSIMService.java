@@ -221,4 +221,9 @@ public class SupplierSIMService {
 	public void insertOrUpdateSIMAnswers(List<SupplierSIMAnswer> answers){
 		dao.insertOrUpdateSIMAnswers(answers);
 	}
+	
+	//获得多选和日期问题
+	public List<SupplierSIM> getMultiSelectionDate(){
+		return dao.getMultiSelectionDate();
+	}
 }

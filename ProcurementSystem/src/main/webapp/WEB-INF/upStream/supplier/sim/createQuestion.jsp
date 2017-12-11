@@ -25,34 +25,14 @@
 				
 				<div class="standard-subsubtitle"> ${parentList }</div>
 				
-				<form id="addQuestion" method="post">
+				<form id="addQuestion" method="post" action="addQuestion">
 					<input hidden="hidden" name = "parentId" value="${parentId }" />
 					<input hidden="hidden" name="order" value="${order }" />
 					<table class="fulltab">
 						<tr class="row-standard">
-							<td valign="top" class="col-standard1" style="width:200px; padding-top:5px;">名称：</td>
+							<td valign="top" class="col-standard1" style="width:200px; padding-top:5px;">＊名称：</td>
 							<td class="col-standard2" style="height:110px;">
 								<textarea name="title" id="title" class="input" style="width:280px; height:100px;padding-left:5px;"></textarea>
-							</td>
-						</tr>
-						<tr class="row-standard">
-							<td class="col-standard1">位置：</td>
-							<td class="col-standard2">在里面添加</td>
-						</tr>
-						<tr class="row-standard">
-							<td class="col-standard1">答案类型：</td>
-							<td class="col-standard2">
-								<select name="answerType">
-									<option value="1">文本（单行）</option>
-									<option value="2">文本（多行）</option>
-									<option value="3">整数</option>
-									<option value="4">小数</option>
-									<option value="5">日期</option>
-									<option value="6">货币</option>
-									<option value="7">是／否</option>
-									<option value="8">百分比</option>
-									<option value="9">数量</option>
-								</select>
 							</td>
 						</tr>
 						<tr class="row-standard">
@@ -64,9 +44,20 @@
 								</select>
 							</td>
 						</tr>
+						<tr class="row-standard" id="type">
+							<td class="col-standard1">答案类型：</td>
+							<td class="col-standard2">
+								<select name="answerType" id="answerType" onchange="changeAnswerType();">
+									<option value="1">文本</option>
+									<option value="5">日期</option>
+								</select>
+							</td>
+						</tr>
 						<tr class="row-standard" id="initial">
 							<td class="col-standard1">初始值：</td>
-							<td class="col-standard2"><input class="input" name="initialAnswer"/></td>
+							<td class="col-standard2" id="initialType">
+								<input class="input" name="initialAnswer"/>
+							</td>
 						</tr>
 						<tr class="row-standard" id="selection-list" hidden="hidden">
 							<td class="col-standard1" valign="top">选择列表：</td>
@@ -103,13 +94,22 @@
 								</select>
 							</td>
 						</tr>
+						<tr class="row-standard" id="must">
+							<td class="col-standard1">设置为必填：</td>
+							<td class="col-standard2">
+								<select name="must">
+									<option value="0" selected>否</option>
+									<option value="1">是</option>
+								</select>
+							</td>
+						</tr>
 					</table>
 				</form>
 				
 				<div class="standard-ending">
 				    <div align="right" class="standard-ending-r">
-				    		<button class="btn-b" form="addQuestion" formaction="addQuestion">确定</button>
-						<button class="btn-w" onclick="window.location.href='simQuestionnaire'">取消</button>
+				    		<button class="btn-b" onclick="finish();">完成</button>
+				    		<button class="btn-w" onclick="window.location.href='simQuestionnaire'">取消</button>
 				    </div>  
 				</div>
 			</div>
@@ -136,7 +136,7 @@
 					if(!value){
 						pass = 0;
 						if(emptySelection==0){
-							$("#selection-table").append("<span class='left alert-msg' style='color:red'>选项内容不能为空！</span>");
+							$("#selection-table").append("<span class='left alert-msg' style='color:red'>&nbsp;&nbsp;选项内容不能为空！</span>");
 						}
 						emptySelection++;
 					}
@@ -148,7 +148,19 @@
 			}
 			//通过验证
 			if(pass){
+				console.log(23123);
 				$("form").submit();
+			}
+		}
+		function changeAnswerType(){
+			var answerType = $("#answerType").val();
+			if(answerType==1){
+				$("#initialType").empty();
+				$("#initialType").append("<input class=\"input\" name=\"initialAnswer\"/>")
+			}else if(answerType==5){
+				$("#initialType").empty();
+				$("#initialType").append("<label for=\"meeting\"></label><input name=\"initialAnswer\" class=\"form-control input\" id=\"meeting\""
+							+ "type=\"date\" value=\"2017-12-01\" />"); 
 			}
 		}
 	</script>

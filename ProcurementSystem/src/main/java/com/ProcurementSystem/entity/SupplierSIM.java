@@ -14,6 +14,7 @@ public class SupplierSIM {
 	private int visibleToParticipants;
 	private int groupRestriction;
 	private List<SupplierSIMSelection> selections;
+	private int must;
 	public int getId() {
 		return id;
 	}
@@ -79,6 +80,12 @@ public class SupplierSIM {
 	}
 	public void setSelections(List<SupplierSIMSelection> selections) {
 		this.selections = selections;
+	}
+	public int getMust() {
+		return must;
+	}
+	public void setMust(int must) {
+		this.must = must;
 	}
 	
 }

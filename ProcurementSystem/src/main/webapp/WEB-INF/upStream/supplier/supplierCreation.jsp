@@ -18,7 +18,7 @@
 				<div class="standard-title">
 					<div class="standard-title-main">创建新的供应商</div>
 					<div class="standard-title-r">
-						<button form="supplierCreation" class="btn-b">确定</button>
+						<button class="btn-b" onclick="finish();">确定</button>
 						<button class="btn-w" onclick="window.location.href='../search/supplierSearchDistribute?page=2004'">取消</button>
 					</div>
 				</div>
@@ -36,8 +36,12 @@
 							<table class="fulltab" style="margin-left: 80px;">
 								<tr class="row-standard">
 									<td class="col-standard1">＊组织名称：</td>
-									<td class="col-standard2"><input
-										class="form-control input" name="name" /></td>
+									<td class="col-standard2"><input class="form-control input" id="name" name="name" /></td>
+								</tr>
+								
+								<tr>
+									<td></td>
+									<td><span id="name-error" class="error-message"></span></td>
 								</tr>
 
 								<tr class="row-standard">
@@ -139,9 +143,15 @@
 								</tr>
 								<tr class="row-standard">
 									<td class="col-standard1">＊总机：</td>
-									<td class="col-standard2"><input name="switchboard"
+									<td class="col-standard2"><input id="switchboard" name="switchboard"
 										class="form-control input" /></td>
 								</tr>
+								
+								<tr>
+									<td></td>
+									<td><span id="switchboard-error" class="error-message"></span></td>
+								</tr>
+								
 								<tr class="row-standard">
 									<td class="col-standard1">主要传真：</td>
 									<td class="col-standard2"><input name="mainFax"
@@ -214,6 +224,25 @@
 		       data: defaultData
 		     });
 		})
+		
+		function finish(){
+			$(".error-message").empty();
+			var pass = 1;
+			var name = $("#name").val();
+			if(name==""){
+				$("#name-error").text("组织名称不能为空");
+				pass=0;
+			}
+			var switchboard = $("#switchboard").val();
+			if(switchboard==""){
+				$("#switchboard-error").text("总机不能为空");
+				pass=0;
+			}
+			//经过合法性检测
+			if(pass){
+				$("form").submit();
+			}
+		}
 	</script>
 </body>
 </html>

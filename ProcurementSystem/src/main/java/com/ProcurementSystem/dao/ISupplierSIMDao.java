@@ -56,4 +56,6 @@ public interface ISupplierSIMDao {
 	List<SupplierSIM> getAllQuestionId();
 	
 	void insertOrUpdateSIMAnswers(List<SupplierSIMAnswer> answers);
+
+	List<SupplierSIM> getMultiSelectionDate();
 }

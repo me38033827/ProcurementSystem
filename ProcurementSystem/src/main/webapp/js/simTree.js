@@ -24,8 +24,6 @@
 	};
 
 	var Tree = function (element, options) {
-	
-		console.log(element);
 
 		this.$element = $(element);
 		this.elementId = element.id;

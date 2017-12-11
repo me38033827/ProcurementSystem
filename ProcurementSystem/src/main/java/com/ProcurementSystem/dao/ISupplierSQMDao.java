@@ -20,4 +20,6 @@ public interface ISupplierSQMDao {
 	int getMaxId();
 	
 	List<SupplierSQM> completeSearchSupplierSQM(Map<String, Object> params);
+	
+	void updateSQM(SupplierSQM sqm);
 }
