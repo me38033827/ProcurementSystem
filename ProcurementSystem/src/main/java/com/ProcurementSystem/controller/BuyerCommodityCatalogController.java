@@ -52,6 +52,12 @@ public class BuyerCommodityCatalogController {
 		return "page/index";
 	}
 
+	// 测试
+	@RequestMapping(value = "guidedBuying")
+	public String guidedBuying(HttpServletRequest request) {
+		return "main/guidedBuying";
+	}
+	
 	/** 商品目录创建 */
 	// 转向创建商品目录页
 	@RequestMapping(value = "commodityCatalogCreate")

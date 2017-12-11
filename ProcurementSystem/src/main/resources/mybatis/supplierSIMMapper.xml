@@ -147,6 +147,7 @@
 			s.answer_type,
 			s.accept_value,
 			s.initial_answer,
+			multiple_value,
 			null as selectionId,
 			null as selectionContent
 		from supplier_sim s

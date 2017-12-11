@@ -606,3 +606,13 @@ textarea{
 .full-height{
 	height:100%;
 }
+
+.box-a-third{
+	width:100%;
+	background-color:#ffffffa6;
+	height:100%;
+	text-align:center;
+	padding-top:25%;
+	font-weight:bold;
+	font-size:20px;
+}

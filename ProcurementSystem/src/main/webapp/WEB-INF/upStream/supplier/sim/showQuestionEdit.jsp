@@ -29,6 +29,7 @@
 
 				<div style="border:1px solid #ddd; max-height:500px; overflow-x:scroll;">
 		        <div id="treeview-sim" class=""></div>
+		        </div>
 		        
 		        <div class="adjust-10"></div>
 		       	<div class="right">
@@ -44,15 +45,11 @@
     		<option>cow</option>
   	</select> -->
  
- 	<input type="checkbox" id="123" class="chk" value="123">
+ <!-- 	<input type="checkbox" id="123" class="chk" value="123">
  	<label for="123"></label><span>123</span><br>
  	<input type="checkbox" id="124" class="chk" value="123">
  	<label for="124">2</label>
- 	<select name="education" id="education" multiple="multiple">
-	       <option value="1">高中</option>
-	       <option value="2">大学</option>
-	       <option value="3">博士</option>
-	</select>
+ 	 -->
 	<div id="back"></div>
 	<!-- CONTENT-WRAPPER SECTION END-->
 	<%@ include file="../../../other/supplierFooter.jsp"%>
