@@ -371,4 +371,14 @@ public class BuyerCommodityCatalogService {
 		return flag;
 	}
 
+	public void addShoppingCartCount(String uniqueName) {
+		commodityDao.addShoppingCartCount(uniqueName);
+	}
+
+	public void addViewInfoCount(String uniqueName) {
+		// TODO Auto-generated method stub
+		commodityDao.addViewInfoCount(uniqueName);
+		
+	}
+
 }

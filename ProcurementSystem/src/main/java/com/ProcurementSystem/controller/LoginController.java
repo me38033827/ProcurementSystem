@@ -1,5 +1,7 @@
 package com.ProcurementSystem.controller;
 
+import java.util.ArrayList;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ProcurementSystem.common.NavTree;
+import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.entity.Login;
 import com.ProcurementSystem.service.BuyerCommodityService;
 import com.ProcurementSystem.service.LoginService;
@@ -22,7 +25,6 @@ public class LoginController {
 
 	@RequestMapping(value = "login")
 	public String login(Login login, HttpServletRequest request) {
-
 		if (login.getUsername() == null || login.getUsername().equals("") || login.getPassword().equals("")) {
 			return "login";
 		}
@@ -72,6 +74,8 @@ public class LoginController {
 		}
 		return "login";
 	}
+
+	
 
 	@RequestMapping(value = "logout")
 	public String logout(HttpServletRequest request) {

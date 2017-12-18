@@ -81,6 +81,7 @@
 			    success:function(data){
 			    		//初始化搜索条件
 			    		console.log(data);
+			    		alert(12);
 			    		for(var i=0; i<data.length; i++){
 			    			if(data[i].answerType==5){
 			    				//日期
@@ -102,12 +103,16 @@
 			    					$(place).append(newLabel);
 			    					$("#back").append(newInput);
 			    					$("#back").append(newLabel); */
-			    					$(place).append("<input type=\"checkbox\" id=\""+label+"\" class=\"chk\" value=\""+content+"\">"
-									+"<label for=\""+label+"\"></label><br>"+content);
+			    					$(place).append("<input class=\"checkbox\" type=\"checkbox\" name=\""+label+"\" value=\""+content+"\">"
+											+content);
+			    					/* $(place).append("<input type=\"checkbox\" id=\""+label+"\" class=\"chk\" value=\""+content+"\">"
+									+"<label for=\""+label+"\"></label><br>"+content); */
 				    			
 			    				}
 			    			}
 			    		}
+			    		$("#back").append("<input type=\"checkbox\" name=\"213\" value=\""+content+"\">"
+								+"<br>"+content);
 			   	},
 			    error:function(data){
 			    		alert("数据库错误！")
