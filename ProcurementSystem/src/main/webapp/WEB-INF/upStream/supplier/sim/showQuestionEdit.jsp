@@ -102,12 +102,16 @@
 			    					$(place).append(newLabel);
 			    					$("#back").append(newInput);
 			    					$("#back").append(newLabel); */
-			    					$(place).append("<input type=\"checkbox\" id=\""+label+"\" class=\"chk\" value=\""+content+"\">"
-									+"<label for=\""+label+"\"></label><br>"+content);
+			    					$(place).append("<input class=\"checkbox\" type=\"checkbox\" name=\""+label+"\" value=\""+content+"\">"
+											+content);
+			    					/* $(place).append("<input type=\"checkbox\" id=\""+label+"\" class=\"chk\" value=\""+content+"\">"
+									+"<label for=\""+label+"\"></label><br>"+content); */
 				    			
 			    				}
 			    			}
 			    		}
+			    		$("#back").append("<input type=\"checkbox\" name=\"213\" value=\""+content+"\">"
+								+"<br>"+content);
 			   	},
 			    error:function(data){
 			    		alert("数据库错误！")

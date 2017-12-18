@@ -71,7 +71,8 @@
 
 		this.unsubscribeEvents();
 
-		this.$element.on('click', $.proxy(this.clickHandler, this));
+		//this.$element.on('click', $.proxy(this.clickHandler, this));
+		this.$element.on('click', this.clickHandler);
 
 	};
 
@@ -128,13 +129,12 @@
 	};
 
 	Tree.prototype.clickHandler = function (event) {
-
-		if (!this.options.enableLinks) event.preventDefault();
+		//if (!this.options.enableLinks) event.preventDefault();
 
 		var target = $(event.target);
 		
-		var classList = target.attr('class') ? target.attr('class').split(' ') : [];
-		
+		var classList = target.attr("class")?target.attr('class').split(' '):[];
+
 		if ((classList.indexOf('expand-icon') !== -1)) {
 			var node = this.findNode(target);
 			

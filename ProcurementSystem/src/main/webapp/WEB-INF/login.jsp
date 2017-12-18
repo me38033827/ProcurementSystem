@@ -4,11 +4,17 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="css/styles.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<script src="js/jquery.js"></script>
+<link href="/ProcurementSystem/css/bootstrap.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/styles.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/login.css" rel="stylesheet" />
+<link href="/ProcurementSystem/css/mycss.css" rel="stylesheet" />
+<script type="text/javascript" src="/ProcurementSystem/js/jquery.js"></script>
+<%-- <link rel="stylesheet" type="text/css" href='<c:url value="css/style.css"></c:url>'>
+<link rel="stylesheet" type="text/css" href='<c:url value="css/bootstrap.css"></c:url>'>
+<script type="text/javascript" src='<c:url value="js/jquery.js"></c:url>'></script> --%>
 <script>
 </script>
 </head>
@@ -68,7 +74,7 @@
 								<%-- <button form="initialSignUp" <%if(request.getAttribute("loginInfo")!=null){
 =======
 								<button form="initialSignUp" style="border:0;width:100px;background-color:transparent; font-size:13px; width:100px; height:24px;margin-top:0;" <%if(request.getAttribute("loginInfo")!=null){
->>>>>>> origin/master
+
 									if(request.getAttribute("role").equals("buyer")){%>hidden="hidden" 
 								<%}}else{%> hidden="hidden" <%} %>
 								id="signup" >注册供应商</button> --%>

@@ -15,6 +15,20 @@
 		<param-name>spring.profiles.active</param-name>
 		<param-value>production</param-value>
 	</context-param>
+	
+	<!-- static resources -->
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.js</url-pattern>
+		<url-pattern>*.jpg</url-pattern>
+		<url-pattern>*.png</url-pattern>
+		<url-pattern>*.woff</url-pattern>
+		<url-pattern>*.woff2</url-pattern>
+		<url-pattern>*.ttf</url-pattern>
+	</servlet-mapping>
+	
+	
 	<!-- Servlet -->
 	<servlet>
 		<servlet-name>Dispatcher</servlet-name>
@@ -29,36 +43,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<!-- static resources -->
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.css</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.js</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.jpg</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.png</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.woff</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.woff2</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.ttf</url-pattern>
-	</servlet-mapping>
+	
 	
 	<!-- filter -->
 	<filter>

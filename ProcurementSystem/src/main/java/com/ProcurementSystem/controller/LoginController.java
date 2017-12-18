@@ -27,8 +27,6 @@ public class LoginController {
 			return "login";
 		}
 
-		System.out.println("123");
-
 		String username = login.getUsername();
 		String role = login.getRole();
 
@@ -78,6 +76,8 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		session.removeAttribute("sqm");
 		session.removeAttribute("spm");
+		// interceptor相关
+		session.removeAttribute("username");
 		return "redirect:login";
 	}
 

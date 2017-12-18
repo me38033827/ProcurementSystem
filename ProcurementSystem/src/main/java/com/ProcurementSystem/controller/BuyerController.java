@@ -39,6 +39,7 @@ public class BuyerController {
 		HttpSession session = request.getSession();
 		session.removeAttribute("sqm");
 		session.removeAttribute("spm");
+		session.removeAttribute("sqmSession");
 		return "main/main";
 	}
 	// P2P主页
