@@ -498,4 +498,12 @@ public class BuyerCommodityCatalogController {
 	
 	
 	
+
+	
+	/** 商品详情 */
+	// 转向商品信息详情页
+	@RequestMapping(value = "guidedCommodity")
+	public String guidedCommodity(HttpServletRequest request) {
+		return "downStream/commodityCatalog/guidedCommodity";
+
 }
