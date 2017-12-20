@@ -148,14 +148,7 @@
 					</div>
 				</div>
 				<div class="adjust-10"></div>
-<<<<<<< HEAD
 				<button onclick="window.location.href='guidedBuying'"style="width:100%;">Guided Buying</button>
-
-=======
-				<button
-					onclick="window.location.href='commodityCatalog/guidedBuying'"
-					style="width: 100%;">Guided Buying</button>
->>>>>>> origin/master
 			</div>
 
 			<!-- 面包屑导航 -->
