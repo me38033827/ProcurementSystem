@@ -1,6 +1,7 @@
 package com.ProcurementSystem.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -95,11 +96,18 @@ public class BuyerController {
 	public String guidedBuying(ModelMap map, HttpServletRequest request,
 			@RequestParam(value = "currPage", required = false) String currPage,
 			@RequestParam(value = "code", required = false) String code) {
-		NavTree navTree = commodityService.generateCommodityNav();
-		request.getServletContext().setAttribute("navTree", navTree);// 获得导航树
-
-		ArrayList<NavTreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
-		map.put("firstClass", firstClass);
+		if(request.getSession().getAttribute("firstClass")==null){
+			NavTree navTree = commodityService.generateCommodityNav();
+			request.getServletContext().setAttribute("navTree", navTree);// 获得导航树
+			ArrayList<NavTreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
+			map.put("firstClass", firstClass);
+			request.getSession().setAttribute("firstClass", firstClass);//服务于主页搜索
+		}
+		if (code != null && code != "") {// 获得面包屑导航
+			NavTree navTree = (NavTree)request.getServletContext().getAttribute("navTree");
+			List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
+			map.put("breadNav", breadNav);
+		}
 		if (currPage == null || currPage.equals(""))
 			currPage = 1 + ""; // 如果未指定请求页，则默认设置为第一页
 		int temp = 0;
@@ -114,10 +122,6 @@ public class BuyerController {
 		map.put("pageParams", pageParams);
 		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
 		map.put("commoditiesQuantity", commoditiesQuantity);
-		if (code != null && code != "") {// 获得面包屑导航
-			List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
-			map.put("breadNav", breadNav);
-		}
 		map.put("code", code);// 保存状态
 		
 		return "main/guidedBuying";
@@ -128,11 +132,18 @@ public class BuyerController {
 	public String guidedCommodity(ModelMap map, HttpServletRequest request,
 			@RequestParam(value = "currPage", required = false) String currPage,
 			@RequestParam(value = "code", required = false) String code) {
-		NavTree navTree = commodityService.generateCommodityNav();
-		request.getServletContext().setAttribute("navTree", navTree);// 获得导航树
-
-		ArrayList<NavTreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
-		map.put("firstClass", firstClass);
+		if(request.getSession().getAttribute("firstClass")==null){
+			NavTree navTree = commodityService.generateCommodityNav();
+			request.getServletContext().setAttribute("navTree", navTree);// 获得导航树
+			ArrayList<NavTreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
+			map.put("firstClass", firstClass);
+			request.getSession().setAttribute("firstClass", firstClass);//服务于主页搜索
+		}
+		if (code != null && code != "") {// 获得面包屑导航
+			NavTree navTree = (NavTree)request.getServletContext().getAttribute("navTree");
+			List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
+			map.put("breadNav", breadNav);
+		}
 		if (currPage == null || currPage.equals(""))
 			currPage = 1 + ""; // 如果未指定请求页，则默认设置为第一页
 		int temp = 0;
@@ -148,12 +159,7 @@ public class BuyerController {
 		map.put("pageParams", pageParams);
 		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
 		map.put("commoditiesQuantity", commoditiesQuantity);
-		if (code != null && code != "") {// 获得面包屑导航
-			List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
-			map.put("breadNav", breadNav);
-		}
 		map.put("code", code);// 保存状态
-		
 		return "downStream/commodityCatalog/guidedCommodity";
 	}
 
@@ -172,4 +178,46 @@ public class BuyerController {
 		map.put("content",content);
 		return "main/commodityCatalogSearch";
 	}
+	/** Top50显示 */
+	@RequestMapping(value = "top50")
+	public String top50(@RequestParam(value = "currPage", required = false) String currPage, ModelMap map) {
+		int curr = 1;
+		try {
+			curr = Integer.parseInt(currPage);
+			if (curr < 1)
+				curr = 1;
+		} catch (Exception e) {
+			curr = 1;
+		}
+		NavTreeNode node = new NavTreeNode();
+		node.setName("Top50");
+		List<NavTreeNode> breadNav = new LinkedList<>();
+		breadNav.add(node);
+		map.put("breadNav", breadNav);//面包屑导航
+		PageParams<Commodity> pageParams = commodityService.getTop50(curr);
+		map.put("pageParams", pageParams);
+		return "downStream/commodityCatalog/guidedCommodityTop50";
+	}
+	/** 根据用户行为推荐 */
+	@RequestMapping(value = "recommend")
+	public String recommend(@RequestParam(value = "currPage", required = false) String currPage, ModelMap map,HttpServletRequest request) {
+		int curr = 1;
+		try {
+			curr = Integer.parseInt(currPage);
+			if (curr < 1)
+				curr = 1;
+		} catch (Exception e) {
+			curr = 1;
+		}
+		NavTreeNode node = new NavTreeNode();
+		node.setName("推荐产品");
+		List<NavTreeNode> breadNav = new LinkedList<>();
+		breadNav.add(node);
+		map.put("breadNav", breadNav);
+		Integer userId = (Integer)request.getSession().getAttribute("userUniqueName");
+		PageParams<Commodity> pageParams = commodityService.getRecommend(curr,userId);
+		map.put("pageParams", pageParams);
+		return "downStream/commodityCatalog/guidedCommodityRecommend";
+	}
+
 }

@@ -148,7 +148,9 @@
 					</div>
 				</div>
 				<div class="adjust-10"></div>
+
 				<button onclick="window.location.href='guidedBuying'"style="width:100%;">Guided Buying</button>
+
 			</div>
 
 			<!-- 面包屑导航 -->

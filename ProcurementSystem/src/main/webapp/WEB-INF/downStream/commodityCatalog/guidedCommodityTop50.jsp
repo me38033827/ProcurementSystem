@@ -19,12 +19,7 @@
 	%>
 	<div>
 		<div id="thirdline-out" style="background-color:#ffffffa6; border:0; padding-left:20px;">
-<<<<<<< HEAD
-			Guided Buying &nbsp;&nbsp;&nbsp;
-			<a href="guidedBuying">所有产品</a>
-=======
 			<a href="guidedBuying">Guided Buying主页</a>
->>>>>>> origin/master
 			<c:forEach var="node" items="${breadNav}" varStatus="status">
 				<c:if test="${status.last == true}">
 					/ <span class="active">${node.name }</span>
@@ -51,10 +46,10 @@
 									alt="" id="image-${commodity.uniqueName }"
 									src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
 									onerror="error('image-${commodity.uniqueName }');"/>
-						<div class="a-third-description">详情：<span>
-							<c:if test="${fn:length(commodity.itemDescription) >= 50 }">  
-	                                  ${fn:substring(commodity.itemDescription,0,50)}...  
-	                          </c:if> <c:if test="${fn:length(commodity.itemDescription) < 50 }">  
+						<div class="a-third-description">商品详情：<span>
+							<c:if test="${fn:length(commodity.itemDescription) >= 36 }">  
+	                                  ${fn:substring(commodity.itemDescription,0,36)}...  
+	                          </c:if> <c:if test="${fn:length(commodity.itemDescription) < 36 }">  
 	                                 ${commodity.itemDescription }
 	                          </c:if>
 	                         
@@ -71,10 +66,10 @@
 		<div class="pager-container">
 			<div class="pager">
 				<button class="btn-page" id="forward"
-					onclick="window.location.href='guidedCommodity?currPage=<%=pageParams.getCurrPage() - 1%>'">上一页</button>
+					onclick="window.location.href='top50?currPage=<%=pageParams.getCurrPage() - 1%>'">上一页</button>
 				<span id="pageList"></span>
 				<button class="btn-page" id="afterward"
-					onclick="window.location.href='guidedCommodity?currPage=${pageParams.currPage+1}'">下一页</button><span>共<strong>${pageParams.totalPages}</strong>页</span>
+					onclick="window.location.href='top50?currPage=${pageParams.currPage+1}'">下一页</button><span>共<strong>${pageParams.totalPages}</strong>页</span>
 			</div>
 		</div>
 	</div>
@@ -86,7 +81,7 @@
 			button.appendChild(text);
 			button.id="page"+i;// 设置button属性
 			button.setAttribute("class","btn-page");
-			button.setAttribute("onclick","window.location.href='guidedCommodity?currPage="+i+"'");
+			button.setAttribute("onclick","window.location.href='top50?currPage="+i+"'");
 			pageList.appendChild(button);// 添加到pageList后面
 		}
 	
