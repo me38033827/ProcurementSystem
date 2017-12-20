@@ -144,7 +144,7 @@ public class BuyerController {
 		Commodity commodity = new Commodity();
 		commodity.setSpsCode(code);
 		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp, 1);// 获得对应分类的商品,约束条件（分类、目录激活、SQM准入）
-		PageParams.setPageSize(12);
+		pageParams.setPageSize(12);
 		map.put("pageParams", pageParams);
 		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
 		map.put("commoditiesQuantity", commoditiesQuantity);

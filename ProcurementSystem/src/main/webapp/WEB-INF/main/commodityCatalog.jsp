@@ -148,13 +148,9 @@
 					</div>
 				</div>
 				<div class="adjust-10"></div>
-<<<<<<< HEAD
-				<button onclick="window.location.href='guidedBuying'"style="width:100%;">Guided Buying</button>
-=======
 				<button
 					onclick="window.location.href='commodityCatalog/guidedBuying'"
 					style="width: 100%;">Guided Buying</button>
->>>>>>> origin/master
 			</div>
 
 			<!-- 面包屑导航 -->
@@ -266,7 +262,7 @@
 					</c:forEach>
 				</div>
 				<div class="right">
-				
+
 					<button class="btn-page" id="forward"
 						onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>&code=${code }'">上一页</button>
 					<span id="pageList"></span>
