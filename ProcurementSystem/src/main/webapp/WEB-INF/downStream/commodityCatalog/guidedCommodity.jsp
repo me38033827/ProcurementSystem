@@ -19,7 +19,8 @@
 	%>
 	<div>
 		<div id="thirdline-out" style="background-color:#ffffffa6; border:0; padding-left:20px;">
-			<a href="guidedCommodity">所有产品</a>
+			Guided Buying &nbsp;&nbsp;&nbsp;
+			<a href="guidedBuying">所有产品</a>
 			<c:forEach var="node" items="${breadNav}" varStatus="status">
 				<c:if test="${status.last == true}">
 					/ <span class="active">${node.name }</span>
@@ -46,10 +47,10 @@
 									alt="" id="image-${commodity.uniqueName }"
 									src="/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
 									onerror="error('image-${commodity.uniqueName }');"/>
-						<div class="a-third-description">商品详情：<span>
-							<c:if test="${fn:length(commodity.itemDescription) >= 36 }">  
-	                                  ${fn:substring(commodity.itemDescription,0,36)}...  
-	                          </c:if> <c:if test="${fn:length(commodity.itemDescription) < 36 }">  
+						<div class="a-third-description">详情：<span>
+							<c:if test="${fn:length(commodity.itemDescription) >= 50 }">  
+	                                  ${fn:substring(commodity.itemDescription,0,50)}...  
+	                          </c:if> <c:if test="${fn:length(commodity.itemDescription) < 50 }">  
 	                                 ${commodity.itemDescription }
 	                          </c:if>
                           </span></div>
