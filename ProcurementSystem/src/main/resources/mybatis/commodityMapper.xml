@@ -533,7 +533,7 @@
 		sac.sqm_id = ss2.id where ss2.supplier_id =
 		c.supplier_unique_name)
 		group by c.unique_name 
-		order by (add_shopping_cart_count+view_info_count)
+		order by (add_shopping_cart_count+view_info_count) desc
 		limit #{offset},#{size}
 	</select>
 	
