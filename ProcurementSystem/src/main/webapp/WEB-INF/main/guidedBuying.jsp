@@ -25,10 +25,10 @@
 			
 			<div style="width:100%; height:240px;">
 				<div class="col-md-4 box-container">
-					<button class="box-a-third" onclick="window.location.href=''">Top50</button>
+					<button class="box-a-third" onclick="window.location.href='top50'">Top50</button>
 				</div>
 				<div class="col-md-4 box-container">
-					<button class="box-a-third" onclick="window.location.href=''">推荐产品</button>
+					<button class="box-a-third" onclick="window.location.href='recommend'">推荐产品</button>
 				</div>
 				<c:forEach var="node" items="${firstClass}">
 					<div class="col-md-4 box-container">

@@ -528,7 +528,7 @@ public class BuyerCommodityCatalogController {
 		}
 		PageParams<Commodity> pageParams = commodityService.getTop50(curr);
 		map.put("pageParams", pageParams);
-		return "";
+		return "downStream/commodityCatalog/guidedCommodity";
 	}
 	/** 根据用户行为推荐 */
 	@RequestMapping(value = "recommend")
@@ -544,7 +544,7 @@ public class BuyerCommodityCatalogController {
 		Integer userId = (Integer)request.getSession().getAttribute("userUniqueName");
 		PageParams<Commodity> pageParams = commodityService.getRecommend(curr,userId);
 		map.put("pageParams", pageParams);
-		return "";
+		return "downStream/commodityCatalog/guidedCommodity";
 	}
 
 	/** 商品详情 */
