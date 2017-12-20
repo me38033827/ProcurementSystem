@@ -88,7 +88,6 @@ public class BuyerController {
 		System.out.println("总页数：" + pageParams.getTotalPages() + " 当前页：" + pageParams.getCurrPage());
 		return "main/commodityCatalog";
 	}
-<<<<<<< HEAD
 	
 	// guided buying
 	@RequestMapping(value = "guidedBuying")
@@ -155,7 +154,8 @@ public class BuyerController {
 		map.put("code", code);// 保存状态
 		
 		return "downStream/commodityCatalog/guidedCommodity";
-=======
+	}
+
 	/**搜索商品*/
 	@RequestMapping("search")
 	public String multiFieldSearch(@RequestParam(value="content",required=false) String content,@RequestParam(value="currPage",required=false)String currPage,ModelMap map){
@@ -171,6 +171,5 @@ public class BuyerController {
 		map.put("pageParams",pageParams );
 		map.put("content",content);
 		return "main/commodityCatalogSearch";
->>>>>>> origin/master
 	}
 }

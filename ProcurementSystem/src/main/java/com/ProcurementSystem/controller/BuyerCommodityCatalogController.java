@@ -48,13 +48,10 @@ public class BuyerCommodityCatalogController {
 	BuyerShoppingCartService shoppingCartService;
 	@Resource
 	SupplierService supplierService;
-<<<<<<< HEAD
 	@Resource
 	IBuyerCommodityDao commodityDao;
-=======
 	@Resource 
 	UserBehaviorService userBehaviorService;
->>>>>>> origin/master
 
 	// 测试
 	@RequestMapping(value = "index")
@@ -494,20 +491,4 @@ public class BuyerCommodityCatalogController {
 		map.put("paths", paths);
 		return "downStream/commodityCatalog/commodityInfo";
 	}
-<<<<<<< HEAD
-=======
-	/**Top50显示*/
-//	@RequestParam(value="")//fe
-	
-	
-	
-
-	
-	/** 商品详情 */
-	// 转向商品信息详情页
-	@RequestMapping(value = "guidedCommodity")
-	public String guidedCommodity(HttpServletRequest request) {
-		return "downStream/commodityCatalog/guidedCommodity";
-
->>>>>>> origin/master
 }
