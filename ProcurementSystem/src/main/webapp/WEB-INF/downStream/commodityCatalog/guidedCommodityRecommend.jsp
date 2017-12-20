@@ -66,10 +66,10 @@
 		<div class="pager-container">
 			<div class="pager">
 				<button class="btn-page" id="forward"
-					onclick="window.location.href='guidedCommodity?currPage=<%=pageParams.getCurrPage() - 1%>'">上一页</button>
+					onclick="window.location.href='recommend?currPage=<%=pageParams.getCurrPage() - 1%>'">上一页</button>
 				<span id="pageList"></span>
 				<button class="btn-page" id="afterward"
-					onclick="window.location.href='guidedCommodity?currPage=${pageParams.currPage+1}'">下一页</button><span>共<strong>${pageParams.totalPages}</strong>页</span>
+					onclick="window.location.href='recommend?currPage=${pageParams.currPage+1}'">下一页</button><span>共<strong>${pageParams.totalPages}</strong>页</span>
 			</div>
 		</div>
 	</div>
@@ -81,7 +81,7 @@
 			button.appendChild(text);
 			button.id="page"+i;// 设置button属性
 			button.setAttribute("class","btn-page");
-			button.setAttribute("onclick","window.location.href='guidedCommodity?currPage="+i+"'");
+			button.setAttribute("onclick","window.location.href='recommend?currPage="+i+"'");
 			pageList.appendChild(button);// 添加到pageList后面
 		}
 	

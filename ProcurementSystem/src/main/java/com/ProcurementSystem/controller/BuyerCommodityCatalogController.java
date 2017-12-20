@@ -515,38 +515,7 @@ public class BuyerCommodityCatalogController {
 	}
 
 
-	/** Top50显示 */
-	@RequestMapping(value = "top50")
-	public String top50(@RequestParam(value = "currPage", required = false) String currPage, ModelMap map) {
-		int curr = 1;
-		try {
-			curr = Integer.parseInt(currPage);
-			if (curr < 1)
-				curr = 1;
-		} catch (Exception e) {
-			curr = 1;
-		}
-		PageParams<Commodity> pageParams = commodityService.getTop50(curr);
-		map.put("pageParams", pageParams);
-		return "downStream/commodityCatalog/guidedCommodity";
-	}
-	/** 根据用户行为推荐 */
-	@RequestMapping(value = "recommend")
-	public String recommend(@RequestParam(value = "currPage", required = false) String currPage, ModelMap map,HttpServletRequest request) {
-		int curr = 1;
-		try {
-			curr = Integer.parseInt(currPage);
-			if (curr < 1)
-				curr = 1;
-		} catch (Exception e) {
-			curr = 1;
-		}
-		Integer userId = (Integer)request.getSession().getAttribute("userUniqueName");
-		PageParams<Commodity> pageParams = commodityService.getRecommend(curr,userId);
-		map.put("pageParams", pageParams);
-		return "downStream/commodityCatalog/guidedCommodity";
-	}
-
+	
 	/** 商品详情 */
 	// 转向商品信息详情页
 	@RequestMapping(value = "guidedCommodity")
