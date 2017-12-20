@@ -34,7 +34,7 @@
 		
 		<div class="main-subjects">
 			
-			<div style="width:100%">
+			<div style="width:100% height:420px;">
 				<c:forEach var="commodity" items="${requestScope.pageParams.data}">
 					<div class="col-md-4 full-height commodity-container">	
 						<div class="a-third">
