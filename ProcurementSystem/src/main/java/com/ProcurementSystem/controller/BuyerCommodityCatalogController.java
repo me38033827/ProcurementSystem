@@ -1,6 +1,7 @@
 package com.ProcurementSystem.controller;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.common.PageParams;
+import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.ShoppingCart;
@@ -47,6 +49,11 @@ public class BuyerCommodityCatalogController {
 	@Resource
 	SupplierService supplierService;
 	@Resource
+<<<<<<< HEAD
+=======
+	IBuyerCommodityDao commodityDao;
+	@Resource 
+>>>>>>> origin/master
 	UserBehaviorService userBehaviorService;
 
 	// 测试
@@ -55,6 +62,7 @@ public class BuyerCommodityCatalogController {
 		System.out.println(request.getSession().getServletContext().getRealPath("/"));
 		return "page/index";
 	}
+<<<<<<< HEAD
 
 	// 测试
 	@RequestMapping(value = "guidedBuying")
@@ -62,6 +70,9 @@ public class BuyerCommodityCatalogController {
 		return "main/guidedBuying";
 	}
 
+=======
+	
+>>>>>>> origin/master
 	/** 商品目录创建 */
 	// 转向创建商品目录页
 	@RequestMapping(value = "commodityCatalogCreate")
@@ -510,6 +521,7 @@ public class BuyerCommodityCatalogController {
 		return "downStream/commodityCatalog/commodityInfo";
 	}
 
+
 	/** Top50显示 */
 	@RequestMapping(value = "top50")
 	public String top50(@RequestParam(value = "currPage", required = false) String currPage, ModelMap map) {
@@ -550,3 +562,4 @@ public class BuyerCommodityCatalogController {
 
 	}
 }
+
