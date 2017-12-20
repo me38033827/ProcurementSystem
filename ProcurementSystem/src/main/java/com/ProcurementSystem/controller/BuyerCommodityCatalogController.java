@@ -1,6 +1,7 @@
 package com.ProcurementSystem.controller;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.common.PageParams;
+import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.ShoppingCart;
@@ -44,18 +46,14 @@ public class BuyerCommodityCatalogController {
 	BuyerShoppingCartService shoppingCartService;
 	@Resource
 	SupplierService supplierService;
+	@Resource
+	IBuyerCommodityDao commodityDao;
 
 	// 测试
 	@RequestMapping(value = "index")
 	public String test(HttpServletRequest request) {
 		System.out.println(request.getSession().getServletContext().getRealPath("/"));
 		return "page/index";
-	}
-
-	// 测试
-	@RequestMapping(value = "guidedBuying")
-	public String guidedBuying(HttpServletRequest request) {
-		return "main/guidedBuying";
 	}
 	
 	/** 商品目录创建 */
@@ -477,12 +475,5 @@ public class BuyerCommodityCatalogController {
 		String[] paths = path.split("&");
 		map.put("paths", paths);
 		return "downStream/commodityCatalog/commodityInfo";
-	}
-	
-	/** 商品详情 */
-	// 转向商品信息详情页
-	@RequestMapping(value = "guidedCommodity")
-	public String guidedCommodity(HttpServletRequest request) {
-		return "downStream/commodityCatalog/guidedCommodity";
 	}
 }

@@ -19,45 +19,24 @@
 			<span style="padding-left:20px;">Guided Buying</span>
 		</div>
 	</div>
-	<div class="container" id="whole-container" style="margin:0 15%;">
+	<div class="container" id="whole-container" style="padding:0 15%;">
 		
 		<div class="main-subjects">
 			
-			<div style="width:70%; height:200px;">
-				<div class="col-md-4 full-height">
-					<div class="box-a-third"><span>Top50产品</span></div>
+			<div style="width:100%; height:240px;">
+				<div class="col-md-4 box-container">
+					<button class="box-a-third" onclick="window.location.href=''">Top50</button>
 				</div>
-				<div class="col-md-4 full-height">
-					<div class="box-a-third">推荐产品</div>
+				<div class="col-md-4 box-container">
+					<button class="box-a-third" onclick="window.location.href=''">推荐产品</button>
 				</div>
-				<div class="col-md-4 full-height">
-					<div class="box-a-third">计算机和IT设备</div>
-				</div>
-			</div>
-			<div class="adjust-10"></div>
-			<div class="adjust-10"></div>
-			<div style="width:70%; height:200px;">
-				<div class="col-md-4 full-height">
-					<div class="box-a-third">制造部件和耗材</div>
-				</div>
-				<div class="col-md-4 full-height">
-					<div class="box-a-third">公共设施和公共部门服务</div>
-				</div>
-				<div class="col-md-4 full-height">
-					<div class="box-a-third">发电、配电机械和附件</div>
-				</div>
-			</div>
-			<div class="adjust-10"></div>
-			<div class="adjust-10"></div>
-			<div style="width:70%; height:200px;">
-				<div class="col-md-4 full-height">
-					<div class="box-a-third">未分类项目</div>
-				</div>
-				<div class="col-md-4 full-height">
-					<div class="box-a-third"></div>
-				</div>
-				<div class="col-md-4 full-height">
-					<div class="box-a-third"></div>
+				<c:forEach var="node" items="${firstClass}">
+					<div class="col-md-4 box-container">
+						<button class="box-a-third" onclick="window.location.href='guidedCommodity?code=${node.spscCode }'">${node.name }</button>
+					</div>
+				</c:forEach>
+				<div class="col-md-4 box-container">
+					<button class="box-a-third" onclick="window.location.href='guidedCommodity'">所有产品</button>
 				</div>
 			</div>
 		</div>

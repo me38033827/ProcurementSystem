@@ -86,4 +86,71 @@ public class BuyerController {
 		System.out.println("总页数：" + pageParams.getTotalPages() + " 当前页：" + pageParams.getCurrPage());
 		return "main/commodityCatalog";
 	}
+	
+	// guided buying
+	@RequestMapping(value = "guidedBuying")
+	public String guidedBuying(ModelMap map, HttpServletRequest request,
+			@RequestParam(value = "currPage", required = false) String currPage,
+			@RequestParam(value = "code", required = false) String code) {
+		NavTree navTree = commodityService.generateCommodityNav();
+		request.getServletContext().setAttribute("navTree", navTree);// 获得导航树
+
+		ArrayList<NavTreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
+		map.put("firstClass", firstClass);
+		if (currPage == null || currPage.equals(""))
+			currPage = 1 + ""; // 如果未指定请求页，则默认设置为第一页
+		int temp = 0;
+		try {
+			temp = Integer.parseInt(currPage);
+		} catch (Exception e) {
+			return "other/error";
+		}
+		Commodity commodity = new Commodity();
+		commodity.setSpsCode(code);
+		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp, 1);// 获得对应分类的商品,约束条件（分类、目录激活、SQM准入）
+		map.put("pageParams", pageParams);
+		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
+		map.put("commoditiesQuantity", commoditiesQuantity);
+		if (code != null && code != "") {// 获得面包屑导航
+			List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
+			map.put("breadNav", breadNav);
+		}
+		map.put("code", code);// 保存状态
+		
+		return "main/guidedBuying";
+	}
+	
+	// guided commodity
+	@RequestMapping(value = "guidedCommodity")
+	public String guidedCommodity(ModelMap map, HttpServletRequest request,
+			@RequestParam(value = "currPage", required = false) String currPage,
+			@RequestParam(value = "code", required = false) String code) {
+		NavTree navTree = commodityService.generateCommodityNav();
+		request.getServletContext().setAttribute("navTree", navTree);// 获得导航树
+
+		ArrayList<NavTreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
+		map.put("firstClass", firstClass);
+		if (currPage == null || currPage.equals(""))
+			currPage = 1 + ""; // 如果未指定请求页，则默认设置为第一页
+		int temp = 0;
+		try {
+			temp = Integer.parseInt(currPage);
+		} catch (Exception e) {
+			return "other/error";
+		}
+		Commodity commodity = new Commodity();
+		commodity.setSpsCode(code);
+		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp, 1);// 获得对应分类的商品,约束条件（分类、目录激活、SQM准入）
+		PageParams.setPageSize(12);
+		map.put("pageParams", pageParams);
+		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
+		map.put("commoditiesQuantity", commoditiesQuantity);
+		if (code != null && code != "") {// 获得面包屑导航
+			List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
+			map.put("breadNav", breadNav);
+		}
+		map.put("code", code);// 保存状态
+		
+		return "downStream/commodityCatalog/guidedCommodity";
+	}
 }
