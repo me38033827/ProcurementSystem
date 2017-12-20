@@ -49,11 +49,8 @@ public class BuyerCommodityCatalogController {
 	@Resource
 	SupplierService supplierService;
 	@Resource
-<<<<<<< HEAD
-=======
 	IBuyerCommodityDao commodityDao;
 	@Resource 
->>>>>>> origin/master
 	UserBehaviorService userBehaviorService;
 
 	// 测试
@@ -62,7 +59,6 @@ public class BuyerCommodityCatalogController {
 		System.out.println(request.getSession().getServletContext().getRealPath("/"));
 		return "page/index";
 	}
-<<<<<<< HEAD
 
 	// 测试
 	@RequestMapping(value = "guidedBuying")
@@ -70,9 +66,6 @@ public class BuyerCommodityCatalogController {
 		return "main/guidedBuying";
 	}
 
-=======
-	
->>>>>>> origin/master
 	/** 商品目录创建 */
 	// 转向创建商品目录页
 	@RequestMapping(value = "commodityCatalogCreate")
