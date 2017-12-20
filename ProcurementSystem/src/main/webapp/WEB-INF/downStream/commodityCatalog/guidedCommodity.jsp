@@ -44,7 +44,7 @@
 						<img class="a-third-img" 
 									href="/ProcurementSystem/buyer/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }&code=${code}"
 									alt="" id="image-${commodity.uniqueName }"
-									src="/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
+									src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
 									onerror="error('image-${commodity.uniqueName }');"/>
 						<div class="a-third-description">商品详情：<span>
 							<c:if test="${fn:length(commodity.itemDescription) >= 36 }">  
@@ -52,6 +52,7 @@
 	                          </c:if> <c:if test="${fn:length(commodity.itemDescription) < 36 }">  
 	                                 ${commodity.itemDescription }
 	                          </c:if>
+	                         
                           </span></div>
 						<div class="a-third-price">价格：￥${commodity.unitPrice}</div> 
 						</div>
