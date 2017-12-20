@@ -46,7 +46,7 @@ public class BuyerCommodityCatalogController {
 	BuyerShoppingCartService shoppingCartService;
 	@Resource
 	SupplierService supplierService;
-	@Resource 
+	@Resource
 	UserBehaviorService userBehaviorService;
 
 	// 测试
@@ -61,7 +61,7 @@ public class BuyerCommodityCatalogController {
 	public String guidedBuying(HttpServletRequest request) {
 		return "main/guidedBuying";
 	}
-	
+
 	/** 商品目录创建 */
 	// 转向创建商品目录页
 	@RequestMapping(value = "commodityCatalogCreate")
@@ -386,20 +386,21 @@ public class BuyerCommodityCatalogController {
 	public @ResponseBody String commodityCatalogAddShoppingCart(HttpServletRequest request,
 			@RequestParam(value = "uniqueName") String uniqueName, @RequestParam(value = "quantity") String quantity) {
 		HttpSession session = request.getSession();
-		commodityCatalogService.addShoppingCartCount(uniqueName);//top50
-//		UserBehavior userBehavior = new UserBehavior();
-//		Commodity commodity = new Commodity();
-//		commodity.setUniqueName(uniqueName);
-//		PageParams<Commodity> pageParams  = commodityService.searchCommodity(commodity, 1);
-//		User user = (User)request.getSession().getAttribute("");
-//		userBehavior.setUser(user);
-//		userBehavior.setCode(pageParams.getData().get(0).getSpsCode());
-//		userBehavior.setSupplier(supplier);
-//		userBehaviorService.insert();//用户行为记录
+		commodityCatalogService.addShoppingCartCount(uniqueName);// top50
+		UserBehavior userBehavior = new UserBehavior();
+		Commodity commodity = new Commodity();
+		commodity.setUniqueName(uniqueName);
+		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, 1);
+		Integer userUniqueName = (Integer) request.getSession().getAttribute("userUniqueName");
+		userBehavior.setUserId(userUniqueName);;
+		userBehavior.setCode(pageParams.getData().get(0).getSpsCode());
+		userBehavior.setSupplierId(pageParams.getData().get(0).getSupplier().getUniqueName());
+		userBehavior.setAction("添加购物车");
+		userBehaviorService.insert(userBehavior);// 用户行为记录
 		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");// 获得购物车
 		if (shoppingCart == null)
 			shoppingCart = new ShoppingCart();
-		Commodity commodity = new Commodity();
+		commodity = new Commodity();
 		try {
 			commodity.setUniqueName(uniqueName);
 			commodity.setBuyQuantity(Integer.parseInt(quantity));
@@ -439,7 +440,7 @@ public class BuyerCommodityCatalogController {
 				String buyQuantity = request.getParameter("buyQuantity_" + uniqueName);
 				commodity.setBuyQuantity(Integer.parseInt(buyQuantity));// 维护商品数量
 			}
-			shoppingCartService.updateShoppingCart(shoppingCart);//维护购买总数量
+			shoppingCartService.updateShoppingCart(shoppingCart);// 维护购买总数量
 		}
 
 		return "redirect:/buyer/commodityCatalog/commodityCatalogShoppingCart";
@@ -447,24 +448,27 @@ public class BuyerCommodityCatalogController {
 
 	// 修改购物车单一商品数量
 	@RequestMapping("updateCommodityBuyQuantity")
-	public @ResponseBody JSONObject updateCommodityBuyQuantity(HttpServletRequest request, @RequestParam(value="uniqueName")String uniqueName,@RequestParam(value="quantity")Integer buyQuantity) {
-		ShoppingCart shoppingCart = (ShoppingCart)request.getSession().getAttribute("shoppingCart");
+	public @ResponseBody JSONObject updateCommodityBuyQuantity(HttpServletRequest request,
+			@RequestParam(value = "uniqueName") String uniqueName,
+			@RequestParam(value = "quantity") Integer buyQuantity) {
+		ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute("shoppingCart");
 		Commodity temp = new Commodity();
-		if(shoppingCart != null){
+		if (shoppingCart != null) {
 			ListIterator<Commodity> iterator = shoppingCart.getCommodities().listIterator();
 			while (iterator.hasNext()) {
 				Commodity commodity = (Commodity) iterator.next();
-				if(uniqueName.equals(commodity.getUniqueName())){
+				if (uniqueName.equals(commodity.getUniqueName())) {
 					commodity.setBuyQuantity(buyQuantity);
 					temp = commodity;
 					break;
 				}
 			}
 			shoppingCartService.updateShoppingCart(shoppingCart);// 维护购物车商品总数量和商品总价
-		}//修改商品购买数量
-		DecimalFormat    df   = new DecimalFormat("######0.00");   
+		} // 修改商品购买数量
+		DecimalFormat df = new DecimalFormat("######0.00");
 		JSONObject json = new JSONObject();
-		if(temp!=null) json.put("commodityTotalMoney", df.format(temp.getBuyQuantity()*temp.getUnitPrice()));
+		if (temp != null)
+			json.put("commodityTotalMoney", df.format(temp.getBuyQuantity() * temp.getUnitPrice()));
 		json.put("totalQuantity", shoppingCart.getTotalQuantity());
 		json.put("totalMoney", df.format(shoppingCart.getTotalAmount()));
 		return json;
@@ -477,8 +481,20 @@ public class BuyerCommodityCatalogController {
 			@RequestParam(value = "code", required = false) String code,
 			@RequestParam(value = "currPage", required = false) String currPage, ModelMap map,
 			HttpServletRequest request) {
-		commodityCatalogService.addViewInfoCount(uniqueName);//top50
+		commodityCatalogService.addViewInfoCount(uniqueName);// top50
+		
+		UserBehavior userBehavior = new UserBehavior();
 		Commodity commodity = new Commodity();
+		commodity.setUniqueName(uniqueName);
+		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, 1);
+		Integer userUniqueName = (Integer) request.getSession().getAttribute("userUniqueName");
+		userBehavior.setUserId(userUniqueName);;
+		userBehavior.setCode(pageParams.getData().get(0).getSpsCode());
+		userBehavior.setSupplierId(pageParams.getData().get(0).getSupplier().getUniqueName());
+		userBehavior.setAction("查看详情");
+		userBehaviorService.insert(userBehavior);// 用户行为记录
+		
+		commodity = new Commodity();
 		commodity.setUniqueName(uniqueName);
 		PageParams<Commodity> commodities = commodityService.searchCommodity(commodity, 1);
 		commodity = commodities.getData().get(0);
@@ -493,17 +509,44 @@ public class BuyerCommodityCatalogController {
 		map.put("paths", paths);
 		return "downStream/commodityCatalog/commodityInfo";
 	}
-	/**Top50显示*/
-//	@RequestParam(value="")//fe
-	
-	
-	
 
-	
+	/** Top50显示 */
+	@RequestMapping(value = "top50")
+	public String top50(@RequestParam(value = "currPage", required = false) String currPage, ModelMap map) {
+		int curr = 1;
+		try {
+			curr = Integer.parseInt(currPage);
+			if (curr < 1)
+				curr = 1;
+		} catch (Exception e) {
+			curr = 1;
+		}
+		PageParams<Commodity> pageParams = commodityService.getTop50(curr);
+		map.put("pageParams", pageParams);
+		return "";
+	}
+	/** 根据用户行为推荐 */
+	@RequestMapping(value = "recommend")
+	public String recommend(@RequestParam(value = "currPage", required = false) String currPage, ModelMap map,HttpServletRequest request) {
+		int curr = 1;
+		try {
+			curr = Integer.parseInt(currPage);
+			if (curr < 1)
+				curr = 1;
+		} catch (Exception e) {
+			curr = 1;
+		}
+		Integer userId = (Integer)request.getSession().getAttribute("userUniqueName");
+		PageParams<Commodity> pageParams = commodityService.getRecommend(curr,userId);
+		map.put("pageParams", pageParams);
+		return "";
+	}
+
 	/** 商品详情 */
 	// 转向商品信息详情页
 	@RequestMapping(value = "guidedCommodity")
 	public String guidedCommodity(HttpServletRequest request) {
 		return "downStream/commodityCatalog/guidedCommodity";
 
+	}
 }

@@ -65,10 +65,11 @@ public class BuyerController {
 			ArrayList<NavTreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
 			map.put("firstClass", firstClass);
 			request.getSession().setAttribute("firstClass", firstClass);//服务于主页搜索
-			if (code != null && code != "") {// 获得面包屑导航
-				List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
-				map.put("breadNav", breadNav);
-			}
+		}
+		if (code != null && code != "") {// 获得面包屑导航
+			NavTree navTree = (NavTree)request.getServletContext().getAttribute("navTree");
+			List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
+			map.put("breadNav", breadNav);
 		}
 		if (currPage == null || currPage.equals(""))
 			currPage = 1 + ""; // 如果未指定请求页，则默认设置为第一页
@@ -82,8 +83,8 @@ public class BuyerController {
 		commodity.setSpsCode(code);
 		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp, 1);// 获得对应分类的商品,约束条件（分类、目录激活、SQM准入）
 		map.put("pageParams", pageParams);
-		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
-		map.put("commoditiesQuantity", commoditiesQuantity);
+		//int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
+		//map.put("commoditiesQuantity", commoditiesQuantity);
 		map.put("code", code);// 保存状态
 		System.out.println("总页数：" + pageParams.getTotalPages() + " 当前页：" + pageParams.getCurrPage());
 		return "main/commodityCatalog";
@@ -97,7 +98,6 @@ public class BuyerController {
 		} catch (Exception e) {
 			curr = 1;
 		}
-		
 		if(content == null || content.equals("按部件号、供应商名称或关键字搜索")) content="";
 		PageParams<Commodity> pageParams = commodityService.multiFieldSearch(content,curr);
 		map.put("pageParams",pageParams );

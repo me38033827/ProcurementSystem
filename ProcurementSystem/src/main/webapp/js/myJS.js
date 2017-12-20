@@ -9,13 +9,13 @@ function setRadioChecked(name,value) {
 	}
 }
 
-function createButtonPage(i){// i表示页号
+function createButtonPage(i,code){// i表示页号
 	var button = document.createElement("button")// 创建button结点
 	var text = document.createTextNode(""+i);
 	button.appendChild(text);
 	button.id="page"+i;// 设置button属性
 	button.setAttribute("class","btn-page");
-	button.setAttribute("onclick","window.location.href='commodityCatalog?currPage="+i+"'");
+	button.setAttribute("onclick","window.location.href='commodityCatalog?currPage="+i+"&code="+code+"'");
 	pageList.appendChild(button);// 添加到pageList后面
 }
 

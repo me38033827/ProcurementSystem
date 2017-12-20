@@ -18,8 +18,10 @@ import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.PageParams;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.dao.IBuyerCommoditySpscCodeHelperDao;
+import com.ProcurementSystem.dao.IUserBehaviorDao;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommoditySpscCodeHelper;
+import com.ProcurementSystem.entity.UserBehavior;
 
 @Service
 public class BuyerCommodityService {
@@ -27,6 +29,8 @@ public class BuyerCommodityService {
 	IBuyerCommodityDao commodityDao;
 	@Resource
 	IBuyerCommoditySpscCodeHelperDao spscCodeHelperDao;
+	@Resource
+	IUserBehaviorDao userBehaviorDao;
 
 	public Boolean updateCommodity(Commodity commodity) {// 不分页的查询方法
 		return commodityDao.updateCommodity(commodity);
@@ -43,8 +47,8 @@ public class BuyerCommodityService {
 		else if (currPage < 1)
 			currPage = 1;
 		pageParams.setCurrPage(currPage);
-		int offset = (pageParams.getCurrPage() - 1) * PageParams.pageSize;
-		int size = PageParams.pageSize;
+		int offset = (pageParams.getCurrPage() - 1) * pageParams.pageSize;
+		int size = pageParams.pageSize;
 
 		Map<String, Object> searchParams = new HashMap<>();// 构造查询参数
 		searchParams.put("commodity", commodity);
@@ -65,8 +69,8 @@ public class BuyerCommodityService {
 			else if (currPage < 1)
 				currPage = 1;
 			pageParams.setCurrPage(currPage);
-			int offset = (pageParams.getCurrPage() - 1) * PageParams.pageSize;
-			int size = PageParams.pageSize;
+			int offset = (pageParams.getCurrPage() - 1) * pageParams.pageSize;
+			int size = pageParams.pageSize;
 
 			Map<String, Object> searchParams = new HashMap<>();// 构造查询参数
 			searchParams.put("commodity", commodity);
@@ -180,13 +184,48 @@ public class BuyerCommodityService {
 		params.setCurrPage(currPage);
 		params.setRowCount(count);
 		Map<String,Object> searchMap = new HashMap<>();
-		searchMap.put("size", PageParams.getPageSize());
-		searchMap.put("offset", PageParams.getPageSize()*(currPage-1));
+		searchMap.put("size", params.getPageSize());
+		searchMap.put("offset", params.getPageSize()*(currPage-1));
 		searchMap.put("content", content);
 		List<Commodity> commodities = commodityDao.multiFieldSearchDao(searchMap);
 		if(commodities != null)
 			params.setData(commodities);
 		return params;
+	}
+
+	public PageParams<Commodity> getTop50(int curr) {
+		Map<String,Object> map = new HashMap<>();
+		PageParams<Commodity> pageParams = new PageParams<>();
+		pageParams.pageSize = 3 * 4;
+		if(curr>(50/pageParams.getPageSize()+1)) curr = 50/pageParams.getPageSize()+1;//边界处理
+		pageParams.setCurrPage(curr);
+		pageParams.setRowCount(50);
+		map.put("offset",  (curr-1)*(pageParams.getPageSize()) );
+		map.put("size", pageParams.getPageSize());
+		if(curr == 50/pageParams.getPageSize()+1) map.put("size", 50 % pageParams.getPageSize());//边界处理
+		List<Commodity> commodities = commodityDao.geTop50(map);
+		if(commodities != null) pageParams.setData(commodities);
+		return pageParams;
+	}
+
+	public PageParams<Commodity> getRecommend(int curr,Integer userId) {
+		Map<String,Object> map = new HashMap<>();
+		PageParams<Commodity> pageParams = new PageParams<>();
+		pageParams.pageSize = 3 * 4;
+		if(curr>(50/pageParams.getPageSize()+1)) curr = 50/pageParams.getPageSize()+1;//边界处理
+		pageParams.setCurrPage(curr);
+		pageParams.setRowCount(50);
+		map.put("offset", (curr-1)*(pageParams.getPageSize()) );
+		map.put("size", pageParams.getPageSize());
+		if(curr == 50/pageParams.getPageSize()+1) map.put("size", 50 % pageParams.getPageSize());//边界处理
+		List<UserBehavior> userBehaviors = userBehaviorDao.getSortRule(userId);//获取排序依据，code和Supplier
+		List<UserBehavior> sortRuleBySupplier = userBehaviorDao.getSortRuleBySupplier(userId);
+		
+		map.put("sortRule", userBehaviors);
+		map.put("sortRuleBySupplier", sortRuleBySupplier);
+		List<Commodity> commodities = commodityDao.getRecommend(map);
+		if(commodities != null) pageParams.setData(commodities);
+		return pageParams;
 	}
 
 	

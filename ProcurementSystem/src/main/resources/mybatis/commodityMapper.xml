@@ -467,4 +467,153 @@
 		order by uniqueName desc
 		limit #{offset},#{size}
 	</select>
+	
+	
+	
+	<select id="geTop50" parameterType="map"
+		resultMap="commodityMap">
+		select
+		c.unique_name as uniqueName,
+		c.company_code as companyCode,
+		c.gcm_email_address as
+		gcmEmailAddress,
+		c.supplier_part_id as
+		supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.spsc_code as
+		spscCode,
+		c.manufacturer_name as
+		manufacturerName,
+		c.manufacturer_part_id as manufacturerPartId,
+		c.manufacturer_url as
+		manufacturerUrl,
+		c.is_hazardous_materials as
+		isHazardousMaterials,
+		c.is_green as isGreen,
+		c.expiration_date as
+		expirationDate,
+		c.effective_date as effectiveDate,
+		c.item_description as
+		itemDescription,
+		c.short_name as shortName,
+		c.unit_price as unitPrice,
+		c.unit_of_measure as unitOfMeasure,
+		c.is_checked as isChecked,
+		c.thumbnail as thumbnail,
+		c.image as image,
+		cc.unique_name as
+		commodityCatalogUniqueName,
+		cc.name as commodityCatalogName,
+		con.unique_name as contractUniqueName,
+		con.name as
+		contractName,
+		sup.unique_name as supplieruniqueName,
+		sup.name as
+		supplierName
+		from
+		((commodity c left join contract con on
+		c.contract_unique_name =
+		con.unique_name)
+		left join supplier sup on
+		c.supplier_unique_name =
+		sup.unique_name)
+		left
+		join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name =
+		cc.unique_name
+		left join
+		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
+		left join supplier_sqm ss on ss.supplier_id = c.supplier_unique_name
+		where 1 = 1 and
+		cc.is_activated = '已激活' and cch.spsc_code in(select
+		spsc_code from supplier_sqm ss2 left join supplier_sqm_allowed_code
+		sac on
+		sac.sqm_id = ss2.id where ss2.supplier_id =
+		c.supplier_unique_name)
+		group by c.unique_name 
+		order by (add_shopping_cart_count+view_info_count)
+		limit #{offset},#{size}
+	</select>
+	
+	
+	<select id="getRecommend" parameterType="map"
+		resultMap="commodityMap">
+		select
+		c.unique_name as uniqueName,
+		c.company_code as companyCode,
+		c.gcm_email_address as
+		gcmEmailAddress,
+		c.supplier_part_id as
+		supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.spsc_code as
+		spscCode,
+		c.manufacturer_name as
+		manufacturerName,
+		c.manufacturer_part_id as manufacturerPartId,
+		c.manufacturer_url as
+		manufacturerUrl,
+		c.is_hazardous_materials as
+		isHazardousMaterials,
+		c.is_green as isGreen,
+		c.expiration_date as
+		expirationDate,
+		c.effective_date as effectiveDate,
+		c.item_description as
+		itemDescription,
+		c.short_name as shortName,
+		c.unit_price as unitPrice,
+		c.unit_of_measure as unitOfMeasure,
+		c.is_checked as isChecked,
+		c.thumbnail as thumbnail,
+		c.image as image,
+		cc.unique_name as
+		commodityCatalogUniqueName,
+		cc.name as commodityCatalogName,
+		con.unique_name as contractUniqueName,
+		con.name as
+		contractName,
+		sup.unique_name as supplieruniqueName,
+		sup.name as
+		supplierName
+		from
+		((commodity c left join contract con on
+		c.contract_unique_name =
+		con.unique_name)
+		left join supplier sup on
+		c.supplier_unique_name =
+		sup.unique_name)
+		left
+		join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name =
+		cc.unique_name
+		left join
+		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
+		left join supplier_sqm ss on ss.supplier_id = c.supplier_unique_name
+		where 1 = 1 and
+		cc.is_activated = '已激活' and cch.spsc_code in(select
+		spsc_code from supplier_sqm ss2 left join supplier_sqm_allowed_code
+		sac on
+		sac.sqm_id = ss2.id where ss2.supplier_id =
+		c.supplier_unique_name)
+		group by c.unique_name 
+		order by field (`spscCode`,
+		<foreach item="item" index="index" collection="sortRule"
+     		 open="" separator="," close="">
+        	#{item.code}
+  		</foreach>) desc , 
+  		 field (`supplieruniqueName`,
+		<foreach item="item" index="index" collection="sortRuleBySupplier"
+     		 open="" separator="," close="">
+        	#{item.supplierId}
+  		</foreach>) desc
+		limit #{offset},#{size}
+	</select>
+	
+	
+	
 </mapper>

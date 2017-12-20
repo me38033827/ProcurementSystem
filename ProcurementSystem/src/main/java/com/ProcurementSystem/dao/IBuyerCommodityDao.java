@@ -30,4 +30,8 @@ public interface IBuyerCommodityDao {
 	public int getMultiSearchRowCount(String content);
 
 	public List<Commodity> multiFieldSearchDao(Map<String, Object> searchMap);
+
+	public List<Commodity> geTop50(Map<String,Object> map);
+
+	public List<Commodity> getRecommend(Map<String, Object> map);
 }

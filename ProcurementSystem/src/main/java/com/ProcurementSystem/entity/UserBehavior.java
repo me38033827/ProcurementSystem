@@ -2,8 +2,8 @@ package com.ProcurementSystem.entity;
 
 public class UserBehavior {
 	private Integer id;
-	private User user;
-	private Supplier supplier;
+	private Integer userId;
+	private Integer supplierId;
 	private String action;
 	private String code;
 	private String date;
@@ -13,17 +13,19 @@ public class UserBehavior {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public User getUser() {
-		return user;
+	
+	
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
-	public Supplier getSupplier() {
-		return supplier;
+	public Integer getSupplierId() {
+		return supplierId;
 	}
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
+	public void setSupplierId(Integer supplierId) {
+		this.supplierId = supplierId;
 	}
 	public String getAction() {
 		return action;

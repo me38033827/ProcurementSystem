@@ -4,21 +4,22 @@ import java.util.List;
 
 public class PageParams<T> {
 	private int currPage;//当前页面
-	public static int pageSize = 6;//页面大小
+	public  int pageSize = 6;//页面大小
 	private int rowCount;//总行数
 	private int totalPages;//总页数
-	private List<T> data;
+	private List<T> data;//数据
 	public int getCurrPage() {
 		return currPage;
 	}
 	public void setCurrPage(int currPage) {
 		this.currPage = currPage;
 	}
-	public static int getPageSize() {
+	
+	public int getPageSize() {
 		return pageSize;
 	}
-	public static void setPageSize(int pageSize) {
-		PageParams.pageSize = pageSize;
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
 	}
 	public int getRowCount() {
 		return rowCount;

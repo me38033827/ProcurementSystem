@@ -264,10 +264,10 @@
 				<div class="right">
 				
 					<button class="btn-page" id="forward"
-						onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>'">上一页</button>
+						onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>&code=${code }'">上一页</button>
 					<span id="pageList"></span>
 					<button class="btn-page" id="afterward"
-						onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}'">下一页</button>
+						onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}&code=${code}'">下一页</button>
 					<span>共<strong>${pageParams.totalPages}</strong>页
 					</span>
 				</div>
@@ -287,17 +287,17 @@ var totalPages = ${pageParams.totalPages};
 if(totalPages >= 4){
 	if(currPage < 3 ){
 		for(var i=1; i<=3 ;i++ ){
-			createButtonPage(i);
+			createButtonPage(i,"${code}");
 		}
 	}else{
-		createButtonPage(1);
+		createButtonPage(1,"${code}");
 		for(var i=currPage-1; i<=currPage+1 ;i++ ){
-			createButtonPage(i);
+			createButtonPage(i,"${code}");
 		}
 	}
 }else if(totalPages > 0){//总页数不足4页
 	for(var i=1; i<=totalPages ; i++){
-		createButtonPage(i);
+		createButtonPage(i,"${code}");
 	}
 }
 if(currPage == 1 || currPage == 0) $("#forward").hide();//善后处理
