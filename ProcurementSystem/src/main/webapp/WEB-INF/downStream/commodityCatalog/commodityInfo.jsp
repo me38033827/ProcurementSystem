@@ -231,10 +231,7 @@
 										<td>Contract Number:</td>
 										<td>C${commodity.contract.uniqueName }</td>
 									</tr>
-									<tr>
-										<td>GCM Email address:</td>
-										<td>${commodity.gcmEmailAddress }</td>
-									</tr>
+									
 								</table>
 							</div>
 						</div>

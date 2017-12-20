@@ -28,11 +28,13 @@ import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.ShoppingCart;
 import com.ProcurementSystem.entity.Supplier;
+import com.ProcurementSystem.entity.User;
+import com.ProcurementSystem.entity.UserBehavior;
 import com.ProcurementSystem.service.BuyerCommodityCatalogService;
 import com.ProcurementSystem.service.BuyerCommodityService;
 import com.ProcurementSystem.service.BuyerShoppingCartService;
 import com.ProcurementSystem.service.SupplierService;
-import com.alibaba.fastjson.JSONArray;
+import com.ProcurementSystem.service.UserBehaviorService;
 import com.alibaba.fastjson.JSONObject;
 
 @Controller
@@ -46,8 +48,13 @@ public class BuyerCommodityCatalogController {
 	BuyerShoppingCartService shoppingCartService;
 	@Resource
 	SupplierService supplierService;
+<<<<<<< HEAD
 	@Resource
 	IBuyerCommodityDao commodityDao;
+=======
+	@Resource 
+	UserBehaviorService userBehaviorService;
+>>>>>>> origin/master
 
 	// 测试
 	@RequestMapping(value = "index")
@@ -380,6 +387,16 @@ public class BuyerCommodityCatalogController {
 	public @ResponseBody String commodityCatalogAddShoppingCart(HttpServletRequest request,
 			@RequestParam(value = "uniqueName") String uniqueName, @RequestParam(value = "quantity") String quantity) {
 		HttpSession session = request.getSession();
+		commodityCatalogService.addShoppingCartCount(uniqueName);//top50
+//		UserBehavior userBehavior = new UserBehavior();
+//		Commodity commodity = new Commodity();
+//		commodity.setUniqueName(uniqueName);
+//		PageParams<Commodity> pageParams  = commodityService.searchCommodity(commodity, 1);
+//		User user = (User)request.getSession().getAttribute("");
+//		userBehavior.setUser(user);
+//		userBehavior.setCode(pageParams.getData().get(0).getSpsCode());
+//		userBehavior.setSupplier(supplier);
+//		userBehaviorService.insert();//用户行为记录
 		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");// 获得购物车
 		if (shoppingCart == null)
 			shoppingCart = new ShoppingCart();
@@ -461,6 +478,7 @@ public class BuyerCommodityCatalogController {
 			@RequestParam(value = "code", required = false) String code,
 			@RequestParam(value = "currPage", required = false) String currPage, ModelMap map,
 			HttpServletRequest request) {
+		commodityCatalogService.addViewInfoCount(uniqueName);//top50
 		Commodity commodity = new Commodity();
 		commodity.setUniqueName(uniqueName);
 		PageParams<Commodity> commodities = commodityService.searchCommodity(commodity, 1);
@@ -476,4 +494,20 @@ public class BuyerCommodityCatalogController {
 		map.put("paths", paths);
 		return "downStream/commodityCatalog/commodityInfo";
 	}
+<<<<<<< HEAD
+=======
+	/**Top50显示*/
+//	@RequestParam(value="")//fe
+	
+	
+	
+
+	
+	/** 商品详情 */
+	// 转向商品信息详情页
+	@RequestMapping(value = "guidedCommodity")
+	public String guidedCommodity(HttpServletRequest request) {
+		return "downStream/commodityCatalog/guidedCommodity";
+
+>>>>>>> origin/master
 }

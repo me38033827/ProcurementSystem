@@ -51,8 +51,8 @@
 			<div class="col-md-2 inline-b left" id="search-service">
 				<select class="col-md-12" id="my-select">
 					<option>所有类别</option>
-					<option>服务</option>
-					<option>服务</option>
+					<!-- <option>服务</option>
+					<option>服务</option> -->
 				</select>
 			</div>
 
@@ -148,13 +148,9 @@
 					</div>
 				</div>
 				<div class="adjust-10"></div>
-<<<<<<< HEAD
-				<button onclick="window.location.href='guidedBuying'"style="width:100%;">Guided Buying</button>
-=======
 				<button
 					onclick="window.location.href='commodityCatalog/guidedBuying'"
 					style="width: 100%;">Guided Buying</button>
->>>>>>> origin/master
 			</div>
 
 			<!-- 面包屑导航 -->
@@ -268,10 +264,10 @@
 				<div class="right">
 				
 					<button class="btn-page" id="forward"
-						onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>'">上一页</button>
+						onclick="window.location.href='search?currPage=<%=pageParams.getCurrPage() - 1%>&content=${content }'">上一页</button>
 					<span id="pageList"></span>
 					<button class="btn-page" id="afterward"
-						onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}'">下一页</button>
+						onclick="window.location.href='search?currPage=${pageParams.currPage+1}&content=${content }'">下一页</button>
 					<span>共<strong>${pageParams.totalPages}</strong>页
 					</span>
 				</div>
@@ -291,17 +287,17 @@ var totalPages = ${pageParams.totalPages};
 if(totalPages >= 4){
 	if(currPage < 3 ){
 		for(var i=1; i<=3 ;i++ ){
-			createButtonPage(i);
+			createButtonPageSearch(i,'${content}');
 		}
 	}else{
-		createButtonPage(1);
+		createButtonPageSearch(1);
 		for(var i=currPage-1; i<=currPage+1 ;i++ ){
-			createButtonPage(i);
+			createButtonPageSearch(i,'${content}');
 		}
 	}
 }else if(totalPages > 0){//总页数不足4页
 	for(var i=1; i<=totalPages ; i++){
-		createButtonPage(i);
+		createButtonPageSearch(i,'${content}');
 	}
 }
 if(currPage == 1 || currPage == 0) $("#forward").hide();//善后处理

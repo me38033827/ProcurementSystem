@@ -59,11 +59,17 @@ public class BuyerController {
 	@RequestMapping(value = "commodityCatalog")
 	public String commodityCatalog(ModelMap map, @RequestParam(value = "currPage", required = false) String currPage,
 			@RequestParam(value = "code", required = false) String code, HttpServletRequest request) {
-		NavTree navTree = commodityService.generateCommodityNav();
-		request.getServletContext().setAttribute("navTree", navTree);// 获得导航树
-
-		ArrayList<NavTreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
-		map.put("firstClass", firstClass);
+		if(request.getSession().getAttribute("firstClass")==null){
+			NavTree navTree = commodityService.generateCommodityNav();
+			request.getServletContext().setAttribute("navTree", navTree);// 获得导航树
+			ArrayList<NavTreeNode> firstClass = navTree.getNavClass(1);// 产生第一级商品导航
+			map.put("firstClass", firstClass);
+			request.getSession().setAttribute("firstClass", firstClass);//服务于主页搜索
+			if (code != null && code != "") {// 获得面包屑导航
+				List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
+				map.put("breadNav", breadNav);
+			}
+		}
 		if (currPage == null || currPage.equals(""))
 			currPage = 1 + ""; // 如果未指定请求页，则默认设置为第一页
 		int temp = 0;
@@ -78,14 +84,11 @@ public class BuyerController {
 		map.put("pageParams", pageParams);
 		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
 		map.put("commoditiesQuantity", commoditiesQuantity);
-		if (code != null && code != "") {// 获得面包屑导航
-			List<NavTreeNode> breadNav = navTree.getNavClassNames(code);
-			map.put("breadNav", breadNav);
-		}
 		map.put("code", code);// 保存状态
 		System.out.println("总页数：" + pageParams.getTotalPages() + " 当前页：" + pageParams.getCurrPage());
 		return "main/commodityCatalog";
 	}
+<<<<<<< HEAD
 	
 	// guided buying
 	@RequestMapping(value = "guidedBuying")
@@ -152,5 +155,22 @@ public class BuyerController {
 		map.put("code", code);// 保存状态
 		
 		return "downStream/commodityCatalog/guidedCommodity";
+=======
+	/**搜索商品*/
+	@RequestMapping("search")
+	public String multiFieldSearch(@RequestParam(value="content",required=false) String content,@RequestParam(value="currPage",required=false)String currPage,ModelMap map){
+		int curr = 1;
+		try {
+			 curr = Integer.parseInt(currPage);
+		} catch (Exception e) {
+			curr = 1;
+		}
+		
+		if(content == null || content.equals("按部件号、供应商名称或关键字搜索")) content="";
+		PageParams<Commodity> pageParams = commodityService.multiFieldSearch(content,curr);
+		map.put("pageParams",pageParams );
+		map.put("content",content);
+		return "main/commodityCatalogSearch";
+>>>>>>> origin/master
 	}
 }

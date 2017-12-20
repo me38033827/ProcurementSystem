@@ -81,6 +81,7 @@
 			    success:function(data){
 			    		//初始化搜索条件
 			    		console.log(data);
+			    		alert(12);
 			    		for(var i=0; i<data.length; i++){
 			    			if(data[i].answerType==5){
 			    				//日期

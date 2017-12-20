@@ -19,6 +19,16 @@ function createButtonPage(i){// i表示页号
 	pageList.appendChild(button);// 添加到pageList后面
 }
 
+function createButtonPageSearch(i,content){// i表示页号
+	var button = document.createElement("button")// 创建button结点
+	var text = document.createTextNode(""+i);
+	button.appendChild(text);
+	button.id="page"+i;// 设置button属性
+	button.setAttribute("class","btn-page");
+	button.setAttribute("onclick","window.location.href='search?currPage="+i+"&content="+content+"'");
+	pageList.appendChild(button);// 添加到pageList后面
+}
+
 
 /** 添加购物车，修改购物车图标数量 */
 function addShoppingCart(uniqueName,quantity){

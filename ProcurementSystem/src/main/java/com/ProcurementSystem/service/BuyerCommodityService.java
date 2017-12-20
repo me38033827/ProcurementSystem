@@ -1,6 +1,5 @@
 package com.ProcurementSystem.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +16,6 @@ import org.springframework.ui.ModelMap;
 
 import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.PageParams;
-import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.dao.IBuyerCommoditySpscCodeHelperDao;
 import com.ProcurementSystem.entity.Commodity;
@@ -62,7 +60,6 @@ public class BuyerCommodityService {
 		int rowCount = commodityDao.getActivatedRowCount(commodity);// 获得激活商品的总行数rowCount
 		pageParams.setRowCount(rowCount);
 		if (pageParams.getTotalPages() > 0) {
-
 			if (currPage > pageParams.getTotalPages())// 判断当前页的合法性
 				currPage = pageParams.getTotalPages();
 			else if (currPage < 1)
@@ -175,6 +172,21 @@ public class BuyerCommodityService {
 		commoditySpscCodeHelper.setCommodity(commodity);
 		spscCodeHelperDao.delete(commoditySpscCodeHelper);// 删除旧code
 		divideSpscCode(commodity);// 拆分新code并存储
+	}
+
+	public PageParams<Commodity> multiFieldSearch(String content,int currPage) {
+		PageParams<Commodity> params = new PageParams<>();
+		int count = commodityDao.getMultiSearchRowCount(content);//获得允许显示的商品总数
+		params.setCurrPage(currPage);
+		params.setRowCount(count);
+		Map<String,Object> searchMap = new HashMap<>();
+		searchMap.put("size", PageParams.getPageSize());
+		searchMap.put("offset", PageParams.getPageSize()*(currPage-1));
+		searchMap.put("content", content);
+		List<Commodity> commodities = commodityDao.multiFieldSearchDao(searchMap);
+		if(commodities != null)
+			params.setData(commodities);
+		return params;
 	}
 
 	
