@@ -30,14 +30,14 @@
 				<div class="col-md-4 box-container">
 					<button class="box-a-third" onclick="window.location.href='recommend'">推荐产品</button>
 				</div>
-				<c:forEach var="node" items="${firstClass}">
+				<div class="col-md-4 box-container">
+					<button class="box-a-third" onclick="window.location.href='guidedCommodity'">所有产品</button>
+				</div>
+				<c:forEach var="node" items="${firstClass}" begin="1" step="1" end="6">
 					<div class="col-md-4 box-container">
 						<button class="box-a-third" onclick="window.location.href='guidedCommodity?code=${node.spscCode }'">${node.name }</button>
 					</div>
 				</c:forEach>
-				<div class="col-md-4 box-container">
-					<button class="box-a-third" onclick="window.location.href='guidedCommodity'">所有产品</button>
-				</div>
 			</div>
 		</div>
 	</div>

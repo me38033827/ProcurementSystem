@@ -171,9 +171,13 @@
 						<a class="result-line2-font">找到${pageParams.rowCount}个项目。</a>
 					</div>
 					<div class="result-line2-middle">
-						<a class="result-line2-font">查看方式：</a> <span
-							class="glyphicon glyphicon-list" aria-hidden="true"
-							id="glyphicon-list"></span>
+						<span class="result-line2-font">查看方式：</span> 
+							<button class="trans-btn"><span
+							class="glyphicon glyphicon-list blue" aria-hidden="true"
+							id="glyphicon-list"></span></button>
+							<button class="trans-btn" id="glyphicon-th"><span
+							class="glyphicon glyphicon-th black" aria-hidden="true"
+							></span></button>
 					</div>
 					<div class="result-line2-right">
 						<a class="result-line2-font">排序方式：相关性</a>
@@ -279,40 +283,48 @@
 	</div>
 
 	<script type="text/javascript">
-	$("#commodityCatalog").attr('class',"header-clicked secondline-left");
-var pageList = document.getElementById("pageList");
-var currPage = ${pageParams.currPage};
-var totalPages = ${pageParams.totalPages};
-
-if(totalPages >= 4){
-	if(currPage < 3 ){
-		for(var i=1; i<=3 ;i++ ){
-			createButtonPage(i,"${code}");
+		$("#commodityCatalog").attr('class',"header-clicked secondline-left");
+		var pageList = document.getElementById("pageList");
+		var currPage = ${pageParams.currPage};
+		var totalPages = ${pageParams.totalPages};
+		if(totalPages >= 4){
+			if(currPage < 3 ){
+				for(var i=1; i<=3 ;i++ ){
+					createButtonPage(i,"${code}");
+				}
+			}else{
+				createButtonPage(1,"${code}");
+				for(var i=currPage-1; i<=currPage+1 ;i++ ){
+					createButtonPage(i,"${code}");
+				}
+			}
+		}else if(totalPages > 0){//总页数不足4页
+			for(var i=1; i<=totalPages ; i++){
+				createButtonPage(i,"${code}");
+			}
 		}
-	}else{
-		createButtonPage(1,"${code}");
-		for(var i=currPage-1; i<=currPage+1 ;i++ ){
-			createButtonPage(i,"${code}");
+		if(currPage == 1 || currPage == 0) $("#forward").hide();//善后处理
+		if(currPage  == totalPages) {
+			$("#afterward").hide();
+			$("#page"+(currPage+1)).hide();
 		}
-	}
-}else if(totalPages > 0){//总页数不足4页
-	for(var i=1; i<=totalPages ; i++){
-		createButtonPage(i,"${code}");
-	}
-}
-if(currPage == 1 || currPage == 0) $("#forward").hide();//善后处理
-if(currPage  == totalPages) {
-	$("#afterward").hide();
-	$("#page"+(currPage+1)).hide();
-}
-$("#page"+currPage).attr("class","btn-page-choose");
+		$("#page"+currPage).attr("class","btn-page-choose");
+		
+		
+		
+		function add(uniqueName){
+			/* var sss = ${pageParams.currPage}; */
+			var quantity = $("#quantity_"+uniqueName).val();
+			addShoppingCart(uniqueName,quantity);
+		}
+		
+		toGuidedBuyingStyle("${code}",currPage);
+		
+		function toGuidedBuyingStyle(code,i){// i表示页号
+			$("#glyphicon-th").attr("onclick","window.location.href='guidedCommodity?currPage="+i+"&code="+code+"'");
+			//window.location.href="guideCommodity?code="+code+"&page="+page;
+		}
 
-function add(uniqueName){
-	/* var sss = ${pageParams.currPage}; */
-	var quantity = $("#quantity_"+uniqueName).val();
-	addShoppingCart(uniqueName,quantity);
-}
-
-</script>
+	</script>
 </body>
 </html>
