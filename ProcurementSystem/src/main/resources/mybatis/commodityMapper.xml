@@ -235,6 +235,7 @@
 		cc.unique_name as
 		commodityCatalogUniqueName,
 		cc.name as commodityCatalogName,
+		cc.level as level,
 		con.unique_name as contractUniqueName,
 		con.name as
 		contractName,
@@ -269,7 +270,7 @@
 			and c.spsc_code like CONCAT(#{commodity.spscCode},'%')
 		</if>
 		group by c.unique_name
-		order by uniqueName desc
+		order by level desc
 		<if test="offset != null and size != null">
 			limit #{offset},#{size}
 		</if>

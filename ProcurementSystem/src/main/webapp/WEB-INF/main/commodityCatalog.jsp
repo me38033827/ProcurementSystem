@@ -201,7 +201,7 @@
 
 							<div class="left container-thumbnail">
 								<img alt="" id="image-${commodity.uniqueName }"
-									src="/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
+									src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
 									onerror="error('image-${commodity.uniqueName }');"
 									width="130px" height="130px">
 							</div>

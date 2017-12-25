@@ -105,7 +105,7 @@
 									<div class="bigImg">
 										<img id=iimage-${commodity.uniqueName}
 											onerror="error('iimage-${commodity.uniqueName }');"
-											src="/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${commodity.thumbnail}">
+											src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${commodity.thumbnail}">
 									</div>
 									<div class="smallImgs">
 										<!-- 	<p class="left">
@@ -115,7 +115,7 @@
 										<c:forEach var="path" items="${paths}">
 											<div class="smallImg left">
 												<img id=image-${commodity.uniqueName}
-													src="/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${path}"
+													src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${path}"
 													onerror="error('image-${commodity.uniqueName }');">
 											</div>
 										</c:forEach>

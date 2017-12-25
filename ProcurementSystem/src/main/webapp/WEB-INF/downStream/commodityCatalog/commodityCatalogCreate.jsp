@@ -152,12 +152,14 @@
 									<td class="col1">层级：</td>
 									<td class="col2">
 										<div class="radio">
+										<label><input type="radio" name="level" id="level1"
+												value="4">铂金</label>
 											<label><input type="radio" name="level" id="level1"
-												value="白金">白金</label> <label><input type="radio"
-												name="level" id="level2" value="黄金">黄金</label> <label><input
-												type="radio" name="level" id="level3" value="白银">白银</label>
+												value="3">白金</label> <label><input type="radio"
+												name="level" id="level2" value="2">黄金</label> <label><input
+												type="radio" name="level" id="level3" value="1">白银</label>
 											<label><input type="radio" name="level" id="level4"
-												value="无" checked>无</label>
+												value="0" checked>无</label>
 										</div>
 									</td>
 								</tr>
