@@ -78,18 +78,25 @@
 
 					<div class="shopping-cart-size right" id="shoppingCartSize"><%=size%></div>
 				</button>
-				<button class="btn-w " style="margin-right: 20px;"
-					onclick="window.location.href='commodityCatalog/commodityCatalogList'">目录管理</button>
+				<div class="dropdown" style="display: inline">
+					<button class="btn-w dropdown-toggle" style="margin-right: 20px;"
+						data-toggle="dropdown">
+						目录管理&nbsp;<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="commodityCatalog/commodityCatalogList">目录列表</a></li>
+						<li><a href="commodityCatalog/showCatalogView">目录视图</a></li>
+					</ul>
+				</div>
+				<!-- 第三行右侧标记 -->
 			</div>
-			<!-- 第三行右侧标记 -->
 		</div>
-	</div>
-	<div class="container" id="whole-container">
-		<!-- 主要内容 -->
-		<div class="main-subjects">
-			<!-- 右侧过滤栏 -->
-			<div class="filter">
-				<!-- <a class="filter-title" id="filter-first">过滤条件</a> <input
+		<div class="container" id="whole-container">
+			<!-- 主要内容 -->
+			<div class="main-subjects">
+				<!-- 右侧过滤栏 -->
+				<div class="filter">
+					<!-- <a class="filter-title" id="filter-first">过滤条件</a> <input
 					type="text" class="inline-b border-g left col-md-8" value="在结果中搜索"
 					style="font-size: 12px;"
 					onfocus="if(this.value=='在结果中搜索') this.value=''"
@@ -106,183 +113,186 @@
 				<a class="filter-title">类别</a> <a class="filter-content">其他政治、公民事物服务(1)</a>
 				<a class="filter-content">其他制造业相关业务(3)</a> <a class="filter-title">供应商</a>
 				<a class="filter-content">发发发发展有限公司(1)</a> <a class="filter-content">有限责任公司(3)</a> -->
-				<!--导航  -->
-				<div class="sidebar">
-					<!-- <div class="sidebar_top sidebar_top_tc">按照类别采购</div> -->
-					<div class="sidebar_con">
-						<dl class="sidebar_item">
-							<c:forEach var="node" items="${firstClass}">
-								<dd>
-									<h3 class="">
-										<a href="commodityCatalog?code=${node.spscCode }"> <c:if
-												test="${fn:length(node.name) >= 13 }">  
+					<!--导航  -->
+					<div class="sidebar">
+						<!-- <div class="sidebar_top sidebar_top_tc">按照类别采购</div> -->
+						<div class="sidebar_con">
+							<dl class="sidebar_item">
+								<c:forEach var="node" items="${firstClass}">
+									<dd>
+										<h3 class="">
+											<a href="commodityCatalog?code=${node.spscCode }"> <c:if
+													test="${fn:length(node.name) >= 13 }">  
                          					${fn:substring(node.name,0,13)}...
                  						</c:if> <c:if test="${fn:length(node.name) < 13 }">  
                          					${node.name }
                  						</c:if>
-										</a>
-									</h3>
-									<s></s>
-									<!-- 弹出层 -->
-									<div class="sidebar_popup dis1" style="display: none;">
-										<div class="sidebar_popup_class clearfix">
-											<div class="sidebar_popup_item">
-												<strong>${node.name }</strong>
-												<c:forEach var="childNode" items="${node.childList}">
-													<p>
-														<span class="linesbg"><a
-															href="commodityCatalog?code=${childNode.spscCode}">${childNode.name }</a></span>
-													</p>
-												</c:forEach>
+											</a>
+										</h3>
+										<s></s>
+										<!-- 弹出层 -->
+										<div class="sidebar_popup dis1" style="display: none;">
+											<div class="sidebar_popup_class clearfix">
+												<div class="sidebar_popup_item">
+													<strong>${node.name }</strong>
+													<c:forEach var="childNode" items="${node.childList}">
+														<p>
+															<span class="linesbg"><a
+																href="commodityCatalog?code=${childNode.spscCode}">${childNode.name }</a></span>
+														</p>
+													</c:forEach>
+												</div>
 											</div>
 										</div>
-									</div>
+									</dd>
+								</c:forEach>
+								<dd>
+									<h3 class="">
+										<a href="commodityCatalog?code=-1">未分类项目</a>
+									</h3>
 								</dd>
-							</c:forEach>
-							<dd>
-								<h3 class="">
-									<a href="commodityCatalog?code=-1">未分类项目</a>
-								</h3>
-							</dd>
-						</dl>
+							</dl>
+						</div>
 					</div>
-				</div>
-				<div class="adjust-10"></div>
+					<div class="adjust-10"></div>
 
-				<button onclick="window.location.href='guidedBuying'"style="width:100%;">Guided Buying</button>
+					<button onclick="window.location.href='guidedBuying'"
+						style="width: 100%;">Guided Buying</button>
 
-			</div>
-
-			<!-- 面包屑导航 -->
-			<div class="results-out col-md-9" style="padding-top: 0px;">
-				<ol class="breadcrumb bread-nav">
-					<li><a href="commodityCatalog">目录主页</a></li>
-					<c:forEach var="node" items="${breadNav}" varStatus="status">
-						<c:if test="${status.last == true}">
-							<li class="active">${node.name }</li>
-						</c:if>
-						<c:if test="${status.last == false}">
-							<li><a href="commodityCatalog?code=${node.spscCode }">${node.name }</a></li>
-						</c:if>
-					</c:forEach>
-				</ol>
-				<div class="result-line2">
-					<div class="result-line2-left">
-						<a class="result-line2-font">找到${pageParams.rowCount}个项目。</a>
-					</div>
-					<div class="result-line2-middle">
-						<span class="result-line2-font">查看方式：</span> 
-							<button class="trans-btn"><span
-							class="glyphicon glyphicon-list blue" aria-hidden="true"
-							id="glyphicon-list"></span></button>
-							<button class="trans-btn" id="glyphicon-th"><span
-							class="glyphicon glyphicon-th black" aria-hidden="true"
-							></span></button>
-					</div>
-					<div class="result-line2-right">
-						<a class="result-line2-font">排序方式：相关性</a>
-					</div>
-				</div>
-				<div class="result-line3">
-					<button type="submit" class="btn-w">添加到购物车</button>
-					<button type="submit" class="btn-w">比较项目</button>
 				</div>
 
-				<!-- 所有搜索结果 -->
-				<div class="result-items">
-					<c:forEach var="commodity" items="${requestScope.pageParams.data}">
-						<!-- 每条搜索结果 -->
-						<div class="result-item">
-							<div class="left">
-								<input type="checkbox" id="${commodity.uniqueName }" class="chk"
-									name="commodityUniqueNames" value="${commodity.uniqueName }" /><label
-									for="${commodity.uniqueName }"></label>
-							</div>
+				<!-- 面包屑导航 -->
+				<div class="results-out col-md-9" style="padding-top: 0px;">
+					<ol class="breadcrumb bread-nav">
+						<li><a href="commodityCatalog">目录主页</a></li>
+						<c:forEach var="node" items="${breadNav}" varStatus="status">
+							<c:if test="${status.last == true}">
+								<li class="active">${node.name }</li>
+							</c:if>
+							<c:if test="${status.last == false}">
+								<li><a href="commodityCatalog?code=${node.spscCode }">${node.name }</a></li>
+							</c:if>
+						</c:forEach>
+					</ol>
+					<div class="result-line2">
+						<div class="result-line2-left">
+							<a class="result-line2-font">找到${pageParams.rowCount}个项目。</a>
+						</div>
+						<div class="result-line2-middle">
+							<span class="result-line2-font">查看方式：</span>
+							<button class="trans-btn">
+								<span class="glyphicon glyphicon-list blue" aria-hidden="true"
+									id="glyphicon-list"></span>
+							</button>
+							<button class="trans-btn" id="glyphicon-th">
+								<span class="glyphicon glyphicon-th black" aria-hidden="true"></span>
+							</button>
+						</div>
+						<div class="result-line2-right">
+							<a class="result-line2-font">排序方式：相关性</a>
+						</div>
+					</div>
+					<div class="result-line3">
+						<button type="submit" class="btn-w">添加到购物车</button>
+						<button type="submit" class="btn-w">比较项目</button>
+					</div>
 
-							<div class="left container-thumbnail">
-								<img alt="" id="image-${commodity.uniqueName }"
-									src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
-									onerror="error('image-${commodity.uniqueName }');"
-									width="130px" height="130px">
-							</div>
-							<div class="item-whole">
-								<div>
-									<a
-										href="/ProcurementSystem/buyer/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }&code=${code}">${commodity.shortName }</a>
+					<!-- 所有搜索结果 -->
+					<div class="result-items">
+						<c:forEach var="commodity" items="${requestScope.pageParams.data}">
+							<!-- 每条搜索结果 -->
+							<div class="result-item">
+								<div class="left">
+									<input type="checkbox" id="${commodity.uniqueName }"
+										class="chk" name="commodityUniqueNames"
+										value="${commodity.uniqueName }" /><label
+										for="${commodity.uniqueName }"></label>
 								</div>
-								<table class="">
-									<tr>
-										<td class="item-content-grey">供应商：</td>
-										<td class="item-content-blue"><a
-											href="/ProcurementSystem/buyer/supplier/supplierDetail?id=${commodity.supplier.uniqueName }">${commodity.supplier.name}</a></td>
 
-									</tr>
-									<tr>
-										<td class="item-content-grey">供应商部件号：</td>
-										<td class="item-content-black">${commodity.supplierPartId}</td>
+								<div class="left container-thumbnail">
+									<img alt="" id="image-${commodity.uniqueName }"
+										src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
+										onerror="error('image-${commodity.uniqueName }');"
+										width="130px" height="130px">
+								</div>
+								<div class="item-whole">
+									<div>
+										<a
+											href="/ProcurementSystem/buyer/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }&code=${code}">${commodity.shortName }</a>
+									</div>
+									<table class="">
+										<tr>
+											<td class="item-content-grey">供应商：</td>
+											<td class="item-content-blue"><a
+												href="/ProcurementSystem/buyer/supplier/supplierDetail?id=${commodity.supplier.uniqueName }">${commodity.supplier.name}</a></td>
 
-									</tr>
-									<tr>
-										<td class="item-content-grey">剩余时间：</td>
-										<td class="item-content-black"></td>
+										</tr>
+										<tr>
+											<td class="item-content-grey">供应商部件号：</td>
+											<td class="item-content-black">${commodity.supplierPartId}</td>
 
-									</tr>
-									<tr>
-										<td class="item-content-grey">合同：</td>
-										<td class="item-content-blue">${commodity.contract.name }</td>
-									</tr>
-									<tr>
-										<td><span class="item-content-grey">描述：</span> <span>
+										</tr>
+										<tr>
+											<td class="item-content-grey">剩余时间：</td>
+											<td class="item-content-black"></td>
 
-												<c:if test="${fn:length(commodity.itemDescription) >= 50 }">  
+										</tr>
+										<tr>
+											<td class="item-content-grey">合同：</td>
+											<td class="item-content-blue">${commodity.contract.name }</td>
+										</tr>
+										<tr>
+											<td><span class="item-content-grey">描述：</span> <span>
+
+													<c:if test="${fn:length(commodity.itemDescription) >= 50 }">  
                          							  ${fn:substring(commodity.itemDescription,0,50)}...  
                  								 </c:if> <c:if
-													test="${fn:length(commodity.itemDescription) < 50 }">  
+														test="${fn:length(commodity.itemDescription) < 50 }">  
                          							 ${commodity.itemDescription }
                  								 </c:if>
-										</span></td>
-										<td class="item-content-black"></td>
-									</tr>
+											</span></td>
+											<td class="item-content-black"></td>
+										</tr>
 
-								</table>
+									</table>
 
-								<input type="hidden" id="uniqueName_${commodity.uniqueName }"
-									value="${commodity.uniqueName }" />
-							</div>
-
-							<div class="item-price">
-								<div class="item-price-green">￥${commodity.unitPrice}</div>
-								<div class="item-price-grey">&nbsp;／${commodity.unitOfMeasure}</div>
-								<br>
-								<div class="item-price-black">
-									数量： <input class="item-quantity"
-										id="quantity_${commodity.uniqueName }" value="1" />
-									<button class="item-add"
-										onclick="add(${commodity.uniqueName});">添加到购物车</button>
+									<input type="hidden" id="uniqueName_${commodity.uniqueName }"
+										value="${commodity.uniqueName }" />
 								</div>
-								<a class="item-price-blue">添加到收藏夹</a>
+
+								<div class="item-price">
+									<div class="item-price-green">￥${commodity.unitPrice}</div>
+									<div class="item-price-grey">&nbsp;／${commodity.unitOfMeasure}</div>
+									<br>
+									<div class="item-price-black">
+										数量： <input class="item-quantity"
+											id="quantity_${commodity.uniqueName }" value="1" />
+										<button class="item-add"
+											onclick="add(${commodity.uniqueName});">添加到购物车</button>
+									</div>
+									<a class="item-price-blue">添加到收藏夹</a>
+								</div>
 							</div>
-						</div>
-					</c:forEach>
-				</div>
-				<div class="right">
+						</c:forEach>
+					</div>
+					<div class="right">
 
-					<button class="btn-page" id="forward"
-						onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>&code=${code }'">上一页</button>
-					<span id="pageList"></span>
-					<button class="btn-page" id="afterward"
-						onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}&code=${code}'">下一页</button>
-					<span>共<strong>${pageParams.totalPages}</strong>页
-					</span>
+						<button class="btn-page" id="forward"
+							onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>&code=${code }'">上一页</button>
+						<span id="pageList"></span>
+						<button class="btn-page" id="afterward"
+							onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}&code=${code}'">下一页</button>
+						<span>共<strong>${pageParams.totalPages}</strong>页
+						</span>
+					</div>
 				</div>
+
+				<!-- pager -->
+
 			</div>
-
-			<!-- pager -->
-
 		</div>
-	</div>
 
-	<script type="text/javascript">
+		<script type="text/javascript">
 		$("#commodityCatalog").attr('class',"header-clicked secondline-left");
 		var pageList = document.getElementById("pageList");
 		var currPage = ${pageParams.currPage};

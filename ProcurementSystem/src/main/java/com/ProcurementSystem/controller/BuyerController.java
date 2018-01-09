@@ -1,8 +1,10 @@
 package com.ProcurementSystem.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ProcurementSystem.common.NavTree;
-import com.ProcurementSystem.common.PageParams;
 import com.ProcurementSystem.common.NavTreeNode;
+import com.ProcurementSystem.common.PageParams;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.entity.Commodity;
+import com.ProcurementSystem.entity.ShoppingCart;
 import com.ProcurementSystem.service.BuyerCommodityCatalogService;
 import com.ProcurementSystem.service.BuyerCommodityService;
 import com.ProcurementSystem.service.SearchService;
@@ -82,12 +85,15 @@ public class BuyerController {
 		}
 		Commodity commodity = new Commodity();
 		commodity.setSpsCode(code);
-		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp, 1);// 获得对应分类的商品,约束条件（分类、目录激活、SQM准入）
+		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp, 1);// 获得对应分类的商品,约束条件（分类、目录激活、SQM准入，用户组限制）
 		map.put("pageParams", pageParams);
 		//int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
 		//map.put("commoditiesQuantity", commoditiesQuantity);
 		map.put("code", code);// 保存状态
 		System.out.println("总页数：" + pageParams.getTotalPages() + " 当前页：" + pageParams.getCurrPage());
+		
+		ShoppingCart shoppingCart = (ShoppingCart)request.getSession().getAttribute("shoppingCart");
+		
 		return "main/commodityCatalog";
 	}
 	
@@ -120,9 +126,10 @@ public class BuyerController {
 		commodity.setSpsCode(code);
 		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp, 1);// 获得对应分类的商品,约束条件（分类、目录激活、SQM准入）
 		map.put("pageParams", pageParams);
-		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
-		map.put("commoditiesQuantity", commoditiesQuantity);
+		map.put("commoditiesQuantity", pageParams.getRowCount());
 		map.put("code", code);// 保存状态
+		
+		ShoppingCart shoppingCart = (ShoppingCart)request.getSession().getAttribute("shoppingCart");
 		
 		return "main/guidedBuying";
 	}
@@ -157,8 +164,7 @@ public class BuyerController {
 		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, temp, 1);// 获得对应分类的商品,约束条件（分类、目录激活、SQM准入）
 		PageParams.setPageSize(12);
 		map.put("pageParams", pageParams);
-		int commoditiesQuantity = commodityDao.getActivatedRowCount(commodity);// 获得商品总数量
-		map.put("commoditiesQuantity", commoditiesQuantity);
+		map.put("commoditiesQuantity", pageParams.getRowCount());
 		map.put("code", code);// 保存状态
 		return "downStream/commodityCatalog/guidedCommodity";
 	}

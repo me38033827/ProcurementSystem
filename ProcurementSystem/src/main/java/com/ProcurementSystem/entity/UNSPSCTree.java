@@ -10,13 +10,13 @@ import com.alibaba.fastjson.JSONObject;
 public class UNSPSCTree {
 
 	public UNSPSCTreeNode root;
-	
-	public UNSPSCTree(){
+
+	public UNSPSCTree() {
 		root = new UNSPSCTreeNode();
 		root.setDescription("初始");
 		root.setId(0);
 	}
-	
+
 	public void addChild(UNSPSCTreeNode parent, UNSPSCTreeNode child) {
 		if (parent.getChildren() != null) {
 			int hasSame = 0;
@@ -32,18 +32,19 @@ public class UNSPSCTree {
 			}
 		}
 	}
-	
-	public JSONArray UNSPSCTreeToJSONHelper(UNSPSCTreeNode parentNode){
+
+	public JSONArray UNSPSCTreeToJSONHelper(UNSPSCTreeNode parentNode) {
 		JSONArray array = new JSONArray();
-		
+
 		List<UNSPSCTreeNode> children = parentNode.getChildren();
-		if(children != null){
-			for (UNSPSCTreeNode child : children){
+		if (children != null) {
+			for (UNSPSCTreeNode child : children) {
 				JSONObject jsonObj = new JSONObject();
-				jsonObj.put("text", child.getDescription() + "<a class=\"right\" style=\"width:15%; color:black;\">"+child.getId()+"</a>");
+				jsonObj.put("text", child.getDescription() + "<a class=\"right\" style=\"width:15%; color:black;\">"
+						+ child.getId() + "</a>");
 				jsonObj.put("href", "");
-				
-				if(child.getChildren()!=null){
+
+				if (child.getChildren() != null) {
 					jsonObj.put("nodes", UNSPSCTreeToJSONHelper(child));
 				}
 				array.add(jsonObj);
@@ -51,11 +52,39 @@ public class UNSPSCTree {
 		}
 		return array;
 	}
-	
+
 	public JSONArray UNSPSCTreeToJSON() {
 		Queue<UNSPSCTreeNode> queue = new LinkedList<>();
 		queue.offer(root);
 		UNSPSCTreeNode a = queue.poll();
 		return UNSPSCTreeToJSONHelper(a);
+	}
+
+	// 添加选择按钮
+	public JSONArray UNSPSCTreeToJSON1() {
+		Queue<UNSPSCTreeNode> queue = new LinkedList<>();
+		queue.offer(root);
+		UNSPSCTreeNode a = queue.poll();
+		return UNSPSCTreeToJSONHelper1(a);
+	}
+
+	public JSONArray UNSPSCTreeToJSONHelper1(UNSPSCTreeNode parentNode) {
+		JSONArray array = new JSONArray();
+
+		List<UNSPSCTreeNode> children = parentNode.getChildren();
+		if (children != null) {
+			for (UNSPSCTreeNode child : children) {
+				JSONObject jsonObj = new JSONObject();
+				jsonObj.put("text", child.getDescription()+"<button class=\"right btn-w\" style=\"width:; color:black;\" onclick=\"setCommodity(\'"+child.getDescription()+"\',"+child.getId()+")\">选择</button>"+ "<a class=\"right\" style=\"width:30%; color:black;\">"
+						+ child.getId() + "</a>");
+				jsonObj.put("href", "");
+
+				if (child.getChildren() != null) {
+					jsonObj.put("nodes", UNSPSCTreeToJSONHelper1(child));
+				}
+				array.add(jsonObj);
+			}
+		}
+		return array;
 	}
 }

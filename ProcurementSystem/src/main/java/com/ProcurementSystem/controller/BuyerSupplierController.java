@@ -860,6 +860,12 @@ public class BuyerSupplierController {
 		JSONArray result = tree.UNSPSCTreeToJSON();
 		return result;
 	}
+	@RequestMapping(value = "selectSingleCommodity")
+	public @ResponseBody JSONArray selectSingleCommodity() {
+		UNSPSCTree tree = unspscService.generateUNSPSCTree();
+		JSONArray result = tree.UNSPSCTreeToJSON1();
+		return result;
+	}
 
 	// 创建sqm->选择供应商页
 	@RequestMapping(value = "sqmCreationChooseSupplier")

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ProcurementSystem.dao.ICatalogViewDao">
+
+	<resultMap id="map" type="com.ProcurementSystem.entity.CatalogView">
+		<id property="id" column="id" />
+		<result property="group" column="group" />
+		<result property="version" column="version" />
+		<result property="costCenter" column="costCenter" />
+		<result property="type" column="type" />
+		<result property="catalog" column="catalog" />
+		<result property="kit" column="kit" />
+		<result property="code" column="code" />
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierUniqueName" />
+			<result property="name" column="supplierName" />
+		</association>
+	</resultMap>
+
+
+	<insert id="insert">
+		insert into catalog_view(supplier_id,
+		`group`,
+		cost_center, type, catalog, kit, code)
+		values(#{supplier.uniqueName},
+		#{group},
+		#{costCenter}, #{type},#{catalog},#{kit},#{code});
+	</insert>
+
+	<select id="getCatalogView" resultMap="map">
+		select
+		id,
+		supplier_id as supplierUniqueName,
+		`group`,
+		cost_center as costCenter,
+		type,
+		catalog,
+		kit,
+		code,
+		s.name as supplierName
+		from catalog_view cv left join supplier s on s.unique_name =
+		cv.supplier_id
+		where 1=1
+		<if test="group != '' and group != null">
+			AND `group` = #{group}
+		</if>
+		;
+	</select>
+	
+	<select id="getNotCatalogView" resultMap="map">
+		select
+		id,
+		supplier_id as supplierUniqueName,
+		`group`,
+		cost_center as costCenter,
+		type,
+		catalog,
+		kit,
+		code,
+		s.name as supplierName
+		from catalog_view cv left join supplier s on s.unique_name =
+		cv.supplier_id
+		where 1=1
+		<if test="group != '' and group != null">
+			AND not `group` = #{group}
+		</if>
+		;
+	</select>
+	
+	
+	<delete id="delete">
+		delete from catalog_view 
+		where id in 
+		<foreach item="item" index="index" collection="list"
+			open="(" separator="," close=")">
+			${item}
+		</foreach>
+	</delete>
+</mapper>

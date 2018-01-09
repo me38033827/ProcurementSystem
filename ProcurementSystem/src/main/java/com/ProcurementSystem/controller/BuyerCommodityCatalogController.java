@@ -1,10 +1,12 @@
 package com.ProcurementSystem.controller;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -24,18 +26,20 @@ import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.common.PageParams;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
+import com.ProcurementSystem.entity.CatalogView;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommodityCatalog;
 import com.ProcurementSystem.entity.ShoppingCart;
 import com.ProcurementSystem.entity.Supplier;
-import com.ProcurementSystem.entity.User;
 import com.ProcurementSystem.entity.UserBehavior;
 import com.ProcurementSystem.service.BuyerCommodityCatalogService;
 import com.ProcurementSystem.service.BuyerCommodityService;
 import com.ProcurementSystem.service.BuyerShoppingCartService;
+import com.ProcurementSystem.service.CatalogViewService;
 import com.ProcurementSystem.service.SupplierService;
 import com.ProcurementSystem.service.UserBehaviorService;
 import com.alibaba.fastjson.JSONObject;
+import com.sun.org.apache.xml.internal.resolver.Catalog;
 
 @Controller
 @RequestMapping(value = "buyer/commodityCatalog")
@@ -50,15 +54,10 @@ public class BuyerCommodityCatalogController {
 	SupplierService supplierService;
 	@Resource
 	IBuyerCommodityDao commodityDao;
-	@Resource 
+	@Resource
 	UserBehaviorService userBehaviorService;
-
-	// 测试
-	@RequestMapping(value = "index")
-	public String test(HttpServletRequest request) {
-		System.out.println(request.getSession().getServletContext().getRealPath("/"));
-		return "page/index";
-	}
+	@Resource
+	CatalogViewService catalogViewService;
 
 	// 测试
 	@RequestMapping(value = "guidedBuying")
@@ -396,7 +395,8 @@ public class BuyerCommodityCatalogController {
 		commodity.setUniqueName(uniqueName);
 		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, 1);
 		Integer userUniqueName = (Integer) request.getSession().getAttribute("userUniqueName");
-		userBehavior.setUserId(userUniqueName);;
+		userBehavior.setUserId(userUniqueName);
+		;
 		userBehavior.setCode(pageParams.getData().get(0).getSpsCode());
 		userBehavior.setSupplierId(pageParams.getData().get(0).getSupplier().getUniqueName());
 		userBehavior.setAction("添加购物车");
@@ -475,6 +475,7 @@ public class BuyerCommodityCatalogController {
 			json.put("commodityTotalMoney", df.format(temp.getBuyQuantity() * temp.getUnitPrice()));
 		json.put("totalQuantity", shoppingCart.getTotalQuantity());
 		json.put("totalMoney", df.format(shoppingCart.getTotalAmount()));
+		request.getSession().setAttribute("shoppingCart", shoppingCart);
 		return json;
 	}
 
@@ -486,18 +487,19 @@ public class BuyerCommodityCatalogController {
 			@RequestParam(value = "currPage", required = false) String currPage, ModelMap map,
 			HttpServletRequest request) {
 		commodityCatalogService.addViewInfoCount(uniqueName);// top50
-		
+
 		UserBehavior userBehavior = new UserBehavior();
 		Commodity commodity = new Commodity();
 		commodity.setUniqueName(uniqueName);
 		PageParams<Commodity> pageParams = commodityService.searchCommodity(commodity, 1);
 		Integer userUniqueName = (Integer) request.getSession().getAttribute("userUniqueName");
-		userBehavior.setUserId(userUniqueName);;
+		userBehavior.setUserId(userUniqueName);
+		;
 		userBehavior.setCode(pageParams.getData().get(0).getSpsCode());
 		userBehavior.setSupplierId(pageParams.getData().get(0).getSupplier().getUniqueName());
 		userBehavior.setAction("查看详情");
 		userBehaviorService.insert(userBehavior);// 用户行为记录
-		
+
 		commodity = new Commodity();
 		commodity.setUniqueName(uniqueName);
 		PageParams<Commodity> commodities = commodityService.searchCommodity(commodity, 1);
@@ -514,8 +516,6 @@ public class BuyerCommodityCatalogController {
 		return "downStream/commodityCatalog/commodityInfo";
 	}
 
-
-	
 	/** 商品详情 */
 	// 转向商品信息详情页
 	@RequestMapping(value = "guidedCommodity")
@@ -523,5 +523,38 @@ public class BuyerCommodityCatalogController {
 		return "downStream/commodityCatalog/guidedCommodity";
 
 	}
-}
 
+	/** 目录视图 */
+	@RequestMapping("createCatalogView")
+	public String catalogView(ModelMap map) {
+		List<Supplier> suppliers = supplierService.searchAllSupplier();
+		CommodityCatalog commodityCatalog = new CommodityCatalog();
+		commodityCatalog.setIsActivated("已激活");
+		List<CommodityCatalog> catalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
+		map.put("suppliers", suppliers);
+		map.put("catalogs", catalogs);
+		return "downStream/commodityCatalog/catalogView/catalogViewCreate";
+	}
+	
+	//保存CatalogView至数据库
+	@RequestMapping("saveCatalogView")
+	public String saveCatalogView(CatalogView catalogView){
+		catalogViewService.insert(catalogView);
+		return "redirect:showCatalogView";
+	}
+	//显示所有CatalogView
+	@RequestMapping("showCatalogView")
+	public String showCatalogView(ModelMap map){
+		List<CatalogView> catalogViews = catalogViewService.getCatalogView(null);
+		map.put("catalogViews",catalogViews);
+		return "downStream/commodityCatalog/catalogView/catalogViewList";
+	}
+	//批量删除CatalogView
+	@RequestMapping("deleteCatalogViews")
+	public String deleteCatalogViews(String[] ids){
+		List<String> list = Arrays.asList(ids);  
+		catalogViewService.delete(list);
+		return "redirect:showCatalogView";
+	}
+	
+}

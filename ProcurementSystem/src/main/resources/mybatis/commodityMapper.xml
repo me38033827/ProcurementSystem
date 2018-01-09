@@ -235,7 +235,8 @@
 		cc.unique_name as
 		commodityCatalogUniqueName,
 		cc.name as commodityCatalogName,
-		cc.level as level,
+		cc.level as
+		level,
 		con.unique_name as contractUniqueName,
 		con.name as
 		contractName,
@@ -263,11 +264,54 @@
 		sac on
 		sac.sqm_id = ss2.id where ss2.supplier_id =
 		c.supplier_unique_name)
+
 		<if test="commodity.uniqueName != '' and commodity.uniqueName != null">
 			and c.unique_name = #{commodity.uniqueName}
 		</if>
 		<if test="commodity.spscCode != '' and commodity.spscCode != null">
 			and c.spsc_code like CONCAT(#{commodity.spscCode},'%')
+		</if>
+
+		<if test="catalogViews != null and catalogViews != ''">
+			<foreach item="item" index="index" collection="catalogViews"
+				open="and (" separator="||" close=")">
+
+				<if test="item.type == '开始时不查看任何内容，然后向有资格的用户显示更多目录项目'">
+					( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时不查看任何内容，然后向没有资格的用户显示更多目录项目'">
+					1=0
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向有资格的用户隐藏某些目录项目'">
+					not ( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向没有资格的用户隐藏某些目录项目'">
+					1=1
+				</if>
+			</foreach>
+		</if>
+		<if test="otherCatalogViews != null and otherCatalogViews != ''">
+			<foreach item="item" index="index" collection="otherCatalogViews"
+				open=" and (" separator=" || " close=")">
+				<if test="item.type == '开始时不查看任何内容，然后向没有资格的用户显示更多目录项目'">
+					( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向没有资格的用户隐藏某些目录项目'">
+					not ( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+			</foreach>
 		</if>
 		group by c.unique_name
 		order by level desc
@@ -275,10 +319,69 @@
 			limit #{offset},#{size}
 		</if>
 
+
 	</select>
 
 
+	<!-- 获得符合条件的商品的总数，通常用于分页 -->
+	<select id="getActivatedRowCount" resultType="int">
 
+		select count(*) from 
+		commodity c left join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name = cc.unique_name left join
+		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
+		where
+		cc.is_activated = '已激活' and cch.spsc_code in(select spsc_code
+		from
+		supplier_sqm ss2 left join supplier_sqm_allowed_code sac on
+		sac.sqm_id = ss2.id
+		where ss2.supplier_id = c.supplier_unique_name)
+		<if test="commodity.spscCode != '' and commodity.spscCode != null">
+			and c.spsc_code like CONCAT(#{commodity.spscCode},'%')
+		</if>
+		<if test="catalogViews != null and catalogViews != ''">
+			<foreach item="item" index="index" collection="catalogViews"
+				open="and (" separator="||" close=")">
+
+				<if test="item.type == '开始时不查看任何内容，然后向有资格的用户显示更多目录项目'">
+					( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时不查看任何内容，然后向没有资格的用户显示更多目录项目'">
+					1=0
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向有资格的用户隐藏某些目录项目'">
+					not ( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向没有资格的用户隐藏某些目录项目'">
+					1=1
+				</if>
+			</foreach>
+		</if>
+		<if test="otherCatalogViews != null and otherCatalogViews != ''">
+			<foreach item="item" index="index" collection="otherCatalogViews"
+				open=" and (" separator=" || " close=")">
+				<if test="item.type == '开始时不查看任何内容，然后向没有资格的用户显示更多目录项目'">
+					( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向没有资格的用户隐藏某些目录项目'">
+					not ( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+			</foreach>
+		</if>
+	</select>
 
 
 
@@ -321,25 +424,7 @@
 		commodity;
 	</select>
 
-	<!-- 获得符合条件的商品的总数，通常用于分页 -->
-	<select id="getActivatedRowCount" resultType="int">
-		select count(*)
-		from
-		commodity c left join commodity_catalog cc
-		on
-		c.commodity_catalog_unique_name = cc.unique_name left join
-		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
-		where
-		cc.is_activated = '已激活' and cch.spsc_code in(select spsc_code
-		from
-		supplier_sqm ss2 left join supplier_sqm_allowed_code sac on
-		sac.sqm_id = ss2.id
-		where ss2.supplier_id = c.supplier_unique_name)
-		<if test="spscCode!='' and spscCode!=null">
-			and c.spsc_code like CONCAT(#{spscCode},'%')
-		</if>
 
-	</select>
 
 	<select id="getAllCommoditiesValidateStateByCatalog" resultType="String">
 		select is_checked from commodity
@@ -378,7 +463,8 @@
 	</update>
 
 
-	<select id="getMultiSearchRowCount" parameterType="String"  resultType="int">
+	<select id="getMultiSearchRowCount" parameterType="String"
+		resultType="int">
 		select count(*)
 		from
 		commodity c left join commodity_catalog cc
@@ -391,18 +477,20 @@
 		from
 		supplier_sqm ss2 left join supplier_sqm_allowed_code sac on
 		sac.sqm_id = ss2.id
-		
-		where ss2.supplier_id = c.supplier_unique_name)<!-- where语句包含两个约束，一个是已激活约束，另一个是sqm准入约束 -->
-		and (c.short_name like CONCAT('%',#{content},'%') or sup.name like CONCAT('%',#{content},'%'))
-		
+
+		where ss2.supplier_id = c.supplier_unique_name)<!-- 
+			where语句包含两个约束，一个是已激活约束，另一个是sqm准入约束 -->
+		and (c.short_name like CONCAT('%',#{content},'%') or sup.name like
+		CONCAT('%',#{content},'%'))
+
+
 	</select>
 
 
 
-	
-	<select id="multiFieldSearchDao" parameterType="map"
-		resultMap="commodityMap">
-		
+
+	<select id="multiFieldSearchDao" parameterType="map" resultMap="commodityMap">
+
 		select
 		c.unique_name as uniqueName,
 		c.company_code as companyCode,
@@ -463,16 +551,18 @@
 		sac on
 		sac.sqm_id = ss2.id where ss2.supplier_id =
 		c.supplier_unique_name)
-		and (c.short_name like CONCAT('%',#{content},'%') or sup.name like CONCAT('%',#{content},'%'))
-		group by c.unique_name 
-		order by uniqueName desc
+		and (c.short_name like
+		CONCAT('%',#{content},'%') or sup.name like
+		CONCAT('%',#{content},'%'))
+		group by c.unique_name
+		order by uniqueName
+		desc
 		limit #{offset},#{size}
 	</select>
-	
-	
-	
-	<select id="geTop50" parameterType="map"
-		resultMap="commodityMap">
+
+
+
+	<select id="geTop50" parameterType="map" resultMap="commodityMap">
 		select
 		c.unique_name as uniqueName,
 		c.company_code as companyCode,
@@ -533,14 +623,15 @@
 		sac on
 		sac.sqm_id = ss2.id where ss2.supplier_id =
 		c.supplier_unique_name)
-		group by c.unique_name 
-		order by (add_shopping_cart_count+view_info_count) desc
-		limit #{offset},#{size}
+		group by c.unique_name
+		order by
+		(add_shopping_cart_count+view_info_count) desc
+		limit
+		#{offset},#{size}
 	</select>
-	
-	
-	<select id="getRecommend" parameterType="map"
-		resultMap="commodityMap">
+
+
+	<select id="getRecommend" parameterType="map" resultMap="commodityMap">
 		select
 		c.unique_name as uniqueName,
 		c.company_code as companyCode,
@@ -601,20 +692,23 @@
 		sac on
 		sac.sqm_id = ss2.id where ss2.supplier_id =
 		c.supplier_unique_name)
-		group by c.unique_name 
-		order by field (`spscCode`,
-		<foreach item="item" index="index" collection="sortRule"
-     		 open="" separator="," close="">
-        	#{item.code}
-  		</foreach>) desc , 
-  		 field (`supplieruniqueName`,
+		group by c.unique_name
+		order by field
+		(`spscCode`,
+		<foreach item="item" index="index" collection="sortRule" open=""
+			separator="," close="">
+			#{item.code}
+		</foreach>
+		) desc ,
+		field (`supplieruniqueName`,
 		<foreach item="item" index="index" collection="sortRuleBySupplier"
-     		 open="" separator="," close="">
-        	#{item.supplierId}
-  		</foreach>) desc
+			open="" separator="," close="">
+			#{item.supplierId}
+		</foreach>
+		) desc
 		limit #{offset},#{size}
 	</select>
-	
-	
-	
+
+
+
 </mapper>

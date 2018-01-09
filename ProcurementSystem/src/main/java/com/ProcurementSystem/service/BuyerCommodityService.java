@@ -19,6 +19,7 @@ import com.ProcurementSystem.common.PageParams;
 import com.ProcurementSystem.dao.IBuyerCommodityDao;
 import com.ProcurementSystem.dao.IBuyerCommoditySpscCodeHelperDao;
 import com.ProcurementSystem.dao.IUserBehaviorDao;
+import com.ProcurementSystem.entity.CatalogView;
 import com.ProcurementSystem.entity.Commodity;
 import com.ProcurementSystem.entity.CommoditySpscCodeHelper;
 import com.ProcurementSystem.entity.UserBehavior;
@@ -31,6 +32,8 @@ public class BuyerCommodityService {
 	IBuyerCommoditySpscCodeHelperDao spscCodeHelperDao;
 	@Resource
 	IUserBehaviorDao userBehaviorDao;
+	@Resource
+	CatalogViewService catalogViewService;
 
 	public Boolean updateCommodity(Commodity commodity) {// 不分页的查询方法
 		return commodityDao.updateCommodity(commodity);
@@ -61,7 +64,18 @@ public class BuyerCommodityService {
 	public PageParams<Commodity> searchCommodity(Commodity commodity, int currPage, int mode) {// 分页的查询方法,mode=1表示查找激活的商品
 		// TODO Auto-generated method stub
 		PageParams<Commodity> pageParams = new PageParams<>();
-		int rowCount = commodityDao.getActivatedRowCount(commodity);// 获得激活商品的总行数rowCount
+		//用户组限制
+		CatalogView catalogView = new CatalogView();
+		catalogView.setGroup("0001");  //注意！！ 暂时默认为0001组
+		List<CatalogView> catalogViews = catalogViewService.getCatalogView(catalogView);
+		List<CatalogView> otherCatalogViews = catalogViewService.getNotCatalogView(catalogView);
+		Map<String, Object> searchParams = new HashMap<>();// 构造查询参数
+		if(catalogViews!=null && !catalogViews.isEmpty())
+			searchParams.put("catalogViews", catalogViews);
+		if(otherCatalogViews!=null && !otherCatalogViews.isEmpty())
+			searchParams.put("otherCatalogViews", otherCatalogViews);
+		searchParams.put("commodity", commodity);
+  		int rowCount = commodityDao.getActivatedRowCount(searchParams);// 获得激活商品的总行数rowCount
 		pageParams.setRowCount(rowCount);
 		if (pageParams.getTotalPages() > 0) {
 			if (currPage > pageParams.getTotalPages())// 判断当前页的合法性
@@ -71,11 +85,10 @@ public class BuyerCommodityService {
 			pageParams.setCurrPage(currPage);
 			int offset = (pageParams.getCurrPage() - 1) * pageParams.pageSize;
 			int size = pageParams.pageSize;
-
-			Map<String, Object> searchParams = new HashMap<>();// 构造查询参数
-			searchParams.put("commodity", commodity);
+			
 			searchParams.put("offset", offset);
 			searchParams.put("size", size);
+			
 			List<Commodity> list = commodityDao.searchActivatedCommodity(searchParams);
 			if (list != null)
 				pageParams.setData(list);

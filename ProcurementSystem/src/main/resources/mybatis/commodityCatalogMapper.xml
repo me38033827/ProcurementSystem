@@ -2,6 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ProcurementSystem.dao.IBuyerCommodityCatalogDao">
+	
+	<resultMap id="CommodityCatalogDetail" type="com.ProcurementSystem.entity.CommodityCatalog">
+		<id property="uniqueName" column="uniqueName" />
+		<result property="name" column="name" />
+		<result property="version" column="version" />
+		<result property="loadMode" column="loadMode" />
+		<result property="contentAbstract" column="contentAbstract" />
+		<result property="preview" column="preview" />
+		<result property="isActivated" column="isActivated" />
+		<result property="state" column="state" />
+		<result property="lastModifyDate" column="lastModifyDate" />
+		<result property="itemCount" column="itemCount" />
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierUniqueName" />
+			<result property="name" column="supplierName" />
+		</association>
+		<collection property="commodities"
+			ofType="com.ProcurementSystem.entity.Commodity" resultMap="commodityResult" />
+	</resultMap>
+
+	<resultMap id="commodityResult" type="com.ProcurementSystem.entity.Commodity">
+		<id property="uniqueName" column="commodityUniqueName" />
+		<result property="unitPrice" column="unitPrice" />
+		<result property="supplierPartId" column="supplierPartId" />
+		<result property="supplierPartAuxiliaryId" column="supplierPartAuxiliaryId" />
+		<result property="itemDescription" column="itemDescription" />
+		<result property="isChecked" column="isChecked" />
+		<result property="shortName" column="shortName" />
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierUniqueName" />
+			<result property="name" column="supplierName" />
+		</association>
+	</resultMap>
+	
+	
 	<select id="getRowCount" resultType="int">
 		select count(*) from
 		commodity_catalog;
@@ -142,41 +179,6 @@
 			AND cc.name like concat('%',#{name},'%')<!--注意，Catalog的名字搜索采用的是模糊搜索  -->
 		</if>
 	</select>
-	<resultMap id="CommodityCatalogDetail" type="com.ProcurementSystem.entity.CommodityCatalog">
-		<id property="uniqueName" column="uniqueName" />
-		<result property="name" column="name" />
-		<result property="version" column="version" />
-		<result property="loadMode" column="loadMode" />
-		<result property="contentAbstract" column="contentAbstract" />
-		<result property="preview" column="preview" />
-		<result property="isActivated" column="isActivated" />
-		<result property="state" column="state" />
-		<result property="lastModifyDate" column="lastModifyDate" />
-		<result property="itemCount" column="itemCount" />
-		<association property="supplier"
-			javaType="com.ProcurementSystem.entity.Supplier">
-			<id property="uniqueName" column="supplierUniqueName" />
-			<result property="name" column="supplierName" />
-		</association>
-		<collection property="commodities"
-			ofType="com.ProcurementSystem.entity.Commodity" resultMap="commodityResult" />
-	</resultMap>
-
-	<resultMap id="commodityResult" type="com.ProcurementSystem.entity.Commodity">
-		<id property="uniqueName" column="commodityUniqueName" />
-		<result property="unitPrice" column="unitPrice" />
-		<result property="supplierPartId" column="supplierPartId" />
-		<result property="supplierPartAuxiliaryId" column="supplierPartAuxiliaryId" />
-		<result property="itemDescription" column="itemDescription" />
-		<result property="isChecked" column="isChecked" />
-		<result property="shortName" column="shortName" />
-		<association property="supplier"
-			javaType="com.ProcurementSystem.entity.Supplier">
-			<id property="uniqueName" column="supplierUniqueName" />
-			<result property="name" column="supplierName" />
-		</association>
-	</resultMap>
-
 
 
 	<update id="setIsActivated" parameterType="Map">

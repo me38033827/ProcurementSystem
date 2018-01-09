@@ -21,7 +21,7 @@ public interface IBuyerCommodityDao {
 
 	public List<Commodity> searchActivatedCommodity(Map<String, Object> searchParams);//搜索已激活的商品
 
-	public int getActivatedRowCount(Commodity commodity);//获得激活商品的总行数
+	public int getActivatedRowCount(Map<String, Object> searchParams);//获得激活商品的总行数
 
 	public void addShoppingCartCount(String uniqueName);//增加加入购物车的次数
 

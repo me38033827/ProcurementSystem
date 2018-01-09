@@ -24,10 +24,12 @@ public class BuyerShoppingCartService {
 	public ShoppingCart updateShoppingCart(ShoppingCart shoppingCart) {
 		ListIterator<Commodity> iterator = shoppingCart.getCommodities().listIterator();
 		shoppingCart.setTotalAmount(0);// 重置购物车totalAmount
+		shoppingCart.setTotalQuantity(0);
 		while (iterator.hasNext()) {
 			Commodity commodity = iterator.next();
 			int buyQuantity = commodity.getBuyQuantity();// 获取该商品的购买数量，为了简化，省略购物车item类的编写
-
+			
+				
 			Map<String, Object> searchParams = new HashMap<>();
 			searchParams.put("commodity", commodity);
 			List<Commodity> commodities = commodityDao.searchCommodity(searchParams);
@@ -37,7 +39,8 @@ public class BuyerShoppingCartService {
 			double unitPrice = commodity.getUnitPrice();
 			iterator.set(commodity);// 更新购物车中的商品对象
 
-			shoppingCart.setTotalAmount(shoppingCart.getTotalAmount() + buyQuantity * unitPrice);// 维护购物车totalAmount
+			shoppingCart.setTotalAmount(shoppingCart.getTotalAmount() + buyQuantity * unitPrice);// 维护购物车总价totalAmount
+			shoppingCart.setTotalQuantity(shoppingCart.getTotalQuantity()+buyQuantity);//维护购物车总数量totalQUantity
 		}
 		return shoppingCart;
 	}

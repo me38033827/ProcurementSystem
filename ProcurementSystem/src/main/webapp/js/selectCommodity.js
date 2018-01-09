@@ -150,3 +150,65 @@ function addCommodity(id){
 	v.state.checked=true;
 	$("#btn-search").click();		
 }
+//单选code
+//点击商品后选择，获得UNSPSC码
+function onSelectSingleCommodity() {
+	$('.theme-popover-mask').fadeIn(100);
+	$('.theme-popover').slideDown(200);
+	if(getCommodity==0){
+		getUNSPSC1();
+		getCommodity=1;
+	}
+}
+
+function getUNSPSC1(){
+	$.ajax({
+		data:{},  
+		type:"POST",  
+		dataType: 'json',
+		async:true,
+	    url:"../supplier/selectSingleCommodity",
+	    success:function(data){
+	    		//console.log(data);
+	    		//treeview相关内容加载
+	    		$Tree =  $('#treeview-sim').treeview({
+	    		    data: data,
+	    		    showIcon: false,
+	    		    showCheckbox: false,
+	    		});
+	    		showTree = 1;
+	    		treeSearch = function(e) {
+	    		    var pattern = $('#input-search').val();
+	    		    var options = {
+	    		    		ignoreCase: $('#chk-ignore-case').is(':checked'),
+	    		    		exactMatch: $('#chk-exact-match').is(':checked'),
+	    		    		revealResults: $('#chk-reveal-results').is(':checked')
+	    		    };
+	    		    var results = $Tree.treeview('search', [ pattern, options ]);
+	    			//console.log(results);
+	    		}
+	    		findCheckableNodess = function() {
+	    		    return $Tree.treeview('search', [ $('#input-check-node').val(), { ignoreCase: false, exactMatch: false } ]);
+	    		};
+	    		checkableNodes = findCheckableNodess();
+	    		//清除搜索
+	    		clearSearch = function(e) {
+	    			$Tree.treeview('clearSearch');
+	    			$('#input-search').val('');
+	    		};
+	    		
+	    		//在选择供应商之前选择的商品check
+	    		var select = $("#nodeIds").val();
+	    		if(select!="null"){
+	    			var selected = select.split(",");
+	    			for(var i=0; i<selected.length-1; i++){
+		    			addCommodity(selected[i]);
+		    		}
+	    		}
+	   	},
+	    error:function(data, XMLHttpRequest, textStatus, errorThrown){  
+	    		console.log(data);
+	    }  
+	});
+	
+}
