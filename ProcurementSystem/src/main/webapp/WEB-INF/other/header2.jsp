@@ -8,12 +8,12 @@
 		<!-- 第二行靠左 -->
 		<button class="secondline-left" id="main"
 			onclick="window.location.href='/ProcurementSystem/buyer/main'">主页</button>
-		<button class="secondline-left">寻源</button>
-		<button class="secondline-left">合同</button>
-		<button class="secondline-left">采购</button>
-		<button class="secondline-left">开发票</button>
+		<!--<button class="secondline-left">寻源</button>-->
+		<!--<button class="secondline-left">合同</button>-->
+		<!--<button class="secondline-left">采购</button>-->
+		<!--<button class="secondline-left">开发票</button>-->
 		<button class="secondline-left" id="supplier"
-			onclick="window.location.href='mainSupplier'">供应商</button>
+			onclick="window.location.href='/ProcurementSystem/buyer/mainSupplier'">供应商</button>
 		<button class="secondline-left" id="commodityCatalog"
 			onclick="window.location.href='/ProcurementSystem/buyer/commodityCatalog'">目录</button>
 	</div>

@@ -2,7 +2,6 @@ package com.ProcurementSystem.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import com.ProcurementSystem.entity.Commodity;
 
 public interface IBuyerCommodityDao {

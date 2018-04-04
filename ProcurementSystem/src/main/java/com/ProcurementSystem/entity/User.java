@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class User {
 	private	int	uniqueName	;
-	private	ArrayList<Group>	groups	;
+	private	ArrayList<UserGroup>	groups	;
 	private	String	definer	;
 	private	String	passwordAdapter	;
 	private	String	name	;
@@ -31,10 +31,10 @@ public class User {
 	public void setUniqueName(int uniqueName) {
 		this.uniqueName = uniqueName;
 	}
-	public ArrayList<Group> getGroups() {
+	public ArrayList<UserGroup> getGroups() {
 		return groups;
 	}
-	public void setGroups(ArrayList<Group> groups) {
+	public void setGroups(ArrayList<UserGroup> groups) {
 		this.groups = groups;
 	}
 	public String getDefiner() {
@@ -156,6 +156,18 @@ public class User {
 	}
 	public void setExpireDate(String expireDate) {
 		this.expireDate = expireDate;
+	}
+	@Override
+	public String toString() {
+		return "User [uniqueName=" + uniqueName + ", groups=" + groups + ", definer=" + definer + ", passwordAdapter="
+				+ passwordAdapter + ", name=" + name + ", userIdentifier=" + userIdentifier + ", organization="
+				+ organization + ", emailAddress=" + emailAddress + ", allowedExternalEmailDomain="
+				+ allowedExternalEmailDomain + ", defaultCurrency=" + defaultCurrency + ", locale=" + locale
+				+ ", timeZone=" + timeZone + ", phone=" + phone + ", fax=" + fax + ", failedLoginAttemptAfterLastLogin="
+				+ failedLoginAttemptAfterLastLogin + ", loginDate=" + loginDate + ", lastLoginDate=" + lastLoginDate
+				+ ", supervisorName=" + supervisorName + ", alternateEmailAddresses=" + alternateEmailAddresses
+				+ ", createDate=" + createDate + ", lastModifyDate=" + lastModifyDate + ", expireDate=" + expireDate
+				+ "]";
 	}
 	
 }

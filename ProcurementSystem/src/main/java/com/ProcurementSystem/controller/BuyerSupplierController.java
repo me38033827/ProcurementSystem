@@ -845,7 +845,12 @@ public class BuyerSupplierController {
 			allowedCode.setSqm(sqm);
 			String oriCode = commoditiesId;
 			allowedCode.setSpscCode(oriCode);// 设置原始code，特殊分隔符分开
-			allowedCode.setNodeId(nodesId);
+			//若商品为空，则默认商品id设为0
+			if(!nodesId.equals("null")) {
+				allowedCode.setNodeId(nodesId);
+			}else {
+				allowedCode.setNodeId("0");
+			}
 			allowedCodeService.setAllowedSpscCode(allowedCode);// 设置SQM准入类别，并持久化
 			return "redirect:sqmSummary?id=" + sqm.getId();
 		}

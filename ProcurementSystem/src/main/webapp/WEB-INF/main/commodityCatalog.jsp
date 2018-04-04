@@ -193,7 +193,7 @@
 						</div>
 					</div>
 					<div class="result-line3">
-						<button type="submit" class="btn-w">添加到购物车</button>
+						<button class="btn-ww" onclick="adds();">添加到购物车</button>
 						<button type="submit" class="btn-w">比较项目</button>
 					</div>
 
@@ -211,7 +211,7 @@
 
 								<div class="left container-thumbnail">
 									<img alt="" id="image-${commodity.uniqueName }"
-										src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
+										src="http://47.93.188.228/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
 										onerror="error('image-${commodity.uniqueName }');"
 										width="130px" height="130px">
 								</div>
@@ -276,13 +276,16 @@
 						</c:forEach>
 					</div>
 					<div class="right">
-
+                         <button class="btn-page" id="firstpage"
+							onclick="window.location.href='commodityCatalog?currPage=1&code=${code }'">首页</button>
 						<button class="btn-page" id="forward"
 							onclick="window.location.href='commodityCatalog?currPage=<%=pageParams.getCurrPage() - 1%>&code=${code }'">上一页</button>
 						<span id="pageList"></span>
 						<button class="btn-page" id="afterward"
 							onclick="window.location.href='commodityCatalog?currPage=${pageParams.currPage+1}&code=${code}'">下一页</button>
-						<span>共<strong>${pageParams.totalPages}</strong>页
+						<button class="btn-page" id="lastpage"
+							onclick="window.location.href='commodityCatalog?currPage=${pageParams.totalPages}&code=${code }'">尾页</button>
+							<span>共<strong>${pageParams.totalPages}</strong>页
 						</span>
 					</div>
 				</div>
@@ -298,16 +301,26 @@
 		var currPage = ${pageParams.currPage};
 		var totalPages = ${pageParams.totalPages};
 		if(totalPages >= 4){
-			if(currPage < 3 ){
+ 			if(currPage < 3 ){
 				for(var i=1; i<=3 ;i++ ){
 					createButtonPage(i,"${code}");
 				}
 			}else{
 				createButtonPage(1,"${code}");
+				if(currPage > 3) {
+					createButtonPage("...","${code}");
+				}
 				for(var i=currPage-1; i<=currPage+1 ;i++ ){
 					createButtonPage(i,"${code}");
 				}
 			}
+/* 			createButtonPage(1,"${code}"); */
+/* 			createButtonPage(1,"${code}");
+			
+			for(var i=currPage-1; i<=currPage+1 ;i++ ){
+				createButtonPage(i,"${code}");
+			}	 */		
+/* 			createButtonPage(totalPages,"${code}"); */
 		}else if(totalPages > 0){//总页数不足4页
 			for(var i=1; i<=totalPages ; i++){
 				createButtonPage(i,"${code}");
@@ -328,6 +341,14 @@
 			addShoppingCart(uniqueName,quantity);
 		}
 		
+		function adds(){
+			/* var sss = ${pageParams.currPage}; */
+			var obj = document.getElementsByName("commodityUniqueNames");
+			for(var k=0; k<obj.length; k++ ){
+				if(obj[k].checked)  add(obj[k].value);
+			}
+		}
+
 		toGuidedBuyingStyle("${code}",currPage);
 		
 		function toGuidedBuyingStyle(code,i){// i表示页号

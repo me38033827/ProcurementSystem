@@ -180,7 +180,7 @@
 					</div>
 				</div>
 				<div class="result-line3">
-					<button type="submit" class="btn-w">添加到购物车</button>
+					<button type="submit" class="btn-w" onclick="add(${commodity.uniqueName});">添加所有到购物车</button>
 					<button type="submit" class="btn-w">比较项目</button>
 				</div>
 
@@ -301,6 +301,7 @@ if(totalPages >= 4){
 	}
 }
 if(currPage == 1 || currPage == 0) $("#forward").hide();//善后处理
+
 if(currPage  == totalPages) {
 	$("#afterward").hide();
 	$("#page"+(currPage+1)).hide();

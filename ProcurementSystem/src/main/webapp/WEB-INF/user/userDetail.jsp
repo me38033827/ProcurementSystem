@@ -10,11 +10,11 @@
 
 		<!-- 主要内容 -->
 		<div class="con">
-			<div id="searching-title-out">
+			<!-- <div id="searching-title-out">
 				<a class="inline-b black" id="searching-title">查看“用户1”的详细信息</a>
 				<button class="btn-w right"
 					onclick="window.location.href='user-searching1.html'">完成</button>
-			</div>
+			</div> -->
 			<div class="user-main">
 				<!-- 搜索显示区域 -->
 				<div id="order-detail-line4">

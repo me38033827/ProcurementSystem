@@ -8,7 +8,6 @@
 	function toshow() {
 		alert(1);
 		var num = request.getParameter("num");
-		alert(num);
 	}
 </script>
 <style type="text/css">

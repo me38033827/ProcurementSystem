@@ -8,6 +8,7 @@ public class TemplateTaskPhase {
 	private String rank;
 	private String isDuped;
 	private String status;
+	private String owner;
 
 	public Integer getId() {
 		return id;
@@ -63,6 +64,14 @@ public class TemplateTaskPhase {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
 
 }

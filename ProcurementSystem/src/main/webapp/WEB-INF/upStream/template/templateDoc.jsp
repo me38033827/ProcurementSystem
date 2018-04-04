@@ -55,7 +55,7 @@
 	<script>
 		$("#doc").attr("class", "tag-clicked");
 		$(function() {
-			console.log( ${json});
+			//console.log( ${json});
 		    var $tree = $('#treeview1').treeview({
 		   	 data: ${json}
 		    });

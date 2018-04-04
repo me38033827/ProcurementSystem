@@ -8,6 +8,7 @@
 <%@include file="../../other/header2.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 </head>
 <!-- 页面整体宽度：1320px -->
 <body>
@@ -61,14 +62,27 @@
 										<c:forEach items="${sessionScope.shoppingCart.commodities}"
 											var="commodity" varStatus="status">
 											<tr>
-												<td><input type="checkbox"
+												<td>
+												<input type="checkbox" 
 													id="${commodity.uniqueName }" class="chk"
 													name="commodityUniqueNames"
 													value="${commodity.uniqueName }" /><label
 													for="${commodity.uniqueName }"></label></td>
 												<td>${status.count}</td>
-												<td>${commodity.shortName }</td>
-												<td>${commodity.itemDescription }</td>
+												<td>
+												<a href="/ProcurementSystem/buyer/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }&code=${code}">${commodity.shortName }>
+												${commodity.shortName } </a></td>
+												<td>
+												<!-- ${commodity.itemDescription }  -->
+												<span>
+
+													<c:if test="${fn:length(commodity.itemDescription) >= 30 }">  
+                         							  ${fn:substring(commodity.itemDescription,0,30)}...  
+                 								 </c:if> <c:if
+														test="${fn:length(commodity.itemDescription) < 30 }">  
+                         							 ${commodity.itemDescription }
+                 								 </c:if>
+											</span></td>
 												<td>
 													<div class="input-group">
 														<span class="input-group-btn">

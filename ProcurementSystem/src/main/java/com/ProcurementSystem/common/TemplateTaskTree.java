@@ -75,7 +75,7 @@ public class TemplateTaskTree {
 						+ "\">&nbsp;&nbsp;阶段</a></li>" + "<li><a class=\"manu-active templateTaskSchedule-create-"
 						+ child.getId() + "\" " + "\">&nbsp;&nbsp;待办事项</a></li>" + "</ul></div>";
 				String col2 = "<div class=\"tree-2-col\">无</div>";
-				String col3 = "<div class=\"tree-2-col\">System</div>";
+				String col3 = "<div class=\"tree-2-col\">"+ child.getTemplateTaskPhase().getOwner() +"</div>";
 				li += col2 + col3;
 				jsonObj.put("text", li);
 				jsonObj.put("href", "");
@@ -94,7 +94,7 @@ public class TemplateTaskTree {
 						+ "<li><a class=\"manu-active templateTaskSchedule-delete-" + child.getId() + "\" "
 						+ "\">&nbsp;&nbsp;删除</a></li>" + "</ul></div>";
 				String col2 = "<div class=\"tree-2-col\">无</div>";
-				String col3 = "<div class=\"tree-2-col\">System</div>";
+				String col3 = "<div class=\"tree-2-col\">"+ child.getTemplateTaskSchedule().getOwner() +"</div>";
 				li += col2 + col3;
 				jsonObj.put("text", li);
 				jsonObj.put("href", "");
@@ -136,7 +136,7 @@ public class TemplateTaskTree {
 						+ "\">&nbsp;&nbsp;阶段</a></li>" + "<li><a class=\"manu-active templateTaskSchedule-create-"
 						+ child.getId() + "\" " + "\">&nbsp;&nbsp;待办事项</a></li>" + "</ul></div>";
 				String col2 = "<div class=\"tree-2-col\">" + child.getTemplateTaskPhase().getStatus() + "</div>";
-				String col3 = "<div class=\"tree-2-col\">System</div>";
+				String col3 = "<div class=\"tree-2-col\">" + child.getTemplateTaskPhase().getOwner() +"</div>";
 				li += col2 + col3;
 				jsonObj.put("text", li);
 				jsonObj.put("href", "");
@@ -167,7 +167,7 @@ public class TemplateTaskTree {
 						+ "\" " + "\">&nbsp;&nbsp;编辑</a></li>" + "<li><a class=\"manu-active templateTaskPhase-delete-"
 						+ child.getId() + "\" " + "\">&nbsp;&nbsp;删除</a></li>" + "</ul></div>";
 				String col2 = "<div class=\"tree-2-col\">" + child.getTemplateTaskSchedule().getStatus() + "</div>";
-				String col3 = "<div class=\"tree-2-col\">System</div>";
+				String col3 = "<div class=\"tree-2-col\">"+ child.getTemplateTaskSchedule().getOwner() +"</div>";
 				li += col2 + col3;
 				jsonObj.put("text", li);
 				jsonObj.put("href", "");

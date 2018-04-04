@@ -37,7 +37,9 @@
 								<label class="model"><input type="radio" name="type"
 									id="spm_model2" value="SPM" checked>供应商绩效管理项目</label><br>
 								<label class="model"><input type="radio" name="type"
-									id="spm_model2" value="SQM">供应商资格管理项目</label>
+									id="spm_model2" value="SQM">供应商资格管理项目</label><br>
+								<label class="model"><input type="radio" name="type"
+									id="spm_model2" value="SIM">供应商信息管理项目</label>
 							</div>
 						</form>
 					</div>

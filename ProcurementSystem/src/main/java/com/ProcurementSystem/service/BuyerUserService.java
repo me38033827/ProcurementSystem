@@ -1,12 +1,12 @@
 package com.ProcurementSystem.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-
 import com.ProcurementSystem.dao.IBuyerUserDao;
 import com.ProcurementSystem.entity.User;
 
@@ -14,11 +14,11 @@ import com.ProcurementSystem.entity.User;
 public class BuyerUserService {
 
 	@Resource IBuyerUserDao dao;
-	public User getUserDetail(String userIdentifier){
+	public User getUserDetail(String userUniqueName){
 		System.out.println("In user service...");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("userIdentifier", userIdentifier);
+		params.put("userUniqueName", userUniqueName);
 		
 		// get user details
 		User user = dao.getUserDetail(params);
@@ -46,5 +46,9 @@ public class BuyerUserService {
 			return false;
 		}
 		return true;
+	}
+	
+	public List<User> getUsers(Map<String, String> params){
+		return dao.getUsers(params);
 	}
 }

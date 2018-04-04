@@ -280,4 +280,9 @@
 	<select id="searchAllSupplier" resultType="com.ProcurementSystem.entity.Supplier">
 		select * from supplier;
 	</select>
+	
+	<delete id="deleteSupplier" parameterType="int">
+		delete from supplier 
+		where unique_name = #{uniqueName} 
+	</delete>
 </mapper>

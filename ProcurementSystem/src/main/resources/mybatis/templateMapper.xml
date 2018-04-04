@@ -6,9 +6,9 @@
 	<insert id="add" parameterType="com.ProcurementSystem.entity.Template"
 		useGeneratedKeys="true" keyProperty="id">
 		insert into
-		template(name,description,type,template_task_tree_node_id)
+		template(name,description,type,template_task_tree_node_id,owner)
 		values(
-		#{name},#{description},#{type},#{templateTaskTreeNode.id}
+		#{name},#{description},#{type},#{templateTaskTreeNode.id},#{owner}
 		)
 	</insert>
 
@@ -23,6 +23,8 @@
 		templateDescription,
 		t.type as
 		templateType,
+		t.owner as
+		templateOwner,
 		t.status as templateStatus,
 		tttn.id as
 		templateTaskTreeNodeId,
@@ -38,6 +40,7 @@
 		templateTaskPhaseReserveRank,
 		ttp.is_duped as templateTaskPhaseIsDuped,
 		tts.id as templateTaskScheduleId,
+		ttp.owner as templateTaskPhaseOwner,
 		tts.title as
 		templateTaskScheduleTitle,
 		tts.owner as
@@ -85,6 +88,7 @@
 		<result property="description" column="templateDescription" />
 		<result property="type" column="templateType" />
 		<result property="status" column="templateStatus" />
+		<result property="owner" column="templateOwner" />
 		<association property="templateTaskTreeNode"
 			javaType="com.ProcurementSystem.entity.TemplateTaskTreeNode">
 			<id property="id" column="templateTaskTreeNodeId" />
@@ -97,6 +101,7 @@
 				<result property="reserveContent" column="templateTaskPhaseReserveContent" />
 				<result property="rank" column="templateTaskPhaseReserveRank" />
 				<result property="isDuped" column="templateTaskPhaseIsDuped" />
+				<result property="owner" column="templateTaskPhaseOwner" />
 			</association>
 			<association property="templateTaskSchedule"
 				javaType="com.ProcurementSystem.entity.TemplateTaskSchedule">

@@ -1,18 +1,23 @@
-﻿<!DOCTYPE html>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>用户管理界面</title>
-	</head>
+<head>
+<title>用户管理界面</title>
+<%@ include file="../other/header1.jsp"%>
+<%@ include file="../other/header2.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+</head>
 	<!-- 页面整体宽度：1320px -->
 	<body>
 		<div class="container" id="whole-container">
 			
 			<!-- 标题及导航栏第一行 -->
-			<div class="container" id="firstline-out" >
+			<!-- <div class="container" id="firstline-out" >
 				<div class="navbar navbar-inverse set-radius-zero" id="firstline">
 					<a id="page-name" class="left">LOGO</a>
 				
-					<!-- 首行靠右导航栏 -->
+					首行靠右导航栏
 					<div class="right" id="right-div">
 						<button id="firstline-icon"><span class="glyphicon glyphicon-search" aria-hidden="true" id="firstline-search"></span></button>
 						<button id="firstline-icon"><span class="glyphicon glyphicon-print" aria-hidden="true" id="firstline-print"></span></button>
@@ -22,10 +27,10 @@
 				</div>
 			</div>
 			
-			<!-- 导航栏：第二行-->
+			导航栏：第二行
 			<div class="container" id="secondline-out">
 				<div class="dropdown" id="secondline-dropdown">
-					<!-- 第二行靠左 -->
+					第二行靠左
 					<button class="secondline-left">首页</button>
 					<button class="secondline-left">采购</button>
 					<button class="secondline-left">发票</button>
@@ -47,7 +52,7 @@
 					    </ul>
 					</div>
 					
-					<!-- 第二行靠右 -->
+					第二行靠右
 					<div class="btn-group secondline" role="group">
 						<button type="button" class="btn btn-default dropdown-toggle" id="secondline-right-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					    	管理&nbsp;<span class="caret"></span>
@@ -68,7 +73,7 @@
 					    </ul>
 					</div>		
 				</div>
-			</div>
+			</div> -->
 			
 			<!-- 主要内容 -->
 			<div class="con">
@@ -77,29 +82,31 @@
 				</div>
 				<div class="user-main">
 					 <!-- 搜索显示区域 -->
-					 <div class="user-left">
+					 <!-- <div class="user-left">
 					 	<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;用户</a>
 					 	<a class="f-14" href="user-searching.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a>
 					 	<a class="f-14 black" href="user-creation.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建用户</a>
 					 	<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;组</a>
 					 	<a class="f-14 black" href="user-group-searching.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组管理</a>
 					 	<a class="f-14 black" href="user-group-creation.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建组</a>
-					 </div>
-					 <div class="user-right">
+					 </div> -->
+					 <div>
 					 	<a class="black f-14">搜索现有用户或创建新用户。搜索字段不区分大小写，您可以输入全部或部分名称。</a>
-					 	<div id="filters">
+					 	<div id="filters" style="height:260px;">
 					 		<div id="order-filter-line1">
 					 			<div class="left black" id="order-filter-line1-title">搜索筛选器</div>
 					 			<div class="right blue" id="order-filter-line1-option">添加／删除搜索筛选器</div>
 					 		</div>
-					 		<div>
-						 		<div align="left"  class="inline-b col-md-6" style="padding-left:10%;">
+					 		<div id="order-filter-line2">
+						 		<div class="inline-b col-md-6" style="padding-left:10%;">
+						 			<form method="post" id="userSearch">
 						 			<table>
 						 				<tr>
 						 					<td class="order-filter-left-col1">类型：
 						 					</td>
 						 					<td class="order-filter-left-col2">
-												<select id="my-select">
+												<select id="my-select" name="passwordAdapter">
+													<option value="">全部</option>
 													<option>第三方企业用户</option>
 													<option>企业用户</option>
 												</select>
@@ -108,13 +115,13 @@
 						 				<tr>
 						 					<td class="order-filter-left-col1">用户标识符：
 						 					</td>
-						 					<td class="order-filter-left-col2"><input class="form-control input"/>
+						 					<td class="order-filter-left-col2"><input class="form-control input" name="userIdentifier"/>
 						 					</td>
 						 				</tr>
 						 				<tr>
 						 					<td class="order-filter-left-col1">名称：
 						 					</td>
-						 					<td class="order-filter-left-col2"><input class="form-control input"/>
+						 					<td class="order-filter-left-col2"><input class="form-control input" name="userName"/>
 						 					</td>
 						 				</tr>
 						 				<tr>
@@ -140,13 +147,15 @@
 						 					</td>
 						 				</tr>
 						 			</table>
+						 			</form>
 						 		</div>
-						 	</div>
-					 		<div id="order-filter-line3">
-					 			<div class="right">
-					 				<button class="btn-b">搜索</button>
-					 				<button class="btn-w">全部列出</button>
-					 			</div>
+					 			<div class="searching-ending">
+									<div align="right">
+										<button class="btn-b" form="userSearch"
+										formaction="userSearching">搜索</button>
+										<button class="btn-w">全部列出</button>
+									</div>
+								</div>
 					 		</div>
 					 	</div>
 					 		
@@ -168,36 +177,38 @@
 										<td class="user-search-col5">已有密码</td>
 										<td class="user-search-col6">上次登录</td>
 										<td class="user-search-col7">受托人</td>
-										<td class="user-search-col8"></td>
+										<td class="user-search-col8">操作</td>
 									</tr>
 								</table>
 							</div>
 							<div id="user-searching-tab-out">
 								<table class="fulltab">
-									<tr class="order-t-col2">
-										<td class="user-search-col1">
-											<label>
-												<input type="checkbox" class = "checkboxes" value="" />
-											</label>
-										</td>
-										<td class="user-search-col2"><a href=user-detail.html>用户1</a></td>
-										<td class="user-search-col3">用户1</td>
-										<td class="user-search-col4">第三方企业用户</td>
-										<td class="user-search-col5">是</td>
-										<td class="user-search-col6">2017年7月20日</td>
-										<td class="user-search-col7"></td>
-										<td class="user-search-col8">
-											<button class="btn-w">操作</button>
-										</td>
-									</tr>
+									<c:forEach var="user" items="${users}">
+										<tr class="order-t-col2">
+											<td class="user-search-col1">
+												<label>
+													<input type="checkbox" class = "checkboxes" value="${user.uniqueName} " />
+												</label>
+											</td>
+											<td class="user-search-col2"><a href="userDetail?userUniqueName=${user.uniqueName}">${user.userIdentifier}</a></td>
+											<td class="user-search-col3">${user.name}</td>
+											<td class="user-search-col4">${user.passwordAdapter}</td>
+											<td class="user-search-col5">是</td>
+											<td class="user-search-col6">2017年7月20日</td>
+											<td class="user-search-col7"></td>
+											<td class="user-search-col8">
+												<button class="btn-w">操作</button>
+											</td>
+										</tr>
+									</c:forEach>
 								</table>
 							</div>
 							<div>
 								<table class="fulltab">
 									<tr class="searching-tab-row3">
 										<td colspan="8">
-											<button class="btn-w">生成密码</button>
-											<button class="btn-w" onclick="window.location.href='user-creation.html'">创建用户</button>
+											<!-- <button class="btn-w">生成密码</button> -->
+											<button class="btn-w" onclick="window.location.href='userCreation.html'">创建用户</button>
 										</td>
 									</tr>
 								</table>

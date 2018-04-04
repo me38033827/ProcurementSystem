@@ -45,7 +45,7 @@
 							<div style="height:26px;width:300px; text-align:right;">
 							<input id="psdalert" style="background-color:transparent; text-align:right; border:0;color:red; font-weight:bold; line-height:26px;" <%if(request.getAttribute("loginInfo")!=null){
 									if(request.getAttribute("error").equals("password")){ %>
-									value="密码错误！""
+									value="密码错误！"
 								<%}} %> disabled
 								/>
 							</div>

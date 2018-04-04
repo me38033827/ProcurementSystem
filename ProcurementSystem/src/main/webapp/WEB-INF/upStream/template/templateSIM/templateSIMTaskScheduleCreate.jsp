@@ -104,6 +104,7 @@
 											value="0"></td>
 									</tr>
 								</table>
+								<input type="hidden" name="owner" value="${username }" />
 							</form>
 						</div>
 						<br>

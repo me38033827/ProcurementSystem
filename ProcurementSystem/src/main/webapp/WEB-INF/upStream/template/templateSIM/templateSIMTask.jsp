@@ -72,7 +72,7 @@
 		$(function() {
 			console.log( ${json});
 		    var $tree = $('#treeview1').treeview({
-		   	 data: ${json}
+		   	 data: ${json},
 		    });
 		});
 		function createTemplateTaskPhase(id){
