@@ -133,8 +133,15 @@
 		id=#{id}
 	</update>
 
-
-
+	<select id="getActivatedTemplate" parameterType="string" resultType="com.ProcurementSystem.entity.Template">
+		select *
+		from
+			template
+		where
+			type = #{type}
+		and
+			status = '已激活'
+	</select>
 
 
 </mapper>

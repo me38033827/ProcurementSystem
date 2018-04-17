@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ProcurementSystem.dao.IBuyerGroupDao">
+	
+	<select id="getGroupDetail" parameterType="map" resultType="com.ProcurementSystem.entity.Group">
+		select * from organize 
+		where unique_name = '${uniqueName}'
+	</select>
+
+	<insert id="createNewGroup" parameterType="com.ProcurementSystem.entity.Group" useGeneratedKeys="true">
+		insert into organize(unique_name, description, name, difiner)
+		values(#{uniqueName}, #{description}, #{name}, #{difiner})
+	</insert>
+	
+	<select id="getGroups" parameterType="map" resultType="com.ProcurementSystem.entity.Group">
+		select * from organize 
+		where 1=1
+		<if test="name!='' and name!=null">
+			and name like concat("%",#{name},"%")
+		</if>
+		<if test="description!='' and description!=null">
+			and description like concat("%",#{description},"%")
+		</if>
+	</select>
+	<delete id="deleteGroup" parameterType="map">
+		delete from organize
+		where unique_name = '${groupUniqueName}'
+	</delete>
+</mapper>

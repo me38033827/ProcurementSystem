@@ -1,6 +1,6 @@
 package com.ProcurementSystem.controller;
 
-import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -9,10 +9,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ProcurementSystem.common.NavTree;
-import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.entity.Login;
+import com.ProcurementSystem.entity.User;
 import com.ProcurementSystem.service.BuyerCommodityService;
+import com.ProcurementSystem.service.BuyerUserService;
 import com.ProcurementSystem.service.LoginService;
 
 @Controller
@@ -22,6 +22,8 @@ public class LoginController {
 	LoginService service;
 	@Resource
 	BuyerCommodityService commodityService;
+	@Resource
+	BuyerUserService userService;
 
 	@RequestMapping(value = "login")
 	public String login(Login login, HttpServletRequest request) {
@@ -53,7 +55,16 @@ public class LoginController {
 				return "redirect:supplier/main";
 			}
 			if (role.equals("buyer")) {
-				session.setAttribute("userUniqueName", loginResult.getUser().getUniqueName());
+				int uniqueName = loginResult.getUser().getUniqueName();
+				User user = userService.getUserDetail(uniqueName+"");
+				if(Objects.equals(user.getStatus(), "已停用")) {
+					request.setAttribute("loginInfo", login);
+					request.setAttribute("error", "stopUsed");
+					request.setAttribute("role", login.getRole());
+					System.out.println("The user is stopUsed!");
+					return "login";
+				}
+				session.setAttribute("userUniqueName", uniqueName);
 				session.setAttribute("username", username);
 				System.out.println("Login USER " + username + " successfully!");
 				// System.out.println(loginResult.get(0).getUserUniqueName());
@@ -80,6 +91,7 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		session.removeAttribute("sqm");
 		session.removeAttribute("spm");
+		session.removeAttribute("supplierUniqueName");
 		// interceptor相关
 		session.removeAttribute("username");
 		return "redirect:login";

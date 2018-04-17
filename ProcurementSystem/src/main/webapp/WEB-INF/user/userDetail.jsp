@@ -18,8 +18,10 @@
 			<div class="user-main">
 				<!-- 搜索显示区域 -->
 				<div id="order-detail-line4">
-					<button class="order-detail-clicked">常规</button>
-					<button class="order-detail-not-clicked">组</button>
+					<button class="order-detail-clicked"
+						onclick="window.location.href='userDetail?userUniqueName=${user.uniqueName}'">常规</button>
+					<button class="order-detail-not-clicked"
+						onclick="window.location.href='userDetailGroup?userUniqueName=${user.uniqueName}'">组</button>
 					<button class="order-detail-not-clicked">所有组</button>
 				</div>
 
@@ -33,88 +35,88 @@
 					<table>
 						<tr>
 							<td id="order-detail-tab-col1">定义者：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("definer")%>
+							<td id="order-detail-tab-col2">${user.definer}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">类型：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("type")%>
+							<td id="order-detail-tab-col2">${user.passwordAdapter}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">用户标识符：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("userIdentifierBack")%>
+							<td id="order-detail-tab-col2">${user.userIdentifier}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">名称：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("name")%>
+							<td id="order-detail-tab-col2">${user.name}
 							</td>
 						</tr>
 						<tr>
-							<td id="order-detail-tab-col1">组织：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("organization")%>
+							<td id="order-detail-tab-col1">状态：</td>
+							<td id="order-detail-tab-col2">${user.status}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">业务电子邮件地址：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("emailAddress")%>
+							<td id="order-detail-tab-col2">${user.emailAddress}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">允许外部电子邮件域：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("allowedExternalEmailDomain")%>
+							<td id="order-detail-tab-col2">${user.allowedExternalEmailDomain}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">业务电话号码：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("phone")%>
+							<td id="order-detail-tab-col2">${user.phone}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">业务传真号码：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("fax")%>
+							<td id="order-detail-tab-col2">${user.fax}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">区域：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("locale")%>
+							<td id="order-detail-tab-col2">${user.locale}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">默认货币：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("currency")%>
+							<td id="order-detail-tab-col2">${user.defaultCurrency}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">时区：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("timeZone")%>
+							<td id="order-detail-tab-col2">${user.timeZone}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">上级主管：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("supervisorName")%>
+							<td id="order-detail-tab-col2">${user.supervisorName}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">备用电子邮件地址：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("alternateEmailAddress")%>
+							<td id="order-detail-tab-col2">${user.alternateEmailAddresses}
 							</td>
 						</tr>
 
 						<tr>
 							<td id="order-detail-tab-col1">创建日期：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("createDate")%>
+							<td id="order-detail-tab-col2">${user.createDate}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">上次修改日期：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("lastModifyDate")%>
+							<td id="order-detail-tab-col2">${user.lastModifyDate}
 							</td>
 						</tr>
 						<tr>
 							<td id="order-detail-tab-col1">停用日期：</td>
-							<td id="order-detail-tab-col2"><%=request.getAttribute("expireDate")%>
+							<td id="order-detail-tab-col2">${user.expireDate}
 							</td>
 						</tr>
 

@@ -1,42 +1,47 @@
 package com.ProcurementSystem.entity;
 
-import java.util.ArrayList;
-
+/**
+ * 用户-用户组实体类
+ * @CreateDate: 2018年4月5日 上午10:44:47
+ * @author lrq
+ * @history Sr Date Modified By Why &amp; What is modified
+ *   1.2018年4月5日 lrq &amp; new
+ */
 public class UserGroup {
-	private	int	uniqueName	;
-	private	ArrayList<User>	users	;
-	private	String	description	;
-	private	String	name	;
-	private String  difiner ;
-	public int getUniqueName() {
-		return uniqueName;
+	/** id */
+	private int id;
+	/** 用户id */
+	private int userId;
+	/** 组id */
+	private int groupId;
+
+	public int getId() {
+		return id;
 	}
-	public void setUniqueName(int uniqueName) {
-		this.uniqueName = uniqueName;
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public ArrayList<User> getUsers() {
-		return users;
+
+	public int getUserId() {
+		return userId;
 	}
-	public void setUsers(ArrayList<User> users) {
-		this.users = users;
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-	public String getDescription() {
-		return description;
+
+	public int getGroupId() {
+		return groupId;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDifiner() {
-		return difiner;
-	}
-	public void setDifiner(String difiner) {
-		this.difiner = difiner;
+
+	@Override
+	public String toString() {
+		return "UserGroup [id=" + id + ", userId=" + userId + ", groupId=" + groupId + "]";
 	}
 	
 }

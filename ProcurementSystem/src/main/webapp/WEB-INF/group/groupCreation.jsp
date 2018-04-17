@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>用户组详情界面</title>
+<title>新建用户组</title>
 <%@ include file="../other/header1.jsp"%>
 <%@ include file="../other/header2.jsp"%>
 </head>
@@ -17,9 +17,9 @@
 				<a class="inline-b black" id="searching-title">组－创建组</a>
 				<div class="right">
 					<button class="btn-b"
-						onclick="userGroupCreationSubmit()">保存</button>
+						onclick="groupCreationSubmit()">保存</button>
 					<button class="btn-w"
-						onclick="window.location.href='user-group-searching1.html'">取消</button>
+						onclick="window.location.href='groupSearching.html'">取消</button>
 				</div>
 			</div>
 			<div class="user-main">
@@ -34,7 +34,7 @@
 				</div>
 
 				<div class="adjust"></div>
-				<form id="userGroupCreationForm">
+				<form id="groupCreationForm">
 				<div class="inline-b" id="user-detail-tab">
 					<table>
 
@@ -59,9 +59,9 @@
 				</form>
 				<div class="choice">
 					<div class="right">
-						<button class="btn-b" onclick="userGroupCreationSubmit()">保存</button>
+						<button class="btn-b" onclick="groupCreationSubmit()">保存</button>
 						<button class="btn-w"
-							onclick="window.location.href='user-group-searching1.html'">取消</button>
+							onclick="window.location.href='groupSearching.html'">取消</button>
 					</div>
 				</div>
 			</div>
@@ -73,15 +73,15 @@
 			rights reserved.</div>
 	</div>
 	<script>
-		function userGroupCreationSubmit(){
+		function groupCreationSubmit(){
 			var name = $("#name").val();
 			if(name==''){
 				alert("操作失败，存在标星号的项未填写！");
 			}else{
 				$.ajax({
 					type:"POST",
-					url:"userGroupCreationSubmit",
-					data:$("#userGroupCreationForm").serialize(),
+					url:"groupCreationSubmit",
+					data:$("#groupCreationForm").serialize(),
 					//dataType : 'json',
 					success : function(result) {
 						alert(result.result);

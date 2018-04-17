@@ -26,7 +26,7 @@
 					 		</div>
 					 		<div id="order-filter-line2">
 						 		<div class="inline-b col-md-6" style="padding-left:10%;padding-top:30px;">
-						 			<form method="post" id="userGroupSearch">
+						 			<form method="post" id="groupSearch">
 						 			<table>
 						 				<tr>
 						 					<td class="order-filter-left-col1">组名称：
@@ -56,9 +56,10 @@
 						 		</div>
 					 			<div class="searching-ending">
 									<div align="right">
-										<button class="btn-b" form="userGroupSearch"
-										formaction="userGroupSearching">搜索</button>
-										<button class="btn-w">全部列出</button>
+										<button class="btn-b" form="groupSearch"
+										formaction="groupSearching">搜索</button>
+										<button class="btn-w"
+												onclick="window.location.href='groupSearching.html'">全部列出</button>
 									</div>
 								</div>
 					 		</div>
@@ -81,18 +82,26 @@
 							</div>
 							<div id="user-searching-tab-out">
 								<table class="fulltab">
-									<c:forEach var="userGroup" items="${userGroups}">
+									<c:if test="${groups.size() == 0}">
+										<tr>
+											<td colspan="7" class="no-item f-13 grey">暂无用户</td>
+										</tr>
+									</c:if>
+									<c:forEach var="group" items="${groups}">
 										<tr class="order-t-col2">
-											<td class="user-search-col8"><a href="userGroupDetail?name=${userGroup.name}">${userGroup.name}</a></td>
-											<td class="user-search-col8">${userGroup.difiner}</td>
-											<td class="user-search-col2">${userGroup.description}</td>
+											<td class="user-search-col8">
+												<a name="groupCheckedName" href="groupDetail?uniqueName=${group.uniqueName}">${group.name}</a>
+												<input type="hidden" name="groupChecked" value="${group.uniqueName} " />
+											</td>
+											<td class="user-search-col8">${group.difiner}</td>
+											<td class="user-search-col2">${group.description}</td>
 											<td class="user-search-col8">是</td>
 											<td class="user-search-col8">
 												<div class="btn-group" align="right">
 												<button class="btn-m" data-toggle="dropdown">操作&nbsp;<span class="caret"></span></button>
 													<ul class="dropdown-menu manu-btn-o">
 														<!-- <li><a class="manu-btn" href=""></a></li> -->
-														<li><a class="manu-btn" href="">删除</a></li>
+														<li><a class="manu-btn" href="javascript:void(0);" onclick="delete_group(this)">删除</a></li>
 													</ul>
 												</div>
 											</td>
@@ -105,7 +114,7 @@
 									<tr class="searching-tab-row3">
 										<td colspan="8">
 											<!-- <button class="btn-w">生成密码</button> -->
-											<button class="btn-w" onclick="window.location.href='userGroupCreation.html'">创建用户组</button>
+											<button class="btn-w" onclick="window.location.href='groupCreation.html'">创建用户组</button>
 										</td>
 									</tr>
 								</table>
@@ -125,5 +134,29 @@
 	<script src="assets/js/bootstrap.js"></script>
 	  <!-- CUSTOM SCRIPTS  -->
 	<script src="assets/js/custom.js"></script>
+<script>
+	function delete_group(a) {
+		var _current_tr = $(a).parent().parent().parent().parent().parent();
+		var _groupUniqueName =$(_current_tr).find("input").val();
+		var _groupName = $(_current_tr).find("a[name='groupCheckedName']").html();
+		if(confirm('确定要删除  \' '+_groupName+'\' 吗？') == true){
+			$.ajax({
+				url : 'groupDelete',// 跳转到 controller 
+				data : {'groupUniqueName':_groupUniqueName},
+				type : 'post',
+				//contentType : 'application/json;charset=utf-8', //发送信息至服务器时内容编码类型。    
+				success : function(data) {
+					alert(data.result);
+					if(data.result == "删除成功！"){
+						window.location.reload();
+					}
+				},
+				error : function() {
+					alert("删除失败！请重试！");
+				}
+			});
+		}
+	}
+</script>
 	</body>
 </html>

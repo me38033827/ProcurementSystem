@@ -35,10 +35,13 @@
 			and role = #{role};
 	</select>
 	
-	
-	
  	<insert id="insertSupplierLogin" parameterType="com.ProcurementSystem.entity.Login">
 		insert into login(username, password, role, supplier_unique_name)
 		values(#{username}, #{password}, "supplier", #{supplier.uniqueName});
+	</insert>
+	
+	<insert id="insertBuyerLogin" parameterType="com.ProcurementSystem.entity.Login">
+		insert into login(username, password, role, user_unique_name)
+		values(#{username}, #{password}, "buyer", #{user.uniqueName});
 	</insert>
 </mapper>

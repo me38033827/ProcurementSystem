@@ -77,7 +77,7 @@
 							<c:forEach items="${ requestScope.commodityCatalogs}"
 									var="commodityCatalog">
 								<tr>
-										<td width="5%"><input type="checkbox"
+										<td width="5%"><input type="checkbox" name="checkedCatalog"
 											value="${commodityCatalog.uniqueName }" name="uniqueNames"
 											id=${commodityCatalog.uniqueName } class="chk" /><label
 											for=${commodityCatalog.uniqueName}></label></td>
@@ -131,6 +131,22 @@
 			</div>
 		</div>
 	</div>
+	
+<script>
+	function deleteCommodityCatalog() {
+		/** 此处增加删除前的验证 */
+		var _list = new Array();
+		$("#commodityCatalogForm").find("input[name='checkedCatalog']:checked").each(function(index){
+			_list[index] = $(this).val();
+		});
+		if(_list.length == 0){
+			alert("请选择要删除的选项");
+			return false;
+		}
+		$("#commodityCatalogForm").action = "deleteCommodityCatalog";
+		$("#commodityCatalogForm").submit();
+	}
+</script>
 </body>
 <script>
 </script>

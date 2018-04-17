@@ -652,12 +652,15 @@ function searchSupplierSQM(){
 		      	    "</td>\n" +	
 		      	    "<td valign='middle' style=\"width: 15%; padding:5px 0; vertical-align:middle;\">\n" +
 		      	    		"<div class=\"btn-group\">"+
+		      	    			/* 此处标记当前数据的Id和名字,供删除 */
+		      	    			"<input type=\"hidden\" name=\"_id\" value=\" "+ data[i].id +" \" />" +
+		      	    			"<input type=\"hidden\" name=\"_name\" value=\" "+ data[i].title +" \" />" +
 		      	    			"<button class=\"btn-w\" data-toggle=\"dropdown\" style=\"width:80px;\" onclick=\"appendSQMManu("+data[i].id+")\" >"+
 		      	    				"操作&nbsp;<span class=\"caret\"></span>"+
 		      	    			"</button>"+
 		      	    			"<ul class=\"dropdown-menu manu-btn-o\" id=\"manu-"+data[i].id+"\">"+
 		      	    			"</ul>"+
-		      	    			"<button class=\"btn-w\" style=\"width:80px;\">删除</button>"+
+		      	    			/*"<button class=\"btn-w\" style=\"width:80px;\">删除</button>"+*/
 		      	    		"</div>"+
 		      	    "</td>\n" +
 		      	    "</tr>";
@@ -683,13 +686,16 @@ function appendSQMManu(id){
 	$("#manu-"+id).empty();
 	var status = $("#status-"+id).text();
 	if(status=="已批准"){
-		$("#manu-"+id).append("<li><button class=\"manu-btn trans-btn\" onclick=\"alterSQMStatus("+id+",'已停用')\">停用</button></li>");
+		$("#manu-"+id).append("<li><button class=\"manu-btn trans-btn\" onclick=\"alterSQMStatus("+id+",'已停用')\">停用</button></li>"
+				+"<li><button class=\"manu-btn trans-btn\" onclick=\"deleteSqm(this)\">删除</button></li>");
 	}
 	if(status=="待审核"){
-		$("#manu-"+id).append("<li><button class=\"manu-btn trans-btn\" onclick=\"alterSQMStatus("+id+",'已批准')\">批准</button></li>");
+		$("#manu-"+id).append("<li><button class=\"manu-btn trans-btn\" onclick=\"alterSQMStatus("+id+",'已批准')\">批准</button></li>"
+				+"<li><button class=\"manu-btn trans-btn\" onclick=\"deleteSqm(this)\">删除</button></li>");
 	}
 	if(status=="已停用"){
-		$("#manu-"+id).append("<li><button class=\"manu-btn trans-btn\" onclick=\"alterSQMStatus("+id+",'已批准')\">激活</button></li>");
+		$("#manu-"+id).append("<li><button class=\"manu-btn trans-btn\" onclick=\"alterSQMStatus("+id+",'已批准')\">激活</button></li>"
+				+"<li><button class=\"manu-btn trans-btn\" onclick=\"deleteSqm(this)\">删除</button></li>");
 	}
 }
 
@@ -732,14 +738,34 @@ function resetSQMCommodities(){
 }
 
 /*
- * 单项删除
+ * 删除SQM供应商资格
  */
-function sim_delete(butt){
-	
+function deleteSqm(btn){
+	var _div = $(btn).parent().parent().parent();
+	/* 拿到要删除的id和name */
+	var _id = $(_div).find("input[name='_id']").val();
+	var _name = $(_div).find("input[name='_name']").val();
+	if(confirm('确定要删除  ' + _name + ' 吗？') == true){
+		$.ajax({
+			url : '/ProcurementSystem/buyer/supplier/sqmDelete',
+			data : {'id':_id},
+			type : 'post',
+			cache : false,
+			//contentType : 'application/json;charset=utf-8',
+			success : function(data) {
+					alert(data.result);
+					if(data.result == "删除成功！")
+						window.location.reload();
+			},
+			error : function() {
+				alert("删除失败！请重试！");
+			}
+		});
+	}
 }
 
 /*
- * 多选删除
+ * 多选删除供应商
  */
 function mul_delete(){
 	

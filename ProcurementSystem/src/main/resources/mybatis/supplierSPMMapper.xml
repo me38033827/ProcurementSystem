@@ -59,7 +59,7 @@
 			end_date as endDate,
 			supplier_id as supplierId,
 			user_id as userId,
-			status as status,
+			supplier_spm.status as status,
 			supplier.name as supplierName,
 			user.name as userName
 		from supplier_spm, supplier, user
@@ -78,7 +78,7 @@
 			end_date as endDate,
 			supplier_id as supplierId,
 			user_id as userId,
-			status as status
+			supplier.status as status
 		from supplier_spm 
 		where title like concat("%",#{title},"%");
 	</select>

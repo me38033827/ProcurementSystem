@@ -8,7 +8,9 @@
 <script src="/ProcurementSystem/js/simTree.js"></script>
 <script src="/ProcurementSystem/js/simQuestionnaire.js"></script>
 <script src="/ProcurementSystem/js/bootstrap-select.js"></script>
-<script src="../../js/my-bootstrap-treeview.js"></script>
+<script src="/ProcurementSystem/js/my-bootstrap-treeview.js"></script>
+<!-- <script src="/ProcurementSystem/js/dataTables/dataTables.bootstrap.js"></script>
+<script src="/ProcurementSystem/js/dataTables/jquery.dataTables.js"></script> -->
 <link rel="stylesheet" type="text/css" href="/ProcurementSystem/css/bootstrap-select.css">
 <title>供应商详情－概要</title>
 </head>
@@ -62,8 +64,9 @@
 		$(function(){
  	        var defaultData = ${treeData};
  	        $('#treeview-sim').treeview({
- 	          data: defaultData
- 	        });
+				data: defaultData,
+				collapsed:true
+ 	       	});
 		})
 		
 		$(function(){

@@ -78,7 +78,7 @@
 					用户：<%= request.getSession().getAttribute("username")%>&nbsp;<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" id="secondline-dropright">
-					<li><a class="secondline-right">注销</a></li>
+					<li><a  href="/ProcurementSystem/logout" class="secondline-right">注销</a></li>
 					<li><a class="secondline-right">我的账户</a></li>
 					<li><a class="secondline-right">我的社区概要</a></li>
 				</ul>

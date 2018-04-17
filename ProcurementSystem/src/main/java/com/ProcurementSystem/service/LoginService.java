@@ -23,4 +23,8 @@ public class LoginService {
 	public void insertSupplierLogin(Login login){
 		dao.insertSupplierLogin(login);
 	}
+
+	public void insertBuyserLogin(Login login) {
+		dao.insertBuyerLogin(login);
+	}
 }

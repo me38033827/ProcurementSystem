@@ -4,7 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@include file="../../other/header1.jsp"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script src="/ProcurementSystem/js/my-bootstrap-treeview.js"></script>
+<script src="/ProcurementSystem/js/selectCommodity.js"></script>
 <title>创建供应商界面</title>
 </head>
 <!-- 页面整体宽度：1320px -->
@@ -57,10 +59,22 @@
 									
 									<tr class="row-standard">
 										<td class="col-standard1">商品：</td>
-										<td class="col-standard2"><input class="form-control input" name="commodity"
+										<td class="col-standard2"><input type="hidden" name="commodity"
 											<%if(request.getAttribute("spm")!=null){ %>
 											value="${spm.commodity}"
 											<%} %>>
+											<table id="commodities">
+											<c:forEach items="${sqm.commodities}" var="commodity">
+												<tr>
+													<td>${commodity.description }</td>
+													<td>${commodity.id }</td>
+												</tr>
+											</c:forEach>
+										</table>
+										<input type="hidden" id="commoditiesId" name="commoditiesId" value="${commoditiesId}"/>
+										<input type="hidden" id="commoditiesName" name="commoditiesName" value="<%=request.getAttribute("commoditiesName")%>"/>
+										<input type="hidden" id="nodeIds" name="nodeIds" value=<%=request.getAttribute("commoditiesNodeId")%> />
+											［&nbsp;<input type="button" style="width:50px; border:none;" onclick="onSelectCommodity();" value="选择" />&nbsp;］
 										</td>
 									</tr>
 								</table>
@@ -89,8 +103,11 @@
 					请选择您要使用的模板，并回答与之相关的所有问题，以便创建您的项目。以上区段的字段设置值将对可用模板产生影响。
 				</div>
 				<div class="radio">
-					<label class="model"><input type="radio" name="spm_model" id="spm_model1" value="spm_standard">供应商绩效管理标准模版</label><br/>
-					<label class="model"><input type="radio" name="spm_model" id="spm_model2" value="spm_demo" checked>供应商绩效管理Demo</label>
+					<c:forEach items="${templates}" var="template">
+						<label class="model"><input type="radio" name="spm_model" id="spm_model1" value="${template.id}">${template.name}</label><br/>
+					</c:forEach>
+					<!-- <label class="model"><input type="radio" name="spm_model" id="spm_model1" value="spm_standard">供应商绩效管理标准模版</label><br/>
+					<label class="model"><input type="radio" name="spm_model" id="spm_model2" value="spm_demo" checked>供应商绩效管理Demo</label> -->
 				</div>
 				<div class="standard-ending">
 				    <div align="right" class="standard-ending-r">
@@ -98,8 +115,11 @@
 						<button class="btn-w" onclick="window.location.href='../main'">取消</button>
 					</div>  
 				</div>
+				<!-- 选择商品 -->
+				<%@include file="../../other/selectCommodity.jsp"%>
 			</div>
 		</div>
 	</div>
+	<div class="theme-popover-mask"></div>
 </body>
 </html>

@@ -12,84 +12,12 @@
 	<body>
 		<div class="container" id="whole-container">
 			
-			<!-- 标题及导航栏第一行 -->
-			<!-- <div class="container" id="firstline-out" >
-				<div class="navbar navbar-inverse set-radius-zero" id="firstline">
-					<a id="page-name" class="left">LOGO</a>
-				
-					首行靠右导航栏
-					<div class="right" id="right-div">
-						<button id="firstline-icon"><span class="glyphicon glyphicon-search" aria-hidden="true" id="firstline-search"></span></button>
-						<button id="firstline-icon"><span class="glyphicon glyphicon-print" aria-hidden="true" id="firstline-print"></span></button>
-						<button id="firstline-help">帮助</button>
-						<button id="firstline-user">用户：用户1</button>
-					</div>
-				</div>
-			</div>
-			
-			导航栏：第二行
-			<div class="container" id="secondline-out">
-				<div class="dropdown" id="secondline-dropdown">
-					第二行靠左
-					<button class="secondline-left">首页</button>
-					<button class="secondline-left">采购</button>
-					<button class="secondline-left">发票</button>
-					<button class="secondline-left">目录</button>
-					
-					<div class="btn-group secondline" role="group">
-						<button type="button" class="btn btn-default dropdown-toggle" id="secondline-right-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    	创建&nbsp;<span class="caret"></span>
-					    </button>
-					    <ul class="dropdown-menu" id="secondline-dropright">
-					    	<li><a class="secondline-right" href="sourcing-creation.html">寻源项目</a></li>
-					    	<li><a class="secondline-right" href="supplier-creation.html">供应商</a></li>
-					    	<li><a class="secondline-right" href="contract-workspace-creation.html">合同</a></li>
-					    	<li><a class="secondline-right" href="procurement-catalog-creation.html">商品目录</a></li>
-					    	<li><a class="secondline-right" href="pr-creation.html">请购单</a></li>
-					    	<li><a class="secondline-right" href="invoice-creation.html">发票</a></li>
-					    	<li><a class="secondline-right" href="template-creation.html">模版</a></li>
-					    	<li><a class="secondline-right" href="approval-creation.html">审批</a></li>
-					    </ul>
-					</div>
-					
-					第二行靠右
-					<div class="btn-group secondline" role="group">
-						<button type="button" class="btn btn-default dropdown-toggle" id="secondline-right-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    	管理&nbsp;<span class="caret"></span>
-					    </button>
-					    <ul class="dropdown-menu" id="secondline-dropright">
-					    	<li><a class="secondline-right" href="sourcing-searching.html">在线寻源</a></li>
-					    	<li><a class="secondline-right" href="supplier-searching.html">供应商管理</a></li>
-					    	<li><a class="secondline-right" href="contract-searching.html">合同管理</a></li>
-					    	<li><a class="secondline-right" href="procurement-commodity-catalog.html">商品目录</a></li>
-					    	<li><a class="secondline-right" href="order-searching.html">订单协同</a></li>
-					    	<li><a class="secondline-right" href="receipt-searching.html">收\发货协同</a></li>
-					    	<li><a class="secondline-right" href="delivery-searching.html">物流管理</a></li>
-					    	<li><a class="secondline-right" href="invoice-searching.html">发票管理</a></li>
-					    	<li><a class="secondline-right" href="payment-searching.html">支付管理</a></li>
-					    	<li><a class="secondline-right" href="user-searching.html">用户管理</a></li>
-					    	<li><a class="secondline-right" href="template-detail-doc.html">模版管理</a></li>
-					    	<li><a class="secondline-right" href="approval-searching.html">审批管理</a></li>
-					    </ul>
-					</div>		
-				</div>
-			</div> -->
-			
 			<!-- 主要内容 -->
 			<div class="con">
 				<div id="searching-title-out">
 					<a class="inline-b black" id="searching-title">用户管理</a>
 				</div>
 				<div class="user-main">
-					 <!-- 搜索显示区域 -->
-					 <!-- <div class="user-left">
-					 	<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;用户</a>
-					 	<a class="f-14" href="user-searching.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户管理</a>
-					 	<a class="f-14 black" href="user-creation.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建用户</a>
-					 	<a class="f-16 black"><span class="caret"></span>&nbsp;&nbsp;组</a>
-					 	<a class="f-14 black" href="user-group-searching.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组管理</a>
-					 	<a class="f-14 black" href="user-group-creation.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建组</a>
-					 </div> -->
 					 <div>
 					 	<a class="black f-14">搜索现有用户或创建新用户。搜索字段不区分大小写，您可以输入全部或部分名称。</a>
 					 	<div id="filters" style="height:260px;">
@@ -125,27 +53,27 @@
 						 					</td>
 						 				</tr>
 						 				<tr>
-						 					<td class="order-filter-left-col1">已锁定：
+						 					<td class="order-filter-left-col1">是否停用：
 						 					</td>
 						 					<td class="order-filter-left-col2">
 						 						<div class="radio">
-													<label><input type="radio" name="activiate" id="optionsRadios1" value="option1">是</label>
-												  	<label><input type="radio" name="activiate" id="optionsRadios2" value="option2">否</label>
-												  	<label><input type="radio" name="activiate" id="optionsRadios2" value="option2" checked>是或否</label>
+													<label><input type="radio"  name="status" id="optionsRadios1" value="已停用">是</label>
+												  	<label><input type="radio"  name="status" id="optionsRadios2" value="已启用">否</label>
+												  	<label><input type="radio"  name="status" id="optionsRadios2" checked>是或否</label>
 												</div>
 						 					</td>
 						 				</tr>
-						 				<tr>
+						 				<!-- <tr>
 						 					<td class="order-filter-left-col1">已激活：
 						 					</td>
 						 					<td class="order-filter-left-col2">
 						 						<div class="radio">
-													<label><input type="radio" name="activiate" id="optionsRadios1" value="option1">是</label>
-												  	<label><input type="radio" name="activiate" id="optionsRadios2" value="option2">否</label>
-												  	<label><input type="radio" name="activiate" id="optionsRadios2" value="option2" checked>是或否</label>
+													<label><input type="radio" name="activiate" id="optionsRadios1" value="已启用">是</label>
+												  	<label><input type="radio" name="activiate" id="optionsRadios2" value="已停用">否</label>
+												  	<label><input type="radio" name="activiate" id="optionsRadios2" value="" checked>是或否</label>
 												</div>
 						 					</td>
-						 				</tr>
+						 				</tr> -->
 						 			</table>
 						 			</form>
 						 		</div>
@@ -153,7 +81,8 @@
 									<div align="right">
 										<button class="btn-b" form="userSearch"
 										formaction="userSearching">搜索</button>
-										<button class="btn-w">全部列出</button>
+										<button class="btn-w"
+											onclick="window.location.href='userSearching.html'">全部列出</button>
 									</div>
 								</div>
 					 		</div>
@@ -171,18 +100,22 @@
 												<input type="checkbox" class = "checkboxes" value="" />
 											</label>
 										</td>
-										<td class="user-search-col2">用户标识符</td>
+										<td class="user-search-col3">用户标识符</td>
 										<td class="user-search-col3">名称</td>
 										<td class="user-search-col4">类型</td>
 										<td class="user-search-col5">已有密码</td>
 										<td class="user-search-col6">上次登录</td>
 										<td class="user-search-col7">受托人</td>
+										<td class="user-search-col7">状态</td>
 										<td class="user-search-col8">操作</td>
 									</tr>
 								</table>
 							</div>
 							<div id="user-searching-tab-out">
 								<table class="fulltab">
+									<c:if test="${users.size() == 0}">
+									   <p>暂无用户</p>
+									</c:if>
 									<c:forEach var="user" items="${users}">
 										<tr class="order-t-col2">
 											<td class="user-search-col1">
@@ -190,14 +123,29 @@
 													<input type="checkbox" class = "checkboxes" value="${user.uniqueName} " />
 												</label>
 											</td>
-											<td class="user-search-col2"><a href="userDetail?userUniqueName=${user.uniqueName}">${user.userIdentifier}</a></td>
+											<td class="user-search-col3"><a href="userDetail?userUniqueName=${user.uniqueName}">${user.userIdentifier}</a></td>
 											<td class="user-search-col3">${user.name}</td>
 											<td class="user-search-col4">${user.passwordAdapter}</td>
 											<td class="user-search-col5">是</td>
 											<td class="user-search-col6">2017年7月20日</td>
 											<td class="user-search-col7"></td>
+											<td class="user-search-col7">${user.status}</td>
 											<td class="user-search-col8">
-												<button class="btn-w">操作</button>
+												<div class="btn-group" align="right">
+													<button class="btn-m" data-toggle="dropdown">操作&nbsp;<span class="caret"></span></button>
+													<ul class="dropdown-menu manu-btn-o">
+														<!-- <li><a class="manu-btn" href=""></a></li> -->
+														<li><a class="manu-btn" href="javascript:void(0);" onclick="window.location.href='userDetail?userUniqueName=${user.uniqueName}&&param=edit'">编辑</a></li>
+														<li>
+															<c:if test="${user.status == '已启用'}">
+																<a class="manu-btn" href="javascript:void(0);" onclick="stopOrStart(this)">停用</a>
+															</c:if>	
+															<c:if test="${user.status == '已停用'}">
+																<a class="manu-btn" href="javascript:void(0);" onclick="stopOrStart(this)">启用</a>
+															</c:if>		
+														</li>
+													</ul>
+												</div>
 											</td>
 										</tr>
 									</c:forEach>
@@ -228,5 +176,27 @@
 	<script src="assets/js/bootstrap.js"></script>
 	  <!-- CUSTOM SCRIPTS  -->
 	<script src="assets/js/custom.js"></script>
+<script>
+	function stopOrStart(btn){
+		var current_tr = $(btn).parent().parent().parent().parent().parent();
+		var _uniqueName =$(current_tr).find("input").val();
+		$.ajax({
+			url : 'stopOrStartUse',// 跳转到 controller 
+			data : {'uniqueName':_uniqueName},
+			type : 'post',
+			//contentType : 'application/json;charset=utf-8', //发送信息至服务器时内容编码类型。    
+			success : function(data) {
+				if(data.result == "success"){
+					window.location.reload();
+				}else{
+					alert("操作失败!");
+				}
+			},
+			error : function() {
+				alert("操作失败！请重试！");
+			}
+		});
+	}
+</script>
 	</body>
 </html>

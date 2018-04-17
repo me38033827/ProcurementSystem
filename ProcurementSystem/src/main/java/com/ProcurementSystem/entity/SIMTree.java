@@ -184,7 +184,6 @@ public class SIMTree {
 			if(parentNode.getNumber()==null){
 				control = true;
 			}
-			
 			for (SIMTreeNode child : children){
 				JSONObject jsonObj = new JSONObject();
 				String li="";

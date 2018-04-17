@@ -38,9 +38,8 @@ public class BuyerTemplateService {
 		templateDao.setStatus(map);
 	}
 
-	public List<Template> getActivatedSQMTemplate() {
-
-		return templateDao.getActivatedSQMTemplate();
+	public List<Template> getActivatedTemplate(String type) {
+		return templateDao.getActivatedTemplate(type);
 	}
 
 }

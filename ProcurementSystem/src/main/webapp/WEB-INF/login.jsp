@@ -49,6 +49,13 @@
 								<%}} %> disabled
 								/>
 							</div>
+							<div style="height:26px;width:300px; text-align:right;">
+							<input id="stopUsed" style="background-color:transparent; text-align:right; border:0;color:red; font-weight:bold; line-height:26px;" <%if(request.getAttribute("loginInfo")!=null){
+									if(request.getAttribute("error").equals("stopUsed")){ %>
+									value="该账户已停用！"
+								<%}} %> disabled
+								/>
+							</div>
 							
 							<div class="radio" style="margin-bottom:2px; margin-top:-2px; font-size:16px; width:200px; display:inline-block" onChange="showSignUp();">
 								<label> <input type="radio" name="role" id="buyer" value="buyer"

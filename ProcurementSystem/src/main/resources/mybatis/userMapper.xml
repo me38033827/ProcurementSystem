@@ -19,10 +19,10 @@
 			and name like concat("%",#{userName},"%")
 		</if>
 	</select>
-	<insert id="createNewUser" parameterType="com.ProcurementSystem.entity.User" useGeneratedKeys="true">
-		insert into user(definer, password_adapter, name, user_identifier, organization, email_address, allowed_external_email_domain, 
+	<insert id="createNewUser" parameterType="com.ProcurementSystem.entity.User" useGeneratedKeys="true" keyProperty="uniqueName">
+		insert into user(definer, password_adapter, name, status, user_identifier, email_address, allowed_external_email_domain, 
 		default_currency, locale, time_zone, phone, fax, supervisor_name, alternate_email_addresses)
-		values(#{definer}, #{passwordAdapter}, #{name}, #{userIdentifier}, #{organization}, #{emailAddress}, #{allowedExternalEmailDomain},
+		values(#{definer}, #{passwordAdapter}, #{name}, "已启用", #{userIdentifier}, #{emailAddress}, #{allowedExternalEmailDomain},
 		#{defaultCurrency}, #{locale}, #{timeZone}, #{phone}, #{fax}, #{supervisorName}, #{alternateEmailAddresses})
 	</insert>
 	
@@ -38,26 +38,22 @@
 		<if test="user_identifier != null and user_"></if>
 	</select>
 	
-	<!--
-		返回主键id
-		keyProperty="unique_name" 
-	 -->
-	<!-- <update id="updateUser" parameterType="com.ProcurementSystem.entity.User">
+	<update id="updateUser" parameterType="com.ProcurementSystem.entity.User">
 		update user
-		set definer="definer",
-			password_adapter="password_adapter", 
-			name="name",
-			user_identifier="user_identifier"
-			organization="organization",
-			email_address="email_address",
-			alowed_external_email_domain="external",
-			default_currency="CNY",
-			local="locale",
-			time_zone="time_zone",
-			phone="1",
-			fax="1",
-			supervisor_name="a",
-			alternate_email_addresses="alter"
-			
-	</update> -->
+		set definer = '${definer}',
+			password_adapter='${passwordAdapter}', 
+			name='${name}',
+			user_identifier= '${userIdentifier}',
+			email_address= '${emailAddress}',
+			allowed_external_email_domain= '${allowedExternalEmailDomain}',
+			default_currency= '${defaultCurrency}',
+			locale= '${locale}',
+			time_zone= '${timeZone}',
+			phone= '${phone}',
+			fax= '${fax}',
+			supervisor_name= '${supervisorName}',
+			alternate_email_addresses= '${alternateEmailAddresses}',
+			status = '${status}'
+		where unique_name = '${uniqueName}'
+	</update>
 </mapper>

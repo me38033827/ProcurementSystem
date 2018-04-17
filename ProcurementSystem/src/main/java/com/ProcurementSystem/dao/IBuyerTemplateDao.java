@@ -15,6 +15,6 @@ public interface IBuyerTemplateDao {
 
 	void setStatus(Map<String, Object> map);
 
-	List<Template> getActivatedSQMTemplate();
+	List<Template> getActivatedTemplate(String type);
 
 }

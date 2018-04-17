@@ -22,7 +22,7 @@
 		<li><a class="secondline-right" href="/ProcurementSystem/buyer/template/templateChooseType">模版</a></li>
 		<li><a class="secondline-right" href="approvalCreate.jsp">审批</a></li>
 		<li><a class="secondline-right" href="/ProcurementSystem/userCreation">用户</a></li>
-		<li><a class="secondline-right" href="/ProcurementSystem/userGroup/userGroupCreation">用户组</a></li>
+		<li><a class="secondline-right" href="/ProcurementSystem/group/groupCreation">用户组</a></li>
 	</ul>
 </div>
 
@@ -48,7 +48,7 @@
 		<li><a class="secondline-right" href="invoiceSearching.jsp">发票管理</a></li>
 		<li><a class="secondline-right" href="paymentSearching.jsp">支付管理</a></li>     -->
 		<li><a class="secondline-right" href="/ProcurementSystem/userSearching">用户管理</a></li>
-		<li><a class="secondline-right" href="/ProcurementSystem/userGroup/userGroupSearching">用户组管理</a></li>
+		<li><a class="secondline-right" href="/ProcurementSystem/group/groupSearching">用户组管理</a></li>
 		<li><a class="secondline-right" href="/ProcurementSystem/buyer/template/templateDoc">模版管理</a></li>
 		<li><a class="secondline-right" href="approvalSearching.jsp">审批管理</a></li>
 	</ul>

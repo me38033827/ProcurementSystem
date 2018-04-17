@@ -200,10 +200,21 @@
 											<option>选项2</option>
 									</select></td>
 								</tr>
+								<tr class="row-standard">
+									<td class="col-standard1">选择模板:</td>
+								</tr>	
+									<c:forEach items="${templates}" var="template">
+									<tr class="row-standard">
+										<td class="col-standard1"></td>
+										<td class="col-standard2">
+											<label class="model"><input type="radio" checked
+												name="simTemplateId" id="sim_model1" value="${template.id }">&nbsp;&nbsp;${template.name}</label>
+										</td>
+									</tr>
+									</c:forEach>
 							</table>
-						</div>
+					</div><br/>
 					</div>
-
 					<div class="standard-subtitle">概要问卷</div>
 					<div>
 						<table class="table table-hover">

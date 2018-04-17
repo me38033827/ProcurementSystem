@@ -22,4 +22,6 @@ public interface ISupplierSQMDao {
 	List<SupplierSQM> completeSearchSupplierSQM(Map<String, Object> params);
 	
 	void updateSQM(SupplierSQM sqm);
+
+	void deleteSqmById(String id);
 }
