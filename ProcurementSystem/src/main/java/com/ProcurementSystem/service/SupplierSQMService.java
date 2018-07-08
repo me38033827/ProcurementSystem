@@ -94,4 +94,12 @@ public class SupplierSQMService {
 			return supplierSQMs;
 		}
 	}
+
+	/**
+	 * 删除sqm供应商资格
+	 * @param id
+	 */
+	public void deleteSqmById(String id) {
+		dao.deleteSqmById(id);
+	}
 }

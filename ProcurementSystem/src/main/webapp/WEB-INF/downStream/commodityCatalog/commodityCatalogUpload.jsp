@@ -58,7 +58,11 @@
 
 			<tr>
 				<td class="col1">目录文件：</td>
-				<td class="col2" ><input type="file" name="file" style="display:inline;width:200px"><span class=" error-message">请保留模板原有字体格式！</span></td>
+				<td class="col2" ><input type="file" name="file" style="display:inline;width:145px">
+					（！请保留模板原有字体格式）
+					<span class="error-message">${ERR_1}</span>
+					<span class="error-message">${ERR_2}</span>
+				</td>
 			</tr>
 			<tr>
 				<td class="col1">可选的图像文件:</td>

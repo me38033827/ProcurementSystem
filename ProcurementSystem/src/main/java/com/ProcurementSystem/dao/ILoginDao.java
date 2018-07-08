@@ -12,5 +12,7 @@ public interface ILoginDao {
 	
 	void insertSupplierLogin(Login login);
 
+	void insertBuyerLogin(Login login);
+
 }
 

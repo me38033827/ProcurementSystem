@@ -171,7 +171,7 @@
 									<img class="a-third-img" 
 												href="/ProcurementSystem/buyer/commodityCatalog/commodityInfo?uniqueName=${commodity.uniqueName }&currPage=${pageParams.currPage }&code=${code}"
 												alt="" id="image-${commodity.uniqueName }"
-												src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
+												src="http://47.93.188.228/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName}/${commodity.thumbnail }"
 												onerror="error('image-${commodity.uniqueName }');"/>
 									<div class="a-third-description"><span>${commodity.itemDescription }</span></div>
 									<div class="item-price-green">￥${commodity.unitPrice}</div>

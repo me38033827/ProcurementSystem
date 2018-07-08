@@ -367,7 +367,7 @@ button{
 	height: 30px;
 }
 
-/*button样式*/
+/*button鏍峰紡*/
 .btn-w {
 	font-size: 14px;
 	border: 0;
@@ -389,8 +389,29 @@ button{
 .btn-w:active {
 	background-color: #3071a9;
 }
+.btn-ww {
+	font-size: 14px;
+	border: 0;
+	width: 150px;
+	height: 30px;
+	text-align: center;
+	padding-top: 1px;
+	background-color: white;
+	border: 1px solid #428bca;
+	color: #428bca;
+}
 
-/* 不带边框的操作按钮 */
+.btn-ww:hover {
+	color: #fff;
+	background-color: #428bca;
+	border-color: #285e8e;
+}
+
+.btn-ww:active {
+	background-color: #3071a9;
+}
+
+/* 涓嶅甫杈规鐨勬搷浣滄寜閽� */
 .btn-ma{
 	font-size: 14px;
 	border: 0;
@@ -414,7 +435,7 @@ button{
 	color: #199DE0 ;
 }
 
-/* 带边框的操作按钮 */
+/* 甯﹁竟妗嗙殑鎿嶄綔鎸夐挳 */
 .btn-m {
 	font-size: 14px;
 	border: 0;
@@ -517,7 +538,7 @@ button{
 	font-size: 10px;
 }
 
-/* 模版 */
+/* 妯＄増 */
 .model{
 	height:48px; margin-left:40px;
 }

@@ -1,5 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.ProcurementSystem.common.*"%>
+<%@ page import="com.ProcurementSystem.entity.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,8 +9,11 @@
 <%@include file="../../other/header1.jsp"%>
 <%@include file="../../other/header2.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 </head>
 <body>
+	<% PageParams<CommodityCatalog> pageParams = (PageParams<CommodityCatalog>) request.getAttribute("pageParams");
+	%>
 	<!-- 第一行 -->
 	<div class="container">
 		<div class="row">
@@ -21,7 +26,7 @@
 								主页</button>
 						</div>
 						<div class="small-window-title margin-bottom ">目录 - 查看内容 -
-							${requestScope.commodityCatalog.name }，${requestScope.commodityCatalog.version},
+							${commodityCatalog.name },${requestScope.commodityCatalog.version},
 							完整</div>
 
 					</div>
@@ -63,10 +68,15 @@
 							<a href="">在搜索用户界面中预览项目</a>
 						</div>
 					</div>
+					<form id="commodityForm" method="post">
 					<table border="1" class="fulltab text-center no">
 						<tr>
-							<th width="10%" class="text-center"><input type="checkbox"
-								id="commo-t0" class="chk" /><label for="commo-t0"></label>
+							<th width="10%" class="text-center">
+								<input type="checkbox" 
+								id="commo-t0"  class="chk" />
+								<label for="${commodityCatalog.uniqueName}"></label>
+								<input type="hidden" name="cataloguniqueNames" value="${commodityCatalog.uniqueName}" id="${commodityCatalog.uniqueName}"/>
+							</th>
 							<th width="5%" class="text-center">行</th>
 							<th width="10%" class="text-center">金额</th>
 							<th width="20%" class="text-center">供应商名称</th>
@@ -74,37 +84,48 @@
 							<th width="15%" class="text-center">商品名称</th>
 							<th width="20%" class="text-center">描述</th>
 						</tr>
-						<c:forEach var="commodity"
-							items="${requestScope.commodityCatalog.commodities }"
-							varStatus="status">
-							<tr>
-								<td><input type="checkbox" id="${commodity.uniqueName }"
-									class="chk" /><label for="${commodity.uniqueName }"></label>&nbsp;
-									<c:if test="${commodityCatalog.isActivated != '已激活' }">
-										<!--已激活状态不可编辑  -->
-										<a
-											href="commodityCatalogContentEdit?uniqueName=${commodity.uniqueName }">编辑
-											<c:if test="${commodity.isChecked == 'FALSE'}">
-												<span class="error-message">!!!</span>
-											</c:if>
-										</a>
-									</c:if> <c:if test="${commodityCatalog.isActivated == '已激活' }">
-									不可编辑
-									</c:if></td>
-								<td>${status.count}</td>
-								<td>${commodity.unitPrice }</td>
-								<td>${commodity.supplier.name }</td>
-								<td>${commodity.supplierPartId }</td>
-								<td>${commodity.shortName }</td>
-								<td>${commodity.itemDescription }</td>
-							</tr>
-						</c:forEach>
-					</table>
+							<c:forEach var="commodity"
+								items="${requestScope.commodityCatalog.commodities }"
+								varStatus="status">
+								<tr>
+									<td><input type="checkbox" id="${commodity.uniqueName }" name="commodityuniqueNames" 
+									value="${commodity.uniqueName }" class="chk" /><label for="${commodity.uniqueName }"></label>&nbsp;
+										<c:if test="${commodityCatalog.isActivated != '已激活' }">
+											<!--已激活状态不可编辑  -->
+											<a
+												href="commodityCatalogContentEdit?uniqueName=${commodity.uniqueName }">编辑
+												<c:if test="${commodity.isChecked == 'FALSE'}">
+													<span class="error-message">!!!</span>
+												</c:if>
+											</a>
+										</c:if> <c:if test="${commodityCatalog.isActivated == '已激活' }">
+										不可编辑
+										</c:if></td>
+									<td>${status.count}</td>
+									<td>${commodity.unitPrice }</td>
+									<td>${commodity.supplier.name }</td>
+									<td>${commodity.supplierPartId }</td>
+									<td>${commodity.shortName }</td>
+									<td>
+									<span>
+	
+														<c:if test="${fn:length(commodity.itemDescription) >= 30 }">  
+	                         							  ${fn:substring(commodity.itemDescription,0,30)}...  
+	                 								 </c:if> <c:if
+															test="${fn:length(commodity.itemDescription) < 30 }">  
+	                         							 ${commodity.itemDescription }
+	                 								 </c:if>
+												</span>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</form>
 					<div class="margin-bottom border-bottom-grey">
 
 						<div class="table-bottom-btn" style="background-color: white;">
 							<a class="arrow-turn">↳</a>
-							<button class="btn-w">删除</button>
+							<button class="btn-w" formaction="deleteCommodity" form="commodityForm">删除</button>
 							<button class="btn-w">添加新目录</button>
 							<br> <br>
 						</div>

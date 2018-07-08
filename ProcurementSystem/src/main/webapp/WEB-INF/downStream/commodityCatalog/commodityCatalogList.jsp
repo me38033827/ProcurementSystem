@@ -56,7 +56,7 @@
 		<!--第二行  -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="container-padding">
+					<div class="container-padding">
 					<table class="table table-hover">
 						<tr class="standard-row1">
 							<th width="5%"></th>
@@ -72,12 +72,12 @@
 						</tr>
 					</table>
 					<form id="commodityCatalogForm" method="post">
-						<div id="sourcing-tab" style="border-bottom: 2px solid #ddd">
-							<table class="table table-hover">
-								<c:forEach items="${ requestScope.commodityCatalogs}"
+					<div id="sourcing-tab" style="border-bottom: 2px solid #ddd">	
+						<table class="table table-hover">	
+							<c:forEach items="${ requestScope.commodityCatalogs}"
 									var="commodityCatalog">
-									<tr>
-										<td width="5%"><input type="checkbox"
+								<tr>
+										<td width="5%"><input type="checkbox" name="checkedCatalog"
 											value="${commodityCatalog.uniqueName }" name="uniqueNames"
 											id=${commodityCatalog.uniqueName } class="chk" /><label
 											for=${commodityCatalog.uniqueName}></label></td>
@@ -109,12 +109,13 @@
 												pattern="yyyy-MM-dd HH:mm:ss" /></td>
 									</tr>
 								</c:forEach>
+						 
 							</table>
 						</div>
 					</form>
 					<div class="table-bottom-btn">
-						<button class="btn-w">比较版本</button>
-						<button class="btn-w">发送进行审批</button>
+			<!--		<button class="btn-w">比较版本</button>  -->
+						<button class="btn-ww">发送进行审批</button>
 						<button class="btn-w" formaction="multiCommodityCatalogActivate"
 							form="commodityCatalogForm">激活</button>
 						<button class="btn-w" formaction="multiCommodityCatalogDeactivate"
@@ -122,14 +123,30 @@
 						<button class="btn-w" formaction="deleteCommodityCatalog"
 							form="commodityCatalogForm">删除版本</button>
 						<button class="btn-w">删除订阅</button>
-						<button class="btn-w">预览</button>
+			<!--		<button class="btn-w">预览</button>
 						<button class="btn-w">删除预览</button>
-						<button class="btn-w">强行批准</button>
+						<button class="btn-w">强行批准</button>  -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+<script>
+	function deleteCommodityCatalog() {
+		/** 此处增加删除前的验证 */
+		var _list = new Array();
+		$("#commodityCatalogForm").find("input[name='checkedCatalog']:checked").each(function(index){
+			_list[index] = $(this).val();
+		});
+		if(_list.length == 0){
+			alert("请选择要删除的选项");
+			return false;
+		}
+		$("#commodityCatalogForm").action = "deleteCommodityCatalog";
+		$("#commodityCatalogForm").submit();
+	}
+</script>
 </body>
 <script>
 </script>

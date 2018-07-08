@@ -1,18 +1,17 @@
 package com.ProcurementSystem.controller;
 
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
-
+import java.util.Objects;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.ProcurementSystem.common.NavTree;
 import com.ProcurementSystem.common.NavTreeNode;
 import com.ProcurementSystem.common.PageParams;
@@ -39,7 +37,8 @@ import com.ProcurementSystem.service.CatalogViewService;
 import com.ProcurementSystem.service.SupplierService;
 import com.ProcurementSystem.service.UserBehaviorService;
 import com.alibaba.fastjson.JSONObject;
-import com.sun.org.apache.xml.internal.resolver.Catalog;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
 @Controller
 @RequestMapping(value = "buyer/commodityCatalog")
@@ -199,11 +198,22 @@ public class BuyerCommodityCatalogController {
 
 	// 解析商品目录，并进行持久化存储;转向商品目录内容
 	@RequestMapping(value = "commodityCatalogAnalyze")
-	public String commodityCatalogUpload(@RequestParam("file") MultipartFile file,
+	public String commodityCatalogUpload(@RequestParam("file") MultipartFile file,ModelMap map,
 			@RequestParam(value = "imageFile", required = false) MultipartFile imageFile, HttpServletRequest request) {
+		
+		boolean isexcel = true;
+		if (file.getOriginalFilename().endsWith(".xls")){
+			isexcel = false;
+		}
+		
+		if (isexcel){
+			map.put("ERR_1", "!请上传.xls文件");
+			return "downStream/commodityCatalog/commodityCatalogUpload";
+		}
 		// String uploadUrl =
 		// request.getSession().getServletContext().getRealPath("/") +
 		// "upload/";// upload为上传文件的根目录
+		System.err.println(file.toString());
 		String uploadUrl = "/Users/ProcurementSystem/upload/";
 		HttpSession session = request.getSession();
 		System.out.println("uploadUrl:" + uploadUrl);
@@ -215,10 +225,17 @@ public class BuyerCommodityCatalogController {
 				commodityCatalog);// 保存上传的商品目录文件至根目录upload文件夹下
 		commodityCatalogService.commodityCatalogUploadImages(imageFile,
 				uploadUrl + commodityCatalog.getUniqueName() + "/");// 保存图片的压缩包文至以商品目录uniqueName命名的文件下，并解压
-		commodityCatalogService.commodityCatalogAnalyze(commodityCatalog,
+		boolean isunique = commodityCatalogService.commodityCatalogAnalyze(commodityCatalog,
 				uploadUrl + commodityCatalog.getUniqueName() + "/", file.getOriginalFilename());// 解析文件，持久化存储商品
-		request.setAttribute("commodityCatalog", commodityCatalog);
+
+		
+		if (isunique){
+				map.put("ERR_2", "!请确认文件中Supplier Part ID且不重复");
+				return "downStream/commodityCatalog/commodityCatalogUpload";
+			}  
+			
 		// 获取当前上传目录内容，准备在前端显示，转向
+		request.setAttribute("commodityCatalog", commodityCatalog);
 		return "redirect:/buyer/commodityCatalog/showCommodityCatalogContent?uniqueName="
 				+ commodityCatalog.getUniqueName();
 	}
@@ -254,13 +271,13 @@ public class BuyerCommodityCatalogController {
 
 	// 显示商品目录内容
 	@RequestMapping(value = "showCommodityCatalogContent")
-	public String showCommodityCatalogContent(ModelMap map, @RequestParam(value = "uniqueName") String uniqueName) {
-		CommodityCatalog commodityCatalog = new CommodityCatalog();
-		commodityCatalog.setUniqueName(uniqueName);
-		List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
-		Iterator<CommodityCatalog> iterator = commodityCatalogs.listIterator();
-		commodityCatalog = iterator.next();
-		map.put("commodityCatalog", commodityCatalog);
+	public String showCommodityCatalogContent(ModelMap map, @RequestParam(value = "uniqueName", required = false) String uniqueName) {
+			CommodityCatalog commodityCatalog = new CommodityCatalog();
+			commodityCatalog.setUniqueName(uniqueName);
+			List<CommodityCatalog> commodityCatalogs = commodityCatalogService.searchCommodityCatalog(commodityCatalog);
+			Iterator<CommodityCatalog> iterator = commodityCatalogs.listIterator();
+			commodityCatalog = iterator.next();
+			map.put("commodityCatalog", commodityCatalog);
 		return "downStream/commodityCatalog/commodityCatalogContent";
 	}
 
@@ -343,13 +360,40 @@ public class BuyerCommodityCatalogController {
 	// 批量删除目录
 	@RequestMapping(value = "deleteCommodityCatalog")
 	public String deleteCommodityCatalog(HttpServletRequest request,
-			@RequestParam(value = "uniqueNames") String[] uniqueNames) {
-		for (String uniqueName : uniqueNames) {
-			CommodityCatalog commodityCatalog = new CommodityCatalog();
-			commodityCatalog.setUniqueName(uniqueName);
-			commodityCatalogService.delete(commodityCatalog);
-		}
+			@RequestParam(value = "uniqueNames",required = false) String[] uniqueNames) {
+		if(!Objects.equals(uniqueNames, null))
+			for (String uniqueName : uniqueNames) {
+				CommodityCatalog commodityCatalog = new CommodityCatalog();
+				commodityCatalog.setUniqueName(uniqueName);
+				commodityCatalogService.delete(commodityCatalog);
+			}
 		return "redirect:commodityCatalogList";
+	}
+	//批量删除目录详细中的商品
+	@RequestMapping(value = "deleteCommodity")
+	public String deleteCommodity(@RequestParam(value = "cataloguniqueNames") String cataloguniqueNames,
+			@RequestParam(value = "commodityuniqueNames", required = false) String[] commodityuniqueNames,HttpServletRequest request) throws SQLException, ClassNotFoundException {
+		/*int uniqueName1=Integer.parseInt(cataloguniqueNames); 
+		if(commodityuniqueNames==null||commodityuniqueNames.length==0) {return "redirect:showCommodityCatalogContent?uniqueName=" + cataloguniqueNames;}
+		else */
+		if(!Objects.equals(commodityuniqueNames, null)) {
+			 Class.forName("com.mysql.jdbc.Driver");//加载驱动
+		     String url="jdbc:mysql://localhost/procurement_system_dbc?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true";
+		     //String url="jdbc:mysql://47.93.188.228:3306/procurement_system_dbc?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true";
+		     Connection conn=(Connection) DriverManager.getConnection(url, "root", "root");//链接到数据库
+		     int uniqueName1=Integer.parseInt(cataloguniqueNames);
+			for (String commodityuniqueName : commodityuniqueNames) {
+				 int name =Integer.parseInt(commodityuniqueName);
+				 String sql="delete from  commodity where unique_name= ? and commodity_catalog_unique_name= ?";   //SQL语句
+				 PreparedStatement stmt=(PreparedStatement) conn.prepareStatement(sql);
+				 stmt.setInt(1,name);
+				 stmt.setInt(2,uniqueName1);
+			     stmt.executeUpdate();
+			     stmt.close();
+			}
+			  conn.close();
+		}
+		return "redirect:showCommodityCatalogContent?uniqueName=" + cataloguniqueNames;
 	}
 
 	// 批量激活目录
@@ -487,7 +531,10 @@ public class BuyerCommodityCatalogController {
 			@RequestParam(value = "currPage", required = false) String currPage, ModelMap map,
 			HttpServletRequest request) {
 		commodityCatalogService.addViewInfoCount(uniqueName);// top50
-
+		if(currPage.equals("..."))
+		{
+			currPage = "2";
+		}
 		UserBehavior userBehavior = new UserBehavior();
 		Commodity commodity = new Commodity();
 		commodity.setUniqueName(uniqueName);
@@ -557,4 +604,21 @@ public class BuyerCommodityCatalogController {
 		return "redirect:showCatalogView";
 	}
 	
+	
+	/** 此处备份上传文件部分代码未修改之前的部分 */
+	/*if (file.getOriginalFilename().endsWith(".xls")){
+		isexcel = false;
+	}
+	if (isexcel||isunique){
+		if (isexcel){
+			map.put("ERR_1", "!请上传.xls文件");
+		
+			return "downStream/commodityCatalog/commodityCatalogUpload";
+		}
+	    else if (!isunique){
+			map.put("ERR_2", "!请确认文件中Supplier Part ID且不重复");
+			return "downStream/commodityCatalog/commodityCatalogUpload";
+		}  
+		
+	}*/
 }

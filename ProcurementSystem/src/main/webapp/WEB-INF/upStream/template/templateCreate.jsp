@@ -52,6 +52,7 @@
 										<td class="col-standard2">中文</td>
 									</tr>
 								</table>
+								<input type="hidden" name="owner"  value="${username }">
 							</form>
 						</div>
 						<br>

@@ -20,5 +20,7 @@ public interface ISupplierDao {
 	int findMaxUniqueName();
 	
 	void updateSupplier(Supplier supplier);
+	
+	void deleteSupplier(int uniqueName);
 
 }

@@ -1,10 +1,16 @@
 package com.ProcurementSystem.entity;
 
-public class Template {
+import java.io.Serializable;
+
+public class Template implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	private	Integer	id;
 	private	String	name;
 	private	String	description;
 	private	String 	type;
+	private String  owner;
 	private TemplateTaskTreeNode templateTaskTreeNode;
 	private String status;
 	public Integer getId() {
@@ -42,6 +48,12 @@ public class Template {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getOwner() {
+		return owner;
+	}
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
 	
 	

@@ -1,15 +1,15 @@
 package com.ProcurementSystem.entity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 	private	int	uniqueName	;
-	private	ArrayList<Group>	groups	;
+	private	List<Group>	groups	;
 	private	String	definer	;
 	private	String	passwordAdapter	;
 	private	String	name	;
 	private	String	userIdentifier	;
-	private	String	organization	;
+	private	String	status	;
 	private	String	emailAddress	;
 	private	String	allowedExternalEmailDomain	;
 	private	String	defaultCurrency	;
@@ -25,16 +25,19 @@ public class User {
 	private	String 	createDate	;
 	private	String	lastModifyDate	;
 	private	String	expireDate	;
+	private String  role  ;
+	private String  username  ;
+	private String  password  ;
 	public int getUniqueName() {
 		return uniqueName;
 	}
 	public void setUniqueName(int uniqueName) {
 		this.uniqueName = uniqueName;
 	}
-	public ArrayList<Group> getGroups() {
+	public List<Group> getGroups() {
 		return groups;
 	}
-	public void setGroups(ArrayList<Group> groups) {
+	public void setGroups(List<Group> groups) {
 		this.groups = groups;
 	}
 	public String getDefiner() {
@@ -61,11 +64,11 @@ public class User {
 	public void setUserIdentifier(String userIdentifier) {
 		this.userIdentifier = userIdentifier;
 	}
-	public String getOrganization() {
-		return organization;
+	public String getStatus() {
+		return status;
 	}
-	public void setOrganization(String organization) {
-		this.organization = organization;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public String getEmailAddress() {
 		return emailAddress;
@@ -156,6 +159,37 @@ public class User {
 	}
 	public void setExpireDate(String expireDate) {
 		this.expireDate = expireDate;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	@Override
+	public String toString() {
+		return "User [uniqueName=" + uniqueName + ", groups=" + groups + ", definer=" + definer + ", passwordAdapter="
+				+ passwordAdapter + ", name=" + name + ", userIdentifier=" + userIdentifier + ", status="
+				+ status + ", emailAddress=" + emailAddress + ", allowedExternalEmailDomain="
+				+ allowedExternalEmailDomain + ", defaultCurrency=" + defaultCurrency + ", locale=" + locale
+				+ ", timeZone=" + timeZone + ", phone=" + phone + ", fax=" + fax + ", failedLoginAttemptAfterLastLogin="
+				+ failedLoginAttemptAfterLastLogin + ", loginDate=" + loginDate + ", lastLoginDate=" + lastLoginDate
+				+ ", supervisorName=" + supervisorName + ", alternateEmailAddresses=" + alternateEmailAddresses
+				+ ", createDate=" + createDate + ", lastModifyDate=" + lastModifyDate + ", expireDate=" + expireDate
+				+ ", username=" + username + ", password=" + password + "]";
 	}
 	
 }

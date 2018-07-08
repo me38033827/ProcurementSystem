@@ -3,6 +3,7 @@ package com.ProcurementSystem.controller;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -685,6 +686,7 @@ public class BuyerSupplierController {
 		request.setAttribute("uniqueName", uniqueName);
 		SIMTree simTree = simService.generateSIMTree();
 		request.setAttribute("treeData", simTree.traverseToJSONArrayWithoutSelection());
+		request.setAttribute("templates", templateService.getActivatedTemplate("SIM"));
 		return "upStream/supplier/supplierCreation";
 	}
 
@@ -845,12 +847,36 @@ public class BuyerSupplierController {
 			allowedCode.setSqm(sqm);
 			String oriCode = commoditiesId;
 			allowedCode.setSpscCode(oriCode);// 设置原始code，特殊分隔符分开
-			allowedCode.setNodeId(nodesId);
+			//若商品为空，则默认商品id设为0
+			if(!nodesId.equals("null")) {
+				allowedCode.setNodeId(nodesId);
+			}else {
+				allowedCode.setNodeId("0");
+			}
 			allowedCodeService.setAllowedSpscCode(allowedCode);// 设置SQM准入类别，并持久化
 			return "redirect:sqmSummary?id=" + sqm.getId();
 		}
 		;
 		return "redirect:sqmSummary?id=" + sqm.getId();
+	}
+	
+	/**
+	 * 根据id删除供应商资格sqm
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="sqmDelete")
+	public @ResponseBody Map<String, String> sqmDelete(@RequestParam String id){
+		Map<String, String> result = new HashMap<String, String>();
+		try {
+			sqmService.deleteSqmById(id);
+			result.put("result", "删除成功！");
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("result", "操作失败！");
+			return result;
+		}
+		return result;
 	}
 	
 	/* 根据unspsc表选择商品－sqmCreation和sqm搜索的地方会用到 */
@@ -1107,6 +1133,7 @@ public class BuyerSupplierController {
 		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
 		System.out.println(action);
+		request.setAttribute("templates", templateService.getActivatedTemplate("SQM"));
 		if (action.equals("initial")) {
 			SupplierSPM spmSession = new SupplierSPM();
 			request.getSession().setAttribute("spmSession", spmSession);

@@ -1,18 +1,15 @@
 package com.ProcurementSystem.controller;
 
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.ProcurementSystem.dto.ISupplierDto;
-import com.ProcurementSystem.entity.Page;
 import com.ProcurementSystem.entity.Search;
 import com.ProcurementSystem.entity.Supplier;
 import com.ProcurementSystem.entity.SupplierSPM;
@@ -168,5 +165,30 @@ public class SearchController {
 		supplierSQM.setSupplier(supplier);
 		System.out.println(supplierSQM.getTitle());
 		return supplierSQMService.completeSearchSupplierSQM(supplierSQM, content, commodities);
+	}
+	
+	/**
+	 * 批量删除供应商
+	 * @param ids
+	 * @return
+	 */
+	@RequestMapping(value="supplierMulDelete")
+	public @ResponseBody String supplierMulDelete(@RequestBody String[] ids) {
+		for (String id : ids) {
+			supplierService.deleteSupplier(Integer.parseInt(id));
+		}
+		return "1000";
+	}
+	
+	/**
+	 * 单项删除供应商
+	 * @param ids
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="supplierSimDelete")
+	public String supplierSimDelete(@RequestBody int id) {
+			
+		return supplierService.deleteSupplier(id);
 	}
 }

@@ -9,9 +9,10 @@
 		template_task_phase(title,description,
 		reserve_content,
 		rank,
-		is_duped)
+		is_duped,
+		owner)
 		values
-		(#{title},#{description},#{reserveContent},#{rank},#{isDuped})
+		(#{title},#{description},#{reserveContent},#{rank},#{isDuped},#{owner})
 	</insert>
 
 	<select id="getById" resultType="com.ProcurementSystem.entity.TemplateTaskPhase">

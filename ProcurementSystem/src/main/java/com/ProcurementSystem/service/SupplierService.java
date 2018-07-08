@@ -109,4 +109,14 @@ public class SupplierService {
 		}
 		return oldRoot;
 	}
+	
+	/**
+	 * 删除供应商
+	 * @param id
+	 * @return
+	 */
+	public String deleteSupplier(int id) {
+		dao.deleteSupplier(id);
+		return "1000";
+	}
 }

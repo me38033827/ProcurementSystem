@@ -8,6 +8,9 @@
 <script src="/ProcurementSystem/js/simTree.js"></script>
 <script src="/ProcurementSystem/js/simQuestionnaire.js"></script>
 <script src="/ProcurementSystem/js/bootstrap-select.js"></script>
+<script src="/ProcurementSystem/js/my-bootstrap-treeview.js"></script>
+<!-- <script src="/ProcurementSystem/js/dataTables/dataTables.bootstrap.js"></script>
+<script src="/ProcurementSystem/js/dataTables/jquery.dataTables.js"></script> -->
 <link rel="stylesheet" type="text/css" href="/ProcurementSystem/css/bootstrap-select.css">
 <title>供应商详情－概要</title>
 </head>
@@ -28,7 +31,7 @@
 				<div class="adjust-10"></div>
 
 				<div style="border:1px solid #ddd; max-height:500px; overflow-x:scroll;">
-		        <div id="treeview-sim" class=""></div>
+		        	<div id="treeview-sim" class=""></div>
 		        </div>
 		        
 		        <div class="adjust-10"></div>
@@ -50,7 +53,7 @@
  	<input type="checkbox" id="124" class="chk" value="123">
  	<label for="124">2</label>
  	 -->
-	<div id="back"></div>
+	<!-- <div id="back"></div> -->
 	<!-- CONTENT-WRAPPER SECTION END-->
 	<%@ include file="../../../other/supplierFooter.jsp"%>
 
@@ -61,8 +64,9 @@
 		$(function(){
  	        var defaultData = ${treeData};
  	        $('#treeview-sim').treeview({
- 	          data: defaultData
- 	        });
+				data: defaultData,
+				collapsed:true
+ 	       	});
 		})
 		
 		$(function(){
@@ -81,7 +85,7 @@
 			    success:function(data){
 			    		//初始化搜索条件
 			    		console.log(data);
-			    		alert(12);
+			    		//alert(12);
 			    		for(var i=0; i<data.length; i++){
 			    			if(data[i].answerType==5){
 			    				//日期

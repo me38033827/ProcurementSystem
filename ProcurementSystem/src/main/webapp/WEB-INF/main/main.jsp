@@ -56,7 +56,7 @@
 
 									<tr>
 										<td><a class="secondline-right"
-											href="templateCreation.jsp">模版</a></td>
+											href="templateCreate.jsp">模版</a></td>
 									</tr>
 
 									<tr>
@@ -391,7 +391,7 @@
 			            }
 			        ],
 			        yAxis : [
-			            {
+			            {			
 			                type : 'value',
 			                name:'数量',
 			　　　　　　　　　　//下面的就很简单了，最小是多少，最大是多少，默认一次增加多少

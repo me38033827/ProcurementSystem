@@ -29,6 +29,7 @@
 		templateTaskPhaseReserveRank,
 		ttp.is_duped as templateTaskPhaseIsDuped,
 		ttp.status as templateTaskPhaseStatus,
+		ttp.owner as templateTaskPhaseOwner,
 		tts.id as
 		templateTaskScheduleId,
 		tts.title as
@@ -78,6 +79,7 @@
 			<result property="rank" column="templateTaskPhaseReserveRank" />
 			<result property="isDuped" column="templateTaskPhaseIsDuped" />
 			<result property="status" column="templateTaskPhaseStatus" />
+			<result property="owner" column="templateTaskPhaseOwner" />
 		</association>
 		<association property="templateTaskSchedule"
 			javaType="com.ProcurementSystem.entity.TemplateTaskSchedule">

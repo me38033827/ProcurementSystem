@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -76,11 +78,13 @@ public class BuyerCommodityCatalogService {
 	}
 
 	// 解析商品目录文件,并对商品信息进行持久化存储
-	public void commodityCatalogAnalyze(CommodityCatalog commodityCatalog, String uploadUrl, String fileName) {
+	public boolean commodityCatalogAnalyze(CommodityCatalog commodityCatalog, String uploadUrl, String fileName) {
 		// TODO Auto-generated method stub
-		
 		InputStream is = null;
 		Workbook rwb = null;
+		boolean isunique = false;
+		int count = 0;//有效数据行数
+		Set<String> set = new HashSet<String>();
 		try {
 			is = new FileInputStream(uploadUrl + fileName);// 1、构造excel文件输入流对象
 			rwb = Workbook.getWorkbook(is); // 2、声明工作簿对象
@@ -88,8 +92,8 @@ public class BuyerCommodityCatalogService {
 			Sheet firstSheet = rwb.getSheet(0);// 使用索引形式获取第一个工作表，也可以使用rwb.getSheet(sheetName);其中sheetName表示的是工作表的名称
 			// System.out.println("工作表名称：" + oFirstSheet.getName());
 			int rows = firstSheet.getRows();// 获取工作表中的总行数
-			int cols = firstSheet.getColumns();// 获取工作表中的总列数
-			boolean isCommodityCatalogchecked = true;
+			int cols = firstSheet.getColumns();// 获取工作表中的总列数		
+			boolean isCommodityCatalogchecked = true;		
 			for (int i = 0; i < rows; i++) {// 寻找数据起始标志-“DATA”
 				Cell cell = firstSheet.getCell(0, i);// 需要注意的是这里的getCell方法的参数，第一个是指定第几列，第二个参数才是指定第几行
 				if (cell.getContents().equals("DATA")) {
@@ -99,6 +103,7 @@ public class BuyerCommodityCatalogService {
 					while (!cell.getContents().equals("ENDOFDATA") && i<=rows) {// 共24个字段，读取每行信息并进行持久化存储，直至找到数据结束标识符-“ENDOFDATA”或最后一行
 						boolean isCommodityChecked = true;// 临时变量，用于商品的验证状态
 						/** 从上传文件中提取字段 */
+						count++;
 						Commodity commodity = new Commodity();// 设置commodityCatalog
 						commodity.setCommodityCatalog(commodityCatalog);
 						Supplier supplier = new Supplier();// 读取并设置Supplier
@@ -113,6 +118,7 @@ public class BuyerCommodityCatalogService {
 						System.out.println(commodity.getSupplier().getUniqueName());
 						cell = firstSheet.getCell(1, i);// 读取并设置Supplier Part ID
 						commodity.setSupplierPartId(cell.getContents());
+						set.add(cell.getContents());
 						if (cell.getContents().matches("^[0-9]+$"))// 匹配整数
 							commodity.setSupplierPartId(cell.getContents());
 						cell = firstSheet.getCell(2, i);// 读取并设置Manufacturer
@@ -201,11 +207,17 @@ public class BuyerCommodityCatalogService {
 					setIsActivated(commodityCatalog);// 维护商品目录状态属性
 					commodityCatalog.setItemCount(commodityCatalog.getCommodities().size());
 					setItemCount(commodityCatalog);// 维护商品目录商品数量属性
+					if (set.size()!= count) {
+						isunique = true;
+					}
+					
 				}
 			}
 		} catch (IOException | BiffException e) {
 			e.printStackTrace();
 		}
+		return isunique;
+		
 	}
 
 	// 设置商品目录状态

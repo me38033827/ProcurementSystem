@@ -80,7 +80,7 @@ public class TemplateTree {
 						+ "<li><a class=\"manu-active template-create-" + child.getId() + "\">&nbsp;&nbsp;模板</a></li>"
 						+ "</ul></div>";
 				String col2 = "<div class=\"tree-2-col\">&nbsp;</div>";
-				String col3 = "<div class=\"tree-2-col\">System</div>";
+				String col3 = "<div class=\"tree-2-col\">"+child.getTemplateFolder().getOwner()+"</div>";
 				li += col2 + col3;
 				jsonObj.put("text", li);
 			} else {// template,sim不可编辑
@@ -92,9 +92,11 @@ public class TemplateTree {
 				 + "<ul class=\"dropdown-menu\" style=\"z-index: 9999\">"
 				 + "<li><a class=\"manu-deactive\">操作</a></li>" + "<li><a  class=\"manu-active template-open-"
 				 + child.getTemplate().getId() + "\">&nbsp;&nbsp;打开</a></li>"
+				 + "<li><a class=\"manu-active template-delete-" + child.getTemplate().getId()
+				 + "\">&nbsp;&nbsp;删除</a></li>" 
 				 + "</ul></div>";
-				 String col2 = "<div class=\"tree-2-col\">已激活</div>";
-				 String col3 = "<div class=\"tree-2-col\">System</div>";
+				 String col2 = "<div class=\"tree-2-col\">" + child.getTemplate().getStatus() +"</div>";
+				 String col3 = "<div class=\"tree-2-col\">"+ child.getTemplate().getOwner() +"</div>";
 				 li += col2 + col3;
 				 jsonObj.put("text", li);
 				 } else {
@@ -106,9 +108,10 @@ public class TemplateTree {
 						+ child.getTemplate().getId() + "\">&nbsp;&nbsp;打开</a></li>"
 						+ "<li><a class=\"manu-active\" href=\"\">&nbsp;&nbsp;复制</a></li>"
 						+ "<li><a class=\"manu-active template-delete-" + child.getTemplate().getId()
-						+ "\">&nbsp;&nbsp;删除</a></li>" + "</ul></div>";
+						+ "\">&nbsp;&nbsp;删除</a></li>" 
+						+ "</ul></div>";
 				String col2 = "<div class=\"tree-2-col\">" + child.getTemplate().getStatus() + "</div>";
-				String col3 = "<div class=\"tree-2-col\">System</div>";
+				String col3 = "<div class=\"tree-2-col\">"+ child.getTemplate().getOwner() +"</div>";
 				li += col2 + col3;
 				jsonObj.put("text", li);
 				 }

@@ -107,13 +107,13 @@
 					<div id="result-action"></div>
 				</div>
 			</div>
-			<div id="result-title"></div>
+			<!-- <div id="result-title"></div>
 			<div id="result-content" class="roll-tab" style="max-height: 220px;"></div>
-			<div id="result-action"></div>
+			<div id="result-action"></div> -->
 			<%@include file="../other/selectCommodity.jsp"%>
 		</div>
 	</div>
-	</div>
+
 	<div class="theme-popover-mask"></div>
 
 	<%@ include file="../other/footer.jsp"%>

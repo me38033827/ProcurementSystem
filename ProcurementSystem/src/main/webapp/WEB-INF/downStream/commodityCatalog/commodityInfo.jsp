@@ -105,7 +105,7 @@
 									<div class="bigImg">
 										<img id=iimage-${commodity.uniqueName}
 											onerror="error('iimage-${commodity.uniqueName }');"
-											src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${commodity.thumbnail}">
+											src="http://47.93.188.228/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${commodity.thumbnail}">
 									</div>
 									<div class="smallImgs">
 										<!-- 	<p class="left">
@@ -115,7 +115,7 @@
 										<c:forEach var="path" items="${paths}">
 											<div class="smallImg left">
 												<img id=image-${commodity.uniqueName}
-													src="http://47.95.4.158/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${path}"
+													src="http://47.93.188.228/ProcurementSystem/upload/${commodity.commodityCatalog.uniqueName }/${path}"
 													onerror="error('image-${commodity.uniqueName }');">
 											</div>
 										</c:forEach>
@@ -182,7 +182,7 @@
 									数量： <input class="item-quantity"
 										id="quantity_${commodity.uniqueName }" value="1" />
 									<button class="item-add"
-										onclick="add(${commodity.uniqueName });">添加到购物车</button>
+											onclick="add(${commodity.uniqueName});">添加到购物车</button>
 								</div>
 								<div>
 									<a class="item-price-blue">添加到收藏夹</a>

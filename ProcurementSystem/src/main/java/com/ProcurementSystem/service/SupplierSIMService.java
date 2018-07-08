@@ -33,12 +33,11 @@ public class SupplierSIMService {
 			SIMTreeNode parent = queue.poll();//父节点
 			//parent.getSupplierSIM();
 			List<SIMTreeNode> children = dao.getChildren(parent.getSupplierSIM().getId());
-			if(children != null){
+			if(children != null) {
 				parent.setChildren(children);//设置子节点
 				Iterator<SIMTreeNode> iterator = children.iterator();
 				while(iterator.hasNext()){
 					SIMTreeNode node = iterator.next();
-					
 					//如果是带选项的问题，则把选项放到selection里面
 					if(node.getType()==2&&node.getSupplierSIM().getAcceptValue()==2){
 						node.getSupplierSIM().setSelections(dao.getSelectionsById(node.getSupplierSIM().getId()));

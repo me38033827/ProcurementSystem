@@ -21,10 +21,12 @@
 		tf.name,
 		tf.description,
 		tf.access_control,
+		tf.owner,
 		t.id as templateId,
 		t.name as templateName,
 		t.description as templateDescription,
 		t.type as templateType,
+		t.owner as templateOwner,
 		t.status as templateStatus
 		from
 		template_tree_node ttn
@@ -51,6 +53,7 @@
 			<result property="name" column="name" />
 			<result property="description" column="description" />
 			<result property="accessControl" column="access_control" />
+			<result property="owner" column="owner" />
 		</association>
 		<association property="template"
 			javaType="com.ProcurementSystem.entity.Template">
@@ -60,7 +63,7 @@
 			<result property="accessControl" column="templateAccess_control" />
 			<result property="type" column="templateType" />
 			<result property="status" column="templateStatus" />
-			
+			<result property="owner" column="templateOwner" />
 		</association>
 	</resultMap>
 

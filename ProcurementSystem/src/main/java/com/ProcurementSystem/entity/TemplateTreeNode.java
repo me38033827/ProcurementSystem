@@ -9,7 +9,8 @@ public class TemplateTreeNode {
 	private TemplateFolder templateFolder;
 	private Integer type;
 	private List<TemplateTreeNode> children;
-
+	private String owner;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -58,4 +59,12 @@ public class TemplateTreeNode {
 		this.children = children;
 	}
 
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+	
 }

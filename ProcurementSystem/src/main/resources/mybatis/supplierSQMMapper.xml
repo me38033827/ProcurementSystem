@@ -315,5 +315,12 @@
 			and status like concat("%",#{supplierSQM.status},"%")
 		</if>
 	</select>
-
+	
+	<delete id="deleteSqmById" parameterType="string">
+		DELETE 
+		FROM 
+			supplier_sqm
+		WHERE
+			id = #{id}
+	</delete>
 </mapper>

@@ -19,6 +19,7 @@
 		<input type="text" hidden="hidden" id="userId" value="<%= request.getSession().getAttribute("userUniqueName")%>" />
 		<ul class="dropdown-menu" id="secondline-dropright">
 			<li><a href="/ProcurementSystem/logout" class="secondline-right">注销</a></li>
+			<li><a href="/ProcurementSystem/userDetail?userUniqueName=<%= request.getSession().getAttribute("userUniqueName")%>" class="secondline-right">用户详情</a></li>
 			<li><a class="secondline-right">更改密码</a></li>
 			<li><a class="secondline-right">更改密码提问</a></li>
 		</ul>

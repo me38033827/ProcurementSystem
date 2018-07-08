@@ -72,6 +72,7 @@
 										<td class="col-standard2"><a href="#">选择</a></td>
 									</tr>
 								</table>
+								<input type="hidden" name="owner" value="${username }" />
 							</form>
 						</div>
 						<br>

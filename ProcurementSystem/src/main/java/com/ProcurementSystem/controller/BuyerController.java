@@ -77,6 +77,9 @@ public class BuyerController {
 		}
 		if (currPage == null || currPage.equals(""))
 			currPage = 1 + ""; // 如果未指定请求页，则默认设置为第一页
+		else if(currPage.equals("...")) {
+			currPage = "2";
+		}
 		int temp = 0;
 		try {
 			temp = Integer.parseInt(currPage);
