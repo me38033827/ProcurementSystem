@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerTemplateTaskTreeNodeDao">
+
+
+	<insert id="add"
+		parameterType="com.ProcurementSystem.dao.IBuyerTemplateTaskTreeNodeDao"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		template_task_tree_node(parent_id,template_task_phase_id,template_task_schedule_id,type)
+		values(
+		#{parentId},#{templateTaskPhase.id},#{templateTaskSchedule.id},#{type}
+		)
+	</insert>
+
+	<select id="getTaskTreeNodeByParentId" resultMap="taskTreeNodeMap">
+		select
+		tttn.id,
+		tttn.parent_id as parentId,
+		tttn.type,
+		ttp.id as templateTaskPhaseId,
+		ttp.title as templateTaskPhaseTitle,
+		ttp.description as
+		templateTaskPhaseDescription,
+		ttp.reserve_content as
+		templateTaskPhaseReserveContent,
+		ttp.rank as
+		templateTaskPhaseReserveRank,
+		ttp.is_duped as templateTaskPhaseIsDuped,
+		ttp.status as templateTaskPhaseStatus,
+		ttp.owner as templateTaskPhaseOwner,
+		tts.id as
+		templateTaskScheduleId,
+		tts.title as
+		templateTaskScheduleTitle,
+		tts.owner as
+		templateTaskScheduleOwner,
+		tts.watcher as
+		templateTaskScheduleWatcher,
+		tts.ddl as
+		templateTaskScheduleDdl,
+		tts.is_milestone as
+		templateTaskScheduleIsMileStone,
+		tts.is_must as
+		templateTaskScheduleIsMust,
+		tts.set_field as
+		templateTaskScheduleSetField,
+		tts.pre_task as
+		templateTaskSchedulePreTask,
+		tts.rank as templateTaskScheduleRank,
+		tts.status as templateTaskScheduleStatus
+		from
+		template_task_tree_node
+		tttn left join
+		template_task_phase ttp on
+		tttn.template_task_phase_id =
+		ttp.id and
+		tttn.type=1
+		left join
+		template_task_schedule tts on
+		tttn.template_task_schedule_id =
+		tts.id
+		and tttn.type=0
+		where parent_id =
+		#{parentId};
+	</select>
+	<resultMap type="com.ProcurementSystem.entity.TemplateTaskTreeNode"
+		id="taskTreeNodeMap">
+		<id property="id" column="id" />
+		<result property="parentId" column="parentId" />
+		<result property="type" column="type" />
+		<association property="templateTaskPhase"
+			javaType="com.ProcurementSystem.entity.TemplateTaskPhase">
+			<id property="id" column="templateTaskPhaseId" />
+			<result property="title" column="templateTaskPhaseTitle" />
+			<result property="description" column="templateTaskPhaseDescription" />
+			<result property="reserveContent" column="templateTaskPhaseReserveContent" />
+			<result property="rank" column="templateTaskPhaseReserveRank" />
+			<result property="isDuped" column="templateTaskPhaseIsDuped" />
+			<result property="status" column="templateTaskPhaseStatus" />
+			<result property="owner" column="templateTaskPhaseOwner" />
+		</association>
+		<association property="templateTaskSchedule"
+			javaType="com.ProcurementSystem.entity.TemplateTaskSchedule">
+			<id property="id" column="templateTaskScheduleId" />
+			<result property="title" column="templateTaskScheduleTitle" />
+			<result property="owner" column="templateTaskScheduleOwner" />
+			<result property="watcher" column="templateTaskScheduleWatcher" />
+			<result property="ddl" column="templateTaskScheduleDdl" />
+			<result property="isMilestone" column="templateTaskScheduleIsMilestone" />
+			<result property="isMust" column="templateTaskScheduleIsMust" />
+			<result property="setField" column="templateTaskScheduleSetField" />
+			<result property="preTask" column="templateTaskSchedulePreTask" />
+			<result property="rank" column="templateTaskScheduleRank" />
+			<result property="status" column="templateTaskScheduleStatus" />
+		</association>
+	</resultMap>
+
+
+
+	<select id="getById" resultMap="taskTreeNodeMap">
+		select
+		tttn.id,
+		tttn.parent_id as
+		parentId,
+		tttn.type,
+		ttp.id as templateTaskPhaseId,
+		ttp.title as
+		templateTaskPhaseTitle,
+		ttp.description as
+		templateTaskPhaseDescription,
+		ttp.reserve_content as
+		templateTaskPhaseReserveContent,
+		ttp.rank as
+		templateTaskPhaseReserveRank,
+		ttp.is_duped as templateTaskPhaseIsDuped,
+		ttp.status as templateTaskPhaseStatus,
+		tts.id as
+		templateTaskScheduleId,
+		tts.title as
+		templateTaskScheduleTitle,
+		tts.owner as
+		templateTaskScheduleOwner,
+		tts.watcher as
+		templateTaskScheduleWatcher,
+		tts.ddl as
+		templateTaskScheduleDdl,
+		tts.is_milestone as
+		templateTaskScheduleIsMileStone,
+		tts.is_must as
+		templateTaskScheduleIsMust,
+		tts.set_field as
+		templateTaskScheduleSetField,
+		tts.pre_task as
+		templateTaskSchedulePreTask,
+		tts.rank as templateTaskScheduleRank,
+		tts.status as templateTaskScheduleStatus
+		from
+		template_task_tree_node
+		tttn left join
+		template_task_phase ttp on
+		tttn.template_task_phase_id =
+		ttp.id and
+		tttn.type=1
+		left join
+		template_task_schedule tts on
+		tttn.template_task_schedule_id =
+		tts.id
+		and tttn.type=0
+		where tttn.id =
+		#{id};
+	</select>
+
+	<delete id="deleteById">
+		delete from template_task_tree_node
+		where id = #{id}
+	</delete>
+</mapper>

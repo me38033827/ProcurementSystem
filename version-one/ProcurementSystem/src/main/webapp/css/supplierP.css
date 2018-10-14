@@ -1,0 +1,123 @@
+/* p2p supplier title */
+.p2p-supplier-title{
+	margin-top:4px;
+	margin-bottom:4px;
+	height:66px;
+}
+
+.p2p-supplier-title-main{
+	color:#38383a;
+	font-size:20px;
+	margin-top:10px;
+	display:inline-block;
+}
+
+.p2p-supplier-subtitle{
+	font-size:14px;
+	color:grey;
+}
+
+#supplier-detail-top {
+	margin-top:5px;
+	border: 1px solid #d7d7d7;
+	background-color:#FCF8E3;
+	width:260px;
+	padding-right:20px;
+	padding-left:20px;
+}
+
+#supplier-detail-top td {
+	line-height: 20px;
+	font-size:12px;
+}
+
+/* questionnaire */
+.supplier-question{
+	max-height:300px;
+	overflow-x: scroll;
+}
+
+#question .question-1{
+	padding-left:20px;
+}
+
+#question .question-2{
+	padding-left:40px;
+}
+
+#question .question-3{
+	padding-left:70px;
+}
+
+#question .question-1-1{
+	padding-left:60px;
+}
+
+.supplier-question tr{
+	height: 36px;
+	font-size: 14px;
+}
+
+/* supplier left info*/
+.supplier-left-info{
+	margin-top:10px;
+	width:100%;
+	border:1px solid #ddd;
+}
+
+.supplier-left-info-news{
+	background-color:#ebebeb;
+	text-align:center;
+	padding-top:10px;
+	font-size:16px;
+}
+.supplier-left-info-all{
+	background-color:#fcf8e2;
+	padding-left:10px;
+}
+
+.supplier-left-info-filter{
+	text-align:center;
+}
+
+.supplier-left-info-tab{
+	margin:0 20px 10px 20px;
+}
+
+.supplier-left-info-manage{
+	border-top:1px solid #ddd;
+	margin-top:5px;
+	padding-top:5px;
+}
+
+/* supplier detail report*/
+#supplier-detail-report-box{
+	border:1px solid #ddd;
+	font-size:13px;
+	padding:0 10px;
+}
+
+.report-center-description{
+	font-size:13px;
+	color:grey;
+	text-align:center;
+}
+.report-center-link{
+	font-size:13px;
+	color:#428bca;
+	text-align:center;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+#report-border{
+	border:1px solid #ddd;
+	padding:10px 20px;
+}
+
+/* supplier searching */
+#supplier-searching-box{
+	padding:10px;
+	border:1px solid #ddd;
+	font-size:13px;
+}

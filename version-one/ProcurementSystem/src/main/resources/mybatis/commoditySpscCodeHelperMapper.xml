@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerCommoditySpscCodeHelperDao">
+
+	<insert id="add"
+		parameterType="com.ProcurementSystem.entity.CommoditySpscCodeHelper"
+		useGeneratedKeys="true" keyProperty="uniqueName">
+		insert into
+		commodity_spsc_code_helper(commodity_id,spsc_code)
+		values(#{commodity.uniqueName},#{spscCode})
+	</insert>
+
+	<update id="clearSpscCode" parameterType="String">
+		update commodity set
+		spsc_code = "-1" where spsc_code = #{spscCode}
+	</update>
+
+	<delete id="delete"
+		parameterType="com.ProcurementSystem.entity.CommoditySpscCodeHelper">
+		delete from
+		commodity_spsc_code_helper
+		where
+		commodity_id
+		=
+		#{commodity.uniqueName}
+	</delete>
+
+
+</mapper>

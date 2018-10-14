@@ -1,0 +1,129 @@
+/* 供应商首页 */
+.main-middle-container {
+	background-color: white;
+	margin-top: 10px;
+	min-height: 300px;
+}
+
+.main-middle-left {
+	padding: 10px 0px 10px 10px;
+	width: 20%;
+	min-height: 300px;
+	float: left;
+}
+
+.main-middle-right {
+	padding: 20px 20px 20px 20px;
+	width: 80%;
+	min-height: 300px;
+	float: right;
+}
+
+.container-padding {
+	margin: 0px;
+	padding: 5px 30px 5px 30px;
+}
+
+.main-middle-left button {
+	height: 40px;
+	display: block;
+	font-size: 16px;
+	width: 100%;
+	text-align: left;
+	padding-left: 10px;
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid #ebebeb;
+}
+
+.main-middle-left-title {
+	font-size: 18px;
+	border-bottom: 1px solid #ebebeb;
+	color: black;
+}
+
+.main-middle-left-clicked {
+	border-left: 2px solid #428bca !important;
+	background-color: #F5F5F5 !important;
+}
+
+.main-bottom-container {
+	background-color: white;
+	margin-top: 20px;
+	padding:10px;
+}
+.main-bottom-grad{
+	width:130px;
+	height:93px;
+	text-align:center;
+	float:left;
+}
+.grad-choosed{
+	border-bottom:4px solid #199DE0;
+}
+.commodity-catalog-edit-left button {
+	height: 40px;
+	display: block;
+	margin-left: 30px;
+	font-size: 16px;
+	width: 140px;
+	text-align: left;
+	padding-left: 30px;
+	background-color: transparent;
+	border: 0;
+}
+
+#commodity-catalog-edit-left-not-clicked {
+	border-right: 2px solid #ebebeb;
+}
+
+#commodity-catalog-edit-left-clicked {
+	border-bottom: 2px solid #ebebeb;
+	border-top: 2px solid #ebebeb;
+	border-left: 2px solid #428bca;
+	border-right: 4px solid white;
+}
+
+.table-bottom-btn {
+	padding-top: 20px;
+}
+
+.commodity-ending {
+	border-top: 2px solid #ebebeb;
+}
+
+
+.input-length {
+	width: 300px;
+}
+
+.table-col1-right {
+	text-align: right;
+}
+
+.container-text {
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.caution-div {
+	background-color: #FCF8E2;
+}
+
+.caution-span {
+	color: red;
+}
+
+.comment-div {
+	background-color: #F5F5F5;
+}
+
+.container-list {
+	padding: 8px;
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+
+.icon-choose-white {
+	border:2px solid  #ebebeb;
+}

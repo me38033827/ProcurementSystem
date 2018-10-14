@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerTemplateFolderDao">
+
+	<insert id="add" parameterType="com.ProcurementSystem.entity.TemplateFolder"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		template_folder(name,description,owner,access_control)
+		values(
+		#{name},#{description},#{owner},#{accessControl}
+		)
+	</insert>
+
+	<select id="getById" resultType="com.ProcurementSystem.entity.TemplateFolder">
+		select * from template_folder
+		where id = #{id}
+	</select>
+
+	<update id="editById" parameterType="com.ProcurementSystem.entity.TemplateFolder">
+		update template_folder set
+		name = #{name},
+		description = #{description},
+		owner = #{owner},
+		access_control = #{accessControl}
+		where id = #{id}
+	</update>
+	
+</mapper>

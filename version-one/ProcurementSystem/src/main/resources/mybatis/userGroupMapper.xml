@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 用户-用户组关联映射 -->
+<mapper namespace="com.ProcurementSystem.dao.IBuyerUserGroupDao">
+	
+	<select id="getUsersByGroupUniqueName" parameterType="map" resultType="com.ProcurementSystem.entity.User">
+		SELECT * FROM `user` u,user_organize uo
+		WHERE u.unique_name =  uo.user_id
+		AND uo.organize_id = '${uniqueName}'
+	</select>
+
+	<select id="getGroupsByUserUniqueName" parameterType="map" resultType="com.ProcurementSystem.entity.Group">
+		SELECT * FROM `organize` o,user_organize uo
+		WHERE o.unique_name =  uo.organize_id
+		AND uo.user_id = '${uniqueName}'
+	</select>
+	<select id="checkUserGroupIsExist" parameterType="map" resultType="int">
+		select count(*) from user_organize
+		where 
+			user_id = '${user}'
+			and organize_id = '${groupUniqueName}'
+	</select>
+	<insert id="createNewUserGroup" parameterType="map">
+		insert into user_organize(user_id, organize_id)
+		values(#{user}, #{groupUniqueName})
+	</insert>
+	<delete id="deleteUserFromGroup" parameterType="map">
+		delete from user_organize
+		where 1=1
+		<if test="userUniqueName!='' and userUniqueName!=null">
+			and user_id = '${userUniqueName}'
+		</if>
+		<if test="groupUniqueName!='' and groupUniqueName!=null">
+			and organize_id = '${groupUniqueName}'
+		</if>
+	</delete>
+	<delete id="deleteUserGroupByGroupUniqueName" parameterType="map">
+		delete from user_organize
+		where organize_id = '${groupUniqueName}'
+	</delete>
+</mapper>

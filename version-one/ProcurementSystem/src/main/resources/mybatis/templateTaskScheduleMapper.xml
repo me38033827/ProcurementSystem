@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerTemplateTaskScheduleDao">
+
+	<insert id="add" parameterType="com.ProcurementSystem.entity.TemplateTaskSchedule"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		template_task_schedule(title,description,
+		owner,
+		watcher,
+		ddl,
+		is_milestone,
+		is_must,
+		set_field,
+		pre_task,
+		rank)
+		values
+		(#{title},#{description},#{owner},#{watcher},#{ddl},#{isMilestone},#{isMust},#{setField},#{preTask},#{rank})
+	</insert>
+
+	<select id="getById" resultType="com.ProcurementSystem.entity.TemplateTaskSchedule">
+		select * from
+		template_task_schedule
+		where id = #{id}
+	</select>
+
+	<update id="edit">
+		update template_task_schedule set
+		title = #{title},
+		description = #{description},
+		owner = #{owner},
+		watcher = #{watcher},
+		ddl
+		= #{ddl},
+		is_milestone
+		=
+		#{isMilestone},
+		is_must
+		= #{isMust},
+		set_field
+		= #{setField},
+		pre_task =
+		#{preTask},
+		rank = #{rank}
+		where id = #{id}
+	</update>
+	
+	<update id="setStatus">
+		update template_task_schedule set
+		status = #{status}
+		where id = #{id}
+	</update>
+	
+	
+	<select id="getTemplateTaskTreeNode" resultType="com.ProcurementSystem.entity.TemplateTaskTreeNode">
+		select parent_id 
+		from template_task_tree_node
+		where template_task_schedule_id = #{id}
+	</select>
+</mapper>

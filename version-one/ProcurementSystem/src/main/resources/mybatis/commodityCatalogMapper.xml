@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerCommodityCatalogDao">
+	
+	<resultMap id="CommodityCatalogDetail" type="com.ProcurementSystem.entity.CommodityCatalog">
+		<id property="uniqueName" column="uniqueName" />
+		<result property="name" column="name" />
+		<result property="version" column="version" />
+		<result property="loadMode" column="loadMode" />
+		<result property="contentAbstract" column="contentAbstract" />
+		<result property="preview" column="preview" />
+		<result property="isActivated" column="isActivated" />
+		<result property="state" column="state" />
+		<result property="lastModifyDate" column="lastModifyDate" />
+		<result property="itemCount" column="itemCount" />
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierUniqueName" />
+			<result property="name" column="supplierName" />
+		</association>
+		<collection property="commodities"
+			ofType="com.ProcurementSystem.entity.Commodity" resultMap="commodityResult" />
+	</resultMap>
+
+	<resultMap id="commodityResult" type="com.ProcurementSystem.entity.Commodity">
+		<id property="uniqueName" column="commodityUniqueName" />
+		<result property="unitPrice" column="unitPrice" />
+		<result property="supplierPartId" column="supplierPartId" />
+		<result property="supplierPartAuxiliaryId" column="supplierPartAuxiliaryId" />
+		<result property="itemDescription" column="itemDescription" />
+		<result property="isChecked" column="isChecked" />
+		<result property="shortName" column="shortName" />
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierUniqueName" />
+			<result property="name" column="supplierName" />
+		</association>
+	</resultMap>
+	
+	
+	<select id="getRowCount" resultType="int">
+		select count(*) from
+		commodity_catalog;
+	</select>
+
+	<select id="getAllCommodityCatalogs" resultMap="CommodityCatalogResult">
+		select
+		cc.unique_name as uniqueName,
+		s.unique_name as supplierUniqueName,
+		s.name as supplierName,
+		cc.name as name,
+		cc.version as version,
+		cc.load_mode as loadMode,
+		cc.content_abstract as contentAbstract,
+		cc.preview as preview,
+		cc.is_activated as isActivated,
+		cc.item_count as
+		itemCount,
+		cc.last_modify_date as lastModifyDate,
+		cc.type
+		from
+		commodity_catalog
+		cc left join supplier s
+		on cc.supplier_unique_name =
+		s.unique_name;
+	</select>
+	<resultMap id="CommodityCatalogResult" type="com.ProcurementSystem.entity.CommodityCatalog">
+		<id property="uniqueName" column="uniqueName" />
+		<result property="name" column="name" />
+		<result property="version" column="version" />
+		<result property="loadMode" column="loadMode" />
+		<result property="contentAbstract" column="contentAbstract" />
+		<result property="preview" column="preview" />
+		<result property="isActivated" column="isActivated" />
+		<result property="state" column="state" />
+		<result property="lastModifyDate" column="lastModifyDate" />
+		<result property="type" column="type" />
+		<result property="itemCount" column="itemCount" />
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierUniqueName" />
+			<result property="name" column="supplierName" />
+		</association>
+	</resultMap>
+
+
+	<insert id="insertCommodityCatalog" parameterType="com.ProcurementSystem.entity.CommodityCatalog"
+		useGeneratedKeys="true" keyProperty="uniqueName">
+		insert into commodity_catalog(
+		supplier_unique_name ,
+		name,
+		is_create_empty_content ,
+		is_ignore_approve,
+		is_stop_before_approve ,
+		is_auto_activate ,
+		is_allow_multi_supplier_cif ,
+		level,
+		file_name,
+		file_size,
+		creator,
+		is_displayed,
+		received_date,
+		description,
+		create_date,
+		version,
+		type)
+		values(
+		#{supplier.uniqueName} ,
+		#{name },
+		#{isCreateEmptyContent },
+		#{isIgnoreApprove} ,
+		#{isStopBeforeApprove} ,
+		#{isAutoActivate} ,
+		#{isAllowMultiSupplierCIF},
+		#{level},
+		#{fileName},
+		#{fileSize},
+		#{creator},
+		#{isDisplayed},
+		#{receivedDate},
+		#{description},
+		#{createDate},
+		#{version},
+		#{type}
+		)
+	</insert>
+
+	<select id="searchCommodityCatalog" parameterType="com.ProcurementSystem.entity.CommodityCatalog"
+		resultMap="CommodityCatalogDetail">
+		select
+		cc.unique_name as uniqueName,
+		s.unique_name as
+		supplierUniqueName,
+		s.name as
+		supplierName,
+		cc.name as name,
+		cc.version as
+		version,
+		cc.load_mode as
+		loadMode,
+		cc.content_abstract as
+		contentAbstract,
+		cc.preview as preview,
+		cc.is_activated as isActivated,
+		cc.item_count as itemCount,
+		cc.last_modify_date as lastModifyDate,
+		c.unique_name as commodityUniqueName,
+		c.unit_price as unitPrice,
+		c.supplier_part_id as supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.item_description as itemDescription,
+		c.is_checked as isChecked,
+		c.short_name as shortName,
+		cc.item_count as
+		itemCount
+		from
+		(commodity_catalog cc left join supplier
+		s
+		on
+		cc.supplier_unique_name =
+		s.unique_name)
+		left join commodity c on
+		cc.unique_name =
+		c.commodity_catalog_unique_name
+		where 1=1
+		<if test="isActivated != '' and isActivated != null">
+			AND is_activated = #{isActivated}
+		</if>
+		<if test="uniqueName != '' and uniqueName != null">
+			AND cc.unique_name = #{uniqueName}
+		</if>
+		<if
+			test="supplier!=null and supplier.uniqueName != '' and supplier.uniqueName != null">
+			AND cc.supplier_unique_name = #{supplier.uniqueName}
+		</if>
+		<if test="name != '' and name != null">
+			AND cc.name like concat('%',#{name},'%')<!--注意，Catalog的名字搜索采用的是模糊搜索  -->
+		</if>
+	</select>
+
+
+	<update id="setIsActivated" parameterType="Map">
+		update
+		commodity_catalog set is_activated = #{isActivated} where unique_name
+		= #{uniqueName}
+	</update>
+
+	<update id="setItemCount" parameterType="Map">
+		update commodity_catalog
+		set item_count = #{itemCount} where unique_name = #{uniqueName}
+	</update>
+
+
+	<select id="getCommodityCatalogVersionCount" resultType="int"
+		parameterType="com.ProcurementSystem.entity.CommodityCatalog">
+		select count(*) from commodity_catalog where name =
+		#{name}
+	</select>
+
+
+
+	<update id="stopOtherVersion" parameterType="com.ProcurementSystem.entity.CommodityCatalog">
+		update
+		commodity_catalog c
+		set is_activated = '已停用' where name = (select
+		name
+		from
+		( select name from commodity_catalog c
+		where unique_name =
+		#{uniqueName}) a ) and unique_name != #{uniqueName} and is_activated =
+		'已激活' ;
+	</update>
+
+
+	<select id="searchCommodityCatalogNoVersion" parameterType="com.ProcurementSystem.entity.CommodityCatalog"
+		resultType="com.ProcurementSystem.entity.CommodityCatalog">
+		select name from commodity_catalog where
+		supplier_unique_name =
+		#{supplier.uniqueName} group by name
+		<!-- -->
+	</select>
+
+	<delete id="delete">
+		delete from commodity_catalog where unique_name =
+		#{uniqueName} limit 1
+	</delete>
+</mapper>

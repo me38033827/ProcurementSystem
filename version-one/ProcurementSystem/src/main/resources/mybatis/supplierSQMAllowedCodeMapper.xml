@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerSupplierSQMAllowedCodeDao">
+	
+	<update id="insert">
+		insert into supplier_sqm_allowed_code
+		(sqm_id,spsc_code,node_id)
+		values(#{sqm.id},#{spscCode},#{nodeId})
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from supplier_sqm_allowed_code where sqm_id = #{sqmId}
+	</delete>
+</mapper>

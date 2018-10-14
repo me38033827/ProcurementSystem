@@ -1,0 +1,50 @@
+.adjust-td {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #ddd;
+}
+
+div>p {
+	padding-left: 50px;
+}
+
+.table-no-border>tbody>tr>td {
+	border: 0px
+}
+
+.icon-folder {
+	font-size: 18px;
+}
+
+.icon-caret {
+	font-size: 25px;
+}
+
+.tree-2-col {
+	width: 30%;
+	/* background-color: red; */
+	float: right;
+	padding: 0 16px 0 16px;
+}
+
+.template-tree-title1 {
+	width: 40%;
+	/* background-color: red; */
+	float: left;
+	padding: 10px 16px 10px 16px;
+}
+
+.template-tree-title2 {
+	width: 29%;
+	/* background-color: red; */
+	float: left;
+	padding: 10px 16px 10px 16px;
+}
+
+.template-tree-title3 {
+	/* width: 29%; */
+	/* background-color: red; */
+	float: left;
+	padding: 10px 16px 10px 16px;
+}

@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+#signup{
+	width:600px;
+}
+
+#signup .signup-row1{
+	height:30px;
+	font-size:16px;
+}
+
+#signup .signup-row1 td{
+	padding-top:0;
+	height:30px;
+}
+
+#signup .signup-row2{
+	height:15px;
+	font-size:13px;
+	line-height:15px;
+}
+
+#signup .signup-row2 td{
+	padding:0;
+}
+
+.error-message{
+	color:red;
+	font-size:12px;
+}
+
+.error{
+	height:18px;
+}

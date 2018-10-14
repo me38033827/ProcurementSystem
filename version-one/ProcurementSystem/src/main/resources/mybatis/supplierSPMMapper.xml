@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.ISupplierSPMDao">
+	<resultMap id="SPMMap" type="com.ProcurementSystem.entity.SupplierSPM">
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="description" column="description" />
+		<result property="commodity" column="commodity" />
+		<result property="status" column="status" />
+		<result property="startDate" column="start_date" />
+		<result property="endDate" column="end_date" />
+		<association property="supplier" javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="name" column="supplierName" />
+			<id property="uniqueName" column="supplierId" />
+		</association>
+		<association property="user" javaType="com.ProcurementSystem.entity.User">
+			<id property="uniqueName" column="userId" />
+			<id property="name" column="userName" />
+		</association>
+		<!-- association property: entity class里的实体名称
+						 javaType: entity class
+				id		 property: entity class attribute
+						 column:   consistance with the following *** as ___
+		-->
+	</resultMap>
+
+	<insert id="insertSPM" parameterType="com.ProcurementSystem.entity.SupplierSPM">
+		insert into supplier_spm(id, title, description, commodity, status, start_date, end_date, supplier_id, user_id)
+		values(#{id}, #{title}, #{description}, #{commodity}, #{status}, #{startDate},
+		#{endDate}, #{supplier.uniqueName}, #{user.uniqueName});
+	</insert>
+	
+	<select id="searchAllSupplierSPM" resultMap="SPMMap">
+		select 
+			id as id,
+			title as title,
+			description as description,
+			commodity as commodity,
+			start_date as startDate,
+			end_date as endDate,
+			supplier_id as supplierId,
+			user_id as userId,
+			status as status
+		from supplier_spm;
+	</select>
+	
+	<select id="getMaxId" resultType="int">
+		select max(id) from supplier_spm;
+	</select>
+	
+	<select id="getSupplierSPM" parameterType="int" resultMap="SPMMap">
+		select 
+			id as id,
+			title as title,
+			supplier_spm.description as description,
+			commodity as commodity,
+			start_date as startDate,
+			end_date as endDate,
+			supplier_id as supplierId,
+			user_id as userId,
+			supplier_spm.status as status,
+			supplier.name as supplierName,
+			user.name as userName
+		from supplier_spm, supplier, user
+		where id = #{id}
+		and supplier_spm.supplier_id = supplier.unique_name
+		and supplier_spm.user_id = user.unique_name;
+	</select>
+	
+	<select id="searchSupplierSPM" parameterType="String" resultMap="SPMMap">
+		select
+			id as id,
+			title as title,
+			description as description,
+			commodity as commodity,
+			start_date as startDate,
+			end_date as endDate,
+			supplier_id as supplierId,
+			user_id as userId,
+			supplier.status as status
+		from supplier_spm 
+		where title like concat("%",#{title},"%");
+	</select>
+	
+	<!-- 带条件搜索 -->
+	<select id="completeSearchSupplierSPM" parameterType="map" resultMap="SPMMap">
+		select 
+			id as id,
+			title as title,
+			supplier_spm.description as description,
+			commodity as commodity,
+			start_date as startDate,
+			end_date as endDate,
+			supplier_id as supplierId,
+			user_id as userId,
+			supplier_id as supplierId,
+			user_id as userId,
+			supplier_spm.status as status,
+			supplier.name as supplierName,
+			user.name as userName
+		from supplier_spm, supplier, user
+		where 1=1
+			and supplier_spm.supplier_id = supplier.unique_name
+			and supplier_spm.user_id = user.unique_name
+			<if test="content!='' and content!=null">
+				and title like concat("%",#{content},"%")
+			</if>
+			<if test="supplierSPM.title!='' and supplierSPM.title!=null">
+				and title like concat("%",#{supplierSPM.title},"%")
+			</if>
+			<if test="supplierSPM.supplier.uniqueName!='' and supplierSPM.supplier.uniqueName!=null">
+				and supplier_id like concat("%",#{supplierSPM.supplier.uniqueName},"%")
+			</if>
+			<if test="supplierSPM.status!='' and supplierSPM.status!=null and supplierSPM.status!='无选择'">
+				and status like concat("%",#{supplierSPM.status},"%")
+			</if>
+	</select>
+	
+	<update id="updateSPMStatus" parameterType="com.ProcurementSystem.entity.SupplierSPM">
+		update supplier_spm
+		<set>	
+			status=#{status}
+		</set>
+		where id = #{id};
+	</update>
+	
+</mapper>

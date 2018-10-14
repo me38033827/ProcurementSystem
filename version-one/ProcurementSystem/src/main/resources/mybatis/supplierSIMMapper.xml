@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.ISupplierSIMDao">
+	<resultMap id="getAllChildren" type="com.ProcurementSystem.entity.ParentChild">
+		<result property="parent" column="children_id" />
+		<collection property="children" column="children_id" 
+			ofType="com.ProcurementSystem.entity.ParentChild"
+			select="getAllChildNodeId">
+		</collection>
+	</resultMap>
+	<resultMap id="SIMTreeMap" type="com.ProcurementSystem.entity.SIMTreeNode">
+		<result property="parentId" column="parent_id" />
+		<result property="type" column="type" />
+		<result property="order" column="order" />
+		<association property="supplierSIM" javaType="com.ProcurementSystem.entity.SupplierSIM">
+			<id property="id" column="simId" />
+			<result property="title" column="simTitle" />
+			<result property="answerType" column="simAnswerType" />
+			<result property="acceptValue" column="simAcceptValue" />
+			<result property="multipleValue" column="simMultipleValue" />
+		</association>
+	</resultMap>	
+	
+	<resultMap id="SIMMap" type="com.ProcurementSystem.entity.SupplierSIM">
+		<result property="id" column="id" />
+		<result property="type" column="type" />
+		<result property="title" column="title" />
+		<result property="acceptValue" column="accept_value" />
+		<result property="initialAnswer" column="initial_answer" />
+		<result property="groupRestriction" column="group_restriction" />
+		<result property="visibleToParticipants" column="visible_to_participants" />
+		<result property="answerType" column="answer_type" />
+		<result property="description" column="description" />
+		<result property="multipleValue" column="multiple_value" />
+		<collection property="selections" ofType="com.ProcurementSystem.entity.SupplierSIMSelection">
+			<result property="selectionId" column="selectionId" />
+			<result property="content" column="selectionContent" />
+		</collection>
+	</resultMap>	
+	
+	<!-- 找出下一层所有子节点 -->
+	<select id="getChildren" parameterType="int" resultMap="SIMTreeMap">
+		select 
+			n.order,
+			c.type, 
+			c.id as simId, 
+			c.title as simTitle,
+			c.accept_value as simAcceptValue,
+			c.answer_type as simAnswerType,
+			c.multiple_value as simMultipleValue
+		from supplier_sim c, supplier_sim_nodes n
+		where parent_id = #{parentId}
+		and children_id = c.id
+		and publish = 1;
+	</select>
+
+	<!-- 获取父节点id,名称,父节点下的order -->
+	<select id="getNode" parameterType="int" resultMap="SIMTreeMap">
+		select 
+			n.order,
+			c.id as simId, 
+			c.title as simTitle
+		from supplier_sim c, supplier_sim_nodes n
+		where n.children_id = #{id}
+		and c.id = n.children_id;
+	</select>
+
+
+	<!-- 获取父节点id,名称,父节点下的order -->
+	<select id="getParentNode" parameterType="int" resultMap="SIMTreeMap">
+		select 
+			n.order,
+			c.id as simId, 
+			c.title as simTitle
+		from supplier_sim c, supplier_sim_nodes n
+		where n.children_id = #{id}
+		and c.id = n.parent_id;
+	</select>
+
+	<!-- 获取父节点下最大的子节点号码 -->
+	<select id="getMaxChildOrder" parameterType="int" resultType="int">
+		select
+		max(supplier_sim_nodes.order)
+		from supplier_sim_nodes
+		where parent_id = #{parentId}
+	</select>
+	
+	<select id="haveChildOrNot" parameterType="int" resultMap="SIMTreeMap">
+		select children_id as simId
+		from supplier_sim_nodes
+		where parent_id = #{parentId}
+	</select>
+
+	<select id="getMaxId" resultType="int">
+		select max(id) from supplier_sim
+	</select>
+	
+	<!-- 在supplier_sim 中添加区段-->
+	<insert id="addFolder" parameterType="com.ProcurementSystem.entity.SupplierSIM">
+		<!-- type:1 folder -->
+		insert into supplier_sim(id, type, title, description, visible_to_participants, group_restriction, visible_condition) values
+		(#{id}, "1", #{title}, #{description}, #{visibleToParticipants}, #{groupRestriction}, "");
+	</insert>
+	
+	<!-- 在supplier_sim 中添加问题-->
+	<insert id="addQuestion" parameterType="com.ProcurementSystem.entity.SupplierSIM">
+		<!-- type:2 question -->
+		insert into supplier_sim(id, type, title, description, answer_type, multiple_value, initial_answer, accept_value, must) values
+		(#{id}, "2", #{title}, #{description}, #{answerType}, #{multipleValue}, #{initialAnswer}, #{acceptValue}, #{must});
+	</insert>
+	
+	<!-- 获取所有某问题的所有selection -->
+	<select id="getSelectionsById" parameterType="int" resultType="com.ProcurementSystem.entity.SupplierSIMSelection">
+		select *
+		from supplier_sim_selection
+		where question_id=#{id};
+	</select>
+	
+	<!-- 在supplier_sim_selection 中添加问题选项-->
+	<insert id="addSelection" parameterType="com.ProcurementSystem.entity.SupplierSIMSelection">
+		<!-- type:2 question -->
+		insert into supplier_sim_selection(question_id, selection_id, content) values
+		(#{questionId}, #{selectionId}, #{content});
+	</insert>
+
+	<!-- 将node parent order信息存入 supplier_sim_nodes-->
+	<insert id="addNode" parameterType="map">
+		insert into supplier_sim_nodes(children_id, parent_id, supplier_sim_nodes.order, publish)
+		values
+		(#{childrenId}, #{parentId}, #{order}, 1);
+	</insert>
+
+	<select id="getMaxNewId" resultType="int">
+		select max(supplier_sim_nodes.order)
+		from supplier_sim_nodes
+		where parent_id = 10000;
+	</select>
+	
+	<!-- 获得某文件夹或问题及选项的全部信息 -->
+	<select id="getFolderOrQuestion" parameterType="int" resultMap="SIMMap">
+		select 
+			s.title,
+			s.description,
+			s.visible_to_participants,
+			s.group_restriction,
+			s.answer_type,
+			s.accept_value,
+			s.initial_answer,
+			multiple_value,
+			null as selectionId,
+			null as selectionContent
+		from supplier_sim s
+		where id = #{id}
+		and s.type = 1
+		
+		union
+		
+		select
+			s.title,
+			s.description,
+			s.visible_to_participants,
+			s.group_restriction,
+			s.answer_type,
+			s.accept_value,
+			s.initial_answer,
+			s.multiple_value,
+			null as selectionId,
+			null as selectionContent
+		from supplier_sim s
+		where id = #{id}
+		and s.type = 2
+		and s.accept_value != 2
+		
+		union
+		
+		select
+			s.title,
+			s.description,
+			s.visible_to_participants,
+			s.group_restriction,
+			s.answer_type,
+			s.accept_value,
+			s.initial_answer,
+			s.multiple_value,
+			s2.selection_id as selectionId,
+			s2.content as selectionContent
+		from supplier_sim s, supplier_sim_selection s2
+		where s.id = #{id}
+		and s.type = 2
+		and s.accept_value = 2
+		and s.id = s2.question_id;
+	</select>
+	
+	<!-- 更新文件夹 -->
+	<update id="updateFolder" parameterType="com.ProcurementSystem.entity.SupplierSIM">
+		update supplier_sim
+		<set>
+			title = #{title},
+			description = #{description},
+			visible_to_participants = #{visibleToParticipants},
+			group_restriction = #{groupRestriction}
+		</set>
+		where id = #{id};
+	</update>
+	
+	<!-- 更新问题 不含选项内容 -->
+	<update id="updateQuestion" parameterType="com.ProcurementSystem.entity.SupplierSIM">
+		update supplier_sim
+		<set>
+			title = #{title},
+			answer_type = #{answerType},
+			accept_value = #{acceptValue},
+			initial_answer = #{initialAnswer},
+			multiple_value = #{multipleValue}
+		</set>
+		where id = #{id};
+	</update>
+	
+	<!-- 删除某个问题对应的所有选项 -->
+	<delete id="delSelections" parameterType="int">
+		delete from supplier_sim_selection
+		where question_id = #{id};
+	</delete>
+	
+	<!-- 删除某个问题或文件夹 其他同父节点node order－1 -->
+	<update id="nodeMinusOne" parameterType="int">
+		update supplier_sim_nodes s1, supplier_sim_nodes s2
+		<set>
+			s1.order = s1.order-1
+		</set>
+		where 
+			s1.parent_id = s2.parent_id
+			and s2.children_id = #{id}
+			and s1.order > s2.order;
+	</update>
+	
+	<!-- 删除某个问题或文件夹 suppliersim -->
+	<delete id ="deleteSIM" parameterType="int">
+		delete from supplier_sim
+		where id = #{id};
+	</delete>
+	
+	<!-- 删除某个问题或文件夹 获得所有子节点 -->
+	<select id="getAllChildNodeId" parameterType="int" resultMap="getAllChildren">
+		select 
+		children_id
+		from supplier_sim_nodes
+		where parent_id = #{id};
+	</select>
+	
+	<!-- 删除多个问题 -->
+	<delete id="deleteMultipleSIMs" parameterType="int">
+        delete from supplier_sim where id in
+        <foreach item="eachId" collection="array" open="(" separator="," close=")">
+            #{eachId}
+        </foreach>
+    </delete>
+    
+    <select id = "getSupplierSIMAnswer" parameterType="int" resultType = "com.ProcurementSystem.entity.SupplierSIMAnswer">
+    		select * 
+    		from supplier_sim_answer
+    		where supplier_id = #{supplierId};
+    </select>
+    
+    <select id="getAllQuestionId" resultType="com.ProcurementSystem.entity.SupplierSIM">
+		select id 
+		from supplier_sim
+		where type=2;
+	</select>
+	
+	<!-- 批量添加问题答案 -->
+	<insert id="insertOrUpdateSIMAnswers" parameterType="com.ProcurementSystem.entity.SupplierSIMAnswer">  
+       <foreach item="item" collection="list" open="" separator=";" close="">  
+       		insert into 
+       		supplier_sim_answer(supplier_id, question_id, answer)
+           	values(#{item.supplierId},#{item.questionId},#{item.answer})
+           	on duplicate key 
+           		update answer = #{item.answer}
+       </foreach>  
+   </insert> 
+   
+   <select id="getMultiSelectionDate" resultMap="SIMMap">
+   		select 
+   			id, 
+   			initial_answer,
+   			null as selectionId,
+   			null as selectionContent,
+   			answer_type,
+   			null as multiple_value
+   		from supplier_sim
+   		where answer_type = 5
+   		union
+   		select 
+   			id,
+   			initial_answer,
+   			selection_id as selectionId,
+   			content as selectionContent,
+   			null as answer_type,
+   			multiple_value
+   		from supplier_sim, supplier_sim_selection
+   		where multiple_value = 1
+   		and question_id = id;
+   </select>
+</mapper>

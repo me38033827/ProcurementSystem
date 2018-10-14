@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerTemplateTaskPhaseDao">
+
+	<insert id="add" parameterType="com.ProcurementSystem.entity.TemplateTaskPhase"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		template_task_phase(title,description,
+		reserve_content,
+		rank,
+		is_duped,
+		owner)
+		values
+		(#{title},#{description},#{reserveContent},#{rank},#{isDuped},#{owner})
+	</insert>
+
+	<select id="getById" resultType="com.ProcurementSystem.entity.TemplateTaskPhase">
+		select * from
+		template_task_phase
+		where id = #{id}
+	</select>
+
+
+	<update id="editById">
+		update template_task_phase set
+		title = #{title},
+		description = #{description},
+		reserve_content = #{reserveContent},
+		rank
+		= #{rank},
+		is_duped = #{isDuped}
+		where id = #{id}
+	</update>
+	
+	<update id="setStatus">
+		update template_task_phase set
+		status = #{status}
+		where id = #{id}
+	</update>
+	
+	
+	<select id="getTemplateTaskTreeNode" resultType="com.ProcurementSystem.entity.TemplateTaskTreeNode">
+		select parent_id 
+		from template_task_tree_node
+		where template_task_phase_id = #{id}
+	</select>
+
+</mapper>

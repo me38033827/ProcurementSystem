@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ProcurementSystem.dao.ILoginDao">
+	
+	<resultMap id="loginMap" type="com.ProcurementSystem.entity.Login">
+		<id property="username" column="username" />
+		<result property="password" column="username" />
+		<result property="role" column="role" />
+		<association property="supplier" javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierUniqueName" />
+		</association>
+		<association property="user" javaType="com.ProcurementSystem.entity.User">
+			<id property="uniqueName" column="userUniqueName" />
+		</association>
+	</resultMap>
+	
+	<select id="getLoginInformation" resultMap="loginMap">
+		select
+			username as username, 
+			password as password,
+			role as role, 
+			supplier_unique_name as supplierUniqueName,
+			user_unique_name as userUniqueName
+		from login
+		where 
+			username = #{username}
+			and password = #{password}
+			and role = #{role};
+	</select>
+	
+	<select id="getUsernameExistance" resultType="int">
+		select count(*) from login
+		where 
+			username = #{username}
+			and role = #{role};
+	</select>
+	
+ 	<insert id="insertSupplierLogin" parameterType="com.ProcurementSystem.entity.Login">
+		insert into login(username, password, role, supplier_unique_name)
+		values(#{username}, #{password}, "supplier", #{supplier.uniqueName});
+	</insert>
+	
+	<insert id="insertBuyerLogin" parameterType="com.ProcurementSystem.entity.Login">
+		insert into login(username, password, role, user_unique_name)
+		values(#{username}, #{password}, "buyer", #{user.uniqueName});
+	</insert>
+</mapper>

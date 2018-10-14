@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.ISupplierSQMDao">
+	<resultMap id="SQMMapA" type="com.ProcurementSystem.entity.SupplierSQM">
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="description" column="description" />
+		<result property="status" column="status" />
+		<result property="validTo" column="validTo" />
+		<result property="lastValid" column="lastValid" />
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierId" />
+			<id property="name" column="supplierName" />
+		</association>
+		<association property="user" javaType="com.ProcurementSystem.entity.User">
+			<id property="uniqueName" column="userId" />
+			<id property="name" column="userName" />
+		</association>
+		<association property="templateTaskTreeNode"
+			javaType="com.ProcurementSystem.entity.TemplateTaskTreeNode">
+			<id property="id" column="templateTaskTreeNodeId" />
+			<result property="type" column="type" />
+			<association property="templateTaskPhase"
+				javaType="com.ProcurementSystem.entity.TemplateTaskPhase">
+				<id property="id" column="templateTaskPhaseId" />
+				<result property="title" column="templateTaskPhaseTitle" />
+				<result property="description" column="templateTaskPhaseDescription" />
+				<result property="reserveContent" column="templateTaskPhaseReserveContent" />
+				<result property="rank" column="templateTaskPhaseReserveRank" />
+				<result property="isDuped" column="templateTaskPhaseIsDuped" />
+				<result property="status" column="templateTaskPhaseStatus" />
+			</association>
+			<association property="templateTaskSchedule"
+				javaType="com.ProcurementSystem.entity.TemplateTaskSchedule">
+				<id property="id" column="templateTaskScheduleId" />
+				<result property="title" column="templateTaskScheduleTitle" />
+				<result property="owner" column="templateTaskScheduleOwner" />
+				<result property="watcher" column="templateTaskScheduleWatcher" />
+				<result property="ddl" column="templateTaskScheduleDdl" />
+				<result property="isMilestone" column="templateTaskScheduleIsMilestone" />
+				<result property="isMust" column="templateTaskScheduleIsMust" />
+				<result property="setField" column="templateTaskScheduleSetField" />
+				<result property="preTask" column="templateTaskSchedulePreTask" />
+				<result property="rank" column="templateTaskScheduleRank" />
+				<result property="status" column="templateTaskScheduleStatus" />
+			</association>
+		</association>
+		<collection property="codes" ofType="String" javaType="List"><!-- 两个map的区别 -->
+			<result column="unspscDescription" />
+		</collection>
+		<collection property="commodities" ofType="com.ProcurementSystem.entity.UNSPSC" javaType="List">
+			<result property="id" column="commodityId" />
+			<result property="nodeId" column="commodityNodeId" />
+			<result property="description" column="commodityName" />
+		</collection>
+	</resultMap>
+
+	<resultMap id="SQMMap" type="com.ProcurementSystem.entity.SupplierSQM">
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="description" column="description" />
+		<!-- <result property="commodity" column="commodity" /> -->
+		<result property="status" column="status" />
+		<result property="validTo" column="valid_to" />
+		<result property="lastValid" column="last_valid" />
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierId" />
+			<id property="name" column="supplierName" />
+		</association>
+		<association property="user" javaType="com.ProcurementSystem.entity.User">
+			<id property="uniqueName" column="userId" />
+			<id property="name" column="userName" />
+		</association>
+		<association property="templateTaskTreeNode"
+			javaType="com.ProcurementSystem.entity.TemplateTaskTreeNode">
+			<id property="id" column="templateTaskTreeNodeId" />
+			<result property="type" column="type" />
+			<association property="templateTaskPhase"
+				javaType="com.ProcurementSystem.entity.TemplateTaskPhase">
+				<id property="id" column="templateTaskPhaseId" />
+				<result property="title" column="templateTaskPhaseTitle" />
+				<result property="description" column="templateTaskPhaseDescription" />
+				<result property="reserveContent" column="templateTaskPhaseReserveContent" />
+				<result property="rank" column="templateTaskPhaseReserveRank" />
+				<result property="isDuped" column="templateTaskPhaseIsDuped" />
+				<result property="status" column="templateTaskPhaseStatus" />
+			</association>
+			<association property="templateTaskSchedule"
+				javaType="com.ProcurementSystem.entity.TemplateTaskSchedule">
+				<id property="id" column="templateTaskScheduleId" />
+				<result property="title" column="templateTaskScheduleTitle" />
+				<result property="owner" column="templateTaskScheduleOwner" />
+				<result property="watcher" column="templateTaskScheduleWatcher" />
+				<result property="ddl" column="templateTaskScheduleDdl" />
+				<result property="isMilestone" column="templateTaskScheduleIsMilestone" />
+				<result property="isMust" column="templateTaskScheduleIsMust" />
+				<result property="setField" column="templateTaskScheduleSetField" />
+				<result property="preTask" column="templateTaskSchedulePreTask" />
+				<result property="rank" column="templateTaskScheduleRank" />
+				<result property="status" column="templateTaskScheduleStatus" />
+			</association>
+		</association>
+		<collection property="commodities" ofType="com.ProcurementSystem.entity.UNSPSC" javaType="List">
+			<result property="id" column="commodityId" />
+			<result property="description" column="commodityName" />
+		</collection>
+		<!-- association property: entity class里的实体名称 javaType: entity class id 
+			property: entity class attribute column: consistance with the following *** 
+			as ___ -->
+	</resultMap>
+
+
+
+	<insert id="insertSQM" parameterType="com.ProcurementSystem.entity.SupplierSQM">
+		insert into
+		supplier_sqm(id, title,
+		description, 
+		<!-- commodity, -->
+		status,
+		valid_to,
+		last_valid, supplier_id,
+		user_id,task_tree_node_id)
+		values(#{id},
+		#{title}, #{description},
+		<!-- #{commodity}, -->
+		#{status},
+		#{validTo},
+		#{lastValid},
+		#{supplier.uniqueName},
+		#{user.uniqueName},#{templateTaskTreeNode.id});
+	</insert>
+
+<!-- 	<select id="searchAllSupplierSQM" resultMap="SQMMap">
+		select
+		id as id,
+		title as title,
+		description as description,
+		commodity as commodity,
+		valid_to as validTo,
+		last_valid as lastValid,
+		supplier_id as supplierId,
+		user_id as userId,
+		status as status
+		from supplier_sqm;
+	</select> -->
+
+	<select id="getMaxId" resultType="int">
+		select max(id) from
+		supplier_sqm;
+	</select>
+
+	<select id="getSupplierSQM" parameterType="int" resultMap="SQMMapA">
+		select
+		supplier_sqm.id as id,
+		supplier_sqm.title as title,
+		supplier_sqm.description as description,
+		<!-- supplier_sqm.commodity as commodity, -->
+		supplier_sqm.valid_to as validTo,
+		supplier_sqm.last_valid as lastValid,
+		supplier_sqm.supplier_id as
+		supplierId,
+		supplier.name as supplierName,
+		supplier_sqm.user_id
+		as userId,
+		user.name as userName,
+		supplier_sqm.status as status,
+		tttn.id as
+		templateTaskTreeNodeId,
+		tttn.type,
+		ttp.id as
+		templateTaskPhaseId,
+		ttp.title as templateTaskPhaseTitle,
+		ttp.description as
+		templateTaskPhaseDescription,
+		ttp.reserve_content as
+		templateTaskPhaseReserveContent,
+		ttp.rank as
+		templateTaskPhaseReserveRank,
+		ttp.is_duped as templateTaskPhaseIsDuped,
+		ttp.status as templateTaskPhaseStatus,
+		tts.id as
+		templateTaskScheduleId,
+		tts.title as
+		templateTaskScheduleTitle,
+		tts.owner as
+		templateTaskScheduleOwner,
+		tts.watcher as
+		templateTaskScheduleWatcher,
+		tts.ddl as
+		templateTaskScheduleDdl,
+		tts.is_milestone as
+		templateTaskScheduleIsMileStone,
+		tts.is_must as
+		templateTaskScheduleIsMust,
+		tts.set_field as
+		templateTaskScheduleSetField,
+		tts.pre_task as
+		templateTaskSchedulePreTask,
+		tts.rank as templateTaskScheduleRank,
+		tts.status as templateTaskScheduleStatus,
+		unspsc.description as
+		unspscDescription,
+		unspsc.id as commodityId,
+		unspsc.description as commodityName,
+		ssac.node_id as commodityNodeId
+		from
+		supplier_sqm 
+		left join user
+		on user.unique_name = supplier_sqm.user_id
+		left join supplier
+		on supplier.unique_name = supplier_sqm.supplier_id
+		left
+		join
+		template_task_tree_node
+		tttn
+		on
+		supplier_sqm.task_tree_node_id =
+		tttn.id
+		left join
+		template_task_phase
+		ttp
+		on
+		tttn.template_task_phase_id =
+		ttp.id
+		and
+		tttn.type=1
+		left join
+		template_task_schedule tts on
+		tttn.template_task_schedule_id =
+		tts.id
+		and tttn.type=0
+		left join supplier_sqm_allowed_code ssac on ssac.sqm_id
+		= supplier_sqm.id left join unspsc on unspsc.id = ssac.spsc_code
+		where
+		supplier_sqm.id = #{id};
+	</select>
+
+	<select id="searchSupplierSQM" parameterType="String" resultMap="SQMMap">
+		select
+		id as id,
+		title as title,
+		description as description,
+		<!-- commodity as commodity, -->
+		valid_to as validTo,
+		last_valid as lastValid,
+		supplier_id as
+		supplierId,
+		user_id as userId,
+		status as status
+		from supplier_sqm
+		where
+		title like concat("%",#{title},"%");
+	</select>
+
+	<update id="updateSQMStatus" parameterType="com.ProcurementSystem.entity.SupplierSQM">
+		update supplier_sqm
+		<set>
+			status=#{status}
+		</set>
+		where id = #{id};
+	</update>
+	
+	<update id="updateSQM" parameterType="com.ProcurementSystem.entity.SupplierSQM">
+		update supplier_sqm
+		<set>
+			title = #{title},
+			description = #{description},
+			valid_to = #{validTo},
+			last_valid = #{lastValid},
+			supplier_id = #{supplier.uniqueName}
+		</set>
+		where id = #{id};
+	</update>
+
+	<!-- 带条件搜索 -->
+	<select id="completeSearchSupplierSQM" parameterType="map" resultMap="SQMMap">
+		select
+		s.id as id,
+		title as title,
+		s.description as description,
+		<!-- commodity as commodity, -->
+		supplier_id as supplierId,
+		user_id as userId,
+		supplier_id as supplierId,
+		user_id as userId,
+		s.status as
+		status,
+		supplier.name as supplierName,
+		user.name as userName,
+		spsc_code as commodityId,
+		u.description as commodityName
+		from
+		supplier_sqm s, supplier, user, supplier_sqm_allowed_code allow, unspsc u
+		where 1=1
+		and s.supplier_id = supplier.unique_name
+		and s.user_id = user.unique_name
+		and allow.sqm_id = s.id
+		and u.id = allow.spsc_code
+		<if test="content!='' and content!=null">
+			and title like concat("%",#{content},"%")
+		</if>
+		<if test="supplierSQM.title!='' and supplierSQM.title!=null">
+			and title like concat("%",#{supplierSQM.title},"%")
+		</if>
+		<if
+			test="supplierSQM.supplier.uniqueName!='' and supplierSQM.supplier.uniqueName!=null">
+			and supplier_id like
+			concat("%",#{supplierSQM.supplier.uniqueName},"%")
+		</if>
+		<if
+			test="supplierSQM.status!='' and supplierSQM.status!=null and supplierSQM.status!='无选择'">
+			and status like concat("%",#{supplierSQM.status},"%")
+		</if>
+	</select>
+	
+	<delete id="deleteSqmById" parameterType="string">
+		DELETE 
+		FROM 
+			supplier_sqm
+		WHERE
+			id = #{id}
+	</delete>
+</mapper>

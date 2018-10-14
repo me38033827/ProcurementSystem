@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerTemplateTreeNodeDao">
+
+	<insert id="add" parameterType="com.ProcurementSystem.entity.TemplateTreeNode">
+		insert into
+		template_tree_node(parent_id,template_id,template_folder_id,type)
+		values(
+		#{parentId},#{template.id},#{templateFolder.id},#{type}
+		)
+	</insert>
+
+
+	<select id="getTreeNodeByParentId" resultMap="templateTreeNodeMap">
+		select
+		ttn.id,
+		ttn.parent_id as parentId,
+		ttn.type,
+		tf.id as templateFolderId,
+		tf.name,
+		tf.description,
+		tf.access_control,
+		tf.owner,
+		t.id as templateId,
+		t.name as templateName,
+		t.description as templateDescription,
+		t.type as templateType,
+		t.owner as templateOwner,
+		t.status as templateStatus
+		from
+		template_tree_node ttn
+		left join
+		template t
+		on ttn.template_id = t.id
+		and ttn.type = 0
+		left join
+		template_folder tf
+		on tf.id =
+		ttn.template_folder_id and ttn.type = 1
+		where
+		ttn.parent_id =
+		#{parentId} and ttn.id != 1000001
+		order by id
+	</select>
+	<resultMap id="templateTreeNodeMap" type="com.ProcurementSystem.entity.TemplateTreeNode">
+		<id property="id" column="id" />
+		<result property="parentId" column="parentId" />
+		<result property="type" column="type" />
+		<association property="templateFolder"
+			javaType="com.ProcurementSystem.entity.TemplateFolder">
+			<id property="id" column="templateFolderId" />
+			<result property="name" column="name" />
+			<result property="description" column="description" />
+			<result property="accessControl" column="access_control" />
+			<result property="owner" column="owner" />
+		</association>
+		<association property="template"
+			javaType="com.ProcurementSystem.entity.Template">
+			<id property="id" column="templateId" />
+			<result property="name" column="templateName" />
+			<result property="description" column="templateDescription" />
+			<result property="accessControl" column="templateAccess_control" />
+			<result property="type" column="templateType" />
+			<result property="status" column="templateStatus" />
+			<result property="owner" column="templateOwner" />
+		</association>
+	</resultMap>
+
+
+	<delete id="deleteById">
+		delete from template_tree_node
+		where id = #{id}
+	</delete>
+
+</mapper>

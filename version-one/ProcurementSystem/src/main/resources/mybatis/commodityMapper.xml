@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ProcurementSystem.dao.IBuyerCommodityDao">
+	<resultMap id="commodityMap" type="com.ProcurementSystem.entity.Commodity">
+		<id property="uniqueName" column="uniqueName" />
+		<result property="companyCode" column="companyCode" />
+		<result property="gcmEmailAddress" column="gcmEmailAddress" />
+		<result property="supplierPartId" column="supplierPartId" />
+		<result property="supplierPartAuxiliaryId" column="supplierPartAuxiliaryId" />
+		<result property="spscCode" column="spscCode" />
+		<result property="manufacturerUrl" column="manufacturerUrl" />
+		<result property="manufacturerName" column="manufacturerName" />
+		<result property="manufacturerPartId" column="manufacturerPartId" />
+		<result property="isHazardousMaterials" column="isHazardousMaterials" />
+		<result property="isGreen" column="isGreen" />
+		<result property="expirationDate" column="expirationDate" />
+		<result property="effectiveDate" column="effectiveDate" />
+		<result property="itemDescription" column="itemDescription" />
+		<result property="shortName" column="shortName" />
+		<result property="unitPrice" column="unitPrice" />
+		<result property="unitOfMeasure" column="unitOfMeasure" />
+		<result property="isChecked" column="isChecked" />
+		<result property="image" column="image" />
+		<result property="thumbnail" column="thumbnail" />
+		<association property="contract"
+			javaType="com.ProcurementSystem.entity.Contract">
+			<id property="uniqueName" column="contractUniqueName" />
+			<result property="name" column="contractName" />
+		</association>
+		<association property="supplier"
+			javaType="com.ProcurementSystem.entity.Supplier">
+			<id property="uniqueName" column="supplierUniqueName" />
+			<result property="name" column="supplierName" />
+		</association>
+		<association property="commodityCatalog"
+			javaType="com.ProcurementSystem.entity.CommodityCatalog">
+			<id property="uniqueName" column="commodityCatalogUniqueName" />
+			<result property="name" column="commodityCatalogName" />
+		</association>
+	</resultMap>
+
+
+
+	<insert id="insertCommodity" parameterType="com.ProcurementSystem.entity.Commodity"
+		useGeneratedKeys="true" keyProperty="uniqueName">
+		insert into
+		commodity(
+		supplier_unique_name,
+		contract_unique_name ,
+		unit_price ,
+		supplier_part_id ,
+		manufacturer_name,
+		manufacturer_part_id ,
+		manufacturer_url ,
+		time_left ,
+		company_code ,
+		gcm_email_address ,
+		item_description ,
+		material_group ,
+		commodity_type ,
+		spsc_code ,
+		unit_of_measure ,
+		lead_time ,
+		market_price ,
+		supplier_part_auxiliary_id,
+		effective_date ,
+		expiration_date ,
+		short_name ,
+		image,
+		thumbnail,
+		is_hazardous_materials,
+		is_green,
+		is_approved,
+		commodity_catalog_unique_name,
+		is_checked
+
+		)
+		values(
+		#{
+		supplier.uniqueName
+		},
+		#{
+		contract.uniqueName },
+		#{ unitPrice },
+		#{
+		supplierPartId },
+		#{
+		manufacturerName },
+		#{ manufacturerPartId },
+		#{
+		manufacturerUrl },
+		#{
+		timeLeft },
+		#{ companyCode },
+		#{ gcmEmailAddress },
+		#{ itemDescription },
+		#{ materialGroup },
+		#{ commodityType },
+		#{ spscCode
+		},
+		#{ unitOfMeasure },
+		#{ leadTime },
+		#{ marketPrice },
+		#{
+		supplierPartAuxiliaryId },
+		#{
+		effectiveDate },
+		#{ expirationDate },
+		#{
+		shortName },
+		#{ image },
+		#{
+		thumbnail },
+		#{ isHazardousMaterials },
+		#{isGreen },
+		#{isApproved},
+		#{commodityCatalog.uniqueName},
+		#{isChecked}
+		)
+	</insert>
+
+	<!-- 所有商品的搜索 -->
+	<select id="searchCommodity" parameterType="map" resultMap="commodityMap">
+		select
+		c.unique_name as uniqueName,
+		c.company_code as companyCode,
+		c.gcm_email_address as
+		gcmEmailAddress,
+		c.supplier_part_id as
+		supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.spsc_code as
+		spscCode,
+		c.manufacturer_name as
+		manufacturerName,
+		c.manufacturer_part_id as manufacturerPartId,
+		c.manufacturer_url as
+		manufacturerUrl,
+		c.is_hazardous_materials as
+		isHazardousMaterials,
+		c.is_green as isGreen,
+		c.expiration_date as
+		expirationDate,
+		c.effective_date as effectiveDate,
+		c.item_description as
+		itemDescription,
+		c.short_name as shortName,
+		c.unit_price as unitPrice,
+		c.unit_of_measure as unitOfMeasure,
+		c.is_checked as isChecked,
+		c.thumbnail as thumbnail,
+		c.image as image,
+		cc.unique_name as
+		commodityCatalogUniqueName,
+		cc.name as commodityCatalogName,
+		con.unique_name as contractUniqueName,
+		con.name as
+		contractName,
+		sup.unique_name as supplieruniqueName,
+		sup.name as
+		supplierName
+		from
+		((commodity c left join contract con on
+		c.contract_unique_name =
+		con.unique_name)
+		left join supplier sup on
+		c.supplier_unique_name =
+		sup.unique_name)
+		left
+		join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name =
+		cc.unique_name
+		where 1 = 1
+		<if test="commodity.uniqueName != '' and commodity.uniqueName != null">
+			and c.unique_name = #{commodity.uniqueName}
+		</if>
+		order by uniqueName desc
+		<if test="offset != null and size != null">
+			limit #{offset},#{size}
+		</if>
+
+	</select>
+	<!-- 已激活的商品搜索 -->
+	<select id="searchActivatedCommodity" parameterType="map"
+		resultMap="commodityMap">
+		<!-- select c.unique_name as uniqueName, c.company_code as companyCode, 
+			c.gcm_email_address as gcmEmailAddress, c.supplier_part_id as supplierPartId, 
+			c.supplier_part_auxiliary_id as supplierPartAuxiliaryId, c.spsc_code as spscCode, 
+			c.manufacturer_name as manufacturerName, c.manufacturer_part_id as manufacturerPartId, 
+			c.manufacturer_url as manufacturerUrl, c.is_hazardous_materials as isHazardousMaterials, 
+			c.is_green as isGreen, c.expiration_date as expirationDate, c.effective_date 
+			as effectiveDate, c.item_description as itemDescription, c.short_name as 
+			shortName, c.unit_price as unitPrice, c.unit_of_measure as unitOfMeasure, 
+			c.is_checked as isChecked, c.thumbnail as thumbnail, c.image as image, cc.unique_name 
+			as commodityCatalogUniqueName, cc.name as commodityCatalogName, con.unique_name 
+			as contractUniqueName, con.name as contractName, sup.unique_name as supplieruniqueName, 
+			sup.name as supplierName from ((commodity c left join contract con on c.contract_unique_name 
+			= con.unique_name) left join supplier sup on c.supplier_unique_name = sup.unique_name) 
+			left join commodity_catalog cc on c.commodity_catalog_unique_name = cc.unique_name 
+			where 1 = 1 and cc.is_activated = '已激活' # and spscCode in (select spsc_code 
+			from supplier_sqm_allowed) -->
+		select
+		c.unique_name as uniqueName,
+		c.company_code as companyCode,
+		c.gcm_email_address as
+		gcmEmailAddress,
+		c.supplier_part_id as
+		supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.spsc_code as
+		spscCode,
+		c.manufacturer_name as
+		manufacturerName,
+		c.manufacturer_part_id as manufacturerPartId,
+		c.manufacturer_url as
+		manufacturerUrl,
+		c.is_hazardous_materials as
+		isHazardousMaterials,
+		c.is_green as isGreen,
+		c.expiration_date as
+		expirationDate,
+		c.effective_date as effectiveDate,
+		c.item_description as
+		itemDescription,
+		c.short_name as shortName,
+		c.unit_price as unitPrice,
+		c.unit_of_measure as unitOfMeasure,
+		c.is_checked as isChecked,
+		c.thumbnail as thumbnail,
+		c.image as image,
+		cc.unique_name as
+		commodityCatalogUniqueName,
+		cc.name as commodityCatalogName,
+		cc.level as
+		level,
+		con.unique_name as contractUniqueName,
+		con.name as
+		contractName,
+		sup.unique_name as supplieruniqueName,
+		sup.name as
+		supplierName
+		from
+		((commodity c left join contract con on
+		c.contract_unique_name =
+		con.unique_name)
+		left join supplier sup on
+		c.supplier_unique_name =
+		sup.unique_name)
+		left
+		join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name =
+		cc.unique_name
+		left join
+		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
+		left join supplier_sqm ss on ss.supplier_id = c.supplier_unique_name
+		where 1 = 1 and
+		cc.is_activated = '已激活' and cch.spsc_code in(select
+		spsc_code from supplier_sqm ss2 left join supplier_sqm_allowed_code
+		sac on
+		sac.sqm_id = ss2.id where ss2.supplier_id =
+		c.supplier_unique_name)
+
+		<if test="commodity.uniqueName != '' and commodity.uniqueName != null">
+			and c.unique_name = #{commodity.uniqueName}
+		</if>
+		<if test="commodity.spscCode != '' and commodity.spscCode != null">
+			and c.spsc_code like CONCAT(#{commodity.spscCode},'%')
+		</if>
+
+		<if test="catalogViews != null and catalogViews != ''">
+			<foreach item="item" index="index" collection="catalogViews"
+				open="and (" separator="||" close=")">
+
+				<if test="item.type == '开始时不查看任何内容，然后向有资格的用户显示更多目录项目'">
+					( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时不查看任何内容，然后向没有资格的用户显示更多目录项目'">
+					1=0
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向有资格的用户隐藏某些目录项目'">
+					not ( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向没有资格的用户隐藏某些目录项目'">
+					1=1
+				</if>
+			</foreach>
+		</if>
+		<if test="otherCatalogViews != null and otherCatalogViews != ''">
+			<foreach item="item" index="index" collection="otherCatalogViews"
+				open=" and (" separator=" || " close=")">
+				<if test="item.type == '开始时不查看任何内容，然后向没有资格的用户显示更多目录项目'">
+					( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向没有资格的用户隐藏某些目录项目'">
+					not ( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+			</foreach>
+		</if>
+		group by c.unique_name
+		order by level desc
+		<if test="offset != null and size != null">
+			limit #{offset},#{size}
+		</if>
+
+
+	</select>
+
+
+	<!-- 获得符合条件的商品的总数，通常用于分页 -->
+	<select id="getActivatedRowCount" resultType="int">
+
+		select count(*) from 
+		commodity c left join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name = cc.unique_name left join
+		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
+		where
+		cc.is_activated = '已激活' and cch.spsc_code in(select spsc_code
+		from
+		supplier_sqm ss2 left join supplier_sqm_allowed_code sac on
+		sac.sqm_id = ss2.id
+		where ss2.supplier_id = c.supplier_unique_name)
+		<if test="commodity.spscCode != '' and commodity.spscCode != null">
+			and c.spsc_code like CONCAT(#{commodity.spscCode},'%')
+		</if>
+		<if test="catalogViews != null and catalogViews != ''">
+			<foreach item="item" index="index" collection="catalogViews"
+				open="and (" separator="||" close=")">
+
+				<if test="item.type == '开始时不查看任何内容，然后向有资格的用户显示更多目录项目'">
+					( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时不查看任何内容，然后向没有资格的用户显示更多目录项目'">
+					1=0
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向有资格的用户隐藏某些目录项目'">
+					not ( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向没有资格的用户隐藏某些目录项目'">
+					1=1
+				</if>
+			</foreach>
+		</if>
+		<if test="otherCatalogViews != null and otherCatalogViews != ''">
+			<foreach item="item" index="index" collection="otherCatalogViews"
+				open=" and (" separator=" || " close=")">
+				<if test="item.type == '开始时不查看任何内容，然后向没有资格的用户显示更多目录项目'">
+					( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+				<if test="item.type == '开始时查看所有内容，然后向没有资格的用户隐藏某些目录项目'">
+					not ( #{item.catalog} = cc.name and c.spsc_code like
+					CONCAT(#{item.code},'%')
+					and #{item.supplier.uniqueName} =
+					c.supplier_unique_name )
+				</if>
+			</foreach>
+		</if>
+	</select>
+
+
+
+	<update id="updateCommodity" parameterType="com.ProcurementSystem.entity.Commodity">
+		update commodity
+		set
+		company_code = #{companyCode},
+		contract_unique_name
+		= #{contract.uniqueName},
+		gcm_email_address = #{gcmEmailAddress},
+		supplier_part_id = #{supplierPartId},
+		supplier_part_auxiliary_id =
+		#{supplierPartAuxiliaryId},
+		manufacturer_url = #{manufacturerUrl},
+		manufacturer_name = #{manufacturerName},
+		manufacturer_part_id =
+		#{manufacturerPartId},
+		is_hazardous_materials =
+		#{isHazardousMaterials},
+		is_green = #{isGreen},
+		expiration_date =
+		#{expirationDate},
+		effective_date = #{effectiveDate},
+		item_description =
+		#{itemDescription},
+		short_name = #{shortName},
+		is_checked =
+		#{isChecked},
+		spsc_code = #{spscCode}, unit_price = #{unitPrice}
+		where
+		1=1
+		<if test="uniqueName!='' and uniqueName!=null">
+			and unique_name = #{uniqueName}
+		</if>
+	</update>
+
+
+	<select id="getRowCount" resultType="int">
+		select count(*) from
+		commodity;
+	</select>
+
+
+
+	<select id="getAllCommoditiesValidateStateByCatalog" resultType="String">
+		select is_checked from commodity
+		where commodity_catalog_unique_name =
+		#{uniqueName}
+
+	</select>
+
+
+	<select id="getAllActivatedCommodities" resultType="com.ProcurementSystem.entity.Commodity">
+		select
+		spsc_code
+		from commodity_catalog cc left join commodity c on
+		cc.unique_name = c.commodity_catalog_unique_name
+		where cc.is_activated
+		= '已激活'
+	</select>
+
+	<update id="clearSpscCode" parameterType="String">
+		update commodity set
+		spsc_code = "-1" where spsc_code = #{spscCode}
+	</update>
+
+
+
+	<update id="addShoppingCartCount" parameterType="String">
+		update commodity
+		set
+		add_shopping_cart_count = add_shopping_cart_count+1 where
+		unique_name = #{uniqueName}
+	</update>
+
+	<update id="addViewInfoCount" parameterType="String">
+		update commodity set
+		view_info_count = view_info_count+1 where unique_name = #{uniqueName}
+	</update>
+
+
+	<select id="getMultiSearchRowCount" parameterType="String"
+		resultType="int">
+		select count(*)
+		from
+		commodity c left join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name = cc.unique_name left join
+		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
+		left join supplier sup on sup.unique_name = c.supplier_unique_name
+		where
+		cc.is_activated = '已激活' and cch.spsc_code in(select spsc_code
+		from
+		supplier_sqm ss2 left join supplier_sqm_allowed_code sac on
+		sac.sqm_id = ss2.id
+
+		where ss2.supplier_id = c.supplier_unique_name)<!-- 
+			where语句包含两个约束，一个是已激活约束，另一个是sqm准入约束 -->
+		and (c.short_name like CONCAT('%',#{content},'%') or sup.name like
+		CONCAT('%',#{content},'%'))
+
+
+	</select>
+
+
+
+
+	<select id="multiFieldSearchDao" parameterType="map" resultMap="commodityMap">
+
+		select
+		c.unique_name as uniqueName,
+		c.company_code as companyCode,
+		c.gcm_email_address as
+		gcmEmailAddress,
+		c.supplier_part_id as
+		supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.spsc_code as
+		spscCode,
+		c.manufacturer_name as
+		manufacturerName,
+		c.manufacturer_part_id as manufacturerPartId,
+		c.manufacturer_url as
+		manufacturerUrl,
+		c.is_hazardous_materials as
+		isHazardousMaterials,
+		c.is_green as isGreen,
+		c.expiration_date as
+		expirationDate,
+		c.effective_date as effectiveDate,
+		c.item_description as
+		itemDescription,
+		c.short_name as shortName,
+		c.unit_price as unitPrice,
+		c.unit_of_measure as unitOfMeasure,
+		c.is_checked as isChecked,
+		c.thumbnail as thumbnail,
+		c.image as image,
+		cc.unique_name as
+		commodityCatalogUniqueName,
+		cc.name as commodityCatalogName,
+		con.unique_name as contractUniqueName,
+		con.name as
+		contractName,
+		sup.unique_name as supplieruniqueName,
+		sup.name as
+		supplierName
+		from
+		((commodity c left join contract con on
+		c.contract_unique_name =
+		con.unique_name)
+		left join supplier sup on
+		c.supplier_unique_name =
+		sup.unique_name)
+		left
+		join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name =
+		cc.unique_name
+		left join
+		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
+		left join supplier_sqm ss on ss.supplier_id = c.supplier_unique_name
+		where 1 = 1 and
+		cc.is_activated = '已激活' and cch.spsc_code in(select
+		spsc_code from supplier_sqm ss2 left join supplier_sqm_allowed_code
+		sac on
+		sac.sqm_id = ss2.id where ss2.supplier_id =
+		c.supplier_unique_name)
+		and (c.short_name like
+		CONCAT('%',#{content},'%') or sup.name like
+		CONCAT('%',#{content},'%'))
+		group by c.unique_name
+		order by uniqueName
+		desc
+		limit #{offset},#{size}
+	</select>
+
+
+
+	<select id="geTop50" parameterType="map" resultMap="commodityMap">
+		select
+		c.unique_name as uniqueName,
+		c.company_code as companyCode,
+		c.gcm_email_address as
+		gcmEmailAddress,
+		c.supplier_part_id as
+		supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.spsc_code as
+		spscCode,
+		c.manufacturer_name as
+		manufacturerName,
+		c.manufacturer_part_id as manufacturerPartId,
+		c.manufacturer_url as
+		manufacturerUrl,
+		c.is_hazardous_materials as
+		isHazardousMaterials,
+		c.is_green as isGreen,
+		c.expiration_date as
+		expirationDate,
+		c.effective_date as effectiveDate,
+		c.item_description as
+		itemDescription,
+		c.short_name as shortName,
+		c.unit_price as unitPrice,
+		c.unit_of_measure as unitOfMeasure,
+		c.is_checked as isChecked,
+		c.thumbnail as thumbnail,
+		c.image as image,
+		cc.unique_name as
+		commodityCatalogUniqueName,
+		cc.name as commodityCatalogName,
+		con.unique_name as contractUniqueName,
+		con.name as
+		contractName,
+		sup.unique_name as supplieruniqueName,
+		sup.name as
+		supplierName
+		from
+		((commodity c left join contract con on
+		c.contract_unique_name =
+		con.unique_name)
+		left join supplier sup on
+		c.supplier_unique_name =
+		sup.unique_name)
+		left
+		join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name =
+		cc.unique_name
+		left join
+		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
+		left join supplier_sqm ss on ss.supplier_id = c.supplier_unique_name
+		where 1 = 1 and
+		cc.is_activated = '已激活' and cch.spsc_code in(select
+		spsc_code from supplier_sqm ss2 left join supplier_sqm_allowed_code
+		sac on
+		sac.sqm_id = ss2.id where ss2.supplier_id =
+		c.supplier_unique_name)
+		group by c.unique_name
+		order by
+		(add_shopping_cart_count+view_info_count) desc
+		limit
+		#{offset},#{size}
+	</select>
+
+
+	<select id="getRecommend" parameterType="map" resultMap="commodityMap">
+		select
+		c.unique_name as uniqueName,
+		c.company_code as companyCode,
+		c.gcm_email_address as
+		gcmEmailAddress,
+		c.supplier_part_id as
+		supplierPartId,
+		c.supplier_part_auxiliary_id as
+		supplierPartAuxiliaryId,
+		c.spsc_code as
+		spscCode,
+		c.manufacturer_name as
+		manufacturerName,
+		c.manufacturer_part_id as manufacturerPartId,
+		c.manufacturer_url as
+		manufacturerUrl,
+		c.is_hazardous_materials as
+		isHazardousMaterials,
+		c.is_green as isGreen,
+		c.expiration_date as
+		expirationDate,
+		c.effective_date as effectiveDate,
+		c.item_description as
+		itemDescription,
+		c.short_name as shortName,
+		c.unit_price as unitPrice,
+		c.unit_of_measure as unitOfMeasure,
+		c.is_checked as isChecked,
+		c.thumbnail as thumbnail,
+		c.image as image,
+		cc.unique_name as
+		commodityCatalogUniqueName,
+		cc.name as commodityCatalogName,
+		con.unique_name as contractUniqueName,
+		con.name as
+		contractName,
+		sup.unique_name as supplieruniqueName,
+		sup.name as
+		supplierName
+		from
+		((commodity c left join contract con on
+		c.contract_unique_name =
+		con.unique_name)
+		left join supplier sup on
+		c.supplier_unique_name =
+		sup.unique_name)
+		left
+		join commodity_catalog cc
+		on
+		c.commodity_catalog_unique_name =
+		cc.unique_name
+		left join
+		commodity_spsc_code_helper cch on cch.commodity_id = c.unique_name
+		left join supplier_sqm ss on ss.supplier_id = c.supplier_unique_name
+		where 1 = 1 and
+		cc.is_activated = '已激活' and cch.spsc_code in(select
+		spsc_code from supplier_sqm ss2 left join supplier_sqm_allowed_code
+		sac on
+		sac.sqm_id = ss2.id where ss2.supplier_id =
+		c.supplier_unique_name)
+		group by c.unique_name
+		order by field
+		(`spscCode`,
+		<foreach item="item" index="index" collection="sortRule" open=""
+			separator="," close="">
+			#{item.code}
+		</foreach>
+		) desc ,
+		field (`supplieruniqueName`,
+		<foreach item="item" index="index" collection="sortRuleBySupplier"
+			open="" separator="," close="">
+			#{item.supplierId}
+		</foreach>
+		) desc
+		limit #{offset},#{size}
+	</select>
+
+
+
+</mapper>

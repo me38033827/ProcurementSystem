@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.ProcurementSystem.dao.ISupplierDao">
+
+	<resultMap id="SupplierMap" type="com.ProcurementSystem.entity.Supplier">
+		<result property="uniqueName" column="unique_name" />
+		<result property="contactUniqueName" column="contactUniqueName" />
+		<result property="name" column="name" />
+		<result property="isSupplier" column="isSupplier" />
+		<result property="isClient" column="isClient" />
+		<result property="description" column="description" />
+		<result property="approveState" column="approveState" />
+		<result property="otherName1" column="otherName1" />
+		<result property="otherName2" column="otherName2" />
+		<result property="fullNameByLaw" column="fullNameByLaw" />
+		<result property="stockCode" column="stockCode" />
+		<result property="province" column="province" />
+		<result property="switchboard" column="switchboard" />
+		<result property="mainEmail" column="mainEmail" />
+		<result property="UNSPSCCommodity" column="unspscCommodity" />
+		<result property="duns" column="duns" />
+		<result property="supplierIntegrityState" column="supplierIntegrityState" />
+		<result property="supplierIntegritySystemName" column="supplierIntegritySystemName" />
+		<result property="otherAddress" column="otherAddress" />
+		<result property="mainFax" column="mainFax" />
+		<result property="corporateUrl" column="corporateUrl" />
+		<result property="organizationType" column="organizationType" />
+		<result property="parentValue" column="parentValue" />
+		<result property="mainFax" column="mainFax" />
+		<result property="manage" column="manage" />
+		<result property="postCode" column="postCode" />
+		<result property="district" column="district" />
+		<result property="address" column="address" />
+		<result property="switchboardZone" column="switchboardZone" />
+		<result property="mainFaxZone" column="mainFaxZone" />
+
+		<association property="creator" javaType="com.ProcurementSystem.entity.User">
+			<id property="uniqueName" column="creatorUniqueName" />
+			<id property="name" column="creatorName" />
+		</association>
+		<association property="templateTaskTreeNode"
+			javaType="com.ProcurementSystem.entity.TemplateTaskTreeNode">
+			<id property="id" column="templateTaskTreeNodeId" />
+			<result property="type" column="type" />
+			<association property="templateTaskPhase"
+				javaType="com.ProcurementSystem.entity.TemplateTaskPhase">
+				<id property="id" column="templateTaskPhaseId" />
+				<result property="title" column="templateTaskPhaseTitle" />
+				<result property="description" column="templateTaskPhaseDescription" />
+				<result property="reserveContent" column="templateTaskPhaseReserveContent" />
+				<result property="rank" column="templateTaskPhaseReserveRank" />
+				<result property="isDuped" column="templateTaskPhaseIsDuped" />
+				<result property="status" column="templateTaskPhaseStatus" />
+			</association>
+			<association property="templateTaskSchedule"
+				javaType="com.ProcurementSystem.entity.TemplateTaskSchedule">
+				<id property="id" column="templateTaskScheduleId" />
+				<result property="title" column="templateTaskScheduleTitle" />
+				<result property="owner" column="templateTaskScheduleOwner" />
+				<result property="watcher" column="templateTaskScheduleWatcher" />
+				<result property="ddl" column="templateTaskScheduleDdl" />
+				<result property="isMilestone" column="templateTaskScheduleIsMilestone" />
+				<result property="isMust" column="templateTaskScheduleIsMust" />
+				<result property="setField" column="templateTaskScheduleSetField" />
+				<result property="preTask" column="templateTaskSchedulePreTask" />
+				<result property="rank" column="templateTaskScheduleRank" />
+				<result property="status" column="templateTaskScheduleStatus" />
+			</association>
+		</association>
+	</resultMap>
+
+	<select id="getSupplierDetail" parameterType="int" resultMap="SupplierMap">
+		select
+			supplier.unique_name,
+			contact_unique_name as contactUniqueName,
+			supplier.name as name,
+			is_supplier as isSupplier,
+			is_client as isClient,
+			supplier.description as description,
+			approve_state as approveState,
+			other_name1 as otherName1,
+			other_name2 as otherName2,
+			full_name_by_law as fullNameByLaw,
+			stock_code as stockCode,
+			province as province,
+			switchboard as switchboard,
+			main_email as mainEmail,
+			unspsc_commodity as UNSPSCCommodity,
+			duns as duns,
+			other_address as otherAddress,
+			main_fax as mainFax,
+			corporate_url as corporateUrl,
+			organization_type as organizationType,
+			parent_value as parentValue,
+			manage as manage,
+			post_code as postCode,
+			address as address,
+			district as district,
+			main_fax_zone as mainFaxZone,
+			switchboard_zone as swtichboardZone,
+			creator_unique_name as creatorUniqueName,
+			user.name as creatorName,
+			tttn.id as templateTaskTreeNodeId,
+			tttn.type,
+			ttp.id as
+			templateTaskPhaseId,
+			ttp.title as templateTaskPhaseTitle,
+			ttp.description as templateTaskPhaseDescription,
+			ttp.reserve_content as
+			templateTaskPhaseReserveContent,
+			ttp.rank as
+			templateTaskPhaseReserveRank,
+			ttp.is_duped as templateTaskPhaseIsDuped,
+			ttp.status as templateTaskPhaseStatus,
+			tts.id as
+			templateTaskScheduleId,
+			tts.title as
+			templateTaskScheduleTitle,
+			tts.owner as
+			templateTaskScheduleOwner,
+			tts.watcher as
+			templateTaskScheduleWatcher,
+			tts.ddl as
+			templateTaskScheduleDdl,
+			tts.is_milestone as
+			templateTaskScheduleIsMileStone,
+			tts.is_must as
+			templateTaskScheduleIsMust,
+			tts.set_field as
+			templateTaskScheduleSetField,
+			tts.pre_task as
+			templateTaskSchedulePreTask,
+			tts.rank as templateTaskScheduleRank,
+			tts.status as templateTaskScheduleStatus
+		from
+		supplier left join user on
+		creator_unique_name =
+		user.unique_name left
+		join template_task_tree_node
+		tttn
+		on
+		supplier.task_tree_node_id =
+		tttn.id
+		left join
+		template_task_phase
+		ttp
+		on
+		tttn.template_task_phase_id =
+		ttp.id and
+		tttn.type=1
+		left join
+		template_task_schedule tts on
+		tttn.template_task_schedule_id =
+		tts.id
+		and tttn.type=0
+		where
+		supplier.unique_name = #{uniqueName}
+		;
+	</select>
+
+	<select id="findMaxUniqueName" resultType="int">
+		select
+		max(unique_name) from supplier;
+	</select>
+
+	<insert id="insertSupplier" parameterType="com.ProcurementSystem.entity.Supplier">
+		insert into
+		supplier(unique_name, name, is_supplier, is_client, description,
+		approve_state, other_name1, other_name2, full_name_by_law, stock_code,
+		province, switchboard,
+		main_email, other_address, main_fax,
+		corporate_url, organization_type,
+		creator_unique_name,
+		manage,task_tree_node_id)
+		values(#{uniqueName},
+		#{name}, #{isSupplier},
+		#{isClient}, #{description},
+		#{approveState},
+		#{otherName1},
+		#{otherName2}, #{fullNameByLaw}, #{stockCode},
+		#{province},
+		#{switchboard},
+		#{mainEmail}, #{otherAddress}, #{mainFax},
+		#{corporateUrl}, #{organizationType}, #{creator.uniqueName},
+		#{manage},#{templateTaskTreeNode.id})
+	</insert>
+	
+	
+	
+	<!-- added by Pu Chen -->
+	<insert id="insertSupplierRegisteredByEmail" parameterType="com.ProcurementSystem.entity.Supplier">
+		insert into
+		supplier(unique_name, name, is_supplier, is_client, description,
+		approve_state, other_name1, other_name2, full_name_by_law, stock_code,
+		province, switchboard,
+		main_email, other_address, main_fax,
+		corporate_url, organization_type,
+		creator_unique_name,
+		manage,task_tree_node_id, company_name, country, street, 
+		lastname, firstname, receiver, user_language, user_password, username)
+		values(#{uniqueName},
+		#{name}, #{isSupplier},
+		#{isClient}, #{description},
+		#{approveState},
+		#{otherName1},
+		#{otherName2}, #{fullNameByLaw}, #{stockCode},
+		#{province},
+		#{switchboard},
+		#{mainEmail}, #{otherAddress}, #{mainFax},
+		#{corporateUrl}, #{organizationType}, #{creator.uniqueName},
+		#{manage},#{templateTaskTreeNode.id}, 
+		#{companyName}, #{country}, #{street}, #{lastname}, #{firstname},
+		#{receiver}, #{language}, #{password}, #{username} )
+	</insert>
+	
+	
+
+	<select id="completeSearchSupplier" parameterType="map"
+		resultType="com.ProcurementSystem.entity.Supplier">
+		select
+		unique_name as uniqueName,
+		name as name,
+		approve_state as
+		approveState,
+		is_supplier as isSupplier,
+		is_client as isClient
+		from
+		supplier
+		where 1=1
+		<if test="content!='' and content!=null">
+			and name like concat("%",#{content},"%")
+		</if>
+		<if test="supplier.name!='' and supplier.name!=null">
+			and name like concat("%",#{supplier.name},"%")
+		</if>
+		<if
+			test="supplier.isClient!='' and supplier.isClient!=null and supplier.isClient!='是或否'">
+			and is_client like concat("%",#{supplier.isClient},"%")
+		</if>
+		<if
+			test="supplier.isSupplier!='' and supplier.isSupplier!=null and supplier.isSupplier!='是或否'">
+			and is_supplier like concat("%",#{supplier.isSupplier},"%")
+		</if>
+		<if
+			test="supplier.approveState!='' and supplier.approveState!=null and supplier.approveState!='无选择'">
+			and approve_state like concat("%",#{supplier.approveState},"%")
+		</if>
+	</select>
+
+	<update id="updateSupplier" parameterType="com.ProcurementSystem.entity.Supplier">
+		update supplier
+		<set>
+			<if test="name!='' and name!=null">
+				name = #{name},
+			</if>
+			<if test="otherName1!='' and otherName1!=null">
+				other_name1 = #{otherName1},
+			</if>
+			<if test="otherName2!='' and otherName2!=null">
+				other_name2 = #{otherName2},
+			</if>
+			<if test="description!='' and description!=null">
+				description = #{description},
+			</if>
+			<if test="corporateUrl!='' and corporateUrl!=null">
+				corporate_url = #{corporateUrl},
+			</if>
+			<if test="mainEmail!='' and mainEmail!=null">
+				main_email = #{mainEmail},
+			</if>
+			<if test="switchboard!='' and switchboard!=null">
+				switchboard = #{switchboard},
+			</if>
+			<if test="switchboardZone!='' and switchboardZone!=null">
+				switchboard_zone = #{switchboardZone},
+			</if>
+			<if test="mainFax!='' and mainFax!=null">
+				main_fax = #{mainFax},
+			</if>
+			<if test="mainFaxZone!='' and mainFaxZone!=null">
+				main_fax_zone = #{mainFaxZone},
+			</if>
+			<if test="postCode!='' and postCode!=null">
+				post_code = #{postCode},
+			</if>
+			<if test="address!='' and address!=null">
+				address = #{address},
+			</if>
+			<if test="otherAddress!='' and otherAddress!=null">
+				other_address = #{otherAddress},
+			</if>
+			<if test="approveState!='' and approveState!=null">
+				approve_state = #{approveState},
+			</if>
+			<if test="isClient!='' and isClient!=null">
+				is_client = #{isClient}
+			</if>
+		</set>
+		where unique_name = #{uniqueName};
+	</update>
+	
+	<select id="searchSupplier" parameterType="String" resultType="com.ProcurementSystem.entity.Supplier">
+		select * from supplier where name like #{content}
+		union
+		select * from supplier where unique_name like #{content};
+	</select>
+
+	<select id="searchAllSupplier" resultType="com.ProcurementSystem.entity.Supplier">
+		select * from supplier;
+	</select>
+	
+	<delete id="deleteSupplier" parameterType="int">
+		delete from supplier 
+		where unique_name = #{uniqueName} 
+	</delete>
+</mapper>

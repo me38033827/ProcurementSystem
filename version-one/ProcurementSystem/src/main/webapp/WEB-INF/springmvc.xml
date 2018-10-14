@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- spring可以自动去扫描base-package下面或者子包下面的java文件， 如果扫描到有@Component @Controller 
+		@Service @Repository等这些注解的类，则把这些类注册为bean -->
+	<context:component-scan base-package="com.ProcurementSystem.*" />
+	<!-- 模型解析，在请求时为模型视图名称添加前后缀 比如在controller类中需要请求/WEB-INF/page/index.jsp文件，直接写index就可以了 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/" p:suffix=".jsp" />
+
+	<!-- Hibernate Validator验证框架配置 -->
+	<mvc:annotation-driven validator="validator" />
+
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+		<!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties -->
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource"
+		p:basename="i18n/messages" />
+		
+	<!-- 文件的上传下载配置 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="maxUploadSize" value="10485760000" />
+		<property name="maxInMemorySize" value="4096" />
+	</bean>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!--默认拦截的连接-->
+	           <mvc:mapping path="/**"/>
+	           <!--不拦截的连接-->
+	           <mvc:exclude-mapping path="/fonts/*"/>
+			   <mvc:exclude-mapping path="/css/*"/>
+			   <mvc:exclude-mapping path="/js/*"/>
+			   <mvc:exclude-mapping path="/images/*"/>
+			   <mvc:exclude-mapping path="/upload/*"/>
+			   <mvc:exclude-mapping path="/login"/>
+	           <bean class="com.ProcurementSystem.interceptor.LoginInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+</beans>
+
