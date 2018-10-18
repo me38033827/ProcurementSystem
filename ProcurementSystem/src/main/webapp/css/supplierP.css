@@ -9,14 +9,17 @@
 	color:#38383a;
 	font-size:20px;
 	margin-top:10px;
-	display:inline-block;
+	display:inline;
 }
 
 .p2p-supplier-subtitle{
 	font-size:14px;
 	color:grey;
 }
-
+.p2p-supplier-subtitle2{
+	font-size:14px;
+color:black;
+}
 #supplier-detail-top {
 	margin-top:5px;
 	border: 1px solid #d7d7d7;

@@ -8,6 +8,8 @@
 		<result property="uniqueName" column="unique_name" />
 		<result property="contactUniqueName" column="contactUniqueName" />
 		<result property="name" column="name" />
+		<result property="contactFirst" column="contactFirst" />
+		<result property="contactLast" column="contactLast" />
 		<result property="isSupplier" column="isSupplier" />
 		<result property="isClient" column="isClient" />
 		<result property="description" column="description" />
@@ -32,9 +34,15 @@
 		<result property="manage" column="manage" />
 		<result property="postCode" column="postCode" />
 		<result property="district" column="district" />
-		<result property="address" column="address" />
+		<result property="address1" column="address1" />
+		<result property="address2" column="address2" />
 		<result property="switchboardZone" column="switchboardZone" />
 		<result property="mainFaxZone" column="mainFaxZone" />
+		<result property="country" column="country" />
+		<result property="city" column="city" />
+		<result property="BU" column="BU" />
+		<result property="NDA" column="NDA" />
+		 		
 
 		<association property="creator" javaType="com.ProcurementSystem.entity.User">
 			<id property="uniqueName" column="creatorUniqueName" />
@@ -74,6 +82,14 @@
 	<select id="getSupplierDetail" parameterType="int" resultMap="SupplierMap">
 		select
 			supplier.unique_name,
+			country as country,
+			address1 as address1,
+			address2 as address2,
+			BU as BU,
+			NDA as NDA,
+			city as city,
+			contact_first as contactFirst,
+			contact_last as contactLast,
 			contact_unique_name as contactUniqueName,
 			supplier.name as name,
 			is_supplier as isSupplier,
@@ -96,7 +112,7 @@
 			parent_value as parentValue,
 			manage as manage,
 			post_code as postCode,
-			address as address,
+			
 			district as district,
 			main_fax_zone as mainFaxZone,
 			switchboard_zone as swtichboardZone,
@@ -167,14 +183,14 @@
 
 	<insert id="insertSupplier" parameterType="com.ProcurementSystem.entity.Supplier">
 		insert into
-		supplier(unique_name, name, is_supplier, is_client, description,
+		supplier(unique_name, country, city, address1, address2, BU, NDA, contact_first, contact_last, post_code, name, is_supplier, is_client, description,
 		approve_state, other_name1, other_name2, full_name_by_law, stock_code,
 		province, switchboard,
 		main_email, other_address, main_fax,
 		corporate_url, organization_type,
 		creator_unique_name,
 		manage,task_tree_node_id)
-		values(#{uniqueName},
+		values(#{uniqueName}, #{country}, #{city}, #{address1}, #{address2}, #{BU}, #{NDA}, #{contactFirst}, #{contactLast}, #{postCode},
 		#{name}, #{isSupplier},
 		#{isClient}, #{description},
 		#{approveState},
@@ -214,7 +230,7 @@
 			and is_supplier like concat("%",#{supplier.isSupplier},"%")
 		</if>
 		<if
-			test="supplier.approveState!='' and supplier.approveState!=null and supplier.approveState!='无选择'">
+			test="supplier.approveState!='' and suppler.approveState!=null and supplier.approveState!='无选择'">
 			and approve_state like concat("%",#{supplier.approveState},"%")
 		</if>
 	</select>

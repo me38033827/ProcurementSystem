@@ -722,7 +722,7 @@ public class BuyerSupplierController {
 		}
 		// 将问卷答案填写至问卷
 		simService.insertOrUpdateSIMAnswers(allAnswers);
-		return "redirect:../search/supplierSearchDistribute?page=2004";
+		return "redirect:../supplier/supplierDetail?id="+uniqueName;
 	}
 
 	/* SQM详情 */

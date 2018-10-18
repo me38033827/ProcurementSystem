@@ -70,7 +70,8 @@ public class SupplierProfileController {
 		supplierSession.setOtherName2(supplier.getOtherName2());
 		supplierSession.setDescription(supplier.getDescription());
 		supplierSession.setCorporateUrl(supplier.getCorporateUrl());
-		supplierSession.setAddress(supplier.getAddress());
+		supplierSession.setAddress1(supplier.getAddress1());
+		supplierSession.setAddress2(supplier.getAddress2());
 		supplierSession.setPostCode(supplier.getPostCode());
 		supplierSession.setOtherAddress(supplier.getOtherAddress());
 		

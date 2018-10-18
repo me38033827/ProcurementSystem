@@ -10,7 +10,7 @@
 	</button>
 	<ul class="dropdown-menu my-dropdown">
 <!--	<li><a class="secondline-right" href="sourcingCreation.jsp">寻源项目</a></li>-->
-		<li><a class="secondline-right" href="/ProcurementSystem/buyer/supplier/supplierCreation">供应商</a></li>
+		<li><a class="secondline-right" href="/ProcurementSystem/buyer/supplier/supplierCreation">供应商请求</a></li>
 		<li><a class="secondline-right" href="/ProcurementSystem/buyer/supplier/sqmCreation?action=initial">供应商资格</a></li>
 		<li><a class="secondline-right" href="/ProcurementSystem/buyer/supplier/spmCreation?action=initial">供应商绩效</a></li>
 <!--    <li><a class="secondline-right"

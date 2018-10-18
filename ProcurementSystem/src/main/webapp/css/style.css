@@ -2,10 +2,11 @@
 /* =============================================================
    GENERAL STYLES
  ============================================================ */
-
+@import "compass/css3";
 body {
     font-family: 'Open Sans', sans-serif;
     line-height:28px;
+    background-color:lightgrey;
    
 }
 .set-radius-zero {
@@ -213,3 +214,29 @@ height: 60px;
         color:#000;
     }
 
+.stepBar{.relative; overflow:hidden;
+	li{float:left; width:25%;  height:76px; position:relative;
+		p.bgline{position:absolute; height:14px; line-height:14px; overflow:hidden; left:-1px; top:11px; background:#e1e4e9; width:100%;}
+		.stepCont{position:absolute; width:120px; left:-2px; top:0; 
+			p.number{.absolute; width:36px; height:36px; line-height:36px;left:0; background:#e1e4e9;  border-radius:50%; text-align:center; color:#afb4bc; font-weight:bold;}
+			p.text{width:100%; text-align:left; position:absolute;left:0; top:36px; line-height:40px;}
+		}
+	}
+	li:first-child{
+		p.bgline{left:1px;}
+		.stepCont{left:0;}
+	}
+	li:last-child{width:120px; position:absolute; top:0; right:0; clear:both;
+		.stepCont{left:0;
+			p.number{left:84px;}
+			p.text{right:0!important; text-align:right;}
+		}
+	}
+	li.select{
+		p.bgline{background:green;}
+		p.number{background:green; color:white;}
+	}
+	li.select.selectLast{
+		p.bgline{background:#e1e4e9;}
+	}
+}

@@ -36,150 +36,186 @@
 						<div class="col-md-5">
 							<table class="fulltab" style="margin-left: 80px;">
 								<tr class="row-standard">
-									<td class="col-standard1">＊组织名称：</td>
-									<td class="col-standard2"><input class="form-control input" id="name" name="name" /></td>
+									<td class="col-standard1">1.1</td>
+									<td><span style="color: red">*</span>Supplier Name：</td>
 								</tr>
+
+								<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2"><input
+										class="form-control input" id="name" name="name" /></td>
+								</tr>
+
 								
 								<tr>
 									<td></td>
 									<td><span id="name-error" class="error-message"></span></td>
 								</tr>
-
 								<tr class="row-standard">
-									<td class="col-standard1" valign="top">简短描述：</td>
-									<td class="col-standard2"><textarea class="form-control"
-											id="pr-textarea" name="description"
-											style="border: 1px solid #428bca; border-radius: 0;"></textarea></td>
+									<td class="col-standard1">1.2</td>
+									<td>Main Address</td>
 								</tr>
-
+								
 								<tr class="row-standard">
-									<td class="col-standard1">供应商：</td>
-									<td class="col-standard2">是</td>
+									<td></td>
+									<td class="col-standard2">Country</td>
 								</tr>
-
 								<tr class="row-standard">
-									<td class="col-standard1">客户：</td>
+									<td></td>
+									<td class="col-standard2"><input
+										class="form-control input" id="country" name="country" value="中国"/></td>
+								</tr>
+								<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2">Address</td>
+								</tr>
+								
+								<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2"><input
+										class="form-control input" id="address1" name="address1" /></td>
+								</tr>
+								
+								<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2"><input
+										class="form-control input" id="address2" name="address2" /></td>
+								</tr>
+<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2">City</td>
+									<td class="col-standard2">Zip Code</td>
+									<td class="col-standard2">Province</td>
+									
+								</tr>
+								
+								<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2"><input
+										class="form-control input" id="city" name="city" value="Beijing"/></td>
+										<td class="col-standard2"><input
+										class="form-control input" id="postCode" name="postCode" /></td>
+										<td class="col-standard2"><input
+										class="form-control input" id="province" name="province" /></td>
+										
+								</tr>
+<tr class="row-standard">
+									<td class="col-standard1">1.3</td>
+									<td><span style="color:red">*</span>Contact First Name</td>
+								</tr>
+								<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2"><input
+										class="form-control input" id="contactFirst" name="contactFirst" /></td>
+								</tr>
+							
+								<tr class="row-standard">
+									<td class="col-standard1">1.4</td>
+									<td><span style="color:red">*</span>Contact Last Name</td>
+								</tr>
+								<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2"><input
+										class="form-control input" id="contactLast" name="contactLast" /></td>
+								</tr>
+	<tr class="row-standard">
+									<td class="col-standard1">1.5</td>
+									<td><span style="color:red">*</span>Contact Email</td>
+								</tr>
+								<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2"><input
+										class="form-control input" id="mainEmail" name="mainEmail" /></td>
+								</tr>
+								<tr class="row-standard">
+									<td class="col-standard1">1.6</td>
+									<td>Contact Phone</td>
+								</tr>
+								
+								<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2"><input
+										class="form-control input" id="switchboard" name="switchboard" /></td>
+								</tr>
+								</table>
+								<div class="standard-subtitle">Additional Information</div>
+								<table class="fulltab" style="margin-left: 80px;">
+								
+<tr class="row-standard">
+									<td class="col-standard1">2.1</td>
+									<td>Business Unit</td>
+								</tr>
+								
+								<tr class="row-standard">
+									<td></td>
 									<td class="col-standard2">
-										<div class="radio">
-											<label><input type="radio" name="isClient"
-												id="optionsRadios1" value="是">是</label> <label><input
-												type="radio" name="isClient" id="optionsRadios2" value="否"
-												checked>否</label>
-										</div>
-									</td>
-								</tr>
-
-								<tr class="row-standard">
-									<td class="col-standard1">审批状态：</td>
-									<td class="col-standard2"><select id="my-select"
-										name="approveState">
-											<option>已批准</option>
-											<option>未批准</option>
+									<select name="BU">
+									<option value="Sourcing">Sourcing</option>
 									</select></td>
 								</tr>
-
 								<tr class="row-standard">
-									<td class="col-standard1">其他名称1：</td>
-									<td class="col-standard2"><input
-										class="form-control input" name="otherName1" /></td>
+									<td class="col-standard1">2.2</td>
+									<td>Category</td>
 								</tr>
-
+								
 								<tr class="row-standard">
-									<td class="col-standard1">其他名称2：</td>
-									<td class="col-standard2"><input
-										class="form-control input" name="otherName2" /></td>
-								</tr>
-
-								<tr class="row-standard">
-									<td class="col-standard1">法定全称：</td>
-									<td class="col-standard2"><input name="fullNameByLaw"
-										class="form-control input" /></td>
-								</tr>
-
-								<tr class="row-standard">
-									<td class="col-standard1">股票交易代码：</td>
-									<td class="col-standard2"><input name="stockCode"
-										class="form-control input" /></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">供应的商品：</td>
+									<td></td>
 									<td class="col-standard2">
-									<table id="commodities">
+										<table id="commodities">
 											<c:forEach items="${sqm.commodities}" var="commodity">
 												<tr>
 													<td>${commodity.description }</td>
 													<td>${commodity.id }</td>
 												</tr>
 											</c:forEach>
-										</table>
-										<input type="hidden" id="commoditiesId" name="commoditiesId" value="${commoditiesId}"/>
-										<input type="hidden" id="commoditiesName" name="commoditiesName" value="<%=request.getAttribute("commoditiesName")%>"/>
-										<input type="hidden" id="nodeIds" name="nodeIds" value=<%=request.getAttribute("commoditiesNodeId")%> />
-										（选择一个值）［&nbsp;<a
-										class="blue inline-b choose" href="javascript:;" onclick="onSelectCommodity();">选择</a>&nbsp;］
-									</td>
-								</tr>
-								<!-- <tr class="row-standard">
-									<td class="col-standard1">批准的商品：</td>
-									<td class="col-standard2">（选择一个值）［&nbsp;<a
-										class="blue inline-b">选择</a>&nbsp;］
+										</table> <input type="hidden" id="commoditiesId" name="commoditiesId"
+										value="${commoditiesId}" /> <input type="hidden"
+										id="commoditiesName" name="commoditiesName"
+										value="<%=request.getAttribute("commoditiesName")%>" /> <input
+										type="hidden" id="nodeIds" name="nodeIds"
+										value=<%=request.getAttribute("commoditiesNodeId")%> />
+										（选择一个值）［&nbsp;<a class="blue inline-b choose"
+										href="javascript:;" onclick="onSelectCommodity();">选择</a>&nbsp;］
 									</td>
 								</tr>
 								<tr class="row-standard">
-									<td class="col-standard1">商品(UNSPSC)：</td>
-									<td class="col-standard2">（选择一个值）［&nbsp;<a
-										class="blue inline-b">选择</a>&nbsp;］
+									<td class="col-standard1">2.3</td>
+									<td>Signed NDA obtained</td>
+								</tr>
+								
+								<tr class="row-standard">
+									<td></td>
+									<td class="col-standard2">
+										<div class="radio">
+											<label><input type="radio" name="NDA"
+												id="optionsRadios1" value="是">Yes</label> 
+											<label><input type="radio" name="NDA" id="optionsRadios2" value="否"
+												checked>No</label>
+										</div>
 									</td>
-								</tr> -->
-								<tr class="row-standard">
-									<td class="col-standard1">公司所在州／省：</td>
-									<td class="col-standard2"><input name="province"
-										class="form-control input" /></td>
 								</tr>
 								<tr class="row-standard">
-									<td class="col-standard1">供应商集成状态：</td>
-									<td class="col-standard2"></td>
+									<td class="col-standard1">2.4</td>
+									<td>Comments</td>
 								</tr>
+								
 								<tr class="row-standard">
-									<td class="col-standard1">供应商系统名称：</td>
-									<td class="col-standard2"></td>
+									<td></td>
+									<td class="col-standard2"><textarea class="form-control"
+											id="pr-textarea" name="description"
+											style="border: 1px solid #428bca; border-radius: 0;"></textarea></td>
 								</tr>
+
+								
+								
 							</table>
 						</div>
-						<div class="col-md-5">
+						<!--  --><div class="col-md-5">
 							<table class="fulltab">
-								<tr class="row-standard">
-									<td class="col-standard1">其他地址：</td>
-									<td class="col-standard2" style="width: 170px;">（选择一个值）［&nbsp;<a
-										class="blue inline-b">选择</a>&nbsp;］
-									</td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">＊总机：</td>
-									<td class="col-standard2"><input id="switchboard" name="switchboard"
-										class="form-control input" /></td>
-								</tr>
 								
-								<tr>
-									<td></td>
-									<td><span id="switchboard-error" class="error-message"></span></td>
-								</tr>
 								
-								<tr class="row-standard">
-									<td class="col-standard1">主要传真：</td>
-									<td class="col-standard2"><input name="mainFax"
-										class="form-control input" /></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">主要电子邮件地址：</td>
-									<td class="col-standard2"><input name="mainEmail"
-										class="form-control input" /></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">公司URL：</td>
-									<td class="col-standard2"><input name="corporateUrl"
-										class="form-control input" /></td>
-								</tr>
+								
+								
 								<tr class="row-standard">
 									<td class="col-standard1">标识符：</td>
 									<td class="col-standard2">SU<%=request.getAttribute("uniqueName")%>
@@ -187,43 +223,12 @@
 										value=<%=request.getAttribute("uniqueName")%>>
 									</td>
 								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">组织类型：</td>
-									<td class="col-standard2"><input name="organizationType"
-										class="form-control input" /></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">父级：</td>
-									<td class="col-standard2"><select id="my-select">
-											<option>(无值)</option>
-											<option>选项1</option>
-											<option>选项2</option>
-									</select></td>
-								</tr>
-								<tr class="row-standard">
-									<td class="col-standard1">选择模板:</td>
-								</tr>	
-									<c:forEach items="${templates}" var="template">
-									<tr class="row-standard">
-										<td class="col-standard1"></td>
-										<td class="col-standard2">
-											<label class="model"><input type="radio" checked
-												name="simTemplateId" id="sim_model1" value="${template.id }">&nbsp;&nbsp;${template.name}</label>
-										</td>
-									</tr>
-									</c:forEach>
+								
+								
 							</table>
 					</div><br/>
 					</div>
-					<div class="standard-subtitle">概要问卷</div>
-					<div>
-						<table class="table table-hover">
-							<tr class="standard-row1">
-								<td style="width: 75%;">名称</td>
-								<td style="width: 25%;">答案</td>
-							</tr>
-						</table>
-					</div>
+					
 					<div style="border:1px solid #ddd; max-height:500px; overflow-x:scroll;">
 		          		<div id="treeview-sim1" class=""></div>
 					</div>
@@ -242,12 +247,7 @@
 	<!-- 选择商品 -->
 	<div class="theme-popover-mask"></div>
 	<script>
-		$(function(){
-		     var defaultData = ${treeData};
-		     $('#treeview-sim1').treeview({
-		       data: defaultData
-		     });
-		})
+		
 		
 		function finish(){
 			$(".error-message").empty();

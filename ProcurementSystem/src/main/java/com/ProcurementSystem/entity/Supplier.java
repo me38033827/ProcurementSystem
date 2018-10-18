@@ -6,11 +6,20 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class Supplier {
+	
 	private int uniqueName;
 	private ArrayList<Commodity> commodities;
 	private int contactUniqueName;
 	@NotEmpty(message = "公司名称不能为空")
 	private String name;
+	private String country;
+	private String city;
+	private String contactFirst;
+	private String contactLast;
+	private String address1;
+	private String address2;
+	private String BU;
+	private String NDA;
 	private String isSupplier;
 	private String isClient;
 	private String description;
@@ -34,12 +43,26 @@ public class Supplier {
 	private String parentValue;
 	private User creator;
 	private String manage;
-	private int postCode;
-	private String address;
+	private String postCode;
 	private String district;
 	private String mainFaxZone;
 	private String switchboardZone;
 	private TemplateTaskTreeNode templateTaskTreeNode;
+	
+	public String getCity(){
+		return city;
+	}
+	
+	public void setCity(String city){
+		this.city=city;
+	}
+	public String getCountry(){
+		//return UNSPSCCommodity;
+		return country;
+	}
+public void setCountry(String country){
+	this.country=country;
+}
 
 	public int getUniqueName() {
 		return uniqueName;
@@ -225,20 +248,20 @@ public class Supplier {
 		this.organizationType = organizationType;
 	}
 
-	public int getPostCode() {
+	public String getPostCode() {
 		return postCode;
 	}
 
-	public void setPostCode(int postCode) {
+	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getAddress1() {
+		return address1;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress1(String address) {
+		this.address1 = address;
 	}
 
 	public String getDistrict() {
@@ -279,6 +302,47 @@ public class Supplier {
 
 	public void setTemplateTaskTreeNode(TemplateTaskTreeNode templateTaskTreeNode) {
 		this.templateTaskTreeNode = templateTaskTreeNode;
+	}
+
+
+	public String getContactFirst() {
+		return contactFirst;
+	}
+
+	public void setContactFirst(String contactFirst) {
+		this.contactFirst = contactFirst;
+	}
+
+	public String getContactLast() {
+		return contactLast;
+	}
+
+	public void setContactLast(String contactLast) {
+		this.contactLast = contactLast;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public String getBU() {
+		return BU;
+	}
+
+	public void setBU(String bU) {
+		BU = bU;
+	}
+
+	public String getNDA() {
+		return NDA;
+	}
+
+	public void setNDA(String nDA) {
+		NDA = nDA;
 	}
 
 }
